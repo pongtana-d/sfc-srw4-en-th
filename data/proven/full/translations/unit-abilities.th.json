@@ -1,0 +1,61 @@
+{
+  "_layout": {
+    "pointer_scan": {
+      "address": "0x12823B",
+      "end": "0x1282A8",
+      "source_sha256": "f861f468723568d592a46308b2cddac259799b602c0667e5a26e63c6b985761a"
+    },
+    "pool": {
+      "address": "0x1286F0",
+      "end": "0x128729",
+      "source_sha256": "e18b2b479ca650188680808c7ddbfdd88f675d5ca8d62ecfa1efedf5f0bb91b3"
+    }
+  },
+  "abilities": [
+    {
+      "address": "0x1286F0",
+      "source": "ビームコート",
+      "translation": "บีมโคท"
+    },
+    {
+      "address": "0x1286F7",
+      "source": "Ｉフィールド",
+      "translation": "ไอฟิลด์"
+    },
+    {
+      "address": "0x1286FE",
+      "source": "オーラバリア",
+      "translation": "บาเรียออร่า"
+    },
+    {
+      "address": "0x128705",
+      "source": "ビームバリア",
+      "translation": "บาเรียบีม"
+    },
+    {
+      "address": "0x12870D",
+      "source": "ＨＰ回復",
+      "translation": "ฟื้น HP"
+    },
+    {
+      "address": "0x128714",
+      "source": "分身",
+      "translation": "ภาพลวง"
+    },
+    {
+      "address": "0x128719",
+      "source": "変形",
+      "translation": "แปลงร่าง"
+    },
+    {
+      "address": "0x12871E",
+      "source": "合体",
+      "translation": "รวมร่าง"
+    },
+    {
+      "address": "0x128723",
+      "source": "分離",
+      "translation": "แยกร่าง"
+    }
+  ]
+}

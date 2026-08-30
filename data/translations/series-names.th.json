@@ -1,0 +1,291 @@
+{
+  "_comment": "ชื่อเรื่องต้นสังกัดใน catalog $D2:8103 ใช้ในช่อง FROM ของหน้า CHARACTERS/ROBOTS",
+  "_layout": {
+    "pointer_table": {
+      "address": "0x128103",
+      "cpu": "$D2:8103",
+      "entries": 370,
+      "source_sha256": "2e2c705cfcd1bd490a802d32bdce41b3cf109f0d0fc98970d4874dd015b61eb1"
+    },
+    "max_width_px": 120,
+    "width_evidence": "ช่อง FROM ในหน้าหุ่นเริ่มที่ช่อง 16 (128 px) เหลือถึงขอบกรอบราว 120 px",
+    "glossary": "ชื่อซีรีส์อ้างอิง translations/glossary.th.json และชื่อยูนิตใน translations/units.th.json"
+  },
+  "records": [
+    {
+      "pointer": "0x8988",
+      "slots": [
+        320
+      ],
+      "source_pc": "0x128988",
+      "source_end": "0x12898F",
+      "source_hex": "CDA7DF9B112FFF",
+      "source": "マジンガーＺ",
+      "translation": "มาชินก้า Z"
+    },
+    {
+      "pointer": "0x898F",
+      "slots": [
+        321
+      ],
+      "source_pc": "0x12898F",
+      "source_end": "0x12899C",
+      "source_hex": "F2BCF040F4F1CDA7DF9B112FFF",
+      "source": "劇場版マジンガーＺ",
+      "translation": "มาชินก้า Z มูฟวี่"
+    },
+    {
+      "pointer": "0x899C",
+      "slots": [
+        322
+      ],
+      "source_pc": "0x12899C",
+      "source_end": "0x1289A6",
+      "source_hex": "9FDB11B7CDA7DF9B11FF",
+      "source": "グレートマジンガー",
+      "translation": "เกรทมาชินก้า"
+    },
+    {
+      "pointer": "0x89A6",
+      "slots": [
+        323
+      ],
+      "source_pc": "0x1289A6",
+      "source_end": "0x1289B4",
+      "source_hex": "2A1B24DCCB009FDBDFAF93A511FF",
+      "source": "ＵＦＯロボ　グレンダイザー",
+      "translation": "เกรนไดเซอร์"
+    },
+    {
+      "pointer": "0x89B4",
+      "slots": [
+        324
+      ],
+      "source_pc": "0x1289B4",
+      "source_end": "0x1289BB",
+      "source_hex": "A1B2AE11DCCBFF",
+      "source": "ゲッターロボ",
+      "translation": "เก็ตเตอร์โรโบ"
+    },
+    {
+      "pointer": "0x89BB",
+      "slots": [
+        325
+      ],
+      "source_pc": "0x1289BB",
+      "source_end": "0x1289C3",
+      "source_hex": "A1B2AE11DCCB1CFF",
+      "source": "ゲッターロボＧ",
+      "translation": "เก็ตเตอร์โรโบ G"
+    },
+    {
+      "pointer": "0x89C3",
+      "slots": [
+        326
+      ],
+      "source_pc": "0x1289C3",
+      "source_end": "0x1289D4",
+      "source_hex": "F04BF04CF04DDCCB00A2DFBFB7D8112BFF",
+      "source": "超電磁ロボ　コンバトラーＶ",
+      "translation": "คอมแบตเลอร์ V"
+    },
+    {
+      "pointer": "0x89D4",
+      "slots": [
+        327
+      ],
+      "source_pc": "0x1289D4",
+      "source_end": "0x1289DD",
+      "source_hex": "F053F0A4AF93D1A8FF",
+      "source": "闘将ダイモス",
+      "translation": "ไดมอส"
+    },
+    {
+      "pointer": "0x89DD",
+      "slots": [
+        328
+      ],
+      "source_pc": "0x1289DD",
+      "source_end": "0x1289ED",
+      "source_hex": "F109F093F04BF00800A5DFCBB2B733FF",
+      "source": "無敵超人　ザンボット３",
+      "translation": "ซัมบ็อต 3"
+    },
+    {
+      "pointer": "0x89ED",
+      "slots": [
+        329
+      ],
+      "source_pc": "0x1289ED",
+      "source_end": "0x1289FD",
+      "source_hex": "F109F093F5A8F00800AF93AE11DF33FF",
+      "source": "無敵鋼人　ダイターン３",
+      "translation": "ไดตาน 3"
+    },
+    {
+      "pointer": "0x89FD",
+      "slots": [
+        330
+      ],
+      "source_pc": "0x1289FD",
+      "source_end": "0x128A09",
+      "source_hex": "F3AEF052F049AFDFBF93DFFF",
+      "source": "聖戦士ダンバイン",
+      "translation": "ดันไบน์"
+    },
+    {
+      "pointer": "0x8A09",
+      "slots": [
+        331
+      ],
+      "source_pc": "0x128A09",
+      "source_end": "0x128A18",
+      "source_hex": "F3AEF052F049AFDFBF93DF242B16FF",
+      "source": "聖戦士ダンバインＯＶＡ",
+      "translation": "ดันไบน์ OVA"
+    },
+    {
+      "pointer": "0x8A18",
+      "slots": [
+        332
+      ],
+      "source_pc": "0x128A18",
+      "source_end": "0x128A24",
+      "source_hex": "F0B7F052F0E197DA9B93CFFF",
+      "source": "重戦機エルガイム",
+      "translation": "แอลไกม์"
+    },
+    {
+      "pointer": "0x8A24",
+      "slots": [
+        333
+      ],
+      "source_pc": "0x128A24",
+      "source_end": "0x128A31",
+      "source_hex": "F0E1F051F052F0499BDFAFCFFF",
+      "source": "機動戦士ガンダム",
+      "translation": "กันดั้ม"
+    },
+    {
+      "pointer": "0x8A31",
+      "slots": [
+        334
+      ],
+      "source_pc": "0x128A31",
+      "source_end": "0x128A3F",
+      "source_hex": "F0E1F051F052F0492F9BDFAFCFFF",
+      "source": "機動戦士Ｚガンダム",
+      "translation": "Z กันดั้ม"
+    },
+    {
+      "pointer": "0x8A3F",
+      "slots": [
+        335
+      ],
+      "source_pc": "0x128A3F",
+      "source_end": "0x128A4E",
+      "source_hex": "F0E1F051F052F0499BDFAFCF2F2FFF",
+      "source": "機動戦士ガンダムＺＺ",
+      "translation": "กันดั้ม ZZ"
+    },
+    {
+      "pointer": "0x8A4E",
+      "slots": [
+        336
+      ],
+      "source_pc": "0x128A4E",
+      "source_end": "0x128A5F",
+      "source_hex": "F0E1F051F052F0499BDFAFCF30303830FF",
+      "source": "機動戦士ガンダム００８０",
+      "translation": "กันดั้ม 0080"
+    },
+    {
+      "pointer": "0x8A5F",
+      "slots": [
+        337
+      ],
+      "source_pc": "0x128A5F",
+      "source_end": "0x128A70",
+      "source_hex": "F0E1F051F052F0499BDFAFCF30303833FF",
+      "source": "機動戦士ガンダム００８３",
+      "translation": "กันดั้ม 0083"
+    },
+    {
+      "pointer": "0x8A70",
+      "slots": [
+        338
+      ],
+      "source_pc": "0x128A70",
+      "source_end": "0x128A7A",
+      "source_hex": "9BDFAFCFAADFB0BCDAFF",
+      "source": "ガンダムセンチネル",
+      "translation": "กันดั้ม เซนติเนล"
+    },
+    {
+      "pointer": "0x8A7A",
+      "slots": [
+        339
+      ],
+      "source_pc": "0x128A7A",
+      "source_end": "0x128A83",
+      "source_hex": "F2A6F1A06DA6D291FF",
+      "source": "逆襲のシャア",
+      "translation": "ชาร์โต้กลับ"
+    },
+    {
+      "pointer": "0x8A83",
+      "slots": [
+        340
+      ],
+      "source_pc": "0x128A83",
+      "source_end": "0x128A94",
+      "source_hex": "F0E1F051F052F0499BDFAFCF1B113931FF",
+      "source": "機動戦士ガンダムＦー９１",
+      "translation": "กันดั้ม F91"
+    },
+    {
+      "pointer": "0x8A94",
+      "slots": [
+        341
+      ],
+      "source_pc": "0x128A94",
+      "source_end": "0x128A9F",
+      "source_hex": "F103F1F2D893B69211DFFF",
+      "source": "勇者ライディーン",
+      "translation": "ไรดีน"
+    },
+    {
+      "pointer": "0x8A9F",
+      "slots": [
+        342
+      ],
+      "source_pc": "0x128A9F",
+      "source_end": "0x128AAF",
+      "source_hex": "F052F082F0D4F006A311A6D6119FDFFF",
+      "source": "戦国魔神ゴーショーグン",
+      "translation": "โกโชกุน"
+    },
+    {
+      "pointer": "0x8AAF",
+      "slots": [
+        343
+      ],
+      "source_pc": "0x128AAF",
+      "source_end": "0x128ABD",
+      "source_hex": "F04BF0D3F0E1F006AFDF9E119BFF",
+      "source": "超獣機神ダンクーガ",
+      "translation": "ดันคูก้า"
+    },
+    {
+      "pointer": "0x8ABD",
+      "slots": [
+        344
+      ],
+      "source_pc": "0x128ABD",
+      "source_end": "0x128AC3",
+      "source_hex": "99D9A7B9DAFF",
+      "source": "オリジナル",
+      "translation": "ออริจินอล"
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>SRW4 Thai title-logo editor</title>
+<style>
+  :root { --bg:#121419; --panel:#1b1f27; --line:#303744; --ink:#e8ebf0;
+    --dim:#929baa; --accent:#72a7ff; --warn:#f0ad4e; --good:#72c681; --bad:#ef6b73; }
+  * { box-sizing:border-box }
+  body { margin:0; color:var(--ink); background:var(--bg);
+    font:13px/1.45 ui-monospace,"SF Mono",Menlo,monospace; overflow:hidden }
+  header { height:46px; display:flex; align-items:center; gap:7px; padding:7px 12px;
+    background:var(--panel); border-bottom:1px solid var(--line) }
+  h1 { margin:0 14px 0 0; font-size:13px; letter-spacing:.05em }
+  button,select { color:var(--ink); background:#262c36; border:1px solid var(--line);
+    border-radius:5px; padding:5px 9px; font:inherit; cursor:pointer }
+  button:hover,button.on { border-color:var(--accent) }
+  button.on { background:#274b78 }
+  button:disabled { opacity:.45; cursor:default }
+  #status { margin-left:auto; color:var(--dim) }
+  #status.dirty { color:var(--warn) } #status.good { color:var(--good) }
+  #status.bad { color:var(--bad) }
+  main { display:grid; grid-template-columns:210px minmax(0,1fr) 310px;
+    height:calc(100vh - 46px) }
+  aside,section { padding:12px; overflow:auto }
+  section,aside+aside { border-left:1px solid var(--line) }
+  h2 { margin:0 0 9px; font-size:11px; color:var(--dim); text-transform:uppercase;
+    letter-spacing:.1em }
+  .palette { display:grid; gap:5px }
+  .color { display:grid; grid-template-columns:32px 28px 1fr; align-items:center;
+    gap:7px; padding:4px; border:1px solid transparent; border-radius:5px; cursor:pointer }
+  .color:hover,.color.on { border-color:var(--accent); background:#202836 }
+  .swatch { width:30px; height:22px; border:1px solid #727986; image-rendering:pixelated }
+  .transparent { background:repeating-conic-gradient(#3a3f48 0 25%,#242831 0 50%) 0/8px 8px }
+  .index { color:var(--dim) } .name { font-size:11px }
+  .toolbar { display:flex; gap:5px; flex-wrap:wrap; margin:0 0 8px }
+  .viewport { overflow:auto; max-height:calc(100vh - 143px); border:1px solid var(--line);
+    background:#0b0d11; padding:12px }
+  canvas { display:block; image-rendering:pixelated; touch-action:none }
+  #grid { cursor:crosshair; background:#111 }
+  .note { color:var(--dim); font-size:11px; margin:8px 0 }
+  .meta { display:grid; grid-template-columns:auto 1fr; gap:5px 10px; margin-bottom:14px }
+  .meta span:nth-child(odd) { color:var(--dim) }
+  .previewbox { padding:9px; border:1px solid var(--line); background:#0b0d11; overflow:auto }
+  #preview { width:256px; height:224px }
+  #coord { color:var(--accent) }
+  #out { white-space:pre-wrap; word-break:break-word; color:var(--dim); font-size:11px }
+</style>
+
+<header>
+  <h1>SRW4 THAI TITLE-LOGO EDITOR</h1>
+  <button id="save">Save</button><button id="revert">Revert</button>
+  <button id="verify">Verify build</button>
+  <span id="status">loading…</span>
+</header>
+
+<main>
+  <aside>
+    <h2>Stock OBJ palette 7</h2>
+    <div id="palette" class="palette"></div>
+    <p class="note">0 = transparent<br>1–11 = face/highlight<br>12–15 = blue shadow</p>
+  </aside>
+
+  <section>
+    <div class="toolbar">
+      <button data-tool="draw" class="on">Draw</button>
+      <button data-tool="erase">Erase</button>
+      <button data-tool="pick">Eyedropper</button>
+      <button id="undo">Undo</button>
+      <button id="left">←</button><button id="right">→</button>
+      <button id="up">↑</button><button id="down">↓</button>
+      <label>Zoom <select id="zoom"><option>4</option><option>6</option><option selected>8</option><option>10</option></select></label>
+      <span id="coord">x— y—</span>
+    </div>
+    <div class="viewport"><canvas id="grid"></canvas></div>
+    <p class="note">ลากเพื่อวาด • คลิกขวาเพื่อลบ • Alt/Option+คลิกเพื่อดูดสี • Undo คืนทีละ stroke</p>
+  </section>
+
+  <aside>
+    <h2>Native preview</h2>
+    <div class="previewbox"><canvas id="preview" width="256" height="224"></canvas></div>
+    <h2 style="margin-top:16px">Asset</h2>
+    <div class="meta" id="meta"></div>
+    <div id="out"></div>
+  </aside>
+</main>
+
+<script>
+const $ = id => document.getElementById(id);
+const NAMES = ["transparent","white highlight","pale yellow","yellow","gold 1","gold 2",
+  "orange 1","orange 2","orange-red","red","deep red","dark edge",
+  "blue near","blue mid","blue dark","blue far"];
+const S = { state:null, pixels:[], saved:[], undo:[], color:6, tool:"draw", zoom:8,
+  painting:false, strokeSaved:false, dirty:false };
+
+async function api(path, body) {
+  const response = await fetch(path, body === undefined ? {} : {
+    method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)
+  });
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.error || response.statusText);
+  return data;
+}
+
+function decode(rows) { return rows.map(row => [...row].map(v => parseInt(v,16))); }
+function encode() { return S.pixels.map(row => row.map(v => v.toString(16).toUpperCase()).join("")); }
+function snapshot() { return S.pixels.map(row => row.slice()); }
+function setStatus(text, kind="") { $("status").textContent=text; $("status").className=kind; }
+function markDirty() { S.dirty=true; setStatus("unsaved changes","dirty"); $("undo").disabled=!S.undo.length; }
+
+function renderPalette() {
+  const root=$("palette"); root.innerHTML="";
+  S.state.palette_rgb.forEach((rgb,index) => {
+    const row=document.createElement("div"); row.className="color"+(index===S.color?" on":"");
+    const sw=document.createElement("span"); sw.className="swatch"+(index===0?" transparent":"");
+    if(index) sw.style.background=rgb;
+    row.append(sw,Object.assign(document.createElement("span"),{className:"index",textContent:index.toString(16).toUpperCase()}),
+      Object.assign(document.createElement("span"),{className:"name",textContent:NAMES[index]}));
+    row.onclick=()=>{S.color=index; S.tool="draw"; renderPalette(); renderTools()}; root.append(row);
+  });
+}
+
+function checker(ctx,x,y,size) {
+  ctx.fillStyle=((x+y)&1)?"#252A33":"#3B414C"; ctx.fillRect(x*size,y*size,size,size);
+}
+function renderGrid() {
+  const c=$("grid"), z=S.zoom; c.width=S.state.width*z; c.height=S.state.height*z;
+  const ctx=c.getContext("2d"); ctx.imageSmoothingEnabled=false;
+  for(let y=0;y<S.state.height;y++) for(let x=0;x<S.state.width;x++) {
+    const value=S.pixels[y][x];
+    if(value) { ctx.fillStyle=S.state.palette_rgb[value]; ctx.fillRect(x*z,y*z,z,z); }
+    else checker(ctx,x,y,z);
+    if(z>=6) { ctx.strokeStyle="rgba(0,0,0,.16)"; ctx.strokeRect(x*z+.5,y*z+.5,z-1,z-1); }
+  }
+  renderPreview();
+}
+
+function renderPreview() {
+  const c=$("preview"), ctx=c.getContext("2d"); ctx.imageSmoothingEnabled=false;
+  ctx.fillStyle="#171A20"; ctx.fillRect(0,0,c.width,c.height);
+  const box=S.state.screen_box;
+  for(let y=0;y<S.state.height;y++) for(let x=0;x<S.state.width;x++) {
+    const value=S.pixels[y][x]; if(!value) continue;
+    ctx.fillStyle=S.state.palette_rgb[value]; ctx.fillRect(box.x+x,box.y+y,1,1);
+  }
+  ctx.strokeStyle="#4D5666"; ctx.strokeRect(box.x-.5,box.y-.5,box.width+1,box.height+1);
+}
+
+function renderMeta() {
+  $("meta").innerHTML=`<span>source</span><b>${S.state.path}</b><span>geometry</span><b>${S.state.width}×${S.state.height}</b>`+
+    `<span>screen</span><b>${S.state.screen_box.x},${S.state.screen_box.y}</b><span>text</span><b>${S.state.text}</b>`+
+    `<span>saved SHA</span><b>${S.state.sha256.slice(0,12)}…</b>`;
+}
+function renderTools(){ document.querySelectorAll("[data-tool]").forEach(b=>b.classList.toggle("on",b.dataset.tool===S.tool)); }
+
+function point(event) {
+  const r=$("grid").getBoundingClientRect();
+  return [Math.floor((event.clientX-r.left)*$("grid").width/r.width/S.zoom),
+    Math.floor((event.clientY-r.top)*$("grid").height/r.height/S.zoom)];
+}
+function paint(event) {
+  const [x,y]=point(event); if(x<0||y<0||x>=S.state.width||y>=S.state.height)return;
+  $("coord").textContent=`x${x} y${y}  color ${S.pixels[y][x].toString(16).toUpperCase()}`;
+  const tool=(event.altKey?"pick":event.buttons===2?"erase":S.tool);
+  if(tool==="pick") { S.color=S.pixels[y][x]; S.tool="draw"; renderPalette(); renderTools(); return; }
+  if(!S.painting)return;
+  if(!S.strokeSaved){S.undo.push(snapshot()); if(S.undo.length>40)S.undo.shift(); S.strokeSaved=true;}
+  const value=tool==="erase"?0:S.color; if(S.pixels[y][x]===value)return;
+  S.pixels[y][x]=value; markDirty(); renderGrid();
+}
+
+function nudge(dx,dy) {
+  S.undo.push(snapshot()); const next=Array.from({length:S.state.height},()=>Array(S.state.width).fill(0));
+  for(let y=0;y<S.state.height;y++)for(let x=0;x<S.state.width;x++){
+    const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<S.state.width&&ny<S.state.height)next[ny][nx]=S.pixels[y][x];
+  } S.pixels=next; markDirty(); renderGrid();
+}
+
+async function load(state) {
+  S.state=state; S.pixels=decode(state.rows); S.saved=decode(state.rows); S.undo=[]; S.dirty=false;
+  renderPalette(); renderGrid(); renderMeta(); renderTools(); $("undo").disabled=true; setStatus("saved","good");
+}
+
+document.querySelectorAll("[data-tool]").forEach(b=>b.onclick=()=>{S.tool=b.dataset.tool;renderTools()});
+$("zoom").onchange=()=>{S.zoom=+$('zoom').value;renderGrid()};
+$("undo").onclick=()=>{if(!S.undo.length)return;S.pixels=S.undo.pop();markDirty();renderGrid()};
+$("left").onclick=()=>nudge(-1,0); $("right").onclick=()=>nudge(1,0);
+$("up").onclick=()=>nudge(0,-1); $("down").onclick=()=>nudge(0,1);
+$("grid").oncontextmenu=e=>e.preventDefault();
+$("grid").onpointerdown=e=>{e.preventDefault();S.painting=true;S.strokeSaved=false;$("grid").setPointerCapture(e.pointerId);paint(e)};
+$("grid").onpointermove=paint; $("grid").onpointerup=e=>{S.painting=false;S.strokeSaved=false};
+$("save").onclick=async()=>{try{setStatus("saving…");const r=await api("/api/save",{rows:encode()});await load(r.state)}catch(e){setStatus(e.message,"bad")}};
+$("revert").onclick=async()=>{if(S.dirty&&!confirm("Discard unsaved pixel edits?"))return;try{const r=await api("/api/revert",{});await load(r.state)}catch(e){setStatus(e.message,"bad")}};
+$("verify").onclick=async()=>{try{setStatus("verifying…");const r=await api("/api/verify",{});$("out").textContent=JSON.stringify(r,null,2);setStatus("build accepted asset","good")}catch(e){setStatus(e.message,"bad")}};
+window.addEventListener("beforeunload",e=>{if(S.dirty){e.preventDefault();e.returnValue=""}});
+api("/api/state").then(load).catch(e=>setStatus(e.message,"bad"));
+</script>

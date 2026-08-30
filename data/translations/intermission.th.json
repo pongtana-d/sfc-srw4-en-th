@@ -1,0 +1,3172 @@
+{
+  "_comment": "เมนู Intermission catalog $CC:C1FF: เขียนทับเฉพาะคำญี่ปุ่นในแต่ละ record โดยคง control byte เดิม",
+  "_layout": {
+    "master_entry": 1,
+    "master_entry_pc": "0x0900DB",
+    "master_entry_hex": "FFC1CC",
+    "pool": {
+      "address": "0x0CC3DF",
+      "end": "0x0CEA7E",
+      "source_sha256": "d2be562be9aaabb52ff3a36180169aa702e95dda4ba60dc2858417244474f44a"
+    },
+    "pointer_table": {
+      "address": "0x0CC1FF",
+      "cpu": "$CC:C1FF",
+      "entries": 240,
+      "source_sha256": "4f5ad003ff245db63b1e3cd3b8d8c83fdd83b449c44a304212132a1f085a4fe2"
+    },
+    "max_width_px": 240,
+    "width_evidence": "คอลัมน์คำสั่งกว้าง 96 px จาก インターミッション 9 ช่อง; บรรทัดข้อความเต็มจอ 240 px",
+    "record_extent": "อ่านถึง pointer ถัดไป เพราะ control $FD และ $FE กินไบต์ตามหลัง"
+  },
+  "records": [
+    {
+      "pointer": "0xC3DF",
+      "source_pc": "0x0CC3DF",
+      "source_end": "0x0CC3E0",
+      "source_hex": "FF",
+      "slots": [
+        0
+      ]
+    },
+    {
+      "pointer": "0xC3E0",
+      "source_pc": "0x0CC3E0",
+      "source_end": "0x0CC4FC",
+      "source_hex": "F10020F700FD0A8111F209192012F6F9021BF20928201CF6FA13F2091A2014F6FD008511F207192012F6F9121BF20728201CF6FA13F2071A2014F6FD098711F215192012F6F90A1BF21528201CF6FA13F2151A2014F6F701FD15A2F2830018F701FD09B4F2850018F700FD0BA5F28B0018FD09A6F2810018FD09B3F2970018FD01B9F2890018F740FD0B8293DFAE11CEB2A6D6DFFD0186B611AEAA11C5F6F0F7F0743BF080F081F6D5BAB2B7F04AF2AAF6F00AF056F04AF2AAF6F17AF11FC011B3F6A8B511AEA8F66D894A47F6D5BAB2B758658AF6F07E6DCDB2C677FD0A88F157F16B6DF1ABF1D0FD1488F0F6AE11DFF0ECF885FD0A8AF05FF800F14AF63EFBFFFF3FFD198E7D669ED991FD0A90F1F1F0F300F887FEFFFE00FE01FF",
+      "slots": [
+        1
+      ],
+      "labels": [
+        {
+          "source": "インターミッション",
+          "offset": 139,
+          "length": 9,
+          "source_hex": "93DFAE11CEB2A6D6DF",
+          "text": "INTERMISS",
+          "max_width_px": 96
+        },
+        {
+          "source": "データセーブ",
+          "offset": 151,
+          "length": 6,
+          "source_hex": "B611AEAA11C5",
+          "text": "SAVE",
+          "max_width_px": 96
+        },
+        {
+          "source": "合体・変形",
+          "offset": 158,
+          "length": 9,
+          "source_hex": "F0F7F0743BF080F081",
+          "text": "รวมร่าง/แปลง",
+          "max_width_px": 96
+        },
+        {
+          "source": "ユニット改造",
+          "offset": 168,
+          "length": 8,
+          "source_hex": "D5BAB2B7F04AF2AA",
+          "text": "อัปเกรดยูนิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "武器改造",
+          "offset": 177,
+          "length": 8,
+          "source_hex": "F00AF056F04AF2AA",
+          "text": "อัปเกรดอาวุธ",
+          "max_width_px": 96
+        },
+        {
+          "source": "強化パーツ",
+          "offset": 186,
+          "length": 7,
+          "source_hex": "F17AF11FC011B3",
+          "text": "พาร์ทเสริม",
+          "max_width_px": 96
+        },
+        {
+          "source": "ステータス",
+          "offset": 194,
+          "length": 5,
+          "source_hex": "A8B511AEA8",
+          "text": "สถานะ",
+          "max_width_px": 96
+        },
+        {
+          "source": "のりかえ",
+          "offset": 200,
+          "length": 4,
+          "source_hex": "6D894A47",
+          "text": "เปลี่ยนคนขับ",
+          "max_width_px": 96
+        },
+        {
+          "source": "ユニットすてる",
+          "offset": 205,
+          "length": 7,
+          "source_hex": "D5BAB2B758658A",
+          "text": "ทิ้งยูนิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "次のマップへ",
+          "offset": 213,
+          "length": 7,
+          "source_hex": "F07E6DCDB2C677",
+          "text": "แผนที่ถัดไป",
+          "max_width_px": 96
+        },
+        {
+          "source": "現在の状況",
+          "offset": 223,
+          "length": 9,
+          "source_hex": "F157F16B6DF1ABF1D0",
+          "text": "CURRENT",
+          "max_width_px": 96
+        },
+        {
+          "source": "総ターン数",
+          "offset": 235,
+          "length": 7,
+          "source_hex": "F0F6AE11DFF0EC",
+          "text": "TURNS",
+          "max_width_px": 96
+        },
+        {
+          "source": "第",
+          "offset": 247,
+          "length": 2,
+          "source_hex": "F05F",
+          "text": "EP",
+          "max_width_px": 96
+        },
+        {
+          "source": "話",
+          "offset": 251,
+          "length": 2,
+          "source_hex": "F14A",
+          "text": "",
+          "max_width_px": 96
+        },
+        {
+          "source": "「",
+          "offset": 254,
+          "length": 1,
+          "source_hex": "3E",
+          "text": "",
+          "max_width_px": 96
+        },
+        {
+          "source": "」",
+          "offset": 258,
+          "length": 1,
+          "source_hex": "3F",
+          "text": "",
+          "max_width_px": 96
+        },
+        {
+          "source": "までクリア",
+          "offset": 262,
+          "length": 5,
+          "source_hex": "7D669ED991",
+          "text": "CLEAR",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金",
+          "offset": 270,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC4FC",
+      "source_pc": "0x0CC4FC",
+      "source_end": "0x0CC50E",
+      "source_hex": "FDFFFFFC0101F707F900F28EFFFFFAFE00FF",
+      "slots": [
+        2
+      ]
+    },
+    {
+      "pointer": "0xC50E",
+      "source_pc": "0x0CC50E",
+      "source_end": "0x0CC523",
+      "source_hex": "F10020FB0701F740FD0E82AA11C5FEFFFE01FE00FF",
+      "slots": [
+        3
+      ],
+      "labels": [
+        {
+          "source": "セーブ",
+          "offset": 11,
+          "length": 3,
+          "source_hex": "AA11C5",
+          "text": "บันทึก",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC523",
+      "source_pc": "0x0CC523",
+      "source_end": "0x0CC568",
+      "source_hex": "F10020FB0701F700FD008111F207192012F6F9021BF20728201CF6FA13F2071A2014F6F701FD09A2F2830018F740FD0E82AA11C5FD0182AE11CBC49093DAFEFFFE01FE00FF",
+      "slots": [
+        4
+      ],
+      "labels": [
+        {
+          "source": "セーブ",
+          "offset": 49,
+          "length": 3,
+          "source_hex": "AA11C5",
+          "text": "บันทึก",
+          "max_width_px": 96
+        },
+        {
+          "source": "ターボファイル",
+          "offset": 55,
+          "length": 7,
+          "source_hex": "AE11CBC49093DA",
+          "text": "เทอร์โบไฟล์",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC568",
+      "source_pc": "0x0CC568",
+      "source_end": "0x0CC57D",
+      "source_hex": "F10020FB0701F740FD0E82DC11B8FEFFFE01FE00FF",
+      "slots": [
+        5
+      ],
+      "labels": [
+        {
+          "source": "ロード",
+          "offset": 11,
+          "length": 3,
+          "source_hex": "DC11B8",
+          "text": "LOAD",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC57D",
+      "source_pc": "0x0CC57D",
+      "source_end": "0x0CC5C2",
+      "source_hex": "F10020FB0701F700FD008111F207192012F6F9021BF20728201CF6FA13F2071A2014F6F701FD09A2F2830018F740FD0E82DC11B8FD0182AE11CBC49093DAFEFFFE01FE00FF",
+      "slots": [
+        6
+      ],
+      "labels": [
+        {
+          "source": "ロード",
+          "offset": 49,
+          "length": 3,
+          "source_hex": "DC11B8",
+          "text": "LOAD",
+          "max_width_px": 96
+        },
+        {
+          "source": "ターボファイル",
+          "offset": 55,
+          "length": 7,
+          "source_hex": "AE11CBC49093DA",
+          "text": "เทอร์โบไฟล์",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC5C2",
+      "source_pc": "0x0CC5C2",
+      "source_end": "0x0CC6CA",
+      "source_hex": "F700FD0D811119191912F6F9021B2828281CF6FA131A1A1A14F6FD008511F204192015F219192012F61BF30480281DF21928201CF61BF30484281DF21928201CF61BF30488281DF21928201CF61BF3048C281DF21928201CF617F2041E2024F2191E2018F6F9041BF21E28201CF6FA13F21E1A2014F6FD009111F204192015F219192012F61BF304902C1DF21928201CF61BF304942C1DF21928201CF61BF304982C1DF21928201CF61BF3049C2C1DF21928201CF617F2041E2024F2191E2018F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD0686B611AE31FD0688FBFFFFFD0692B611AE32FD0694FBFFFFF700FD01B0F29F0018FD01BCF29F0018F701FD12A2F2830018FF",
+      "slots": [
+        7
+      ],
+      "labels": [
+        {
+          "source": "データ",
+          "offset": 215,
+          "length": 3,
+          "source_hex": "B611AE",
+          "text": "DATA",
+          "max_width_px": 96
+        },
+        {
+          "source": "データ",
+          "offset": 228,
+          "length": 3,
+          "source_hex": "B611AE",
+          "text": "DATA",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC6CA",
+      "source_pc": "0x0CC6CA",
+      "source_end": "0x0CC6DB",
+      "source_hex": "FC0403B611AE4BF01CF0B2548B7D565EFF",
+      "slots": [
+        8
+      ],
+      "labels": [
+        {
+          "source": "データが破壊されました",
+          "offset": 3,
+          "length": 13,
+          "source_hex": "B611AE4BF01CF0B2548B7D565E",
+          "text": "ข้อมูลเสียหาย",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC6DB",
+      "source_pc": "0x0CC6DB",
+      "source_end": "0x0CC6E8",
+      "source_hex": "FC0603B611AE4B41897D5A8FFF",
+      "slots": [
+        9
+      ],
+      "labels": [
+        {
+          "source": "データがありません",
+          "offset": 3,
+          "length": 9,
+          "source_hex": "B611AE4B41897D5A8F",
+          "text": "ไม่มีข้อมูล",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC6E8",
+      "source_pc": "0x0CC6E8",
+      "source_end": "0x0CC721",
+      "source_hex": "F800E3F800F6FC13FEDBC8DAF883F6FCE801F05FF800F14A3EFBFFFF3F7D669ED991F6F0F6AE11DFF0ECF884AE11DFFC0600F1F1F0F3F888FF",
+      "slots": [
+        10
+      ],
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 9,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 96
+        },
+        {
+          "source": "第",
+          "offset": 18,
+          "length": 2,
+          "source_hex": "F05F",
+          "text": "EP",
+          "max_width_px": 96
+        },
+        {
+          "source": "話",
+          "offset": 22,
+          "length": 2,
+          "source_hex": "F14A",
+          "text": "",
+          "max_width_px": 96
+        },
+        {
+          "source": "「",
+          "offset": 24,
+          "length": 1,
+          "source_hex": "3E",
+          "text": "",
+          "max_width_px": 96
+        },
+        {
+          "source": "」",
+          "offset": 28,
+          "length": 1,
+          "source_hex": "3F",
+          "text": "",
+          "max_width_px": 96
+        },
+        {
+          "source": "までクリア",
+          "offset": 29,
+          "length": 5,
+          "source_hex": "7D669ED991",
+          "text": "CLEAR",
+          "max_width_px": 96
+        },
+        {
+          "source": "総ターン数",
+          "offset": 35,
+          "length": 7,
+          "source_hex": "F0F6AE11DFF0EC",
+          "text": "TURNS",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金",
+          "offset": 50,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC721",
+      "source_pc": "0x0CC721",
+      "source_end": "0x0CC751",
+      "source_hex": "FDFFFFFC0101F900FAFD0686F719F2E4FFFFFD018BF71EF2F8FFFFFD0692F719F2E4FFFFFD0197F71EF2F8FFFFFE00FF",
+      "slots": [
+        11
+      ]
+    },
+    {
+      "pointer": "0xC751",
+      "source_pc": "0x0CC751",
+      "source_end": "0x0CC78B",
+      "source_hex": "FDFFFFFC0101F900FAF707F287FFFFF287FFFFFD0686F719F2E4FFFFFD018BF71EF2F8FFFFFD0692F719F2E4FFFFFD0197F71EF2F8FFFFFE00FF",
+      "slots": [
+        12
+      ]
+    },
+    {
+      "pointer": "0xC78B",
+      "source_pc": "0x0CC78B",
+      "source_end": "0x0CC7AF",
+      "source_hex": "FB0400FD038EF10DF0F86DB611AE6EF0C84765567D437D58E44A7D437D5A8F4A14FE00FF",
+      "slots": [
+        13
+      ],
+      "labels": [
+        {
+          "source": "以前のデータは消えてしまいます。かまいませんか？",
+          "offset": 6,
+          "length": 27,
+          "source_hex": "F10DF0F86DB611AE6EF0C84765567D437D58E44A7D437D5A8F4A14",
+          "text": "ข้อมูลเดิมจะหายไป ยืนยันไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC7AF",
+      "source_pc": "0x0CC7AF",
+      "source_end": "0x0CC7BF",
+      "source_hex": "F10020F700FD028DF500B11C04FE00FF",
+      "slots": [
+        14
+      ]
+    },
+    {
+      "pointer": "0xC7BF",
+      "source_pc": "0x0CC7BF",
+      "source_end": "0x0CC875",
+      "source_hex": "F700FD00811119191912F6F9021B2828281CF6FA131A1A1A14F6FD008511F21E192012F6F90A1BF21E28201CF6FA13F21E1A2014F611F204192015F219192012F61BF30480281DF21928201CF61BF30484281DF21928201CF61BF30488281DF21928201CF61BF3048C281DF21928201CF617F2041E2024F2191E2018F6F9041BF21E28201CF6FA13F21E1A2014F6FD0286F3087120FD178679797A7BFD0287F21C7020F701FD05A2F2830018F700FD01BCF29F0018FF",
+      "slots": [
+        15
+      ]
+    },
+    {
+      "pointer": "0xC875",
+      "source_pc": "0x0CC875",
+      "source_end": "0x0CC8B1",
+      "source_hex": "F10020FB0F01FD168111F208192012F6F9021BF20828201CF6FA13F2081A2014F6F740FD0182AA11C5FD1782AA11C50000F0C8F23EFEFFFE01FE00FF",
+      "slots": [
+        16
+      ],
+      "labels": [
+        {
+          "source": "セーブ",
+          "offset": 38,
+          "length": 3,
+          "source_hex": "AA11C5",
+          "text": "บันทึก",
+          "max_width_px": 96
+        },
+        {
+          "source": "セーブ",
+          "offset": 44,
+          "length": 3,
+          "source_hex": "AA11C5",
+          "text": "บันทึก",
+          "max_width_px": 96
+        },
+        {
+          "source": "消去",
+          "offset": 49,
+          "length": 4,
+          "source_hex": "F0C8F23E",
+          "text": "ลบ",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xC8B1",
+      "source_pc": "0x0CC8B1",
+      "source_end": "0x0CC8CA",
+      "source_hex": "FB0400FD078E566F884E0049F1F3604E5F5443E6E6E6FE00FF",
+      "slots": [
+        17
+      ],
+      "labels": [
+        {
+          "source": "しばらく　お待ちください．．．",
+          "offset": 6,
+          "length": 16,
+          "source_hex": "566F884E0049F1F3604E5F5443E6E6E6",
+          "text": "กรุณารอสักครู่...",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC8CA",
+      "source_pc": "0x0CC8CA",
+      "source_end": "0x0CC8E6",
+      "source_hex": "FB0400FD068EAE11CBC49093DA4BF1E1F216548B65437D5A8FFE00FF",
+      "slots": [
+        18
+      ],
+      "labels": [
+        {
+          "source": "ターボファイルが接続されていません",
+          "offset": 6,
+          "length": 19,
+          "source_hex": "AE11CBC49093DA4BF1E1F216548B65437D5A8F",
+          "text": "ไม่ได้ต่อเทอร์โบไฟล์",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC8E6",
+      "source_pc": "0x0CC8E6",
+      "source_end": "0x0CC905",
+      "source_hex": "FB0400FD048EAE11CBC49093DA4B43627043663AAA11C5664C7D5A8FFE00FF",
+      "slots": [
+        19
+      ],
+      "labels": [
+        {
+          "source": "ターボファイルがいっぱいで、セーブできません",
+          "offset": 6,
+          "length": 22,
+          "source_hex": "AE11CBC49093DA4B43627043663AAA11C5664C7D5A8F",
+          "text": "เทอร์โบไฟล์เต็ม บันทึกไม่ได้",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC905",
+      "source_pc": "0x0CC905",
+      "source_end": "0x0CC91C",
+      "source_hex": "FB0400FD088EBFDF9E4BF2CD894A8D6265437D58FE00FF",
+      "slots": [
+        20
+      ],
+      "labels": [
+        {
+          "source": "バンクが切りかわっています",
+          "offset": 6,
+          "length": 14,
+          "source_hex": "BFDF9E4BF2CD894A8D6265437D58",
+          "text": "แบงก์ถูกสลับอยู่",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xC91C",
+      "source_pc": "0x0CC91C",
+      "source_end": "0x0CC938",
+      "source_hex": "FB0400FD068EC6DCB59EB7A893B2B04B24236A696265437D58FE00FF",
+      "slots": [
+        21
+      ]
+    },
+    {
+      "pointer": "0xC938",
+      "source_pc": "0x0CC938",
+      "source_end": "0x0CC96A",
+      "source_hex": "F10020F71CFD0288F2709020F6F2709020F6F700FD0288FBFFFFFBFFFFFBFFFFFBFFFFFBFFFFFBFFFFFBFFFFFBFFFFFE00FF",
+      "slots": [
+        22
+      ]
+    },
+    {
+      "pointer": "0xC96A",
+      "source_pc": "0x0CC96A",
+      "source_end": "0x0CC972",
+      "source_hex": "F8139090F884F6FF",
+      "slots": [
+        23
+      ]
+    },
+    {
+      "pointer": "0xC972",
+      "source_pc": "0x0CC972",
+      "source_end": "0x0CC97F",
+      "source_hex": "F2077020907E90F2077020F6FF",
+      "slots": [
+        24
+      ]
+    },
+    {
+      "pointer": "0xC97F",
+      "source_pc": "0x0CC97F",
+      "source_end": "0x0CC98C",
+      "source_hex": "F2077020907F90F2077020F6FF",
+      "slots": [
+        25
+      ]
+    },
+    {
+      "pointer": "0xC98C",
+      "source_pc": "0x0CC98C",
+      "source_end": "0x0CC99F",
+      "source_hex": "F2077020757C7DF207702090909090F884F6FF",
+      "slots": [
+        26
+      ]
+    },
+    {
+      "pointer": "0xC99F",
+      "source_pc": "0x0CC99F",
+      "source_end": "0x0CC9A1",
+      "source_hex": "F6FF",
+      "slots": [
+        27
+      ]
+    },
+    {
+      "pointer": "0xC9A1",
+      "source_pc": "0x0CC9A1",
+      "source_end": "0x0CC9BA",
+      "source_hex": "FDFFFFFC0101F900FAF704F288FFFFFC00FEF288FFFFFE00FF",
+      "slots": [
+        28
+      ]
+    },
+    {
+      "pointer": "0xC9BA",
+      "source_pc": "0x0CC9BA",
+      "source_end": "0x0CC9CC",
+      "source_hex": "FDFFFFFC0101F71CF900F29CFFFFFAFE00FF",
+      "slots": [
+        29
+      ]
+    },
+    {
+      "pointer": "0xC9CC",
+      "source_pc": "0x0CC9CC",
+      "source_end": "0x0CC9E1",
+      "source_hex": "F10020F71CFD0288F2F00000F6F2F00000F6FE00FF",
+      "slots": [
+        30
+      ]
+    },
+    {
+      "pointer": "0xC9E1",
+      "source_pc": "0x0CC9E1",
+      "source_end": "0x0CC9F1",
+      "source_hex": "F10020F740FD0694FBFFFFFEFFFE00FF",
+      "slots": [
+        31
+      ]
+    },
+    {
+      "pointer": "0xC9F1",
+      "source_pc": "0x0CC9F1",
+      "source_end": "0x0CCA33",
+      "source_hex": "F10020F700FD0790F500B11284FC00FC11F210192012F6F9021BF21028201CF6FA13F2101A2014F6F740FD0891F0C8F23E567D58E4878C564366584A14FEFFFE00FF",
+      "slots": [
+        32
+      ],
+      "labels": [
+        {
+          "source": "消去します。よろしいですか？",
+          "offset": 45,
+          "length": 16,
+          "source_hex": "F0C8F23E567D58E4878C564366584A14",
+          "text": "จะลบข้อมูล ยืนยันไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xCA33",
+      "source_pc": "0x0CCA33",
+      "source_end": "0x0CCA43",
+      "source_hex": "F10020F700FD0790F500B11204FE00FF",
+      "slots": [
+        33
+      ]
+    },
+    {
+      "pointer": "0xCA43",
+      "source_pc": "0x0CCA43",
+      "source_end": "0x0CCA5B",
+      "source_hex": "F10020F719FD0692F2642820F71EFD0197F2782820FE00FF",
+      "slots": [
+        34
+      ]
+    },
+    {
+      "pointer": "0xCA5B",
+      "source_pc": "0x0CCA5B",
+      "source_end": "0x0CCA70",
+      "source_hex": "F10020FB0F01F740FD0182DC11B8FEFFFE01FE00FF",
+      "slots": [
+        35
+      ],
+      "labels": [
+        {
+          "source": "ロード",
+          "offset": 11,
+          "length": 3,
+          "source_hex": "DC11B8",
+          "text": "LOAD",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xCA70",
+      "source_pc": "0x0CCA70",
+      "source_end": "0x0CCAA1",
+      "source_hex": "F10020F700FD048BF500B10486FD048B11191912F6F9041B28281CF6FA131A1A14F6F740FD058CF03CF6F029FEFFFE00FF",
+      "slots": [
+        36
+      ]
+    },
+    {
+      "pointer": "0xCAA1",
+      "source_pc": "0x0CCAA1",
+      "source_end": "0x0CCAB3",
+      "source_hex": "F10020F700FD048BF500B10406FEFFFE00FF",
+      "slots": [
+        37
+      ]
+    },
+    {
+      "pointer": "0xCAB3",
+      "source_pc": "0x0CCAB3",
+      "source_end": "0x0CCAC5",
+      "source_hex": "FDFFFFFC0101F702F900F284FFFFFAFE00FF",
+      "slots": [
+        38
+      ]
+    },
+    {
+      "pointer": "0xCAC5",
+      "source_pc": "0x0CCAC5",
+      "source_end": "0x0CCB60",
+      "source_hex": "F10020F700FD058BF500B11A88FD058B11F218192012F61BF21828201CF61B28F30480302828F30490302828F304A0302828F304B030281CF61B28F30484302828F30494302828F304A4302828F304B430281CF61B28F30488302828F30498302828F304A8302828F304B830281CF61B28F3048C302828F3049C302828F304AC302828F304BC30281CF61BF21828201CF613F2181A2014F6FE00FF",
+      "slots": [
+        39
+      ]
+    },
+    {
+      "pointer": "0xCB60",
+      "source_pc": "0x0CCB60",
+      "source_end": "0x0CCB70",
+      "source_hex": "F10020F700FD058BF500B11A08FE00FF",
+      "slots": [
+        40
+      ]
+    },
+    {
+      "pointer": "0xCB70",
+      "source_pc": "0x0CCB70",
+      "source_end": "0x0CCB94",
+      "source_hex": "F10020F704FD078DF290FFFFFC02FCF290FFFFFC02FCF290FFFFFC02FCF290FFFFFE00FF",
+      "slots": [
+        41
+      ]
+    },
+    {
+      "pointer": "0xCB94",
+      "source_pc": "0x0CCB94",
+      "source_end": "0x0CCBAD",
+      "source_hex": "FDFFFFF700F900FAF281FFFFF281FFFFF281FFFFF281FFFFFF",
+      "slots": [
+        42
+      ]
+    },
+    {
+      "pointer": "0xCBAD",
+      "source_pc": "0x0CCBAD",
+      "source_end": "0x0CCBF0",
+      "source_hex": "F10020F700FD008BF500B12086FD008B11F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD028CFB840DF6FB860DFD118CFB850DF6FB870DFEFFFE00FF",
+      "slots": [
+        43
+      ]
+    },
+    {
+      "pointer": "0xCBF0",
+      "source_pc": "0x0CCBF0",
+      "source_end": "0x0CCC00",
+      "source_hex": "F10020F700FD008BF500B12006FE00FF",
+      "slots": [
+        44
+      ]
+    },
+    {
+      "pointer": "0xCC00",
+      "source_pc": "0x0CCC00",
+      "source_end": "0x0CCC27",
+      "source_hex": "FDFFFFFC0101F70FF900FAF29EFFFFFC00FEF29EFFFFFCE200F29EFFFFFC00FEF29EFFFFFE00FF",
+      "slots": [
+        45
+      ]
+    },
+    {
+      "pointer": "0xCC27",
+      "source_pc": "0x0CCC27",
+      "source_end": "0x0CCC78",
+      "source_hex": "F10020F700FD048BF500B10F87FD048B11F20D192012F6F9051BF20D28201CF6FA13F20D1A2014F6F740FD058C31003200330034003500F105F106FD058F36003700380039003000F1B4F0C8FEFFFE00FF",
+      "slots": [
+        46
+      ]
+    },
+    {
+      "pointer": "0xCC78",
+      "source_pc": "0x0CCC78",
+      "source_end": "0x0CCC88",
+      "source_hex": "F10020F700FD048BF500B10F07FE00FF",
+      "slots": [
+        47
+      ]
+    },
+    {
+      "pointer": "0xCC88",
+      "source_pc": "0x0CCC88",
+      "source_end": "0x0CCCF5",
+      "source_hex": "FDFFFFF900FAF702FD058CF284FFFFF6FD078CF284FFFFF6FD098CF284FFFFF6FD0B8CF284FFFFF6FD0D8CF284FFFFF703FD0F8CF286FFFFF702FD058FF284FFFFF6FD078FF284FFFFF6FD098FF284FFFFF6FD0B8FF284FFFFF6FD0D8FF284FFFFF703FD0F8FF286FFFFFE00FF",
+      "slots": [
+        48
+      ]
+    },
+    {
+      "pointer": "0xCCF5",
+      "source_pc": "0x0CCCF5",
+      "source_end": "0x0CCD2F",
+      "source_hex": "F10020F700FD158EF500B10A84FD158E11F208192012F6F9021BF20828201CF6FA13F2081A2014F6F740FD168F2400160017001617FEFFFE00FF",
+      "slots": [
+        49
+      ]
+    },
+    {
+      "pointer": "0xCD2F",
+      "source_pc": "0x0CCD2F",
+      "source_end": "0x0CCD3F",
+      "source_hex": "F10020F700FD158EF500B10A04FE00FF",
+      "slots": [
+        50
+      ]
+    },
+    {
+      "pointer": "0xCD3F",
+      "source_pc": "0x0CCD3F",
+      "source_end": "0x0CCD69",
+      "source_hex": "FDFFFFF702F900FAFD168FF284FFFFF6FD188FF284FFFFF6FD1A8FF284FFFFF6FD1C8FF284FFFFFE00FF",
+      "slots": [
+        51
+      ]
+    },
+    {
+      "pointer": "0xCD69",
+      "source_pc": "0x0CCD69",
+      "source_end": "0x0CCD9C",
+      "source_hex": "F10020F740FD0893F882FD0D93F882FD1B93FBFFFFF702FD0893F284FFFFF6FD0D93F284FFFFF6FD1B93F284FFFFFEFFFE00FF",
+      "slots": [
+        52
+      ]
+    },
+    {
+      "pointer": "0xCD9C",
+      "source_pc": "0x0CCD9C",
+      "source_end": "0x0CCDE2",
+      "source_hex": "F10020F700FD008BF500B10C86FD008B11F20A192012F6F9041BF20A28201CF6FA13F20A1A2014F6F740FD018CD991DADCCBB2B7F2E8F6A811C011DCCBB2B7F2E8FEFFFE00FF",
+      "slots": [
+        53
+      ]
+    },
+    {
+      "pointer": "0xCDE2",
+      "source_pc": "0x0CCDE2",
+      "source_end": "0x0CCDF4",
+      "source_hex": "F10020F700FD008BF500B10C06FEFFFE00FF",
+      "slots": [
+        54
+      ]
+    },
+    {
+      "pointer": "0xCDF4",
+      "source_pc": "0x0CCDF4",
+      "source_end": "0x0CCE06",
+      "source_hex": "FDFFFFFC0101F70AF900F294FFFFFAFE00FF",
+      "slots": [
+        55
+      ]
+    },
+    {
+      "pointer": "0xCE06",
+      "source_pc": "0x0CCE06",
+      "source_end": "0x0CCEEA",
+      "source_hex": "F10020F700FD0C8111F207192012F6F9021BF20728201CF6FA13F2071A2014F6FD008511F209192015F20A192015F209192012F6F9081BF20928201DF20A28201DF20928201CF6FA17F2091E2027F20A1E2027F2091E2018F6F9041BF20928201DF20A28201DF20928201CF6FA13F2091A2016F20A1A2016F2091A2014F6FD009411F209192012F6F9061BF20928201CF6FA13F2091A2014F6F700FD01BCF28A0018FD0CB4F2940018F701FD15A2F2830018F701FD0BB4F2890018F740FD0D82DCCBB2B7F265F106FD0195F0DAF0F8F080F2EBF69AD811D9DF9FF080F2EBF6F105F106FF",
+      "slots": [
+        56
+      ],
+      "labels": [
+        {
+          "source": "ロボット設定",
+          "offset": 192,
+          "length": 8,
+          "source_hex": "DCCBB2B7F265F106",
+          "text": "ตั้งค่าหุ่น",
+          "max_width_px": 96
+        },
+        {
+          "source": "名前変更",
+          "offset": 203,
+          "length": 8,
+          "source_hex": "F0DAF0F8F080F2EB",
+          "text": "เปลี่ยนชื่อ",
+          "max_width_px": 96
+        },
+        {
+          "source": "カラーリング変更",
+          "offset": 212,
+          "length": 10,
+          "source_hex": "9AD811D9DF9FF080F2EB",
+          "text": "เปลี่ยนสี",
+          "max_width_px": 96
+        },
+        {
+          "source": "決定",
+          "offset": 223,
+          "length": 4,
+          "source_hex": "F105F106",
+          "text": "ตกลง",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xCEEA",
+      "source_pc": "0x0CCEEA",
+      "source_end": "0x0CCF23",
+      "source_hex": "FB3801FD018FDCCBB2B7F081F19DF6FB0080FD0B8FF08BF08CF081F19DF6FB0680FD168FF0B7F052F024F081F19DF6FB0C80FEFFFE01FE00FF",
+      "slots": [
+        57
+      ],
+      "labels": [
+        {
+          "source": "ロボット形態",
+          "offset": 6,
+          "length": 8,
+          "source_hex": "DCCBB2B7F081F19D",
+          "text": "ร่างหุ่นยนต์",
+          "max_width_px": 96
+        },
+        {
+          "source": "飛行形態",
+          "offset": 21,
+          "length": 8,
+          "source_hex": "F08BF08CF081F19D",
+          "text": "ร่างเครื่องบิน",
+          "max_width_px": 96
+        },
+        {
+          "source": "重戦車形態",
+          "offset": 36,
+          "length": 10,
+          "source_hex": "F0B7F052F024F081F19D",
+          "text": "ร่างรถถัง",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xCF23",
+      "source_pc": "0x0CCF23",
+      "source_end": "0x0CCF61",
+      "source_hex": "FB3801FD0B91FB0080F700FD0186F908F2092F20F6FAFD018FF904F2092F20F6FAFD1686F908F2092F20F6FAFD168FF904F2092F20F6FAFEFFFE01FE00FF",
+      "slots": [
+        58
+      ]
+    },
+    {
+      "pointer": "0xCF61",
+      "source_pc": "0x0CCF61",
+      "source_end": "0x0CCF73",
+      "source_hex": "FDFFFFFC0101F709F900F292FFFFFAFE00FF",
+      "slots": [
+        59
+      ]
+    },
+    {
+      "pointer": "0xCF73",
+      "source_pc": "0x0CCF73",
+      "source_end": "0x0CCF97",
+      "source_hex": "FDFFFFF900FAFD018FF709F2A4FFFFFD0B8FF70AF2A8FFFFFD168FF709F2A4FFFFFE00FF",
+      "slots": [
+        60
+      ]
+    },
+    {
+      "pointer": "0xCF97",
+      "source_pc": "0x0CCF97",
+      "source_end": "0x0CD02F",
+      "source_hex": "F10020F700FD0B94F500B00884FD0B9411F206192012F6F9021BF20628201CF6FA13F2061A2014F6FD0B98F540B00B84FD0B9811F209192012F6F9021BF20928201CF6FA13F2091A2014F6FD0C993E3FF64041FD1399F2013F60F2013E60F6F2014160F2014060FD0CBCF28A0018F701FD13B5F2830018F701FD16B9F2840018F740FD0C959AD811F883FD0F99F105F106FEFFFE01FE00FF",
+      "slots": [
+        61
+      ],
+      "labels": [
+        {
+          "source": "カラー",
+          "offset": 133,
+          "length": 3,
+          "source_hex": "9AD811",
+          "text": "สี",
+          "max_width_px": 96
+        },
+        {
+          "source": "決定",
+          "offset": 141,
+          "length": 4,
+          "source_hex": "F105F106",
+          "text": "ตกลง",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD02F",
+      "source_pc": "0x0CD02F",
+      "source_end": "0x0CD062",
+      "source_hex": "F10020F700FD0B94F500B00804FD0B98F540B00B04FD0CBCF28A001CF701FD13B5F283001CF701FD16B9F284001CFE01FE00FF",
+      "slots": [
+        62
+      ]
+    },
+    {
+      "pointer": "0xD062",
+      "source_pc": "0x0CD062",
+      "source_end": "0x0CD071",
+      "source_hex": "F10020F740FD0F95F883FEFFFE00FF",
+      "slots": [
+        63
+      ]
+    },
+    {
+      "pointer": "0xD071",
+      "source_pc": "0x0CD071",
+      "source_end": "0x0CD08C",
+      "source_hex": "FD018FF700F29E0000F6F29E0000F6F29E0000F6F29E0000FE00FF",
+      "slots": [
+        64
+      ]
+    },
+    {
+      "pointer": "0xD08C",
+      "source_pc": "0x0CD08C",
+      "source_end": "0x0CD0B0",
+      "source_hex": "FDFFFFF900FAFD0C99F702F284FFFFFD0F99F703F286FFFFFD1399F702F284FFFFFE00FF",
+      "slots": [
+        65
+      ]
+    },
+    {
+      "pointer": "0xD0B0",
+      "source_pc": "0x0CD0B0",
+      "source_end": "0x0CD0FD",
+      "source_hex": "F10020F700FD0B92F500B10B84FD0B9211F209192012F6F9021BF20928201CF6FA13F2091A2014F6FD0CB6F28A0018F701FD16B5F2820018F740FD0C93528B66434366584A14FEFFFE01FE00FF",
+      "slots": [
+        66
+      ]
+    },
+    {
+      "pointer": "0xD0FD",
+      "source_pc": "0x0CD0FD",
+      "source_end": "0x0CD112",
+      "source_hex": "F700FD12BCF2840018F701FD16B7F2860018FE01FF",
+      "slots": [
+        67
+      ]
+    },
+    {
+      "pointer": "0xD112",
+      "source_pc": "0x0CD112",
+      "source_end": "0x0CD12A",
+      "source_hex": "F10020F700FD12BCF284001CF701FD16B7F286001CFE01FF",
+      "slots": [
+        68
+      ]
+    },
+    {
+      "pointer": "0xD12A",
+      "source_pc": "0x0CD12A",
+      "source_end": "0x0CD14C",
+      "source_hex": "F10020F700FD0B92F500B10B04FD0CB6F28A001CF701FD16B5F282001CFE01FE00FF",
+      "slots": [
+        69
+      ]
+    },
+    {
+      "pointer": "0xD14C",
+      "source_pc": "0x0CD14C",
+      "source_end": "0x0CD160",
+      "source_hex": "FBAB01FD068CFBFF0D8E7E63505E15FEFFFE00FF",
+      "slots": [
+        70,
+        71,
+        72,
+        73,
+        74
+      ],
+      "labels": [
+        {
+          "source": "をみつけた！",
+          "offset": 9,
+          "length": 6,
+          "source_hex": "8E7E63505E15",
+          "text": "พบแล้ว!",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xD160",
+      "source_pc": "0x0CD160",
+      "source_end": "0x0CD17E",
+      "source_hex": "FBAB01FD068CF0F3F4CA8E7E63505E1500F1F1F0F30010F800FEFFFE00FF",
+      "slots": [
+        75
+      ],
+      "labels": [
+        {
+          "source": "金塊をみつけた！",
+          "offset": 6,
+          "length": 10,
+          "source_hex": "F0F3F4CA8E7E63505E15",
+          "text": "พบสมบัติ!",
+          "max_width_px": 240
+        },
+        {
+          "source": "資金",
+          "offset": 17,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD17E",
+      "source_pc": "0x0CD17E",
+      "source_end": "0x0CD1B9",
+      "source_hex": "F10020F700FD148111F20A192012F6F9041BF20A28201CF6FA13F20A1A2014F6F740FC01FBAE11DFF0ECF2FF00F883F6F1F1F0F3F887FEFFFE00FF",
+      "slots": [
+        76
+      ],
+      "labels": [
+        {
+          "source": "資金",
+          "offset": 48,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD1B9",
+      "source_pc": "0x0CD1B9",
+      "source_end": "0x0CD212",
+      "source_hex": "F10020F700FD008111F212192015F20B192012F6F9021BF21228201DF20B28201CF6FA17F2121E2024F20B1E2018F6F9161BF21E28201CF6FA13F21E1A2014F6F740FD0282D5BAB2B7F07DF0DFFD1482F1F1F0F3FEFFFE00FF",
+      "slots": [
+        77
+      ],
+      "labels": [
+        {
+          "source": "ユニット修理",
+          "offset": 69,
+          "length": 8,
+          "source_hex": "D5BAB2B7F07DF0DF",
+          "text": "ซ่อมยูนิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金",
+          "offset": 80,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD212",
+      "source_pc": "0x0CD212",
+      "source_end": "0x0CD23E",
+      "source_hex": "F10020F740FD1882F887FD0185F900FBFFFFF6FC0FFEF07DF0DFF0F4F06EFC0400F885FCE202FAFEFFFE00FF",
+      "slots": [
+        78
+      ],
+      "labels": [
+        {
+          "source": "ま理費用",
+          "offset": 23,
+          "length": 7,
+          "source_hex": "7DF0DFF0F4F06E",
+          "text": "ค่าซ่อม",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD23E",
+      "source_pc": "0x0CD23E",
+      "source_end": "0x0CD24D",
+      "source_hex": "F10020F740FD1882F887FEFFFE00FF",
+      "slots": [
+        79
+      ]
+    },
+    {
+      "pointer": "0xD24D",
+      "source_pc": "0x0CD24D",
+      "source_end": "0x0CD29A",
+      "source_hex": "F10020F700FD0B8511F208192012F6F9021BF20828201CF6FA13F2081A2014F6FD008A11F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD0D86F017F052F130F10CFEFFFE00FF",
+      "slots": [
+        80
+      ]
+    },
+    {
+      "pointer": "0xD29A",
+      "source_pc": "0x0CD29A",
+      "source_end": "0x0CD30F",
+      "source_hex": "F10020F700FD008111F20B192015F205192015F20819201519191912F6F9021BF20B28201DF20528201DF20828201D2828281CF6FA17F20B1E2024F2051E2024F2081E20241E1E1E18F6F9021BF21E28201CF6FAF740FD0D82F057F042F0E8FD0185F0E9F2BE6DF057F0428EF14EF423F080F2EBFF",
+      "slots": [
+        81
+      ]
+    },
+    {
+      "pointer": "0xD30F",
+      "source_pc": "0x0CD30F",
+      "source_end": "0x0CD347",
+      "source_hex": "F10020F740FD0182D5BAB2B7F0DAF0E8F3E6FD1382FBFF0DFD0187F900FBFF07F6FC09FEFBFFFFF6FC0EFEFBFF0DF6FCE900FAFEFFFE00FF",
+      "slots": [
+        82
+      ]
+    },
+    {
+      "pointer": "0xD347",
+      "source_pc": "0x0CD347",
+      "source_end": "0x0CD38C",
+      "source_hex": "F10020F740FD01821D25F0E8F3E600000000FD1382FBFF0DFD0187F900FBFF07F6FC09FEF7005A5BF8854FF800F62828F80BF6F740FC0EFEFBFF0DF6FCE900FAFEFFFE00FF",
+      "slots": [
+        83
+      ]
+    },
+    {
+      "pointer": "0xD38C",
+      "source_pc": "0x0CD38C",
+      "source_end": "0x0CD3BF",
+      "source_hex": "F10020F740FD1C82F8810FF800F700FD0087F90FF2201000F6FAFD0087F9001BF21E28201CF6FA13F21E1A2014F6FEFFFE00FF",
+      "slots": [
+        84
+      ]
+    },
+    {
+      "pointer": "0xD3BF",
+      "source_pc": "0x0CD3BF",
+      "source_end": "0x0CD3D1",
+      "source_hex": "FDFFFFFC0104F71EF900F2BCFFFFFAFE00FF",
+      "slots": [
+        85
+      ]
+    },
+    {
+      "pointer": "0xD3D1",
+      "source_pc": "0x0CD3D1",
+      "source_end": "0x0CD445",
+      "source_hex": "F10020F700FD0C88F500B1098AFD0C8811F207192012F6F9081BF20728201CF6FA13F2071A2014F6FD0096F500B22086FD009611F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD0D89CDBAD491DAF6F10AF10BF10C6A15F6F0F5F059874E15F6F065F055588A6915FEFFFE00FF",
+      "slots": [
+        86
+      ]
+    },
+    {
+      "pointer": "0xD445",
+      "source_pc": "0x0CD445",
+      "source_end": "0x0CD457",
+      "source_hex": "FDFFFFFC0101F707F900F28EFFFFFAFE00FF",
+      "slots": [
+        87
+      ]
+    },
+    {
+      "pointer": "0xD457",
+      "source_pc": "0x0CD457",
+      "source_end": "0x0CD46F",
+      "source_hex": "F10020F700FD0C88F500B1090AFD0096F500B22006FE00FF",
+      "slots": [
+        88
+      ]
+    },
+    {
+      "pointer": "0xD46F",
+      "source_pc": "0x0CD46F",
+      "source_end": "0x0CD48C",
+      "source_hex": "F10020F700FD0197F904F21E2820F6FAF740FD0197FBFF01FEFFFE00FF",
+      "slots": [
+        89
+      ]
+    },
+    {
+      "pointer": "0xD48C",
+      "source_pc": "0x0CD48C",
+      "source_end": "0x0CD4A9",
+      "source_hex": "C6DB93D3114BF065F05500F071F07200F07BF07C8EF123F124567D58FF",
+      "slots": [
+        90
+      ]
+    },
+    {
+      "pointer": "0xD4A9",
+      "source_pc": "0x0CD4A9",
+      "source_end": "0x0CD4DD",
+      "source_hex": "F0936DF054F0556A8762651D254B306A696265567D45F10FF079F1016D418AF6D5BAB2B7F10DF1106EF065F0558EF08C437D58FF",
+      "slots": [
+        91
+      ]
+    },
+    {
+      "pointer": "0xD4DD",
+      "source_pc": "0x0CD4DD",
+      "source_end": "0x0CD50D",
+      "source_hex": "F0936DDBC8DA4BF236F0BD8789F2AD43F0386EF071F0724AF07BF07C56F65C8BF10DF1106EF065F0558EF08C437D58FF",
+      "slots": [
+        92
+      ]
+    },
+    {
+      "pointer": "0xD50D",
+      "source_pc": "0x0CD50D",
+      "source_end": "0x0CD51E",
+      "source_hex": "F08959F071F0724AF07BF07C8E567D58FF",
+      "slots": [
+        93
+      ]
+    },
+    {
+      "pointer": "0xD51E",
+      "source_pc": "0x0CD51E",
+      "source_end": "0x0CD56A",
+      "source_hex": "F10020F700FD0C87F500B0088CFC00F411F206192012F6F90A1BF20628201CF6FA13F2061A2014F6FC01F5F740F07EC911A7F6F0F8C911A7F69CD2DFAADAF6FBFF0DF6FBFF0DF6FEFFFE00FF",
+      "slots": [
+        94
+      ],
+      "labels": [
+        {
+          "source": "次ページ",
+          "offset": 45,
+          "length": 5,
+          "source_hex": "F07EC911A7",
+          "text": "หน้าถัดไป",
+          "max_width_px": 96
+        },
+        {
+          "source": "前ページ",
+          "offset": 51,
+          "length": 5,
+          "source_hex": "F0F8C911A7",
+          "text": "หน้าก่อน",
+          "max_width_px": 96
+        },
+        {
+          "source": "キャンセル",
+          "offset": 57,
+          "length": 5,
+          "source_hex": "9CD2DFAADA",
+          "text": "ยกเลิก",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD56A",
+      "source_pc": "0x0CD56A",
+      "source_end": "0x0CD57A",
+      "source_hex": "F10020F700FD0C87F500B0080CFE00FF",
+      "slots": [
+        95
+      ]
+    },
+    {
+      "pointer": "0xD57A",
+      "source_pc": "0x0CD57A",
+      "source_end": "0x0CD58C",
+      "source_hex": "FDFFFFFC0101F706F900F28CFFFFFAFE00FF",
+      "slots": [
+        96
+      ]
+    },
+    {
+      "pointer": "0xD58C",
+      "source_pc": "0x0CD58C",
+      "source_end": "0x0CD618",
+      "source_hex": "F10020F700FD00811119191915F207192015F207192015F20619201519191912F6F9021B2F2F2F1DF20728201DF2072F201DF20628201D2F2F2F1CF6FA171E1E1E24F2071E20241E1E1E231E1E1E24F2061E20241E1E1E18F6F9061BF20F28201DF20E28201CF6FAF740FD0582A6A8B5CFF265F106FD0185A89E9791F6A495DFB8F6F0F0F017F700FD008BFF",
+      "slots": [
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113
+      ]
+    },
+    {
+      "pointer": "0xD618",
+      "source_pc": "0x0CD618",
+      "source_end": "0x0CD6D7",
+      "source_hex": "FB710117F20F1E2026F20E28201CF6F90F1BF20F28201DF20E28201CF6FA13F20F1A2016F20E1A2014F6F740FD1582CBAEDFF265F106FD018CF167F39AF0F0F017FD018F21102710AADB9EB710A8AE11B766F6D9AAB2B7F6AADB9EB78E4956F2165065438B6FF69E93B29EA2DFB592BAD411FD1185F105F106F69CD2DFAADAF6A8C311B891B2C6F6F0E9F074CDB2C6F6F0E9F074A2CDDFB8F6F0E6F0E7F0E8F6D5BAB2B7F21B89F6D5BAB2B7F1DC56F6F6F6F2C8F184F265F1066AF1DC58FF",
+      "slots": [
+        114
+      ]
+    },
+    {
+      "pointer": "0xD6D7",
+      "source_pc": "0x0CD6D7",
+      "source_end": "0x0CD70F",
+      "source_hex": "F10020F70FFD0185F2DA0000F70EFD1185F2F80000F2F80000F2D20000F740FD0985F903FBFF0DF6FAFD1B85F908FBFF0DF6FAFEFFFE00FF",
+      "slots": [
+        115
+      ]
+    },
+    {
+      "pointer": "0xD70F",
+      "source_pc": "0x0CD70F",
+      "source_end": "0x0CD74A",
+      "source_hex": "FB710117F20F1E2024F20E1E2018F6F90F1BF21E28201CF6FA13F21E1A2014F6F740FD1582CD95A8F067F068FD15856E8343F6746345F6495C43FF",
+      "slots": [
+        116
+      ],
+      "labels": [
+        {
+          "source": "マウス速度",
+          "offset": 37,
+          "length": 7,
+          "source_hex": "CD95A8F067F068",
+          "text": "ความเร็วเมาส์",
+          "max_width_px": 96
+        },
+        {
+          "source": "はやい",
+          "offset": 47,
+          "length": 3,
+          "source_hex": "6E8343",
+          "text": "เร็ว",
+          "max_width_px": 96
+        },
+        {
+          "source": "ふつう",
+          "offset": 51,
+          "length": 3,
+          "source_hex": "746345",
+          "text": "ปกติ",
+          "max_width_px": 96
+        },
+        {
+          "source": "おそい",
+          "offset": 55,
+          "length": 3,
+          "source_hex": "495C43",
+          "text": "ช้า",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD74A",
+      "source_pc": "0x0CD74A",
+      "source_end": "0x0CD77B",
+      "source_hex": "F10020F70FFD0185F2DA0000F70EFD1185F2E00000F740FD0985F903FBFF0DF6FAF701F10020FD1285FBFF01FEFFFE00FF",
+      "slots": [
+        117
+      ]
+    },
+    {
+      "pointer": "0xD77B",
+      "source_pc": "0x0CD77B",
+      "source_end": "0x0CD782",
+      "source_hex": "2A2B2A2B2C2DFF",
+      "slots": [
+        118
+      ]
+    },
+    {
+      "pointer": "0xD782",
+      "source_pc": "0x0CD782",
+      "source_end": "0x0CD789",
+      "source_hex": "2A2B2C2D2A2BFF",
+      "slots": [
+        119
+      ]
+    },
+    {
+      "pointer": "0xD789",
+      "source_pc": "0x0CD789",
+      "source_end": "0x0CD790",
+      "source_hex": "2C2D2A2B2A2BFF",
+      "slots": [
+        120
+      ]
+    },
+    {
+      "pointer": "0xD790",
+      "source_pc": "0x0CD790",
+      "source_end": "0x0CD7BB",
+      "source_hex": "FDFFFFF900FAFC0104F70FF903F29EFFFFF6FAFC10FAF70EF908F29CFFFFF6FAFC0004F29CFFFFF6FE00FF",
+      "slots": [
+        121
+      ]
+    },
+    {
+      "pointer": "0xD7BB",
+      "source_pc": "0x0CD7BB",
+      "source_end": "0x0CD7DE",
+      "source_hex": "FDFFFFF900FAFC0104F70FF903F29EFFFFF6FAFC10FAF70EF903F29CFFFFF6FAFE00FF",
+      "slots": [
+        122
+      ]
+    },
+    {
+      "pointer": "0xD7DE",
+      "source_pc": "0x0CD7DE",
+      "source_end": "0x0CD800",
+      "source_hex": "FB7D010000CD95A88E5456528F6600696A4ACBAEDF8E4956654E5F5443FEFFFE00FF",
+      "slots": [
+        123
+      ],
+      "labels": [
+        {
+          "source": "マウスをさしこんで　なにかボタンをおしてください",
+          "offset": 5,
+          "length": 24,
+          "source_hex": "CD95A88E5456528F6600696A4ACBAEDF8E4956654E5F5443",
+          "text": "เสียบเมาส์แล้วกดปุ่มใดก็ได้",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xD800",
+      "source_pc": "0x0CD800",
+      "source_end": "0x0CD824",
+      "source_hex": "FB7D01A2DFB7DC11D8118E5456528F6600696A4ACBAEDF8E4956654E5F5443FEFFFE00FF",
+      "slots": [
+        124
+      ],
+      "labels": [
+        {
+          "source": "コントローラーをさしこんで　なにかボタンをおしてください",
+          "offset": 3,
+          "length": 28,
+          "source_hex": "A2DFB7DC11D8118E5456528F6600696A4ACBAEDF8E4956654E5F5443",
+          "text": "เสียบคอนโทรลเลอร์แล้วกดปุ่มใดก็ได้",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xD824",
+      "source_pc": "0x0CD824",
+      "source_end": "0x0CD852",
+      "source_hex": "F10020F700FD018BF500B11E84FD018B11F21C192012F6F9021BF21C28201CF6FA13F21C1A2014F6F740FC01FDFF",
+      "slots": [
+        125
+      ]
+    },
+    {
+      "pointer": "0xD852",
+      "source_pc": "0x0CD852",
+      "source_end": "0x0CD862",
+      "source_hex": "F10020F700FD018BF500B11E04FE00FF",
+      "slots": [
+        126
+      ]
+    },
+    {
+      "pointer": "0xD862",
+      "source_pc": "0x0CD862",
+      "source_end": "0x0CD8A1",
+      "source_hex": "F10020F700FD058911F215192012F6F9021BF21528201CF6FA13F2151A2014F6F740FD068AAA11C5B611AE4B3AF0C84765567D6265437D581515FEFFFE00FF",
+      "slots": [
+        127
+      ],
+      "labels": [
+        {
+          "source": "セーブデータが、消えてしまっています！！",
+          "offset": 37,
+          "length": 21,
+          "source_hex": "AA11C5B611AE4B3AF0C84765567D6265437D581515",
+          "text": "ข้อมูลบันทึกหายไปแล้ว!!",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xD8A1",
+      "source_pc": "0x0CD8A1",
+      "source_end": "0x0CD8D2",
+      "source_hex": "F10020F700FD0C8B11F206192012F6F9021BF20628201CF6FA13F2061A2014F6F740FD0D8CA111CFF0E4F0E5FEFFFE00FF",
+      "slots": [
+        128
+      ],
+      "labels": [
+        {
+          "source": "ゲーム終了",
+          "offset": 37,
+          "length": 7,
+          "source_hex": "A111CFF0E4F0E5",
+          "text": "จบเกม",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD8D2",
+      "source_pc": "0x0CD8D2",
+      "source_end": "0x0CD905",
+      "source_hex": "F10020F700FD0B8B11F209192012F6F9021BF20928201CF6FA13F2091A2014F6F740FD0C8C1C16221A00242B1A27FEFFFE00FF",
+      "slots": [
+        129
+      ]
+    },
+    {
+      "pointer": "0xD905",
+      "source_pc": "0x0CD905",
+      "source_end": "0x0CD941",
+      "source_hex": "F10020F700FD0292F500B00786FD029211F205192012F6F9041BF20528201CF6FA13F2051A2014F6F740FC01FBD5BAB2B7F6C093DCB2B7FEFFFE00FF",
+      "slots": [
+        130,
+        131,
+        132,
+        133,
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144
+      ],
+      "labels": [
+        {
+          "source": "パイロット",
+          "offset": 50,
+          "length": 5,
+          "source_hex": "C093DCB2B7",
+          "text": "นักบิน",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD941",
+      "source_pc": "0x0CD941",
+      "source_end": "0x0CD953",
+      "source_hex": "FDFFFFFC0101F705F900F28AFFFFFAFE00FF",
+      "slots": [
+        145
+      ]
+    },
+    {
+      "pointer": "0xD953",
+      "source_pc": "0x0CD953",
+      "source_end": "0x0CD963",
+      "source_hex": "F10020F700FDFFFFF500B00706FE00FF",
+      "slots": [
+        146
+      ]
+    },
+    {
+      "pointer": "0xD963",
+      "source_pc": "0x0CD963",
+      "source_end": "0x0CD977",
+      "source_hex": "FB9501FD0982D5BAB2B7A8B511AEA8FEFFFE00FF",
+      "slots": [
+        147
+      ],
+      "labels": [
+        {
+          "source": "ユニットステータス",
+          "offset": 6,
+          "length": 9,
+          "source_hex": "D5BAB2B7A8B511AEA8",
+          "text": "สถานะยูนิต",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD977",
+      "source_pc": "0x0CD977",
+      "source_end": "0x0CD98C",
+      "source_hex": "FB9501FD0882C093DCB2B7A8B511AEA8FEFFFE00FF",
+      "slots": [
+        148
+      ],
+      "labels": [
+        {
+          "source": "パイロットステータス",
+          "offset": 6,
+          "length": 10,
+          "source_hex": "C093DCB2B7A8B511AEA8",
+          "text": "สถานะนักบิน",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xD98C",
+      "source_pc": "0x0CD98C",
+      "source_end": "0x0CD9CC",
+      "source_hex": "F10020F700FD008111F21A19201519191912F6F9021BF21A28201D2828281CF6FA17F21A1E20241E1E1E18F6F9161BF21E28201CF6FA13F21E1A2014F6F740FF",
+      "slots": [
+        149
+      ]
+    },
+    {
+      "pointer": "0xD9CC",
+      "source_pc": "0x0CD9CC",
+      "source_end": "0x0CD9FA",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0185F900FBFFFFF6FC0DFEFBFF07F6FC09FE1D2500F885FCE202FAFEFFFE00FF",
+      "slots": [
+        150
+      ]
+    },
+    {
+      "pointer": "0xD9FA",
+      "source_pc": "0x0CD9FA",
+      "source_end": "0x0CDA28",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0185F900FBFF07F6FC09FEFBFFFFF6FC0FFEDBC8DAF883FCE202FAFEFFFE00FF",
+      "slots": [
+        151
+      ],
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 32,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDA28",
+      "source_pc": "0x0CDA28",
+      "source_end": "0x0CDA3A",
+      "source_hex": "FDFFFFFC0104F71EF900F2BCFFFFFAFE00FF",
+      "slots": [
+        152
+      ]
+    },
+    {
+      "pointer": "0xDA3A",
+      "source_pc": "0x0CDA3A",
+      "source_end": "0x0CDA4D",
+      "source_hex": "F10020F700FD0185F916F21E2820F6FAFE00FF",
+      "slots": [
+        153
+      ]
+    },
+    {
+      "pointer": "0xDA4D",
+      "source_pc": "0x0CDA4D",
+      "source_end": "0x0CDA75",
+      "source_hex": "FBA001FD0982D5BAB2B758658AFD0199686DD5BAB2B78E6E434C5686758F567D584A14FEFFFE00FF",
+      "slots": [
+        154
+      ],
+      "labels": [
+        {
+          "source": "ユニットすてる",
+          "offset": 6,
+          "length": 7,
+          "source_hex": "D5BAB2B758658A",
+          "text": "ทิ้งยูนิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "どのユニットをはいきしょぶんしますか？",
+          "offset": 16,
+          "length": 19,
+          "source_hex": "686DD5BAB2B78E6E434C5686758F567D584A14",
+          "text": "จะทิ้งยูนิตไหน?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDA75",
+      "source_pc": "0x0CDA75",
+      "source_end": "0x0CDB21",
+      "source_hex": "F10020F700FD0486F580B2188DFD048611F216192012F6F9081BF21628201CF6FA17F2161E2018F6F9021BF21628201CF6FA13F2161A2014F6FD0199F500B01E82FD0199F902F21E2820F6FAF740FD0587FBFFFFF61D2500F885F6F050F051F02CF2FFF882F6C093DCB2B700FBFF06FD1189F063F064F065F06600F883F6F062F001000000F88330FD0590F071F20CF1F1F0F30000F885FD0199526DD5BAB2B766434366584A14FEFFFE00FF",
+      "slots": [
+        155
+      ],
+      "labels": [
+        {
+          "source": "移動力",
+          "offset": 91,
+          "length": 6,
+          "source_hex": "F050F051F02C",
+          "text": "เคลื่อนที่",
+          "max_width_px": 96
+        },
+        {
+          "source": "パイロット",
+          "offset": 102,
+          "length": 5,
+          "source_hex": "C093DCB2B7",
+          "text": "นักบิน",
+          "max_width_px": 96
+        },
+        {
+          "source": "限界反応",
+          "offset": 114,
+          "length": 8,
+          "source_hex": "F063F064F065F066",
+          "text": "ลิมิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "装甲",
+          "offset": 126,
+          "length": 4,
+          "source_hex": "F062F001",
+          "text": "ARMOR",
+          "max_width_px": 96
+        },
+        {
+          "source": "回収資金",
+          "offset": 139,
+          "length": 8,
+          "source_hex": "F071F20CF1F1F0F3",
+          "text": "เงินที่เก็บได้",
+          "max_width_px": 96
+        },
+        {
+          "source": "このユニットでいいですか？",
+          "offset": 154,
+          "length": 13,
+          "source_hex": "526DD5BAB2B766434366584A14",
+          "text": "ใช้ยูนิตนี้ใช่ไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDB21",
+      "source_pc": "0x0CDB21",
+      "source_end": "0x0CDB39",
+      "source_hex": "F10020F700FD0486F580B2180DFD0199F500B01E02FE00FF",
+      "slots": [
+        156
+      ]
+    },
+    {
+      "pointer": "0xDB39",
+      "source_pc": "0x0CDB39",
+      "source_end": "0x0CDB7B",
+      "source_hex": "F10020F700FD068DF500B11584FD068D11F213192012F6F9021BF21328201CF6FA13F2131A2014F6F740FD088EF8006DF1F1F0F38EF071F20C567D565EFEFFFE00FF",
+      "slots": [
+        157
+      ],
+      "labels": [
+        {
+          "source": "の資金を回収しました",
+          "offset": 47,
+          "length": 14,
+          "source_hex": "6DF1F1F0F38EF071F20C567D565E",
+          "text": "เก็บเงินทุนแล้ว",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDB7B",
+      "source_pc": "0x0CDB7B",
+      "source_end": "0x0CDB8B",
+      "source_hex": "F10020F700FD068DF500B11504FE00FF",
+      "slots": [
+        158
+      ]
+    },
+    {
+      "pointer": "0xDB8B",
+      "source_pc": "0x0CDB8B",
+      "source_end": "0x0CDB9E",
+      "source_hex": "F10020F700FD0185F913F21E2820F6FAFE00FF",
+      "slots": [
+        159
+      ]
+    },
+    {
+      "pointer": "0xDB9E",
+      "source_pc": "0x0CDB9E",
+      "source_end": "0x0CDBEF",
+      "source_hex": "F10020F700FD008111F21A19201519191912F6F9021BF21A28201D2828281CF6FA17F21A1E20241E1E1E18F6F9131BF21E28201CF6FA17F21E1E2018F6F9021BF21E28201CF6FA13F21E1A2014F6F740FF",
+      "slots": [
+        160
+      ]
+    },
+    {
+      "pointer": "0xDBEF",
+      "source_pc": "0x0CDBEF",
+      "source_end": "0x0CDC34",
+      "source_hex": "F10020F700FD0294F500B00786FD029411F205192012F6F9041BF20528201CF6FA13F2051A2014F6FD03BAF2870018F740FD0395C093DCB2B7F6F24FF078FEFFFE01FE00FF",
+      "slots": [
+        161
+      ],
+      "labels": [
+        {
+          "source": "パイロット",
+          "offset": 52,
+          "length": 5,
+          "source_hex": "C093DCB2B7",
+          "text": "นักบิน",
+          "max_width_px": 96
+        },
+        {
+          "source": "妖精",
+          "offset": 58,
+          "length": 4,
+          "source_hex": "F24FF078",
+          "text": "ภูต",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDC34",
+      "source_pc": "0x0CDC34",
+      "source_end": "0x0CDC43",
+      "source_hex": "F10020F700FD03BAF287001CFE01FF",
+      "slots": [
+        162
+      ]
+    },
+    {
+      "pointer": "0xDC43",
+      "source_pc": "0x0CDC43",
+      "source_end": "0x0CDC52",
+      "source_hex": "FB9501FD0B826D894A47FEFFFE00FF",
+      "slots": [
+        163
+      ],
+      "labels": [
+        {
+          "source": "のりかえ",
+          "offset": 6,
+          "length": 4,
+          "source_hex": "6D894A47",
+          "text": "เปลี่ยนคนขับ",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDC52",
+      "source_pc": "0x0CDC52",
+      "source_end": "0x0CDC70",
+      "source_hex": "FBAD01FD0185C093DCB2B70000FBFF06F6FC18FEDBC8DAF883FEFFFE00FF",
+      "slots": [
+        164
+      ],
+      "labels": [
+        {
+          "source": "パイロット",
+          "offset": 6,
+          "length": 5,
+          "source_hex": "C093DCB2B7",
+          "text": "นักบิน",
+          "max_width_px": 96
+        },
+        {
+          "source": "レベル",
+          "offset": 20,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDC70",
+      "source_pc": "0x0CDC70",
+      "source_end": "0x0CDC9E",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0188F900FBFFFFF6FC0DFEFBFF07F6FC09FE1D2500F885FCE202FAFEFFFE00FF",
+      "slots": [
+        165
+      ]
+    },
+    {
+      "pointer": "0xDC9E",
+      "source_pc": "0x0CDC9E",
+      "source_end": "0x0CDCB6",
+      "source_hex": "F10020F700FD0187F21E1E20F6F913F21E2820F6FAFE00FF",
+      "slots": [
+        166
+      ]
+    },
+    {
+      "pointer": "0xDCB6",
+      "source_pc": "0x0CDCB6",
+      "source_end": "0x0CDE96",
+      "source_hex": "F004282CF10020F700FD008111F209192015F209192015F20A192012F6F9021BF2092F201DF20928201DF20A2F201CF6FA17F2091E2024F2041E2023F2041E2024F20A1E2018F6F9021BF20E10201DF20F28201CF6FA1BF20E1020251E1E1E1E23F20A1E2018F61BF20E10201DF304F0281DF20A28201CF61BF20E10201DF304F4281DF20A28201CF61BF20E10201DF304F8281DF20A28201CF61BF20E10201DF304FC281DF20A28201CF61BF20E1020251E1E1E1E24F20A1E2018F6F9021BF20E10201DF20F28201CF6FA17F20E1E2024F20A1E20231E1E1E1E18F6F9081BF21928201D282828281CF6FA17F2191E2026282828281CF6F9021BF21928201D282828281CF6FA13F2191A20161A1A1A1A14F6F740FD0B82F2A77EF0F78D5AF079F02CFD1085FBFFFFFD1588DBC8DA00000000F883F61D25000000F885FD108DFBFF06FD0190F1EEF0638E45508AF079F02C00003C3DF1896EF17EF1596DF079F02CF6F063F0640000F883F6F700F4FFF740F057F0580000F88310F800F6F700F4FFF740F071F0720000F88310F800F6F700F404F740FD0D943CF8833DF63CF8833DFD1B90F06FF081FD1B93F0B6F6F0F1F6F04FF6F40DFD1E93FBFF0DF6FBFF0DF6FBFF0DF6FBFF0DFD0199526DF2A77EF0F78D5A66434366584A14FEFFFE00FF",
+      "slots": [
+        167
+      ],
+      "labels": [
+        {
+          "source": "組み合わせ能力",
+          "offset": 279,
+          "length": 11,
+          "source_hex": "F2A77EF0F78D5AF079F02C",
+          "text": "ความเข้ากัน",
+          "max_width_px": 96
+        },
+        {
+          "source": "レベル",
+          "offset": 299,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 96
+        },
+        {
+          "source": "制限をうける能力　　（）内は本来の能力",
+          "offset": 325,
+          "length": 28,
+          "source_hex": "F1EEF0638E45508AF079F02C00003C3DF1896EF17EF1596DF079F02C",
+          "text": "ค่าที่ถูกจำกัด (วงเล็บคือค่าเดิม)",
+          "max_width_px": 240
+        },
+        {
+          "source": "限界",
+          "offset": 354,
+          "length": 4,
+          "source_hex": "F063F064",
+          "text": "LIMIT",
+          "max_width_px": 96
+        },
+        {
+          "source": "命中",
+          "offset": 369,
+          "length": 4,
+          "source_hex": "F057F058",
+          "text": "แม่นยำ",
+          "max_width_px": 96
+        },
+        {
+          "source": "回避",
+          "offset": 387,
+          "length": 4,
+          "source_hex": "F071F072",
+          "text": "หลบ",
+          "max_width_px": 96
+        },
+        {
+          "source": "地形",
+          "offset": 420,
+          "length": 4,
+          "source_hex": "F06FF081",
+          "text": "ภูมิประเทศ",
+          "max_width_px": 96
+        },
+        {
+          "source": "この組み合わせでいいですか？",
+          "offset": 459,
+          "length": 16,
+          "source_hex": "526DF2A77EF0F78D5A66434366584A14",
+          "text": "ใช้คู่นี้ใช่ไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDE96",
+      "source_pc": "0x0CDE96",
+      "source_end": "0x0CDEAE",
+      "source_hex": "FBAB01FD098CF2338E6D894A47545A7D584A14FEFFFE00FF",
+      "slots": [
+        168
+      ],
+      "labels": [
+        {
+          "source": "誰をのりかえさせますか？",
+          "offset": 6,
+          "length": 13,
+          "source_hex": "F2338E6D894A47545A7D584A14",
+          "text": "จะให้ใครเปลี่ยนคนขับ?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDEAE",
+      "source_pc": "0x0CDEAE",
+      "source_end": "0x0CDECA",
+      "source_hex": "FBAB01FD078C686DD5BAB2B76A6D894A47545A7D584A14FEFFFE00FF",
+      "slots": [
+        169
+      ],
+      "labels": [
+        {
+          "source": "どのユニットにのりかえさせますか？",
+          "offset": 6,
+          "length": 17,
+          "source_hex": "686DD5BAB2B76A6D894A47545A7D584A14",
+          "text": "เปลี่ยนไปยูนิตไหน?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDECA",
+      "source_pc": "0x0CDECA",
+      "source_end": "0x0CDEE8",
+      "source_hex": "FBAB01FD078C6D894A47F10FF07969D5BAB2B74B41897D5A8FFEFFFE00FF",
+      "slots": [
+        170
+      ],
+      "labels": [
+        {
+          "source": "のりかえ可能なユニットがありません",
+          "offset": 6,
+          "length": 19,
+          "source_hex": "6D894A47F10FF07969D5BAB2B74B41897D5A8F",
+          "text": "ไม่มียูนิตที่เปลี่ยนคนขับได้",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xDEE8",
+      "source_pc": "0x0CDEE8",
+      "source_end": "0x0CDF13",
+      "source_hex": "F10020F700FD028BF500B01C84FD028B11F21A192012F6F9021BF21A28201CF6FA13F21A1A2014F6F740FF",
+      "slots": [
+        171
+      ]
+    },
+    {
+      "pointer": "0xDF13",
+      "source_pc": "0x0CDF13",
+      "source_end": "0x0CDF23",
+      "source_hex": "F10020F700FD028BF500B01C04FE00FF",
+      "slots": [
+        172
+      ]
+    },
+    {
+      "pointer": "0xDF23",
+      "source_pc": "0x0CDF23",
+      "source_end": "0x0CDF7B",
+      "source_hex": "F10020F700FD008111F21A19201519191912F6F9021BF21A28201D2828281CF6FA17F21A1E20241E1E1E18F6F9021BF21E28201CF6FA17F21E1E2018F6F9131BF21E28201CF6FA13F21E1A2014F6F740FD0B826D894A47FF",
+      "slots": [
+        173
+      ],
+      "labels": [
+        {
+          "source": "のりかえ",
+          "offset": 83,
+          "length": 4,
+          "source_hex": "6D894A47",
+          "text": "เปลี่ยนคนขับ",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDF7B",
+      "source_pc": "0x0CDF7B",
+      "source_end": "0x0CDFD5",
+      "source_hex": "F10020F700FD008111F21E192012F6F9021BF21E28201CF6FA17F21E1E2018F6F9161BF21E28201CF6FA13F21E1A2014F6F740FD0E826D894A47FD0185F900FBFF06F6FC09FEFBFFFFF6FC0DFEFBFF07F6FCEA00FAFEFFFE00FF",
+      "slots": [
+        174
+      ],
+      "labels": [
+        {
+          "source": "のりかえ",
+          "offset": 54,
+          "length": 4,
+          "source_hex": "6D894A47",
+          "text": "เปลี่ยนคนขับ",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDFD5",
+      "source_pc": "0x0CDFD5",
+      "source_end": "0x0CDFF2",
+      "source_hex": "FBAD01FD0185F24FF0780000FBFF06F6FC18FEDBC8DAF883FEFFFE00FF",
+      "slots": [
+        175
+      ],
+      "labels": [
+        {
+          "source": "妖精",
+          "offset": 6,
+          "length": 4,
+          "source_hex": "F24FF078",
+          "text": "ภูต",
+          "max_width_px": 96
+        },
+        {
+          "source": "レベル",
+          "offset": 19,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xDFF2",
+      "source_pc": "0x0CDFF2",
+      "source_end": "0x0CE041",
+      "source_hex": "F10020F700FD008BF580B22086FD008B11F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD018CFBFF068E3AFBFF076DFBFFFF6AF66D5A4A477D58E4878C564366584A14FEFFFE00FF",
+      "slots": [
+        176
+      ],
+      "labels": [
+        {
+          "source": "のせかえます。よろしいですか？",
+          "offset": 59,
+          "length": 15,
+          "source_hex": "6D5A4A477D58E4878C564366584A14",
+          "text": "จะย้ายคนขับ ยืนยันไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE041",
+      "source_pc": "0x0CE041",
+      "source_end": "0x0CE053",
+      "source_hex": "F10020F700FD008BF580B22006FEFFFE00FF",
+      "slots": [
+        177
+      ]
+    },
+    {
+      "pointer": "0xE053",
+      "source_pc": "0x0CE053",
+      "source_end": "0x0CE081",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0188F900FBFF07F6FC09FEFBFFFFF6FC0FFEDBC8DAF883FCE202FAFEFFFE00FF",
+      "slots": [
+        178
+      ],
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 32,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE081",
+      "source_pc": "0x0CE081",
+      "source_end": "0x0CE094",
+      "source_hex": "FBC701FD0A82D5BAB2B7F04AF2AAFEFFFE00FF",
+      "slots": [
+        179
+      ],
+      "labels": [
+        {
+          "source": "ユニット改造",
+          "offset": 6,
+          "length": 8,
+          "source_hex": "D5BAB2B7F04AF2AA",
+          "text": "อัปเกรดยูนิต",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE094",
+      "source_pc": "0x0CE094",
+      "source_end": "0x0CE0C2",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0185F900FBFFFFF6FC0FFE1A2300F883001D2500F885F6FCF100FAFEFFFE00FF",
+      "slots": [
+        180
+      ]
+    },
+    {
+      "pointer": "0xE0C2",
+      "source_pc": "0x0CE0C2",
+      "source_end": "0x0CE101",
+      "source_hex": "F10020F700FD0185F910F21E2820F6FAFD059628282828F628282828FD1196282828F6282828FD1C96282828F6282828FD0799F2082820F6F2082820FE00FF",
+      "slots": [
+        181
+      ]
+    },
+    {
+      "pointer": "0xE101",
+      "source_pc": "0x0CE101",
+      "source_end": "0x0CE12F",
+      "source_hex": "F10020F700FD0799F2082820F6F2082820F740FD0596F88330FD1196F883FD1C96F883FD0799FBFF07FEFFFE00FF",
+      "slots": [
+        182
+      ]
+    },
+    {
+      "pointer": "0xE12F",
+      "source_pc": "0x0CE12F",
+      "source_end": "0x0CE249",
+      "source_hex": "F004282CF10020F700FD0C8111F207192012F6F9021BF20728201CF6FA13F2071A2014F6FD008511F20E192015F20F192012F6F9021BF20E10201DF20F28201CF6FA1BF20E102025F20F1E2018F6F9071BF20E10201DF20F28201CF6FA17F20E1E20241E1E23F20C1E2018F6F9021BF21128201DF20C28201CF6FA1BF211282025F20C1E2018F6F9021BF21128201DF20C28201CF6FA1BF211282025F20C1E2018F6F9041BF21128201DF20C2F201CF6FA13F2111A2016F20C1A2014F6F740FD0D82D5BAB2B7F04AF2AAFD1086FBFFFFFD1089686DF079F02C8EF04AF2AA567D584A14F63CF05EF0166637F2A3F2EE7D663DFD01911D25F61A23F6F062F001F6F1A6F051F101F6F063F064FD1391F1F1F0F3FD1394F0F4F06EFF",
+      "slots": [
+        183
+      ],
+      "labels": [
+        {
+          "source": "ユニット改造",
+          "offset": 194,
+          "length": 8,
+          "source_hex": "D5BAB2B7F04AF2AA",
+          "text": "อัปเกรดยูนิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "どの能力を改造しますか？",
+          "offset": 211,
+          "length": 16,
+          "source_hex": "686DF079F02C8EF04AF2AA567D584A14",
+          "text": "จะอัปเกรดค่าไหน?",
+          "max_width_px": 240
+        },
+        {
+          "source": "（最大で７段階まで）",
+          "offset": 228,
+          "length": 14,
+          "source_hex": "3CF05EF0166637F2A3F2EE7D663D",
+          "text": "(สูงสุด 7 ขั้น)",
+          "max_width_px": 240
+        },
+        {
+          "source": "装甲",
+          "offset": 251,
+          "length": 4,
+          "source_hex": "F062F001",
+          "text": "ARMOR",
+          "max_width_px": 96
+        },
+        {
+          "source": "運動性",
+          "offset": 256,
+          "length": 6,
+          "source_hex": "F1A6F051F101",
+          "text": "MOB",
+          "max_width_px": 96
+        },
+        {
+          "source": "限界",
+          "offset": 263,
+          "length": 4,
+          "source_hex": "F063F064",
+          "text": "LIMIT",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金",
+          "offset": 270,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        },
+        {
+          "source": "費用",
+          "offset": 277,
+          "length": 4,
+          "source_hex": "F0F4F06E",
+          "text": "USE",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE249",
+      "source_pc": "0x0CE249",
+      "source_end": "0x0CE29F",
+      "source_hex": "F10020F711FD0191F2C40000F2E60000F700FD0B91F807F6F807F6F807F6F807F6F807F6F807F6F807F6F807F6F807F6F807F740FD0591F885FD0793F883FD0695F88330FD0797F883F6F883FD1891F887FEFFFE00FF",
+      "slots": [
+        184
+      ]
+    },
+    {
+      "pointer": "0xE29F",
+      "source_pc": "0x0CE29F",
+      "source_end": "0x0CE2AE",
+      "source_hex": "F10020F740FD1A94F885FEFFFE00FF",
+      "slots": [
+        185
+      ]
+    },
+    {
+      "pointer": "0xE2AE",
+      "source_pc": "0x0CE2AE",
+      "source_end": "0x0CE2C0",
+      "source_hex": "FDFFFFFC0101F711F900F2A2FFFFFAFE00FF",
+      "slots": [
+        186
+      ]
+    },
+    {
+      "pointer": "0xE2C0",
+      "source_pc": "0x0CE2C0",
+      "source_end": "0x0CE2DC",
+      "source_hex": "FBAB01FD088C528BF10DF0706DF04AF2AA6E664C7D5A8FFEFFFE00FF",
+      "slots": [
+        187
+      ],
+      "labels": [
+        {
+          "source": "これ以上の改造はできません",
+          "offset": 6,
+          "length": 17,
+          "source_hex": "528BF10DF0706DF04AF2AA6E664C7D5A8F",
+          "text": "อัปเกรดต่อไม่ได้แล้ว",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE2DC",
+      "source_pc": "0x0CE2DC",
+      "source_end": "0x0CE2F1",
+      "source_hex": "FBAB01FD0A8CF1F1F0F34B5E897D5A8FFEFFFE00FF",
+      "slots": [
+        188
+      ],
+      "labels": [
+        {
+          "source": "資金がたりません",
+          "offset": 6,
+          "length": 10,
+          "source_hex": "F1F1F0F34B5E897D5A8F",
+          "text": "เงินทุนไม่พอ",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE2F1",
+      "source_pc": "0x0CE2F1",
+      "source_end": "0x0CE32F",
+      "source_hex": "F10020F700FD028BF500B01C86FD028B11F21A192012F6F9041BF21A28201CF6FA13F21A1A2014F6F740FD038CFBFFFFF6878C564366584A14FEFFFE00FF",
+      "slots": [
+        189
+      ],
+      "labels": [
+        {
+          "source": "よろしいですか？",
+          "offset": 49,
+          "length": 8,
+          "source_hex": "878C564366584A14",
+          "text": "ยืนยันไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE32F",
+      "source_pc": "0x0CE32F",
+      "source_end": "0x0CE33E",
+      "source_hex": "1D2500F8004B3AF8006A69897D58FF",
+      "slots": [
+        190
+      ],
+      "labels": [
+        {
+          "source": "が、",
+          "offset": 5,
+          "length": 2,
+          "source_hex": "4B3A",
+          "text": " เป็น ",
+          "max_width_px": 96
+        },
+        {
+          "source": "になります",
+          "offset": 9,
+          "length": 5,
+          "source_hex": "6A69897D58",
+          "text": "",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE33E",
+      "source_pc": "0x0CE33E",
+      "source_end": "0x0CE34D",
+      "source_hex": "1A2300F8004B3AF8006A69897D58FF",
+      "slots": [
+        191
+      ],
+      "labels": [
+        {
+          "source": "が、",
+          "offset": 5,
+          "length": 2,
+          "source_hex": "4B3A",
+          "text": " เป็น ",
+          "max_width_px": 96
+        },
+        {
+          "source": "になります",
+          "offset": 9,
+          "length": 5,
+          "source_hex": "6A69897D58",
+          "text": "",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE34D",
+      "source_pc": "0x0CE34D",
+      "source_end": "0x0CE360",
+      "source_hex": "F062F00100F800304B3AF800306A69897D58FF",
+      "slots": [
+        192
+      ],
+      "labels": [
+        {
+          "source": "装甲",
+          "offset": 0,
+          "length": 4,
+          "source_hex": "F062F001",
+          "text": "ARMOR",
+          "max_width_px": 96
+        },
+        {
+          "source": "が、",
+          "offset": 8,
+          "length": 2,
+          "source_hex": "4B3A",
+          "text": " เป็น ",
+          "max_width_px": 96
+        },
+        {
+          "source": "になります",
+          "offset": 13,
+          "length": 5,
+          "source_hex": "6A69897D58",
+          "text": "",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE360",
+      "source_pc": "0x0CE360",
+      "source_end": "0x0CE373",
+      "source_hex": "F1A6F051F10100F8004B3AF8006A69897D58FF",
+      "slots": [
+        193
+      ],
+      "labels": [
+        {
+          "source": "運動性",
+          "offset": 0,
+          "length": 6,
+          "source_hex": "F1A6F051F101",
+          "text": "MOB",
+          "max_width_px": 96
+        },
+        {
+          "source": "が、",
+          "offset": 9,
+          "length": 2,
+          "source_hex": "4B3A",
+          "text": " เป็น ",
+          "max_width_px": 96
+        },
+        {
+          "source": "になります",
+          "offset": 13,
+          "length": 5,
+          "source_hex": "6A69897D58",
+          "text": "",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE373",
+      "source_pc": "0x0CE373",
+      "source_end": "0x0CE388",
+      "source_hex": "F063F064F065F06600F8004B3AF8006A69897D58FF",
+      "slots": [
+        194
+      ],
+      "labels": [
+        {
+          "source": "限界反応",
+          "offset": 0,
+          "length": 8,
+          "source_hex": "F063F064F065F066",
+          "text": "ลิมิต",
+          "max_width_px": 96
+        },
+        {
+          "source": "が、",
+          "offset": 11,
+          "length": 2,
+          "source_hex": "4B3A",
+          "text": " เป็น ",
+          "max_width_px": 96
+        },
+        {
+          "source": "になります",
+          "offset": 15,
+          "length": 5,
+          "source_hex": "6A69897D58",
+          "text": "",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE388",
+      "source_pc": "0x0CE388",
+      "source_end": "0x0CE398",
+      "source_hex": "F10020F700FD028BF500B01C06FE00FF",
+      "slots": [
+        195
+      ]
+    },
+    {
+      "pointer": "0xE398",
+      "source_pc": "0x0CE398",
+      "source_end": "0x0CE45A",
+      "source_hex": "F10020F700FD0088F580B21884FD008811F216192012F6F9021BF21628201CF6FA13F2161A2014F6FD008CF540B31384FD008C11F211192012F6F9021BF21128201CF6FA13F2111A2014F6FD138CF5D8B30D87FD138C11F20B192012F6F9021BF20B28201CF6FA17F20B1E2018F6F9021BF20B28201CF6FA13F20B1A2014F6FD1089F807F6F807FD0C8D2EF65FF740FD0189FBFFFFFD018DF054F055F02CF2FFF885FD0D8DF800FD148DF1F1F0F300F887FD1490F0F4F06E000000F885FEFFFE00FF",
+      "slots": [
+        196
+      ],
+      "labels": [
+        {
+          "source": "攻撃力",
+          "offset": 152,
+          "length": 6,
+          "source_hex": "F054F055F02C",
+          "text": "พลังโจมตี",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金",
+          "offset": 170,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        },
+        {
+          "source": "費用",
+          "offset": 180,
+          "length": 4,
+          "source_hex": "F0F4F06E",
+          "text": "USE",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE45A",
+      "source_pc": "0x0CE45A",
+      "source_end": "0x0CE47C",
+      "source_hex": "F10020F700FD0088F580B21804FD008CF540B31304FD138CF5D8B30D07FEFFFE00FF",
+      "slots": [
+        197
+      ]
+    },
+    {
+      "pointer": "0xE47C",
+      "source_pc": "0x0CE47C",
+      "source_end": "0x0CE48F",
+      "source_hex": "FBC701FD0B82F00AF056F04AF2AAFEFFFE00FF",
+      "slots": [
+        198
+      ],
+      "labels": [
+        {
+          "source": "武器改造",
+          "offset": 6,
+          "length": 8,
+          "source_hex": "F00AF056F04AF2AA",
+          "text": "อัปเกรดอาวุธ",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE48F",
+      "source_pc": "0x0CE48F",
+      "source_end": "0x0CE51A",
+      "source_hex": "F10020F700FD008111F21A19201519191912F6F9021BF21A28201D2828281CF6FA17F21A1E20241E1E1E18F6F9101BF21E28201CF6FA17F21E1E2018F6F9021BF21E28201CF6FA17F21E1E2018F6F9021BF21E28201CF6FA13F21E1A2014F6F740FD0196F062F001FD0C96F1A6F051F101FD1796F063F064FD0199C093DCB2B7FD1499F1F1F0F300F887FF",
+      "slots": [
+        199
+      ],
+      "labels": [
+        {
+          "source": "装甲",
+          "offset": 100,
+          "length": 4,
+          "source_hex": "F062F001",
+          "text": "ARMOR",
+          "max_width_px": 96
+        },
+        {
+          "source": "運動性",
+          "offset": 107,
+          "length": 6,
+          "source_hex": "F1A6F051F101",
+          "text": "MOB",
+          "max_width_px": 96
+        },
+        {
+          "source": "限界",
+          "offset": 116,
+          "length": 4,
+          "source_hex": "F063F064",
+          "text": "LIMIT",
+          "max_width_px": 96
+        },
+        {
+          "source": "パイロット",
+          "offset": 123,
+          "length": 5,
+          "source_hex": "C093DCB2B7",
+          "text": "นักบิน",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金",
+          "offset": 131,
+          "length": 4,
+          "source_hex": "F1F1F0F3",
+          "text": "FUND",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE51A",
+      "source_pc": "0x0CE51A",
+      "source_end": "0x0CE52C",
+      "source_hex": "FBA001FD0C82F17AF11FC011B3FEFFFE00FF",
+      "slots": [
+        200
+      ],
+      "labels": [
+        {
+          "source": "強化パーツ",
+          "offset": 6,
+          "length": 7,
+          "source_hex": "F17AF11FC011B3",
+          "text": "พาร์ทเสริม",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE52C",
+      "source_pc": "0x0CE52C",
+      "source_end": "0x0CE54A",
+      "source_hex": "F10020F700FD0185F913F21E2820F6FAFD0199F902F21E2820F6FAFE00FF",
+      "slots": [
+        201
+      ]
+    },
+    {
+      "pointer": "0xE54A",
+      "source_pc": "0x0CE54A",
+      "source_end": "0x0CE56D",
+      "source_hex": "F10020F700FD0199F902F21E2820F6FAF740FD0199FBFF0DFD1099FBFF0DFEFFFE00FF",
+      "slots": [
+        202
+      ]
+    },
+    {
+      "pointer": "0xE56D",
+      "source_pc": "0x0CE56D",
+      "source_end": "0x0CE589",
+      "source_hex": "FDFFFFFC0101F70FF900F29EFFFFFC00FEF29EFFFFFCE200FAFE00FF",
+      "slots": [
+        203
+      ]
+    },
+    {
+      "pointer": "0xE589",
+      "source_pc": "0x0CE589",
+      "source_end": "0x0CE601",
+      "source_hex": "F10020F700FD008111F21A19201519191912F6F9021BF21A28201D2828281CF6FA17F21A1E20241E1E1E18F6F9021BF21E28201CF6FA17F21E1E2018F6F90E1BF21E28201CF6FA17F21E1E2018F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD0182FBFFFFFD0185FBFF0DFD1085FBFF0DFEFFFE00FF",
+      "slots": [
+        204
+      ]
+    },
+    {
+      "pointer": "0xE601",
+      "source_pc": "0x0CE601",
+      "source_end": "0x0CE63A",
+      "source_hex": "F10020F700FD0C88F500B00984FD0C8811F207192012F6F9021BF20728201CF6FA13F2071A2014F6F740FD0D896E59567D584A14FEFFFE00FF",
+      "slots": [
+        205
+      ],
+      "labels": [
+        {
+          "source": "はずしますか？",
+          "offset": 45,
+          "length": 7,
+          "source_hex": "6E59567D584A14",
+          "text": "ถอดออกไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE63A",
+      "source_pc": "0x0CE63A",
+      "source_end": "0x0CE64A",
+      "source_hex": "F10020F700FD0C88F500B00904FE00FF",
+      "slots": [
+        206
+      ]
+    },
+    {
+      "pointer": "0xE64A",
+      "source_pc": "0x0CE64A",
+      "source_end": "0x0CE66E",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0188F900FBFF01FC02FEFBFF01FCE400FAFEFFFE00FF",
+      "slots": [
+        207
+      ]
+    },
+    {
+      "pointer": "0xE66E",
+      "source_pc": "0x0CE66E",
+      "source_end": "0x0CE66F",
+      "source_hex": "FF",
+      "slots": [
+        208
+      ]
+    },
+    {
+      "pointer": "0xE66F",
+      "source_pc": "0x0CE66F",
+      "source_end": "0x0CE67A",
+      "source_hex": "FBFF0DF6FC0DFEF800F6FF",
+      "slots": [
+        209
+      ]
+    },
+    {
+      "pointer": "0xE67A",
+      "source_pc": "0x0CE67A",
+      "source_end": "0x0CE69D",
+      "source_hex": "F10020F700FD0187F21E1E20F6F90EF21E2820F6FAFD0197F904F21E2820F6FAFE00FF",
+      "slots": [
+        210
+      ]
+    },
+    {
+      "pointer": "0xE69D",
+      "source_pc": "0x0CE69D",
+      "source_end": "0x0CE6B5",
+      "source_hex": "FBAB01FD098CF17AF11FC011B34B41897D5A8FFEFFFE00FF",
+      "slots": [
+        211
+      ],
+      "labels": [
+        {
+          "source": "強化パーツがありません",
+          "offset": 6,
+          "length": 13,
+          "source_hex": "F17AF11FC011B34B41897D5A8F",
+          "text": "ไม่มีพาร์ทเสริม",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE6B5",
+      "source_pc": "0x0CE6B5",
+      "source_end": "0x0CE6D2",
+      "source_hex": "F10020F700FD0197F904F21E2820F6FAF740FD0197FBFF02FEFFFE00FF",
+      "slots": [
+        212
+      ]
+    },
+    {
+      "pointer": "0xE6D2",
+      "source_pc": "0x0CE6D2",
+      "source_end": "0x0CE705",
+      "source_hex": "F10020F700FD1B81F204192012F6F902F20428201CF6FAF2041E2018FD0088F9131BF21E28201CF6FA13F21E1A2014F6FE00FF",
+      "slots": [
+        213
+      ]
+    },
+    {
+      "pointer": "0xE705",
+      "source_pc": "0x0CE705",
+      "source_end": "0x0CE723",
+      "source_hex": "F10020F740FD0188F900FBFF0DF6FC0FFEFBFFFFF6FCF100FAFEFFFE00FF",
+      "slots": [
+        214
+      ]
+    },
+    {
+      "pointer": "0xE723",
+      "source_pc": "0x0CE723",
+      "source_end": "0x0CE776",
+      "source_hex": "F10020F700FD0087F500B02086FD008711F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD0188FBFFFFF6FC0FFEFBFF06F6FD0A8A4BF062F1E55665437D58E463504A477D584A14FEFFFE00FF",
+      "slots": [
+        215
+      ],
+      "labels": [
+        {
+          "source": "が装着しています。つけかえますか？",
+          "offset": 59,
+          "length": 19,
+          "source_hex": "4BF062F1E55665437D58E463504A477D584A14",
+          "text": "ติดตั้งอยู่ จะสลับไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE776",
+      "source_pc": "0x0CE776",
+      "source_end": "0x0CE786",
+      "source_hex": "F10020F700FD0087F500B02006FE00FF",
+      "slots": [
+        216
+      ]
+    },
+    {
+      "pointer": "0xE786",
+      "source_pc": "0x0CE786",
+      "source_end": "0x0CE7FA",
+      "source_hex": "F10020F700FD0C8111F206192012F6F9021BF20628201CF6FA13F2061A2014F6FD0A8711F20A192012F6F9041BF20A28201CF6FA13F20A1A2014F6FD009611F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6F740FD0D82F17AF11FC011B3FD0B88FBFF0DF6FBFF0DFD0197F1C1F033FF",
+      "slots": [
+        217
+      ],
+      "labels": [
+        {
+          "source": "強化パーツ",
+          "offset": 91,
+          "length": 7,
+          "source_hex": "F17AF11FC011B3",
+          "text": "พาร์ทเสริม",
+          "max_width_px": 96
+        },
+        {
+          "source": "説明",
+          "offset": 111,
+          "length": 4,
+          "source_hex": "F1C1F033",
+          "text": "คำอธิบาย",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE7FA",
+      "source_pc": "0x0CE7FA",
+      "source_end": "0x0CE80C",
+      "source_hex": "FDFFFFFC0101F70AF900F294FFFFFAFE00FF",
+      "slots": [
+        218
+      ]
+    },
+    {
+      "pointer": "0xE80C",
+      "source_pc": "0x0CE80C",
+      "source_end": "0x0CE829",
+      "source_hex": "F10020F700FD0597F904F21A2820F6FAF740FD0597FBFF02FEFFFE00FF",
+      "slots": [
+        219
+      ]
+    },
+    {
+      "pointer": "0xE829",
+      "source_pc": "0x0CE829",
+      "source_end": "0x0CE862",
+      "source_hex": "F10020F700FD1290F500B00984FD129011F207192012F6F9021BF20728201CF6FA13F2071A2014F6F740FD1391F104437D584A14FEFFFE00FF",
+      "slots": [
+        220
+      ],
+      "labels": [
+        {
+          "source": "使いますか？",
+          "offset": 45,
+          "length": 7,
+          "source_hex": "F104437D584A14",
+          "text": "ใช้ไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xE862",
+      "source_pc": "0x0CE862",
+      "source_end": "0x0CE872",
+      "source_hex": "F10020F700FD1290F500B00904FE00FF",
+      "slots": [
+        221
+      ]
+    },
+    {
+      "pointer": "0xE872",
+      "source_pc": "0x0CE872",
+      "source_end": "0x0CE88B",
+      "source_hex": "FB9501FD0782F0F7F0743BF080F0813BF0BDF05DFEFFFE00FF",
+      "slots": [
+        222
+      ],
+      "labels": [
+        {
+          "source": "合体・変形・分離",
+          "offset": 6,
+          "length": 14,
+          "source_hex": "F0F7F0743BF080F0813BF0BDF05D",
+          "text": "รวมร่าง/แปลง/แยก",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xE88B",
+      "source_pc": "0x0CE88B",
+      "source_end": "0x0CE8B1",
+      "source_hex": "F10020F740FD1C82F8810FF800FD0185F900FBFFFFF6FC0FFEFBFF06F6FCF100FAFEFFFE00FF",
+      "slots": [
+        223
+      ]
+    },
+    {
+      "pointer": "0xE8B1",
+      "source_pc": "0x0CE8B1",
+      "source_end": "0x0CE916",
+      "source_hex": "F10020F700FD0885F500B00584FD088511F203192012F6F9021BF20328201CF6FA13F2031A2014F6FD0889F580B2FFFFFD088911F20C192012F6F9001BF20C28201CF6FA13F20C1A2014F6F900FAF740FD0986FBFF0DFD098AF900FBFFFFF6FAFEFFFE00FF",
+      "slots": [
+        224
+      ]
+    },
+    {
+      "pointer": "0xE916",
+      "source_pc": "0x0CE916",
+      "source_end": "0x0CE97B",
+      "source_hex": "F10020F700FD0885F500B00984FD088511F207192012F6F9021BF20728201CF6FA13F2071A2014F6FD0889F580B2FFFFFD088911F20C192012F6F9001BF20C28201CF6FA13F20C1A2014F6F900FAF740FD0986FBFF0DFD098AF900FBFFFFF6FAFEFFFE00FF",
+      "slots": [
+        225
+      ]
+    },
+    {
+      "pointer": "0xE97B",
+      "source_pc": "0x0CE97B",
+      "source_end": "0x0CE98D",
+      "source_hex": "FDFFFFFC0101F70CF900F298FFFFFAFE00FF",
+      "slots": [
+        226
+      ]
+    },
+    {
+      "pointer": "0xE98D",
+      "source_pc": "0x0CE98D",
+      "source_end": "0x0CE9A5",
+      "source_hex": "F10020F700FD0885F500B00504FD0889F580B2FFFFFE00FF",
+      "slots": [
+        227
+      ]
+    },
+    {
+      "pointer": "0xE9A5",
+      "source_pc": "0x0CE9A5",
+      "source_end": "0x0CE9BD",
+      "source_hex": "F10020F700FD0885F500B00904FD0889F580B2FFFFFE00FF",
+      "slots": [
+        228
+      ]
+    },
+    {
+      "pointer": "0xE9BD",
+      "source_pc": "0x0CE9BD",
+      "source_end": "0x0CEA7E",
+      "source_hex": "7DEA7EEA47EC3EEEC2EF61F011F111F111F111F111F111F111F111F111F111F111F13AF14DF156F15FF171F190F1A6F1BCF1D1F1E6F1F6F106F216F225F234F246F259F26DF278F283F28FF29BF29BF29BF29BF29BF29BF29BF29BF29BF29BF29CF240F356F368F3ADF3BFF3E2F35DF481F4A5F4DEF4F4F413F523F576F586F5A2F5C8F50BF629F66CF68AF6A6F6C5F660F78AF7B0F7CDF774F890F8A7F8C3F8D6F8E8F8FEF811F934F94AF95FF985F9F5F9AEFA2AFB3BFBFCFB77FCF2FCF2FCFF",
+      "slots": [
+        229,
+        230,
+        231,
+        232,
+        233,
+        234,
+        235,
+        236,
+        237,
+        238,
+        239
+      ]
+    }
+  ]
+}

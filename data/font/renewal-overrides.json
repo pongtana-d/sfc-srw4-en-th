@@ -1,0 +1,4 @@
+{
+ "_note": "Per-cluster bitmap and metric overrides. Every entry needs a reason and a regression sample; the atlas compiler refuses an override without one. See PLAN.md P3 and docs/PROGRESS.md. Empty until a proof sheet says otherwise.",
+ "overrides": {}
+}

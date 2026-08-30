@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "status": "legacy-snapshot-pending-clean-rom-verification",
+  "hook_registry": "config/hooks.json",
+  "rom": {
+    "title": "Dai-4-ji Super Robot Taisen (Japan) (Rev 1)",
+    "mapper": "HiROM + FastROM",
+    "headered": false,
+    "input_size": 3145728,
+    "expanded_size": 4194304,
+    "sha256": "efd72094b2727c4903924cf9296b3946b95a354f639b600e1d76d9ec6b9ca18b"
+  },
+  "addressing": {
+    "range_convention": "start-inclusive,end-exclusive",
+    "cpu_to_pc": "((bank & 0x3F) << 16) | address",
+    "preferred_cpu_banks": "C0-FF"
+  },
+  "stock_text_engine": [
+    {
+      "id": "text_main_loop",
+      "pc": "0x0183FB",
+      "cpu": "$C1:83FB",
+      "status": "legacy"
+    },
+    {
+      "id": "ordinary_glyph_path",
+      "pc": "0x01842A",
+      "cpu": "$C1:842A",
+      "status": "legacy"
+    },
+    {
+      "id": "glyph_rasterizer",
+      "pc": "0x0184F2",
+      "cpu": "$C1:84F2",
+      "status": "legacy"
+    },
+    {
+      "id": "battle_text_entry",
+      "pc": "0x019238",
+      "cpu": "$C1:9238",
+      "status": "legacy"
+    }
+  ],
+  "pointer_tables": [
+    {
+      "id": "weapon_names",
+      "start": "0x0C7760",
+      "end": "0x0C7C80",
+      "cpu": "$CC:7760",
+      "entries": 656,
+      "entry_bytes": 2,
+      "status": "legacy"
+    },
+    {
+      "id": "unit_names",
+      "start": "0x126050",
+      "end": "0x1262B0",
+      "cpu": "$D2:6050",
+      "entries": 304,
+      "entry_bytes": 2,
+      "status": "legacy"
+    },
+    {
+      "id": "pilot_names",
+      "start": "0x126B34",
+      "end": "0x126DB4",
+      "cpu": "$D2:6B34",
+      "entries": 320,
+      "entry_bytes": 2,
+      "status": "legacy"
+    },
+    {
+      "id": "battle_pilot_names",
+      "start": "0x12772B",
+      "end": "0x1279AB",
+      "cpu": "$D2:772B",
+      "entries": 320,
+      "entry_bytes": 2,
+      "status": "legacy"
+    },
+    {
+      "id": "story_master",
+      "start": "0x280000",
+      "end": "0x28009C",
+      "cpu": "$E8:0000",
+      "entries": 52,
+      "entry_bytes": 3,
+      "status": "legacy"
+    }
+  ],
+  "legacy_string_pools": [
+    {
+      "id": "weapon_original",
+      "start": "0x0C7C80",
+      "end": "0x0C8E88",
+      "bank": "$CC",
+      "status": "legacy"
+    },
+    {
+      "id": "weapon_bank_end_ff_run",
+      "start": "0x0CFD42",
+      "end": "0x0D0000",
+      "bank": "$CC",
+      "expected_fill": "FF",
+      "status": "verified"
+    },
+    {
+      "id": "weapon_mid_bank_ff_run",
+      "start": "0x0C4409",
+      "end": "0x0C4600",
+      "bank": "$CC",
+      "expected_fill": "FF",
+      "status": "verified"
+    },
+    {
+      "id": "unit_original",
+      "start": "0x1262B0",
+      "end": "0x126B34",
+      "bank": "$D2",
+      "status": "legacy"
+    },
+    {
+      "id": "pilot_original",
+      "start": "0x126DB4",
+      "end": "0x12772B",
+      "bank": "$D2",
+      "status": "legacy"
+    },
+    {
+      "id": "battle_pilot_original",
+      "start": "0x1279AB",
+      "end": "0x127F03",
+      "bank": "$D2",
+      "status": "legacy"
+    },
+    {
+      "id": "name_verified_ff_run",
+      "start": "0x12E78F",
+      "end": "0x12EA80",
+      "bank": "$D2",
+      "expected_fill": "FF",
+      "status": "verified"
+    },
+    {
+      "id": "name_bank_end_ff_run",
+      "start": "0x12FF83",
+      "end": "0x130000",
+      "bank": "$D2",
+      "expected_fill": "FF",
+      "status": "verified"
+    },
+    {
+      "id": "name_pre_table_ff_run",
+      "start": "0x125E5F",
+      "end": "0x125E80",
+      "bank": "$D2",
+      "expected_fill": "FF",
+      "status": "verified"
+    }
+  ],
+  "legacy_expansion_anchors": [
+    {
+      "id": "story_repack_start",
+      "pc": "0x300000",
+      "cpu": "$F0:0000",
+      "status": "legacy"
+    },
+    {
+      "id": "ordinary_renderer",
+      "pc": "0x3F6000",
+      "cpu": "$FF:6000",
+      "status": "legacy"
+    },
+    {
+      "id": "battle_renderer",
+      "pc": "0x3F6A00",
+      "cpu": "$FF:6A00",
+      "status": "legacy"
+    },
+    {
+      "id": "naming_fixed_renderer",
+      "pc": "0x3F7400",
+      "cpu": "$FF:7400",
+      "status": "legacy"
+    },
+    {
+      "id": "thai_page",
+      "pc": "0x3FD000",
+      "cpu": "$FF:D000",
+      "bytes": 4096,
+      "status": "legacy"
+    }
+  ],
+  "legacy_wram_contracts": [
+    {
+      "id": "ordinary_renderer_state",
+      "start": "0x7EFFA0",
+      "end": "0x7EFFC0",
+      "status": "legacy"
+    },
+    {
+      "id": "battle_renderer_state",
+      "start": "0x7EFFC0",
+      "end": "0x7EFFE0",
+      "status": "legacy"
+    },
+    {
+      "id": "renderer_scratch",
+      "start": "0x7EFFE0",
+      "end": "0x7F0000",
+      "status": "legacy"
+    }
+  ],
+  "provenance": {
+    "archive_branch": "codex/archive-pre-core-rewrite-20260819",
+    "archive_commit": "d28cc12",
+    "legacy_report": "legacy/reports/menu-build-report.json",
+    "legacy_text_engine_notes": "docs/legacy/text-engine.md"
+  }
+}

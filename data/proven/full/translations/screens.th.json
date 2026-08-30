@@ -1,0 +1,919 @@
+{
+  "_comment": "สคริปต์หน้าจอใน catalog $CC:8E88 (หน้าส่งยูนิต, ผลการรบ, แต้มพลังจิต, sound test) เขียนทับเฉพาะคำญี่ปุ่นโดยคง control byte เดิม",
+  "_layout": {
+    "pointer_table": {
+      "address": "0x0C8E88",
+      "cpu": "$CC:8E88",
+      "entries": 240,
+      "source_sha256": "9ce298f4aca7df9166b8c328e03e3637f57b0e4bcfabdc1c637bd9017fe71408"
+    },
+    "max_width_px": 240,
+    "width_evidence": "บรรทัดข้อความเต็มจอ 240 px; คอลัมน์คำสั่ง 96 px ตาม 出撃ユニット選択 8 ช่อง; ช่องค่าแคบสุด 48 px ตาม はい/いいえ",
+    "record_extent": "อ่านถึง pointer ถัดไป เพราะ control $FD และ $FE กินไบต์ตามหลัง"
+  },
+  "records": [
+    {
+      "pointer": "0x9715",
+      "source_pc": "0x0C9715",
+      "source_end": "0x0C97A2",
+      "source_hex": "F10020F700FDFFFF111919191915F20A192012F61B282828281DF20A28201CF61B282828281DF20A28201CF61B282828281DF20A28201CF61B282828281DF20A28201CF6171E1E1E1E24F20A1E2018F61BF20F28201CF61BF20F28201CF613F20F1A2014F6FC01F8F500B00404FC05FCF740F07BF07CFBFF0DF6F057F058FBFF0DF6FCFB01FBFF0BFEFFFE00FF",
+      "slot": 38,
+      "labels": [
+        {
+          "source": "防御",
+          "offset": 114,
+          "length": 4,
+          "source_hex": "F07BF07C",
+          "text": "DEF",
+          "max_width_px": 48
+        },
+        {
+          "source": "命中",
+          "offset": 122,
+          "length": 4,
+          "source_hex": "F057F058",
+          "text": "HIT",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0x97E3",
+      "source_pc": "0x0C97E3",
+      "source_end": "0x0C9829",
+      "source_hex": "F10020F700FDFFFFF500B00C86FC00FA11F20A192012F6F9041BF20A28201CF6FA13F20A1A2014F6F740FC01FBAE11DF8EF0E4F0E5567D58F6878C564366584A14FEFFFE00FF",
+      "slot": 40,
+      "labels": [
+        {
+          "source": "よろしいですか？",
+          "offset": 57,
+          "length": 8,
+          "source_hex": "878C564366584A14",
+          "text": "ยืนยันไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0x9903",
+      "source_pc": "0x0C9903",
+      "source_end": "0x0C995F",
+      "source_hex": "F10020F700FD008111F20A192015F208192015F20619201519191912F6F9021BF20A28201DF20828201DF20628201D2828281CF6FA17F20A1E2024F2081E2024F2061E20241E1E1E18F6F740FD0182F122F055D5BAB2B7F123F124FF",
+      "slot": 47,
+      "labels": [
+        {
+          "source": "出撃ユニット選択",
+          "offset": 79,
+          "length": 12,
+          "source_hex": "F122F055D5BAB2B7F123F124",
+          "text": "เลือกยูนิตลงสนาม",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0x995F",
+      "source_pc": "0x0C995F",
+      "source_end": "0x0C9989",
+      "source_hex": "FB3200F10020F740FD0285F900FBFFFFF6FC0EFEFBFF07F6FC09FEDBC8DAF883F6FCE900FAFEFFFE00FF",
+      "slot": 48,
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 27,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0x99C0",
+      "source_pc": "0x0C99C0",
+      "source_end": "0x0C99DB",
+      "source_hex": "F10020F740FD0D82416700F882F0E1FD0185F701F900FBFF00FAFF",
+      "slot": 50,
+      "labels": [
+        {
+          "source": "あと",
+          "offset": 8,
+          "length": 2,
+          "source_hex": "4167",
+          "text": "เหลือ",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0x9A35",
+      "source_pc": "0x0C9A35",
+      "source_end": "0x0C9A4B",
+      "source_hex": "0000F122F055F052F0968EF123F12456654E5F5443FF",
+      "slot": 57,
+      "labels": [
+        {
+          "source": "出撃戦艦を選択してください",
+          "offset": 2,
+          "length": 19,
+          "source_hex": "F122F055F052F0968EF123F12456654E5F5443",
+          "text": "เลือกเรือรบที่จะลงสนาม",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0x9A4B",
+      "source_pc": "0x0C9A4B",
+      "source_end": "0x0C9A60",
+      "source_hex": "00F122F055D5BAB2B78EF123F12456654E5F5443FF",
+      "slot": 58,
+      "labels": [
+        {
+          "source": "出撃ユニットを選択してください",
+          "offset": 1,
+          "length": 19,
+          "source_hex": "F122F055D5BAB2B78EF123F12456654E5F5443",
+          "text": "เลือกยูนิตที่จะลงสนาม",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0x9A60",
+      "source_pc": "0x0C9A60",
+      "source_end": "0x0C9A76",
+      "source_hex": "5C6DD5BAB2B76E5252666EF122F055664C7D5A8F15FF",
+      "slot": 59,
+      "labels": [
+        {
+          "source": "そのユニットはここでは出撃できません！",
+          "offset": 0,
+          "length": 21,
+          "source_hex": "5C6DD5BAB2B76E5252666EF122F055664C7D5A8F15",
+          "text": "ยูนิตนี้ลงสนามตรงนี้ไม่ได้!",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0x9A86",
+      "source_pc": "0x0C9A86",
+      "source_end": "0x0C9AF0",
+      "source_hex": "F10020F700FD0389F500B01A84FC00FC11F218192012F6F9021BF21828201CF6FA13F2181A2014F6FD148BF5D0B00586FC00FA11F203192012F6F9041BF20328201CF6FA13F2031A2014F6FCF3F9F740528B6600878C564366584A14FC02026E43F6434347FEFFFE00FF",
+      "slot": 61,
+      "labels": [
+        {
+          "source": "これで　よろしいですか？",
+          "offset": 80,
+          "length": 12,
+          "source_hex": "528B6600878C564366584A14",
+          "text": "แบบนี้ใช่ไหม?",
+          "max_width_px": 240
+        },
+        {
+          "source": "はい",
+          "offset": 95,
+          "length": 2,
+          "source_hex": "6E43",
+          "text": "ใช่",
+          "max_width_px": 48
+        },
+        {
+          "source": "いいえ",
+          "offset": 98,
+          "length": 3,
+          "source_hex": "434347",
+          "text": "ไม่",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0x9B08",
+      "source_pc": "0x0C9B08",
+      "source_end": "0x0C9B28",
+      "source_hex": "FB0400FD048EAA11C5F0E4F0E5567D565EE4A111CF8E6364507D584A14FE00FF",
+      "slot": 63,
+      "labels": [
+        {
+          "source": "セーブ終了しました。ゲームをつづけますか？",
+          "offset": 6,
+          "length": 23,
+          "source_hex": "AA11C5F0E4F0E5567D565EE4A111CF8E6364507D584A14",
+          "text": "บันทึกเสร็จแล้ว เล่นต่อไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0x9C6E",
+      "source_pc": "0x0C9C6E",
+      "source_end": "0x0C9CBA",
+      "source_hex": "F10020F700FD0C87F500B0098CFC00F411F207192012F6F90A1BF20728201CF6FA13F2071A2014F6FC01F5F740F07EC911A7F6F0F8C911A7F69CD2DFAADAF6FBFF0DF6FBFF0DF6FEFFFE00FF",
+      "slot": 69,
+      "labels": [
+        {
+          "source": "次ページ",
+          "offset": 45,
+          "length": 5,
+          "source_hex": "F07EC911A7",
+          "text": "หน้าถัดไป",
+          "max_width_px": 96
+        },
+        {
+          "source": "前ページ",
+          "offset": 51,
+          "length": 5,
+          "source_hex": "F0F8C911A7",
+          "text": "หน้าก่อน",
+          "max_width_px": 96
+        },
+        {
+          "source": "キャンセル",
+          "offset": 57,
+          "length": 5,
+          "source_hex": "9CD2DFAADA",
+          "text": "ยกเลิก",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0x9D4B",
+      "source_pc": "0x0C9D4B",
+      "source_end": "0x0C9DDF",
+      "source_hex": "F10020F700FD008111F21E192012F6F9041BF21E28201CF6FA13F21E1A2014F6FD009411F213192012F6F9061BF21328201CF6FA13F2131A2014F6FD159411F209192012F6F9041BF20928201CF6FA13F2091A2014F6F740FD1695F078F006CC93DFB7FD1897F8830FF800FD0195FBFF00FD0C95FBFF00FD0197FBFF00FD0C97FBFF00FD0199FBFF00FD0C99FBFF00FEFFFE00FF",
+      "slot": 78,
+      "labels": [
+        {
+          "source": "精神ポイント",
+          "offset": 91,
+          "length": 8,
+          "source_hex": "F078F006CC93DFB7",
+          "text": "แต้มพลังจิต",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0x9E5D",
+      "source_pc": "0x0C9E5D",
+      "source_end": "0x0C9E86",
+      "source_hex": "F10020F700FD0182F904F21E2820F6FAF740FD0182634A626581F0F5F0F94B41897D5A8FFEFFFE00FF",
+      "slot": 83,
+      "labels": [
+        {
+          "source": "つかっても効果がありません",
+          "offset": 21,
+          "length": 15,
+          "source_hex": "634A626581F0F5F0F94B41897D5A8F",
+          "text": "ใช้แล้วไม่มีผล",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xA785",
+      "source_pc": "0x0CA785",
+      "source_end": "0x0CA7C9",
+      "source_hex": "F10020F700FD0C87F500B00888FC00F811F206192012F6F9061BF20628201CF6FA13F2061A2014F6FC01F9F740F07EC911A7F6F0F8C911A7F69CD2DFAADAF6FEFFFE00FF",
+      "slot": 99,
+      "labels": [
+        {
+          "source": "次ページ",
+          "offset": 45,
+          "length": 5,
+          "source_hex": "F07EC911A7",
+          "text": "หน้าถัดไป",
+          "max_width_px": 96
+        },
+        {
+          "source": "前ページ",
+          "offset": 51,
+          "length": 5,
+          "source_hex": "F0F8C911A7",
+          "text": "หน้าก่อน",
+          "max_width_px": 96
+        },
+        {
+          "source": "キャンセル",
+          "offset": 57,
+          "length": 5,
+          "source_hex": "9CD2DFAADA",
+          "text": "ยกเลิก",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xACA4",
+      "source_pc": "0x0CACA4",
+      "source_end": "0x0CACB8",
+      "source_hex": "F10020F700FB7000FD0182DCCBB2B7F0DAFEFFFF",
+      "slot": 114,
+      "labels": [
+        {
+          "source": "ロボット名",
+          "offset": 11,
+          "length": 6,
+          "source_hex": "DCCBB2B7F0DA",
+          "text": "ชื่อหุ่น",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xAE85",
+      "source_pc": "0x0CAE85",
+      "source_end": "0x0CAF19",
+      "source_hex": "F10020F700FD0C8111F206192012F6F9021BF20628201CF6FA13F2061A2014F6FD0085111919191915F219192012F61BF304F0281DF21928201CF61BF304F4281DF21928201CF61BF304F8281DF21928201CF61BF304FC281DF21928201CF6131A1A1A1A16F2191A2014F740FD0D82F0DAF0F8F080F2EBFD0686F0DAF0F800FB2480E3FB2A80F6F100F46300FB3080FEFFFE00FF",
+      "slot": 124,
+      "labels": [
+        {
+          "source": "名前変更",
+          "offset": 111,
+          "length": 8,
+          "source_hex": "F0DAF0F8F080F2EB",
+          "text": "เปลี่ยนชื่อ",
+          "max_width_px": 96
+        },
+        {
+          "source": "名前",
+          "offset": 122,
+          "length": 4,
+          "source_hex": "F0DAF0F8",
+          "text": "ชื่อ",
+          "max_width_px": 48
+        },
+        {
+          "source": "愛称",
+          "offset": 135,
+          "length": 4,
+          "source_hex": "F100F463",
+          "text": "ชื่อเล่น",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xAF19",
+      "source_pc": "0x0CAF19",
+      "source_end": "0x0CAF51",
+      "source_hex": "F10020F700FD098B11F20C192012F6F9021BF20C28201CF6FA13F20C1A2014F6F740FD0A8CF0DAF0F88EF080F2EB567D584A14FEFFFE00FF",
+      "slot": 125,
+      "labels": [
+        {
+          "source": "名前を変更しますか？",
+          "offset": 37,
+          "length": 14,
+          "source_hex": "F0DAF0F88EF080F2EB567D584A14",
+          "text": "เปลี่ยนชื่อไหม?",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xB2C1",
+      "source_pc": "0x0CB2C1",
+      "source_end": "0x0CB302",
+      "source_hex": "F10020F700FD0C88F500B00886FC00FA11F206192012F6F9041BF20628201CF6FA13F2061A2014F6FC01FBF740CDB2C68E7E8AF6F122F055F105F106FEFFFE00FF",
+      "slot": 160,
+      "labels": [
+        {
+          "source": "マップをみる",
+          "offset": 45,
+          "length": 6,
+          "source_hex": "CDB2C68E7E8A",
+          "text": "ดูแผนที่",
+          "max_width_px": 96
+        },
+        {
+          "source": "出撃決定",
+          "offset": 52,
+          "length": 8,
+          "source_hex": "F122F055F105F106",
+          "text": "ยืนยันลงสนาม",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xB302",
+      "source_pc": "0x0CB302",
+      "source_end": "0x0CB353",
+      "source_hex": "F10020F700FD0C87F500B0088CFC00F411F206192012F6F90A1BF20628201CF6FA13F2061A2014F6FC01F5F740F07EC911A7F6F0F8C911A7F6CDB2C68E7E8AF6FBFF0DF6F122F055F105F106FEFFFE00FF",
+      "slot": 161,
+      "labels": [
+        {
+          "source": "次ページ",
+          "offset": 45,
+          "length": 5,
+          "source_hex": "F07EC911A7",
+          "text": "หน้าถัดไป",
+          "max_width_px": 96
+        },
+        {
+          "source": "前ページ",
+          "offset": 51,
+          "length": 5,
+          "source_hex": "F0F8C911A7",
+          "text": "หน้าก่อน",
+          "max_width_px": 96
+        },
+        {
+          "source": "マップをみる",
+          "offset": 57,
+          "length": 6,
+          "source_hex": "CDB2C68E7E8A",
+          "text": "ดูแผนที่",
+          "max_width_px": 96
+        },
+        {
+          "source": "出撃決定",
+          "offset": 68,
+          "length": 8,
+          "source_hex": "F122F055F105F106",
+          "text": "ยืนยันลงสนาม",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xB3E0",
+      "source_pc": "0x0CB3E0",
+      "source_end": "0x0CB444",
+      "source_hex": "FBA500F9041BF20D28201CF6FA13F20D1A2014F6F740FC06F2FBFF07F6DBC8DA0000F883F6FCFB01FBFFFFF6F7005A5BF8854FF800F62828F80BF6F740F078F00600F906FBFF0DFAF600000000F906FBFF0DFAF6F700FC00FEFBFFFFFBFFFFFEFFFE00FF",
+      "slot": 166,
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 29,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        },
+        {
+          "source": "精神",
+          "offset": 61,
+          "length": 4,
+          "source_hex": "F078F006",
+          "text": "จิต",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0xB444",
+      "source_pc": "0x0CB444",
+      "source_end": "0x0CB480",
+      "source_hex": "FBA50013F20D1A2014F6F740FC06F6FBFF07F6DBC8DA0000001414F6FCFB01FBFFFFF6F7005A5B5E5E5E5E5E4F5E5E5E5E5EF62828F80BFEFFFE00FF",
+      "slot": 167,
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 19,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xB570",
+      "source_pc": "0x0CB570",
+      "source_end": "0x0CB5C8",
+      "source_hex": "F10020F700FD0081111919191915F21519201519191912F6F9021B282828281DF21528201D2828281CF6FA171E1E1E1E24F2151E20241E1E1E18F6F740FD0182FBFF0DFD0982F0C8F0F4F078F006CC93DFB7FD1582F883FF",
+      "slot": 172,
+      "labels": [
+        {
+          "source": "消費精神ポイント",
+          "offset": 70,
+          "length": 12,
+          "source_hex": "F0C8F0F4F078F006CC93DFB7",
+          "text": "แต้มพลังจิตที่ใช้",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xB797",
+      "source_pc": "0x0CB797",
+      "source_end": "0x0CB7CC",
+      "source_hex": "F10020F700FD008111F21A19201519191912F6F9021BF21A28201D2828281CF6FA17F21A1E20241E1E1E18F6F740FD0D82D9A8B7FF",
+      "slot": 187,
+      "labels": [
+        {
+          "source": "リスト",
+          "offset": 49,
+          "length": 3,
+          "source_hex": "D9A8B7",
+          "text": "รายการ",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xB7CC",
+      "source_pc": "0x0CB7CC",
+      "source_end": "0x0CB7F3",
+      "source_hex": "F10020F740FD0185F900FBFFFFF6FC0FFEFBFF07F6FC09FEDBC8DAF883F6FCE800FAFEFFFE00FF",
+      "slot": 188,
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 24,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xB835",
+      "source_pc": "0x0CB835",
+      "source_end": "0x0CB8A0",
+      "source_hex": "F10020F700FD098AF500B00F84FC00FC11F20D192012F6F9021BF20D28201CF6FA13F20D1A2014F6FD0E8EF5D0B00586FC00FA11F203192012F6F9041BF20328201CF6FA13F2031A2014F6FD0A8BF740526DD5BAB2B766434366584A14FD0F8F6E43F6434347FEFFFE00FF",
+      "slot": 191,
+      "labels": [
+        {
+          "source": "このユニットでいいですか？",
+          "offset": 80,
+          "length": 13,
+          "source_hex": "526DD5BAB2B766434366584A14",
+          "text": "ใช้ยูนิตนี้ใช่ไหม?",
+          "max_width_px": 240
+        },
+        {
+          "source": "はい",
+          "offset": 96,
+          "length": 2,
+          "source_hex": "6E43",
+          "text": "ใช่",
+          "max_width_px": 48
+        },
+        {
+          "source": "いいえ",
+          "offset": 99,
+          "length": 3,
+          "source_hex": "434347",
+          "text": "ไม่",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0xB8B3",
+      "source_pc": "0x0CB8B3",
+      "source_end": "0x0CB8E7",
+      "source_hex": "FD098A11F20D192012F6F9021BF20D28201CF6FA13F20D1A2014F6FD0A8BF740F259F2396AF12DF0ED567D565E1515FEFFFE00FF",
+      "slot": 193,
+      "labels": [
+        {
+          "source": "復活に失敗しました！！",
+          "offset": 32,
+          "length": 15,
+          "source_hex": "F259F2396AF12DF0ED567D565E1515",
+          "text": "ชุบชีวิตไม่สำเร็จ!!",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xB950",
+      "source_pc": "0x0CB950",
+      "source_end": "0x0CB98B",
+      "source_hex": "F10020F700FDFFFFF500B00A84FC00FC11F208192012F6F9021BF20828201CF6FA13F2081A2014F6F740FC01FDF0BDF05D567D584A14FEFFFE00FF",
+      "slot": 197,
+      "labels": [
+        {
+          "source": "離しますか？",
+          "offset": 47,
+          "length": 7,
+          "source_hex": "F05D567D584A14",
+          "text": "ปล่อยไหม?",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xB99B",
+      "source_pc": "0x0CB99B",
+      "source_end": "0x0CBA8E",
+      "source_hex": "F10020F700FD008311F20E19201211F20E192012F6F9031BF20E28201C1BF20E28201CF6FA13F20E1A201413F20E1A2014F611F20E19201211F20E192012F6F9081BF20E28201C1BF20E28201CF6FA13F20E1A201413F20E1A2014F6F740FD0189FBFFFFF6FBFF07FD098BDBC8DAF883F700FD01845A5B28F8854FF800F6282828F80BF65C5D28F8834FF800FD0B86F804F740FD0B8FF8830EFD018DFBFFFFF6F057F058F059FD1189FBFFFFF6FBFF07FD198BDBC8DAF883F700FD11845A5B28F8854FF800F6282828F80BF65C5D28F8834FF800FD1B86F804F740FD1B8FF8830EFD118DFBFFFFF6F057F058F059FEFFFE00FF",
+      "slot": 199,
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 107,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        },
+        {
+          "source": "命中率",
+          "offset": 160,
+          "length": 6,
+          "source_hex": "F057F058F059",
+          "text": "HIT",
+          "max_width_px": 64
+        },
+        {
+          "source": "レベル",
+          "offset": 179,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        },
+        {
+          "source": "命中率",
+          "offset": 232,
+          "length": 6,
+          "source_hex": "F057F058F059",
+          "text": "HIT",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xBA8E",
+      "source_pc": "0x0CBA8E",
+      "source_end": "0x0CBACD",
+      "source_hex": "F10020F700FD038F11F219192012F6F9021BF21928201CF6FA13F2191A2014F6F740FD0490F069F06AF06BC6D8A8F88500F1F1F0F3C6D8A8F885FEFFFE00FF",
+      "slot": 200,
+      "labels": [
+        {
+          "source": "経験値プラス",
+          "offset": 37,
+          "length": 9,
+          "source_hex": "F069F06AF06BC6D8A8",
+          "text": "EXP+",
+          "max_width_px": 96
+        },
+        {
+          "source": "資金プラス",
+          "offset": 49,
+          "length": 7,
+          "source_hex": "F1F1F0F3C6D8A8",
+          "text": "FUND+",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xBACD",
+      "source_pc": "0x0CBACD",
+      "source_end": "0x0CBB05",
+      "source_hex": "F10020F700FD0B8911F208192012F6F9041BF20828201CF6FA13F2081A2014F6F740FD0C8ADBC8DA91B2C61515F600212BF883FEFFFE00FF",
+      "slot": 201,
+      "labels": [
+        {
+          "source": "レベルアップ！！",
+          "offset": 37,
+          "length": 8,
+          "source_hex": "DBC8DA91B2C61515",
+          "text": "LV UP!!",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xBB05",
+      "source_pc": "0x0CBB05",
+      "source_end": "0x0CBB4A",
+      "source_hex": "F10020F700FD0A9211F20A192012F6F9081BF20A28201CF6FA13F20A1A2014F6F740FD0B93528B664343F6F00AF0568EF123F124588AF6F071F072F6F07BF07CFEFFFE00FF",
+      "slot": 202,
+      "labels": [
+        {
+          "source": "これでいい",
+          "offset": 37,
+          "length": 5,
+          "source_hex": "528B664343",
+          "text": "ตกลง",
+          "max_width_px": 96
+        },
+        {
+          "source": "武器を選択する",
+          "offset": 43,
+          "length": 11,
+          "source_hex": "F00AF0568EF123F124588A",
+          "text": "เลือกอาวุธ",
+          "max_width_px": 96
+        },
+        {
+          "source": "回避",
+          "offset": 55,
+          "length": 4,
+          "source_hex": "F071F072",
+          "text": "หลบ",
+          "max_width_px": 48
+        },
+        {
+          "source": "防御",
+          "offset": 60,
+          "length": 4,
+          "source_hex": "F07BF07C",
+          "text": "กัน",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0xBB5F",
+      "source_pc": "0x0CBB5F",
+      "source_end": "0x0CBBA2",
+      "source_hex": "F10020F700FD0C87F500B00888FC00F811F206192012F6F9061BF20628201CF6FA13F2061A2014F6FC01F9F740F07EC911A7F6F0F8C911A7F69CD2DFAADAFEFFFE00FF",
+      "slot": 204,
+      "labels": [
+        {
+          "source": "次ページ",
+          "offset": 45,
+          "length": 5,
+          "source_hex": "F07EC911A7",
+          "text": "หน้าถัดไป",
+          "max_width_px": 96
+        },
+        {
+          "source": "前ページ",
+          "offset": 51,
+          "length": 5,
+          "source_hex": "F0F8C911A7",
+          "text": "หน้าก่อน",
+          "max_width_px": 96
+        },
+        {
+          "source": "キャンセル",
+          "offset": 57,
+          "length": 5,
+          "source_hex": "9CD2DFAADA",
+          "text": "ยกเลิก",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xBBB2",
+      "source_pc": "0x0CBBB2",
+      "source_end": "0x0CBC06",
+      "source_hex": "F10020F700FD008111F20B192015F205192015F20819201519191912F6F9021BF20B28201DF20528201DF20828201D2828281CF6FA17F20B1E2024F2051E2024F2081E20241E1E1E18F6F740FD0D82F0C2F1B3FF",
+      "slot": 206,
+      "labels": [
+        {
+          "source": "発進",
+          "offset": 79,
+          "length": 4,
+          "source_hex": "F0C2F1B3",
+          "text": "ออกตัว",
+          "max_width_px": 48
+        }
+      ]
+    },
+    {
+      "pointer": "0xBC16",
+      "source_pc": "0x0CBC16",
+      "source_end": "0x0CBC57",
+      "source_hex": "F10020F700FD0489F500B01884FC00FC11F216192012F6F9021BF21628201CF6FA13F2161A2014F6FC04FDF7405C6DD5BAB2B76EF08CF051597E6658FEFFFE00FF",
+      "slot": 208,
+      "labels": [
+        {
+          "source": "そのユニットは行動ずみです",
+          "offset": 45,
+          "length": 15,
+          "source_hex": "5C6DD5BAB2B76EF08CF051597E6658",
+          "text": "ยูนิตนี้ดำเนินการแล้ว",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xBC57",
+      "source_pc": "0x0CBC57",
+      "source_end": "0x0CBC9A",
+      "source_hex": "F10020F700FD0489F500B01884FC00FC11F216192012F6F9021BF21628201CF6FA13F2161A2014F6FC04FDF740526DF06FF081666EF0C2F1B3664C7D5A8FFEFFFE00FF",
+      "slot": 209,
+      "labels": [
+        {
+          "source": "この地形では発進できません",
+          "offset": 45,
+          "length": 17,
+          "source_hex": "526DF06FF081666EF0C2F1B3664C7D5A8F",
+          "text": "ภูมิประเทศนี้ออกตัวไม่ได้",
+          "max_width_px": 240
+        }
+      ]
+    },
+    {
+      "pointer": "0xBC9A",
+      "source_pc": "0x0CBC9A",
+      "source_end": "0x0CBCFB",
+      "source_hex": "F10020F700FDFFFF111919191915F208192012F61BF304E02C1DF20828201CF61BF304E42C1DF20828201CF61BF304E82C1DF20828201CF61BF304EC2C1DF20828201CF6131A1A1A1A16F2081A2014F6F740FC06FBFBFF07F6DBC8DA0000F883FF",
+      "slot": 210,
+      "labels": [
+        {
+          "source": "レベル",
+          "offset": 89,
+          "length": 3,
+          "source_hex": "DBC8DA",
+          "text": "LV",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xBE74",
+      "source_pc": "0x0CBE74",
+      "source_end": "0x0CBEAA",
+      "source_hex": "F10020F700FD048AF590B01886FC00FA11F216192012F6F9041BF21628201CF6FA13F2161A2014F6FC01FBF740498F4B4E00655867FF",
+      "slot": 227,
+      "labels": [
+        {
+          "source": "おんがく　てすと",
+          "offset": 45,
+          "length": 8,
+          "source_hex": "498F4B4E00655867",
+          "text": "ทดสอบเสียง",
+          "max_width_px": 96
+        }
+      ]
+    },
+    {
+      "pointer": "0xBF31",
+      "source_pc": "0x0CBF31",
+      "source_end": "0x0CBFB7",
+      "source_hex": "F10020F700FD008111F215192015F208192012F6F90C1BF21528201DF20828201CF6FA17F2151E2026F20828201CF6F90C1BF21528201DF20828201CF6FA13F2151A2016F2081A2014F6F740FD1782C4D89FF63736353433323130FD0188AFD011A7E5F6F13DF0F9E5F6CDB2C6E5FD0195AFD011A7E5F6F13DF0F9E5F6CDB2C6E5FEFFFE00FF",
+      "slot": 231,
+      "labels": [
+        {
+          "source": "ダメージ：",
+          "offset": 94,
+          "length": 5,
+          "source_hex": "AFD011A7E5",
+          "text": "ดาเมจ:",
+          "max_width_px": 96
+        },
+        {
+          "source": "結果：",
+          "offset": 100,
+          "length": 5,
+          "source_hex": "F13DF0F9E5",
+          "text": "ผล:",
+          "max_width_px": 64
+        },
+        {
+          "source": "マップ：",
+          "offset": 106,
+          "length": 4,
+          "source_hex": "CDB2C6E5",
+          "text": "แผนที่:",
+          "max_width_px": 64
+        },
+        {
+          "source": "ダメージ：",
+          "offset": 113,
+          "length": 5,
+          "source_hex": "AFD011A7E5",
+          "text": "ดาเมจ:",
+          "max_width_px": 96
+        },
+        {
+          "source": "結果：",
+          "offset": 119,
+          "length": 5,
+          "source_hex": "F13DF0F9E5",
+          "text": "ผล:",
+          "max_width_px": 64
+        },
+        {
+          "source": "マップ：",
+          "offset": 125,
+          "length": 4,
+          "source_hex": "CDB2C6E5",
+          "text": "แผนที่:",
+          "max_width_px": 64
+        }
+      ]
+    },
+    {
+      "pointer": "0xC15F",
+      "source_pc": "0x0CC15F",
+      "source_end": "0x0CC195",
+      "source_hex": "F10020F700FD0B8AF590B00984FC00FC11F207192012F6F9021BF20728201CF6FA13F2071A2014F6FC01FDF740CDB2C6E5FEFFFE00FF",
+      "slot": 235,
+      "labels": [
+        {
+          "source": "マップ：",
+          "offset": 45,
+          "length": 4,
+          "source_hex": "CDB2C6E5",
+          "text": "แผนที่:",
+          "max_width_px": 64
+        }
+      ]
+    }
+  ]
+}

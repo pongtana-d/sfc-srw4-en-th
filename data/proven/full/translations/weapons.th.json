@@ -1,0 +1,5186 @@
+[
+  {
+    "source_pointer": "0x7C80",
+    "weapon_ids": [
+      0,
+      255,
+      256,
+      511,
+      512
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7C81",
+    "weapon_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "source": "ビ－ムサ－ベル",
+    "source_hex": "C2 11 CF A4 11 C8 DA FF",
+    "translation": "บีมเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7C89",
+    "weapon_ids": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "source": "ビ－ムライフル<B>",
+    "source_hex": "C2 11 CF D8 93 C4 DA EE FF",
+    "translation": "บีมไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7C92",
+    "weapon_ids": [
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "source": "バルカン",
+    "source_hex": "BF DA 9A DF FF",
+    "translation": "วัลแคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7C97",
+    "weapon_ids": [
+      22,
+      23
+    ],
+    "source": "ハイパ－バズ－カ",
+    "source_hex": "BE 93 C0 11 BF A9 11 9A FF",
+    "translation": "ไฮเปอร์บาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CA0",
+    "weapon_ids": [
+      24
+    ],
+    "source": "ハイパ－ハンマ－",
+    "source_hex": "BE 93 C0 11 BE DF CD 11 FF",
+    "translation": "ไฮเปอร์แฮมเมอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CA9",
+    "weapon_ids": [
+      25,
+      533
+    ],
+    "source": "ミサイルランチャ－",
+    "source_hex": "CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์ลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CB3",
+    "weapon_ids": [
+      26
+    ],
+    "source": "ロングライフル<B>",
+    "source_hex": "DC DF 9F D8 93 C4 DA EE FF",
+    "translation": "ลองไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CBC",
+    "weapon_ids": [
+      27
+    ],
+    "source": "ロングビ－ムサ－ベル",
+    "source_hex": "DC DF 9F C2 11 CF A4 11 C8 DA FF",
+    "translation": "ลองบีมเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CC7",
+    "weapon_ids": [
+      28,
+      29,
+      30
+    ],
+    "source": "グレネ－ドランチャ－",
+    "source_hex": "9F DB BC 11 B8 D8 DF B0 D2 11 FF",
+    "translation": "เกรเนดลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CD2",
+    "weapon_ids": [
+      31
+    ],
+    "source": "ハイパ－メガランチャ－<B>",
+    "source_hex": "BE 93 C0 11 D0 9B D8 DF B0 D2 11 EE FF",
+    "translation": "ไฮเปอร์เมก้าลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CDF",
+    "weapon_ids": [
+      32,
+      33,
+      34
+    ],
+    "source": "ビ－ムガン<B>",
+    "source_hex": "C2 11 CF 9B DF EE FF",
+    "translation": "บีมกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CE6",
+    "weapon_ids": [
+      35
+    ],
+    "source": "スマッシュビ－ム",
+    "source_hex": "A8 CD B2 A6 D4 C2 11 CF FF",
+    "translation": "สแมชบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CEF",
+    "weapon_ids": [
+      36
+    ],
+    "source": "ダブルバルカン",
+    "source_hex": "AF C5 DA BF DA 9A DF FF",
+    "translation": "ดับเบิลวัลแคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7CF7",
+    "weapon_ids": [
+      37
+    ],
+    "source": "ダブルビ－ムライフル<B>",
+    "source_hex": "AF C5 DA C2 11 CF D8 93 C4 DA EE FF",
+    "translation": "ดับเบิลบีมไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D03",
+    "weapon_ids": [
+      38
+    ],
+    "source": "ダブルキャノン<B>",
+    "source_hex": "AF C5 DA 9C D2 BD DF EE FF",
+    "translation": "ดับเบิลแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D0C",
+    "weapon_ids": [
+      39
+    ],
+    "source": "ハイパ－ビ－ムサ－ベル",
+    "source_hex": "BE 93 C0 11 C2 11 CF A4 11 C8 DA FF",
+    "translation": "ไฮเปอร์บีมเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EBB",
+    "weapon_ids": [
+      40,
+      94,
+      97,
+      98,
+      158,
+      235,
+      240,
+      335,
+      339,
+      471,
+      514,
+      521,
+      523,
+      526,
+      559,
+      644
+    ],
+    "source": "ミサイル",
+    "source_hex": "CE A4 93 DA FF",
+    "translation": "มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D18",
+    "weapon_ids": [
+      41
+    ],
+    "source": "ハイメガキャノン<MAP_L><MAP_R><B>",
+    "source_hex": "BE 93 D0 9B 9C D2 BD DF EC ED EE FF",
+    "translation": "ไฮเมก้าแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D24",
+    "weapon_ids": [
+      42
+    ],
+    "source": "ビ－ムキャノン<B>",
+    "source_hex": "C2 11 CF 9C D2 BD DF EE FF",
+    "translation": "บีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D2D",
+    "weapon_ids": [
+      43
+    ],
+    "source": "フィンファンネル",
+    "source_hex": "C4 92 DF C4 90 DF BC DA FF",
+    "translation": "ฟินฟันเนล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D36",
+    "weapon_ids": [
+      44
+    ],
+    "source": "メガマシンキャノン",
+    "source_hex": "D0 9B CD A6 DF 9C D2 BD DF FF",
+    "translation": "เมก้าแมชชีนแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D40",
+    "weapon_ids": [
+      45
+    ],
+    "source": "ヴェスバ－<B>",
+    "source_hex": "E0 96 A8 BF 11 EE FF",
+    "translation": "เวสเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D47",
+    "weapon_ids": [
+      46
+    ],
+    "source": "ガトリングガン",
+    "source_hex": "9B B7 D9 DF 9F 9B DF FF",
+    "translation": "แกตลิงกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D4F",
+    "weapon_ids": [
+      47
+    ],
+    "source": "アトミックバズ－カ<MAP_L><MAP_R>",
+    "source_hex": "91 B7 CE B2 9E BF A9 11 9A EC ED FF",
+    "translation": "อะตอมมิกบาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D5B",
+    "weapon_ids": [
+      48,
+      510
+    ],
+    "source": "メガビ－ム砲<B>",
+    "source_hex": "D0 9B C2 11 CF F0 AE EE FF",
+    "translation": "ปืนใหญ่บีมเมก้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7D64",
+    "weapon_ids": [
+      49
+    ],
+    "source": "大型ビ－ムサ－ベル",
+    "source_hex": "F0 16 F0 8E C2 11 CF A4 11 C8 DA FF",
+    "translation": "บีมเซเบอร์ใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7D70",
+    "weapon_ids": [
+      50
+    ],
+    "source": "フォ－ルディングバズ－カ",
+    "source_hex": "C4 98 11 DA B6 92 DF 9F BF A9 11 9A FF",
+    "translation": "โฟลดิงบาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D7D",
+    "weapon_ids": [
+      51
+    ],
+    "source": "爆導索<MAP_L><MAP_R>",
+    "source_hex": "F0 E3 F2 11 F3 21 EC ED FF",
+    "translation": "สายระเบิด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7D86",
+    "weapon_ids": [
+      52
+    ],
+    "source": "集束ミサイル",
+    "source_hex": "F1 F5 F1 D7 CE A4 93 DA FF",
+    "translation": "มิสไซล์รวมกลุ่ม",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7D8F",
+    "weapon_ids": [
+      53
+    ],
+    "source": "マイクロミサイル<MAP_L><MAP_R>",
+    "source_hex": "CD 93 9E DC CE A4 93 DA EC ED FF",
+    "translation": "ไมโครมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7D9A",
+    "weapon_ids": [
+      54
+    ],
+    "source": "２４０ミリキャノン",
+    "source_hex": "32 34 30 CE D9 9C D2 BD DF FF",
+    "translation": "แคนนอน240มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7DA4",
+    "weapon_ids": [
+      55
+    ],
+    "source": "１２０ミリキャノン",
+    "source_hex": "31 32 30 CE D9 9C D2 BD DF FF",
+    "translation": "แคนนอน120มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7DAE",
+    "weapon_ids": [
+      56
+    ],
+    "source": "ボップミサイル",
+    "source_hex": "CB B2 C6 CE A4 93 DA FF",
+    "translation": "ป๊อปมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DB6",
+    "weapon_ids": [
+      57
+    ],
+    "source": "小型ミサイル",
+    "source_hex": "F0 19 F0 8E CE A4 93 DA FF",
+    "translation": "มิสไซล์เล็ก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88AB",
+    "weapon_ids": [
+      58,
+      405
+    ],
+    "source": "破壊光線",
+    "source_hex": "F0 1C F0 B2 F0 83 F0 B3 FF",
+    "translation": "ลำแสงทำลาย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7DBF",
+    "weapon_ids": [
+      59
+    ],
+    "source": "ベガトロンビ－ム",
+    "source_hex": "C8 9B B7 DC DF C2 11 CF FF",
+    "translation": "เวกาตรอนบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DC8",
+    "weapon_ids": [
+      60
+    ],
+    "source": "ハンドグレネイド<P>",
+    "source_hex": "BE DF B8 9F DB BC 93 B8 EF FF",
+    "translation": "แฮนด์เกรเนด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DD2",
+    "weapon_ids": [
+      61
+    ],
+    "source": "ロ－ズカッタ－",
+    "source_hex": "DC 11 A9 9A B2 AE 11 FF",
+    "translation": "โรสคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DDA",
+    "weapon_ids": [
+      62
+    ],
+    "source": "ゲッタ－レザ－",
+    "source_hex": "A1 B2 AE 11 DB A5 11 FF",
+    "translation": "เก็ตเตอร์เลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DE2",
+    "weapon_ids": [
+      63,
+      622
+    ],
+    "source": "ゲッタ－トマホ－ク",
+    "source_hex": "A1 B2 AE 11 B7 CD CA 11 9E FF",
+    "translation": "เก็ตเตอร์โทมาฮอว์ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DEC",
+    "weapon_ids": [
+      64,
+      623
+    ],
+    "source": "トマホ－クブ－メラン<P>",
+    "source_hex": "B7 CD CA 11 9E C5 11 D0 D8 DF EF FF",
+    "translation": "โทมาฮอว์กบูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7DF8",
+    "weapon_ids": [
+      65,
+      66,
+      624
+    ],
+    "source": "ゲッタ－ビ－ム",
+    "source_hex": "A1 B2 AE 11 C2 11 CF FF",
+    "translation": "เก็ตเตอร์บีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E00",
+    "weapon_ids": [
+      67
+    ],
+    "source": "ゲッタ－ア－ム",
+    "source_hex": "A1 B2 AE 11 91 11 CF FF",
+    "translation": "เก็ตเตอร์อาร์ม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E08",
+    "weapon_ids": [
+      68,
+      626
+    ],
+    "source": "ゲッタ－ドリル",
+    "source_hex": "A1 B2 AE 11 B8 D9 DA FF",
+    "translation": "เก็ตเตอร์ดริล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E10",
+    "weapon_ids": [
+      69
+    ],
+    "source": "ドリルスト－ム",
+    "source_hex": "B8 D9 DA A8 B7 11 CF FF",
+    "translation": "ดริลสตอร์ม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E18",
+    "weapon_ids": [
+      70
+    ],
+    "source": "ドリルパンチ",
+    "source_hex": "B8 D9 DA C0 DF B0 FF",
+    "translation": "ดริลพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E1F",
+    "weapon_ids": [
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      560
+    ],
+    "source": "格闘",
+    "source_hex": "F2 A2 F0 53 FF",
+    "translation": "โจมตีประชิด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7E24",
+    "weapon_ids": [
+      80,
+      627,
+      631
+    ],
+    "source": "ゲッタ－ミサイル",
+    "source_hex": "A1 B2 AE 11 CE A4 93 DA FF",
+    "translation": "เก็ตเตอร์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E2D",
+    "weapon_ids": [
+      81
+    ],
+    "source": "スピンカッタ－",
+    "source_hex": "A8 C3 DF 9A B2 AE 11 FF",
+    "translation": "สปินคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E35",
+    "weapon_ids": [
+      82
+    ],
+    "source": "ダブルトマホ－ク",
+    "source_hex": "AF C5 DA B7 CD CA 11 9E FF",
+    "translation": "ดับเบิลโทมาฮอว์ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E3E",
+    "weapon_ids": [
+      83
+    ],
+    "source": "ダブルトマホ－クブ－メラン<P>",
+    "source_hex": "AF C5 DA B7 CD CA 11 9E C5 11 D0 D8 DF EF FF",
+    "translation": "โทมาฮอว์กบูมเมอแรงคู่",
+    "method": "glossary+compact_double_suffix"
+  },
+  {
+    "source_pointer": "0x7E4D",
+    "weapon_ids": [
+      84
+    ],
+    "source": "シャインスパ－ク",
+    "source_hex": "A6 D2 93 DF A8 C0 11 9E FF",
+    "translation": "ไชน์สปาร์ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E56",
+    "weapon_ids": [
+      85
+    ],
+    "source": "ドリルア－ム",
+    "source_hex": "B8 D9 DA 91 11 CF FF",
+    "translation": "ดริลอาร์ม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E5D",
+    "weapon_ids": [
+      86
+    ],
+    "source": "ライガ－ミサイル",
+    "source_hex": "D8 93 9B 11 CE A4 93 DA FF",
+    "translation": "ไลเกอร์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E66",
+    "weapon_ids": [
+      87
+    ],
+    "source": "チェ－ンアタック",
+    "source_hex": "B0 96 11 DF 91 AE B2 9E FF",
+    "translation": "เชนแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E6F",
+    "weapon_ids": [
+      88
+    ],
+    "source": "ゲッタ－サイクロン",
+    "source_hex": "A1 B2 AE 11 A4 93 9E DC DF FF",
+    "translation": "เก็ตเตอร์ไซโคลน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E79",
+    "weapon_ids": [
+      89
+    ],
+    "source": "ストロングミサイル",
+    "source_hex": "A8 B7 DC DF 9F CE A4 93 DA FF",
+    "translation": "สตรองมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E83",
+    "weapon_ids": [
+      90
+    ],
+    "source": "冷凍ビ－ム",
+    "source_hex": "F0 BA F0 BB C2 11 CF FF",
+    "translation": "บีมเยือกแข็ง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7E8B",
+    "weapon_ids": [
+      91,
+      340
+    ],
+    "source": "光子力ビ－ム<B>",
+    "source_hex": "F0 83 F0 84 F0 2C C2 11 CF EE FF",
+    "translation": "บีมโฟตอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7E96",
+    "weapon_ids": [
+      92
+    ],
+    "source": "ロケットパンチ<P>",
+    "source_hex": "DC A0 B2 B7 C0 DF B0 EF FF",
+    "translation": "ร็อคเก็ตพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7E9F",
+    "weapon_ids": [
+      93
+    ],
+    "source": "アイアンカッタ－<P>",
+    "source_hex": "91 93 91 DF 9A B2 AE 11 EF FF",
+    "translation": "ไอรอนคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EA9",
+    "weapon_ids": [
+      95
+    ],
+    "source": "ダブルミサイル",
+    "source_hex": "AF C5 DA CE A4 93 DA FF",
+    "translation": "ดับเบิลมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EB1",
+    "weapon_ids": [
+      96
+    ],
+    "source": "アフロダイミサイル",
+    "source_hex": "91 C4 DC AF 93 CE A4 93 DA FF",
+    "translation": "อโฟรไดท์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EC0",
+    "weapon_ids": [
+      99,
+      100
+    ],
+    "source": "ドリルミサイル",
+    "source_hex": "B8 D9 DA CE A4 93 DA FF",
+    "translation": "ดริลมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EC8",
+    "weapon_ids": [
+      101
+    ],
+    "source": "ルストハリケ－ン",
+    "source_hex": "DA A8 B7 BE D9 A0 11 DF FF",
+    "translation": "รัสต์เฮอริเคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7ED1",
+    "weapon_ids": [
+      102
+    ],
+    "source": "ブレストファイヤ－",
+    "source_hex": "C5 DB A8 B7 C4 90 93 D3 11 FF",
+    "translation": "เบรสต์ไฟเออร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EDB",
+    "weapon_ids": [
+      103
+    ],
+    "source": "スクランダ－カッタ－",
+    "source_hex": "A8 9E D8 DF AF 11 9A B2 AE 11 FF",
+    "translation": "สแครนเดอร์คัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EE6",
+    "weapon_ids": [
+      104
+    ],
+    "source": "サザンクロスナイフ<P>",
+    "source_hex": "A4 A5 DF 9E DC A8 B9 93 C4 EF FF",
+    "translation": "เซาเทิร์นครอสไนฟ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EF1",
+    "weapon_ids": [
+      105
+    ],
+    "source": "ニ－インパルスキック",
+    "source_hex": "BA 11 93 DF C0 DA A8 9C B2 9E FF",
+    "translation": "นีอิมพัลส์คิก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7EFC",
+    "weapon_ids": [
+      106
+    ],
+    "source": "バックスピンキック",
+    "source_hex": "BF B2 9E A8 C3 DF 9C B2 9E FF",
+    "translation": "แบ็กสปินคิก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F06",
+    "weapon_ids": [
+      107
+    ],
+    "source": "マジンガ－ブレ－ド",
+    "source_hex": "CD A7 DF 9B 11 C5 DB 11 B8 FF",
+    "translation": "ดาบมาชินก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F10",
+    "weapon_ids": [
+      108
+    ],
+    "source": "スクランブルカッタ－",
+    "source_hex": "A8 9E D8 DF C5 DA 9A B2 AE 11 FF",
+    "translation": "สแครมเบิลคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F1B",
+    "weapon_ids": [
+      109
+    ],
+    "source": "ネ－ブルミサイル",
+    "source_hex": "BC 11 C5 DA CE A4 93 DA FF",
+    "translation": "เนเบิลมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F24",
+    "weapon_ids": [
+      110
+    ],
+    "source": "グレ－トタイフ－ン",
+    "source_hex": "9F DB 11 B7 AE 93 C4 11 DF FF",
+    "translation": "เกรทไต้ฝุ่น",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F2E",
+    "weapon_ids": [
+      111
+    ],
+    "source": "グレ－トブ－メラン",
+    "source_hex": "9F DB 11 B7 C5 11 D0 D8 DF FF",
+    "translation": "เกรทบูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F38",
+    "weapon_ids": [
+      112
+    ],
+    "source": "アトミックパンチ<P>",
+    "source_hex": "91 B7 CE B2 9E C0 DF B0 EF FF",
+    "translation": "อะตอมมิกพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F42",
+    "weapon_ids": [
+      113
+    ],
+    "source": "ドリルプレッシャ－パンチ<P>",
+    "source_hex": "B8 D9 DA C6 DB B2 A6 D2 11 C0 DF B0 EF FF",
+    "translation": "ดริลเพรสเชอร์พันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F50",
+    "weapon_ids": [
+      114
+    ],
+    "source": "ブレストバ－ン",
+    "source_hex": "C5 DB A8 B7 BF 11 DF FF",
+    "translation": "เบรสต์เบิร์น",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F58",
+    "weapon_ids": [
+      115
+    ],
+    "source": "サンダ－ブレ－ク",
+    "source_hex": "A4 DF AF 11 C5 DB 11 9E FF",
+    "translation": "ธันเดอร์เบรก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F61",
+    "weapon_ids": [
+      116,
+      515
+    ],
+    "source": "ハンドビ－ム<B>",
+    "source_hex": "BE DF B8 C2 11 CF EE FF",
+    "translation": "แฮนด์บีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F69",
+    "weapon_ids": [
+      117
+    ],
+    "source": "ショルダ－ブ－メラン",
+    "source_hex": "A6 D6 DA AF 11 C5 11 D0 D8 DF FF",
+    "translation": "โชลเดอร์บูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F74",
+    "weapon_ids": [
+      118,
+      315
+    ],
+    "source": "反重力スト－ム",
+    "source_hex": "F0 65 F0 B7 F0 2C A8 B7 11 CF FF",
+    "translation": "พายุต้านแรงโน้มถ่วง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x7F7F",
+    "weapon_ids": [
+      119
+    ],
+    "source": "ダブルハ－ケン",
+    "source_hex": "AF C5 DA BE 11 A0 DF FF",
+    "translation": "ดับเบิลฮาร์เคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F87",
+    "weapon_ids": [
+      120,
+      652
+    ],
+    "source": "スクリュ－クラッシャ－<P>",
+    "source_hex": "A8 9E D9 D4 11 9E D8 B2 A6 D2 11 EF FF",
+    "translation": "สกรูครัชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F94",
+    "weapon_ids": [
+      121
+    ],
+    "source": "スペ－スサンダ－",
+    "source_hex": "A8 C9 11 A8 A4 DF AF 11 FF",
+    "translation": "สเปซธันเดอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7F9D",
+    "weapon_ids": [
+      122
+    ],
+    "source": "スピンソ－サ－",
+    "source_hex": "A8 C3 DF AC 11 A4 11 FF",
+    "translation": "สปินซอเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FA5",
+    "weapon_ids": [
+      123
+    ],
+    "source": "スピンドリル",
+    "source_hex": "A8 C3 DF B8 D9 DA FF",
+    "translation": "สปินดริล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FAC",
+    "weapon_ids": [
+      124
+    ],
+    "source": "メルトシャワ－",
+    "source_hex": "D0 DA B7 A6 D2 DD 11 FF",
+    "translation": "เมลต์ชาวเวอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FB4",
+    "weapon_ids": [
+      125
+    ],
+    "source": "サイクロンビ－ム<B>",
+    "source_hex": "A4 93 9E DC DF C2 11 CF EE FF",
+    "translation": "ไซโคลนบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FBE",
+    "weapon_ids": [
+      126
+    ],
+    "source": "ダブルカッタ－",
+    "source_hex": "AF C5 DA 9A B2 AE 11 FF",
+    "translation": "ดับเบิลคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FC6",
+    "weapon_ids": [
+      127
+    ],
+    "source": "スパ－クボンバ－<B>",
+    "source_hex": "A8 C0 11 9E CB DF BF 11 EE FF",
+    "translation": "สปาร์กบอมเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FD0",
+    "weapon_ids": [
+      128
+    ],
+    "source": "ドリルアタック",
+    "source_hex": "B8 D9 DA 91 AE B2 9E FF",
+    "translation": "ดริลแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FD8",
+    "weapon_ids": [
+      129
+    ],
+    "source": "マリンミサイル",
+    "source_hex": "CD D9 DF CE A4 93 DA FF",
+    "translation": "มารีนมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FE0",
+    "weapon_ids": [
+      130
+    ],
+    "source": "マリンカッタ－",
+    "source_hex": "CD D9 DF 9A B2 AE 11 FF",
+    "translation": "มารีนคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FE8",
+    "weapon_ids": [
+      131
+    ],
+    "source": "ダイアナンミサイル",
+    "source_hex": "AF 93 91 B9 DF CE A4 93 DA FF",
+    "translation": "ไดอานามิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FF2",
+    "weapon_ids": [
+      132
+    ],
+    "source": "スカ－レットビ－ム<B>",
+    "source_hex": "A8 9A 11 DB B2 B7 C2 11 CF EE FF",
+    "translation": "สการ์เล็ตบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x7FFD",
+    "weapon_ids": [
+      133
+    ],
+    "source": "ボロットパンチ",
+    "source_hex": "CB DC B2 B7 C0 DF B0 FF",
+    "translation": "โบร็อตพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8005",
+    "weapon_ids": [
+      134
+    ],
+    "source": "スペシャルボロットパンチ",
+    "source_hex": "A8 C9 A6 D2 DA CB DC B2 B7 C0 DF B0 FF",
+    "translation": "สเปเชียลโบร็อตพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8012",
+    "weapon_ids": [
+      135
+    ],
+    "source": "スペシャルＤＸボロットパンチ",
+    "source_hex": "A8 C9 A6 D2 DA 19 2D CB DC B2 B7 C0 DF B0 FF",
+    "translation": "สเปเชียลDXโบร็อตพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8021",
+    "weapon_ids": [
+      136
+    ],
+    "source": "光子力ミサイル",
+    "source_hex": "F0 83 F0 84 F0 2C CE A4 93 DA FF",
+    "translation": "มิสไซล์โฟตอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x802C",
+    "weapon_ids": [
+      137
+    ],
+    "source": "フィンガ－ミサイル<P>",
+    "source_hex": "C4 92 DF 9B 11 CE A4 93 DA EF FF",
+    "translation": "ฟิงเกอร์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8037",
+    "weapon_ids": [
+      138
+    ],
+    "source": "３０ミリマシンガン",
+    "source_hex": "33 30 CE D9 CD A6 DF 9B DF FF",
+    "translation": "ปืนกล30มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8041",
+    "weapon_ids": [
+      139
+    ],
+    "source": "スカイリッパ－<P>",
+    "source_hex": "A8 9A 93 D9 B2 C0 11 EF FF",
+    "translation": "สกายริปเปอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x804A",
+    "weapon_ids": [
+      140
+    ],
+    "source": "ドスブレッシャ－",
+    "source_hex": "B8 A8 C5 DB B2 A6 D2 11 FF",
+    "translation": "ดอสเบรชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8053",
+    "weapon_ids": [
+      141
+    ],
+    "source": "マグネレ－ザ－",
+    "source_hex": "CD 9F BC DB 11 A5 11 FF",
+    "translation": "แมกเนเลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x805B",
+    "weapon_ids": [
+      142,
+      152
+    ],
+    "source": "ロックファイタ－",
+    "source_hex": "DC B2 9E C4 90 93 AE 11 FF",
+    "translation": "ร็อกไฟเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8064",
+    "weapon_ids": [
+      143
+    ],
+    "source": "エレクトロダ－ト",
+    "source_hex": "97 DB 9E B7 DC AF 11 B7 FF",
+    "translation": "อิเล็กโทรดาร์ต",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x806D",
+    "weapon_ids": [
+      144,
+      153
+    ],
+    "source": "マグネクロ－",
+    "source_hex": "CD 9F BC 9E DC 11 FF",
+    "translation": "แมกเนคลอว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8074",
+    "weapon_ids": [
+      145,
+      154
+    ],
+    "source": "アトミックバ－ナ－",
+    "source_hex": "91 B7 CE B2 9E BF 11 B9 11 FF",
+    "translation": "อะตอมมิกเบิร์นเนอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x807E",
+    "weapon_ids": [
+      146
+    ],
+    "source": "アンカ－ナックル",
+    "source_hex": "91 DF 9A 11 B9 B2 9E DA FF",
+    "translation": "แองเคอร์นัคเคิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8087",
+    "weapon_ids": [
+      147
+    ],
+    "source": "３８０ミリ格車砲",
+    "source_hex": "33 38 30 CE D9 F0 52 F0 24 F0 AE FF",
+    "translation": "ปืนรถถัง380มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8093",
+    "weapon_ids": [
+      148
+    ],
+    "source": "メカニフィクサ－",
+    "source_hex": "D0 9A BA C4 92 9E A4 11 FF",
+    "translation": "เมคานิฟิกเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x809C",
+    "weapon_ids": [
+      149,
+      181,
+      508
+    ],
+    "source": "爆雷",
+    "source_hex": "F0 E3 F4 2F FF",
+    "translation": "ระเบิดน้ำลึก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x80A1",
+    "weapon_ids": [
+      150
+    ],
+    "source": "クラフトドリル",
+    "source_hex": "9E D8 C4 B7 B8 D9 DA FF",
+    "translation": "คราฟต์ดริล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80A9",
+    "weapon_ids": [
+      151
+    ],
+    "source": "バトルリタ－ン<P>",
+    "source_hex": "BF B7 DA D9 AE 11 DF EF FF",
+    "translation": "แบตเทิลรีเทิร์น",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80B2",
+    "weapon_ids": [
+      155
+    ],
+    "source": "バトルガレッガ－",
+    "source_hex": "BF B7 DA 9B DB B2 9B 11 FF",
+    "translation": "แบตเทิลกาเร็กเกอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80BB",
+    "weapon_ids": [
+      156
+    ],
+    "source": "超電磁クレ－ン",
+    "source_hex": "F0 4B F0 4C F0 4D 9E DB 11 DF FF",
+    "translation": "เครนแม่เหล็กไฟฟ้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x80C6",
+    "weapon_ids": [
+      157
+    ],
+    "source": "スプリングクラッシャ－",
+    "source_hex": "A8 C6 D9 DF 9F 9E D8 B2 A6 D2 11 FF",
+    "translation": "สปริงครัชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80D2",
+    "weapon_ids": [
+      159
+    ],
+    "source": "超電磁ヨ－ヨ－",
+    "source_hex": "F0 4B F0 4C F0 4D D7 11 D7 11 FF",
+    "translation": "โยโย่แม่เหล็กไฟฟ้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x80DD",
+    "weapon_ids": [
+      160
+    ],
+    "source": "ツインランサ－",
+    "source_hex": "B3 93 DF D8 DF A4 11 FF",
+    "translation": "ทวินแลนเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80E5",
+    "weapon_ids": [
+      161
+    ],
+    "source": "Ｖレ－ザ－",
+    "source_hex": "2B DB 11 A5 11 FF",
+    "translation": "Vเลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80EB",
+    "weapon_ids": [
+      162
+    ],
+    "source": "バトルチェ－ンソ－",
+    "source_hex": "BF B7 DA B0 96 11 DF AC 11 FF",
+    "translation": "แบตเทิลเชนซอว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80F5",
+    "weapon_ids": [
+      163
+    ],
+    "source": "ビッグブラスト",
+    "source_hex": "C2 B2 9F C5 D8 A8 B7 FF",
+    "translation": "บิ๊กบลาสต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x80FD",
+    "weapon_ids": [
+      164
+    ],
+    "source": "ビッグブラスト・ディバイダ－",
+    "source_hex": "C2 B2 9F C5 D8 A8 B7 3B B6 92 BF 93 AF 11 FF",
+    "translation": "บิ๊กบลาสต์ดิไวเดอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x810C",
+    "weapon_ids": [
+      165
+    ],
+    "source": "超電磁スパ－ク",
+    "source_hex": "F0 4B F0 4C F0 4D A8 C0 11 9E FF",
+    "translation": "สปาร์กแม่เหล็กไฟฟ้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8117",
+    "weapon_ids": [
+      166
+    ],
+    "source": "超電磁スピン",
+    "source_hex": "F0 4B F0 4C F0 4D A8 C3 DF FF",
+    "translation": "สปินแม่เหล็กไฟฟ้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8121",
+    "weapon_ids": [
+      167
+    ],
+    "source": "ゴッドブレイカ－",
+    "source_hex": "A3 B2 B8 C5 DB 93 9A 11 FF",
+    "translation": "ก็อดเบรกเกอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x812A",
+    "weapon_ids": [
+      168
+    ],
+    "source": "ゴッドミサイル",
+    "source_hex": "A3 B2 B8 CE A4 93 DA FF",
+    "translation": "ก็อดมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8132",
+    "weapon_ids": [
+      169
+    ],
+    "source": "ゴッドブ－メラン<P>",
+    "source_hex": "A3 B2 B8 C5 11 D0 D8 DF EF FF",
+    "translation": "ก็อดบูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x813C",
+    "weapon_ids": [
+      170
+    ],
+    "source": "ゴッドサンダ－",
+    "source_hex": "A3 B2 B8 A4 DF AF 11 FF",
+    "translation": "ก็อดธันเดอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8144",
+    "weapon_ids": [
+      171
+    ],
+    "source": "ゴッドアロ－",
+    "source_hex": "A3 B2 B8 91 DC 11 FF",
+    "translation": "ก็อดแอร์โรว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x814B",
+    "weapon_ids": [
+      172
+    ],
+    "source": "ゴッドゴ－ガン",
+    "source_hex": "A3 B2 B8 A3 11 9B DF FF",
+    "translation": "ก็อดโกกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8153",
+    "weapon_ids": [
+      173
+    ],
+    "source": "ゴッドプレッシャ－",
+    "source_hex": "A3 B2 B8 C6 DB B2 A6 D2 11 FF",
+    "translation": "ก็อดเพรสเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x815D",
+    "weapon_ids": [
+      174
+    ],
+    "source": "ゴ－ガンソ－ド",
+    "source_hex": "A3 11 9B DF AC 11 B8 FF",
+    "translation": "โกกันซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8165",
+    "weapon_ids": [
+      175
+    ],
+    "source": "エネルギ－カッタ－",
+    "source_hex": "97 BC DA 9D 11 9A B2 AE 11 FF",
+    "translation": "เอนเนอร์จีคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x816F",
+    "weapon_ids": [
+      176
+    ],
+    "source": "ゴッドアルファ<P>",
+    "source_hex": "A3 B2 B8 91 DA C4 90 EF FF",
+    "translation": "ก็อดอัลฟา",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8178",
+    "weapon_ids": [
+      177
+    ],
+    "source": "ゴッドバ－ド",
+    "source_hex": "A3 B2 B8 BF 11 B8 FF",
+    "translation": "ก็อดเบิร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x817F",
+    "weapon_ids": [
+      178
+    ],
+    "source": "ゴッドボイス",
+    "source_hex": "A3 B2 B8 CB 93 A8 FF",
+    "translation": "ก็อดวอยซ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8186",
+    "weapon_ids": [
+      179
+    ],
+    "source": "２０ミリバルカン",
+    "source_hex": "32 30 CE D9 BF DA 9A DF FF",
+    "translation": "วัลแคน20มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x818F",
+    "weapon_ids": [
+      180
+    ],
+    "source": "フットカッタ－",
+    "source_hex": "C4 B2 B7 9A B2 AE 11 FF",
+    "translation": "ฟุตคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8197",
+    "weapon_ids": [
+      182
+    ],
+    "source": "真空回し蹴り",
+    "source_hex": "F1 D2 F0 B6 F0 71 56 F4 01 89 FF",
+    "translation": "เตะหมุนสุญญากาศ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x81A2",
+    "weapon_ids": [
+      183
+    ],
+    "source": "スネ－クロック<P>",
+    "source_hex": "A8 BC 11 9E DC B2 9E EF FF",
+    "translation": "สเนกล็อก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81AB",
+    "weapon_ids": [
+      184
+    ],
+    "source": "ファイブシュ－タ－<P>",
+    "source_hex": "C4 90 93 C5 A6 D4 11 AE 11 EF FF",
+    "translation": "ไฟฟ์ชูตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81B6",
+    "weapon_ids": [
+      185
+    ],
+    "source": "クロスブ－メラン<P>",
+    "source_hex": "9E DC A8 C5 11 D0 D8 DF EF FF",
+    "translation": "ครอสบูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81C0",
+    "weapon_ids": [
+      186
+    ],
+    "source": "ダイモガン",
+    "source_hex": "AF 93 D1 9B DF FF",
+    "translation": "ไดโมกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81C6",
+    "weapon_ids": [
+      187
+    ],
+    "source": "ダイモシャフト",
+    "source_hex": "AF 93 D1 A6 D2 C4 B7 FF",
+    "translation": "ไดโมชาฟต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81CE",
+    "weapon_ids": [
+      188
+    ],
+    "source": "ドリルアンカ－",
+    "source_hex": "B8 D9 DA 91 DF 9A 11 FF",
+    "translation": "ดริลแองเคอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81D6",
+    "weapon_ids": [
+      189
+    ],
+    "source": "三竜棍",
+    "source_hex": "F0 11 F0 04 F4 02 FF",
+    "translation": "กระบองสามมังกร",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x81DD",
+    "weapon_ids": [
+      190
+    ],
+    "source": "双竜剣",
+    "source_hex": "F3 BB F0 04 F0 20 FF",
+    "translation": "ดาบคู่มังกร",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x81E4",
+    "weapon_ids": [
+      191
+    ],
+    "source": "必殺烈風正拳突き",
+    "source_hex": "F0 89 F0 8A F3 E0 F3 16 F0 7F F2 24 F0 3B 4C FF",
+    "translation": "หมัดลมกรดพิฆาต",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8206",
+    "weapon_ids": [
+      192
+    ],
+    "source": "ダイタ－ンザンバ－",
+    "source_hex": "AF 93 AE 11 DF A5 DF BF 11 FF",
+    "translation": "ไดตานซัมเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8210",
+    "weapon_ids": [
+      193
+    ],
+    "source": "ダイタ－ンハンマ－",
+    "source_hex": "AF 93 AE 11 DF BE DF CD 11 FF",
+    "translation": "ไดตานแฮมเมอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x821A",
+    "weapon_ids": [
+      194
+    ],
+    "source": "ダイタ－ンウェッブ<P>",
+    "source_hex": "AF 93 AE 11 DF 95 96 B2 C5 EF FF",
+    "translation": "ไดตานเว็บ",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8225",
+    "weapon_ids": [
+      195
+    ],
+    "source": "ビッグウェッブ",
+    "source_hex": "C2 B2 9F 95 96 B2 C5 FF",
+    "translation": "บิ๊กเว็บ",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x822D",
+    "weapon_ids": [
+      196
+    ],
+    "source": "ダイタ－ンミサイル",
+    "source_hex": "AF 93 AE 11 DF CE A4 93 DA FF",
+    "translation": "ไดตานมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8237",
+    "weapon_ids": [
+      197
+    ],
+    "source": "ダイタ－ンキャノン",
+    "source_hex": "AF 93 AE 11 DF 9C D2 BD DF FF",
+    "translation": "ไดตานแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8241",
+    "weapon_ids": [
+      198
+    ],
+    "source": "サンレ－ザ－",
+    "source_hex": "A4 DF DB 11 A5 11 FF",
+    "translation": "ซันเลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8248",
+    "weapon_ids": [
+      199
+    ],
+    "source": "サンアタック",
+    "source_hex": "A4 DF 91 AE B2 9E FF",
+    "translation": "ซันแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x824F",
+    "weapon_ids": [
+      200
+    ],
+    "source": "ロケット砲",
+    "source_hex": "DC A0 B2 B7 F0 AE FF",
+    "translation": "ปืนใหญ่ร็อกเก็ต",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8256",
+    "weapon_ids": [
+      201
+    ],
+    "source": "ダイタ－ンミサイル",
+    "source_hex": "AF 93 AE 11 DF CE A4 93 DA FF",
+    "translation": "ไดตานมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8260",
+    "weapon_ids": [
+      202,
+      524
+    ],
+    "source": "爆弾",
+    "source_hex": "F0 E3 F0 A3 FF",
+    "translation": "ระเบิด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8265",
+    "weapon_ids": [
+      203
+    ],
+    "source": "バ－ドガン",
+    "source_hex": "BF 11 B8 9B DF FF",
+    "translation": "เบิร์ดกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x826B",
+    "weapon_ids": [
+      204
+    ],
+    "source": "大型ミサイル",
+    "source_hex": "F0 16 F0 8E CE A4 93 DA FF",
+    "translation": "มิสไซล์ใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8274",
+    "weapon_ids": [
+      205
+    ],
+    "source": "トレンブルホ－ン",
+    "source_hex": "B7 DB DF C5 DA CA 11 DF FF",
+    "translation": "เทรมเบิลฮอร์น",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x827D",
+    "weapon_ids": [
+      206
+    ],
+    "source": "ザンボマグナム",
+    "source_hex": "A5 DF CB CD 9F B9 CF FF",
+    "translation": "ซัมโบแม็กนัม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8285",
+    "weapon_ids": [
+      207
+    ],
+    "source": "ザンボライフル",
+    "source_hex": "A5 DF CB D8 93 C4 DA FF",
+    "translation": "ซัมโบไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x828D",
+    "weapon_ids": [
+      208
+    ],
+    "source": "クラッシャ－ドリル",
+    "source_hex": "9E D8 B2 A6 D2 11 B8 D9 DA FF",
+    "translation": "ครัชเชอร์ดริล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8297",
+    "weapon_ids": [
+      209
+    ],
+    "source": "ア－ムパンチ<P>",
+    "source_hex": "91 11 CF C0 DF B0 EF FF",
+    "translation": "อาร์มพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x829F",
+    "weapon_ids": [
+      210
+    ],
+    "source": "ビッグキャノン",
+    "source_hex": "C2 B2 9F 9C D2 BD DF FF",
+    "translation": "บิ๊กแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82A7",
+    "weapon_ids": [
+      211
+    ],
+    "source": "ブルミサイル",
+    "source_hex": "C5 DA CE A4 93 DA FF",
+    "translation": "บูลมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82AE",
+    "weapon_ids": [
+      212
+    ],
+    "source": "ビッグミサイル",
+    "source_hex": "C2 B2 9F CE A4 93 DA FF",
+    "translation": "บิ๊กมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82B6",
+    "weapon_ids": [
+      213
+    ],
+    "source": "ベ－スレ－ザ－",
+    "source_hex": "C8 11 A8 DB 11 A5 11 FF",
+    "translation": "เบสเลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82BE",
+    "weapon_ids": [
+      214
+    ],
+    "source": "熱線砲",
+    "source_hex": "F0 B4 F0 B3 F0 AE FF",
+    "translation": "ปืนใหญ่ลำแสงร้อน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x82C5",
+    "weapon_ids": [
+      215
+    ],
+    "source": "ベ－スミサイル",
+    "source_hex": "C8 11 A8 CE A4 93 DA FF",
+    "translation": "เบสมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82CD",
+    "weapon_ids": [
+      216
+    ],
+    "source": "ザンボットグラップ",
+    "source_hex": "A5 DF CB B2 B7 9F D8 B2 C6 FF",
+    "translation": "ซัมบ็อตแกรป",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82D7",
+    "weapon_ids": [
+      217
+    ],
+    "source": "ザンボットブロ－",
+    "source_hex": "A5 DF CB B2 B7 C5 DC 11 FF",
+    "translation": "ซัมบ็อตโบลว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82E0",
+    "weapon_ids": [
+      218
+    ],
+    "source": "ザンボットバスタ－<P>",
+    "source_hex": "A5 DF CB B2 B7 BF A8 AE 11 EF FF",
+    "translation": "ซัมบ็อตบัสเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82EB",
+    "weapon_ids": [
+      219
+    ],
+    "source": "ザンボットカッタ－",
+    "source_hex": "A5 DF CB B2 B7 9A B2 AE 11 FF",
+    "translation": "ซัมบ็อตคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82F5",
+    "weapon_ids": [
+      220
+    ],
+    "source": "バスタ－ミサイル",
+    "source_hex": "BF A8 AE 11 CE A4 93 DA FF",
+    "translation": "บัสเตอร์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x82FE",
+    "weapon_ids": [
+      221
+    ],
+    "source": "ム－ンアタック",
+    "source_hex": "CF 11 DF 91 AE B2 9E FF",
+    "translation": "มูนแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8306",
+    "weapon_ids": [
+      222
+    ],
+    "source": "イオン砲",
+    "source_hex": "93 99 DF F0 AE FF",
+    "translation": "ปืนใหญ่ไอออน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x830C",
+    "weapon_ids": [
+      223,
+      224,
+      227
+    ],
+    "source": "ワイヤ－クロ－",
+    "source_hex": "DD 93 D3 11 9E DC 11 FF",
+    "translation": "ไวเออร์คลอว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8314",
+    "weapon_ids": [
+      225
+    ],
+    "source": "ドライシュトラ－ル",
+    "source_hex": "B8 D8 93 A6 D4 B7 D8 11 DA FF",
+    "translation": "ไดรชตราล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x831E",
+    "weapon_ids": [
+      226
+    ],
+    "source": "エレメンタルフュ－ジョン",
+    "source_hex": "97 DB D0 DF AE DA C4 D4 11 A7 D6 DF FF",
+    "translation": "เอลิเมนทัลฟิวชัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x832B",
+    "weapon_ids": [
+      228,
+      229,
+      231
+    ],
+    "source": "オ－ラソ－ド",
+    "source_hex": "99 11 D8 AC 11 B8 FF",
+    "translation": "ออร่าซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8332",
+    "weapon_ids": [
+      230
+    ],
+    "source": "ブラスナックル<P>",
+    "source_hex": "C5 D8 A8 B9 B2 9E DA EF FF",
+    "translation": "บราสนัคเคิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8341",
+    "weapon_ids": [
+      232,
+      234,
+      651
+    ],
+    "source": "オ－ラショット",
+    "source_hex": "99 11 D8 A6 D6 B2 B7 FF",
+    "translation": "ออร่าช็อต",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x833B",
+    "weapon_ids": [
+      233
+    ],
+    "source": "イビルアイ",
+    "source_hex": "93 C2 DA 91 93 FF",
+    "translation": "อีวิลอาย",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8349",
+    "weapon_ids": [
+      236
+    ],
+    "source": "オ－ラ斬り",
+    "source_hex": "99 11 D8 F3 97 89 FF",
+    "translation": "ออร่าฟัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8350",
+    "weapon_ids": [
+      237
+    ],
+    "source": "ハイパ－オ－ラ斬り",
+    "source_hex": "BE 93 C0 11 99 11 D8 F3 97 89 FF",
+    "translation": "ดาบไฮเปอร์ออร่า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8364",
+    "weapon_ids": [
+      238,
+      241,
+      242,
+      649,
+      650
+    ],
+    "source": "オ－ラキャノン",
+    "source_hex": "99 11 D8 9C D2 BD DF FF",
+    "translation": "ออร่าแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x835B",
+    "weapon_ids": [
+      239
+    ],
+    "source": "散弾バズ－カ",
+    "source_hex": "F0 AB F0 A3 BF A9 11 9A FF",
+    "translation": "บาซูก้าลูกปราย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x836C",
+    "weapon_ids": [
+      243
+    ],
+    "source": "オ－ラビ－ムソ－ド",
+    "source_hex": "99 11 D8 C2 11 CF AC 11 B8 FF",
+    "translation": "ออร่าบีมซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8376",
+    "weapon_ids": [
+      244
+    ],
+    "source": "オ－ラソ－ドライフル",
+    "source_hex": "99 11 D8 AC 11 B8 D8 93 C4 DA FF",
+    "translation": "ออร่าซอร์ดไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8381",
+    "weapon_ids": [
+      245
+    ],
+    "source": "コスモビ－ム<B>",
+    "source_hex": "A2 A8 D1 C2 11 CF EE FF",
+    "translation": "คอสโมบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8389",
+    "weapon_ids": [
+      246
+    ],
+    "source": "ネオ・プラズマカッタ－",
+    "source_hex": "BC 99 3B C6 D8 A9 CD 9A B2 AE 11 FF",
+    "translation": "นีโอพลาสมาคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8395",
+    "weapon_ids": [
+      247
+    ],
+    "source": "レッドインパルサ－",
+    "source_hex": "DB B2 B8 93 DF C0 DA A4 11 FF",
+    "translation": "เรดอิมพัลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x839F",
+    "weapon_ids": [
+      248
+    ],
+    "source": "ホルスタ－ビ－ム<B>",
+    "source_hex": "CA DA A8 AE 11 C2 11 CF EE FF",
+    "translation": "โฮลสเตอร์บีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83A9",
+    "weapon_ids": [
+      249
+    ],
+    "source": "メガビ－ムライフル<B>",
+    "source_hex": "D0 9B C2 11 CF D8 93 C4 DA EE FF",
+    "translation": "เมก้าบีมไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83B4",
+    "weapon_ids": [
+      250
+    ],
+    "source": "スラッシュリッパ－",
+    "source_hex": "A8 D8 B2 A6 D4 D9 B2 C0 11 FF",
+    "translation": "สแลชริปเปอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83BE",
+    "weapon_ids": [
+      251
+    ],
+    "source": "ゴ－サ－ベル",
+    "source_hex": "A3 11 A4 11 C8 DA FF",
+    "translation": "โกเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83C5",
+    "weapon_ids": [
+      252
+    ],
+    "source": "ゴ－スティック<P>",
+    "source_hex": "A3 11 A8 B5 92 B2 9E EF FF",
+    "translation": "โกสติก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83CE",
+    "weapon_ids": [
+      253
+    ],
+    "source": "スペ－スバズ－カ",
+    "source_hex": "A8 C9 11 A8 BF A9 11 9A FF",
+    "translation": "สเปซบาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83D7",
+    "weapon_ids": [
+      254
+    ],
+    "source": "ゴ－フラッシャ－",
+    "source_hex": "A3 11 C4 D8 B2 A6 D2 11 FF",
+    "translation": "โกแฟลชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83E0",
+    "weapon_ids": [
+      257
+    ],
+    "source": "パルスレ－ザ－",
+    "source_hex": "C0 DA A8 DB 11 A5 11 FF",
+    "translation": "พัลส์เลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83E8",
+    "weapon_ids": [
+      258,
+      516
+    ],
+    "source": "ビ－ムランチャ－<B>",
+    "source_hex": "C2 11 CF D8 DF B0 D2 11 EE FF",
+    "translation": "บีมลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x83F2",
+    "weapon_ids": [
+      259
+    ],
+    "source": "連装キャノン砲",
+    "source_hex": "F1 25 F0 62 9C D2 BD DF F0 AE FF",
+    "translation": "ปืนใหญ่แคนนอนแฝด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x83FD",
+    "weapon_ids": [
+      260
+    ],
+    "source": "断空砲",
+    "source_hex": "F1 71 F0 B6 F0 AE FF",
+    "translation": "ปืนใหญ่ดันคู",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8404",
+    "weapon_ids": [
+      261
+    ],
+    "source": "断空剣",
+    "source_hex": "F1 71 F0 B6 F0 20 FF",
+    "translation": "ดาบดันคู",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x840B",
+    "weapon_ids": [
+      262
+    ],
+    "source": "２７ミリ機関砲",
+    "source_hex": "32 37 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล27มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8416",
+    "weapon_ids": [
+      263
+    ],
+    "source": "４連ミサイル",
+    "source_hex": "34 F1 25 CE A4 93 DA FF",
+    "translation": "มิสไซล์4นัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x841E",
+    "weapon_ids": [
+      264
+    ],
+    "source": "突撃",
+    "source_hex": "F0 3B F0 55 FF",
+    "translation": "พุ่งชน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8423",
+    "weapon_ids": [
+      265
+    ],
+    "source": "キャノン砲",
+    "source_hex": "9C D2 BD DF F0 AE FF",
+    "translation": "ปืนแคนนอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x842A",
+    "weapon_ids": [
+      266
+    ],
+    "source": "高収束ビ－ム速射砲<B>",
+    "source_hex": "F0 B8 F2 0C F1 D7 C2 11 CF F0 67 F0 5A F0 AE EE FF",
+    "translation": "ปืนบีมรวมแสงยิงเร็ว",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x843B",
+    "weapon_ids": [
+      267
+    ],
+    "source": "５連ミサイルランチャ－",
+    "source_hex": "35 F1 25 CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์5นัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8448",
+    "weapon_ids": [
+      268,
+      270,
+      620
+    ],
+    "source": "かみつき",
+    "source_hex": "4A 7E 63 4C FF",
+    "translation": "กัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x844D",
+    "weapon_ids": [
+      269
+    ],
+    "source": "１０５ミリライフル砲",
+    "source_hex": "31 30 35 CE D9 D8 93 C4 DA F0 AE FF",
+    "translation": "ปืนไรเฟิล105มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8459",
+    "weapon_ids": [
+      271
+    ],
+    "source": "２００ミリ榴弾砲",
+    "source_hex": "32 30 30 CE D9 F4 03 F0 A3 F0 AE FF",
+    "translation": "ปืนใหญ่200มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8465",
+    "weapon_ids": [
+      272
+    ],
+    "source": "４連大口径砲",
+    "source_hex": "34 F1 25 F0 16 F2 F0 F0 D2 F0 AE FF",
+    "translation": "ปืนใหญ่4ลำกล้อง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8471",
+    "weapon_ids": [
+      273
+    ],
+    "source": "４連対空パルスレ－ザ－",
+    "source_hex": "34 F1 25 F0 B5 F0 B6 C0 DA A8 DB 11 A5 11 FF",
+    "translation": "พัลส์เลเซอร์AA4ท่อ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8480",
+    "weapon_ids": [
+      274
+    ],
+    "source": "ロケットランチャ－",
+    "source_hex": "DC A0 B2 B7 D8 DF B0 D2 11 FF",
+    "translation": "ร็อกเก็ตลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x848A",
+    "weapon_ids": [
+      275
+    ],
+    "source": "牙",
+    "source_hex": "F4 04 FF",
+    "translation": "เขี้ยว",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x848D",
+    "weapon_ids": [
+      276
+    ],
+    "source": "ギガソ－トカノン",
+    "source_hex": "9D 9B AC 11 B7 9A BD DF FF",
+    "translation": "กิกาซอร์ตแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8496",
+    "weapon_ids": [
+      277
+    ],
+    "source": "ビ－ムキャノン",
+    "source_hex": "C2 11 CF 9C D2 BD DF FF",
+    "translation": "บีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x849E",
+    "weapon_ids": [
+      278
+    ],
+    "source": "メガビ－ムキャノン",
+    "source_hex": "D0 9B C2 11 CF 9C D2 BD DF FF",
+    "translation": "เมก้าบีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84A8",
+    "weapon_ids": [
+      279
+    ],
+    "source": "リニアレ－ルガン",
+    "source_hex": "D9 BA 91 DB 11 DA 9B DF FF",
+    "translation": "ลิเนียร์เรลกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84C2",
+    "weapon_ids": [
+      280
+    ],
+    "source": "ディスカッタ－",
+    "source_hex": "B6 92 A8 9A B2 AE 11 FF",
+    "translation": "ดิสคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84CA",
+    "weapon_ids": [
+      281
+    ],
+    "source": "カロリックミサイル",
+    "source_hex": "9A DC D9 B2 9E CE A4 93 DA FF",
+    "translation": "คาลอริกมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84D4",
+    "weapon_ids": [
+      282
+    ],
+    "source": "サイフラッシュ<MAP_L><MAP_R><P>",
+    "source_hex": "A4 93 C4 D8 B2 A6 D4 EC ED EF FF",
+    "translation": "ไซแฟลช",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84DF",
+    "weapon_ids": [
+      283,
+      299,
+      305,
+      308
+    ],
+    "source": "ハイファミリア",
+    "source_hex": "BE 93 C4 90 CE D9 91 FF",
+    "translation": "ไฮแฟมิเลีย",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84E7",
+    "weapon_ids": [
+      284
+    ],
+    "source": "アカシックバスタ－",
+    "source_hex": "91 9A A6 B2 9E BF A8 AE 11 FF",
+    "translation": "อะคาชิกบัสเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84F1",
+    "weapon_ids": [
+      285
+    ],
+    "source": "コスモノヴァ",
+    "source_hex": "A2 A8 D1 BD E0 90 FF",
+    "translation": "คอสโมโนวา",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x84F8",
+    "weapon_ids": [
+      286
+    ],
+    "source": "グランワ－ムソ－ド",
+    "source_hex": "9F D8 DF DD 11 CF AC 11 B8 FF",
+    "translation": "แกรนด์เวิร์มซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8502",
+    "weapon_ids": [
+      287
+    ],
+    "source": "グラビトロンカノン<MAP_L><MAP_R>",
+    "source_hex": "9F D8 C2 B7 DC DF 9A BD DF EC ED FF",
+    "translation": "กราวิตรอนคานอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x850E",
+    "weapon_ids": [
+      288
+    ],
+    "source": "ワ－ムスマッシャ－",
+    "source_hex": "DD 11 CF A8 CD B2 A6 D2 11 FF",
+    "translation": "เวิร์มสแมชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8518",
+    "weapon_ids": [
+      289,
+      314
+    ],
+    "source": "ブラックホ－ルクラスタ－",
+    "source_hex": "C5 D8 B2 9E CA 11 DA 9E D8 A8 AE 11 FF",
+    "translation": "แบล็กโฮลคลัสเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8525",
+    "weapon_ids": [
+      290
+    ],
+    "source": "縮退砲",
+    "source_hex": "F2 53 F1 96 F0 AE FF",
+    "translation": "ปืนใหญ่ยุบตัว",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x852C",
+    "weapon_ids": [
+      291,
+      440
+    ],
+    "source": "ディバインア－ム",
+    "source_hex": "B6 92 BF 93 DF 91 11 CF FF",
+    "translation": "ดิไวน์อาร์ม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8535",
+    "weapon_ids": [
+      292
+    ],
+    "source": "サイコブラスタ－<MAP_L><MAP_R><P>",
+    "source_hex": "A4 93 A2 C5 D8 A8 AE 11 EC ED EF FF",
+    "translation": "ไซโคบลาสเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8541",
+    "weapon_ids": [
+      293
+    ],
+    "source": "クロスソ－サ－",
+    "source_hex": "9E DC A8 AC 11 A4 11 FF",
+    "translation": "ครอสซอเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8549",
+    "weapon_ids": [
+      294
+    ],
+    "source": "ハイパ－ビ－ムキャノン<B>",
+    "source_hex": "BE 93 C0 11 C2 11 CF 9C D2 BD DF EE FF",
+    "translation": "ไฮเปอร์บีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8556",
+    "weapon_ids": [
+      295,
+      441
+    ],
+    "source": "クロスマッシャ－",
+    "source_hex": "9E DC A8 CD B2 A6 D2 11 FF",
+    "translation": "ครอสสแมชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x855F",
+    "weapon_ids": [
+      296
+    ],
+    "source": "超振動拳",
+    "source_hex": "F0 4B F2 51 F0 51 F2 24 FF",
+    "translation": "หมัดสั่นสะเทือน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8568",
+    "weapon_ids": [
+      297
+    ],
+    "source": "リニアレ－ルガン",
+    "source_hex": "D9 BA 91 DB 11 DA 9B DF FF",
+    "translation": "ลิเนียร์เรลกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8571",
+    "weapon_ids": [
+      298
+    ],
+    "source": "対空ミサイル",
+    "source_hex": "F0 B5 F0 B6 CE A4 93 DA FF",
+    "translation": "มิสไซล์ต่อต้านอากาศ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x857A",
+    "weapon_ids": [
+      300
+    ],
+    "source": "レゾナンスクエイク<MAP_L><MAP_R>",
+    "source_hex": "DB AD B9 DF A8 9E 97 93 9E EC ED FF",
+    "translation": "เรโซแนนซ์เควก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8586",
+    "weapon_ids": [
+      301
+    ],
+    "source": "フレイムカッタ－",
+    "source_hex": "C4 DB 93 CF 9A B2 AE 11 FF",
+    "translation": "เฟลมคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x858F",
+    "weapon_ids": [
+      302
+    ],
+    "source": "パルスレ－ザ－",
+    "source_hex": "C0 DA A8 DB 11 A5 11 FF",
+    "translation": "พัลส์เลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8597",
+    "weapon_ids": [
+      303
+    ],
+    "source": "中性子レ－ザ－",
+    "source_hex": "F0 58 F1 01 F0 84 DB 11 A5 11 FF",
+    "translation": "เลเซอร์นิวตรอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x85A2",
+    "weapon_ids": [
+      304
+    ],
+    "source": "カロリックスマッシュ",
+    "source_hex": "9A DC D9 B2 9E A8 CD B2 A6 D4 FF",
+    "translation": "คาลอริกสแมช",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85AD",
+    "weapon_ids": [
+      306
+    ],
+    "source": "メギドフレイム<MAP_L><MAP_R><P>",
+    "source_hex": "D0 9D B8 C4 DB 93 CF EC ED EF FF",
+    "translation": "เมกิดโดเฟลม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85B8",
+    "weapon_ids": [
+      307
+    ],
+    "source": "グングニ－ル",
+    "source_hex": "9F DF 9F BA 11 DA FF",
+    "translation": "กุงเนียร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85BF",
+    "weapon_ids": [
+      309
+    ],
+    "source": "ハイドロプレッシャ－",
+    "source_hex": "BE 93 B8 DC C6 DB B2 A6 D2 11 FF",
+    "translation": "ไฮโดรเพรสเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85CA",
+    "weapon_ids": [
+      310
+    ],
+    "source": "ケルヴィンブリザ－ド<MAP_L><MAP_R>",
+    "source_hex": "A0 DA E0 92 DF C5 D9 A5 11 B8 EC ED FF",
+    "translation": "เคลวินบลิซซาร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85D7",
+    "weapon_ids": [
+      311
+    ],
+    "source": "プラズマカッタ－",
+    "source_hex": "C6 D8 A9 CD 9A B2 AE 11 FF",
+    "translation": "พลาสมาคัตเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85E0",
+    "weapon_ids": [
+      312
+    ],
+    "source": "スプリットミサイル",
+    "source_hex": "A8 C6 D9 B2 B7 CE A4 93 DA FF",
+    "translation": "สปลิตมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85EA",
+    "weapon_ids": [
+      313
+    ],
+    "source": "ニュ－トロンビ－ム",
+    "source_hex": "BA D4 11 B7 DC DF C2 11 CF FF",
+    "translation": "นิวตรอนบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85F4",
+    "weapon_ids": [
+      316
+    ],
+    "source": "ヒ－トホ－ク",
+    "source_hex": "C1 11 B7 CA 11 9E FF",
+    "translation": "ฮีตฮอว์ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x85FB",
+    "weapon_ids": [
+      317
+    ],
+    "source": "ザクバズ－カ",
+    "source_hex": "A5 9E BF A9 11 9A FF",
+    "translation": "ซาคุบาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8602",
+    "weapon_ids": [
+      318
+    ],
+    "source": "１２０ｍｍマシンガン",
+    "source_hex": "31 32 30 07 07 CD A6 DF 9B DF FF",
+    "translation": "ปืนกล120มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x860D",
+    "weapon_ids": [
+      319
+    ],
+    "source": "ハンドグレネイド<P>",
+    "source_hex": "BE DF B8 9F DB BC 93 B8 EF FF",
+    "translation": "แฮนด์เกรเนด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8617",
+    "weapon_ids": [
+      320,
+      324
+    ],
+    "source": "シュツルムファウスト",
+    "source_hex": "A6 D4 B3 DA CF C4 90 95 A8 B7 FF",
+    "translation": "ชตูร์มเฟาสต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8622",
+    "weapon_ids": [
+      321
+    ],
+    "source": "ヒ－トサ－ベル",
+    "source_hex": "C1 11 B7 A4 11 C8 DA FF",
+    "translation": "ฮีตเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x862A",
+    "weapon_ids": [
+      322
+    ],
+    "source": "拡散ビ－ム砲<B>",
+    "source_hex": "F0 AD F0 AB C2 11 CF F0 AE EE FF",
+    "translation": "ปืนบีมกระจาย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8635",
+    "weapon_ids": [
+      323,
+      350
+    ],
+    "source": "ジャイアントバズ",
+    "source_hex": "A7 D2 93 91 DF B7 BF A9 FF",
+    "translation": "ไจแอนต์บาซ",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x863E",
+    "weapon_ids": [
+      325,
+      326,
+      327,
+      328,
+      329
+    ],
+    "source": "メガ粒子砲<B>",
+    "source_hex": "D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนใหญ่อนุภาคเมก้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8648",
+    "weapon_ids": [
+      330
+    ],
+    "source": "ビット",
+    "source_hex": "C2 B2 B7 FF",
+    "translation": "บิต",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x864C",
+    "weapon_ids": [
+      331
+    ],
+    "source": "海ヘビ",
+    "source_hex": "F0 4F C7 C2 FF",
+    "translation": "งูทะเล",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8651",
+    "weapon_ids": [
+      332
+    ],
+    "source": "大型ビ－ムライフル<B>",
+    "source_hex": "F0 16 F0 8E C2 11 CF D8 93 C4 DA EE FF",
+    "translation": "บีมไรเฟิลใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x84B1",
+    "weapon_ids": [
+      333
+    ],
+    "source": "ビ－ム砲<B>",
+    "source_hex": "C2 11 CF F0 AE EE FF",
+    "translation": "ปืนใหญ่บีม",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x84B8",
+    "weapon_ids": [
+      334
+    ],
+    "source": "ゴッドネロスパンチ",
+    "source_hex": "A3 B2 B8 BC DC A8 C0 DF B0 FF",
+    "translation": "ก็อดเนรอสพันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x865E",
+    "weapon_ids": [
+      336
+    ],
+    "source": "小型メガビ－ム砲<B>",
+    "source_hex": "F0 19 F0 8E D0 9B C2 11 CF F0 AE EE FF",
+    "translation": "ปืนใหญ่เมก้าบีมเล็ก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x866B",
+    "weapon_ids": [
+      337,
+      338
+    ],
+    "source": "拡散メガ粒子砲<B>",
+    "source_hex": "F0 AD F0 AB D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคเมก้ากระจาย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8679",
+    "weapon_ids": [
+      341
+    ],
+    "source": "フェダ－インライフル<B>",
+    "source_hex": "C4 96 AF 11 93 DF D8 93 C4 DA EE FF",
+    "translation": "เฟดาอินไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8685",
+    "weapon_ids": [
+      342
+    ],
+    "source": "クロ－ア－ム",
+    "source_hex": "9E DC 11 91 11 CF FF",
+    "translation": "คลอว์อาร์ม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x868C",
+    "weapon_ids": [
+      343
+    ],
+    "source": "レフレクタ－ビット",
+    "source_hex": "DB C4 DB 9E AE 11 C2 B2 B7 FF",
+    "translation": "รีเฟลกเตอร์บิต",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8696",
+    "weapon_ids": [
+      344
+    ],
+    "source": "サイコミュ式ビ－ムソ－ド",
+    "source_hex": "A4 93 A2 CE D4 F0 D8 C2 11 CF AC 11 B8 FF",
+    "translation": "ดาบบีมไซคอมมิว",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x86A4",
+    "weapon_ids": [
+      345
+    ],
+    "source": "クレイバズ－カ",
+    "source_hex": "9E DB 93 BF A9 11 9A FF",
+    "translation": "เคลย์บาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x86AC",
+    "weapon_ids": [
+      346
+    ],
+    "source": "メガバズ－カランチャ－<MAP_L><MAP_R><B>",
+    "source_hex": "D0 9B BF A9 11 9A D8 DF B0 D2 11 EC ED EE FF",
+    "translation": "เมก้าบาซูก้า",
+    "method": "glossary+compact_overlong"
+  },
+  {
+    "source_pointer": "0x86BB",
+    "weapon_ids": [
+      347
+    ],
+    "source": "ア－ムビ－ムガン<B>",
+    "source_hex": "91 11 CF C2 11 CF 9B DF EE FF",
+    "translation": "อาร์มบีมกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x86C5",
+    "weapon_ids": [
+      348
+    ],
+    "source": "修理装置",
+    "source_hex": "F0 7D F0 DF F0 62 F0 E0 FF",
+    "translation": "ชุดซ่อมแซม",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x86CE",
+    "weapon_ids": [
+      349
+    ],
+    "source": "ショットガン",
+    "source_hex": "A6 D6 B2 B7 9B DF FF",
+    "translation": "ช็อตกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x86D5",
+    "weapon_ids": [
+      351
+    ],
+    "source": "６０ミリ機関砲",
+    "source_hex": "36 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล60มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x86E0",
+    "weapon_ids": [
+      352
+    ],
+    "source": "パンツァ－ファウスト<P>",
+    "source_hex": "C0 DF B3 90 11 C4 90 95 A8 B7 EF FF",
+    "translation": "พันเซอร์เฟาสต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x86EC",
+    "weapon_ids": [
+      353
+    ],
+    "source": "１１０ミリバルカン",
+    "source_hex": "31 31 30 CE D9 BF DA 9A DF FF",
+    "translation": "วัลแคน110มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x86F6",
+    "weapon_ids": [
+      354,
+      368,
+      371,
+      373,
+      532
+    ],
+    "source": "ミサイルポッド",
+    "source_hex": "CE A4 93 DA CC B2 B8 FF",
+    "translation": "มิสไซล์พ็อด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x86FE",
+    "weapon_ids": [
+      355
+    ],
+    "source": "大型メガ粒子砲<B>",
+    "source_hex": "F0 16 F0 8E D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคขนาดใหญ่",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x870C",
+    "weapon_ids": [
+      356
+    ],
+    "source": "プラズマリ－ダ－<MAP_L><MAP_R>",
+    "source_hex": "C6 D8 A9 CD D9 11 AF 11 EC ED FF",
+    "translation": "พลาสมาลีดเดอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8717",
+    "weapon_ids": [
+      357
+    ],
+    "source": "サイコミュ式メガ粒子砲",
+    "source_hex": "A4 93 A2 CE D4 F0 D8 D0 9B F0 AA F0 84 F0 AE FF",
+    "translation": "ปืนอนุภาคเมก้าไซคอมมิว",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8727",
+    "weapon_ids": [
+      358
+    ],
+    "source": "１１０ミリ機関砲",
+    "source_hex": "31 31 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล110มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8733",
+    "weapon_ids": [
+      359
+    ],
+    "source": "偏向メガ粒子砲<B>",
+    "source_hex": "F4 05 F0 A9 D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคเมก้าหักเห",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8741",
+    "weapon_ids": [
+      360
+    ],
+    "source": "有線クロ－ア－ム",
+    "source_hex": "F1 72 F0 B3 9E DC 11 91 11 CF FF",
+    "translation": "แขนกรงเล็บมีสาย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x874C",
+    "weapon_ids": [
+      361
+    ],
+    "source": "大型ミサイルランチャ－",
+    "source_hex": "F0 16 F0 8E CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์ลอนเชอร์ใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x875A",
+    "weapon_ids": [
+      362
+    ],
+    "source": "小型ミサイルランチャ－",
+    "source_hex": "F0 19 F0 8E CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์ลอนเชอร์เล็ก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8768",
+    "weapon_ids": [
+      363
+    ],
+    "source": "メガカノン砲<B>",
+    "source_hex": "D0 9B 9A BD DF F0 AE EE FF",
+    "translation": "ปืนเมก้าแคนนอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8771",
+    "weapon_ids": [
+      364,
+      365,
+      366,
+      367,
+      517,
+      518,
+      519
+    ],
+    "source": "ファンネル",
+    "source_hex": "C4 90 DF BC DA FF",
+    "translation": "ฟันเนล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8777",
+    "weapon_ids": [
+      369
+    ],
+    "source": "フィンガ－ランチャ－",
+    "source_hex": "C4 92 DF 9B 11 D8 DF B0 D2 11 FF",
+    "translation": "ฟิงเกอร์ลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8782",
+    "weapon_ids": [
+      370
+    ],
+    "source": "エネルギ－ガン<B>",
+    "source_hex": "97 BC DA 9D 11 9B DF EE FF",
+    "translation": "เอนเนอร์จีกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x878B",
+    "weapon_ids": [
+      372
+    ],
+    "source": "有線式ビ－ム砲",
+    "source_hex": "F1 72 F0 B3 F0 D8 C2 11 CF F0 AE FF",
+    "translation": "ปืนบีมมีสาย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8797",
+    "weapon_ids": [
+      374
+    ],
+    "source": "ビ－ムトマホ－ク",
+    "source_hex": "C2 11 CF B7 CD CA 11 9E FF",
+    "translation": "บีมโทมาฮอว์ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87A0",
+    "weapon_ids": [
+      375
+    ],
+    "source": "ハンドガン",
+    "source_hex": "BE DF B8 9B DF FF",
+    "translation": "แฮนด์กัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87A6",
+    "weapon_ids": [
+      376
+    ],
+    "source": "トライブレ－ド<P>",
+    "source_hex": "B7 D8 93 C5 DB 11 B8 EF FF",
+    "translation": "ไตรเบลด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87AF",
+    "weapon_ids": [
+      377
+    ],
+    "source": "ビ－ムキャノン<B>",
+    "source_hex": "C2 11 CF 9C D2 BD DF EE FF",
+    "translation": "บีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87B8",
+    "weapon_ids": [
+      378,
+      642,
+      646
+    ],
+    "source": "ビ－ムカノン<B>",
+    "source_hex": "C2 11 CF 9A BD DF EE FF",
+    "translation": "บีมคานอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87C0",
+    "weapon_ids": [
+      379
+    ],
+    "source": "対艦ミサイル",
+    "source_hex": "F0 B5 F0 96 CE A4 93 DA FF",
+    "translation": "มิสไซล์ต่อต้านยาน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x87C9",
+    "weapon_ids": [
+      380,
+      643,
+      647
+    ],
+    "source": "インコム",
+    "source_hex": "93 DF A2 CF FF",
+    "translation": "อินคอม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87CE",
+    "weapon_ids": [
+      381
+    ],
+    "source": "メガランチャ－<B>",
+    "source_hex": "D0 9B D8 DF B0 D2 11 EE FF",
+    "translation": "เมก้าลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87D7",
+    "weapon_ids": [
+      382
+    ],
+    "source": "メガビ－ムカノン<B>",
+    "source_hex": "D0 9B C2 11 CF 9A BD DF EE FF",
+    "translation": "เมก้าบีมคานอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87E1",
+    "weapon_ids": [
+      383
+    ],
+    "source": "ハイパ－メガ粒子砲<B>",
+    "source_hex": "BE 93 C0 11 D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคเมก้าไฮเปอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87FF",
+    "weapon_ids": [
+      384
+    ],
+    "source": "ビ－ムソ－ドアックス",
+    "source_hex": "C2 11 CF AC 11 B8 91 B2 9E A8 FF",
+    "translation": "บีมซอร์ดแอกซ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x880A",
+    "weapon_ids": [
+      385,
+      513
+    ],
+    "source": "ビ－ムマシンガン<B>",
+    "source_hex": "C2 11 CF CD A6 DF 9B DF EE FF",
+    "translation": "บีมแมชชีนกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8814",
+    "weapon_ids": [
+      386
+    ],
+    "source": "シュツルムファウスト",
+    "source_hex": "A6 D4 B3 DA CF C4 90 95 A8 B7 FF",
+    "translation": "ชตูร์มเฟาสต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x881F",
+    "weapon_ids": [
+      387
+    ],
+    "source": "メガガトリングガン",
+    "source_hex": "D0 9B 9B B7 D9 DF 9F 9B DF FF",
+    "translation": "เมก้าแกตลิงกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8829",
+    "weapon_ids": [
+      388
+    ],
+    "source": "ビ－ムアサルトライフル<B>",
+    "source_hex": "C2 11 CF 91 A4 DA B7 D8 93 C4 DA EE FF",
+    "translation": "บีมแอสซอลต์ไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8836",
+    "weapon_ids": [
+      389
+    ],
+    "source": "ビ－ムトマホ－ク",
+    "source_hex": "C2 11 CF B7 CD CA 11 9E FF",
+    "translation": "บีมโทมาฮอว์ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x883F",
+    "weapon_ids": [
+      390
+    ],
+    "source": "ビ－ムショットライフル<B>",
+    "source_hex": "C2 11 CF A6 D6 B2 B7 D8 93 C4 DA EE FF",
+    "translation": "บีมช็อตไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x884C",
+    "weapon_ids": [
+      391
+    ],
+    "source": "有線式メガア－ム砲",
+    "source_hex": "F1 72 F0 B3 F0 D8 D0 9B 91 11 CF F0 AE FF",
+    "translation": "ปืนเมก้าอาร์มมีสาย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x885A",
+    "weapon_ids": [
+      392
+    ],
+    "source": "ショットランサ－",
+    "source_hex": "A6 D6 B2 B7 D8 DF A4 11 FF",
+    "translation": "ช็อตแลนเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8863",
+    "weapon_ids": [
+      393
+    ],
+    "source": "テンタクラ－ロッド",
+    "source_hex": "B5 DF AE 9E D8 11 DC B2 B8 FF",
+    "translation": "เทนทาเคิลร็อด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x886D",
+    "weapon_ids": [
+      394,
+      503
+    ],
+    "source": "メガビ－ムキャノン<B>",
+    "source_hex": "D0 9B C2 11 CF 9C D2 BD DF EE FF",
+    "translation": "เมก้าบีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8878",
+    "weapon_ids": [
+      395
+    ],
+    "source": "バグ",
+    "source_hex": "BF 9F FF",
+    "translation": "บั๊ก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x887B",
+    "weapon_ids": [
+      396,
+      403
+    ],
+    "source": "クロ－",
+    "source_hex": "9E DC 11 FF",
+    "translation": "คลอว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x887F",
+    "weapon_ids": [
+      397
+    ],
+    "source": "ミニミサイル",
+    "source_hex": "CE BA CE A4 93 DA FF",
+    "translation": "มินิมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8886",
+    "weapon_ids": [
+      398,
+      536
+    ],
+    "source": "マグマ弾",
+    "source_hex": "CD 9F CD F0 A3 FF",
+    "translation": "กระสุนแมกมา",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x888C",
+    "weapon_ids": [
+      399
+    ],
+    "source": "体当たり",
+    "source_hex": "F0 74 F1 97 5E 89 FF",
+    "translation": "พุ่งชน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8893",
+    "weapon_ids": [
+      400
+    ],
+    "source": "ハンドソルド",
+    "source_hex": "BE DF B8 AC DA B8 FF",
+    "translation": "แฮนด์ซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x889A",
+    "weapon_ids": [
+      401
+    ],
+    "source": "ロケット弾",
+    "source_hex": "DC A0 B2 B7 F0 A3 FF",
+    "translation": "จรวด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88A1",
+    "weapon_ids": [
+      402
+    ],
+    "source": "大砲",
+    "source_hex": "F0 16 F0 AE FF",
+    "translation": "ปืนใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88A6",
+    "weapon_ids": [
+      404,
+      425,
+      522
+    ],
+    "source": "レ－ザ－",
+    "source_hex": "DB 11 A5 11 FF",
+    "translation": "เลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88B4",
+    "weapon_ids": [
+      406
+    ],
+    "source": "かま",
+    "source_hex": "4A 7D FF",
+    "translation": "เคียว",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88B7",
+    "weapon_ids": [
+      407
+    ],
+    "source": "ブ－メラン",
+    "source_hex": "C5 11 D0 D8 DF FF",
+    "translation": "บูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88BD",
+    "weapon_ids": [
+      408,
+      525
+    ],
+    "source": "ムチ",
+    "source_hex": "CF B0 FF",
+    "translation": "แส้",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88C0",
+    "weapon_ids": [
+      409
+    ],
+    "source": "ピストル",
+    "source_hex": "C3 A8 B7 DA FF",
+    "translation": "พิสทอล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88C5",
+    "weapon_ids": [
+      410
+    ],
+    "source": "ライフル",
+    "source_hex": "D8 93 C4 DA FF",
+    "translation": "ไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88CA",
+    "weapon_ids": [
+      411
+    ],
+    "source": "スピア",
+    "source_hex": "A8 C3 91 FF",
+    "translation": "สเปียร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88CE",
+    "weapon_ids": [
+      412,
+      609
+    ],
+    "source": "ハリケ－ン",
+    "source_hex": "BE D9 A0 11 DF FF",
+    "translation": "เฮอริเคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88D4",
+    "weapon_ids": [
+      413
+    ],
+    "source": "磁力光線",
+    "source_hex": "F0 4D F0 2C F0 83 F0 B3 FF",
+    "translation": "ลำแสงแม่เหล็ก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88DD",
+    "weapon_ids": [
+      414
+    ],
+    "source": "ショックビ－ム",
+    "source_hex": "A6 D6 B2 9E C2 11 CF FF",
+    "translation": "ช็อกบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88E5",
+    "weapon_ids": [
+      415
+    ],
+    "source": "うずまき",
+    "source_hex": "45 59 7D 4C FF",
+    "translation": "วังวน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88EA",
+    "weapon_ids": [
+      416
+    ],
+    "source": "リング光線",
+    "source_hex": "D9 DF 9F F0 83 F0 B3 FF",
+    "translation": "ลำแสงวงแหวน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88F2",
+    "weapon_ids": [
+      417
+    ],
+    "source": "魚雷",
+    "source_hex": "F2 4C F4 2F FF",
+    "translation": "ตอร์ปิโด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x88F7",
+    "weapon_ids": [
+      418
+    ],
+    "source": "ドリル",
+    "source_hex": "B8 D9 DA FF",
+    "translation": "ดริล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x88FB",
+    "weapon_ids": [
+      419
+    ],
+    "source": "振動波",
+    "source_hex": "F2 51 F0 51 F1 44 FF",
+    "translation": "คลื่นสั่นสะเทือน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8902",
+    "weapon_ids": [
+      420
+    ],
+    "source": "くちばし",
+    "source_hex": "4E 60 6F 56 FF",
+    "translation": "จงอย",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8907",
+    "weapon_ids": [
+      421,
+      430
+    ],
+    "source": "ベガトロンビ－ム砲",
+    "source_hex": "C8 9B B7 DC DF C2 11 CF F0 AE FF",
+    "translation": "ปืนใหญ่บีมเวกาตรอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8912",
+    "weapon_ids": [
+      422
+    ],
+    "source": "ビ－ムバルカン<B>",
+    "source_hex": "C2 11 CF BF DA 9A DF EE FF",
+    "translation": "บีมวัลแคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x891B",
+    "weapon_ids": [
+      423
+    ],
+    "source": "巨大ベガトロンビ－ム砲",
+    "source_hex": "F0 A2 F0 16 C8 9B B7 DC DF C2 11 CF F0 AE FF",
+    "translation": "ปืนใหญ่บีมเวกาตรอนยักษ์",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x892A",
+    "weapon_ids": [
+      424
+    ],
+    "source": "スピンアタック",
+    "source_hex": "A8 C3 DF 91 AE B2 9E FF",
+    "translation": "สปินแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8932",
+    "weapon_ids": [
+      426,
+      634
+    ],
+    "source": "火炎",
+    "source_hex": "F0 DC F0 23 FF",
+    "translation": "เปลวไฟ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8937",
+    "weapon_ids": [
+      427
+    ],
+    "source": "電磁もり",
+    "source_hex": "F0 4C F0 4D 81 89 FF",
+    "translation": "ฉมวกแม่เหล็กไฟฟ้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x893E",
+    "weapon_ids": [
+      428
+    ],
+    "source": "冷凍光線",
+    "source_hex": "F0 BA F0 BB F0 83 F0 B3 FF",
+    "translation": "ลำแสงเยือกแข็ง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8947",
+    "weapon_ids": [
+      429
+    ],
+    "source": "大型ミサイル",
+    "source_hex": "F0 16 F0 8E CE A4 93 DA FF",
+    "translation": "มิสไซล์ใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8950",
+    "weapon_ids": [
+      431
+    ],
+    "source": "ライトニングアロ－",
+    "source_hex": "D8 93 B7 BA DF 9F 91 DC 11 FF",
+    "translation": "ไลต์นิงแอร์โรว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x895A",
+    "weapon_ids": [
+      432,
+      433
+    ],
+    "source": "アイアンクロ－",
+    "source_hex": "91 93 91 DF 9E DC 11 FF",
+    "translation": "ไอรอนคลอว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8962",
+    "weapon_ids": [
+      434
+    ],
+    "source": "グラビトンウェ－ブ",
+    "source_hex": "9F D8 C2 B7 DF 95 96 11 C5 FF",
+    "translation": "กราวิตอนเวฟ",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x896C",
+    "weapon_ids": [
+      435
+    ],
+    "source": "超破壊光線",
+    "source_hex": "F0 4B F0 1C F0 B2 F0 83 F0 B3 FF",
+    "translation": "ลำแสงทำลายขั้นสูง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8977",
+    "weapon_ids": [
+      436
+    ],
+    "source": "メガグラビトンウェ－ブ",
+    "source_hex": "D0 9B 9F D8 C2 B7 DF 95 96 11 C5 FF",
+    "translation": "เมก้ากราวิตอนเวฟ",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8983",
+    "weapon_ids": [
+      437,
+      454
+    ],
+    "source": "触手",
+    "source_hex": "F2 8C F1 08 FF",
+    "translation": "หนวด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8988",
+    "weapon_ids": [
+      438
+    ],
+    "source": "超音波",
+    "source_hex": "F0 4B F4 06 F1 44 FF",
+    "translation": "คลื่นอัลตราโซนิก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x898F",
+    "weapon_ids": [
+      439
+    ],
+    "source": "マリンヴォルテックス",
+    "source_hex": "CD D9 DF E0 98 DA B5 B2 9E A8 FF",
+    "translation": "มารีนวอร์เท็กซ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x899A",
+    "weapon_ids": [
+      442,
+      443,
+      444
+    ],
+    "source": "フレイボム<P>",
+    "source_hex": "C4 DB 93 CB CF EF FF",
+    "translation": "เฟลมบอมบ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89A1",
+    "weapon_ids": [
+      445
+    ],
+    "source": "ハンドグレネイド<P>",
+    "source_hex": "BE DF B8 9F DB BC 93 B8 EF FF",
+    "translation": "แฮนด์เกรเนด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89AB",
+    "weapon_ids": [
+      446
+    ],
+    "source": "オ－ラショットア－ム",
+    "source_hex": "99 11 D8 A6 D6 B2 B7 91 11 CF FF",
+    "translation": "ออร่าช็อตอาร์ม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89B6",
+    "weapon_ids": [
+      447
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x89B7",
+    "weapon_ids": [
+      448
+    ],
+    "source": "オ－ラノバ砲<MAP_L><MAP_R>",
+    "source_hex": "99 11 D8 BD BF F0 AE EC ED FF",
+    "translation": "ปืนใหญ่ออร่าโนวา",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x89C1",
+    "weapon_ids": [
+      449
+    ],
+    "source": "ガンテミサイル",
+    "source_hex": "9B DF B5 CE A4 93 DA FF",
+    "translation": "กันเตมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89C9",
+    "weapon_ids": [
+      450
+    ],
+    "source": "セラミックソ－ド",
+    "source_hex": "AA D8 CE B2 9E AC 11 B8 FF",
+    "translation": "เซรามิกซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89D2",
+    "weapon_ids": [
+      451
+    ],
+    "source": "ギルソ－ド",
+    "source_hex": "9D DA AC 11 B8 FF",
+    "translation": "กิลซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89D8",
+    "weapon_ids": [
+      452
+    ],
+    "source": "ギルアロ－",
+    "source_hex": "9D DA 91 DC 11 FF",
+    "translation": "กิลแอร์โรว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89DE",
+    "weapon_ids": [
+      453
+    ],
+    "source": "妖魔サ－ベル",
+    "source_hex": "F2 4F F0 D4 A4 11 C8 DA FF",
+    "translation": "เซเบอร์ปีศาจ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x89E7",
+    "weapon_ids": [
+      455
+    ],
+    "source": "熱線",
+    "source_hex": "F0 B4 F0 B3 FF",
+    "translation": "ลำแสงร้อน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x89EC",
+    "weapon_ids": [
+      456
+    ],
+    "source": "冷凍ガス",
+    "source_hex": "F0 BA F0 BB 9B A8 FF",
+    "translation": "แก๊สเยือกแข็ง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x89F3",
+    "weapon_ids": [
+      457
+    ],
+    "source": "かぎづめ",
+    "source_hex": "4A 4D 64 80 FF",
+    "translation": "กรงเล็บ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x89F8",
+    "weapon_ids": [
+      458
+    ],
+    "source": "シミタ－",
+    "source_hex": "A6 CE AE 11 FF",
+    "translation": "ซิมิทาร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x89FD",
+    "weapon_ids": [
+      459
+    ],
+    "source": "シ－ルドビ－ム<B>",
+    "source_hex": "A6 11 DA B8 C2 11 CF EE FF",
+    "translation": "ชิลด์บีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A06",
+    "weapon_ids": [
+      460
+    ],
+    "source": "ランサ－",
+    "source_hex": "D8 DF A4 11 FF",
+    "translation": "แลนเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A0B",
+    "weapon_ids": [
+      461
+    ],
+    "source": "スペ－スミサイル",
+    "source_hex": "A8 C9 11 A8 CE A4 93 DA FF",
+    "translation": "สเปซมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A14",
+    "weapon_ids": [
+      462
+    ],
+    "source": "バンドック砲",
+    "source_hex": "BF DF B8 B2 9E F0 AE FF",
+    "translation": "ปืนใหญ่บันด็อก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8A1C",
+    "weapon_ids": [
+      463
+    ],
+    "source": "ウイングソ－ド",
+    "source_hex": "95 93 DF 9F AC 11 B8 FF",
+    "translation": "วิงซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A24",
+    "weapon_ids": [
+      464
+    ],
+    "source": "ビッグボウ",
+    "source_hex": "C2 B2 9F CB 95 FF",
+    "translation": "บิ๊กโบว์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A2A",
+    "weapon_ids": [
+      465
+    ],
+    "source": "ホ－ミングミサイル",
+    "source_hex": "CA 11 CE DF 9F CE A4 93 DA FF",
+    "translation": "โฮมมิงมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A34",
+    "weapon_ids": [
+      466
+    ],
+    "source": "ビ－ムキャノン<B>",
+    "source_hex": "C2 11 CF 9C D2 BD DF EE FF",
+    "translation": "บีมแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A3D",
+    "weapon_ids": [
+      467
+    ],
+    "source": "フラッシャ－ビ－ム<B>",
+    "source_hex": "C4 D8 B2 A6 D2 11 C2 11 CF EE FF",
+    "translation": "แฟลชเชอร์บีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A48",
+    "weapon_ids": [
+      468
+    ],
+    "source": "ラム",
+    "source_hex": "D8 CF FF",
+    "translation": "แรม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A4B",
+    "weapon_ids": [
+      469
+    ],
+    "source": "サ－ベル",
+    "source_hex": "A4 11 C8 DA FF",
+    "translation": "เซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A50",
+    "weapon_ids": [
+      470
+    ],
+    "source": "バズ－カ",
+    "source_hex": "BF A9 11 9A FF",
+    "translation": "บาซูก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A55",
+    "weapon_ids": [
+      472
+    ],
+    "source": "反アイザロン粒子砲",
+    "source_hex": "F0 65 91 93 A5 DC DF F0 AA F0 84 F0 AE FF",
+    "translation": "ปืนอนุภาคต้านไอซารอน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8A63",
+    "weapon_ids": [
+      473
+    ],
+    "source": "ハイメガ粒子砲<B>",
+    "source_hex": "BE 93 D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคไฮเมก้า",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x87EF",
+    "weapon_ids": [
+      474
+    ],
+    "source": "ハイパ－メガ粒子砲<MAP_L><MAP_R><B>",
+    "source_hex": "BE 93 C0 11 D0 9B F0 AA F0 84 F0 AE EC ED EE FF",
+    "translation": "ปืนอนุภาคไฮเปอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A6F",
+    "weapon_ids": [
+      475,
+      476,
+      477,
+      478
+    ],
+    "source": "セイバ－",
+    "source_hex": "AA 93 BF 11 FF",
+    "translation": "เซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A74",
+    "weapon_ids": [
+      479,
+      480,
+      481
+    ],
+    "source": "ランサ－",
+    "source_hex": "D8 DF A4 11 FF",
+    "translation": "แลนเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A79",
+    "weapon_ids": [
+      482,
+      483
+    ],
+    "source": "Ｓマイン<P>",
+    "source_hex": "28 CD 93 DF EF FF",
+    "translation": "Sไมน์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A7F",
+    "weapon_ids": [
+      484,
+      485,
+      486,
+      487
+    ],
+    "source": "パワ－ランチャ－<B>",
+    "source_hex": "C0 DD 11 D8 DF B0 D2 11 EE FF",
+    "translation": "พาวเวอร์ลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A89",
+    "weapon_ids": [
+      488,
+      489
+    ],
+    "source": "バスタ－ランチャ－<MAP_L><MAP_R><B>",
+    "source_hex": "BF A8 AE 11 D8 DF B0 D2 11 EC ED EE FF",
+    "translation": "บัสเตอร์ลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A96",
+    "weapon_ids": [
+      490
+    ],
+    "source": "スロウランサ－<P>",
+    "source_hex": "A8 DC 95 D8 DF A4 11 EF FF",
+    "translation": "สโลว์แลนเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8A9F",
+    "weapon_ids": [
+      491
+    ],
+    "source": "サイズ",
+    "source_hex": "A4 93 A9 FF",
+    "translation": "ไซซ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AA3",
+    "weapon_ids": [
+      492
+    ],
+    "source": "ハンドランチャ－<B>",
+    "source_hex": "BE DF B8 D8 DF B0 D2 11 EE FF",
+    "translation": "แฮนด์ลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AAD",
+    "weapon_ids": [
+      493
+    ],
+    "source": "リバ－スボマ－",
+    "source_hex": "D9 BF 11 A8 CB CD 11 FF",
+    "translation": "รีเวิร์สบอมเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AB5",
+    "weapon_ids": [
+      494
+    ],
+    "source": "エネルギ－ボンバ－",
+    "source_hex": "97 BC DA 9D 11 CB DF BF 11 FF",
+    "translation": "เอนเนอร์จีบอมเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8ABF",
+    "weapon_ids": [
+      495
+    ],
+    "source": "サッシュ",
+    "source_hex": "A4 B2 A6 D4 FF",
+    "translation": "แซช",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AC4",
+    "weapon_ids": [
+      496
+    ],
+    "source": "フロッガ－",
+    "source_hex": "C4 DC B2 9B 11 FF",
+    "translation": "ฟร็อกเกอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8ACA",
+    "weapon_ids": [
+      497
+    ],
+    "source": "ロングスピア",
+    "source_hex": "DC DF 9F A8 C3 91 FF",
+    "translation": "ลองสเปียร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AD1",
+    "weapon_ids": [
+      498
+    ],
+    "source": "放電",
+    "source_hex": "F1 81 F0 4C FF",
+    "translation": "ปล่อยไฟฟ้า",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8AD6",
+    "weapon_ids": [
+      499
+    ],
+    "source": "ハンマ－",
+    "source_hex": "BE DF CD 11 FF",
+    "translation": "แฮมเมอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8ADB",
+    "weapon_ids": [
+      500
+    ],
+    "source": "ビ－ムランス",
+    "source_hex": "C2 11 CF D8 DF A8 FF",
+    "translation": "บีมแลนซ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AE2",
+    "weapon_ids": [
+      501
+    ],
+    "source": "ランスミサイル",
+    "source_hex": "D8 DF A8 CE A4 93 DA FF",
+    "translation": "แลนซ์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AEA",
+    "weapon_ids": [
+      502
+    ],
+    "source": "バトルスピア",
+    "source_hex": "BF B7 DA A8 C3 91 FF",
+    "translation": "แบตเทิลสเปียร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8AF1",
+    "weapon_ids": [
+      504
+    ],
+    "source": "大雪山おろし",
+    "source_hex": "F0 16 F4 07 F0 C1 49 8C 56 FF",
+    "translation": "ท่าทุ่มไดเซ็ตสึซัน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8AFB",
+    "weapon_ids": [
+      505
+    ],
+    "source": "補給装置",
+    "source_hex": "F1 DE F1 DF F0 62 F0 E0 FF",
+    "translation": "ชุดเติมเสบียง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B04",
+    "weapon_ids": [
+      506
+    ],
+    "source": "グランダッシャ－",
+    "source_hex": "9F D8 DF AF B2 A6 D2 11 FF",
+    "translation": "แกรนด์แดชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x81F4",
+    "weapon_ids": [
+      507
+    ],
+    "source": "必殺烈風正拳突き改",
+    "source_hex": "F0 89 F0 8A F3 E0 F3 16 F0 7F F2 24 F0 3B 4C F0 4A FF",
+    "translation": "หมัดลมกรดพิฆาตไค",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B0D",
+    "weapon_ids": [
+      509
+    ],
+    "source": "メガ拡散ビ－ム砲<B>",
+    "source_hex": "D0 9B F0 AD F0 AB C2 11 CF F0 AE EE FF",
+    "translation": "ปืนบีมเมก้ากระจาย",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B1A",
+    "weapon_ids": [
+      520
+    ],
+    "source": "メガビ－ムランチャ－<B>",
+    "source_hex": "D0 9B C2 11 CF D8 DF B0 D2 11 EE FF",
+    "translation": "เมก้าบีมลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B26",
+    "weapon_ids": [
+      527
+    ],
+    "source": "マリンビ－ム<B>",
+    "source_hex": "CD D9 DF C2 11 CF EE FF",
+    "translation": "มารีนบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B2E",
+    "weapon_ids": [
+      528,
+      529,
+      530,
+      531
+    ],
+    "source": "オ－ラバルカン",
+    "source_hex": "99 11 D8 BF DA 9A DF FF",
+    "translation": "ออร่าวัลแคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B36",
+    "weapon_ids": [
+      534
+    ],
+    "source": "ヘアミサイル",
+    "source_hex": "C7 91 CE A4 93 DA FF",
+    "translation": "แฮร์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B3D",
+    "weapon_ids": [
+      535
+    ],
+    "source": "妖魔光線",
+    "source_hex": "F2 4F F0 D4 F0 83 F0 B3 FF",
+    "translation": "ลำแสงปีศาจ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B46",
+    "weapon_ids": [
+      537
+    ],
+    "source": "６０ミリ機銃",
+    "source_hex": "36 30 CE D9 F0 E1 F0 E2 FF",
+    "translation": "ปืนกล60มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B4F",
+    "weapon_ids": [
+      538,
+      551,
+      553,
+      554,
+      555
+    ],
+    "source": "メインメガ粒子砲<B>",
+    "source_hex": "D0 93 DF D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคเมก้าหลัก",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B5C",
+    "weapon_ids": [
+      539,
+      552,
+      556,
+      557,
+      558
+    ],
+    "source": "サブメガ粒子砲<B>",
+    "source_hex": "A4 C5 D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคเมก้ารอง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8B68",
+    "weapon_ids": [
+      540
+    ],
+    "source": "１２０ミリ機関砲",
+    "source_hex": "31 32 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล120มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B74",
+    "weapon_ids": [
+      541
+    ],
+    "source": "３０ミリ機銃",
+    "source_hex": "33 30 CE D9 F0 E1 F0 E2 FF",
+    "translation": "ปืนกล30มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B7D",
+    "weapon_ids": [
+      542
+    ],
+    "source": "対空機関砲",
+    "source_hex": "F0 B5 F0 B6 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกลต่อต้านอากาศ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B88",
+    "weapon_ids": [
+      543
+    ],
+    "source": "１２連装ミサイルランチャ－",
+    "source_hex": "31 32 F1 25 F0 62 CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์12นัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8B98",
+    "weapon_ids": [
+      544
+    ],
+    "source": "１５連装ミサイルランチャ－",
+    "source_hex": "31 35 F1 25 F0 62 CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์15นัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BA8",
+    "weapon_ids": [
+      545
+    ],
+    "source": "９０ミリ機関砲",
+    "source_hex": "39 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล90มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BB3",
+    "weapon_ids": [
+      546
+    ],
+    "source": "計都羅睺剣",
+    "source_hex": "F2 68 F1 87 F4 21 F4 2A F0 20 FF",
+    "translation": "ดาบเคย์โตราโก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BBE",
+    "weapon_ids": [
+      547
+    ],
+    "source": "１４０ミリ機関砲",
+    "source_hex": "31 34 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล140มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BCA",
+    "weapon_ids": [
+      548
+    ],
+    "source": "１６０ミリ機関砲",
+    "source_hex": "31 36 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล160มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BD6",
+    "weapon_ids": [
+      549
+    ],
+    "source": "１８０ミリ機関砲",
+    "source_hex": "31 38 30 CE D9 F0 E1 F2 4D F0 AE FF",
+    "translation": "ปืนกล180มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BE2",
+    "weapon_ids": [
+      550
+    ],
+    "source": "２０連装ミサイルランチャ－",
+    "source_hex": "32 30 F1 25 F0 62 CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์20นัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8BF2",
+    "weapon_ids": [
+      561
+    ],
+    "source": "グレ－トブ－スタ－",
+    "source_hex": "9F DB 11 B7 C5 11 A8 AE 11 FF",
+    "translation": "เกรทบูสเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8BFC",
+    "weapon_ids": [
+      562
+    ],
+    "source": "チェ－ンマイン",
+    "source_hex": "B0 96 11 DF CD 93 DF FF",
+    "translation": "เชนไมน์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C04",
+    "weapon_ids": [
+      563,
+      564
+    ],
+    "source": "ハイパ－オ－ラキャノン",
+    "source_hex": "BE 93 C0 11 99 11 D8 9C D2 BD DF FF",
+    "translation": "ไฮเปอร์ออร่าแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C10",
+    "weapon_ids": [
+      565,
+      566
+    ],
+    "source": "レ－ザ－バルカン",
+    "source_hex": "DB 11 A5 11 BF DA 9A DF FF",
+    "translation": "เลเซอร์วัลแคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C19",
+    "weapon_ids": [
+      567
+    ],
+    "source": "ガトリングビ－ム<B>",
+    "source_hex": "9B B7 D9 DF 9F C2 11 CF EE FF",
+    "translation": "แกตลิงบีม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C23",
+    "weapon_ids": [
+      568
+    ],
+    "source": "レ－ザ－ソ－ド",
+    "source_hex": "DB 11 A5 11 AC 11 B8 FF",
+    "translation": "เลเซอร์ซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C2B",
+    "weapon_ids": [
+      569
+    ],
+    "source": "スプレッドミサイル",
+    "source_hex": "A8 C6 DB B2 B8 CE A4 93 DA FF",
+    "translation": "สเปรดมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C35",
+    "weapon_ids": [
+      570
+    ],
+    "source": "メガビ－ムランチャ－<B>",
+    "source_hex": "D0 9B C2 11 CF D8 DF B0 D2 11 EE FF",
+    "translation": "เมก้าบีมลอนเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C41",
+    "weapon_ids": [
+      571
+    ],
+    "source": "大口径ビ－ム砲<B>",
+    "source_hex": "F0 16 F2 F0 F0 D2 C2 11 CF F0 AE EE FF",
+    "translation": "ปืนบีมลำกล้องใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8C4E",
+    "weapon_ids": [
+      572
+    ],
+    "source": "デュアルレ－ザ－ソ－ド",
+    "source_hex": "B6 D4 91 DA DB 11 A5 11 AC 11 B8 FF",
+    "translation": "ดูอัลเลเซอร์ซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C5A",
+    "weapon_ids": [
+      573
+    ],
+    "source": "レ－ザ－ガン",
+    "source_hex": "DB 11 A5 11 9B DF FF",
+    "translation": "เลเซอร์กัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C61",
+    "weapon_ids": [
+      574
+    ],
+    "source": "ダブルキャノン",
+    "source_hex": "AF C5 DA 9C D2 BD DF FF",
+    "translation": "ดับเบิลแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C69",
+    "weapon_ids": [
+      575
+    ],
+    "source": "ダブルバルカン",
+    "source_hex": "AF C5 DA BF DA 9A DF FF",
+    "translation": "ดับเบิลวัลแคน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C71",
+    "weapon_ids": [
+      576
+    ],
+    "source": "イオンビ－ム砲<B>",
+    "source_hex": "93 99 DF C2 11 CF F0 AE EE FF",
+    "translation": "ปืนใหญ่บีมไอออน",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8C7B",
+    "weapon_ids": [
+      577
+    ],
+    "source": "マスドライバ－キャノン",
+    "source_hex": "CD A8 B8 D8 93 BF 11 9C D2 BD DF FF",
+    "translation": "แมสไดรเวอร์แคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C87",
+    "weapon_ids": [
+      578
+    ],
+    "source": "ツインレ－ザ－ソ－ド",
+    "source_hex": "B3 93 DF DB 11 A5 11 AC 11 B8 FF",
+    "translation": "ทวินเลเซอร์ซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C92",
+    "weapon_ids": [
+      579
+    ],
+    "source": "ランチャ－ミサイル",
+    "source_hex": "D8 DF B0 D2 11 CE A4 93 DA FF",
+    "translation": "ลอนเชอร์มิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8C9C",
+    "weapon_ids": [
+      580
+    ],
+    "source": "レ－ザ－キャノン",
+    "source_hex": "DB 11 A5 11 9C D2 BD DF FF",
+    "translation": "เลเซอร์แคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8CA5",
+    "weapon_ids": [
+      581
+    ],
+    "source": "ドライバ－キャノン",
+    "source_hex": "B8 D8 93 BF 11 9C D2 BD DF FF",
+    "translation": "ไดรเวอร์แคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8CAF",
+    "weapon_ids": [
+      582
+    ],
+    "source": "小型ミサイル",
+    "source_hex": "F0 19 F0 8E CE A4 93 DA FF",
+    "translation": "มิสไซล์เล็ก",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8CB8",
+    "weapon_ids": [
+      583
+    ],
+    "source": "大型ミサイル",
+    "source_hex": "F0 16 F0 8E CE A4 93 DA FF",
+    "translation": "มิสไซล์ใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8CC1",
+    "weapon_ids": [
+      584
+    ],
+    "source": "荷電粒子ビ－ム<B>",
+    "source_hex": "F4 29 F0 4C F0 AA F0 84 C2 11 CF EE FF",
+    "translation": "บีมอนุภาคประจุ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8CCE",
+    "weapon_ids": [
+      585
+    ],
+    "source": "６０ミリバルカン",
+    "source_hex": "36 30 CE D9 BF DA 9A DF FF",
+    "translation": "วัลแคน60มม.",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8CD7",
+    "weapon_ids": [
+      586
+    ],
+    "source": "プラズマソ－ド",
+    "source_hex": "C6 D8 A9 CD AC 11 B8 FF",
+    "translation": "พลาสมาซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8CDF",
+    "weapon_ids": [
+      587
+    ],
+    "source": "４連ミサイルランチャ－",
+    "source_hex": "34 F1 25 CE A4 93 DA D8 DF B0 D2 11 FF",
+    "translation": "มิสไซล์4นัด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8CEC",
+    "weapon_ids": [
+      588
+    ],
+    "source": "ロシュセイバ－",
+    "source_hex": "DC A6 D4 AA 93 BF 11 FF",
+    "translation": "โรชเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8CF4",
+    "weapon_ids": [
+      589
+    ],
+    "source": "リ－プスラッシャ－",
+    "source_hex": "D9 11 C6 A8 D8 B2 A6 D2 11 FF",
+    "translation": "ลีปสแลชเชอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8CFE",
+    "weapon_ids": [
+      590
+    ],
+    "source": "ブラックホ－ルキャノン",
+    "source_hex": "C5 D8 B2 9E CA 11 DA 9C D2 BD DF FF",
+    "translation": "แบล็กโฮลแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D0A",
+    "weapon_ids": [
+      591
+    ],
+    "source": "ブ－ストナックル<P>",
+    "source_hex": "C5 11 A8 B7 B9 B2 9E DA EF FF",
+    "translation": "บูสต์นัคเคิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D14",
+    "weapon_ids": [
+      592
+    ],
+    "source": "オメガレ－ザ－",
+    "source_hex": "99 D0 9B DB 11 A5 11 FF",
+    "translation": "โอเมก้าเลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D1C",
+    "weapon_ids": [
+      593
+    ],
+    "source": "ブレイククロス<P>",
+    "source_hex": "C5 DB 93 9E 9E DC A8 EF FF",
+    "translation": "เบรกครอส",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D25",
+    "weapon_ids": [
+      594
+    ],
+    "source": "レ－ザ－スピア",
+    "source_hex": "DB 11 A5 11 A8 C3 91 FF",
+    "translation": "เลเซอร์สเปียร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D2D",
+    "weapon_ids": [
+      595
+    ],
+    "source": "<FB>　めビ－ム",
+    "source_hex": "FB 00 80 C2 11 CF FF",
+    "translation": "<FB>บีม",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8D34",
+    "weapon_ids": [
+      596
+    ],
+    "source": "計都羅睺剣・暗剣殺",
+    "source_hex": "F2 68 F1 87 F4 21 F4 2A F0 20 3B F0 A0 F0 20 F0 8A FF",
+    "translation": "เคย์โตราโก อันเคนซัตสึ",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8D46",
+    "weapon_ids": [
+      597
+    ],
+    "source": "ダブルオメガレ－ザ－",
+    "source_hex": "AF C5 DA 99 D0 9B DB 11 A5 11 FF",
+    "translation": "ดับเบิลโอเมก้าเลเซอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D51",
+    "weapon_ids": [
+      598
+    ],
+    "source": "ビッグミサイル",
+    "source_hex": "C2 B2 9F CE A4 93 DA FF",
+    "translation": "บิ๊กมิสไซล์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D59",
+    "weapon_ids": [
+      599
+    ],
+    "source": "スパイラルアタック",
+    "source_hex": "A8 C0 93 D8 DA 91 AE B2 9E FF",
+    "translation": "สไปรัลแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D63",
+    "weapon_ids": [
+      600
+    ],
+    "source": "オメガキャノン",
+    "source_hex": "99 D0 9B 9C D2 BD DF FF",
+    "translation": "โอเมก้าแคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D6B",
+    "weapon_ids": [
+      601
+    ],
+    "source": "ドリルアタック",
+    "source_hex": "B8 D9 DA 91 AE B2 9E FF",
+    "translation": "ดริลแอทแทค",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D73",
+    "weapon_ids": [
+      602
+    ],
+    "source": "テキサスソ－ド",
+    "source_hex": "B5 9C A4 A8 AC 11 B8 FF",
+    "translation": "เท็กซัสซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D7B",
+    "weapon_ids": [
+      603
+    ],
+    "source": "マックリボルバ－",
+    "source_hex": "CD B2 9E D9 CB DA BF 11 FF",
+    "translation": "แม็กรีวอลเวอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D84",
+    "weapon_ids": [
+      604
+    ],
+    "source": "マックライアット",
+    "source_hex": "CD B2 9E D8 93 91 B2 B7 FF",
+    "translation": "แม็กไรออต",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D8D",
+    "weapon_ids": [
+      605
+    ],
+    "source": "マックライフル",
+    "source_hex": "CD B2 9E D8 93 C4 DA FF",
+    "translation": "แม็กไรเฟิล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8D95",
+    "weapon_ids": [
+      606
+    ],
+    "source": "２連装メガ粒子砲<B>",
+    "source_hex": "32 F1 25 F0 62 D0 9B F0 AA F0 84 F0 AE EE FF",
+    "translation": "ปืนอนุภาคเมก้าแฝด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DA4",
+    "weapon_ids": [
+      607
+    ],
+    "source": "アッザムリ－ダ－<MAP_L><MAP_R>",
+    "source_hex": "91 B2 A5 CF D9 11 AF 11 EC ED FF",
+    "translation": "อัซซัมลีดเดอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DAF",
+    "weapon_ids": [
+      608
+    ],
+    "source": "ダ－クサ－ベル",
+    "source_hex": "AF 11 9E A4 11 C8 DA FF",
+    "translation": "ดาร์กเซเบอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DB7",
+    "weapon_ids": [
+      610
+    ],
+    "source": "イビルサイズ",
+    "source_hex": "93 C2 DA A4 93 A9 FF",
+    "translation": "อีวิลไซซ์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DBE",
+    "weapon_ids": [
+      611
+    ],
+    "source": "ヘルファイヤ－",
+    "source_hex": "C7 DA C4 90 93 D3 11 FF",
+    "translation": "เฮลไฟเออร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DC6",
+    "weapon_ids": [
+      612
+    ],
+    "source": "カ－ズ",
+    "source_hex": "9A 11 A9 FF",
+    "translation": "เคิร์ส",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DCA",
+    "weapon_ids": [
+      613
+    ],
+    "source": "ファイヤ－ブレス",
+    "source_hex": "C4 90 93 D3 11 C5 DB A8 FF",
+    "translation": "ไฟเออร์เบรท",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DD3",
+    "weapon_ids": [
+      614
+    ],
+    "source": "スライスシ－ルド",
+    "source_hex": "A8 D8 93 A8 A6 11 DA B8 FF",
+    "translation": "สไลซ์ชิลด์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DDC",
+    "weapon_ids": [
+      615
+    ],
+    "source": "シ－ルドブ－メラン",
+    "source_hex": "A6 11 DA B8 C5 11 D0 D8 DF FF",
+    "translation": "ชิลด์บูมเมอแรง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DE6",
+    "weapon_ids": [
+      616
+    ],
+    "source": "イビルリング",
+    "source_hex": "93 C2 DA D9 DF 9F FF",
+    "translation": "อีวิลริง",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8DED",
+    "weapon_ids": [
+      617,
+      621
+    ],
+    "source": "怪光線",
+    "source_hex": "F1 B8 F0 83 F0 B3 FF",
+    "translation": "ลำแสงประหลาด",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8DF4",
+    "weapon_ids": [
+      618
+    ],
+    "source": "した",
+    "source_hex": "56 5E FF",
+    "translation": "ลิ้น",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8DF7",
+    "weapon_ids": [
+      619
+    ],
+    "source": "大火炎",
+    "source_hex": "F0 16 F0 DC F0 23 FF",
+    "translation": "เปลวไฟใหญ่",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8DFE",
+    "weapon_ids": [
+      625
+    ],
+    "source": "ストナ－サンシャイン",
+    "source_hex": "A8 B7 B9 11 A4 DF A6 D2 93 DF FF",
+    "translation": "สโตเนอร์ซันไชน์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E09",
+    "weapon_ids": [
+      628
+    ],
+    "source": "ミラ－ジュドリル",
+    "source_hex": "CE D8 11 A7 D4 B8 D9 DA FF",
+    "translation": "มิราจดริล",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E12",
+    "weapon_ids": [
+      629
+    ],
+    "source": "ドリルテンペスト",
+    "source_hex": "B8 D9 DA B5 DF C9 A8 B7 FF",
+    "translation": "ดริลเทมเพสต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E1B",
+    "weapon_ids": [
+      630
+    ],
+    "source": "ハンマ－パンチ",
+    "source_hex": "BE DF CD 11 C0 DF B0 FF",
+    "translation": "แฮมเมอร์พันช์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E23",
+    "weapon_ids": [
+      632
+    ],
+    "source": "大雪山おろし二段返し",
+    "source_hex": "F0 16 F4 07 F0 C1 49 8C 56 F3 0E F2 A3 F2 15 56 FF",
+    "translation": "ท่าทุ่มไดเซ็ตสึซัน2",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8E34",
+    "weapon_ids": [
+      633
+    ],
+    "source": "しっぽ",
+    "source_hex": "56 62 7C FF",
+    "translation": "หาง",
+    "method": "exact"
+  },
+  {
+    "source_pointer": "0x8E38",
+    "weapon_ids": [
+      635
+    ],
+    "source": "ドリルブレスト",
+    "source_hex": "B8 D9 DA C5 DB A8 B7 FF",
+    "translation": "ดริลเบรสต์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E40",
+    "weapon_ids": [
+      636
+    ],
+    "source": "コロナバリア",
+    "source_hex": "A2 DC B9 BF D9 91 FF",
+    "translation": "โคโรนาบาเรีย",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E47",
+    "weapon_ids": [
+      637
+    ],
+    "source": "ロングレ－ザ－ソ－ド",
+    "source_hex": "DC DF 9F DB 11 A5 11 AC 11 B8 FF",
+    "translation": "ลองเลเซอร์ซอร์ด",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E52",
+    "weapon_ids": [
+      638
+    ],
+    "source": "ギガブラスタ－",
+    "source_hex": "9D 9B C5 D8 A8 AE 11 FF",
+    "translation": "กิก้าบลาสเตอร์",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E5A",
+    "weapon_ids": [
+      639
+    ],
+    "source": "ギガドライバ－キャノン",
+    "source_hex": "9D 9B B8 D8 93 BF 11 9C D2 BD DF FF",
+    "translation": "กิก้าไดรเวอร์แคนนอน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E66",
+    "weapon_ids": [
+      640
+    ],
+    "source": "ビッグバンウェ－ブ<MAP_L><MAP_R>",
+    "source_hex": "C2 B2 9F BF DF 95 96 11 C5 EC ED FF",
+    "translation": "บิ๊กแบงเวฟ",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E72",
+    "weapon_ids": [
+      641,
+      645
+    ],
+    "source": "ビ－ムスマ－トガン<B>",
+    "source_hex": "C2 11 CF A8 CD 11 B7 9B DF EE FF",
+    "translation": "บีมสมาร์ตกัน",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E7D",
+    "weapon_ids": [
+      648
+    ],
+    "source": "リフレクタ－インコム",
+    "source_hex": "D9 C4 DB 9E AE 11 93 DF A2 CF FF",
+    "translation": "รีเฟลกเตอร์อินคอม",
+    "method": "glossary"
+  },
+  {
+    "source_pointer": "0x8E88",
+    "weapon_ids": [
+      653,
+      654,
+      655
+    ],
+    "kind": "non_text_sentinel",
+    "source": "",
+    "source_hex": "",
+    "translation": "",
+    "method": "non_text_sentinel"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "_comment": "The alternate protagonist-route ending for the opening crawl.",
+  "address": "0x0CF063",
+  "end": "0x0CF10C",
+  "source_sha256": "974c406c221805d27902e266992f9baeedaffdb6dc20c1a7ffa5d88afec2508a",
+  "translation": "หลังจบโรงเรียนนายร้อยไนเมเคิน\n<FC:00><01>ได้ช่วยงานวิจัยของพ่อ ณ สถาบัน\n<FC:00><01>เทสลา ไลช์ โคโลราโดสปริงส์\n<FC:00><01>ก่อนถูกส่งไปศึกษาที่สถาบันวิจัย\n<FC:00><01>พลังงานโฟตอนในญี่ปุ่น พร้อม\n<FC:00><01>เกชเพนสต์ PT รุ่นผลิตจำนวนมาก<FE><ENDFF>"
+}

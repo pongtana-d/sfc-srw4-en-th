@@ -1,0 +1,22 @@
+{
+  "schema": "srw4-window-specs/1",
+  "command_menu": {
+    "anchor_tiles": [13, 11],
+    "min_outer_width_tiles": 8,
+    "border": {
+      "top_left": 8209,
+      "top": 8217,
+      "top_right": 8210,
+      "left": 8219,
+      "right": 8220,
+      "bottom_left": 8211,
+      "bottom": 8218,
+      "bottom_right": 8212
+    },
+    "content_padding_tiles": [0, 2],
+    "item_height_tiles": 2,
+    "cursor_anchor_tiles": [0, 1],
+    "labels": ["Move", "Attack", "Spirit", "Status"],
+    "evidence": "P1 E-104/E-106: en live tilemap at 7E:A000, 8x10 outer frame, 16px cursor step"
+  }
+}

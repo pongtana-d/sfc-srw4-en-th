@@ -1,0 +1,2947 @@
+[
+  {
+    "source_pointer": "0x6DB4",
+    "pilot_ids": [
+      0,
+      1
+    ],
+    "source": "チャム＝ファウ",
+    "source_hex": "B0 D2 CF E3 C4 90 95 FF",
+    "translation": "ชัม ฟาว",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DBC",
+    "pilot_ids": [
+      2
+    ],
+    "source": "ベル＝ア－ル",
+    "source_hex": "C8 DA E3 91 11 DA FF",
+    "translation": "เบล เอิร์ล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DC3",
+    "pilot_ids": [
+      3
+    ],
+    "source": "エル＝フィノ",
+    "source_hex": "97 DA E3 C4 92 BD FF",
+    "translation": "เอล ฟีโน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DCA",
+    "pilot_ids": [
+      4
+    ],
+    "source": "リリス＝ファウ",
+    "source_hex": "D9 D9 A8 E3 C4 90 95 FF",
+    "translation": "ลิลิธ ฟาว",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DD2",
+    "pilot_ids": [
+      5
+    ],
+    "source": "シルキ－＝マウ",
+    "source_hex": "A6 DA 9C 11 E3 CD 95 FF",
+    "translation": "ซิลกี เมาว์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DDA",
+    "pilot_ids": [
+      6
+    ],
+    "source": "妖精６",
+    "source_hex": "F2 4F F0 78 36 FF",
+    "translation": "ภูต 6",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DE0",
+    "pilot_ids": [
+      7
+    ],
+    "source": "ジャック＝キング",
+    "source_hex": "A7 D2 B2 9E E3 9C DF 9F FF",
+    "translation": "แจ็ก คิง",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DE9",
+    "pilot_ids": [
+      8
+    ],
+    "source": "メリ－＝キング",
+    "source_hex": "D0 D9 11 E3 9C DF 9F FF",
+    "translation": "แมรี คิง",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DF1",
+    "pilot_ids": [
+      9
+    ],
+    "source": "流竜馬",
+    "source_hex": "F0 03 F0 04 F0 05 FF",
+    "translation": "เรียวมะ นางาเระ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DF8",
+    "pilot_ids": [
+      10
+    ],
+    "source": "神隼人",
+    "source_hex": "F0 06 F0 07 F0 08 FF",
+    "translation": "ฮายาโตะ จิน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6DFF",
+    "pilot_ids": [
+      11
+    ],
+    "source": "車弁慶",
+    "source_hex": "F0 24 F0 25 F0 26 FF",
+    "translation": "เบ็งเค คุรุมะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E06",
+    "pilot_ids": [
+      12
+    ],
+    "source": "北条真吾",
+    "source_hex": "F0 18 F0 37 F1 D2 F3 02 FF",
+    "translation": "ชิงโง โฮโจ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E0F",
+    "pilot_ids": [
+      13
+    ],
+    "source": "レミ－島田",
+    "source_hex": "DB CE 11 F2 06 F3 27 FF",
+    "translation": "เรมี ชิมาดะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E17",
+    "pilot_ids": [
+      14
+    ],
+    "source": "キリ－＝ギャグレイ",
+    "source_hex": "9C D9 11 E3 9D D2 9F DB 93 FF",
+    "translation": "คิลลี แก็กเลย์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E21",
+    "pilot_ids": [
+      15
+    ],
+    "source": "神勝平",
+    "source_hex": "F0 06 F0 C9 F1 11 FF",
+    "translation": "คัปเป จิน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E28",
+    "pilot_ids": [
+      16
+    ],
+    "source": "神江宇宙太",
+    "source_hex": "F0 06 F4 0C F4 0D F4 0E F0 2F FF",
+    "translation": "อุชูตะ คามิเอะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E33",
+    "pilot_ids": [
+      17
+    ],
+    "source": "神北恵子",
+    "source_hex": "F0 06 F0 18 F3 84 F0 84 FF",
+    "translation": "เคโกะ คามิคิตะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E3C",
+    "pilot_ids": [
+      18
+    ],
+    "source": "藤原忍",
+    "source_hex": "F4 1E F0 13 F4 1F FF",
+    "translation": "ชิโนบุ ฟูจิวาระ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E43",
+    "pilot_ids": [
+      19
+    ],
+    "source": "結城沙羅",
+    "source_hex": "F1 3D F3 B4 F4 20 F4 21 FF",
+    "translation": "ซาระ ยูกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E4C",
+    "pilot_ids": [
+      20
+    ],
+    "source": "式部雅人",
+    "source_hex": "F0 D8 F0 E6 F3 59 F0 08 FF",
+    "translation": "มาซาโตะ ชิกิบุ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E55",
+    "pilot_ids": [
+      21
+    ],
+    "source": "司馬亮",
+    "source_hex": "F0 41 F0 05 F4 22 FF",
+    "translation": "เรียว ชิบะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E5C",
+    "pilot_ids": [
+      22
+    ],
+    "source": "葵豹馬",
+    "source_hex": "F4 09 F4 0A F0 05 FF",
+    "translation": "เฮียวมะ อาโออิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E63",
+    "pilot_ids": [
+      23
+    ],
+    "source": "浪花十三",
+    "source_hex": "F4 0B F0 0F F0 10 F0 11 FF",
+    "translation": "จูโซ นานิวะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E6C",
+    "pilot_ids": [
+      24
+    ],
+    "source": "西川大作",
+    "source_hex": "F0 14 F0 15 F0 16 F0 17 FF",
+    "translation": "ไดซากุ นิชิคาวะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E75",
+    "pilot_ids": [
+      25
+    ],
+    "source": "南原ちずる",
+    "source_hex": "F0 12 F0 13 60 59 8A FF",
+    "translation": "จิซึรุ นันบาระ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E7D",
+    "pilot_ids": [
+      26
+    ],
+    "source": "北小介",
+    "source_hex": "F0 18 F0 19 F0 1A FF",
+    "translation": "โคสุเกะ คิตะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E84",
+    "pilot_ids": [
+      27
+    ],
+    "source": "ギリアム＝イェ－ガ－",
+    "source_hex": "9D D9 91 CF E3 93 96 11 9B 11 FF",
+    "translation": "กิลเลียม เยเกอร์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E8F",
+    "pilot_ids": [
+      28
+    ],
+    "source": "ショウ＝ザマ",
+    "source_hex": "A6 D6 95 E3 A5 CD FF",
+    "translation": "โช ซามะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E96",
+    "pilot_ids": [
+      29
+    ],
+    "source": "マサキ＝アンド－",
+    "source_hex": "CD A4 9C E3 91 DF B8 11 FF",
+    "translation": "มาซากิ อันโด",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6E9F",
+    "pilot_ids": [
+      30
+    ],
+    "source": "リュ－ネ＝ゾルダ－ク",
+    "source_hex": "D9 D4 11 BC E3 AD DA AF 11 9E FF",
+    "translation": "ริวเน โซลดาร์ก",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EAA",
+    "pilot_ids": [
+      31
+    ],
+    "source": "シュウ＝シラカワ",
+    "source_hex": "A6 D4 95 E3 A6 D8 9A DD FF",
+    "translation": "ชู ชิราคาวะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EB3",
+    "pilot_ids": [
+      32
+    ],
+    "source": "クワトロ＝バジ－ナ",
+    "source_hex": "9E DD B7 DC E3 BF A7 11 B9 FF",
+    "translation": "ควอทโทร บาจีนา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EBD",
+    "pilot_ids": [
+      33
+    ],
+    "source": "ブライト＝ノア",
+    "source_hex": "C5 D8 93 B7 E3 BD 91 FF",
+    "translation": "ไบรท์ โนอา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EC5",
+    "pilot_ids": [
+      34
+    ],
+    "source": "ハヤト＝コバヤシ",
+    "source_hex": "BE D3 B7 E3 A2 BF D3 A6 FF",
+    "translation": "ฮายาโตะ โคบายาชิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6ECE",
+    "pilot_ids": [
+      35
+    ],
+    "source": "カイ＝シデン",
+    "source_hex": "9A 93 E3 A6 B6 DF FF",
+    "translation": "ไค ชิเดน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6ED5",
+    "pilot_ids": [
+      36
+    ],
+    "source": "マチルダ＝アジャン",
+    "source_hex": "CD B0 DA AF E3 91 A7 D2 DF FF",
+    "translation": "มาทิลดา อาจาน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EDF",
+    "pilot_ids": [
+      37
+    ],
+    "source": "セイラ＝マス",
+    "source_hex": "AA 93 D8 E3 CD A8 FF",
+    "translation": "เซย์ลา มาส",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EE6",
+    "pilot_ids": [
+      38
+    ],
+    "source": "ワッケイン",
+    "source_hex": "DD B2 A0 93 DF FF",
+    "translation": "วัคเคน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6EEC",
+    "pilot_ids": [
+      39
+    ],
+    "source": "ティアンム",
+    "source_hex": "B5 92 91 DF CF FF",
+    "translation": "เทียนเนม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6EF2",
+    "pilot_ids": [
+      40
+    ],
+    "source": "エマ＝シ－ン",
+    "source_hex": "97 CD E3 A6 11 DF FF",
+    "translation": "เอ็มมา ชีน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EF9",
+    "pilot_ids": [
+      41
+    ],
+    "source": "ト－レス",
+    "source_hex": "B7 11 DB A8 FF",
+    "translation": "ตอร์เรส",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6EFE",
+    "pilot_ids": [
+      42
+    ],
+    "source": "ファ＝ユイリィ",
+    "source_hex": "C4 90 E3 D5 93 D9 92 FF",
+    "translation": "ฟา ยูอิรี",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F06",
+    "pilot_ids": [
+      43
+    ],
+    "source": "カツ＝コバヤシ",
+    "source_hex": "9A B3 E3 A2 BF D3 A6 FF",
+    "translation": "คัตซ์ โคบายาชิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F0E",
+    "pilot_ids": [
+      44
+    ],
+    "source": "フォウ＝ムラサメ",
+    "source_hex": "C4 98 95 E3 CF D8 A4 D0 FF",
+    "translation": "โฟร์ มุราซาเมะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F17",
+    "pilot_ids": [
+      45
+    ],
+    "source": "ベルト－チカ＝イルマ",
+    "source_hex": "C8 DA B7 11 B0 9A E3 93 DA CD FF",
+    "translation": "เบลทอร์ชิกา อิลมา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F22",
+    "pilot_ids": [
+      46
+    ],
+    "source": "ケリィ＝レズナ－",
+    "source_hex": "A0 D9 92 E3 DB A9 B9 11 FF",
+    "translation": "เคลลี เลย์ซเนอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F2B",
+    "pilot_ids": [
+      47
+    ],
+    "source": "ヘンケン＝ベッケナ－",
+    "source_hex": "C7 DF A0 DF E3 C8 B2 A0 B9 11 FF",
+    "translation": "เฮงเคน เบ็คเนอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F36",
+    "pilot_ids": [
+      48
+    ],
+    "source": "ブレックス＝フォ－ラ",
+    "source_hex": "C5 DB B2 9E A8 E3 C4 98 11 D8 FF",
+    "translation": "เบล็กซ์ ฟอเรอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F41",
+    "pilot_ids": [
+      49
+    ],
+    "source": "ル－＝ルカ",
+    "source_hex": "DA 11 E3 DA 9A FF",
+    "translation": "รู ลูก้า",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F47",
+    "pilot_ids": [
+      50
+    ],
+    "source": "エルピ－＝プル",
+    "source_hex": "97 DA C3 11 E3 C6 DA FF",
+    "translation": "เอลพี พลู",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F4F",
+    "pilot_ids": [
+      51
+    ],
+    "source": "プルツ－",
+    "source_hex": "C6 DA B3 11 FF",
+    "translation": "พลูทู",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F54",
+    "pilot_ids": [
+      52
+    ],
+    "source": "リィナ＝ア－シタ",
+    "source_hex": "D9 92 B9 E3 91 11 A6 AE FF",
+    "translation": "ลีนา อาชตา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F5D",
+    "pilot_ids": [
+      53
+    ],
+    "source": "ビ－チャ＝オレ－グ",
+    "source_hex": "C2 11 B0 D2 E3 99 DB 11 9F FF",
+    "translation": "บีชา โอเล็ก",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F67",
+    "pilot_ids": [
+      54
+    ],
+    "source": "モンド＝アガケ",
+    "source_hex": "D1 DF B8 E3 91 9B A0 FF",
+    "translation": "มอนโด อากาเกะ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F6F",
+    "pilot_ids": [
+      55
+    ],
+    "source": "エル＝ビアンノ",
+    "source_hex": "97 DA E3 C2 91 DF BD FF",
+    "translation": "เอล เบียโน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F77",
+    "pilot_ids": [
+      56
+    ],
+    "source": "イ－ノ＝アッバ－ブ",
+    "source_hex": "93 11 BD E3 91 B2 BF 11 C5 FF",
+    "translation": "อีโน อับบาฟ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F81",
+    "pilot_ids": [
+      57
+    ],
+    "source": "エマリ－＝オンス",
+    "source_hex": "97 CD D9 11 E3 99 DF A8 FF",
+    "translation": "เอมารี ออนซ์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6F8A",
+    "pilot_ids": [
+      58
+    ],
+    "source": "クェス＝パラヤ",
+    "source_hex": "9E 96 A8 E3 C0 D8 D3 FF",
+    "translation": "เควส พารายา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F92",
+    "pilot_ids": [
+      59
+    ],
+    "source": "チェ－ン＝アギ",
+    "source_hex": "B0 96 11 DF E3 91 9D FF",
+    "translation": "เชน อากิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6F9A",
+    "pilot_ids": [
+      60
+    ],
+    "source": "ケ－ラ＝スゥ",
+    "source_hex": "A0 11 D8 E3 A8 94 FF",
+    "translation": "เคย์รา ซู",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FA1",
+    "pilot_ids": [
+      61
+    ],
+    "source": "ハサウェイ＝ノア",
+    "source_hex": "BE A4 95 96 93 E3 BD 91 FF",
+    "translation": "ฮาซาเวย์ โนอา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FAA",
+    "pilot_ids": [
+      62
+    ],
+    "source": "クリスチ－ナ＝マッケンジ－",
+    "source_hex": "9E D9 A8 B0 11 B9 E3 CD B2 A0 DF A7 11 FF",
+    "translation": "คริสตินา แมกเคนซี",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FB8",
+    "pilot_ids": [
+      63
+    ],
+    "source": "バ－ナ－ド＝ワイズマン",
+    "source_hex": "BF 11 B9 11 B8 E3 DD 93 A9 CD DF FF",
+    "translation": "เบอร์นาร์ด ไวส์แมน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FC4",
+    "pilot_ids": [
+      64
+    ],
+    "source": "セシリ－＝フェアチャイルド",
+    "source_hex": "AA A6 D9 11 E3 C4 96 91 B0 D2 93 DA B8 FF",
+    "translation": "เซซิลี แฟร์ไชลด์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FD2",
+    "pilot_ids": [
+      65
+    ],
+    "source": "ニナ＝パ－プルトン",
+    "source_hex": "BA B9 E3 C0 11 C6 DA B7 DF FF",
+    "translation": "นีนา เพอร์เพิลตัน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FDC",
+    "pilot_ids": [
+      66
+    ],
+    "source": "アナベル＝ガト－",
+    "source_hex": "91 B9 C8 DA E3 9B B7 11 FF",
+    "translation": "อนาเวล กาโต",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FE5",
+    "pilot_ids": [
+      67
+    ],
+    "source": "チャック＝キ－ス",
+    "source_hex": "B0 D2 B2 9E E3 9C 11 A8 FF",
+    "translation": "ชัค คีธ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FEE",
+    "pilot_ids": [
+      68
+    ],
+    "source": "ベルナルド＝モンシア",
+    "source_hex": "C8 DA B9 DA B8 E3 D1 DF A6 91 FF",
+    "translation": "เบอร์นาร์ด มอนชา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x6FF9",
+    "pilot_ids": [
+      69
+    ],
+    "source": "弓さやか",
+    "source_hex": "F0 43 54 83 4A FF",
+    "translation": "ซายากะ ยูมิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x6FFF",
+    "pilot_ids": [
+      70
+    ],
+    "source": "ラムサス＝ハサ",
+    "source_hex": "D8 CF A4 A8 E3 BE A4 FF",
+    "translation": "แรมซัส ฮาซา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7007",
+    "pilot_ids": [
+      71
+    ],
+    "source": "ボス",
+    "source_hex": "CB A8 FF",
+    "translation": "บอส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x700A",
+    "pilot_ids": [
+      72
+    ],
+    "source": "炎ジュン",
+    "source_hex": "F0 23 A7 D4 DF FF",
+    "translation": "จุน โฮโนะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7010",
+    "pilot_ids": [
+      73
+    ],
+    "source": "マリア＝フリ－ド",
+    "source_hex": "CD D9 91 E3 C4 D9 11 B8 FF",
+    "translation": "มาเรีย ฟรีด",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7019",
+    "pilot_ids": [
+      74
+    ],
+    "source": "牧場ひかる",
+    "source_hex": "F0 3F F0 40 71 4A 8A FF",
+    "translation": "ฮิคารุ มาคิบะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7021",
+    "pilot_ids": [
+      75
+    ],
+    "source": "早乙女ミチル",
+    "source_hex": "F0 27 F0 28 F0 29 CE B0 DA FF",
+    "translation": "มิจิรุ ซาโอโตเมะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x702B",
+    "pilot_ids": [
+      76
+    ],
+    "source": "ダンゲル＝ク－パ－",
+    "source_hex": "AF DF A1 DA E3 9E 11 C0 11 FF",
+    "translation": "ดังเคล คูเปอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7035",
+    "pilot_ids": [
+      77
+    ],
+    "source": "神宮寺力",
+    "source_hex": "F0 06 F4 13 F4 14 F0 2C FF",
+    "translation": "ริกิ จิงกูจิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x703E",
+    "pilot_ids": [
+      78
+    ],
+    "source": "明日香麗",
+    "source_hex": "F0 33 F0 34 F0 35 F0 36 FF",
+    "translation": "เร อาสึกะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7047",
+    "pilot_ids": [
+      79
+    ],
+    "source": "桜野マリ",
+    "source_hex": "F4 15 F0 32 CD D9 FF",
+    "translation": "มาริ ซากุราโนะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x704E",
+    "pilot_ids": [
+      80
+    ],
+    "source": "アムロ＝レイ",
+    "source_hex": "91 CF DC E3 DB 93 FF",
+    "translation": "อามุโร เรย์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7055",
+    "pilot_ids": [
+      81
+    ],
+    "source": "カミ－ユ＝ビダン",
+    "source_hex": "9A CE 11 D5 E3 C2 AF DF FF",
+    "translation": "คามิลล์ บีดัน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x705E",
+    "pilot_ids": [
+      82
+    ],
+    "source": "ジュド－＝ア－シタ",
+    "source_hex": "A7 D4 B8 11 E3 91 11 A6 AE FF",
+    "translation": "จูโด อาชตา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7068",
+    "pilot_ids": [
+      83
+    ],
+    "source": "シ－ブック＝アノ－",
+    "source_hex": "A6 11 C5 B2 9E E3 91 BD 11 FF",
+    "translation": "ซีบุ๊ก อาร์โน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7072",
+    "pilot_ids": [
+      84
+    ],
+    "source": "コウ＝ウラキ",
+    "source_hex": "A2 95 E3 95 D8 9C FF",
+    "translation": "โค อุรากิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7079",
+    "pilot_ids": [
+      85
+    ],
+    "source": "兜甲児",
+    "source_hex": "F0 00 F0 01 F0 02 FF",
+    "translation": "โคจิ คาบูโตะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7080",
+    "pilot_ids": [
+      86
+    ],
+    "source": "神北兵左ェ門",
+    "source_hex": "F0 06 F0 18 F0 4E F1 8A 96 F0 90 FF",
+    "translation": "เฮซาเอมอน คามิกิตะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x708C",
+    "pilot_ids": [
+      87
+    ],
+    "source": "神梅江",
+    "source_hex": "F0 06 F4 18 F4 0C FF",
+    "translation": "อุเมะเอะ จิน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7093",
+    "pilot_ids": [
+      88
+    ],
+    "source": "神源五郎",
+    "source_hex": "F0 06 F2 86 F4 19 F0 30 FF",
+    "translation": "เก็นโกโร จิน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x709C",
+    "pilot_ids": [
+      89
+    ],
+    "source": "神一太郎",
+    "source_hex": "F0 06 F1 4E F0 2F F0 30 FF",
+    "translation": "อิจิทาโร จิน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70A5",
+    "pilot_ids": [
+      90
+    ],
+    "source": "ギャリソン時田",
+    "source_hex": "9D D2 D9 AC DF F0 38 F3 27 FF",
+    "translation": "แกร์ริสัน โทคิดะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70AF",
+    "pilot_ids": [
+      91
+    ],
+    "source": "ビュ－ティフル＝タチバナ",
+    "source_hex": "C2 D4 11 B5 92 C4 DA E3 AE B0 BF B9 FF",
+    "translation": "บิวตี้ ทาจิบานะ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x70BC",
+    "pilot_ids": [
+      92
+    ],
+    "source": "三条レイカ",
+    "source_hex": "F0 11 F0 37 DB 93 9A FF",
+    "translation": "เรกะ ซันโจ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70C4",
+    "pilot_ids": [
+      93
+    ],
+    "source": "戸田突太",
+    "source_hex": "F4 1A F3 27 F0 3B F0 2F FF",
+    "translation": "ต็อตตะ โทดะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70CD",
+    "pilot_ids": [
+      94
+    ],
+    "source": "剣鉄也",
+    "source_hex": "F0 20 F0 21 F0 22 FF",
+    "translation": "เท็ตสึยะ สึรุกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70D4",
+    "pilot_ids": [
+      95
+    ],
+    "source": "夕月京四郎",
+    "source_hex": "F4 1B F0 95 F4 1C F0 46 F0 30 FF",
+    "translation": "เคียวชิโร ยูซึกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70DF",
+    "pilot_ids": [
+      96
+    ],
+    "source": "和泉ナナ",
+    "source_hex": "F1 CB F4 1D B9 B9 FF",
+    "translation": "นานะ อิซูมิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70E6",
+    "pilot_ids": [
+      97
+    ],
+    "source": "デュ－ク＝フリ－ド",
+    "source_hex": "B6 D4 11 9E E3 C4 D9 11 B8 FF",
+    "translation": "ดุ๊ก ฟรีด",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70F0",
+    "pilot_ids": [
+      98
+    ],
+    "source": "マ－ベル＝フロ－ズン",
+    "source_hex": "CD 11 C8 DA E3 C4 DC 11 A9 DF FF",
+    "translation": "มาร์เวล โฟรเซน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x70FB",
+    "pilot_ids": [
+      99
+    ],
+    "source": "ひびき洸",
+    "source_hex": "71 72 4C F4 08 FF",
+    "translation": "อากิระ ฮิบิกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7101",
+    "pilot_ids": [
+      100
+    ],
+    "source": "ニ－＝ギブン",
+    "source_hex": "BA 11 E3 9D C5 DF FF",
+    "translation": "นี กิฟเวน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7108",
+    "pilot_ids": [
+      101
+    ],
+    "source": "キ－ン＝キッス",
+    "source_hex": "9C 11 DF E3 9C B2 A8 FF",
+    "translation": "คีน คิส",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7110",
+    "pilot_ids": [
+      102
+    ],
+    "source": "シ－ラ＝ラパ－ナ",
+    "source_hex": "A6 11 D8 E3 D8 C0 11 B9 FF",
+    "translation": "ชีลา ลาพานา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7119",
+    "pilot_ids": [
+      103
+    ],
+    "source": "エレ＝ハンム",
+    "source_hex": "97 DB E3 BE DF CF FF",
+    "translation": "เอเล ฮัมม์",
+    "en_pool_bytes": 10,
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7120",
+    "pilot_ids": [
+      104
+    ],
+    "source": "リムル＝ルフト",
+    "source_hex": "D9 CF DA E3 DA C4 B7 FF",
+    "translation": "ริมูล ลุฟต์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7128",
+    "pilot_ids": [
+      105
+    ],
+    "source": "エイブ＝タマリ",
+    "source_hex": "97 93 C5 E3 AE CD D9 FF",
+    "translation": "เอเบะ ทามาริ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7130",
+    "pilot_ids": [
+      106
+    ],
+    "source": "破嵐万丈",
+    "source_hex": "F0 1C F4 0F F0 1E F0 1F FF",
+    "translation": "บันโจ ฮารัน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7139",
+    "pilot_ids": [
+      107
+    ],
+    "source": "竜崎一矢",
+    "source_hex": "F0 04 F4 10 F1 4E F4 11 FF",
+    "translation": "คาซึยะ ริวซากิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7142",
+    "pilot_ids": [
+      108,
+      164
+    ],
+    "source": "連邦軍兵士",
+    "source_hex": "F1 25 F0 D6 F0 A5 F0 4E F0 49 FF",
+    "translation": "ทหารสหพันธ์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x714D",
+    "pilot_ids": [
+      109
+    ],
+    "source": "バイストンウェル兵",
+    "source_hex": "BF 93 A8 B7 DF 95 96 DA F0 4E FF",
+    "translation": "ทหารไบสตันเวล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7158",
+    "pilot_ids": [
+      110
+    ],
+    "source": "テュッティ＝ノ－ルバック",
+    "source_hex": "B5 D4 B2 B5 92 E3 BD 11 DA BF B2 9E FF",
+    "translation": "ทุตตี นอร์แบ็ก",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7165",
+    "pilot_ids": [
+      111
+    ],
+    "source": "獣魔将軍",
+    "source_hex": "F0 D3 F0 D4 F0 A4 F0 A5 FF",
+    "translation": "แม่ทัพอสูร",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x716E",
+    "pilot_ids": [
+      112
+    ],
+    "source": "サウス＝バニング",
+    "source_hex": "A4 95 A8 E3 BF BA DF 9F FF",
+    "translation": "เซาท์ เบิร์นนิง",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7177",
+    "pilot_ids": [
+      113
+    ],
+    "source": "ホワン＝ヤンロン",
+    "source_hex": "CA DD DF E3 D3 DF DC DF FF",
+    "translation": "ฮวาน หยางหลง",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7180",
+    "pilot_ids": [
+      114
+    ],
+    "source": "プレシア＝ゼノサキス",
+    "source_hex": "C6 DB A6 91 E3 AB BD A4 9C A8 FF",
+    "translation": "พรีเซีย เซโนซากิส",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x718B",
+    "pilot_ids": [
+      115
+    ],
+    "source": "ミオ＝サスガ",
+    "source_hex": "CE 99 E3 A4 A8 9B FF",
+    "translation": "มิโอะ ซาสึกะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7192",
+    "pilot_ids": [
+      116
+    ],
+    "source": "ティタ－ンズ兵士",
+    "source_hex": "B5 92 AE 11 DF A9 F0 4E F0 49 FF",
+    "translation": "ทหารทีทานส์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x719D",
+    "pilot_ids": [
+      117
+    ],
+    "source": "モニカ＝ビルセイア",
+    "source_hex": "D1 BA 9A E3 C2 DA AA 93 91 FF",
+    "translation": "โมนิกา บิลเซอา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x71A7",
+    "pilot_ids": [
+      118
+    ],
+    "source": "サフィ－ネ＝グレイス",
+    "source_hex": "A4 C4 92 11 BC E3 9F DB 93 A8 FF",
+    "translation": "ซาฟีเน เกรซ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x71B2",
+    "pilot_ids": [
+      119
+    ],
+    "source": "ガデム",
+    "source_hex": "9B B6 CF FF",
+    "translation": "กาเด็ม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71B6",
+    "pilot_ids": [
+      120
+    ],
+    "source": "ランバ＝ラル",
+    "source_hex": "D8 DF BF E3 D8 DA FF",
+    "translation": "รัมบา ราล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x71BD",
+    "pilot_ids": [
+      121
+    ],
+    "source": "クラウレ＝ハモン",
+    "source_hex": "9E D8 95 DB E3 BE D1 DF FF",
+    "translation": "คราวลีย์ ฮามอน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71C6",
+    "pilot_ids": [
+      122
+    ],
+    "source": "クランプ",
+    "source_hex": "9E D8 DF C6 FF",
+    "translation": "แคลมป์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71CB",
+    "pilot_ids": [
+      123
+    ],
+    "source": "ガイア",
+    "source_hex": "9B 93 91 FF",
+    "translation": "ไกอา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71CF",
+    "pilot_ids": [
+      124
+    ],
+    "source": "マッシュ",
+    "source_hex": "CD B2 A6 D4 FF",
+    "translation": "แมช",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71D4",
+    "pilot_ids": [
+      125
+    ],
+    "source": "オルテガ",
+    "source_hex": "99 DA B5 9B FF",
+    "translation": "ออร์เทกา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71D9",
+    "pilot_ids": [
+      126
+    ],
+    "source": "シャリア＝ブル",
+    "source_hex": "A6 D2 D9 91 E3 C5 DA FF",
+    "translation": "ชาเรีย บูล",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71E1",
+    "pilot_ids": [
+      127
+    ],
+    "source": "ララァ＝スン",
+    "source_hex": "D8 D8 90 E3 A8 DF FF",
+    "translation": "ลาล่า ซูน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x71E8",
+    "pilot_ids": [
+      128
+    ],
+    "source": "ガディ＝キンゼ－",
+    "source_hex": "9B B6 92 E3 9C DF AB 11 FF",
+    "translation": "กาดี คินซีย์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71F1",
+    "pilot_ids": [
+      129
+    ],
+    "source": "カクリコン＝カク－ラ－",
+    "source_hex": "9A 9E D9 A2 DF E3 9A 9E 11 D8 11 FF",
+    "translation": "คาคริคอน คาคูเลอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x71FD",
+    "pilot_ids": [
+      130
+    ],
+    "source": "サラ＝ザビアロフ",
+    "source_hex": "A4 D8 E3 A5 C2 91 DC C4 FF",
+    "translation": "ซาราห์ ซาเบียรอฟ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7206",
+    "pilot_ids": [
+      131
+    ],
+    "source": "ゲ－ツ＝キャパ",
+    "source_hex": "A1 11 B3 E3 9C D2 C0 FF",
+    "translation": "เกตส์ คาปา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x720E",
+    "pilot_ids": [
+      132
+    ],
+    "source": "ジェリド＝メサ",
+    "source_hex": "A7 96 D9 B8 E3 D0 A4 FF",
+    "translation": "เจริด เมสซา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7216",
+    "pilot_ids": [
+      133
+    ],
+    "source": "ジャマイカン＝ダニンガン",
+    "source_hex": "A7 D2 CD 93 9A DF E3 AF BA DF 9B DF FF",
+    "translation": "จาไมกัน ดานิงกัน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7223",
+    "pilot_ids": [
+      134
+    ],
+    "source": "ジャミトフ＝ハイマン",
+    "source_hex": "A7 D2 CE B7 C4 E3 BE 93 CD DF FF",
+    "translation": "จามิทอฟ ไฮเมม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x722E",
+    "pilot_ids": [
+      135
+    ],
+    "source": "ハマ－ン＝カ－ン",
+    "source_hex": "BE CD 11 DF E3 9A 11 DF FF",
+    "translation": "ฮามาน คาร์น",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7237",
+    "pilot_ids": [
+      136
+    ],
+    "source": "ブラン＝ブルタ－ク",
+    "source_hex": "C5 D8 DF E3 C5 DA AE 11 9E FF",
+    "translation": "บรัน บลูทาร์ก",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7241",
+    "pilot_ids": [
+      137
+    ],
+    "source": "ベン＝ウッダ－",
+    "source_hex": "C8 DF E3 95 B2 AF 11 FF",
+    "translation": "เบน วูดเดอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7249",
+    "pilot_ids": [
+      138
+    ],
+    "source": "マウア－＝ファラオ",
+    "source_hex": "CD 95 91 11 E3 C4 90 D8 99 FF",
+    "translation": "มูอาร์ ฟาโรห์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7253",
+    "pilot_ids": [
+      139
+    ],
+    "source": "ミネバ＝ザビ",
+    "source_hex": "CE BC BF E3 A5 C2 FF",
+    "translation": "มิเนวา ซาบี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x725A",
+    "pilot_ids": [
+      140
+    ],
+    "source": "ライラ＝ミラ＝ライラ",
+    "source_hex": "D8 93 D8 E3 CE D8 E3 D8 93 D8 FF",
+    "translation": "ไลลา มิลลา ไรลา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7265",
+    "pilot_ids": [
+      141
+    ],
+    "source": "ヤザン＝ゲ－ブル",
+    "source_hex": "D3 A5 DF E3 A1 11 C5 DA FF",
+    "translation": "ยาซาน เกเบิล",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x726E",
+    "pilot_ids": [
+      142
+    ],
+    "source": "ロザミア＝バダム",
+    "source_hex": "DC A5 CE 91 E3 BF AF CF FF",
+    "translation": "โรซาเมีย บาดัม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7277",
+    "pilot_ids": [
+      143
+    ],
+    "source": "マシュマ－＝セロ",
+    "source_hex": "CD A6 D4 CD 11 E3 AA DC FF",
+    "translation": "มาชีมาร์ เซลโล",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7280",
+    "pilot_ids": [
+      144
+    ],
+    "source": "イリア＝パゾム",
+    "source_hex": "93 D9 91 E3 C0 AD CF FF",
+    "translation": "อิเลีย พาซอม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7288",
+    "pilot_ids": [
+      145
+    ],
+    "source": "キャラ＝ス－ン",
+    "source_hex": "9C D2 D8 E3 A8 11 DF FF",
+    "translation": "คารา ซูน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7290",
+    "pilot_ids": [
+      146
+    ],
+    "source": "グレミ－＝トト",
+    "source_hex": "9F DB CE 11 E3 B7 B7 FF",
+    "translation": "เกลมี โตโต",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7298",
+    "pilot_ids": [
+      147
+    ],
+    "source": "ゴットン＝ゴ－",
+    "source_hex": "A3 B2 B7 DF E3 A3 11 FF",
+    "translation": "ก็อตตัน โก",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72A0",
+    "pilot_ids": [
+      148
+    ],
+    "source": "ニ－＝ギ－レン",
+    "source_hex": "BA 11 E3 9D 11 DB DF FF",
+    "translation": "นี กิลเลน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72A8",
+    "pilot_ids": [
+      149
+    ],
+    "source": "ランス＝ギ－レン",
+    "source_hex": "D8 DF A8 E3 9D 11 DB DF FF",
+    "translation": "แลนซ์ กิลเลน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72B1",
+    "pilot_ids": [
+      150
+    ],
+    "source": "ラカン＝ダカラン",
+    "source_hex": "D8 9A DF E3 AF 9A D8 DF FF",
+    "translation": "รากัน ดาคารัน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72BA",
+    "pilot_ids": [
+      151
+    ],
+    "source": "ギュネイ＝ガス",
+    "source_hex": "9D D4 BC 93 E3 9B A8 FF",
+    "translation": "กิวเน กัส",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x72C2",
+    "pilot_ids": [
+      152
+    ],
+    "source": "ナナイ＝ミゲル",
+    "source_hex": "B9 B9 93 E3 CE A1 DA FF",
+    "translation": "นาไน มิเกล",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72CA",
+    "pilot_ids": [
+      153
+    ],
+    "source": "レズン＝シュナイダ－",
+    "source_hex": "DB A9 DF E3 A6 D4 B9 93 AF 11 FF",
+    "translation": "เรซิน ชไนเดอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72D5",
+    "pilot_ids": [
+      154
+    ],
+    "source": "ザビ－ネ＝シャル",
+    "source_hex": "A5 C2 11 BC E3 A6 D2 DA FF",
+    "translation": "ซาบิเน ชาเรอ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72DE",
+    "pilot_ids": [
+      155
+    ],
+    "source": "アンナマリ－＝ブル－ジュ",
+    "source_hex": "91 DF B9 CD D9 11 E3 C5 DA 11 A7 D4 FF",
+    "translation": "แอนนา มารี บูร์เช",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72EB",
+    "pilot_ids": [
+      156
+    ],
+    "source": "ドレル＝ロナ",
+    "source_hex": "B8 DB DA E3 DC B9 FF",
+    "translation": "ดอเรล โรนาห์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72F2",
+    "pilot_ids": [
+      157
+    ],
+    "source": "カロッゾ＝ロナ",
+    "source_hex": "9A DC B2 AD E3 DC B9 FF",
+    "translation": "คาโรซโซ โรนาห์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x72FA",
+    "pilot_ids": [
+      158
+    ],
+    "source": "シュタイナ－",
+    "source_hex": "A6 D4 AE 93 B9 11 FF",
+    "translation": "สไตเนอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7301",
+    "pilot_ids": [
+      159
+    ],
+    "source": "シ－マ＝ガラハウ",
+    "source_hex": "A6 11 CD E3 9B D8 BE 95 FF",
+    "translation": "ซีมา การาฮาว",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x730A",
+    "pilot_ids": [
+      160
+    ],
+    "source": "あしゅら男爵",
+    "source_hex": "41 56 84 88 F0 3C F0 3D FF",
+    "translation": "บารอนอาชูรา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7313",
+    "pilot_ids": [
+      161
+    ],
+    "source": "ブロッケン伯爵",
+    "source_hex": "C5 DC B2 A0 DF F0 3E F0 3D FF",
+    "translation": "เคานต์บร็อกเคน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x731D",
+    "pilot_ids": [
+      162
+    ],
+    "source": "Ｄｒヘル",
+    "source_hex": "19 06 C7 DA FF",
+    "translation": "ดร.เฮล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7322",
+    "pilot_ids": [
+      163
+    ],
+    "source": "シャ－キン",
+    "source_hex": "A6 D2 11 9C DF FF",
+    "translation": "ชาร์คิน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7328",
+    "pilot_ids": [
+      165
+    ],
+    "source": "エゥ－ゴ兵",
+    "source_hex": "97 94 11 A3 F0 4E FF",
+    "translation": "ทหาร AEUG",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x732F",
+    "pilot_ids": [
+      166
+    ],
+    "source": "バラオ",
+    "source_hex": "BF D8 99 FF",
+    "translation": "บาเรา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7333",
+    "pilot_ids": [
+      167
+    ],
+    "source": "ガル－ダ",
+    "source_hex": "9B DA 11 AF FF",
+    "translation": "การูดา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7338",
+    "pilot_ids": [
+      168
+    ],
+    "source": "ミ－ア",
+    "source_hex": "CE 11 91 FF",
+    "translation": "มีอา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x733C",
+    "pilot_ids": [
+      169
+    ],
+    "source": "オレアナ",
+    "source_hex": "99 DB 91 B9 FF",
+    "translation": "โอรีอานา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7341",
+    "pilot_ids": [
+      170
+    ],
+    "source": "キラ－＝ザ＝ブッチャ－",
+    "source_hex": "9C D8 11 E3 A5 E3 C5 B2 B0 D2 11 FF",
+    "translation": "คิลเลอร์ เดอะ บุตเชอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x734D",
+    "pilot_ids": [
+      171
+    ],
+    "source": "コロス",
+    "source_hex": "A2 DC A8 FF",
+    "translation": "โครอส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7351",
+    "pilot_ids": [
+      172
+    ],
+    "source": "ドン＝ザウサ－",
+    "source_hex": "B8 DF E3 A5 95 A4 11 FF",
+    "translation": "ดอน ซาวเซอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7359",
+    "pilot_ids": [
+      173
+    ],
+    "source": "リヒテル",
+    "source_hex": "D9 C1 B5 DA FF",
+    "translation": "ริชเทอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x735E",
+    "pilot_ids": [
+      174
+    ],
+    "source": "バルバス",
+    "source_hex": "BF DA BF A8 FF",
+    "translation": "บัลบัส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7363",
+    "pilot_ids": [
+      175
+    ],
+    "source": "ライザ",
+    "source_hex": "D8 93 A5 FF",
+    "translation": "ไรซา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7367",
+    "pilot_ids": [
+      176
+    ],
+    "source": "アイザム",
+    "source_hex": "91 93 A5 CF FF",
+    "translation": "ไอซัม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x736C",
+    "pilot_ids": [
+      177
+    ],
+    "source": "レオナルド＝メディチ＝ブンドル",
+    "source_hex": "DB 99 B9 DA B8 E3 D0 B6 92 B0 E3 C5 DF B8 DA FF",
+    "translation": "ลีโอนาร์โด เมดิชี บุนเดิล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x737C",
+    "pilot_ids": [
+      178
+    ],
+    "source": "ス－グニ＝カットナル",
+    "source_hex": "A8 11 9F BA E3 9A B2 B7 B9 DA FF",
+    "translation": "ซูเอกนี คัตนัล",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7387",
+    "pilot_ids": [
+      179
+    ],
+    "source": "ヤッタ－＝ラ＝ケルナグ－ル",
+    "source_hex": "D3 B2 AE 11 E3 D8 E3 A0 DA B9 9F 11 DA FF",
+    "translation": "ยัตตา-ลา เคอร์นากูล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7395",
+    "pilot_ids": [
+      180
+    ],
+    "source": "トッド＝ギネス",
+    "source_hex": "B7 B2 B8 E3 9D BC A8 FF",
+    "translation": "ท็อด กินเนส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x739D",
+    "pilot_ids": [
+      181
+    ],
+    "source": "バ－ン＝バニングス",
+    "source_hex": "BF 11 DF E3 BF BA DF 9F A8 FF",
+    "translation": "บาร์น บันนิงส์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73A7",
+    "pilot_ids": [
+      182
+    ],
+    "source": "黒騎士",
+    "source_hex": "F0 A1 F3 AA F0 49 FF",
+    "translation": "อัศวินดำ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x73AE",
+    "pilot_ids": [
+      183
+    ],
+    "source": "ドレイク＝ルフト",
+    "source_hex": "B8 DB 93 9E E3 DA C4 B7 FF",
+    "translation": "เดรก ลุฟต์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73B7",
+    "pilot_ids": [
+      184
+    ],
+    "source": "ショット＝ウェポン",
+    "source_hex": "A6 D6 B2 B7 E3 95 96 CC DF FF",
+    "translation": "ช็อต เวพอน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73C1",
+    "pilot_ids": [
+      185
+    ],
+    "source": "ビショット＝ハッタ",
+    "source_hex": "C2 A6 D6 B2 B7 E3 BE B2 AE FF",
+    "translation": "บิช็อต เฮต",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73CB",
+    "pilot_ids": [
+      186
+    ],
+    "source": "ル－ザ＝ルフト",
+    "source_hex": "DA 11 A5 E3 DA C4 B7 FF",
+    "translation": "ลูซา ลุฟต์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73D3",
+    "pilot_ids": [
+      187
+    ],
+    "source": "ミュ－ジィ＝ポ－",
+    "source_hex": "CE D4 11 A7 92 E3 CC 11 FF",
+    "translation": "มิวซี โพ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73DC",
+    "pilot_ids": [
+      188
+    ],
+    "source": "ゼット＝ライト",
+    "source_hex": "AB B2 B7 E3 D8 93 B7 FF",
+    "translation": "เซ็ต ไลต์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73E4",
+    "pilot_ids": [
+      189
+    ],
+    "source": "トルスト－ル＝チェシレンコ",
+    "source_hex": "B7 DA A8 B7 11 DA E3 B0 96 A6 DB DF A2 FF",
+    "translation": "ตอลสตอย เชชิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x73F2",
+    "pilot_ids": [
+      190
+    ],
+    "source": "ジェリル＝クチビ",
+    "source_hex": "A7 96 D9 DA E3 9E B0 C2 FF",
+    "translation": "เจริล คูชิบี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x73FB",
+    "pilot_ids": [
+      191
+    ],
+    "source": "アレン＝ブレディ",
+    "source_hex": "91 DB DF E3 C5 DB B6 92 FF",
+    "translation": "อัลเลน เบรดี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7404",
+    "pilot_ids": [
+      192
+    ],
+    "source": "フェイ＝チェンカ",
+    "source_hex": "C4 96 93 E3 B0 96 DF 9A FF",
+    "translation": "เฟย์ เชนกา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x740D",
+    "pilot_ids": [
+      193
+    ],
+    "source": "ガラリア＝ニャムヒ－",
+    "source_hex": "9B D8 D9 91 E3 BA D2 CF C1 11 FF",
+    "translation": "การาเรีย เนียมฮี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7418",
+    "pilot_ids": [
+      194
+    ],
+    "source": "ガラミティ＝マンガン",
+    "source_hex": "9B D8 CE B5 92 E3 CD DF 9B DF FF",
+    "translation": "กาลามิตี แมงแกน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7423",
+    "pilot_ids": [
+      195
+    ],
+    "source": "ダ－",
+    "source_hex": "AF 11 FF",
+    "translation": "ดาห์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7426",
+    "pilot_ids": [
+      196
+    ],
+    "source": "ニェット",
+    "source_hex": "BA 96 B2 B7 FF",
+    "translation": "เนียต",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x742B",
+    "pilot_ids": [
+      197
+    ],
+    "source": "暗黒大将軍",
+    "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
+    "translation": "แม่ทัพมืด",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7436",
+    "pilot_ids": [
+      198
+    ],
+    "source": "悪霊将軍ハ－ディアス",
+    "source_hex": "F1 9C F3 06 F0 A4 F0 A5 BE 11 B6 92 91 A8 FF",
+    "translation": "แม่ทัพฮาร์เดียส",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7445",
+    "pilot_ids": [
+      199
+    ],
+    "source": "妖爬虫将軍ドレイドウ",
+    "source_hex": "F2 4F F4 26 F4 2C F0 A4 F0 A5 B8 DB 93 B8 95 FF",
+    "translation": "แม่ทัพเดรโด",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7455",
+    "pilot_ids": [
+      200
+    ],
+    "source": "ＤＣ兵士",
+    "source_hex": "19 18 F0 4E F0 49 FF",
+    "translation": "ทหาร DC",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x745C",
+    "pilot_ids": [
+      201
+    ],
+    "source": "エリ－ト兵",
+    "source_hex": "97 D9 11 B7 F0 4E FF",
+    "translation": "ทหารชั้นยอด",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7463",
+    "pilot_ids": [
+      202
+    ],
+    "source": "人工知能",
+    "source_hex": "F0 08 F2 83 F1 86 F0 79 FF",
+    "translation": "AI",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x746C",
+    "pilot_ids": [
+      203
+    ],
+    "source": "人工知能改",
+    "source_hex": "F0 08 F2 83 F1 86 F0 79 F0 4A FF",
+    "translation": "AI ไค",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7477",
+    "pilot_ids": [
+      204
+    ],
+    "source": "ゲスト兵士",
+    "source_hex": "A1 A8 B7 F0 4E F0 49 FF",
+    "translation": "ทหารเกสต์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x747F",
+    "pilot_ids": [
+      205
+    ],
+    "source": "ゲスト突撃兵",
+    "source_hex": "A1 A8 B7 F0 3B F0 55 F0 4E FF",
+    "translation": "จู่โจมเกสต์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7489",
+    "pilot_ids": [
+      206
+    ],
+    "source": "ゲスト親衛隊兵",
+    "source_hex": "A1 A8 B7 F2 6C F2 7B F0 E7 F0 4E FF",
+    "translation": "องครักษ์เกสต์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7495",
+    "pilot_ids": [
+      207
+    ],
+    "source": "ポセイダル兵",
+    "source_hex": "CC AA 93 AF DA F0 4E FF",
+    "translation": "ทหารโพเซดัล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x749D",
+    "pilot_ids": [
+      208
+    ],
+    "source": "ポセイダル親衛隊兵",
+    "source_hex": "CC AA 93 AF DA F2 6C F2 7B F0 E7 F0 4E FF",
+    "translation": "องครักษ์โพเซดัล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x74AB",
+    "pilot_ids": [
+      209
+    ],
+    "source": "エギ－ユ＝デラ－ズ",
+    "source_hex": "97 9D 11 D5 E3 B6 D8 11 A9 FF",
+    "translation": "เอกีล เดลาซ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x74B5",
+    "pilot_ids": [
+      210
+    ],
+    "source": "ダバ＝マイロ－ド",
+    "source_hex": "AF BF E3 CD 93 DC 11 B8 FF",
+    "translation": "ดาบา ไมโรด",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x74BE",
+    "pilot_ids": [
+      211
+    ],
+    "source": "ガウ＝ハ＝レッシィ",
+    "source_hex": "9B 95 E3 BE E3 DB B2 A6 92 FF",
+    "translation": "เกา ฮา เลสซี่",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x74C8",
+    "pilot_ids": [
+      212
+    ],
+    "source": "ミラウ－＝キャオ",
+    "source_hex": "CE D8 95 11 E3 9C D2 99 FF",
+    "translation": "มิราวู เคียว",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x74D1",
+    "pilot_ids": [
+      213
+    ],
+    "source": "ファンネリア＝アム",
+    "source_hex": "C4 90 DF BC D9 91 E3 91 CF FF",
+    "translation": "ฟานาเรีย อัม",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x74DB",
+    "pilot_ids": [
+      214
+    ],
+    "source": "ハッシャ＝モッシャ",
+    "source_hex": "BE B2 A6 D2 E3 D1 B2 A6 D2 FF",
+    "translation": "ฮัชชา โมจา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x74E5",
+    "pilot_ids": [
+      215
+    ],
+    "source": "ギャブレット＝ギャブレ－",
+    "source_hex": "9D D2 C5 DB B2 B7 E3 9D D2 C5 DB 11 FF",
+    "translation": "แกฟเล็ต แกบเลย์",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x74F2",
+    "pilot_ids": [
+      216
+    ],
+    "source": "アマンダラ＝カマンダラ",
+    "source_hex": "91 CD DF AF D8 E3 9A CD DF AF D8 FF",
+    "translation": "อามันดรา คามันดรา",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x74FE",
+    "pilot_ids": [
+      217
+    ],
+    "source": "オルドナ＝ポセイダル",
+    "source_hex": "99 DA B8 B9 E3 CC AA 93 AF DA FF",
+    "translation": "โอลด์นา โพเซดัล",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7509",
+    "pilot_ids": [
+      218
+    ],
+    "source": "ネイ＝モ－＝ハン",
+    "source_hex": "BC 93 E3 D1 11 E3 BE DF FF",
+    "translation": "เนย์ โม ฮัน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7512",
+    "pilot_ids": [
+      219
+    ],
+    "source": "ギワザ＝ロワウ",
+    "source_hex": "9D DD A5 E3 DC DD 95 FF",
+    "translation": "กิวาซา โลวาว",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x751A",
+    "pilot_ids": [
+      220
+    ],
+    "source": "フル＝フラット",
+    "source_hex": "C4 DA E3 C4 D8 B2 B7 FF",
+    "translation": "ฟูล แฟลต",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7522",
+    "pilot_ids": [
+      221
+    ],
+    "source": "クワサン＝オリビ－",
+    "source_hex": "9E DD A4 DF E3 99 D9 C2 11 FF",
+    "translation": "ควาซาน โอลิบี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x752C",
+    "pilot_ids": [
+      222
+    ],
+    "source": "リョクレイ＝ロン",
+    "source_hex": "D9 D6 9E DB 93 E3 DC DF FF",
+    "translation": "ร็อกลี รอน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7535",
+    "pilot_ids": [
+      223
+    ],
+    "source": "アントン＝ランド",
+    "source_hex": "91 DF B7 DF E3 D8 DF B8 FF",
+    "translation": "แอนตัน แรนโด",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x753E",
+    "pilot_ids": [
+      224
+    ],
+    "source": "ヘッケラ－＝マウザ－",
+    "source_hex": "C7 B2 A0 D8 11 E3 CD 95 A5 11 FF",
+    "translation": "เฮคเลอร์ เมาเซอร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7549",
+    "pilot_ids": [
+      225
+    ],
+    "source": "リィリィ＝ハッシ－",
+    "source_hex": "D9 92 D9 92 E3 BE B2 A6 11 FF",
+    "translation": "ลิลี ฮัชชี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7553",
+    "pilot_ids": [
+      226
+    ],
+    "source": "チャイ＝チャ－",
+    "source_hex": "B0 D2 93 E3 B0 D2 11 FF",
+    "translation": "ไช ชาร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x755B",
+    "pilot_ids": [
+      227
+    ],
+    "source": "ワザン＝ル－ン",
+    "source_hex": "DD A5 DF E3 DA 11 DF FF",
+    "translation": "วาซัน ลูน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7563",
+    "pilot_ids": [
+      228
+    ],
+    "source": "マフ＝マクトミン",
+    "source_hex": "CD C4 E3 CD 9E B7 CE DF FF",
+    "translation": "แมฟ แมคโทมิน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x756C",
+    "pilot_ids": [
+      229
+    ],
+    "source": "バ－ン＝ガニア＝キラ－ズ",
+    "source_hex": "BF 11 DF E3 9B BA 91 E3 9C D8 11 A9 FF",
+    "translation": "บาน กาเนีย คิลลาส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7579",
+    "pilot_ids": [
+      230
+    ],
+    "source": "テッド＝デビラス",
+    "source_hex": "B5 B2 B8 E3 B6 C2 D8 A8 FF",
+    "translation": "เท็ด เดวิลาส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7582",
+    "pilot_ids": [
+      231
+    ],
+    "source": "グロフィス＝ラクレイン",
+    "source_hex": "9F DC C4 92 A8 E3 D8 9E DB 93 DF FF",
+    "translation": "โกลฟิส แรคเลน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x758E",
+    "pilot_ids": [
+      232
+    ],
+    "source": "ジュスティヌ＝シャフラワ－ス",
+    "source_hex": "A7 D4 A8 B5 92 BB E3 A6 D2 C4 D8 DD 11 A8 FF",
+    "translation": "จัสทีน ชาฟรัว",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x759D",
+    "pilot_ids": [
+      233
+    ],
+    "source": "ゼブリ－ズ＝フルシュワ",
+    "source_hex": "AB C5 D9 11 A9 E3 C4 DA A6 D4 DD FF",
+    "translation": "เซบริส ฟอร์ชวา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x75A9",
+    "pilot_ids": [
+      234
+    ],
+    "source": "テイニクェット＝ゼゼ－ナン",
+    "source_hex": "B5 93 BA 9E 96 B2 B7 E3 AB AB 11 B9 DF FF",
+    "translation": "เทนิเค็ต เซเซอร์นัน",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x75B7",
+    "pilot_ids": [
+      235
+    ],
+    "source": "メキボス",
+    "source_hex": "D0 9C CB A8 FF",
+    "translation": "เมคิบอส",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x75BC",
+    "pilot_ids": [
+      236
+    ],
+    "source": "テリウス＝ビルセイア",
+    "source_hex": "B5 D9 95 A8 E3 C2 DA AA 93 91 FF",
+    "translation": "เทเรียส บิลเซอา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x75C7",
+    "pilot_ids": [
+      237
+    ],
+    "source": "強化兵",
+    "source_hex": "F1 7A F1 1F F0 4E FF",
+    "translation": "ทหารเสริมแกร่ง",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x75CE",
+    "pilot_ids": [
+      238
+    ],
+    "source": "三輪防人",
+    "source_hex": "F0 11 F4 2D F0 7B F0 08 FF",
+    "translation": "ซากิโมริ มิวะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x75D7",
+    "pilot_ids": [
+      239
+    ],
+    "source": "超人工知能",
+    "source_hex": "F0 4B F0 08 F2 83 F1 86 F0 79 FF",
+    "translation": "ซูเปอร์ AI",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x75E2",
+    "pilot_ids": [
+      240
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E3",
+    "pilot_ids": [
+      241
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E4",
+    "pilot_ids": [
+      242
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E5",
+    "pilot_ids": [
+      243
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E6",
+    "pilot_ids": [
+      244
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E7",
+    "pilot_ids": [
+      245
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E8",
+    "pilot_ids": [
+      246
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75E9",
+    "pilot_ids": [
+      247
+    ],
+    "source": "－－－－－－－－－－－－",
+    "source_hex": "11 11 11 11 11 11 11 11 11 11 11 11 FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x75F6",
+    "pilot_ids": [
+      248
+    ],
+    "source": "<NAME:$8024>＝<NAME:$802A>",
+    "source_hex": "FB 24 80 E3 FB 2A 80 FF",
+    "kind": "dynamic_name",
+    "translation": "<NAME:$8024> <NAME:$802A>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x75FE",
+    "pilot_ids": [
+      249
+    ],
+    "source": "<NAME:$8027>＝<NAME:$802D>",
+    "source_hex": "FB 27 80 E3 FB 2D 80 FF",
+    "kind": "dynamic_name",
+    "translation": "<NAME:$8027> <NAME:$802D>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x7606",
+    "pilot_ids": [
+      250
+    ],
+    "source": "<NAME:$8012>＝<NAME:$8018>",
+    "source_hex": "FB 12 80 E3 FB 18 80 FF",
+    "kind": "dynamic_name",
+    "translation": "<NAME:$8012> <NAME:$8018>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x760E",
+    "pilot_ids": [
+      251
+    ],
+    "source": "<NAME:$8015>＝<NAME:$801B>",
+    "source_hex": "FB 15 80 E3 FB 1B 80 FF",
+    "kind": "dynamic_name",
+    "translation": "<NAME:$8015> <NAME:$801B>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x7616",
+    "pilot_ids": [
+      252,
+      253,
+      254,
+      255
+    ],
+    "source": "－－－－－－－－－－－－",
+    "source_hex": "11 11 11 11 11 11 11 11 11 11 11 11 FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  },
+  {
+    "source_pointer": "0x7623",
+    "pilot_ids": [
+      256
+    ],
+    "source": "アストナ－ジ＝メドッソ",
+    "source_hex": "91 A8 B7 B9 11 A7 E3 D0 B8 B2 AC FF",
+    "translation": "แอสโทนาจ เมดอซ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x762F",
+    "pilot_ids": [
+      257
+    ],
+    "source": "弓教授",
+    "source_hex": "F0 43 F0 9B F4 12 FF",
+    "translation": "ศ.ยูมิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7636",
+    "pilot_ids": [
+      258
+    ],
+    "source": "早乙女博士",
+    "source_hex": "F0 27 F0 28 F0 29 F0 48 F0 49 FF",
+    "translation": "ดร.ซาโอโตเมะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7641",
+    "pilot_ids": [
+      259
+    ],
+    "source": "猿丸太郎",
+    "source_hex": "F4 16 F4 17 F0 2F F0 30 FF",
+    "translation": "ทาโร ซารุมารุ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x764A",
+    "pilot_ids": [
+      260
+    ],
+    "source": "四谷博士",
+    "source_hex": "F0 46 F0 47 F0 48 F0 49 FF",
+    "translation": "ดร.โยตสึยะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7653",
+    "pilot_ids": [
+      261
+    ],
+    "source": "ロペット",
+    "source_hex": "DC C9 B2 B7 FF",
+    "translation": "โรเป็ต",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7658",
+    "pilot_ids": [
+      262
+    ],
+    "source": "香月真吾",
+    "source_hex": "F0 35 F0 95 F1 D2 F3 02 FF",
+    "translation": "ชิงโง โคซึกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7661",
+    "pilot_ids": [
+      263
+    ],
+    "source": "アキ",
+    "source_hex": "91 9C FF",
+    "translation": "อากิ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7664",
+    "pilot_ids": [
+      264
+    ],
+    "source": "ミチ",
+    "source_hex": "CE B0 FF",
+    "translation": "มิจิ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7667",
+    "pilot_ids": [
+      265
+    ],
+    "source": "エリカ",
+    "source_hex": "97 D9 9A FF",
+    "translation": "เอริกา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x766B",
+    "pilot_ids": [
+      266
+    ],
+    "source": "和泉博士",
+    "source_hex": "F1 CB F4 1D F0 48 F0 49 FF",
+    "translation": "ดร.อิซูมิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7674",
+    "pilot_ids": [
+      267
+    ],
+    "source": "シロ",
+    "source_hex": "A6 DC FF",
+    "translation": "ชิโระ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7677",
+    "pilot_ids": [
+      268
+    ],
+    "source": "クロ",
+    "source_hex": "9E DC FF",
+    "translation": "คุโระ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x767A",
+    "pilot_ids": [
+      269
+    ],
+    "source": "フレキ",
+    "source_hex": "C4 DB 9C FF",
+    "translation": "เฟรคี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x767E",
+    "pilot_ids": [
+      270
+    ],
+    "source": "ゲリ",
+    "source_hex": "A1 D9 FF",
+    "translation": "เกรี",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7681",
+    "pilot_ids": [
+      271
+    ],
+    "source": "ランシャオ",
+    "source_hex": "D8 DF A6 D2 99 FF",
+    "translation": "รันเซา",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7687",
+    "pilot_ids": [
+      272
+    ],
+    "source": "チカ",
+    "source_hex": "B0 9A FF",
+    "translation": "จิกะ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x768A",
+    "pilot_ids": [
+      273
+    ],
+    "source": "ベロスタン",
+    "source_hex": "C8 DC A8 AE DF FF",
+    "translation": "เบโลสตัน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7690",
+    "pilot_ids": [
+      274
+    ],
+    "source": "平祭官",
+    "source_hex": "F1 11 F2 5B F2 69 FF",
+    "translation": "นักบวชฮิระ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7697",
+    "pilot_ids": [
+      275
+    ],
+    "source": "三輪防人",
+    "source_hex": "F0 11 F4 2D F0 7B F0 08 FF",
+    "translation": "ซากิโมริ มิวะ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x76A0",
+    "pilot_ids": [
+      276
+    ],
+    "source": "ジュン",
+    "source_hex": "A7 D4 DF FF",
+    "translation": "จุน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76A4",
+    "pilot_ids": [
+      277
+    ],
+    "source": "チョ－サク",
+    "source_hex": "B0 D6 11 A4 9E FF",
+    "translation": "โชซากุ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76AA",
+    "pilot_ids": [
+      278
+    ],
+    "source": "ショ－ジ",
+    "source_hex": "A6 D6 11 A7 FF",
+    "translation": "โชจิ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76AF",
+    "pilot_ids": [
+      279
+    ],
+    "source": "もりもり博士",
+    "source_hex": "81 89 81 89 F0 48 F0 49 FF",
+    "translation": "ดร.โมริโมริ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x76B8",
+    "pilot_ids": [
+      280
+    ],
+    "source": "せわし博士",
+    "source_hex": "5A 8D 56 F0 48 F0 49 FF",
+    "translation": "ดร.เซวาชิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x76C0",
+    "pilot_ids": [
+      281
+    ],
+    "source": "のっそり博士",
+    "source_hex": "6D 62 5C 89 F0 48 F0 49 FF",
+    "translation": "ดร.นอสโซริ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x76C9",
+    "pilot_ids": [
+      282
+    ],
+    "source": "モ－ラ＝バシット",
+    "source_hex": "D1 11 D8 E3 BF A6 B2 B7 FF",
+    "translation": "โมรา บาชิต",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76D2",
+    "pilot_ids": [
+      283
+    ],
+    "source": "エギ－ユ＝デラ－ズ",
+    "source_hex": "97 9D 11 D5 E3 B6 D8 11 A9 FF",
+    "translation": "เอกีล เดลาซ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76DC",
+    "pilot_ids": [
+      284
+    ],
+    "source": "ハロ",
+    "source_hex": "BE DC FF",
+    "translation": "ฮาโร",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76DF",
+    "pilot_ids": [
+      285
+    ],
+    "source": "千代錦",
+    "source_hex": "F2 9C F1 BF F4 2E FF",
+    "translation": "จิโยนิชิกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x76E6",
+    "pilot_ids": [
+      286
+    ],
+    "source": "ジョン＝コ－ウェン",
+    "source_hex": "A7 D6 DF E3 A2 11 95 96 DF FF",
+    "translation": "จอห์น โคเวน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76F0",
+    "pilot_ids": [
+      287
+    ],
+    "source": "ギッザ－",
+    "source_hex": "9D B2 A5 11 FF",
+    "translation": "กิซซาร์",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x76F5",
+    "pilot_ids": [
+      288
+    ],
+    "source": "葉月考太郎",
+    "source_hex": "F1 C9 F0 95 F1 64 F0 2F F0 30 FF",
+    "translation": "โคทาโร ฮาซึกิ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7700",
+    "pilot_ids": [
+      289
+    ],
+    "source": "医者",
+    "source_hex": "F4 52 F1 F2 FF",
+    "translation": "หมอ",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7705",
+    "pilot_ids": [
+      290
+    ],
+    "source": "ハサン",
+    "source_hex": "BE A4 DF FF",
+    "translation": "ฮาซัน",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7709",
+    "pilot_ids": [
+      291
+    ],
+    "source": "研究所員",
+    "source_hex": "F0 97 F0 98 F0 99 F2 BE FF",
+    "translation": "จนท.วิจัย",
+    "method": "reviewed_exact"
+  },
+  {
+    "source_pointer": "0x7712",
+    "pilot_ids": [
+      292
+    ],
+    "source": "イザベル",
+    "source_hex": "93 A5 C8 DA FF",
+    "translation": "อิซาเบล",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x7717",
+    "pilot_ids": [
+      293
+    ],
+    "source": "マルガレ－テ",
+    "source_hex": "CD DA 9B DB 11 B5 FF",
+    "translation": "มาร์กาเรเทอ",
+    "method": "reviewed_roman"
+  },
+  {
+    "source_pointer": "0x771E",
+    "pilot_ids": [
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319
+    ],
+    "source": "－－－－－－－－－－－－",
+    "source_hex": "11 11 11 11 11 11 11 11 11 11 11 11 FF",
+    "kind": "placeholder",
+    "translation": "",
+    "method": "placeholder"
+  }
+]

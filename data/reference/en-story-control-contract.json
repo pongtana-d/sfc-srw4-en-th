@@ -1,0 +1,86 @@
+{
+  "schema": "srw4.en-story-control-contract.v1",
+  "authority": "English-ROM disassembly: $C1:91F9-$C1:9244 and its indirect table.",
+  "byte_classes": [
+    {
+      "range": "$00-$EB",
+      "kind": "glyph"
+    },
+    {
+      "range": "$EC-$EF",
+      "kind": "artwork"
+    },
+    {
+      "range": "$F0-$F4",
+      "kind": "inline-control",
+      "operand_bytes": 1
+    },
+    {
+      "range": "$F5-$FF",
+      "kind": "indirect-control",
+      "dispatch_table": "$C1:99BC"
+    }
+  ],
+  "dispatch": [
+    {
+      "lead": "$F5",
+      "handler": "$C1:FFC0",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$F6",
+      "handler": "$C1:92C4",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$F7",
+      "handler": "$C1:92C7",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$F8",
+      "handler": "$C1:92DF",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$F9",
+      "handler": "$C1:9315",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$FA",
+      "handler": "$C1:9369",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$FB",
+      "handler": "$C1:9381",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$FC",
+      "handler": "$C1:93AE",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$FD",
+      "handler": "$C1:93BB",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$FE",
+      "handler": "$C1:947B",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    },
+    {
+      "lead": "$FF",
+      "handler": "$C1:94DC",
+      "inline_operand_policy": "handler-defined; do not consume speculatively"
+    }
+  ],
+  "safety": [
+    "F7 is an indirect control handler, not a terminator.",
+    "FF is an indirect return handler; it is not a standalone record-boundary rule.",
+    "A production decoder must leave handler-defined controls opaque until their full paths are proven."
+  ]
+}

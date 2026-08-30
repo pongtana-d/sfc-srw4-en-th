@@ -1,0 +1,512 @@
+{
+  "schema_version": 1,
+  "source": "union of runtime-proven UI and current translation corpus",
+  "runs": [
+    " ",
+    "!",
+    "%",
+    "%DWN",
+    "%UP",
+    "(",
+    "(LOW INTENSITY CONFLICT)",
+    ")",
+    "+",
+    "+30% 1",
+    ",",
+    "-",
+    ".",
+    "/",
+    "0",
+    "1",
+    "100% 1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    ":",
+    "?",
+    "A",
+    "AA4",
+    "AB",
+    "AEUG",
+    "AI",
+    "AIR",
+    "ALICE",
+    "AMMO",
+    "ARMOR",
+    "ATK",
+    "B",
+    "BACK",
+    "BWS",
+    "C",
+    "CMB",
+    "CQB",
+    "CRI",
+    "D",
+    "D7",
+    "DC",
+    "DEF",
+    "DWN",
+    "DX",
+    "E",
+    "EN",
+    "END",
+    "EVD",
+    "EXP",
+    "Ex-S",
+    "F",
+    "F91",
+    "FIX",
+    "FND",
+    "FX II",
+    "G",
+    "GM III",
+    "GND",
+    "GP-01Fb",
+    "GP-02A",
+    "GP-03S",
+    "GP03",
+    "H",
+    "HIT",
+    "HP",
+    "I",
+    "II",
+    "J",
+    "K",
+    "K5",
+    "K7",
+    "KILL",
+    "L",
+    "L+R+SEL+ST",
+    "LIC",
+    "LIMIT",
+    "LL",
+    "LOAD",
+    "LV",
+    "M",
+    "M2",
+    "M9",
+    "MAP",
+    "MOB",
+    "MONO",
+    "MOV",
+    "MOVE",
+    "N",
+    "NEWTYPE",
+    "NEXT LV",
+    "NO",
+    "NONE",
+    "NT-1",
+    "O",
+    "OBJ",
+    "OFF",
+    "OK",
+    "ON",
+    "ORDER",
+    "OVA",
+    "P",
+    "PARTS",
+    "PILOT",
+    "POWER",
+    "PT",
+    "PTS",
+    "Q",
+    "R",
+    "REA",
+    "REAL",
+    "RNG",
+    "S",
+    "SAVE",
+    "SEA",
+    "SEARCH",
+    "SELECT",
+    "SEP",
+    "SIZE",
+    "SKILL",
+    "SKILLS",
+    "SKL",
+    "SP",
+    "SPIRITS",
+    "SPR",
+    "STA",
+    "STER",
+    "SUB",
+    "SUP",
+    "SUPER",
+    "SYSTEM",
+    "T",
+    "TERR",
+    "TFM",
+    "TURN",
+    "TYP",
+    "TYPE",
+    "U",
+    "U6",
+    "UNIT",
+    "UNITS",
+    "UP",
+    "V",
+    "W",
+    "WEAPON",
+    "WILL",
+    "X",
+    "X1",
+    "Y",
+    "YES",
+    "Z",
+    "ZZ",
+    "b",
+    "k",
+    "m",
+    "mb",
+    "mkII",
+    "x",
+    "x2 1",
+    "x3 1",
+    "~",
+    "ν",
+    "Ⅱ",
+    "♥"
+  ],
+  "inputs": [
+    {
+      "set": "snapshot",
+      "path": "glossary.th.json",
+      "sha256": "28192c01af8bf7726917ddc3a27a5b1aa9c9b4b9b9cc7ce6a2fed41b283cf30e"
+    },
+    {
+      "set": "snapshot",
+      "path": "intermission.th.json",
+      "sha256": "da5967be8faaf38492649b21503012bcce6dd40e9801dd110016419a3d039f04"
+    },
+    {
+      "set": "snapshot",
+      "path": "intro-page2.th.json",
+      "sha256": "cfb81a38eacea9a2567b4a0d12a23e98ebc74bb8bb13981b15ad8d31e6224a3e"
+    },
+    {
+      "set": "snapshot",
+      "path": "intro-page3.th.json",
+      "sha256": "f499b057dc35f0fedb1e3f708ebdff3e8514dfeedb5103b51412db1cb2101830"
+    },
+    {
+      "set": "snapshot",
+      "path": "intro-page4.th.json",
+      "sha256": "d1d69d3299f173cde5c44f0c4ad70e078eeef858722ab0b222979b2ee9fdca3f"
+    },
+    {
+      "set": "snapshot",
+      "path": "intro-page5.th.json",
+      "sha256": "296070aae618b0b6ffafea56c7b9d49b99823755cae05a7763756b1c29047300"
+    },
+    {
+      "set": "snapshot",
+      "path": "intro.th.json",
+      "sha256": "78c3b212f6361461cad2aa821be16074712160bc874374a208888ee76349db46"
+    },
+    {
+      "set": "snapshot",
+      "path": "label-pool.th.json",
+      "sha256": "4e7e7dcb2f89c29d44f20dbfc2a843c9903c056dba1de0f47dc052186954d25e"
+    },
+    {
+      "set": "snapshot",
+      "path": "main-menu-screens.th.json",
+      "sha256": "a21a8aa1f48e3f8b8f00e1e98cc93ffc771ddd43caf715704ad5d9cea8452f30"
+    },
+    {
+      "set": "snapshot",
+      "path": "map-hud.th.json",
+      "sha256": "8cd86848b941c2328d5af0364df95bb640495bea24daa1767876b7eb60cfbaa7"
+    },
+    {
+      "set": "snapshot",
+      "path": "map-menu.th.json",
+      "sha256": "403470301a579d92ccce37365ca3a54b25492a4a26778ee08054b1a294fbe5c2"
+    },
+    {
+      "set": "snapshot",
+      "path": "naming-screen.th.json",
+      "sha256": "a4b10d3bf8f2bb42f382e30fc7a744d94d762f975c0906f701f8e36e54f9ef1d"
+    },
+    {
+      "set": "snapshot",
+      "path": "option-menu.th.json",
+      "sha256": "cd9a5ffc7cd785ea8a8300381372c114eff1044432ced81223a70ed1aa7b5814"
+    },
+    {
+      "set": "snapshot",
+      "path": "part-effects.th.json",
+      "sha256": "48fea965b6cbd0b7fb649efa71cf0e1e3a8e125d0e78f2e8b881af291a30d264"
+    },
+    {
+      "set": "snapshot",
+      "path": "pilot-short-names.th.json",
+      "sha256": "4ab681e2c440bcf82bb914cf98a98fb7aff53818d8fdf9d520fed13742e57ee0"
+    },
+    {
+      "set": "snapshot",
+      "path": "pilot-status.th.json",
+      "sha256": "9d28cc4b558c1c786148135410dd2eb8d44cb734b54a331d28a3cfb4bb557ea3"
+    },
+    {
+      "set": "snapshot",
+      "path": "pilots.th.json",
+      "sha256": "db70daec5c73a806cd94515d8abca295dbebc978545c06f31cc46b1cc8ca5ac0"
+    },
+    {
+      "set": "snapshot",
+      "path": "protagonist-settings.th.json",
+      "sha256": "e028ae8cff48bee273c8d0c20481b1f6b163babc63d4be2dfc10a7378c2a6a9e"
+    },
+    {
+      "set": "snapshot",
+      "path": "rom-glossary.th.json",
+      "sha256": "0dca704c283206b57c98f4181ba4fe5b301bdca87fccee8be3e87a3552b32662"
+    },
+    {
+      "set": "snapshot",
+      "path": "scenario-titles.th.json",
+      "sha256": "d25d4eb5504f1997372e8ceed58894a5022eec8f43b9a31e1884334fa15f0504"
+    },
+    {
+      "set": "snapshot",
+      "path": "screens.th.json",
+      "sha256": "1bb3c87d11df97e5d3735ca4652a5d7fcec86e69973619708b2a15188b4411d8"
+    },
+    {
+      "set": "snapshot",
+      "path": "series-names.th.json",
+      "sha256": "fe391d82637883d30fbbf05db70bbd57685f8b876bd420f7dcd6316a86a7c009"
+    },
+    {
+      "set": "snapshot",
+      "path": "spirit-descriptions.th.json",
+      "sha256": "a60a01c7aecd0cdf0f8d6446479a64c626b0ed07e1c7a8a8f09685807dda976e"
+    },
+    {
+      "set": "snapshot",
+      "path": "terrain-effects.th.json",
+      "sha256": "f5e4fb65a0a85d2948a20a59ec6a2a354e58c2ddc832e6766a1760be15162672"
+    },
+    {
+      "set": "snapshot",
+      "path": "terrain-names.th.json",
+      "sha256": "6c9beaf6a6337f43d6896d0f0c4149676039b7c33551bafee520142335631b95"
+    },
+    {
+      "set": "snapshot",
+      "path": "unit-abilities.th.json",
+      "sha256": "27c90e99f71805696fbca7659fc576d7aaac490b54f9a728e45753b6e4a35526"
+    },
+    {
+      "set": "snapshot",
+      "path": "unit-commands.th.json",
+      "sha256": "2e79f1328ca04a6737dc94da03b6616465272b0b5ee7f02d324e7b1a2c67e41a"
+    },
+    {
+      "set": "snapshot",
+      "path": "unit-status.th.json",
+      "sha256": "5da5ec95a764a64a2cd1a34f75cc6fe95570e8a9d76d928efc0aa447fffb8fb5"
+    },
+    {
+      "set": "snapshot",
+      "path": "units.th.json",
+      "sha256": "613e150e3db0014afb122c866fbc4fc871330c81d519220b5613118ad2d3d5e3"
+    },
+    {
+      "set": "snapshot",
+      "path": "weapon-detail.th.json",
+      "sha256": "d44eae81a7c0c6d9d76f16301c32162c14779a3805c35103d6324912de3ac922"
+    },
+    {
+      "set": "snapshot",
+      "path": "weapons.th.json",
+      "sha256": "dbf3e58143fa0796b0e3759aa3822527f4f94c3101d8295f62a09f3f1dc841c4"
+    },
+    {
+      "set": "current",
+      "path": "glossary.th.json",
+      "sha256": "28192c01af8bf7726917ddc3a27a5b1aa9c9b4b9b9cc7ce6a2fed41b283cf30e"
+    },
+    {
+      "set": "current",
+      "path": "intermission.th.json",
+      "sha256": "da5967be8faaf38492649b21503012bcce6dd40e9801dd110016419a3d039f04"
+    },
+    {
+      "set": "current",
+      "path": "intro-page2.th.json",
+      "sha256": "cfb81a38eacea9a2567b4a0d12a23e98ebc74bb8bb13981b15ad8d31e6224a3e"
+    },
+    {
+      "set": "current",
+      "path": "intro-page3.th.json",
+      "sha256": "f499b057dc35f0fedb1e3f708ebdff3e8514dfeedb5103b51412db1cb2101830"
+    },
+    {
+      "set": "current",
+      "path": "intro-page4.th.json",
+      "sha256": "d1d69d3299f173cde5c44f0c4ad70e078eeef858722ab0b222979b2ee9fdca3f"
+    },
+    {
+      "set": "current",
+      "path": "intro-page5.th.json",
+      "sha256": "296070aae618b0b6ffafea56c7b9d49b99823755cae05a7763756b1c29047300"
+    },
+    {
+      "set": "current",
+      "path": "intro.th.json",
+      "sha256": "7726d993fa28b81aea5f6c9b1dd9292086e4bb1b55bb3615795ef16dea332387"
+    },
+    {
+      "set": "current",
+      "path": "label-pool.th.json",
+      "sha256": "608e6ad18a7954937671a597575ba8e572ba4f20b119bd3e4c6cbe0ae6e517b8"
+    },
+    {
+      "set": "current",
+      "path": "main-menu-screens.th.json",
+      "sha256": "a21a8aa1f48e3f8b8f00e1e98cc93ffc771ddd43caf715704ad5d9cea8452f30"
+    },
+    {
+      "set": "current",
+      "path": "map-hud.th.json",
+      "sha256": "8cd86848b941c2328d5af0364df95bb640495bea24daa1767876b7eb60cfbaa7"
+    },
+    {
+      "set": "current",
+      "path": "map-menu.th.json",
+      "sha256": "403470301a579d92ccce37365ca3a54b25492a4a26778ee08054b1a294fbe5c2"
+    },
+    {
+      "set": "current",
+      "path": "naming-screen.th.json",
+      "sha256": "a4b10d3bf8f2bb42f382e30fc7a744d94d762f975c0906f701f8e36e54f9ef1d"
+    },
+    {
+      "set": "current",
+      "path": "option-menu.th.json",
+      "sha256": "cd9a5ffc7cd785ea8a8300381372c114eff1044432ced81223a70ed1aa7b5814"
+    },
+    {
+      "set": "current",
+      "path": "part-effects.th.json",
+      "sha256": "48fea965b6cbd0b7fb649efa71cf0e1e3a8e125d0e78f2e8b881af291a30d264"
+    },
+    {
+      "set": "current",
+      "path": "pilot-short-names.th.json",
+      "sha256": "9aaccd4a96d3956eddcddb362cf3a39320977028c6a1f0d7154046df6457e438"
+    },
+    {
+      "set": "current",
+      "path": "pilot-status.th.json",
+      "sha256": "9d28cc4b558c1c786148135410dd2eb8d44cb734b54a331d28a3cfb4bb557ea3"
+    },
+    {
+      "set": "current",
+      "path": "pilots.source.json",
+      "sha256": "5de4759365437d525867ac68b18ca2db790e7249c67446b59b1bd5a8c1695fd6"
+    },
+    {
+      "set": "current",
+      "path": "pilots.th.json",
+      "sha256": "e4fc554bae4c42ac4fa07ec1837b8644c47387a8aa3f557fa8f058bc091bed57"
+    },
+    {
+      "set": "current",
+      "path": "protagonist-settings.th.json",
+      "sha256": "e028ae8cff48bee273c8d0c20481b1f6b163babc63d4be2dfc10a7378c2a6a9e"
+    },
+    {
+      "set": "current",
+      "path": "rom-glossary.th.json",
+      "sha256": "0dca704c283206b57c98f4181ba4fe5b301bdca87fccee8be3e87a3552b32662"
+    },
+    {
+      "set": "current",
+      "path": "scenario-titles.th.json",
+      "sha256": "d25d4eb5504f1997372e8ceed58894a5022eec8f43b9a31e1884334fa15f0504"
+    },
+    {
+      "set": "current",
+      "path": "screens.th.json",
+      "sha256": "1bb3c87d11df97e5d3735ca4652a5d7fcec86e69973619708b2a15188b4411d8"
+    },
+    {
+      "set": "current",
+      "path": "script.source.json",
+      "sha256": "3733fc3d6d2fa13e2d42822e4fcaa20768a596a94eea2389dd71cc8c19375517"
+    },
+    {
+      "set": "current",
+      "path": "script.th.json",
+      "sha256": "b278c3a1691d1c39e6c33c2734cda4d1cc972bcd5b50eb182db604ac7293c9fb"
+    },
+    {
+      "set": "current",
+      "path": "series-names.th.json",
+      "sha256": "fe391d82637883d30fbbf05db70bbd57685f8b876bd420f7dcd6316a86a7c009"
+    },
+    {
+      "set": "current",
+      "path": "spirit-descriptions.th.json",
+      "sha256": "a60a01c7aecd0cdf0f8d6446479a64c626b0ed07e1c7a8a8f09685807dda976e"
+    },
+    {
+      "set": "current",
+      "path": "terrain-effects.th.json",
+      "sha256": "f5e4fb65a0a85d2948a20a59ec6a2a354e58c2ddc832e6766a1760be15162672"
+    },
+    {
+      "set": "current",
+      "path": "terrain-names.th.json",
+      "sha256": "6c9beaf6a6337f43d6896d0f0c4149676039b7c33551bafee520142335631b95"
+    },
+    {
+      "set": "current",
+      "path": "unit-abilities.th.json",
+      "sha256": "27c90e99f71805696fbca7659fc576d7aaac490b54f9a728e45753b6e4a35526"
+    },
+    {
+      "set": "current",
+      "path": "unit-commands.th.json",
+      "sha256": "0b9d5c9ca670eb9dbcaf8399bd889e78efa645fe2aa96cad3becd118b2a6b888"
+    },
+    {
+      "set": "current",
+      "path": "unit-status.th.json",
+      "sha256": "5da5ec95a764a64a2cd1a34f75cc6fe95570e8a9d76d928efc0aa447fffb8fb5"
+    },
+    {
+      "set": "current",
+      "path": "units.source.json",
+      "sha256": "c1f616825fcdc01c3a6f6d26fb55157d8e0c69bb405ee902ce46c1e09dd0d211"
+    },
+    {
+      "set": "current",
+      "path": "units.th.json",
+      "sha256": "613e150e3db0014afb122c866fbc4fc871330c81d519220b5613118ad2d3d5e3"
+    },
+    {
+      "set": "current",
+      "path": "weapon-detail.th.json",
+      "sha256": "d44eae81a7c0c6d9d76f16301c32162c14779a3805c35103d6324912de3ac922"
+    },
+    {
+      "set": "current",
+      "path": "weapons.source.json",
+      "sha256": "29304afa78fe06c0721e7feab8a68b90ac95fd5ca4a355320d2250e2805c0f80"
+    },
+    {
+      "set": "current",
+      "path": "weapons.th.json",
+      "sha256": "dbf3e58143fa0796b0e3759aa3822527f4f94c3101d8295f62a09f3f1dc841c4"
+    }
+  ]
+}

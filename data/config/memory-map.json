@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "rom_size": 4194304,
+  "fill": "FF",
+  "regions": [
+    {
+      "id": "story",
+      "start": "0x300000",
+      "end": "0x3A0000",
+      "cpu_banks": "$F0-$F9",
+      "purpose": "repacked story and battle quote blocks"
+    },
+    {
+      "id": "text_data",
+      "start": "0x3A0000",
+      "end": "0x3C0000",
+      "cpu_banks": "$FA-$FB",
+      "purpose": "translated catalogs, pointer tables and route data"
+    },
+    {
+      "id": "font",
+      "start": "0x3C0000",
+      "end": "0x3D0000",
+      "cpu_banks": "$FC",
+      "purpose": "source-router lookup tables and reserved static font overflow"
+    },
+    {
+      "id": "adapters",
+      "start": "0x3D0000",
+      "end": "0x3F0000",
+      "cpu_banks": "$FD-$FE",
+      "purpose": "screen-specific adapters and generated lookup code"
+    },
+    {
+      "id": "core",
+      "start": "0x3F0000",
+      "end": "0x400000",
+      "cpu_banks": "$FF",
+      "purpose": "Thai glyph page, renderer tables, shared parser and renderer code"
+    }
+  ]
+}

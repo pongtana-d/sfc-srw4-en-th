@@ -1,0 +1,38 @@
+{
+  "_comment": [
+    "How wide a line may be before the engine wraps it, per window.",
+    "",
+    "The engine checks the limit at $C1:9232, BEFORE it draws the glyph:",
+    "  lda $0E2C / and #$00FF / cmp $00 / bcc $924A   -- $00 = the new column",
+    "$0E2A counts two units per character cell, and our adapter keeps it in",
+    "the same unit ($0E2A = PEN / 4), so the check bounds our pixels too.",
+    "Going over does not crash -- it wraps early and DROPS the glyph that",
+    "crossed the line, which reads as a character quietly going missing.",
+    "",
+    "$0E2C bit $1000 indents every line after the first by one cell, which is",
+    "why `indent` costs eight pixels on continuation lines."
+  ],
+  "windows": {
+    "dialogue": {
+      "width": 240,
+      "indent": 8,
+      "lines": 3,
+      "measured": "$0E2C = $D33C, $0E2D = $D3 on hardware, scene 03; bases 0000,003E,007A",
+      "blocks": "*"
+    },
+    "epilogue": {
+      "width": 240,
+      "indent": 0,
+      "lines": 4,
+      "measured": null,
+      "blocks": [42]
+    },
+    "profile": {
+      "width": 240,
+      "indent": 0,
+      "lines": 9,
+      "measured": "docs/05-font-and-glyphs.md -- the encyclopedia profile frame",
+      "blocks": [48, 49, 50, 51]
+    }
+  }
+}

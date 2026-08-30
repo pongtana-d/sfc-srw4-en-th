@@ -1,0 +1,33 @@
+# Operating system and editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Build and generated output
+build/
+
+# Copyrighted ROM images
+*.sfc
+*.smc
+*.fig
+*.swc
+
+# Emulator saves, states, and memory dumps
+save/
+*.mss
+*.wram
+
+# Local backups
+*.bak
+*.bak-*

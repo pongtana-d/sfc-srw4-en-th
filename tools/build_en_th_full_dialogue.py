@@ -1,0 +1,140 @@
+#!/usr/bin/env python3
+"""Build Thai story/map/event and battle dialogue on the pinned English ROM."""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "src"))
+
+from srw4.en_baseline import EN_SHA256
+from srw4.en_dialogue_streams import compile_text
+from srw4.en_ff_router import install as install_router
+from srw4.en_story_build import install_full_story
+from srw4.en_th_catalogs import install as install_catalogs
+from srw4.en_th_renderer import install as install_renderer
+from srw4.en_title import install_en_title_logo
+from srw4.rom import Rom, sha256
+
+
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+SOURCE = ROOT / "data" / "translations" / "script.source.json"
+TRANSLATIONS = ROOT / "data" / "translations" / "script.th.json"
+# The editable atlas and encoding are the sole source of truth.  `proven/`
+# remains only the renderer-side page serializer used by this EN adapter.
+FONT = ROOT / "data" / "font"
+
+# EN dialogue data is placed before this area.  The title resource must occupy
+# a contiguous erased range below the stock text-data boundary.
+def encode_ips(base: bytes, target: bytes) -> bytes:
+    """Encode an equal-size binary diff as a standard IPS patch."""
+    if len(base) != len(target):
+        raise ValueError("IPS output requires equal-size base and target ROMs")
+    patch = bytearray(b"PATCH")
+    offset = 0
+    while offset < len(base):
+        if base[offset] == target[offset]:
+            offset += 1
+            continue
+        start = offset
+        while offset < len(base) and base[offset] != target[offset] and offset - start < 0xFFFF:
+            offset += 1
+        data = target[start:offset]
+        patch.extend(start.to_bytes(3, "big"))
+        patch.extend(len(data).to_bytes(2, "big"))
+        patch.extend(data)
+    patch.extend(b"EOF")
+    return bytes(patch)
+
+
+def _place_fill(image: bytearray, pc: int, data: bytes, owner: str) -> None:
+    if image[pc:pc + len(data)] != b"\xFF" * len(data):
+        raise ValueError(f"{owner} overlaps occupied ROM bytes at {pc:#08x}")
+    image[pc:pc + len(data)] = data
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--input", type=Path, default=BASE)
+    parser.add_argument("--output", type=Path, default=ROOT / "build" / "srw4-en-th.sfc")
+    parser.add_argument("--patch", type=Path, default=ROOT / "build" / "srw4-en-th.ips")
+    parser.add_argument("--report", type=Path,
+                        help="optional JSON build report; omitted to keep build/ release-only")
+    parser.add_argument("--manifest", type=Path,
+                        help="optional IPS manifest; omitted to keep build/ release-only")
+    args = parser.parse_args()
+    base = args.input.read_bytes()
+    if sha256(base) != EN_SHA256:
+        raise SystemExit("input is not the pinned English base ROM")
+
+    document = json.loads(SOURCE.read_text(encoding="utf-8"))
+    translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]
+    layout = json.loads((FONT / "encoding.json").read_text(encoding="utf-8"))
+    rom = Rom(bytearray(base))
+    full = install_full_story(
+        rom, base, document, translated, lambda text: compile_text(text, layout)
+    )
+
+    renderer = install_renderer(rom.data)
+    # The Thai copier uploads its dynamic tiles; retain parser and width hooks.
+    router = install_router(rom.data, font_hooks=True, alt_hook=False, width_hooks=True)
+    catalogs = install_catalogs(rom.data, base)
+    title = install_en_title_logo(rom.data, ROOT / "data", base)
+    checksum = rom.fix_checksum()
+    output = rom.to_bytes()
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.patch.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_bytes(output)
+    patch = encode_ips(base, output)
+    args.patch.write_bytes(patch)
+    report = {
+        "scope": (
+            "EN Thai story, battle quotes, pilot/unit/weapon names, "
+            "Spirit descriptions, and title logo"
+        ),
+        "story_repack": {"blocks": full.blocks, "records": full.records,
+                          "bytes": full.bytes, "relocated_fields": full.relocated_fields,
+                          "banks": list(full.banks)},
+        "router": {"origin": f"0x{router.origin:06X}", "bytes": router.bytes},
+        "renderer": {"bytes": renderer.bytes, "code_bytes": renderer.renderer_bytes},
+        "catalogs": {
+            "unit_records": catalogs.unit_records,
+            "pilot_records": catalogs.pilot_records,
+            "battle_pilot_records": catalogs.battle_pilot_records,
+            "weapon_records": catalogs.weapon_records,
+            "spirit_name_records": catalogs.spirit_name_records,
+            "spirit_help_records": catalogs.spirit_help_records,
+            "data_bytes": catalogs.data_bytes,
+            "adapter_bytes": catalogs.adapter_bytes,
+            "route_bytes": catalogs.route_bytes,
+            "ordinary_renderer_bytes": catalogs.ordinary_renderer_bytes,
+            "battle_info_labels": catalogs.battle_info_labels,
+        },
+        "title": title,
+        "output": {"path": str(args.output.relative_to(ROOT)), "sha256": sha256(output),
+                   "checksum": f"0x{checksum:04X}", "bytes": len(output)},
+        "patch": {"format": "IPS", "path": str(args.patch.relative_to(ROOT)),
+                  "sha256": sha256(patch), "bytes": len(patch),
+                  "base_sha256": EN_SHA256},
+    }
+    if args.report:
+        args.report.parent.mkdir(parents=True, exist_ok=True)
+        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if args.manifest:
+        args.manifest.parent.mkdir(parents=True, exist_ok=True)
+        manifest = {
+            "schema": "srw4-en-th-dialogue-patch/1",
+            "scope": report["scope"],
+            "base": {"sha256": EN_SHA256, "bytes": len(base)},
+            "patch": report["patch"],
+            "result": report["output"],
+        }
+        args.manifest.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps(report, ensure_ascii=False))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,190 @@
+{
+ "_note": "Candidate WRAM for the Renewal renderer. Every span here was chosen from a write watch over real play, never from reading 00 or FF (RENEWAL.md §9.1). Nothing in this file may be patched into a production build until the missing contexts below have been run.",
+ "schema": "renewal-memory-map/1",
+ "probe": {
+  "report": "build/renewal/memory-probe.json",
+  "tool": "tools/verify_renewal_memory.py",
+  "rom_sha256": "b3c3089c1f555b340cd8a5c31f800ab056bccec1ebf41ecc7e78628f18a7d015",
+  "contexts_run": [
+   "boot",
+   "menu",
+   "scenario",
+   "battle",
+   "dialogue"
+  ],
+  "contexts_missing": [
+   "naming",
+   "map_command"
+  ],
+  "states": {
+   "menu": "a4751c7f634e20814ab8cb0de6f7a55614049922640c57819f53b4b9ca1fd45c",
+   "scenario": "af9057721f82211eb36da5c1b7aa08029f57d1d97ca2a181bcac795dbd91b7a9",
+   "battle": "8d702db771b13d4e4c3aa7b2cfcf52da7c7105faaaa7a103b468a17ffd914bf6",
+   "dialogue": "3d154da5446a76487323c47071e3f1126a13216c1900bef1dd7d4479057a090a"
+  },
+  "state_files": {
+   "menu": "build/renewal/states/probe-menu.mss",
+   "scenario": "build/renewal/states/probe-scenario.mss",
+   "battle": "build/renewal/states/probe-battle.mss",
+   "dialogue": "build/renewal/states/dialogue.mss"
+  }
+ },
+ "budget_per_context": {
+  "line_canvas": 544,
+  "renderer_state": 128,
+  "decode_scratch": 64,
+  "dma_descriptor": 64
+ },
+ "quiet_spans": [
+  {
+   "start": "0x7E18E5",
+   "end": "0x7E1DE5",
+   "bytes": 1280
+  },
+  {
+   "start": "0x7E1DE7",
+   "end": "0x7EA000",
+   "bytes": 33305
+  },
+  {
+   "start": "0x7EC5C0",
+   "end": "0x7ED100",
+   "bytes": 2880
+  },
+  {
+   "start": "0x7ED2D2",
+   "end": "0x7EDD00",
+   "bytes": 2606
+  },
+  {
+   "start": "0x7EDFAE",
+   "end": "0x7EFFA0",
+   "bytes": 8178
+  },
+  {
+   "start": "0x7F6000",
+   "end": "0x7F8000",
+   "bytes": 8192
+  },
+  {
+   "start": "0x7FC000",
+   "end": "0x800000",
+   "bytes": 16384
+  }
+ ],
+ "contexts": [
+  {
+   "id": "renewal_ordinary_context",
+   "start": "0x7EF400",
+   "end": "0x7EF720",
+   "bytes": 800,
+   "status": "candidate",
+   "blocks": {
+    "line_canvas": [
+     "0x7EF400",
+     "0x7EF620"
+    ],
+    "renderer_state": [
+     "0x7EF620",
+     "0x7EF6A0"
+    ],
+    "decode_scratch": [
+     "0x7EF6A0",
+     "0x7EF6E0"
+    ],
+    "dma_descriptor": [
+     "0x7EF6E0",
+     "0x7EF720"
+    ]
+   },
+   "evidence": "context block inside 0x7EDFAE..0x7EFFA0; direct page inside 0x7E1000..0x7E153A, which is the LowRAM mirror at $00:1000 - both untouched by boot, menu, scenario and battle",
+   "kind": "line_renderer"
+  },
+  {
+   "id": "renewal_catalog_context",
+   "start": "0x7EF720",
+   "end": "0x7EFA00",
+   "bytes": 736,
+   "status": "candidate",
+   "blocks": {
+    "glyph_to_cell": [
+     "0x7EF720",
+     "0x7EF920"
+    ],
+    "cell_to_glyph": [
+     "0x7EF920",
+     "0x7EF9E0"
+    ],
+    "allocator_state": [
+     "0x7EF9E0",
+     "0x7EFA00"
+    ]
+   },
+   "evidence": "Inside the span 0x7EEC00..0x7F8000 that three catalog contexts - menu, intermission and the map's lists - left untouched across 1200 driven frames each on the pilot ROM (build/renewal/catalog-probe/memory-probe.json).  It is taken from the headroom the first context reserved for exactly this.",
+   "why_this_shape": "A catalog assigns tiles per redraw, so it answers two questions: which cell a glyph id already holds, and which glyph each cell holds when the tiles are uploaded.  Both tables are words, not bytes.  Byte-packing them would save 352 bytes and cost the thing that already went wrong once - the accumulator here is 16-bit, and the dialogue context's byte-packed fields were quietly overwritten by their neighbours until every field was widened to a word.  The tiles are never staged in WRAM; they go from the atlas in ROM to the pool directly, which is what keeps this under a kilobyte instead of the 4288 bytes a staging buffer would need.",
+   "kind": "catalog_allocator"
+  },
+  {
+   "id": "renewal_name_pen",
+   "start": "0x7EFA00",
+   "end": "0x7EFA36",
+   "bytes": 54,
+   "status": "candidate",
+   "blocks": {
+    "pen_state": [
+     "0x7EFA00",
+     "0x7EFA10"
+    ],
+    "open_cell": [
+     "0x7EFA10",
+     "0x7EFA20"
+    ],
+    "spill": [
+     "0x7EFA20",
+     "0x7EFA30"
+    ],
+    "range_probe": [
+     "0x7EFA30",
+     "0x7EFA36"
+    ]
+   },
+   "evidence": "Inside the same span 0x7EDFAE..0x7EFFA0 the two contexts above sit in, and taken from the headroom the reserved gap below the legacy renderer state was held for.",
+   "why_this_shape": "The pen carries one cell across calls, because the engine hands it one cluster at a time and a cluster narrower than eight pixels leaves the cell open.  `open_cell` is the cell being assembled and `spill` is what the last cluster hung past its right edge - sixteen rows each, one byte a row, in the stock font's own order, so the roll at the end of a cell is one loop and the emit is the stock routine's own.  The eight words of state are words rather than bytes for the reason the dialogue context already learned: the accumulator here is 16-bit and a byte field is quietly written two bytes wide.  The last three words are the walk's: the source pointer one back, which the range table is compared against, and the glyph page and advance table the matched range chose - a page holds 240 ids and Phase 9's screens need more than that between them, so which page to read is a property of the record rather than of the adapter.",
+   "kind": "cell_pen"
+  }
+ ],
+ "reserved_gap": {
+  "start": "0x7EFA36",
+  "end": "0x7EFFA0",
+  "bytes": 1386,
+  "reason": "Headroom below the legacy renderer state.  The second context this was held for is the catalog one above.  The pen took 48 bytes of it for the cell it carries between calls."
+ },
+ "must_not_touch": [
+  {
+   "id": "ordinary_renderer_state",
+   "start": "0x7EFFA0",
+   "end": "0x7EFFC0"
+  },
+  {
+   "id": "battle_renderer_state",
+   "start": "0x7EFFC0",
+   "end": "0x7EFFE0"
+  },
+  {
+   "id": "renderer_scratch",
+   "start": "0x7EFFE0",
+   "end": "0x7F0000"
+  }
+ ],
+ "budget_note": "RENEWAL.md §9.1 budgeted 512 for a bare 256x16 canvas. The blitter ORs a 16-bit word at the pen, so a glyph in the last cell writes one byte past it; the row stride is 34 rather than 32 and the canvas is 544. The extra 32 bytes are the guard cells §9.2 asks for.  budget_per_context describes a line renderer.  The catalog context is not one - it draws nothing and holds an assignment - so it declares its own blocks and is held to those instead.",
+ "direct_page_window": {
+  "status": "retired",
+  "reason": "The renderer no longer uses one.  The game's NMI handler at $00:F44C saves A, X, Y and the data bank and never touches D, so a renderer holding its own direct page hands that handler a page full of renderer variables at the end of any frame.  It hung the game in its vblank wait at $C0:F54C.  Working variables live in the context's own scratch block, addressed absolutely through bank $7E, and the token stream is read absolute-long from the bank the context declares."
+ },
+ "context_count": {
+  "decision": "one story context, not two",
+  "reason": "RENEWAL.md §9.1 asks for ordinary and battle to have separate state and canvas, or a lock that proves they cannot reenter each other.  The trace says they are not two surfaces: battle quotes and map dialogue come through the same loop at $C1:91E3, read the same source pointer in $CB-$CD, are drawn by the same call at $C1:9238 and land in the same arena at $7F8000 mapping to VRAM tile 0x200.  The engine runs one story loop, so only one of them is ever mid-message; a second context would be a copy that could never be live at the same time as the first.",
+  "what_would_change_this": "A battle quote seen drawing while a map dialogue is mid-message, or a battle window with a different arena base or line width.  Neither has been seen, and the second has not been measured yet - the battle window's width and palette still need a battle reached on the pilot ROM.",
+  "evidence": "config/renewal-surfaces.json -> battle_text_entry.shared_with_dialogue"
+ }
+}

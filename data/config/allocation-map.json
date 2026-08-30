@@ -1,0 +1,57 @@
+{
+  "schema": "srw4-allocation-map/1",
+  "_note": "Regions of the 4 MB expanded image that the new pipeline may write into. Banks $C0-$EF are the stock ROM and are never allocated from here; only the space gained by expanding 3 MB -> 4 MB is listed. Ranges are start-inclusive, end-exclusive PC offsets, matching the project-wide convention.",
+  "expanded_space": { "start": "0x300000", "end": "0x400000", "bytes": 1048576 },
+  "fill_byte": "0xFF",
+  "regions": [
+    {
+      "id": "text_streams",
+      "banks": "$F0-$F8",
+      "start": "0x300000",
+      "end": "0x390000",
+      "purpose": "token streams that do not fit their stock slot (script overflow, menus, catalogs)"
+    },
+    {
+      "id": "glyph_atlas",
+      "banks": "$F9",
+      "start": "0x390000",
+      "end": "0x3A0000",
+      "purpose": "precomposed cluster bitmaps and the metrics table"
+    },
+    {
+      "id": "catalog_pool",
+      "banks": "$FA",
+      "start": "0x3A0000",
+      "end": "0x3B0000",
+      "purpose": "catalog records moved out of their stock bank, reached by repointed 24-bit descriptors"
+    },
+    {
+      "id": "renderer_code",
+      "banks": "$FB",
+      "start": "0x3B0000",
+      "end": "0x3C0000",
+      "purpose": "65816 blitter and decoder"
+    },
+    {
+      "id": "routing_tables",
+      "banks": "$FC",
+      "start": "0x3C0000",
+      "end": "0x3D0000",
+      "purpose": "bank/page/bitmap tables that tell the adapter which ranges belong to us"
+    },
+    {
+      "id": "hook_trampolines",
+      "banks": "$FD",
+      "start": "0x3D0000",
+      "end": "0x3E0000",
+      "purpose": "long-jump landing pads for the stock engine hooks"
+    },
+    {
+      "id": "spare",
+      "banks": "$FE-$FF",
+      "start": "0x3E0000",
+      "end": "0x400000",
+      "purpose": "unassigned; keep free until something needs it"
+    }
+  ]
+}

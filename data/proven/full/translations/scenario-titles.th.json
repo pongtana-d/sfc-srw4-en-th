@@ -1,0 +1,709 @@
+{
+  "_comment": "ชื่อฉาก catalog 14 ของตารางแม่ $C9:00D8 ย้ายทั้งตารางและ pool ไปแบงก์ text_data",
+  "_layout": {
+    "master_entry": 14,
+    "master_entry_pc": "0x090102",
+    "master_entry_hex": "0990D2",
+    "pointer_table": {
+      "address": "0x129009",
+      "cpu": "$D2:9009",
+      "entries": 128,
+      "source_sha256": "711ff3e97557c2a152568fc81d4aa9539db7799a03d682ccc520eae0f0c036d7"
+    },
+    "pool": {
+      "address": "0x129109",
+      "end": "0x129389",
+      "source_sha256": "8723ba2e57788057b11d6ec95903a3f4b8f580dcded4705eac5660f555521577"
+    },
+    "max_width_px": 152,
+    "width_evidence": "ญี่ปุ่นที่ยาวที่สุดคือ 天才科学者アイザムの挑戦 = 152 px"
+  },
+  "records": [
+    {
+      "pointer": "0x9109",
+      "source_pc": "0x129109",
+      "source_hex": "F0C2F4B4FF",
+      "source": "発端",
+      "translation": "จุดเริ่มต้น",
+      "slots": [
+        0,
+        50
+      ]
+    },
+    {
+      "pointer": "0x910E",
+      "source_pc": "0x12910E",
+      "source_hex": "F45A6DF4B3F173F1F2FF",
+      "source": "謎の訪問者",
+      "translation": "ผู้มาเยือนปริศนา",
+      "slots": [
+        1,
+        2
+      ]
+    },
+    {
+      "pointer": "0x9118",
+      "source_pc": "0x129118",
+      "source_hex": "F2105E69F093FF",
+      "source": "新たな敵",
+      "translation": "ศัตรูหน้าใหม่",
+      "slots": [
+        3,
+        52
+      ]
+    },
+    {
+      "pointer": "0x911F",
+      "source_pc": "0x12911F",
+      "source_hex": "F167F2F91500F016F407F0C1498C5615FF",
+      "source": "特訓！　大雪山おろし！",
+      "translation": "ฝึกหนัก! พายุหิมะ!",
+      "slots": [
+        4,
+        49
+      ]
+    },
+    {
+      "pointer": "0x9130",
+      "source_pc": "0x129130",
+      "source_hex": "C5D893B76DF1FFF200FF",
+      "source": "ブライトの帰還",
+      "translation": "การกลับมาของไบรท์",
+      "slots": [
+        5
+      ]
+    },
+    {
+      "pointer": "0x913A",
+      "source_pc": "0x12913A",
+      "source_hex": "F1A8F1221500A2DFBFB7D8112BFF",
+      "source": "救出！　コンバトラーＶ",
+      "translation": "กู้ภัย! คอมแบตเลอร์ V",
+      "slots": [
+        6
+      ]
+    },
+    {
+      "pointer": "0x9148",
+      "source_pc": "0x129148",
+      "source_hex": "F053F0A4AF93D1A8FF",
+      "source": "闘将ダイモス",
+      "translation": "ไดมอสนักรบ",
+      "slots": [
+        7
+      ]
+    },
+    {
+      "pointer": "0x9151",
+      "source_pc": "0x129151",
+      "source_hex": "F052F0406DF100FF",
+      "source": "戦場の愛",
+      "translation": "รักในสนามรบ",
+      "slots": [
+        8
+      ]
+    },
+    {
+      "pointer": "0x9159",
+      "source_pc": "0x129159",
+      "source_hex": "A5DFCBB2B733F329F040FF",
+      "source": "ザンボット３登場",
+      "translation": "ซัมบ็อต 3 ปรากฏตัว",
+      "slots": [
+        9
+      ]
+    },
+    {
+      "pointer": "0x9164",
+      "source_pc": "0x129164",
+      "source_hex": "F2E35643F296F297FF",
+      "source": "悲しい記憶",
+      "translation": "ความทรงจำอันเศร้า",
+      "slots": [
+        10,
+        60
+      ]
+    },
+    {
+      "pointer": "0x916D",
+      "source_pc": "0x12916D",
+      "source_hex": "F130F2BF80871500F04BF0D3F0E1F006FF",
+      "source": "目覚めよ！　超獣機神",
+      "translation": "ตื่นเถิด! ดันคูก้า",
+      "slots": [
+        11
+      ]
+    },
+    {
+      "pointer": "0x917E",
+      "source_pc": "0x12917E",
+      "source_hex": "9B93ADB29E6DF29BF2B4FF",
+      "source": "ガイゾックの恐怖",
+      "translation": "ความน่ากลัวของไกซ็อค",
+      "slots": [
+        12
+      ]
+    },
+    {
+      "pointer": "0x9189",
+      "source_pc": "0x129189",
+      "source_hex": "F444F070FF",
+      "source": "浮上",
+      "translation": "ขึ้นสู่ผิวน้ำ",
+      "slots": [
+        13
+      ]
+    },
+    {
+      "pointer": "0x918E",
+      "source_pc": "0x12918E",
+      "source_hex": "F0B6F08B75CDA7DF9B112FFF",
+      "source": "空飛ぶマジンガーＺ",
+      "translation": "มาชินก้า Z ทะยานฟ้า",
+      "slots": [
+        14
+      ]
+    },
+    {
+      "pointer": "0x919A",
+      "source_pc": "0x12919A",
+      "source_hex": "CE11916DF105F13BFF",
+      "source": "ミーアの決意",
+      "translation": "ปณิธานของมีอา",
+      "slots": [
+        15
+      ]
+    },
+    {
+      "pointer": "0x91A3",
+      "source_pc": "0x1291A3",
+      "source_hex": "F016F0A4F0A59BDA11AF6DF2E3F2BCFF",
+      "source": "大将軍ガルーダの悲劇",
+      "translation": "โศกนาฏกรรมของกาลูด้า",
+      "slots": [
+        16
+      ]
+    },
+    {
+      "pointer": "0x91B3",
+      "source_pc": "0x1291B3",
+      "source_hex": "9911D8CDA6DFF2D4F202FF",
+      "source": "オーラマシン展開",
+      "translation": "ออร่าแมชชีนเปิดฉาก",
+      "slots": [
+        17,
+        54
+      ]
+    },
+    {
+      "pointer": "0x91BE",
+      "source_pc": "0x1291BE",
+      "source_hex": "93DFB7DA11AF11FF",
+      "source": "イントルーダー",
+      "translation": "ผู้บุกรุก",
+      "slots": [
+        18,
+        55
+      ]
+    },
+    {
+      "pointer": "0x91C6",
+      "source_pc": "0x1291C6",
+      "source_hex": "41568488F03CF03D6DF05EF184FF",
+      "source": "あしゅら男爵の最期",
+      "translation": "วาระสุดท้ายของบารอนอาชูร่า",
+      "slots": [
+        19
+      ]
+    },
+    {
+      "pointer": "0x91D4",
+      "source_pc": "0x1291D4",
+      "source_hex": "1906C7DA6DF032F086FF",
+      "source": "Ｄｒヘルの野望",
+      "translation": "ความทะยานอยากของดร.เฮลล์",
+      "slots": [
+        20
+      ]
+    },
+    {
+      "pointer": "0x91DE",
+      "source_pc": "0x1291DE",
+      "source_hex": "AE11BADF9FCC93DFB7FF",
+      "source": "ターニングポイント",
+      "translation": "จุดเปลี่ยน",
+      "slots": [
+        21
+      ]
+    },
+    {
+      "pointer": "0x91E8",
+      "source_pc": "0x1291E8",
+      "source_hex": "9FDB11B7CDA7DF9B11F223F071FF",
+      "source": "グレートマジンガー奪回",
+      "translation": "ชิงเกรทมาชินก้าคืน",
+      "slots": [
+        22
+      ]
+    },
+    {
+      "pointer": "0x91F6",
+      "source_pc": "0x1291F6",
+      "source_hex": "F40DF40E77FF",
+      "source": "宇宙へ",
+      "translation": "สู่อวกาศ",
+      "slots": [
+        23
+      ]
+    },
+    {
+      "pointer": "0x91FC",
+      "source_pc": "0x1291FC",
+      "source_hex": "B592AE11DFA9F22DF250FF",
+      "source": "ティターンズ台頭",
+      "translation": "ทีทานส์ผงาด",
+      "slots": [
+        24
+      ]
+    },
+    {
+      "pointer": "0x9207",
+      "source_pc": "0x129207",
+      "source_hex": "979411A3676DF1E1F28CFF",
+      "source": "エゥーゴとの接触",
+      "translation": "พบกับเอวโก้",
+      "slots": [
+        25
+      ]
+    },
+    {
+      "pointer": "0x9212",
+      "source_pc": "0x129212",
+      "source_hex": "BE93C011A796D9DAFF",
+      "source": "ハイパージェリル",
+      "translation": "ไฮเปอร์เจริล",
+      "slots": [
+        26
+      ]
+    },
+    {
+      "pointer": "0x921B",
+      "source_pc": "0x12921B",
+      "source_hex": "F17AF1A01500F25FF168F063F064F19FFF",
+      "source": "強襲！　阻止限界点",
+      "translation": "จู่โจม! จุดสกัดสุดท้าย",
+      "slots": [
+        27
+      ]
+    },
+    {
+      "pointer": "0x922C",
+      "source_pc": "0x12922C",
+      "source_hex": "DCDFB6BA99DFFF",
+      "source": "ロンデニオン",
+      "translation": "ลอนเดเนียน",
+      "slots": [
+        28
+      ]
+    },
+    {
+      "pointer": "0x9233",
+      "source_pc": "0x129233",
+      "source_hex": "9FD8DFADDF6DF45AFF",
+      "source": "グランゾンの謎",
+      "translation": "ปริศนาแกรนซอน",
+      "slots": [
+        29
+      ]
+    },
+    {
+      "pointer": "0x923C",
+      "source_pc": "0x12923C",
+      "source_hex": "CD11A93BA2BC9EA6D6DFFF",
+      "source": "マーズ・コネクション",
+      "translation": "มาร์สคอนเนกชัน",
+      "slots": [
+        30
+      ]
+    },
+    {
+      "pointer": "0x9247",
+      "source_pc": "0x129247",
+      "source_hex": "F3B5F3ACF293F261F1F29193A5CF6DF374F052FF",
+      "source": "天才科学者アイザムの挑戦",
+      "translation": "คำท้าของอัจฉริยะไอซามุ",
+      "slots": [
+        31
+      ]
+    },
+    {
+      "pointer": "0x925B",
+      "source_pc": "0x12925B",
+      "source_hex": "A2DCA867B8DF3BA595A411FF",
+      "source": "コロスとドン・ザウサー",
+      "translation": "โคโรสกับดอน ซาวเซอร์",
+      "slots": [
+        32
+      ]
+    },
+    {
+      "pointer": "0x9267",
+      "source_pc": "0x129267",
+      "source_hex": "9CD9CDDFA7D2DC6DF40FFF",
+      "source": "キリマンジャロの嵐",
+      "translation": "พายุคิลิมันจาโร",
+      "slots": [
+        33
+      ]
+    },
+    {
+      "pointer": "0x9272",
+      "source_pc": "0x129272",
+      "source_hex": "AF9A11DA6DF034FF",
+      "source": "ダカールの日",
+      "translation": "วันแห่งดาการ์",
+      "slots": [
+        34
+      ]
+    },
+    {
+      "pointer": "0x927A",
+      "source_pc": "0x12927A",
+      "source_hex": "B711AEDA3BBFD8DFA8FF",
+      "source": "トータル・バランス",
+      "translation": "โททัลบาลานซ์",
+      "slots": [
+        35
+      ]
+    },
+    {
+      "pointer": "0x9284",
+      "source_pc": "0x129284",
+      "source_hex": "C2D7DF3BA53BB7B2B8FF",
+      "source": "ビヨン・ザ・トッド",
+      "translation": "บียอนด์ เดอะ ท็อด",
+      "slots": [
+        36
+      ]
+    },
+    {
+      "pointer": "0x928E",
+      "source_pc": "0x12928E",
+      "source_hex": "F2105643F02CFF",
+      "source": "新しい力",
+      "translation": "พลังใหม่",
+      "slots": [
+        37
+      ]
+    },
+    {
+      "pointer": "0x9295",
+      "source_pc": "0x129295",
+      "source_hex": "F167F2D1F19F3AF3C2F0B2FF",
+      "source": "特異点、崩壊",
+      "translation": "จุดวิกฤตพังทลาย",
+      "slots": [
+        38
+      ]
+    },
+    {
+      "pointer": "0x92A1",
+      "source_pc": "0x1292A1",
+      "source_hex": "F2DAF0836DF207F034FF",
+      "source": "栄光の落日",
+      "translation": "สนธยาแห่งเกียรติยศ",
+      "slots": [
+        39
+      ]
+    },
+    {
+      "pointer": "0x92AB",
+      "source_pc": "0x1292AB",
+      "source_hex": "A1A8B76793DFA8C99EAE11FF",
+      "source": "ゲストとインスペクター",
+      "translation": "เกสต์กับอินสเปคเตอร์",
+      "slots": [
+        40
+      ]
+    },
+    {
+      "pointer": "0x92B7",
+      "source_pc": "0x1292B7",
+      "source_hex": "CCAA93AFDA6DF032F15AFF",
+      "source": "ポセイダルの野心",
+      "translation": "ความทะยานอยากของโพไซดัล",
+      "slots": [
+        41
+      ]
+    },
+    {
+      "pointer": "0x92C2",
+      "source_pc": "0x1292C2",
+      "source_hex": "D9D411BC3B9AC6D9B2B099FF",
+      "source": "リューネ・カプリッチオ",
+      "translation": "ริวเนะ คาปริชโช",
+      "slots": [
+        42,
+        75
+      ]
+    },
+    {
+      "pointer": "0x92CE",
+      "source_pc": "0x1292CE",
+      "source_hex": "F0956DF2C3F18BFF",
+      "source": "月の裏側",
+      "translation": "ด้านมืดของดวงจันทร์",
+      "slots": [
+        43
+      ]
+    },
+    {
+      "pointer": "0x92D6",
+      "source_pc": "0x1292D6",
+      "source_hex": "919EA6A96AF0AB8AFF",
+      "source": "アクシズに散る",
+      "translation": "ร่วงโรยที่แอ็กซิส",
+      "slots": [
+        44
+      ]
+    },
+    {
+      "pointer": "0x92DF",
+      "source_pc": "0x1292DF",
+      "source_hex": "99DAB8B9E3CCAA93AFDAFF",
+      "source": "オルドナ＝ポセイダル",
+      "translation": "ออลโดนา โพไซดัล",
+      "slots": [
+        45,
+        62,
+        68
+      ]
+    },
+    {
+      "pointer": "0x92EA",
+      "source_pc": "0x1292EA",
+      "source_hex": "F2EAF0326DF0BFF053FF",
+      "source": "荒野の死闘",
+      "translation": "ศึกชิงตายกลางที่ร้าง",
+      "slots": [
+        46
+      ]
+    },
+    {
+      "pointer": "0x92F4",
+      "source_pc": "0x1292F4",
+      "source_hex": "F0DCF2D26DF105F052FF",
+      "source": "火星の決戦",
+      "translation": "ศึกชี้ขาดบนดาวอังคาร",
+      "slots": [
+        47,
+        48
+      ]
+    },
+    {
+      "pointer": "0x92FE",
+      "source_pc": "0x1292FE",
+      "source_hex": "F1006DF08CF0A8FF",
+      "source": "愛の行方",
+      "translation": "ปลายทางของรัก",
+      "slots": [
+        51
+      ]
+    },
+    {
+      "pointer": "0x9306",
+      "source_pc": "0x129306",
+      "source_hex": "97DF9A95DFB73BBFB7DAFF",
+      "source": "エンカウント・バトル",
+      "translation": "เอ็นเคาน์เตอร์แบทเทิล",
+      "slots": [
+        53
+      ]
+    },
+    {
+      "pointer": "0x9388",
+      "source_pc": "0x129388",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        56,
+        57,
+        67,
+        69,
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95,
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115,
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124,
+        125,
+        126,
+        127
+      ]
+    },
+    {
+      "pointer": "0x9311",
+      "source_pc": "0x129311",
+      "source_hex": "A8AEDFC311B8FF",
+      "source": "スタンピード",
+      "translation": "สแตมปีด",
+      "slots": [
+        58
+      ]
+    },
+    {
+      "pointer": "0x9318",
+      "source_pc": "0x129318",
+      "source_hex": "93DFB7DA11B83B91A193DFFF",
+      "source": "イントルード・アゲイン",
+      "translation": "อินทรูด อะเกน",
+      "slots": [
+        59
+      ]
+    },
+    {
+      "pointer": "0x9324",
+      "source_pc": "0x129324",
+      "source_hex": "F034F42D6EF16C6A4189FF",
+      "source": "日輪は我にあり",
+      "translation": "ตะวันอยู่ข้างเรา",
+      "slots": [
+        61
+      ]
+    },
+    {
+      "pointer": "0x932F",
+      "source_pc": "0x12932F",
+      "source_hex": "D9C1B5DA679193A5CFFF",
+      "source": "リヒテルとアイザム",
+      "translation": "ริชเทอร์กับไอซามุ",
+      "slots": [
+        63
+      ]
+    },
+    {
+      "pointer": "0x9339",
+      "source_pc": "0x129339",
+      "source_hex": "AFBFE3CD93DC11B8FF",
+      "source": "ダバ＝マイロード",
+      "translation": "ดาบา มายโรด",
+      "slots": [
+        64
+      ]
+    },
+    {
+      "pointer": "0x9342",
+      "source_pc": "0x129342",
+      "source_hex": "BD93971918FF",
+      "source": "ノイエＤＣ",
+      "translation": "นอยเออ DC",
+      "slots": [
+        65
+      ]
+    },
+    {
+      "pointer": "0x9348",
+      "source_pc": "0x129348",
+      "source_hex": "BECD11DF6DF140FF",
+      "source": "ハマーンの影",
+      "translation": "เงาของฮามาน",
+      "slots": [
+        66
+      ]
+    },
+    {
+      "pointer": "0x9350",
+      "source_pc": "0x129350",
+      "source_hex": "F008F160F0E3F0A36DF29BF2B4FF",
+      "source": "人間爆弾の恐怖",
+      "translation": "ความน่ากลัวของระเบิดมนุษย์",
+      "slots": [
+        70
+      ]
+    },
+    {
+      "pointer": "0x935E",
+      "source_pc": "0x12935E",
+      "source_hex": "F57BF04E6DF57CF4DCFF",
+      "source": "老兵の挽歌",
+      "translation": "บทเพลงอาลัยทหารเก่า",
+      "slots": [
+        71
+      ]
+    },
+    {
+      "pointer": "0x9368",
+      "source_pc": "0x129368",
+      "source_hex": "F103F1F2D893B69211DFFF",
+      "source": "勇者ライディーン",
+      "translation": "ไรดีนผู้กล้า",
+      "slots": [
+        72
+      ]
+    },
+    {
+      "pointer": "0x9373",
+      "source_pc": "0x129373",
+      "source_hex": "B7D9C6DA3BBFB7DAFF",
+      "source": "トリプル・バトル",
+      "translation": "ทริปเปิลแบทเทิล",
+      "slots": [
+        73
+      ]
+    },
+    {
+      "pointer": "0x937C",
+      "source_pc": "0x12937C",
+      "source_hex": "F2D5F16AF441F03BF01C15FF",
+      "source": "包囲網突破！",
+      "translation": "ฝ่าวงล้อม!",
+      "slots": [
+        74
+      ]
+    }
+  ]
+}

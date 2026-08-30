@@ -1,0 +1,43 @@
+{
+  "notes": [
+    "ใช้กับหน้าตั้งชื่อจาก save state 2",
+    "แป้นฮิรางานะและคาตากานะถูกแทนด้วยแป้นไทยชุดเดียวกัน",
+    "แสดง ก ถึง ไ แล้วตามด้วย ิ ี ึ ื ั ่ ้ ๊ ๋ รวม 3 แถว ไม่มีช่องว่างที่เลือกได้",
+    "พิมพ์พยัญชนะก่อน แล้วกดสระและวรรณยุกต์ซ้อนตามลำดับ"
+  ],
+  "labels": {
+    "keyboard": "ไทย",
+    "space": "เว้น",
+    "finish": "จบ",
+    "name": "ชื่อ",
+    "nickname": "เล่น",
+    "confirmation": "ชื่อนี้?"
+  },
+  "presets": [
+    {"source":"ヒュッケバイン","source_hex":"C1 D4 B2 A0 BF 93 DF FF","translation":"ฮิวเคไบน์"},
+    {"source":"グルンガスト","source_hex":"9F DA DF 9B A8 B7 FF","translation":"กรุนกัสต์"},
+    {"source":"ウィングガスト","source_hex":"95 92 DF 9F 9B A8 B7 FF","translation":"วิงกัสต์"},
+    {"source":"ガストランダー","source_hex":"9B A8 B7 D8 DF AF 11 FF","translation":"กัสต์แลน"},
+    {"source":"レナンジェス","source_hex":"DB B9 DF A7 96 A8 FF","translation":"เลนันเจ"},
+    {"source":"パトリシア","source_hex":"C0 B7 D9 A6 91 FF","translation":"แพทริซ"},
+    {"source":"イルムガルト","source_hex":"93 DA CF 9B DA B7 FF","translation":"อิล์มกา"},
+    {"source":"グレース","source_hex":"9F DB 11 A8 FF","translation":"เกรซ"},
+    {"source":"ヘクトール","source_hex":"C7 9E B7 11 DA FF","translation":"เฮคโต"},
+    {"source":"ミーナ","source_hex":"CE 11 B9 FF","translation":"มินา"},
+    {"source":"アーウィン","source_hex":"91 11 95 92 DF FF","translation":"เออร์วิน"},
+    {"source":"リン","source_hex":"D9 DF FF","translation":"ริน"},
+    {"source":"スターロード","source_hex":"A8 AE 11 DC 11 B8 FF","translation":"สตาร์"},
+    {"source":"ハックマン","source_hex":"BE B2 9E CD DF FF","translation":"แฮ็กแม"},
+    {"source":"カザハラ","source_hex":"9A A5 BE D8 FF","translation":"คาซา"},
+    {"source":"ウリジン","source_hex":"95 D9 A7 DF FF","translation":"อูริจิน"},
+    {"source":"マディソン","source_hex":"CD B6 92 AC DF FF","translation":"เมดิสัน"},
+    {"source":"ライクリング","source_hex":"D8 93 9E D9 DF 9F FF","translation":"ไลค์ริง"},
+    {"source":"ドースティン","source_hex":"B8 11 A8 B5 92 DF FF","translation":"ดอสติน"},
+    {"source":"マオ","source_hex":"CD 99 FF","translation":"มาโอ"},
+    {"source":"ジェス","source_hex":"A7 96 A8 FF","translation":"เจส"},
+    {"source":"パット","source_hex":"C0 B2 B7 FF","translation":"แพต"},
+    {"source":"イルム","source_hex":"93 DA CF FF","translation":"อิล์ม"},
+    {"source":"グレース","source_hex":"9F DB 11 A8 FF","translation":"เกรซ"},
+    {"source":"ヘクトール","source_hex":"C7 9E B7 11 DA FF","translation":"เฮคโต"}
+  ]
+}

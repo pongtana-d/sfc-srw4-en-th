@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "source_revision": "eddbcada4ff6b05b562b5b93d9a26477468c3142",
+  "hooks": [
+    {
+      "id": "glyph_width_2",
+      "pc": "0x019219",
+      "clean": "85 02 C9 00 01",
+      "proven": "5C 00 55 FD EA"
+    },
+    {
+      "id": "battle_renderer_dispatch",
+      "pc": "0x019238",
+      "clean": "22 EB 84 81",
+      "proven": "22 00 59 FD"
+    },
+    {
+      "id": "battle_stock_fb",
+      "pc": "0x019386",
+      "clean": "85 00 30 09 EB",
+      "proven": "5C 00 02 FD EA"
+    }
+  ],
+  "renderer": {
+    "pc": "0x3F5000",
+    "bytes": 1796,
+    "sha256": "cb917c2f9b1e91d9437e19f1c1aca6b80efa9b4a7efd52348015b732583f1bf6",
+    "inputs": {
+      "source_base": "0x0000",
+      "advance": "0x3F1000",
+      "lock": "0x3F3000",
+      "mark_dx": "0x3F1100",
+      "mark_y": "0x3F1200",
+      "mark_size": "0x3F1300",
+      "base_ink": "0x3F1400",
+      "raised_y": "0x3F1500",
+      "shorthand_first": "0x3F1600",
+      "shorthand_second": "0x3F1700",
+      "shorthand_third": "0x3F1800",
+      "upper_overlay": "0x3F1900",
+      "upper_dx": "0x3F1B00",
+      "upper_dy": "0x3F1C00",
+      "upper_size": "0x3F1D00"
+    }
+  },
+  "adapters": [
+    {
+      "id": "stock_fb",
+      "pc": "0x3D0200",
+      "cpu": "0xFD0200",
+      "bytes": 113,
+      "dependency_cpu": "0x3A0000",
+      "sha256": "6846fe49ef409700451bed4d3f1e5b1bd77edce5fc727b8ae2f4a5cf9006fd50"
+    },
+    {
+      "id": "width",
+      "pc": "0x3D5500",
+      "cpu": "0xFD5500",
+      "bytes": 81,
+      "dependency_cpu": "0xFF1000",
+      "sha256": "9531c83485ab3d3f7153b5bef93dff9b718c2503f7fadafd644653d098478758"
+    },
+    {
+      "id": "dispatch",
+      "pc": "0x3D5900",
+      "cpu": "0xFD5900",
+      "bytes": 23,
+      "dependency_cpu": "0xFF5000",
+      "sha256": "fcf1d8b0325487cdf4554a9e397aaabadd6df403a1a00b7c6ac5b13c8b7ddb47"
+    }
+  ],
+  "private_wram": {
+    "ordinary_state": ["0x7EFFA0", "0x7EFFC0"],
+    "battle_state": ["0x7EFFC0", "0x7EFFE0"],
+    "renderer_scratch": ["0x7EFFE0", "0x7F0000"]
+  },
+  "invariants": [
+    "battle state is isolated from ordinary text state",
+    "width hook is at $C1:9219, not $C1:921E",
+    "battle dispatch routes only internal Thai glyph ids",
+    "message reset rebases the battle renderer before DMA counters underflow"
+  ]
+}

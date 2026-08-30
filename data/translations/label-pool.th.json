@@ -1,0 +1,1617 @@
+{
+  "_engine": "catalog",
+  "_comment": [
+    "ป้ายที่เหลือใน catalog $D2:8103 หลัง series-names/terrain/unit-commands",
+    "ย้ายไปแล้ว รวมค่าปรับพาร์ท ค่าปรับภูมิประเทศ ชนิดซีรีส์ ค่าหน้า CONFIG",
+    "หมู่เลือด อักษรย่อพลังจิต ความสามารถยูนิต ขนาด ชื่อพาร์ท ชื่อพรีเซ็ต",
+    "ของหน้าตั้งชื่อ และประกาศแปลงร่าง/รวมร่าง",
+    "record ที่ระบบเก่ารีวิวไว้แล้วยกคำแปลมาตรง ๆ (unit-status.th.json,",
+    "unit-abilities.th.json, naming-screen.th.json, pilot-status.th.json)",
+    "ที่เหลือแปลใหม่ โดยอ้างชื่อในเรื่องจาก units.th.json และ glossary.th.json",
+    "ไม่ใช่คำอ่านญี่ปุ่น: レプラカーン คือ Leprechaun จึงเป็น เลเปรอคอน",
+    "ミノフスキー คือ Minovsky, チョバム คือ Chobham, アポジ คือ Apogee"
+  ],
+  "_layout": {
+    "pointer_table": {
+      "address": "0x128103",
+      "cpu": "$D2:8103",
+      "entries": 370,
+      "source_sha256": "2e2c705cfcd1bd490a802d32bdce41b3cf109f0d0fc98970d4874dd015b61eb1"
+    },
+    "master_entry": 13,
+    "note": "The rest of the label pool series-names.th.json already writes into: everything entry 13 still had in Japanese after the series, terrain and unit-command records moved."
+  },
+  "records": [
+    {
+      "pointer": "0x83E7",
+      "source_pc": "0x1283E7",
+      "source_hex": "F8 83 0E 91 B2 C6 FF",
+      "source": "<VAL>や％アップ",
+      "translation": "<F8><83>%UP",
+      "slots": [
+        0
+      ]
+    },
+    {
+      "pointer": "0x83EE",
+      "source_pc": "0x1283EE",
+      "source_hex": "F8 83 0E AF 95 DF FF",
+      "source": "<VAL>や％ダウン",
+      "translation": "<F8><83>%DWN",
+      "slots": [
+        1
+      ]
+    },
+    {
+      "pointer": "0x83F5",
+      "source_pc": "0x1283F5",
+      "source_hex": "00 F0 80 F1 1F 69 56 FF",
+      "source": "　変化なし",
+      "translation": " NONE",
+      "slots": [
+        2
+      ]
+    },
+    {
+      "pointer": "0x83FD",
+      "source_pc": "0x1283FD",
+      "source_hex": "F2 FF F2 FF F2 FF F0 F1 FF",
+      "source": "<K02FF><K02FF><K02FF>陸",
+      "translation": "บก",
+      "slots": [
+        3
+      ]
+    },
+    {
+      "pointer": "0x8406",
+      "source_pc": "0x128406",
+      "source_hex": "F2 FF F2 FF F0 B6 F0 F1 FF",
+      "source": "<K02FF><K02FF>空陸",
+      "translation": "ฟ้าบก",
+      "slots": [
+        4
+      ]
+    },
+    {
+      "pointer": "0x840F",
+      "source_pc": "0x12840F",
+      "source_hex": "F2 FF F2 FF F2 FF F0 B6 FF",
+      "source": "<K02FF><K02FF><K02FF>空",
+      "translation": "ฟ้า",
+      "slots": [
+        5
+      ]
+    },
+    {
+      "pointer": "0x8418",
+      "source_pc": "0x128418",
+      "source_hex": "F2 FF F2 FF F2 09 F0 F1 FF",
+      "source": "<K02FF><K02FF>水陸",
+      "translation": "น้ำบก",
+      "slots": [
+        6
+      ]
+    },
+    {
+      "pointer": "0x8421",
+      "source_pc": "0x128421",
+      "source_hex": "F2 FF F2 09 F0 F1 F0 B6 FF",
+      "source": "<K02FF>水陸空",
+      "translation": "น้ำบกฟ้า",
+      "slots": [
+        7
+      ]
+    },
+    {
+      "pointer": "0x842A",
+      "source_pc": "0x12842A",
+      "source_hex": "F2 FF F0 F1 F0 6F F0 58 FF",
+      "source": "<K02FF>陸地中",
+      "translation": "บกใต้ดิน",
+      "slots": [
+        8
+      ]
+    },
+    {
+      "pointer": "0x8433",
+      "source_pc": "0x128433",
+      "source_hex": "F0 B6 F0 F1 F0 6F F0 58 FF",
+      "source": "空陸地中",
+      "translation": "ฟ้าบกใต้",
+      "slots": [
+        9
+      ]
+    },
+    {
+      "pointer": "0x843C",
+      "source_pc": "0x12843C",
+      "source_hex": "F2 FF F2 FF F2 FF F2 09 FF",
+      "source": "<K02FF><K02FF><K02FF>水",
+      "translation": "น้ำ",
+      "slots": [
+        10
+      ]
+    },
+    {
+      "pointer": "0x8445",
+      "source_pc": "0x128445",
+      "source_hex": "F2 FF F2 FF F2 FF F0 F1 FF",
+      "source": "<K02FF><K02FF><K02FF>陸",
+      "translation": "บก",
+      "slots": [
+        11
+      ]
+    },
+    {
+      "pointer": "0x844E",
+      "source_pc": "0x12844E",
+      "source_hex": "F2 FF F2 FF F4 0D F4 0E FF",
+      "source": "<K02FF><K02FF>宇宙",
+      "translation": "อวกาศ",
+      "slots": [
+        12
+      ]
+    },
+    {
+      "pointer": "0x8457",
+      "source_pc": "0x128457",
+      "source_hex": "F2 FF F0 B6 F0 6F F0 58 FF",
+      "source": "<K02FF>空地中",
+      "translation": "ฟ้าใต้ดิน",
+      "slots": [
+        13
+      ]
+    },
+    {
+      "pointer": "0x8460",
+      "source_pc": "0x128460",
+      "source_hex": "F2 FF F2 FF F0 B6 F0 4F FF",
+      "source": "<K02FF><K02FF>空海",
+      "translation": "ฟ้าทะเล",
+      "slots": [
+        14
+      ]
+    },
+    {
+      "pointer": "0x8469",
+      "source_pc": "0x128469",
+      "source_hex": "F2 FF F2 FF F2 FF F0 B6 FF",
+      "source": "<K02FF><K02FF><K02FF>空",
+      "translation": "ฟ้า",
+      "slots": [
+        15
+      ]
+    },
+    {
+      "pointer": "0x8472",
+      "source_pc": "0x128472",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        16
+      ]
+    },
+    {
+      "pointer": "0x8473",
+      "source_pc": "0x128473",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        19
+      ]
+    },
+    {
+      "pointer": "0x8474",
+      "source_pc": "0x128474",
+      "source_hex": "11 FF",
+      "source": "ー",
+      "translation": "-",
+      "slots": [
+        23
+      ]
+    },
+    {
+      "pointer": "0x8476",
+      "source_pc": "0x128476",
+      "source_hex": "19 FF",
+      "source": "Ｄ",
+      "translation": "D",
+      "slots": [
+        24
+      ]
+    },
+    {
+      "pointer": "0x8478",
+      "source_pc": "0x128478",
+      "source_hex": "18 FF",
+      "source": "Ｃ",
+      "translation": "C",
+      "slots": [
+        25
+      ]
+    },
+    {
+      "pointer": "0x847A",
+      "source_pc": "0x12847A",
+      "source_hex": "17 FF",
+      "source": "Ｂ",
+      "translation": "B",
+      "slots": [
+        26
+      ]
+    },
+    {
+      "pointer": "0x847C",
+      "source_pc": "0x12847C",
+      "source_hex": "16 FF",
+      "source": "Ａ",
+      "translation": "A",
+      "slots": [
+        27
+      ]
+    },
+    {
+      "pointer": "0x847E",
+      "source_pc": "0x12847E",
+      "source_hex": "D1 C2 DA A8 11 B3 F2 E8 FF",
+      "source": "モビルスーツ系",
+      "translation": "ซีรีส์โมบิลสูท",
+      "slots": [
+        32
+      ]
+    },
+    {
+      "pointer": "0x8487",
+      "source_pc": "0x128487",
+      "source_hex": "CD A7 DF 9B 11 F2 E8 FF",
+      "source": "マジンガー系",
+      "translation": "ซีรีส์มาชินก้า",
+      "slots": [
+        33
+      ]
+    },
+    {
+      "pointer": "0x848F",
+      "source_pc": "0x12848F",
+      "source_hex": "99 11 D8 BF B7 D8 11 F2 E8 FF",
+      "source": "オーラバトラー系",
+      "translation": "ซีรีส์ออร่าแบทเทลอร์",
+      "slots": [
+        34
+      ]
+    },
+    {
+      "pointer": "0x8499",
+      "source_pc": "0x128499",
+      "source_hex": "97 DA 9B 93 CF F2 E8 FF",
+      "source": "エルガイム系",
+      "translation": "ซีรีส์แอลไกม์",
+      "slots": [
+        35
+      ]
+    },
+    {
+      "pointer": "0x84A1",
+      "source_pc": "0x1284A1",
+      "source_hex": "AF 93 AE 11 DF F2 E8 FF",
+      "source": "ダイターン系",
+      "translation": "ซีรีส์ไดทาน",
+      "slots": [
+        36
+      ]
+    },
+    {
+      "pointer": "0x84A9",
+      "source_pc": "0x1284A9",
+      "source_hex": "A5 DF CB B2 B7 F2 E8 FF",
+      "source": "ザンボット系",
+      "translation": "ซีรีส์ซัมบ็อต",
+      "slots": [
+        37
+      ]
+    },
+    {
+      "pointer": "0x84B1",
+      "source_pc": "0x1284B1",
+      "source_hex": "AF DF 9E 11 9B F2 E8 FF",
+      "source": "ダンクーガ系",
+      "translation": "ซีรีส์ดันคูก้า",
+      "slots": [
+        38
+      ]
+    },
+    {
+      "pointer": "0x84B9",
+      "source_pc": "0x1284B9",
+      "source_hex": "F0 D4 F0 62 F0 E1 F2 E8 FF",
+      "source": "魔装機系",
+      "translation": "ซีรีส์มาโซคิ",
+      "slots": [
+        39
+      ]
+    },
+    {
+      "pointer": "0x84C2",
+      "source_pc": "0x1284C2",
+      "source_hex": "F0 52 F0 53 F0 E1 F2 E8 FF",
+      "source": "戦闘機系",
+      "translation": "ซีรีส์เครื่องบินรบ",
+      "slots": [
+        40
+      ]
+    },
+    {
+      "pointer": "0x84CB",
+      "source_pc": "0x1284CB",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        41
+      ]
+    },
+    {
+      "pointer": "0x84CC",
+      "source_pc": "0x1284CC",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        48
+      ]
+    },
+    {
+      "pointer": "0x84CD",
+      "source_pc": "0x1284CD",
+      "source_hex": "14 14 14 14 FF",
+      "source": "？？？？",
+      "translation": "????",
+      "slots": [
+        49
+      ]
+    },
+    {
+      "pointer": "0x8566",
+      "source_pc": "0x128566",
+      "source_hex": "F0 65 F0 55 F1 51 F0 79 FF",
+      "source": "反撃不能",
+      "translation": "สวนไม่ได้",
+      "slots": [
+        80,
+        81
+      ]
+    },
+    {
+      "pointer": "0x856F",
+      "source_pc": "0x12856F",
+      "source_hex": "F0 7B F0 7C FF",
+      "source": "防御",
+      "translation": "กัน",
+      "slots": [
+        82
+      ]
+    },
+    {
+      "pointer": "0x8574",
+      "source_pc": "0x128574",
+      "source_hex": "F0 71 F0 72 FF",
+      "source": "回避",
+      "translation": "หลบ",
+      "slots": [
+        83
+      ]
+    },
+    {
+      "pointer": "0x8579",
+      "source_pc": "0x128579",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        84
+      ]
+    },
+    {
+      "pointer": "0x859A",
+      "source_pc": "0x12859A",
+      "source_hex": "00 00 00 00 24 1B 1B FF",
+      "source": "　　　　ＯＦＦ",
+      "translation": "    OFF",
+      "slots": [
+        92
+      ]
+    },
+    {
+      "pointer": "0x85A2",
+      "source_pc": "0x1285A2",
+      "source_hex": "00 00 00 00 24 23 00 FF",
+      "source": "　　　　ＯＮ　",
+      "translation": "    ON ",
+      "slots": [
+        93
+      ]
+    },
+    {
+      "pointer": "0x85C2",
+      "source_pc": "0x1285C2",
+      "source_hex": "00 00 00 00 CD 95 A8 FF",
+      "source": "　　　　マウス",
+      "translation": "    เมาส์",
+      "slots": [
+        97
+      ]
+    },
+    {
+      "pointer": "0x85CF",
+      "source_pc": "0x1285CF",
+      "source_hex": "00 00 16 00 FF",
+      "source": "　　Ａ　",
+      "translation": "  A ",
+      "slots": [
+        99
+      ]
+    },
+    {
+      "pointer": "0x85D4",
+      "source_pc": "0x1285D4",
+      "source_hex": "00 00 17 00 FF",
+      "source": "　　Ｂ　",
+      "translation": "  B ",
+      "slots": [
+        100
+      ]
+    },
+    {
+      "pointer": "0x85D9",
+      "source_pc": "0x1285D9",
+      "source_hex": "00 00 2D 00 FF",
+      "source": "　　Ｘ　",
+      "translation": "  X ",
+      "slots": [
+        101
+      ]
+    },
+    {
+      "pointer": "0x85DE",
+      "source_pc": "0x1285DE",
+      "source_hex": "00 00 2E 00 FF",
+      "source": "　　Ｙ　",
+      "translation": "  Y ",
+      "slots": [
+        102
+      ]
+    },
+    {
+      "pointer": "0x85E3",
+      "source_pc": "0x1285E3",
+      "source_hex": "00 00 21 00 FF",
+      "source": "　　Ｌ　",
+      "translation": "  L ",
+      "slots": [
+        103
+      ]
+    },
+    {
+      "pointer": "0x85E8",
+      "source_pc": "0x1285E8",
+      "source_hex": "00 00 27 00 FF",
+      "source": "　　Ｒ　",
+      "translation": "  R ",
+      "slots": [
+        104
+      ]
+    },
+    {
+      "pointer": "0x85ED",
+      "source_pc": "0x1285ED",
+      "source_hex": "AA DB 9E B7 FF",
+      "source": "セレクト",
+      "translation": "SELECT",
+      "slots": [
+        105
+      ]
+    },
+    {
+      "pointer": "0x865D",
+      "source_pc": "0x12865D",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        128
+      ]
+    },
+    {
+      "pointer": "0x865E",
+      "source_pc": "0x12865E",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        129
+      ]
+    },
+    {
+      "pointer": "0x865F",
+      "source_pc": "0x12865F",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        130
+      ]
+    },
+    {
+      "pointer": "0x8660",
+      "source_pc": "0x128660",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        131
+      ]
+    },
+    {
+      "pointer": "0x86BF",
+      "source_pc": "0x1286BF",
+      "source_hex": "00 24 FF",
+      "source": "　Ｏ",
+      "translation": " O",
+      "slots": [
+        140
+      ]
+    },
+    {
+      "pointer": "0x86C2",
+      "source_pc": "0x1286C2",
+      "source_hex": "00 16 FF",
+      "source": "　Ａ",
+      "translation": " A",
+      "slots": [
+        141
+      ]
+    },
+    {
+      "pointer": "0x86C5",
+      "source_pc": "0x1286C5",
+      "source_hex": "00 17 FF",
+      "source": "　Ｂ",
+      "translation": " B",
+      "slots": [
+        142
+      ]
+    },
+    {
+      "pointer": "0x86C8",
+      "source_pc": "0x1286C8",
+      "source_hex": "16 17 FF",
+      "source": "ＡＢ",
+      "translation": "AB",
+      "slots": [
+        143
+      ]
+    },
+    {
+      "pointer": "0x86CB",
+      "source_pc": "0x1286CB",
+      "source_hex": "F1 A4 FF",
+      "source": "幸",
+      "translation": "โชค",
+      "slots": [
+        144
+      ]
+    },
+    {
+      "pointer": "0x86CE",
+      "source_pc": "0x1286CE",
+      "source_hex": "F0 B4 FF",
+      "source": "熱",
+      "translation": "เดือด",
+      "slots": [
+        145
+      ]
+    },
+    {
+      "pointer": "0x86D1",
+      "source_pc": "0x1286D1",
+      "source_hex": "F4 62 FF",
+      "source": "魂",
+      "translation": "วิญญาณ",
+      "slots": [
+        146
+      ]
+    },
+    {
+      "pointer": "0x86D4",
+      "source_pc": "0x1286D4",
+      "source_hex": "F0 21 FF",
+      "source": "鉄",
+      "translation": "กำแพง",
+      "slots": [
+        147
+      ]
+    },
+    {
+      "pointer": "0x86D7",
+      "source_pc": "0x1286D7",
+      "source_hex": "F1 08 FF",
+      "source": "手",
+      "translation": "ยั้งมือ",
+      "slots": [
+        148
+      ]
+    },
+    {
+      "pointer": "0x86DA",
+      "source_pc": "0x1286DA",
+      "source_hex": "F0 89 FF",
+      "source": "必",
+      "translation": "แม่น",
+      "slots": [
+        149
+      ]
+    },
+    {
+      "pointer": "0x86DD",
+      "source_pc": "0x1286DD",
+      "source_hex": "F2 E7 FF",
+      "source": "閃",
+      "translation": "เฉียบ",
+      "slots": [
+        150
+      ]
+    },
+    {
+      "pointer": "0x86E0",
+      "source_pc": "0x1286E0",
+      "source_hex": "F1 F5 FF",
+      "source": "集",
+      "translation": "สมาธิ",
+      "slots": [
+        151
+      ]
+    },
+    {
+      "pointer": "0x86E3",
+      "source_pc": "0x1286E3",
+      "source_hex": "F3 85 FF",
+      "source": "隠",
+      "translation": "ซ่อน",
+      "slots": [
+        152
+      ]
+    },
+    {
+      "pointer": "0x86E6",
+      "source_pc": "0x1286E6",
+      "source_hex": "F1 52 FF",
+      "source": "足",
+      "translation": "ตรึง",
+      "slots": [
+        153
+      ]
+    },
+    {
+      "pointer": "0x86E9",
+      "source_pc": "0x1286E9",
+      "source_hex": "F0 FD FF",
+      "source": "威",
+      "translation": "ข่ม",
+      "slots": [
+        154
+      ]
+    },
+    {
+      "pointer": "0x86EC",
+      "source_pc": "0x1286EC",
+      "source_hex": "F2 4B FF",
+      "source": "加",
+      "translation": "เร่ง",
+      "slots": [
+        155
+      ]
+    },
+    {
+      "pointer": "0x86EF",
+      "source_pc": "0x1286EF",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        156
+      ]
+    },
+    {
+      "pointer": "0x86F0",
+      "source_pc": "0x1286F0",
+      "source_hex": "C2 11 CF A2 11 B7 FF",
+      "source": "ビームコート",
+      "translation": "บีมโคท",
+      "slots": [
+        161
+      ]
+    },
+    {
+      "pointer": "0x86F7",
+      "source_pc": "0x1286F7",
+      "source_hex": "1E C4 92 11 DA B8 FF",
+      "source": "Ｉフィールド",
+      "translation": "ไอฟิลด์",
+      "slots": [
+        162
+      ]
+    },
+    {
+      "pointer": "0x86FE",
+      "source_pc": "0x1286FE",
+      "source_hex": "99 11 D8 BF D9 91 FF",
+      "source": "オーラバリア",
+      "translation": "บาเรียออร่า",
+      "slots": [
+        163
+      ]
+    },
+    {
+      "pointer": "0x8705",
+      "source_pc": "0x128705",
+      "source_hex": "C2 11 CF BF D9 91 FF",
+      "source": "ビームバリア",
+      "translation": "บาเรียบีม",
+      "slots": [
+        164
+      ]
+    },
+    {
+      "pointer": "0x870C",
+      "source_pc": "0x12870C",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        165
+      ]
+    },
+    {
+      "pointer": "0x870D",
+      "source_pc": "0x12870D",
+      "source_hex": "1D 25 F0 71 F2 59 FF",
+      "source": "ＨＰ回復",
+      "translation": "ฟื้น HP",
+      "slots": [
+        168
+      ]
+    },
+    {
+      "pointer": "0x8714",
+      "source_pc": "0x128714",
+      "source_hex": "F0 BD F1 5F FF",
+      "source": "分身",
+      "translation": "ภาพลวง",
+      "slots": [
+        169
+      ]
+    },
+    {
+      "pointer": "0x8719",
+      "source_pc": "0x128719",
+      "source_hex": "F0 80 F0 81 FF",
+      "source": "変形",
+      "translation": "แปลงร่าง",
+      "slots": [
+        170
+      ]
+    },
+    {
+      "pointer": "0x871E",
+      "source_pc": "0x12871E",
+      "source_hex": "F0 F7 F0 74 FF",
+      "source": "合体",
+      "translation": "รวมร่าง",
+      "slots": [
+        171
+      ]
+    },
+    {
+      "pointer": "0x8723",
+      "source_pc": "0x128723",
+      "source_hex": "F0 BD F0 5D FF",
+      "source": "分離",
+      "translation": "แยกร่าง",
+      "slots": [
+        172
+      ]
+    },
+    {
+      "pointer": "0x8728",
+      "source_pc": "0x128728",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        173
+      ]
+    },
+    {
+      "pointer": "0x8737",
+      "source_pc": "0x128737",
+      "source_hex": "00 28 FF",
+      "source": "　Ｓ",
+      "translation": " S",
+      "slots": [
+        178
+      ]
+    },
+    {
+      "pointer": "0x873A",
+      "source_pc": "0x12873A",
+      "source_hex": "00 22 FF",
+      "source": "　Ｍ",
+      "translation": " M",
+      "slots": [
+        179
+      ]
+    },
+    {
+      "pointer": "0x873D",
+      "source_pc": "0x12873D",
+      "source_hex": "00 21 FF",
+      "source": "　Ｌ",
+      "translation": " L",
+      "slots": [
+        180
+      ]
+    },
+    {
+      "pointer": "0x8740",
+      "source_pc": "0x128740",
+      "source_hex": "21 21 FF",
+      "source": "ＬＬ",
+      "translation": "LL",
+      "slots": [
+        181
+      ]
+    },
+    {
+      "pointer": "0x8743",
+      "source_pc": "0x128743",
+      "source_hex": "F0 80 F0 81 FF",
+      "source": "変形",
+      "translation": "แปลงร่าง",
+      "slots": [
+        182
+      ]
+    },
+    {
+      "pointer": "0x8748",
+      "source_pc": "0x128748",
+      "source_hex": "F0 F7 F0 74 FF",
+      "source": "合体",
+      "translation": "รวมร่าง",
+      "slots": [
+        183
+      ]
+    },
+    {
+      "pointer": "0x874D",
+      "source_pc": "0x12874D",
+      "source_hex": "F0 BD F0 5D FF",
+      "source": "分離",
+      "translation": "แยกร่าง",
+      "slots": [
+        184
+      ]
+    },
+    {
+      "pointer": "0x8752",
+      "source_pc": "0x128752",
+      "source_hex": "F0 80 F0 81 3B F0 F7 F0 74 FF",
+      "source": "変形・合体",
+      "translation": "แปลง/รวม",
+      "slots": [
+        185
+      ]
+    },
+    {
+      "pointer": "0x875C",
+      "source_pc": "0x12875C",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        186
+      ]
+    },
+    {
+      "pointer": "0x875D",
+      "source_pc": "0x12875D",
+      "source_hex": "F0 B8 F1 01 F0 79 DB 11 AF 11 FF",
+      "source": "高性能レーダー",
+      "translation": "เรดาร์สมรรถนะสูง",
+      "slots": [
+        192
+      ]
+    },
+    {
+      "pointer": "0x8768",
+      "source_pc": "0x128768",
+      "source_hex": "CE BD C4 A8 9C 11 9E D8 C4 B7 FF",
+      "source": "ミノフスキークラフト",
+      "translation": "มินอฟสกีคราฟต์",
+      "slots": [
+        193
+      ]
+    },
+    {
+      "pointer": "0x8773",
+      "source_pc": "0x128773",
+      "source_hex": "C5 11 A8 AE 11 FF",
+      "source": "ブースター",
+      "translation": "บูสเตอร์",
+      "slots": [
+        194
+      ]
+    },
+    {
+      "pointer": "0x8779",
+      "source_pc": "0x128779",
+      "source_hex": "D0 9B C5 11 A8 AE 11 FF",
+      "source": "メガブースター",
+      "translation": "เมกะบูสเตอร์",
+      "slots": [
+        195
+      ]
+    },
+    {
+      "pointer": "0x8781",
+      "source_pc": "0x128781",
+      "source_hex": "91 CC A7 D1 11 AE 11 FF",
+      "source": "アポジモーター",
+      "translation": "อะโพจีมอเตอร์",
+      "slots": [
+        196
+      ]
+    },
+    {
+      "pointer": "0x8789",
+      "source_pc": "0x128789",
+      "source_hex": "C4 90 B5 92 CD FF",
+      "source": "ファティマ",
+      "translation": "ฟาติมา",
+      "slots": [
+        197
+      ]
+    },
+    {
+      "pointer": "0x878F",
+      "source_pc": "0x12878F",
+      "source_hex": "16 21 1E 18 1A FF",
+      "source": "ＡＬＩＣＥ",
+      "translation": "ALICE",
+      "slots": [
+        198
+      ]
+    },
+    {
+      "pointer": "0x8795",
+      "source_pc": "0x128795",
+      "source_hex": "A4 93 A2 C4 DB 11 CF FF",
+      "source": "サイコフレーム",
+      "translation": "ไซโคเฟรม",
+      "slots": [
+        199
+      ]
+    },
+    {
+      "pointer": "0x879D",
+      "source_pc": "0x12879D",
+      "source_hex": "BF 93 99 AA DF A4 11 FF",
+      "source": "バイオセンサー",
+      "translation": "ไบโอเซนเซอร์",
+      "slots": [
+        200
+      ]
+    },
+    {
+      "pointer": "0x87A5",
+      "source_pc": "0x1287A5",
+      "source_hex": "CD 9F BC B2 B7 A2 11 B5 92 DF 9F FF",
+      "source": "マグネットコーティング",
+      "translation": "แม็กเน็ตโคทติง",
+      "slots": [
+        201
+      ]
+    },
+    {
+      "pointer": "0x87B1",
+      "source_pc": "0x1287B1",
+      "source_hex": "1E C4 92 11 DA B8 F0 C2 F1 2B F0 E1 FF",
+      "source": "Ｉフィールド発生機",
+      "translation": "เครื่องกำเนิดไอฟิลด์",
+      "slots": [
+        202
+      ]
+    },
+    {
+      "pointer": "0x87BE",
+      "source_pc": "0x1287BE",
+      "source_hex": "B0 D6 BF CF 91 11 CD 11 FF",
+      "source": "チョバムアーマー",
+      "translation": "เกราะโชบแฮม",
+      "slots": [
+        203
+      ]
+    },
+    {
+      "pointer": "0x87C7",
+      "source_pc": "0x1287C7",
+      "source_hex": "BE 93 C5 D9 B2 B8 91 11 CD 11 FF",
+      "source": "ハイブリッドアーマー",
+      "translation": "เกราะไฮบริด",
+      "slots": [
+        204
+      ]
+    },
+    {
+      "pointer": "0x87D2",
+      "source_pc": "0x1287D2",
+      "source_hex": "BF D9 91 A7 96 BC DB 11 AE 11 FF",
+      "source": "バリアジェネレーター",
+      "translation": "เครื่องกำเนิดบาเรีย",
+      "slots": [
+        205
+      ]
+    },
+    {
+      "pointer": "0x87DD",
+      "source_pc": "0x1287DD",
+      "source_hex": "F0 B5 C2 11 CF A2 11 B5 92 DF 9F FF",
+      "source": "対ビームコーティング",
+      "translation": "สารเคลือบกันบีม",
+      "slots": [
+        206
+      ]
+    },
+    {
+      "pointer": "0x87E9",
+      "source_pc": "0x1287E9",
+      "source_hex": "D9 C9 91 9C B2 B7 FF",
+      "source": "リペアキット",
+      "translation": "ชุดซ่อม",
+      "slots": [
+        207
+      ]
+    },
+    {
+      "pointer": "0x87F0",
+      "source_pc": "0x1287F0",
+      "source_hex": "C6 DC C9 D8 DF B7 AE DF 9E FF",
+      "source": "プロペラントタンク",
+      "translation": "ถังเชื้อเพลิง",
+      "slots": [
+        208
+      ]
+    },
+    {
+      "pointer": "0x87FA",
+      "source_pc": "0x1287FA",
+      "source_hex": "C6 DC C9 D8 DF B7 AE DF 9E 28 FF",
+      "source": "プロペラントタンクＳ",
+      "translation": "ถังเชื้อเพลิง S",
+      "slots": [
+        209
+      ]
+    },
+    {
+      "pointer": "0x8805",
+      "source_pc": "0x128805",
+      "source_hex": "F0 F3 F4 CA FF",
+      "source": "金塊",
+      "translation": "ทองคำแท่ง",
+      "slots": [
+        210
+      ]
+    },
+    {
+      "pointer": "0x880A",
+      "source_pc": "0x12880A",
+      "source_hex": "69 56 FF",
+      "source": "なし",
+      "translation": "ไม่มี",
+      "slots": [
+        214
+      ]
+    },
+    {
+      "pointer": "0x880D",
+      "source_pc": "0x12880D",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        223
+      ]
+    },
+    {
+      "pointer": "0x88E3",
+      "source_pc": "0x1288E3",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        288
+      ]
+    },
+    {
+      "pointer": "0x88E4",
+      "source_pc": "0x1288E4",
+      "source_hex": "11 11 11 11 11 11 11 11 FF",
+      "source": "ーーーーーーーー",
+      "translation": "--------",
+      "slots": [
+        289
+      ]
+    },
+    {
+      "pointer": "0x88ED",
+      "source_pc": "0x1288ED",
+      "source_hex": "C1 D4 B2 A0 BF 93 DF FF",
+      "source": "ヒュッケバイン",
+      "translation": "ฮิวเคไบน์",
+      "slots": [
+        290
+      ]
+    },
+    {
+      "pointer": "0x88F5",
+      "source_pc": "0x1288F5",
+      "source_hex": "9F DA DF 9B A8 B7 FF",
+      "source": "グルンガスト",
+      "translation": "กรุนกัสต์",
+      "slots": [
+        293
+      ]
+    },
+    {
+      "pointer": "0x88FC",
+      "source_pc": "0x1288FC",
+      "source_hex": "95 92 DF 9F 9B A8 B7 FF",
+      "source": "ウィングガスト",
+      "translation": "วิงกัสต์",
+      "slots": [
+        294
+      ]
+    },
+    {
+      "pointer": "0x8904",
+      "source_pc": "0x128904",
+      "source_hex": "9B A8 B7 D8 DF AF 11 FF",
+      "source": "ガストランダー",
+      "translation": "กัสต์แลน",
+      "slots": [
+        295
+      ]
+    },
+    {
+      "pointer": "0x890C",
+      "source_pc": "0x12890C",
+      "source_hex": "DB B9 DF A7 96 A8 FF",
+      "source": "レナンジェス",
+      "translation": "เลนันเจ",
+      "slots": [
+        296
+      ]
+    },
+    {
+      "pointer": "0x8913",
+      "source_pc": "0x128913",
+      "source_hex": "C0 B7 D9 A6 91 FF",
+      "source": "パトリシア",
+      "translation": "แพทริซ",
+      "slots": [
+        297
+      ]
+    },
+    {
+      "pointer": "0x8919",
+      "source_pc": "0x128919",
+      "source_hex": "93 DA CF 9B DA B7 FF",
+      "source": "イルムガルト",
+      "translation": "อิล์มกา",
+      "slots": [
+        298
+      ]
+    },
+    {
+      "pointer": "0x8920",
+      "source_pc": "0x128920",
+      "source_hex": "9F DB 11 A8 FF",
+      "source": "グレース",
+      "translation": "เกรซ",
+      "slots": [
+        299
+      ]
+    },
+    {
+      "pointer": "0x8925",
+      "source_pc": "0x128925",
+      "source_hex": "C7 9E B7 11 DA FF",
+      "source": "ヘクトール",
+      "translation": "เฮคโต",
+      "slots": [
+        300
+      ]
+    },
+    {
+      "pointer": "0x892B",
+      "source_pc": "0x12892B",
+      "source_hex": "CE 11 B9 FF",
+      "source": "ミーナ",
+      "translation": "มินา",
+      "slots": [
+        301
+      ]
+    },
+    {
+      "pointer": "0x892F",
+      "source_pc": "0x12892F",
+      "source_hex": "91 11 95 92 DF FF",
+      "source": "アーウィン",
+      "translation": "เออร์วิน",
+      "slots": [
+        302
+      ]
+    },
+    {
+      "pointer": "0x8935",
+      "source_pc": "0x128935",
+      "source_hex": "D9 DF FF",
+      "source": "リン",
+      "translation": "ริน",
+      "slots": [
+        303
+      ]
+    },
+    {
+      "pointer": "0x8938",
+      "source_pc": "0x128938",
+      "source_hex": "A8 AE 11 DC 11 B8 FF",
+      "source": "スターロード",
+      "translation": "สตาร์",
+      "slots": [
+        304
+      ]
+    },
+    {
+      "pointer": "0x893F",
+      "source_pc": "0x12893F",
+      "source_hex": "BE B2 9E CD DF FF",
+      "source": "ハックマン",
+      "translation": "แฮ็กแม",
+      "slots": [
+        305
+      ]
+    },
+    {
+      "pointer": "0x8945",
+      "source_pc": "0x128945",
+      "source_hex": "9A A5 BE D8 FF",
+      "source": "カザハラ",
+      "translation": "คาซา",
+      "slots": [
+        306
+      ]
+    },
+    {
+      "pointer": "0x894A",
+      "source_pc": "0x12894A",
+      "source_hex": "95 D9 A7 DF FF",
+      "source": "ウリジン",
+      "translation": "อูริจิน",
+      "slots": [
+        307
+      ]
+    },
+    {
+      "pointer": "0x894F",
+      "source_pc": "0x12894F",
+      "source_hex": "CD B6 92 AC DF FF",
+      "source": "マディソン",
+      "translation": "เมดิสัน",
+      "slots": [
+        308
+      ]
+    },
+    {
+      "pointer": "0x8955",
+      "source_pc": "0x128955",
+      "source_hex": "D8 93 9E D9 DF 9F FF",
+      "source": "ライクリング",
+      "translation": "ไลค์ริง",
+      "slots": [
+        309
+      ]
+    },
+    {
+      "pointer": "0x895C",
+      "source_pc": "0x12895C",
+      "source_hex": "B8 11 A8 B5 92 DF FF",
+      "source": "ドースティン",
+      "translation": "ดอสติน",
+      "slots": [
+        310
+      ]
+    },
+    {
+      "pointer": "0x8963",
+      "source_pc": "0x128963",
+      "source_hex": "CD 99 FF",
+      "source": "マオ",
+      "translation": "มาโอ",
+      "slots": [
+        311
+      ]
+    },
+    {
+      "pointer": "0x8966",
+      "source_pc": "0x128966",
+      "source_hex": "A7 96 A8 FF",
+      "source": "ジェス",
+      "translation": "เจส",
+      "slots": [
+        312
+      ]
+    },
+    {
+      "pointer": "0x896A",
+      "source_pc": "0x12896A",
+      "source_hex": "C0 B2 B7 FF",
+      "source": "パット",
+      "translation": "แพต",
+      "slots": [
+        313
+      ]
+    },
+    {
+      "pointer": "0x896E",
+      "source_pc": "0x12896E",
+      "source_hex": "93 DA CF FF",
+      "source": "イルム",
+      "translation": "อิล์ม",
+      "slots": [
+        314
+      ]
+    },
+    {
+      "pointer": "0x8972",
+      "source_pc": "0x128972",
+      "source_hex": "9F DB 11 A8 FF",
+      "source": "グレース",
+      "translation": "เกรซ",
+      "slots": [
+        315
+      ]
+    },
+    {
+      "pointer": "0x8977",
+      "source_pc": "0x128977",
+      "source_hex": "C7 9E B7 11 DA FF",
+      "source": "ヘクトール",
+      "translation": "เฮคโต",
+      "slots": [
+        316
+      ]
+    },
+    {
+      "pointer": "0x897D",
+      "source_pc": "0x12897D",
+      "source_hex": "CE 11 B9 FF",
+      "source": "ミーナ",
+      "translation": "มินา",
+      "slots": [
+        317
+      ]
+    },
+    {
+      "pointer": "0x8981",
+      "source_pc": "0x128981",
+      "source_hex": "95 92 DF FF",
+      "source": "ウィン",
+      "translation": "วิน",
+      "slots": [
+        318
+      ]
+    },
+    {
+      "pointer": "0x8985",
+      "source_pc": "0x128985",
+      "source_hex": "D9 DF FF",
+      "source": "リン",
+      "translation": "ริน",
+      "slots": [
+        319
+      ]
+    },
+    {
+      "pointer": "0x8AC3",
+      "source_pc": "0x128AC3",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        345
+      ]
+    },
+    {
+      "pointer": "0x8AC4",
+      "source_pc": "0x128AC4",
+      "source_hex": "CD A7 DF 9B 11 F0 C2 F1 B3 FF",
+      "source": "マジンガー発進",
+      "translation": "มาชินก้าออกรบ",
+      "slots": [
+        352
+      ]
+    },
+    {
+      "pointer": "0x8ACE",
+      "source_pc": "0x128ACE",
+      "source_hex": "A8 9E D8 DF AF 11 9E DC A8 FF",
+      "source": "スクランダークロス",
+      "translation": "สครันเดอร์ครอส",
+      "slots": [
+        353
+      ]
+    },
+    {
+      "pointer": "0x8AD8",
+      "source_pc": "0x128AD8",
+      "source_hex": "D8 93 B6 92 11 DF F0 C2 F1 B3 FF",
+      "source": "ライディーン発進",
+      "translation": "ไรดีนออกรบ",
+      "slots": [
+        354
+      ]
+    },
+    {
+      "pointer": "0x8AE3",
+      "source_pc": "0x128AE3",
+      "source_hex": "A1 B2 AE 11 31 F0 80 F0 81 FF",
+      "source": "ゲッター１変形",
+      "translation": "เก็ตเตอร์ 1 แปลงร่าง",
+      "slots": [
+        355
+      ]
+    },
+    {
+      "pointer": "0x8AED",
+      "source_pc": "0x128AED",
+      "source_hex": "A1 B2 AE 11 32 F0 80 F0 81 FF",
+      "source": "ゲッター２変形",
+      "translation": "เก็ตเตอร์ 2 แปลงร่าง",
+      "slots": [
+        356
+      ]
+    },
+    {
+      "pointer": "0x8AF7",
+      "source_pc": "0x128AF7",
+      "source_hex": "A1 B2 AE 11 33 F0 80 F0 81 FF",
+      "source": "ゲッター３変形",
+      "translation": "เก็ตเตอร์ 3 แปลงร่าง",
+      "slots": [
+        357
+      ]
+    },
+    {
+      "pointer": "0x8B01",
+      "source_pc": "0x128B01",
+      "source_hex": "A2 DF BF B7 D8 11 2B F0 F7 F0 74 FF",
+      "source": "コンバトラーＶ合体",
+      "translation": "คอมแบตเลอร์ V รวมร่าง",
+      "slots": [
+        358
+      ]
+    },
+    {
+      "pointer": "0x8B0D",
+      "source_pc": "0x128B0D",
+      "source_hex": "A5 DF CB B2 B7 33 F0 F7 F0 74 FF",
+      "source": "ザンボット３合体",
+      "translation": "ซัมบ็อต 3 รวมร่าง",
+      "slots": [
+        359
+      ]
+    },
+    {
+      "pointer": "0x8B18",
+      "source_pc": "0x128B18",
+      "source_hex": "AF DF 9E 11 9B F0 F7 F0 74 FF",
+      "source": "ダンクーガ合体",
+      "translation": "ดันคูก้ารวมร่าง",
+      "slots": [
+        360
+      ]
+    },
+    {
+      "pointer": "0x8B22",
+      "source_pc": "0x128B22",
+      "source_hex": "A1 B2 AE 11 B8 D8 A3 DF F0 80 F0 81 FF",
+      "source": "ゲッタードラゴン変形",
+      "translation": "เก็ตเตอร์ดรากอนแปลงร่าง",
+      "slots": [
+        361
+      ]
+    },
+    {
+      "pointer": "0x8B2F",
+      "source_pc": "0x128B2F",
+      "source_hex": "A1 B2 AE 11 D8 93 9B 11 F0 80 F0 81 FF",
+      "source": "ゲッターライガー変形",
+      "translation": "เก็ตเตอร์ไลเกอร์แปลงร่าง",
+      "slots": [
+        362
+      ]
+    },
+    {
+      "pointer": "0x8B3C",
+      "source_pc": "0x128B3C",
+      "source_hex": "A1 B2 AE 11 CC AA 93 B8 DF F0 80 F0 81 FF",
+      "source": "ゲッターポセイドン変形",
+      "translation": "เก็ตเตอร์โพไซดอนแปลงร่าง",
+      "slots": [
+        363
+      ]
+    },
+    {
+      "pointer": "0x8B4A",
+      "source_pc": "0x128B4A",
+      "source_hex": "DB C6 D8 9A 11 DF BE 93 C0 11 F1 1F FF",
+      "source": "レプラカーンハイパー化",
+      "translation": "เลเปรอคอนไฮเปอร์",
+      "slots": [
+        364
+      ]
+    },
+    {
+      "pointer": "0x8B57",
+      "source_pc": "0x128B57",
+      "source_hex": "D8 93 BC B2 9E BE 93 C0 11 F1 1F FF",
+      "source": "ライネックハイパー化",
+      "translation": "ไรเน็กไฮเปอร์",
+      "slots": [
+        365
+      ]
+    },
+    {
+      "pointer": "0x8B63",
+      "source_pc": "0x128B63",
+      "source_hex": "F1 D2 3B A1 B2 AE 11 31 F0 80 F0 81 FF",
+      "source": "真・ゲッター１変形",
+      "translation": "ชินเก็ตเตอร์ 1 แปลงร่าง",
+      "slots": [
+        366
+      ]
+    },
+    {
+      "pointer": "0x8B70",
+      "source_pc": "0x128B70",
+      "source_hex": "F1 D2 3B A1 B2 AE 11 32 F0 80 F0 81 FF",
+      "source": "真・ゲッター２変形",
+      "translation": "ชินเก็ตเตอร์ 2 แปลงร่าง",
+      "slots": [
+        368
+      ]
+    },
+    {
+      "pointer": "0x8B7D",
+      "source_pc": "0x128B7D",
+      "source_hex": "F1 D2 3B A1 B2 AE 11 33 F0 80 F0 81 FF",
+      "source": "真・ゲッター３変形",
+      "translation": "ชินเก็ตเตอร์ 3 แปลงร่าง",
+      "slots": [
+        369
+      ]
+    }
+  ]
+}

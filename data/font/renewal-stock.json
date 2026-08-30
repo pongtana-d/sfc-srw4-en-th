@@ -1,0 +1,174 @@
+{
+  "_note": "Which glyph of the original ROM font each non-Thai character is imported from. Only the image is imported: no cursor, no renderer state and no tile ownership comes with it. Production runtime uses the new atlas; see PLAN.md P3.",
+  "original_font": "0x2E8000",
+  "glyphs": {
+    " ": {
+      "code": 0
+    },
+    "!": {
+      "code": 21
+    },
+    "%": {
+      "code": 14
+    },
+    "(": {
+      "code": 60
+    },
+    ")": {
+      "code": 61
+    },
+    "+": {
+      "code": 16
+    },
+    ",": {
+      "code": 58
+    },
+    "-": {
+      "code": 18
+    },
+    ".": {
+      "code": 230
+    },
+    "/": {
+      "code": 15
+    },
+    "0": {
+      "code": 48
+    },
+    "1": {
+      "code": 49
+    },
+    "2": {
+      "code": 50
+    },
+    "3": {
+      "code": 51
+    },
+    "4": {
+      "code": 52
+    },
+    "5": {
+      "code": 53
+    },
+    "6": {
+      "code": 54
+    },
+    "7": {
+      "code": 55
+    },
+    "8": {
+      "code": 56
+    },
+    "9": {
+      "code": 57
+    },
+    ":": {
+      "code": 229
+    },
+    "?": {
+      "code": 20
+    },
+    "A": {
+      "code": 22
+    },
+    "B": {
+      "code": 23
+    },
+    "C": {
+      "code": 24
+    },
+    "D": {
+      "code": 25
+    },
+    "E": {
+      "code": 26
+    },
+    "F": {
+      "code": 27
+    },
+    "G": {
+      "code": 28
+    },
+    "H": {
+      "code": 29
+    },
+    "I": {
+      "code": 30
+    },
+    "J": {
+      "code": 31
+    },
+    "K": {
+      "code": 32
+    },
+    "L": {
+      "code": 33
+    },
+    "M": {
+      "code": 34
+    },
+    "N": {
+      "code": 35
+    },
+    "O": {
+      "code": 36
+    },
+    "P": {
+      "code": 37
+    },
+    "Q": {
+      "code": 38
+    },
+    "R": {
+      "code": 39
+    },
+    "S": {
+      "code": 40
+    },
+    "T": {
+      "code": 41
+    },
+    "U": {
+      "code": 42
+    },
+    "V": {
+      "code": 43
+    },
+    "W": {
+      "code": 44
+    },
+    "X": {
+      "code": 45
+    },
+    "Y": {
+      "code": 46
+    },
+    "Z": {
+      "code": 47
+    },
+    "b": {
+      "code": 9
+    },
+    "k": {
+      "code": 8
+    },
+    "m": {
+      "code": 7
+    },
+    "r": {
+      "code": 6
+    },
+    "x": {
+      "code": 10
+    },
+    "~": {
+      "code": 19
+    },
+    "ν": {
+      "code": 5
+    },
+    "♥": {
+      "code": 13
+    }
+  }
+}

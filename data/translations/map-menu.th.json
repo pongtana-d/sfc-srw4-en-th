@@ -1,0 +1,55 @@
+{
+  "_comment": [
+    "The command menu opened with A on the battle map.",
+    "The source block is kept byte-for-byte here so the build can assert the",
+    "clean ROM revision before replacing only its eight labels."
+  ],
+  "address": "0x0C95EA",
+  "end": "0x0C9625",
+  "max_width_px": 64,
+  "external_tilemap": false,
+  "preserve_tilemap": {
+    "first_post_read_pointer": "0x95EF",
+    "last_post_read_pointer": "0x9620",
+    "source_address": "0x7E8040",
+    "backup_address": "0x7FF000",
+    "row_bytes": 24,
+    "rows": 6,
+    "stride": 64
+  },
+  "source_hex": "40 FC 01 EF AE 11 DF F0 E4 F0 E5 F6 F0 E6 F0 E7 F0 E8 F6 F0 E9 F0 74 CD B2 C6 F6 F0 78 F0 06 F3 9D F3 21 F6 F0 57 F0 42 F6 A6 A8 B5 CF F6 F0 17 F0 52 F1 30 F1 0C F6 AA 11 C5 F7",
+  "labels": [
+    {
+      "source": "ターン終了",
+      "translation": "จบเทิร์น"
+    },
+    {
+      "source": "部隊表",
+      "translation": "รายชื่อ"
+    },
+    {
+      "source": "全体マップ",
+      "translation": "แผนที่"
+    },
+    {
+      "source": "精神検索",
+      "translation": "หาพลังจิต"
+    },
+    {
+      "source": "命令",
+      "translation": "คำสั่ง"
+    },
+    {
+      "source": "システム",
+      "translation": "ระบบ"
+    },
+    {
+      "source": "作戦目的",
+      "translation": "ภารกิจ"
+    },
+    {
+      "source": "セーブ",
+      "translation": "บันทึก"
+    }
+  ]
+}

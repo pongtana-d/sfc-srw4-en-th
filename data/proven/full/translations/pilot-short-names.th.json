@@ -1,0 +1,2887 @@
+[
+  {
+    "source_pointer": "0x79AB",
+    "battle_pilot_ids": [
+      0,
+      1
+    ],
+    "source": "チャム",
+    "source_hex": "B0 D2 CF FF",
+    "translation": "ชัม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79AF",
+    "battle_pilot_ids": [
+      2
+    ],
+    "source": "ベル",
+    "source_hex": "C8 DA FF",
+    "translation": "เบล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79B2",
+    "battle_pilot_ids": [
+      3
+    ],
+    "source": "エル",
+    "source_hex": "97 DA FF",
+    "translation": "เอล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79B5",
+    "battle_pilot_ids": [
+      4
+    ],
+    "source": "リリス",
+    "source_hex": "D9 D9 A8 FF",
+    "translation": "ลิลิธ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79B9",
+    "battle_pilot_ids": [
+      5
+    ],
+    "source": "シルキー",
+    "source_hex": "A6 DA 9C 11 FF",
+    "translation": "ซิลกี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79BE",
+    "battle_pilot_ids": [
+      6
+    ],
+    "source": "妖精６",
+    "source_hex": "F2 4F F0 78 36 FF",
+    "translation": "ภูต 6",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79C4",
+    "battle_pilot_ids": [
+      7
+    ],
+    "source": "ジャック",
+    "source_hex": "A7 D2 B2 9E FF",
+    "translation": "แจ็ก",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79C9",
+    "battle_pilot_ids": [
+      8
+    ],
+    "source": "メリー",
+    "source_hex": "D0 D9 11 FF",
+    "translation": "แมรี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79CD",
+    "battle_pilot_ids": [
+      9
+    ],
+    "source": "リョウ",
+    "source_hex": "D9 D6 95 FF",
+    "translation": "เรียว",
+    "method": "nickname_reading"
+  },
+  {
+    "source_pointer": "0x79D1",
+    "battle_pilot_ids": [
+      10
+    ],
+    "source": "ハヤト",
+    "source_hex": "BE D3 B7 FF",
+    "translation": "ฮายาโตะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79D5",
+    "battle_pilot_ids": [
+      11
+    ],
+    "source": "ベンケイ",
+    "source_hex": "C8 DF A0 93 FF",
+    "translation": "เบ็งเค",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79DA",
+    "battle_pilot_ids": [
+      12
+    ],
+    "source": "真吾",
+    "source_hex": "F1 D2 F3 02 FF",
+    "translation": "ชิงโง",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79DF",
+    "battle_pilot_ids": [
+      13
+    ],
+    "source": "レミー",
+    "source_hex": "DB CE 11 FF",
+    "translation": "เรมี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79E3",
+    "battle_pilot_ids": [
+      14
+    ],
+    "source": "キリー",
+    "source_hex": "9C D9 11 FF",
+    "translation": "คิลลี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79E7",
+    "battle_pilot_ids": [
+      15
+    ],
+    "source": "勝平",
+    "source_hex": "F0 C9 F1 11 FF",
+    "translation": "คัปเป",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79EC",
+    "battle_pilot_ids": [
+      16
+    ],
+    "source": "宇宙太",
+    "source_hex": "F4 0D F4 0E F0 2F FF",
+    "translation": "อุชูตะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79F3",
+    "battle_pilot_ids": [
+      17
+    ],
+    "source": "恵子",
+    "source_hex": "F3 84 F0 84 FF",
+    "translation": "เคโกะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79F8",
+    "battle_pilot_ids": [
+      18
+    ],
+    "source": "忍",
+    "source_hex": "F4 1F FF",
+    "translation": "ชิโนบุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x79FB",
+    "battle_pilot_ids": [
+      19
+    ],
+    "source": "沙羅",
+    "source_hex": "F4 20 F4 21 FF",
+    "translation": "ซาระ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A00",
+    "battle_pilot_ids": [
+      20
+    ],
+    "source": "雅人",
+    "source_hex": "F3 59 F0 08 FF",
+    "translation": "มาซาโตะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A05",
+    "battle_pilot_ids": [
+      21
+    ],
+    "source": "亮",
+    "source_hex": "F4 22 FF",
+    "translation": "เรียว",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A08",
+    "battle_pilot_ids": [
+      22
+    ],
+    "source": "豹馬",
+    "source_hex": "F4 0A F0 05 FF",
+    "translation": "เฮียวมะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A0D",
+    "battle_pilot_ids": [
+      23
+    ],
+    "source": "十三",
+    "source_hex": "F0 10 F0 11 FF",
+    "translation": "จูโซ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A12",
+    "battle_pilot_ids": [
+      24
+    ],
+    "source": "大作",
+    "source_hex": "F0 16 F0 17 FF",
+    "translation": "ไดซากุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A17",
+    "battle_pilot_ids": [
+      25
+    ],
+    "source": "ちずる",
+    "source_hex": "60 59 8A FF",
+    "translation": "จิซึรุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A1B",
+    "battle_pilot_ids": [
+      26
+    ],
+    "source": "小介",
+    "source_hex": "F0 19 F0 1A FF",
+    "translation": "โคสุเกะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A20",
+    "battle_pilot_ids": [
+      27
+    ],
+    "source": "ギリアム",
+    "source_hex": "9D D9 91 CF FF",
+    "translation": "กิลเลียม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A25",
+    "battle_pilot_ids": [
+      28
+    ],
+    "source": "ショウ",
+    "source_hex": "A6 D6 95 FF",
+    "translation": "โช",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A29",
+    "battle_pilot_ids": [
+      29
+    ],
+    "source": "マサキ",
+    "source_hex": "CD A4 9C FF",
+    "translation": "มาซากิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A2D",
+    "battle_pilot_ids": [
+      30
+    ],
+    "source": "リューネ",
+    "source_hex": "D9 D4 11 BC FF",
+    "translation": "ริวเน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A32",
+    "battle_pilot_ids": [
+      31
+    ],
+    "source": "シュウ",
+    "source_hex": "A6 D4 95 FF",
+    "translation": "ชู",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A36",
+    "battle_pilot_ids": [
+      32
+    ],
+    "source": "クワトロ",
+    "source_hex": "9E DD B7 DC FF",
+    "translation": "ควอทโทร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A3B",
+    "battle_pilot_ids": [
+      33
+    ],
+    "source": "ブライト",
+    "source_hex": "C5 D8 93 B7 FF",
+    "translation": "ไบรท์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A40",
+    "battle_pilot_ids": [
+      34
+    ],
+    "source": "ハヤト",
+    "source_hex": "BE D3 B7 FF",
+    "translation": "ฮายาโตะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A44",
+    "battle_pilot_ids": [
+      35
+    ],
+    "source": "カイ",
+    "source_hex": "9A 93 FF",
+    "translation": "ไค",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A47",
+    "battle_pilot_ids": [
+      36
+    ],
+    "source": "マチルダ",
+    "source_hex": "CD B0 DA AF FF",
+    "translation": "มาทิลดา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A4C",
+    "battle_pilot_ids": [
+      37
+    ],
+    "source": "セイラ",
+    "source_hex": "AA 93 D8 FF",
+    "translation": "เซย์ลา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A50",
+    "battle_pilot_ids": [
+      38
+    ],
+    "source": "ワッケイン",
+    "source_hex": "DD B2 A0 93 DF FF",
+    "translation": "วัคเคน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A56",
+    "battle_pilot_ids": [
+      39
+    ],
+    "source": "ティアンム",
+    "source_hex": "B5 92 91 DF CF FF",
+    "translation": "เทียนเนม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A5C",
+    "battle_pilot_ids": [
+      40
+    ],
+    "source": "エマ",
+    "source_hex": "97 CD FF",
+    "translation": "เอ็มมา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A5F",
+    "battle_pilot_ids": [
+      41
+    ],
+    "source": "トーレス",
+    "source_hex": "B7 11 DB A8 FF",
+    "translation": "ตอร์เรส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A64",
+    "battle_pilot_ids": [
+      42
+    ],
+    "source": "ファ",
+    "source_hex": "C4 90 FF",
+    "translation": "ฟา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A67",
+    "battle_pilot_ids": [
+      43
+    ],
+    "source": "カツ",
+    "source_hex": "9A B3 FF",
+    "translation": "คัตซ์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A6A",
+    "battle_pilot_ids": [
+      44
+    ],
+    "source": "フォウ",
+    "source_hex": "C4 98 95 FF",
+    "translation": "โฟร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A6E",
+    "battle_pilot_ids": [
+      45
+    ],
+    "source": "ベルトーチカ",
+    "source_hex": "C8 DA B7 11 B0 9A FF",
+    "translation": "เบลทอร์ชิกา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A75",
+    "battle_pilot_ids": [
+      46
+    ],
+    "source": "ケリィ",
+    "source_hex": "A0 D9 92 FF",
+    "translation": "เคลลี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A79",
+    "battle_pilot_ids": [
+      47
+    ],
+    "source": "ヘンケン",
+    "source_hex": "C7 DF A0 DF FF",
+    "translation": "เฮงเคน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A7E",
+    "battle_pilot_ids": [
+      48
+    ],
+    "source": "ブレックス",
+    "source_hex": "C5 DB B2 9E A8 FF",
+    "translation": "เบล็กซ์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A84",
+    "battle_pilot_ids": [
+      49
+    ],
+    "source": "ルー",
+    "source_hex": "DA 11 FF",
+    "translation": "รู",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A87",
+    "battle_pilot_ids": [
+      50
+    ],
+    "source": "プル",
+    "source_hex": "C6 DA FF",
+    "translation": "พลู",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A8A",
+    "battle_pilot_ids": [
+      51
+    ],
+    "source": "プルツー",
+    "source_hex": "C6 DA B3 11 FF",
+    "translation": "พลูทู",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A8F",
+    "battle_pilot_ids": [
+      52
+    ],
+    "source": "リィナ",
+    "source_hex": "D9 92 B9 FF",
+    "translation": "ลีนา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A93",
+    "battle_pilot_ids": [
+      53
+    ],
+    "source": "ビーチャ",
+    "source_hex": "C2 11 B0 D2 FF",
+    "translation": "บีชา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A98",
+    "battle_pilot_ids": [
+      54
+    ],
+    "source": "モンド",
+    "source_hex": "D1 DF B8 FF",
+    "translation": "มอนโด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A9C",
+    "battle_pilot_ids": [
+      55
+    ],
+    "source": "エル",
+    "source_hex": "97 DA FF",
+    "translation": "เอล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7A9F",
+    "battle_pilot_ids": [
+      56
+    ],
+    "source": "イーノ",
+    "source_hex": "93 11 BD FF",
+    "translation": "อีโน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AA3",
+    "battle_pilot_ids": [
+      57
+    ],
+    "source": "エマリー",
+    "source_hex": "97 CD D9 11 FF",
+    "translation": "เอมารี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AA8",
+    "battle_pilot_ids": [
+      58
+    ],
+    "source": "クェス",
+    "source_hex": "9E 96 A8 FF",
+    "translation": "เควส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AAC",
+    "battle_pilot_ids": [
+      59
+    ],
+    "source": "チェーン",
+    "source_hex": "B0 96 11 DF FF",
+    "translation": "เชน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AB1",
+    "battle_pilot_ids": [
+      60
+    ],
+    "source": "ケーラ",
+    "source_hex": "A0 11 D8 FF",
+    "translation": "เคย์รา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AB5",
+    "battle_pilot_ids": [
+      61
+    ],
+    "source": "ハサウェイ",
+    "source_hex": "BE A4 95 96 93 FF",
+    "translation": "ฮาซาเวย์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ABB",
+    "battle_pilot_ids": [
+      62
+    ],
+    "source": "クリス",
+    "source_hex": "9E D9 A8 FF",
+    "translation": "คริส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ABF",
+    "battle_pilot_ids": [
+      63
+    ],
+    "source": "バーニィ",
+    "source_hex": "BF 11 BA 92 FF",
+    "translation": "เบอร์นี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AC4",
+    "battle_pilot_ids": [
+      64
+    ],
+    "source": "セシリー",
+    "source_hex": "AA A6 D9 11 FF",
+    "translation": "เซซิลี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AC9",
+    "battle_pilot_ids": [
+      65
+    ],
+    "source": "ニナ",
+    "source_hex": "BA B9 FF",
+    "translation": "นีนา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ACC",
+    "battle_pilot_ids": [
+      66
+    ],
+    "source": "ガトー",
+    "source_hex": "9B B7 11 FF",
+    "translation": "กาโต",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AD0",
+    "battle_pilot_ids": [
+      67
+    ],
+    "source": "キース",
+    "source_hex": "9C 11 A8 FF",
+    "translation": "คีธ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AD4",
+    "battle_pilot_ids": [
+      68
+    ],
+    "source": "モンシア",
+    "source_hex": "D1 DF A6 91 FF",
+    "translation": "มอนชา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AD9",
+    "battle_pilot_ids": [
+      69
+    ],
+    "source": "さやか",
+    "source_hex": "54 83 4A FF",
+    "translation": "ซายากะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ADD",
+    "battle_pilot_ids": [
+      70
+    ],
+    "source": "ラムサス",
+    "source_hex": "D8 CF A4 A8 FF",
+    "translation": "แรมซัส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AE2",
+    "battle_pilot_ids": [
+      71
+    ],
+    "source": "ボス",
+    "source_hex": "CB A8 FF",
+    "translation": "บอส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AE5",
+    "battle_pilot_ids": [
+      72
+    ],
+    "source": "ジュン",
+    "source_hex": "A7 D4 DF FF",
+    "translation": "จุน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AE9",
+    "battle_pilot_ids": [
+      73
+    ],
+    "source": "マリア",
+    "source_hex": "CD D9 91 FF",
+    "translation": "มาเรีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AED",
+    "battle_pilot_ids": [
+      74
+    ],
+    "source": "ひかる",
+    "source_hex": "71 4A 8A FF",
+    "translation": "ฮิคารุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AF1",
+    "battle_pilot_ids": [
+      75
+    ],
+    "source": "ミチル",
+    "source_hex": "CE B0 DA FF",
+    "translation": "มิจิรุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AF5",
+    "battle_pilot_ids": [
+      76
+    ],
+    "source": "ダンゲル",
+    "source_hex": "AF DF A1 DA FF",
+    "translation": "ดังเคล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7AFA",
+    "battle_pilot_ids": [
+      77
+    ],
+    "source": "神宮寺",
+    "source_hex": "F0 06 F4 13 F4 14 FF",
+    "translation": "จิงกูจิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B01",
+    "battle_pilot_ids": [
+      78
+    ],
+    "source": "麗",
+    "source_hex": "F0 36 FF",
+    "translation": "เร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B04",
+    "battle_pilot_ids": [
+      79
+    ],
+    "source": "マリ",
+    "source_hex": "CD D9 FF",
+    "translation": "มาริ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B07",
+    "battle_pilot_ids": [
+      80
+    ],
+    "source": "アムロ",
+    "source_hex": "91 CF DC FF",
+    "translation": "อามุโร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B0B",
+    "battle_pilot_ids": [
+      81
+    ],
+    "source": "カミーユ",
+    "source_hex": "9A CE 11 D5 FF",
+    "translation": "คามิลล์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B10",
+    "battle_pilot_ids": [
+      82
+    ],
+    "source": "ジュドー",
+    "source_hex": "A7 D4 B8 11 FF",
+    "translation": "จูโด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B15",
+    "battle_pilot_ids": [
+      83
+    ],
+    "source": "シーブック",
+    "source_hex": "A6 11 C5 B2 9E FF",
+    "translation": "ซีบุ๊ก",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B1B",
+    "battle_pilot_ids": [
+      84
+    ],
+    "source": "コウ",
+    "source_hex": "A2 95 FF",
+    "translation": "โค",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B1E",
+    "battle_pilot_ids": [
+      85
+    ],
+    "source": "甲児",
+    "source_hex": "F0 01 F0 02 FF",
+    "translation": "โคจิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B23",
+    "battle_pilot_ids": [
+      86
+    ],
+    "source": "兵左ェ門",
+    "source_hex": "F0 4E F1 8A 96 F0 90 FF",
+    "translation": "เฮซาเอมอน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B2B",
+    "battle_pilot_ids": [
+      87
+    ],
+    "source": "梅江",
+    "source_hex": "F4 18 F4 0C FF",
+    "translation": "อุเมะเอะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B30",
+    "battle_pilot_ids": [
+      88
+    ],
+    "source": "源五郎",
+    "source_hex": "F2 86 F4 19 F0 30 FF",
+    "translation": "เก็นโกโร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B37",
+    "battle_pilot_ids": [
+      89
+    ],
+    "source": "一太郎",
+    "source_hex": "F1 4E F0 2F F0 30 FF",
+    "translation": "อิจิทาโร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B3E",
+    "battle_pilot_ids": [
+      90
+    ],
+    "source": "ギャリソン",
+    "source_hex": "9D D2 D9 AC DF FF",
+    "translation": "แกร์ริสัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B44",
+    "battle_pilot_ids": [
+      91
+    ],
+    "source": "ビューティ",
+    "source_hex": "C2 D4 11 B5 92 FF",
+    "translation": "บิวตี้",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B4A",
+    "battle_pilot_ids": [
+      92
+    ],
+    "source": "レイカ",
+    "source_hex": "DB 93 9A FF",
+    "translation": "เรกะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B4E",
+    "battle_pilot_ids": [
+      93
+    ],
+    "source": "トッポ",
+    "source_hex": "B7 B2 CC FF",
+    "translation": "ท็อปโป",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B52",
+    "battle_pilot_ids": [
+      94
+    ],
+    "source": "鉄也",
+    "source_hex": "F0 21 F0 22 FF",
+    "translation": "เท็ตสึยะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B57",
+    "battle_pilot_ids": [
+      95
+    ],
+    "source": "京四郎",
+    "source_hex": "F4 1C F0 46 F0 30 FF",
+    "translation": "เคียวชิโร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B5E",
+    "battle_pilot_ids": [
+      96
+    ],
+    "source": "ナナ",
+    "source_hex": "B9 B9 FF",
+    "translation": "นานะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B61",
+    "battle_pilot_ids": [
+      97
+    ],
+    "source": "デューク",
+    "source_hex": "B6 D4 11 9E FF",
+    "translation": "ดุ๊ก",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B66",
+    "battle_pilot_ids": [
+      98
+    ],
+    "source": "マーベル",
+    "source_hex": "CD 11 C8 DA FF",
+    "translation": "มาร์เวล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B6B",
+    "battle_pilot_ids": [
+      99
+    ],
+    "source": "洸",
+    "source_hex": "F4 08 FF",
+    "translation": "อากิระ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B6E",
+    "battle_pilot_ids": [
+      100
+    ],
+    "source": "ニー",
+    "source_hex": "BA 11 FF",
+    "translation": "นี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B71",
+    "battle_pilot_ids": [
+      101
+    ],
+    "source": "キーン",
+    "source_hex": "9C 11 DF FF",
+    "translation": "คีน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B75",
+    "battle_pilot_ids": [
+      102
+    ],
+    "source": "シーラ",
+    "source_hex": "A6 11 D8 FF",
+    "translation": "ชีลา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B79",
+    "battle_pilot_ids": [
+      103
+    ],
+    "source": "エレ",
+    "source_hex": "97 DB FF",
+    "translation": "เอลเล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B7C",
+    "battle_pilot_ids": [
+      104
+    ],
+    "source": "リムル",
+    "source_hex": "D9 CF DA FF",
+    "translation": "ริมูล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B80",
+    "battle_pilot_ids": [
+      105
+    ],
+    "source": "エイブ",
+    "source_hex": "97 93 C5 FF",
+    "translation": "เอเบะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B84",
+    "battle_pilot_ids": [
+      106
+    ],
+    "source": "万丈",
+    "source_hex": "F0 1E F0 1F FF",
+    "translation": "บันโจ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B89",
+    "battle_pilot_ids": [
+      107
+    ],
+    "source": "一矢",
+    "source_hex": "F1 4E F4 11 FF",
+    "translation": "คาซึยะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D49",
+    "battle_pilot_ids": [
+      108,
+      109,
+      164,
+      200,
+      204
+    ],
+    "source": "兵士",
+    "source_hex": "F0 4E F0 49 FF",
+    "translation": "ทหาร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B8E",
+    "battle_pilot_ids": [
+      110
+    ],
+    "source": "テュッティ",
+    "source_hex": "B5 D4 B2 B5 92 FF",
+    "translation": "ทุตตี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B94",
+    "battle_pilot_ids": [
+      111
+    ],
+    "source": "獣魔将軍",
+    "source_hex": "F0 D3 F0 D4 F0 A4 F0 A5 FF",
+    "translation": "แม่ทัพอสูร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7B9D",
+    "battle_pilot_ids": [
+      112
+    ],
+    "source": "バニング",
+    "source_hex": "BF BA DF 9F FF",
+    "translation": "เบิร์นนิง",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BA2",
+    "battle_pilot_ids": [
+      113
+    ],
+    "source": "ヤンロン",
+    "source_hex": "D3 DF DC DF FF",
+    "translation": "หยางหลง",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BA7",
+    "battle_pilot_ids": [
+      114
+    ],
+    "source": "プレシア",
+    "source_hex": "C6 DB A6 91 FF",
+    "translation": "พรีเซีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BAC",
+    "battle_pilot_ids": [
+      115
+    ],
+    "source": "ミオ",
+    "source_hex": "CE 99 FF",
+    "translation": "มิโอะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BAF",
+    "battle_pilot_ids": [
+      116
+    ],
+    "source": "ティターンズ",
+    "source_hex": "B5 92 AE 11 DF A9 FF",
+    "translation": "ทีทานส์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BB6",
+    "battle_pilot_ids": [
+      117
+    ],
+    "source": "モニカ",
+    "source_hex": "D1 BA 9A FF",
+    "translation": "โมนิกา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BBA",
+    "battle_pilot_ids": [
+      118
+    ],
+    "source": "サフィーネ",
+    "source_hex": "A4 C4 92 11 BC FF",
+    "translation": "ซาฟีเน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BC0",
+    "battle_pilot_ids": [
+      119
+    ],
+    "source": "ガデム",
+    "source_hex": "9B B6 CF FF",
+    "translation": "กาเด็ม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BC4",
+    "battle_pilot_ids": [
+      120
+    ],
+    "source": "ラル",
+    "source_hex": "D8 DA FF",
+    "translation": "ราล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BC7",
+    "battle_pilot_ids": [
+      121
+    ],
+    "source": "ハモン",
+    "source_hex": "BE D1 DF FF",
+    "translation": "ฮามอน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BCB",
+    "battle_pilot_ids": [
+      122
+    ],
+    "source": "クランプ",
+    "source_hex": "9E D8 DF C6 FF",
+    "translation": "แคลมป์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BD0",
+    "battle_pilot_ids": [
+      123
+    ],
+    "source": "ガイア",
+    "source_hex": "9B 93 91 FF",
+    "translation": "ไกอา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BD4",
+    "battle_pilot_ids": [
+      124
+    ],
+    "source": "マッシュ",
+    "source_hex": "CD B2 A6 D4 FF",
+    "translation": "แมช",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BD9",
+    "battle_pilot_ids": [
+      125
+    ],
+    "source": "オルテガ",
+    "source_hex": "99 DA B5 9B FF",
+    "translation": "ออร์เทกา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BDE",
+    "battle_pilot_ids": [
+      126
+    ],
+    "source": "シャリア",
+    "source_hex": "A6 D2 D9 91 FF",
+    "translation": "ชาเรีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BE3",
+    "battle_pilot_ids": [
+      127
+    ],
+    "source": "ララァ",
+    "source_hex": "D8 D8 90 FF",
+    "translation": "ลาล่า",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BE7",
+    "battle_pilot_ids": [
+      128
+    ],
+    "source": "ガディ",
+    "source_hex": "9B B6 92 FF",
+    "translation": "กาดี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BEB",
+    "battle_pilot_ids": [
+      129
+    ],
+    "source": "カクリコン",
+    "source_hex": "9A 9E D9 A2 DF FF",
+    "translation": "คาคริคอน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BF1",
+    "battle_pilot_ids": [
+      130
+    ],
+    "source": "サラ",
+    "source_hex": "A4 D8 FF",
+    "translation": "ซาราห์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BF4",
+    "battle_pilot_ids": [
+      131
+    ],
+    "source": "ゲーツ",
+    "source_hex": "A1 11 B3 FF",
+    "translation": "เกตส์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BF8",
+    "battle_pilot_ids": [
+      132
+    ],
+    "source": "ジェリド",
+    "source_hex": "A7 96 D9 B8 FF",
+    "translation": "เจริด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7BFD",
+    "battle_pilot_ids": [
+      133
+    ],
+    "source": "ジャマイカン",
+    "source_hex": "A7 D2 CD 93 9A DF FF",
+    "translation": "จาไมกัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C04",
+    "battle_pilot_ids": [
+      134
+    ],
+    "source": "ジャミトフ",
+    "source_hex": "A7 D2 CE B7 C4 FF",
+    "translation": "จามิทอฟ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C0A",
+    "battle_pilot_ids": [
+      135
+    ],
+    "source": "ハマーン",
+    "source_hex": "BE CD 11 DF FF",
+    "translation": "ฮามาน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C0F",
+    "battle_pilot_ids": [
+      136
+    ],
+    "source": "ブラン",
+    "source_hex": "C5 D8 DF FF",
+    "translation": "บรัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C13",
+    "battle_pilot_ids": [
+      137
+    ],
+    "source": "ベン",
+    "source_hex": "C8 DF FF",
+    "translation": "เบน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C16",
+    "battle_pilot_ids": [
+      138
+    ],
+    "source": "マウアー",
+    "source_hex": "CD 95 91 11 FF",
+    "translation": "มูอาร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C1B",
+    "battle_pilot_ids": [
+      139
+    ],
+    "source": "ミネバ",
+    "source_hex": "CE BC BF FF",
+    "translation": "มิเนวา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C1F",
+    "battle_pilot_ids": [
+      140
+    ],
+    "source": "ライラ",
+    "source_hex": "D8 93 D8 FF",
+    "translation": "ไลลา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C23",
+    "battle_pilot_ids": [
+      141
+    ],
+    "source": "ヤザン",
+    "source_hex": "D3 A5 DF FF",
+    "translation": "ยาซาน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C27",
+    "battle_pilot_ids": [
+      142
+    ],
+    "source": "ロザミア",
+    "source_hex": "DC A5 CE 91 FF",
+    "translation": "โรซาเมีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C2C",
+    "battle_pilot_ids": [
+      143
+    ],
+    "source": "マシュマー",
+    "source_hex": "CD A6 D4 CD 11 FF",
+    "translation": "มาชีมาร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C32",
+    "battle_pilot_ids": [
+      144
+    ],
+    "source": "イリア",
+    "source_hex": "93 D9 91 FF",
+    "translation": "อิเลีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C36",
+    "battle_pilot_ids": [
+      145
+    ],
+    "source": "キャラ",
+    "source_hex": "9C D2 D8 FF",
+    "translation": "คารา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C3A",
+    "battle_pilot_ids": [
+      146
+    ],
+    "source": "グレミー",
+    "source_hex": "9F DB CE 11 FF",
+    "translation": "เกลมี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C3F",
+    "battle_pilot_ids": [
+      147
+    ],
+    "source": "ゴットン",
+    "source_hex": "A3 B2 B7 DF FF",
+    "translation": "ก็อตตัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C44",
+    "battle_pilot_ids": [
+      148
+    ],
+    "source": "ニー",
+    "source_hex": "BA 11 FF",
+    "translation": "นี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C47",
+    "battle_pilot_ids": [
+      149
+    ],
+    "source": "ランス",
+    "source_hex": "D8 DF A8 FF",
+    "translation": "แลนซ์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C4B",
+    "battle_pilot_ids": [
+      150
+    ],
+    "source": "ラカン",
+    "source_hex": "D8 9A DF FF",
+    "translation": "รากัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C4F",
+    "battle_pilot_ids": [
+      151
+    ],
+    "source": "ギュネイ",
+    "source_hex": "9D D4 BC 93 FF",
+    "translation": "กิวเน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C54",
+    "battle_pilot_ids": [
+      152
+    ],
+    "source": "ナナイ",
+    "source_hex": "B9 B9 93 FF",
+    "translation": "นาไน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C58",
+    "battle_pilot_ids": [
+      153
+    ],
+    "source": "レズン",
+    "source_hex": "DB A9 DF FF",
+    "translation": "เรซิน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C5C",
+    "battle_pilot_ids": [
+      154
+    ],
+    "source": "ザビーネ",
+    "source_hex": "A5 C2 11 BC FF",
+    "translation": "ซาบิเน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C61",
+    "battle_pilot_ids": [
+      155
+    ],
+    "source": "アンナマリー",
+    "source_hex": "91 DF B9 CD D9 11 FF",
+    "translation": "แอนนา มารี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C68",
+    "battle_pilot_ids": [
+      156
+    ],
+    "source": "ドレル",
+    "source_hex": "B8 DB DA FF",
+    "translation": "ดอเรล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C6C",
+    "battle_pilot_ids": [
+      157
+    ],
+    "source": "カロッゾ",
+    "source_hex": "9A DC B2 AD FF",
+    "translation": "คาโรซโซ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C71",
+    "battle_pilot_ids": [
+      158
+    ],
+    "source": "シュタイナー",
+    "source_hex": "A6 D4 AE 93 B9 11 FF",
+    "translation": "สไตเนอร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C78",
+    "battle_pilot_ids": [
+      159
+    ],
+    "source": "シーマ",
+    "source_hex": "A6 11 CD FF",
+    "translation": "ซีมา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C7C",
+    "battle_pilot_ids": [
+      160
+    ],
+    "source": "あしゅら",
+    "source_hex": "41 56 84 88 FF",
+    "translation": "อาชูรา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C81",
+    "battle_pilot_ids": [
+      161
+    ],
+    "source": "ブロッケン",
+    "source_hex": "C5 DC B2 A0 DF FF",
+    "translation": "บร็อกเคน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C87",
+    "battle_pilot_ids": [
+      162
+    ],
+    "source": "Ｄｒヘル",
+    "source_hex": "19 06 C7 DA FF",
+    "translation": "ดร.เฮล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C8C",
+    "battle_pilot_ids": [
+      163
+    ],
+    "source": "シャーキン",
+    "source_hex": "A6 D2 11 9C DF FF",
+    "translation": "ชาร์คิน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C92",
+    "battle_pilot_ids": [
+      165
+    ],
+    "source": "エゥーゴ兵",
+    "source_hex": "97 94 11 A3 F0 4E FF",
+    "translation": "ทหาร AEUG",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C99",
+    "battle_pilot_ids": [
+      166
+    ],
+    "source": "バラオ",
+    "source_hex": "BF D8 99 FF",
+    "translation": "บาเรา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7C9D",
+    "battle_pilot_ids": [
+      167
+    ],
+    "source": "ガルーダ",
+    "source_hex": "9B DA 11 AF FF",
+    "translation": "การูดา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CA2",
+    "battle_pilot_ids": [
+      168
+    ],
+    "source": "ミーア",
+    "source_hex": "CE 11 91 FF",
+    "translation": "มีอา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CA6",
+    "battle_pilot_ids": [
+      169
+    ],
+    "source": "オレアナ",
+    "source_hex": "99 DB 91 B9 FF",
+    "translation": "โอรีอานา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CAB",
+    "battle_pilot_ids": [
+      170
+    ],
+    "source": "ブッチャー",
+    "source_hex": "C5 B2 B0 D2 11 FF",
+    "translation": "บุตเชอร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CB1",
+    "battle_pilot_ids": [
+      171
+    ],
+    "source": "コロス",
+    "source_hex": "A2 DC A8 FF",
+    "translation": "โครอส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CB5",
+    "battle_pilot_ids": [
+      172
+    ],
+    "source": "ドン",
+    "source_hex": "B8 DF FF",
+    "translation": "ดอน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CB8",
+    "battle_pilot_ids": [
+      173
+    ],
+    "source": "リヒテル",
+    "source_hex": "D9 C1 B5 DA FF",
+    "translation": "ริชเทอร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CBD",
+    "battle_pilot_ids": [
+      174
+    ],
+    "source": "バルバス",
+    "source_hex": "BF DA BF A8 FF",
+    "translation": "บัลบัส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CC2",
+    "battle_pilot_ids": [
+      175
+    ],
+    "source": "ライザ",
+    "source_hex": "D8 93 A5 FF",
+    "translation": "ไรซา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CC6",
+    "battle_pilot_ids": [
+      176
+    ],
+    "source": "アイザム",
+    "source_hex": "91 93 A5 CF FF",
+    "translation": "ไอซัม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CCB",
+    "battle_pilot_ids": [
+      177
+    ],
+    "source": "ブンドル",
+    "source_hex": "C5 DF B8 DA FF",
+    "translation": "บุนเดิล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CD0",
+    "battle_pilot_ids": [
+      178
+    ],
+    "source": "カットナル",
+    "source_hex": "9A B2 B7 B9 DA FF",
+    "translation": "คัตนัล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CD6",
+    "battle_pilot_ids": [
+      179
+    ],
+    "source": "ケルナグール",
+    "source_hex": "A0 DA B9 9F 11 DA FF",
+    "translation": "เคอร์นากูล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CDD",
+    "battle_pilot_ids": [
+      180
+    ],
+    "source": "トッド",
+    "source_hex": "B7 B2 B8 FF",
+    "translation": "ท็อด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CE1",
+    "battle_pilot_ids": [
+      181
+    ],
+    "source": "バーン",
+    "source_hex": "BF 11 DF FF",
+    "translation": "บาร์น",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CE5",
+    "battle_pilot_ids": [
+      182
+    ],
+    "source": "黒騎士",
+    "source_hex": "F0 A1 F3 AA F0 49 FF",
+    "translation": "อัศวินดำ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CEC",
+    "battle_pilot_ids": [
+      183
+    ],
+    "source": "ドレイク",
+    "source_hex": "B8 DB 93 9E FF",
+    "translation": "เดรก",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CF1",
+    "battle_pilot_ids": [
+      184
+    ],
+    "source": "ショット",
+    "source_hex": "A6 D6 B2 B7 FF",
+    "translation": "ช็อต",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CF6",
+    "battle_pilot_ids": [
+      185
+    ],
+    "source": "ビショット",
+    "source_hex": "C2 A6 D6 B2 B7 FF",
+    "translation": "บิช็อต",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7CFC",
+    "battle_pilot_ids": [
+      186
+    ],
+    "source": "ルーザ",
+    "source_hex": "DA 11 A5 FF",
+    "translation": "ลูซา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D00",
+    "battle_pilot_ids": [
+      187
+    ],
+    "source": "ミュージィ",
+    "source_hex": "CE D4 11 A7 92 FF",
+    "translation": "มิวซี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D06",
+    "battle_pilot_ids": [
+      188
+    ],
+    "source": "ゼット",
+    "source_hex": "AB B2 B7 FF",
+    "translation": "เซ็ต",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D0A",
+    "battle_pilot_ids": [
+      189
+    ],
+    "source": "トルストール",
+    "source_hex": "B7 DA A8 B7 11 DA FF",
+    "translation": "ตอลสตอย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D11",
+    "battle_pilot_ids": [
+      190
+    ],
+    "source": "ジェリル",
+    "source_hex": "A7 96 D9 DA FF",
+    "translation": "เจริล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D16",
+    "battle_pilot_ids": [
+      191
+    ],
+    "source": "アレン",
+    "source_hex": "91 DB DF FF",
+    "translation": "อัลเลน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D1A",
+    "battle_pilot_ids": [
+      192
+    ],
+    "source": "フェイ",
+    "source_hex": "C4 96 93 FF",
+    "translation": "เฟย์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D1E",
+    "battle_pilot_ids": [
+      193
+    ],
+    "source": "ガラリア",
+    "source_hex": "9B D8 D9 91 FF",
+    "translation": "การาเรีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D23",
+    "battle_pilot_ids": [
+      194
+    ],
+    "source": "ガラミティ",
+    "source_hex": "9B D8 CE B5 92 FF",
+    "translation": "กาลามิตี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D29",
+    "battle_pilot_ids": [
+      195
+    ],
+    "source": "ダー",
+    "source_hex": "AF 11 FF",
+    "translation": "ดาห์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D2C",
+    "battle_pilot_ids": [
+      196
+    ],
+    "source": "ニェット",
+    "source_hex": "BA 96 B2 B7 FF",
+    "translation": "เนียต",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D31",
+    "battle_pilot_ids": [
+      197
+    ],
+    "source": "暗黒大将軍",
+    "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
+    "translation": "แม่ทัพมืด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D3C",
+    "battle_pilot_ids": [
+      198
+    ],
+    "source": "ハーディアス",
+    "source_hex": "BE 11 B6 92 91 A8 FF",
+    "translation": "ฮาร์เดียส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D43",
+    "battle_pilot_ids": [
+      199
+    ],
+    "source": "ドレイドウ",
+    "source_hex": "B8 DB 93 B8 95 FF",
+    "translation": "เดรโด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D4E",
+    "battle_pilot_ids": [
+      201
+    ],
+    "source": "エリート兵",
+    "source_hex": "97 D9 11 B7 F0 4E FF",
+    "translation": "ทหารชั้นยอด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D55",
+    "battle_pilot_ids": [
+      202
+    ],
+    "source": "ＡＩ",
+    "source_hex": "16 1E FF",
+    "translation": "AI",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D58",
+    "battle_pilot_ids": [
+      203
+    ],
+    "source": "ＡＩ改",
+    "source_hex": "16 1E F0 4A FF",
+    "translation": "AI ไค",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D5D",
+    "battle_pilot_ids": [
+      205
+    ],
+    "source": "突撃兵",
+    "source_hex": "F0 3B F0 55 F0 4E FF",
+    "translation": "ทหารจู่โจม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D64",
+    "battle_pilot_ids": [
+      206,
+      208
+    ],
+    "source": "親衛隊兵",
+    "source_hex": "F2 6C F2 7B F0 E7 F0 4E FF",
+    "translation": "องครักษ์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D6D",
+    "battle_pilot_ids": [
+      207
+    ],
+    "source": "ポセイダル兵",
+    "source_hex": "CC AA 93 AF DA F0 4E FF",
+    "translation": "ทหารโพเซดัล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D75",
+    "battle_pilot_ids": [
+      209
+    ],
+    "source": "デラーズ",
+    "source_hex": "B6 D8 11 A9 FF",
+    "translation": "เดลาซ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D7A",
+    "battle_pilot_ids": [
+      210
+    ],
+    "source": "ダバ",
+    "source_hex": "AF BF FF",
+    "translation": "ดาบา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D7D",
+    "battle_pilot_ids": [
+      211
+    ],
+    "source": "レッシィ",
+    "source_hex": "DB B2 A6 92 FF",
+    "translation": "เลสซี่",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D82",
+    "battle_pilot_ids": [
+      212
+    ],
+    "source": "キャオ",
+    "source_hex": "9C D2 99 FF",
+    "translation": "เคียว",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D86",
+    "battle_pilot_ids": [
+      213
+    ],
+    "source": "アム",
+    "source_hex": "91 CF FF",
+    "translation": "อัม",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D89",
+    "battle_pilot_ids": [
+      214
+    ],
+    "source": "ハッシャ",
+    "source_hex": "BE B2 A6 D2 FF",
+    "translation": "ฮัชชา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D8E",
+    "battle_pilot_ids": [
+      215
+    ],
+    "source": "ギャブレー",
+    "source_hex": "9D D2 C5 DB 11 FF",
+    "translation": "แกบเลย์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D94",
+    "battle_pilot_ids": [
+      216
+    ],
+    "source": "アマンダラ",
+    "source_hex": "91 CD DF AF D8 FF",
+    "translation": "อามันดรา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7D9A",
+    "battle_pilot_ids": [
+      217
+    ],
+    "source": "ポセイダル",
+    "source_hex": "CC AA 93 AF DA FF",
+    "translation": "โพเซดัล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DA0",
+    "battle_pilot_ids": [
+      218
+    ],
+    "source": "ネイ",
+    "source_hex": "BC 93 FF",
+    "translation": "เนย์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DA3",
+    "battle_pilot_ids": [
+      219
+    ],
+    "source": "ギワザ",
+    "source_hex": "9D DD A5 FF",
+    "translation": "กิวาซา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DA7",
+    "battle_pilot_ids": [
+      220
+    ],
+    "source": "フル",
+    "source_hex": "C4 DA FF",
+    "translation": "ฟูล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DAA",
+    "battle_pilot_ids": [
+      221
+    ],
+    "source": "オリビー",
+    "source_hex": "99 D9 C2 11 FF",
+    "translation": "โอลิบี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DAF",
+    "battle_pilot_ids": [
+      222
+    ],
+    "source": "リョクレイ",
+    "source_hex": "D9 D6 9E DB 93 FF",
+    "translation": "ร็อกลี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DB5",
+    "battle_pilot_ids": [
+      223
+    ],
+    "source": "アントン",
+    "source_hex": "91 DF B7 DF FF",
+    "translation": "แอนตัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DBA",
+    "battle_pilot_ids": [
+      224
+    ],
+    "source": "ヘッケラー",
+    "source_hex": "C7 B2 A0 D8 11 FF",
+    "translation": "เฮคเลอร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DC0",
+    "battle_pilot_ids": [
+      225
+    ],
+    "source": "リィリィ",
+    "source_hex": "D9 92 D9 92 FF",
+    "translation": "ลิลี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DC5",
+    "battle_pilot_ids": [
+      226
+    ],
+    "source": "チャイ",
+    "source_hex": "B0 D2 93 FF",
+    "translation": "ไช",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DC9",
+    "battle_pilot_ids": [
+      227
+    ],
+    "source": "ワザン",
+    "source_hex": "DD A5 DF FF",
+    "translation": "วาซัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DCD",
+    "battle_pilot_ids": [
+      228
+    ],
+    "source": "マクトミン",
+    "source_hex": "CD 9E B7 CE DF FF",
+    "translation": "แมคโทมิน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DD3",
+    "battle_pilot_ids": [
+      229
+    ],
+    "source": "バーン＝ガニア",
+    "source_hex": "BF 11 DF E3 9B BA 91 FF",
+    "translation": "บาน กาเนีย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DDB",
+    "battle_pilot_ids": [
+      230
+    ],
+    "source": "テッド",
+    "source_hex": "B5 B2 B8 FF",
+    "translation": "เท็ด",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DDF",
+    "battle_pilot_ids": [
+      231
+    ],
+    "source": "ロフ",
+    "source_hex": "DC C4 FF",
+    "translation": "ลอฟ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DE2",
+    "battle_pilot_ids": [
+      232
+    ],
+    "source": "セティ",
+    "source_hex": "AA B5 92 FF",
+    "translation": "เซติ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DE6",
+    "battle_pilot_ids": [
+      233
+    ],
+    "source": "ゼブ",
+    "source_hex": "AB C5 FF",
+    "translation": "เซบ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DE9",
+    "battle_pilot_ids": [
+      234
+    ],
+    "source": "ゼゼーナン",
+    "source_hex": "AB AB 11 B9 DF FF",
+    "translation": "เซเซอร์นัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DEF",
+    "battle_pilot_ids": [
+      235
+    ],
+    "source": "メキボス",
+    "source_hex": "D0 9C CB A8 FF",
+    "translation": "เมคิบอส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DF4",
+    "battle_pilot_ids": [
+      236
+    ],
+    "source": "テリウス",
+    "source_hex": "B5 D9 95 A8 FF",
+    "translation": "เทเรียส",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7DF9",
+    "battle_pilot_ids": [
+      237
+    ],
+    "source": "強化兵",
+    "source_hex": "F1 7A F1 1F F0 4E FF",
+    "translation": "ทหารเสริมแกร่ง",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E00",
+    "battle_pilot_ids": [
+      238
+    ],
+    "source": "三輪長官",
+    "source_hex": "F0 11 F4 2D F0 9A F2 69 FF",
+    "translation": "ผบ.มิวะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E09",
+    "battle_pilot_ids": [
+      239
+    ],
+    "source": "超ＡＩ",
+    "source_hex": "F0 4B 16 1E FF",
+    "translation": "ซูเปอร์ AI",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E0E",
+    "battle_pilot_ids": [
+      240
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E0F",
+    "battle_pilot_ids": [
+      241
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E10",
+    "battle_pilot_ids": [
+      242
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E11",
+    "battle_pilot_ids": [
+      243
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E12",
+    "battle_pilot_ids": [
+      244
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E13",
+    "battle_pilot_ids": [
+      245
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E14",
+    "battle_pilot_ids": [
+      246
+    ],
+    "source": "",
+    "source_hex": "FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E15",
+    "battle_pilot_ids": [
+      247
+    ],
+    "source": "ーーーーーーーー",
+    "source_hex": "11 11 11 11 11 11 11 11 FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E1E",
+    "battle_pilot_ids": [
+      248
+    ],
+    "source": "<FB:3080>",
+    "source_hex": "FB 30 80 FF",
+    "translation": "<NAME:$8030>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x7E22",
+    "battle_pilot_ids": [
+      249
+    ],
+    "source": "<FB:3380>",
+    "source_hex": "FB 33 80 FF",
+    "translation": "<NAME:$8033>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x7E26",
+    "battle_pilot_ids": [
+      250
+    ],
+    "source": "<FB:1E80>",
+    "source_hex": "FB 1E 80 FF",
+    "translation": "<NAME:$801E>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x7E2A",
+    "battle_pilot_ids": [
+      251
+    ],
+    "source": "<FB:2180>",
+    "source_hex": "FB 21 80 FF",
+    "translation": "<NAME:$8021>",
+    "method": "dynamic_name"
+  },
+  {
+    "source_pointer": "0x7E2E",
+    "battle_pilot_ids": [
+      252,
+      253,
+      254,
+      255
+    ],
+    "source": "ーーーーーーーー",
+    "source_hex": "11 11 11 11 11 11 11 11 FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  },
+  {
+    "source_pointer": "0x7E37",
+    "battle_pilot_ids": [
+      256
+    ],
+    "source": "アストナージ",
+    "source_hex": "91 A8 B7 B9 11 A7 FF",
+    "translation": "แอสโทนาจ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E3E",
+    "battle_pilot_ids": [
+      257
+    ],
+    "source": "弓教授",
+    "source_hex": "F0 43 F0 9B F4 12 FF",
+    "translation": "ศ.ยูมิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E45",
+    "battle_pilot_ids": [
+      258
+    ],
+    "source": "早乙女博士",
+    "source_hex": "F0 27 F0 28 F0 29 F0 48 F0 49 FF",
+    "translation": "ดร.ซาโอโตเมะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E50",
+    "battle_pilot_ids": [
+      259
+    ],
+    "source": "猿丸",
+    "source_hex": "F4 16 F4 17 FF",
+    "translation": "ซารุมารุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E55",
+    "battle_pilot_ids": [
+      260
+    ],
+    "source": "四谷博士",
+    "source_hex": "F0 46 F0 47 F0 48 F0 49 FF",
+    "translation": "ดร.โยตสึยะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E5E",
+    "battle_pilot_ids": [
+      261
+    ],
+    "source": "ロペット",
+    "source_hex": "DC C9 B2 B7 FF",
+    "translation": "โรเป็ต",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E63",
+    "battle_pilot_ids": [
+      262
+    ],
+    "source": "香月",
+    "source_hex": "F0 35 F0 95 FF",
+    "translation": "โคซึกิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E68",
+    "battle_pilot_ids": [
+      263
+    ],
+    "source": "アキ",
+    "source_hex": "91 9C FF",
+    "translation": "อากิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E6B",
+    "battle_pilot_ids": [
+      264
+    ],
+    "source": "ミチ",
+    "source_hex": "CE B0 FF",
+    "translation": "มิจิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E6E",
+    "battle_pilot_ids": [
+      265
+    ],
+    "source": "エリカ",
+    "source_hex": "97 D9 9A FF",
+    "translation": "เอริกา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E72",
+    "battle_pilot_ids": [
+      266
+    ],
+    "source": "和泉博士",
+    "source_hex": "F1 CB F4 1D F0 48 F0 49 FF",
+    "translation": "ดร.อิซูมิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E7B",
+    "battle_pilot_ids": [
+      267
+    ],
+    "source": "シロ",
+    "source_hex": "A6 DC FF",
+    "translation": "ชิโระ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E7E",
+    "battle_pilot_ids": [
+      268
+    ],
+    "source": "クロ",
+    "source_hex": "9E DC FF",
+    "translation": "คุโระ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E81",
+    "battle_pilot_ids": [
+      269
+    ],
+    "source": "フレキ",
+    "source_hex": "C4 DB 9C FF",
+    "translation": "เฟรคี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E85",
+    "battle_pilot_ids": [
+      270
+    ],
+    "source": "ゲリ",
+    "source_hex": "A1 D9 FF",
+    "translation": "เกรี",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E88",
+    "battle_pilot_ids": [
+      271
+    ],
+    "source": "ランシャオ",
+    "source_hex": "D8 DF A6 D2 99 FF",
+    "translation": "รันเซา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E8E",
+    "battle_pilot_ids": [
+      272
+    ],
+    "source": "チカ",
+    "source_hex": "B0 9A FF",
+    "translation": "จิกะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E91",
+    "battle_pilot_ids": [
+      273
+    ],
+    "source": "ベロスタン",
+    "source_hex": "C8 DC A8 AE DF FF",
+    "translation": "เบโลสตัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E97",
+    "battle_pilot_ids": [
+      274
+    ],
+    "source": "平祭官",
+    "source_hex": "F1 11 F2 5B F2 69 FF",
+    "translation": "นักบวชฮิระ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7E9E",
+    "battle_pilot_ids": [
+      275
+    ],
+    "source": "三輪",
+    "source_hex": "F0 11 F4 2D FF",
+    "translation": "มิวะ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EA3",
+    "battle_pilot_ids": [
+      276
+    ],
+    "source": "ジュン",
+    "source_hex": "A7 D4 DF FF",
+    "translation": "จุน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EA7",
+    "battle_pilot_ids": [
+      277
+    ],
+    "source": "チョーサク",
+    "source_hex": "B0 D6 11 A4 9E FF",
+    "translation": "โชซากุ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EAD",
+    "battle_pilot_ids": [
+      278
+    ],
+    "source": "ショージ",
+    "source_hex": "A6 D6 11 A7 FF",
+    "translation": "โชจิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EB2",
+    "battle_pilot_ids": [
+      279
+    ],
+    "source": "もりもり",
+    "source_hex": "81 89 81 89 FF",
+    "translation": "โมริโมริ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EB7",
+    "battle_pilot_ids": [
+      280
+    ],
+    "source": "せわし",
+    "source_hex": "5A 8D 56 FF",
+    "translation": "เซวาชิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EBB",
+    "battle_pilot_ids": [
+      281
+    ],
+    "source": "のっそり",
+    "source_hex": "6D 62 5C 89 FF",
+    "translation": "นอสโซริ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EC0",
+    "battle_pilot_ids": [
+      282
+    ],
+    "source": "モーラ",
+    "source_hex": "D1 11 D8 FF",
+    "translation": "โมรา",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EC4",
+    "battle_pilot_ids": [
+      283
+    ],
+    "source": "デラーズ",
+    "source_hex": "B6 D8 11 A9 FF",
+    "translation": "เดลาซ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EC9",
+    "battle_pilot_ids": [
+      284
+    ],
+    "source": "ハロ",
+    "source_hex": "BE DC FF",
+    "translation": "ฮาโร",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ECC",
+    "battle_pilot_ids": [
+      285
+    ],
+    "source": "千代錦",
+    "source_hex": "F2 9C F1 BF F4 2E FF",
+    "translation": "จิโยนิชิกิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ED3",
+    "battle_pilot_ids": [
+      286
+    ],
+    "source": "コーウェン",
+    "source_hex": "A2 11 95 96 DF FF",
+    "translation": "โคเวน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7ED9",
+    "battle_pilot_ids": [
+      287
+    ],
+    "source": "ギッザー",
+    "source_hex": "9D B2 A5 11 FF",
+    "translation": "กิซซาร์",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EDE",
+    "battle_pilot_ids": [
+      288
+    ],
+    "source": "葉月",
+    "source_hex": "F1 C9 F0 95 FF",
+    "translation": "ฮาซึกิ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EE3",
+    "battle_pilot_ids": [
+      289
+    ],
+    "source": "医者",
+    "source_hex": "F4 52 F1 F2 FF",
+    "translation": "หมอ",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EE8",
+    "battle_pilot_ids": [
+      290
+    ],
+    "source": "ハサン",
+    "source_hex": "BE A4 DF FF",
+    "translation": "ฮาซัน",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EEC",
+    "battle_pilot_ids": [
+      291
+    ],
+    "source": "研究所員",
+    "source_hex": "F0 97 F0 98 F0 99 F2 BE FF",
+    "translation": "จนท.วิจัย",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EF5",
+    "battle_pilot_ids": [
+      292
+    ],
+    "source": "イザベル",
+    "source_hex": "93 A5 C8 DA FF",
+    "translation": "อิซาเบล",
+    "method": "reviewed_glossary"
+  },
+  {
+    "source_pointer": "0x7EFA",
+    "battle_pilot_ids": [
+      293,
+      294,
+      295,
+      296,
+      297,
+      298,
+      299,
+      300,
+      301,
+      302,
+      303,
+      304,
+      305,
+      306,
+      307,
+      308,
+      309,
+      310,
+      311,
+      312,
+      313,
+      314,
+      315,
+      316,
+      317,
+      318,
+      319
+    ],
+    "source": "ーーーーーーーー",
+    "source_hex": "11 11 11 11 11 11 11 11 FF",
+    "translation": "",
+    "method": "blank_placeholder"
+  }
+]

@@ -1,0 +1,441 @@
+{
+  "game": "第4次スーパーロボット大戦",
+  "language": "th",
+  "notes": "คำอธิบายแปลจากผลของ精神コマンドใน Super Robot Wars IV; script_messages คือข้อความผลที่ extract จาก ROM และฝังลง build",
+  "_layout": {
+    "script": {
+      "address": "0x0CAF78",
+      "end": "0x0CB2B4",
+      "source_sha256": "68d8db94307c99037ceb9b1e3abab0d49055b62f8b1707daad271f5bb352cdc7"
+    },
+    "preserved_spans": [
+      {
+        "address": "0x0CAFFE",
+        "end": "0x0CB000",
+        "source_hex": "F0 93"
+      }
+    ],
+    "help_box": {
+      "line_width_px": 240,
+      "max_lines": 2,
+      "wrapped_ids": [23, 25]
+    }
+  },
+  "spirits": [
+    {
+      "id": 1,
+      "source": "根性",
+      "translation": "ใจสู้",
+      "sp": 20,
+      "description": "ฟื้น HP ของตัวเอง 1/3"
+    },
+    {
+      "id": 2,
+      "source": "ド根性",
+      "translation": "ใจสู้สุด",
+      "sp": 40,
+      "description": "ฟื้น HP ของตัวเองจนเต็ม"
+    },
+    {
+      "id": 3,
+      "source": "補給",
+      "translation": "เติมเสบียง",
+      "sp": 60,
+      "description": "เติม EN ของยูนิตที่เลือกจนเต็ม"
+    },
+    {
+      "id": 4,
+      "source": "友情",
+      "translation": "มิตรภาพ",
+      "sp": 80,
+      "description": "ฟื้น HP ของพันธมิตรทั้งหมด 1/2"
+    },
+    {
+      "id": 5,
+      "source": "信頼",
+      "translation": "เชื่อใจ",
+      "sp": 30,
+      "description": "ฟื้น HP ของยูนิตที่เลือก 1/3"
+    },
+    {
+      "id": 6,
+      "source": "愛",
+      "translation": "ความรัก",
+      "sp": 100,
+      "description": "ฟื้น HP ของพันธมิตรทั้งหมดจนเต็ม"
+    },
+    {
+      "id": 7,
+      "source": "激怒",
+      "translation": "พิโรธ",
+      "sp": 70,
+      "description": "สร้างดาเมจ 10-1000 แก่ทั้งหมด"
+    },
+    {
+      "id": 8,
+      "source": "気合",
+      "translation": "ฮึกเหิม",
+      "sp": 40,
+      "description": "เพิ่มกำลังใจของตัวเอง 15"
+    },
+    {
+      "id": 9,
+      "source": "加速",
+      "translation": "เร่ง",
+      "sp": 5,
+      "description": "เพิ่มค่าเคลื่อนที่ 5 เป็นเวลา 1 ครั้ง"
+    },
+    {
+      "id": 10,
+      "source": "熱血",
+      "translation": "เลือดร้อน",
+      "sp": 30,
+      "description": "โจมตีติดคริติคอลแน่นอน 1 ครั้ง"
+    },
+    {
+      "id": 11,
+      "source": "必中",
+      "translation": "แม่นยำ",
+      "sp": 20,
+      "description": "ความแม่นยำของตัวเองเป็น 100% เป็นเวลา 1 เทิร์น"
+    },
+    {
+      "id": 12,
+      "source": "ひらめき",
+      "translation": "ไหวพริบ",
+      "sp": 10,
+      "description": "ความหลบหลีกของตัวเองเป็น 100% 1 ครั้ง"
+    },
+    {
+      "id": 13,
+      "source": "幸運",
+      "translation": "โชคดี",
+      "sp": 40,
+      "description": "EXP และเงินที่ได้รับจากศัตรูเพิ่มเป็น 2 เท่า 1 ครั้ง"
+    },
+    {
+      "id": 14,
+      "source": "覚醒",
+      "translation": "ตื่นตัว",
+      "sp": 50,
+      "description": "เพิ่มจำนวนครั้งการลงมือของตัวเอง +1"
+    },
+    {
+      "id": 15,
+      "source": "威圧",
+      "translation": "ข่มขวัญ",
+      "sp": 40,
+      "description": "ทำให้ศัตรูที่มีเลเวลต่ำกว่าตัวเองขยับไม่ได้ 1 เทิร์น"
+    },
+    {
+      "id": 16,
+      "source": "てかげん",
+      "translation": "ยั้งมือ",
+      "sp": 10,
+      "description": "ยั้งมือไม่ทำลายศัตรูที่มีทักษะต่ำกว่าตัวเอง"
+    },
+    {
+      "id": 17,
+      "source": "集中",
+      "translation": "จดจ่อ",
+      "sp": 10,
+      "description": "เพิ่มความแม่นยำและการหลบหลีก 30% เป็นเวลา 1 เทิร์น"
+    },
+    {
+      "id": 18,
+      "source": "激励",
+      "translation": "ปลุกใจ",
+      "sp": 50,
+      "description": "เพิ่มกำลังใจของยูนิตที่อยู่ติดกัน (รวมศัตรู) 10"
+    },
+    {
+      "id": 19,
+      "source": "再動",
+      "translation": "ยิงซ้ำ",
+      "sp": 70,
+      "description": "ทำให้ยูนิตที่อยู่ติดกันซึ่งลงมือแล้ว 1 ยูนิต ลงมือได้อีกครั้ง"
+    },
+    {
+      "id": 20,
+      "source": "復活",
+      "translation": "คืนชีพ",
+      "sp": 120,
+      "description": "ชุบชีวิตยูนิตที่ถูกทำลาย 1 ยูนิต เลือกเป้าหมายได้"
+    },
+    {
+      "id": 21,
+      "source": "隠れ身",
+      "translation": "ซ่อนกาย",
+      "sp": 40,
+      "description": "ไม่ถูกศัตรูโจมตีเป็นเวลา 1 เทิร์น"
+    },
+    {
+      "id": 22,
+      "source": "脱力",
+      "translation": "หมดแรง",
+      "sp": 30,
+      "description": "ลดกำลังใจของยูนิตในระยะที่กำหนด (รวมพวกเดียวกัน) ลง 10"
+    },
+    {
+      "id": 23,
+      "source": "自爆",
+      "translation": "พลีชีพ",
+      "sp": 1,
+      "description": "ระเบิดตัวเอง สร้างดาเมจเท่า HP แบบไม่คิดเกราะแก่ยูนิตที่อยู่ติดกัน (รวมพวกเดียวกัน)"
+    },
+    {
+      "id": 24,
+      "source": "探索",
+      "translation": "ค้นหา",
+      "sp": 10,
+      "description": "ค้นพบไอเทมที่ฝังอยู่ 1 ชิ้น"
+    },
+    {
+      "id": 25,
+      "source": "足かせ",
+      "translation": "โซ่ตรวน",
+      "sp": 10,
+      "description": "ลดค่าเคลื่อนที่ของยูนิตรอบตัวเองในระยะที่กำหนด (รวมพวกเดียวกัน) ลงครึ่งหนึ่ง"
+    },
+    {
+      "id": 26,
+      "source": "かく乱",
+      "translation": "ก่อกวน",
+      "sp": 70,
+      "description": "ลดความแม่นยำของศัตรูทั้งหมดลงครึ่งหนึ่งเป็นเวลา 1 เทิร์น"
+    },
+    {
+      "id": 27,
+      "source": "偵察",
+      "translation": "สอดแนม",
+      "sp": 5,
+      "description": "ตรวจดูสถานะของเป้าหมาย"
+    },
+    {
+      "id": 28,
+      "source": "鉄壁",
+      "translation": "กำแพง",
+      "sp": 30,
+      "description": "เพิ่มเกราะของตัวเองเป็น 2 เท่าเป็นเวลา 1 เทิร์น"
+    },
+    {
+      "id": 29,
+      "source": "魂",
+      "translation": "วิญญาณ",
+      "sp": 50,
+      "description": "เพิ่มดาเมจที่สร้างแก่เป้าหมายเป็น 3 เท่า 1 ครั้ง"
+    },
+    {
+      "id": 30,
+      "source": "奇跡",
+      "translation": "ปาฏิหาริย์",
+      "sp": 40,
+      "description": "ได้รับผลของ เร่ง + ใจสู้ x2 + โชคดี + วิญญาณ + แม่นยำ + ไหวพริบ + โคตรอึด + เลือดร้อน พร้อมกัน (อ้างอิงจากผลรวมพลังจิต ไม่มีต้นฉบับคำอธิบายใน ROM)"
+    }
+  ],
+  "script_messages": [
+    {
+      "spirit_id": 1,
+      "source": "自分のＨＰを１／３回復します",
+      "source_pc": "0x0CAF78",
+      "source_hex": "F2 36 F0 BD 6D 1D 25 8E 31 0F 33 F0 71 F2 59 56 7D 58 FF",
+      "translation": "ฟื้นHPตัวเอง 1/3"
+    },
+    {
+      "spirit_id": 2,
+      "source": "自分のＨＰを全回復します",
+      "source_pc": "0x0CAF8B",
+      "source_hex": "F2 36 F0 BD 6D 1D 25 8E F0 E9 F0 71 F2 59 56 7D 58 FF",
+      "translation": "ฟื้นHPตัวเองจนเต็ม"
+    },
+    {
+      "spirit_id": 3,
+      "source": "指定したユニットのエネルギ－を完全補給します",
+      "source_pc": "0x0CAF9D",
+      "source_hex": "F1 A3 F1 06 56 5E D5 BA B2 B7 6D 97 BC DA 9D 11 8E F2 D8 F0 E9 F1 DE F1 DF 56 7D 58 FF",
+      "translation": "เติมENยูนิตที่เลือกจนเต็ม"
+    },
+    {
+      "spirit_id": 4,
+      "source": "味方全てのＨＰを１／２回復します",
+      "source_pc": "0x0CAFBA",
+      "source_hex": "F0 EF F0 A8 F0 E9 65 6D 1D 25 8E 31 0F 32 F0 71 F2 59 56 7D 58 FF",
+      "translation": "ฟื้นHPพันธมิตรทั้งหมด 1/2"
+    },
+    {
+      "spirit_id": 5,
+      "source": "指定したユニットのＨＰを１／３回復します",
+      "source_pc": "0x0CAFD0",
+      "source_hex": "F1 A3 F1 06 56 5E D5 BA B2 B7 6D 1D 25 8E 31 0F 33 F0 71 F2 59 56 7D 58 FF",
+      "translation": "ฟื้นHPยูนิตที่เลือก 1/3"
+    },
+    {
+      "spirit_id": 6,
+      "source": "味方全てのＨＰを全回復します",
+      "source_pc": "0x0CAFE9",
+      "source_hex": "F0 EF F0 A8 F0 E9 65 6D 1D 25 8E F0 E9 F0 71 F2 59 56 7D 58 FF",
+      "translation": "ฟื้นHPพันธมิตรทั้งหมดเต็ม"
+    },
+    {
+      "spirit_id": 7,
+      "source": "全てにダメ－ジをあたえます。１０～１０００",
+      "source_pc": "0x0CB000",
+      "source_hex": "F0 E9 65 6A AF D0 11 A7 8E 41 5E 47 7D 58 E4 31 30 13 31 30 30 30 FF",
+      "translation": "ทำดาเมจทั้งหมด 10-1000"
+    },
+    {
+      "spirit_id": 8,
+      "source": "自分の気力を１５ポイントあげます",
+      "source_pc": "0x0CB017",
+      "source_hex": "F2 36 F0 BD 6D F0 75 F0 2C 8E 31 35 CC 93 DF B7 41 51 7D 58 FF",
+      "translation": "เพิ่มกำลังใจตัวเอง 15"
+    },
+    {
+      "spirit_id": 9,
+      "source": "１回だけ移動力が＋５されます",
+      "source_pc": "0x0CB02C",
+      "source_hex": "31 F0 71 5F 50 F0 50 F0 51 F0 2C 4B 10 35 54 8B 7D 58 FF",
+      "translation": "เคลื่อนที่+5 1ครั้ง"
+    },
+    {
+      "spirit_id": 10,
+      "source": "必ずクリティカルヒットになります。回数１",
+      "source_pc": "0x0CB03F",
+      "source_hex": "F0 89 59 9E D9 B5 92 9A DA C1 B2 B7 6A 69 89 7D 58 E4 F0 71 F0 EC 31 FF",
+      "translation": "ติดคริติคอลแน่นอน 1ครั้ง"
+    },
+    {
+      "spirit_id": 11,
+      "source": "自分の命中率が１タ－ンの間１００％になります",
+      "source_pc": "0x0CB057",
+      "source_hex": "F2 36 F0 BD 6D F0 57 F0 58 F0 59 4B 31 AE 11 DF 6D F1 60 31 30 30 0E 6A 69 89 7D 58 FF",
+      "translation": "แม่นตัวเอง100% 1เทิร์น"
+    },
+    {
+      "spirit_id": 12,
+      "source": "自分の回避率が１回だけ１００％になります",
+      "source_pc": "0x0CB074",
+      "source_hex": "F2 36 F0 BD 6D F0 71 F0 72 F0 59 4B 31 F0 71 5F 50 31 30 30 0E 6A 69 89 7D 58 FF",
+      "translation": "หลบตัวเอง100% 1ครั้ง"
+    },
+    {
+      "spirit_id": 13,
+      "source": "１回だけ敵からもらえる経験値、お金が２倍になります",
+      "source_pc": "0x0CB08F",
+      "source_hex": "31 F0 71 5F 50 F0 93 4A 88 81 88 47 8A F0 69 F0 6A F0 6B 3A 49 F0 F3 4B 32 F2 54 6A 69 89 7D 58 FF",
+      "translation": "ได้EXPและเงินจากศัตรูx2 1ครั้ง"
+    },
+    {
+      "spirit_id": 14,
+      "source": "自分の行動回数が、＋１されます",
+      "source_pc": "0x0CB0B0",
+      "source_hex": "F2 36 F0 BD 6D F0 8C F0 51 F0 71 F0 EC 4B 3A 10 31 54 8B 7D 58 FF",
+      "translation": "เพิ่มครั้งลงมือตัวเอง+1"
+    },
+    {
+      "spirit_id": 15,
+      "source": "自分よりレベルの低い敵を１タ－ンの間、動けなくします",
+      "source_pc": "0x0CB0C6",
+      "source_hex": "F2 36 F0 BD 87 89 DB C8 DA 6D F2 AD 43 F0 93 8E 31 AE 11 DF 6D F1 60 3A F0 51 50 69 4E 56 7D 58 FF",
+      "translation": "ศัตรูเลเวลต่ำกว่าตัวเองขยับไม่ได้1เทิร์น"
+    },
+    {
+      "spirit_id": 16,
+      "source": "自分より技量の低い敵を、倒さないように手加減します",
+      "source_pc": "0x0CB0E7",
+      "source_hex": "F2 36 F0 BD 87 89 F2 DB F0 61 6D F2 AD 43 F0 93 8E 3A F2 0B 54 69 43 87 45 6A F1 08 F2 4B F3 40 56 7D 58 FF",
+      "translation": "ยั้งมือไม่ทำลายศัตรูที่ทักษะต่ำกว่าตัวเอง"
+    },
+    {
+      "spirit_id": 17,
+      "source": "１タ－ンの間、命中率、回避率が３０％アップします",
+      "source_pc": "0x0CB10B",
+      "source_hex": "31 AE 11 DF 6D F1 60 3A F0 57 F0 58 F0 59 3A F0 71 F0 72 F0 59 4B 33 30 0E 91 B2 C6 56 7D 58 FF",
+      "translation": "แม่นและหลบ+30% 1เทิร์น"
+    },
+    {
+      "spirit_id": 18,
+      "source": "隣接したユニット（敵含む）の気力を１０あげます",
+      "source_pc": "0x0CB12B",
+      "source_hex": "F4 A2 F1 E1 56 5E D5 BA B2 B7 3C F0 93 F4 A3 7F 3D 6D F0 75 F0 2C 8E 31 30 41 51 7D 58 FF",
+      "translation": "เพิ่มกำลังใจยูนิตติดกัน(รวมศัตรู) 10"
+    },
+    {
+      "spirit_id": 19,
+      "source": "隣接した行動ずみユニット１体を再び行動可能にします",
+      "source_pc": "0x0CB149",
+      "source_hex": "F4 A2 F1 E1 56 5E F0 8C F0 51 59 7E D5 BA B2 B7 31 F0 74 8E F1 DB 72 F0 8C F0 51 F1 0F F0 79 6A 56 7D 58 FF",
+      "translation": "ให้ยูนิตติดกันที่ลงมือแล้ว 1ตัวลงมืออีกครั้ง"
+    },
+    {
+      "spirit_id": 20,
+      "source": "倒されたユニットを１体だけ復活させます。　選択可能",
+      "source_pc": "0x0CB16D",
+      "source_hex": "F2 0B 54 8B 5E D5 BA B2 B7 8E 31 F0 74 5F 50 F2 59 F2 39 54 5A 7D 58 E4 00 F1 23 F1 24 F1 0F F0 79 FF",
+      "translation": "ชุบชีวิตยูนิตที่ถูกทำลาย 1ตัว เลือกได้"
+    },
+    {
+      "spirit_id": 21,
+      "source": "１タ－ンの間、敵から攻撃されません",
+      "source_pc": "0x0CB18F",
+      "source_hex": "31 AE 11 DF 6D F1 60 3A F0 93 4A 88 F0 54 F0 55 54 8B 7D 5A 8F FF",
+      "translation": "ไม่ถูกศัตรูโจมตี 1เทิร์น"
+    },
+    {
+      "spirit_id": 22,
+      "source": "範囲内のユニット（味方含む）の気力を１０下げます",
+      "source_pc": "0x0CB1A5",
+      "source_hex": "F1 69 F1 6A F1 89 6D D5 BA B2 B7 3C F0 EF F0 A8 F4 A3 7F 3D 6D F0 75 F0 2C 8E 31 30 F1 0E 51 7D 58 FF",
+      "translation": "ลดกำลังใจยูนิตในระยะ(รวมพวกเดียวกัน)10"
+    },
+    {
+      "spirit_id": 23,
+      "source": "自爆し、隣接したユニット（味方含む）にＨＰ分の防御無視ダメ－ジを与えます",
+      "source_pc": "0x0CB1C7",
+      "source_hex": "F2 36 F0 E3 56 3A F4 A2 F1 E1 56 5E D5 BA B2 B7 3C F0 EF F0 A8 F4 A3 7F 3D 6A 1D 25 F0 BD 6D F0 7B F0 7C F6 F1 09 F2 CF AF D0 11 A7 8E F4 5D 47 7D 58 FF",
+      "translation": "พลีชีพทำดาเมจเท่าHPไม่คิดเกราะ\nกับยูนิตติดกัน(รวมพวกเดียวกัน)"
+    },
+    {
+      "spirit_id": 24,
+      "source": "埋もれているアイテムをひとつ、発見できます",
+      "source_pc": "0x0CB1FA",
+      "source_hex": "F4 A4 81 8B 65 43 8A 91 93 B5 CF 8E 71 67 63 3A F0 C2 F1 76 66 4C 7D 58 FF",
+      "translation": "พบไอเทมลับ 1อัน"
+    },
+    {
+      "spirit_id": 25,
+      "source": "自分のまわり、一定範囲内のユニット（味方含む）の移動力を半分にします",
+      "source_pc": "0x0CB213",
+      "source_hex": "F2 36 F0 BD 6D 7D 8D 89 3A F1 4E F1 06 F1 69 F1 6A F1 89 6D D5 BA B2 B7 3C F0 EF F0 A8 F4 A3 7F 3D 6D F6 F0 50 F0 51 F0 2C 8E F2 2F F0 BD 6A 56 7D 58 FF",
+      "translation": "ลดเคลื่อนที่ยูนิตรอบตัวเองในระยะ\n(รวมพวกเดียวกัน)ลง50%"
+    },
+    {
+      "spirit_id": 26,
+      "source": "１タ－ンの間、すべての敵の命中率が半分になります",
+      "source_pc": "0x0CB246",
+      "source_hex": "31 AE 11 DF 6D F1 60 3A 58 78 65 6D F0 93 6D F0 57 F0 58 F0 59 4B F2 2F F0 BD 6A 69 89 7D 58 FF",
+      "translation": "ลดแม่นศัตรูทั้งหมดลง50% 1เทิร์น"
+    },
+    {
+      "spirit_id": 27,
+      "source": "相手のステ－タスを調べる事ができます",
+      "source_pc": "0x0CB266",
+      "source_hex": "F1 50 F1 08 6D A8 B5 11 AE A8 8E F1 29 78 8A F0 A6 4B 66 4C 7D 58 FF",
+      "translation": "ตรวจดูสถานะยูนิต"
+    },
+    {
+      "spirit_id": 28,
+      "source": "１タ－ンの間、自分の装甲が２倍になります",
+      "source_pc": "0x0CB27D",
+      "source_hex": "31 AE 11 DF 6D F1 60 3A F2 36 F0 BD 6D F0 62 F0 01 4B 32 F2 54 6A 69 89 7D 58 FF",
+      "translation": "เกราะของตัวเองx2 1เทิร์น"
+    },
+    {
+      "spirit_id": 29,
+      "source": "１回だけ相手に与えるダメ－ジが３倍になります",
+      "source_pc": "0x0CB298",
+      "source_hex": "31 F0 71 5F 50 F1 50 F1 08 6A F4 5D 47 8A AF D0 11 A7 4B 33 F2 54 6A 69 89 7D 58 FF",
+      "translation": "ดาเมจกับศัตรูx3 1ครั้ง"
+    }
+  ]
+}

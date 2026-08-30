@@ -1,0 +1,629 @@
+{
+  "_comment": "ชื่อภูมิประเทศบนแผนที่ catalog 11 ของตารางแม่ $C9:00D8 ย้ายทั้งตารางและ pool ไปแบงก์ text_data",
+  "_layout": {
+    "master_entry_pc": "0x0900F9",
+    "master_entry_hex": "037FD2",
+    "pointer_table": {
+      "address": "0x127F03",
+      "cpu": "$D2:7F03",
+      "entries": 96,
+      "source_sha256": "290abc4eaa0029a609b6e0e37a9477535d26627fe337047ec63768b4dbf70238"
+    },
+    "pool": {
+      "address": "0x127FC3",
+      "end": "0x128103",
+      "source_sha256": "ffb2ada239e987f04d5770fd12208299a983c17de94244bc53c1a512d6856a55"
+    },
+    "max_width_px": 96,
+    "width_evidence": "ญี่ปุ่นที่ยาวที่สุดคือ 光子力研究所 6 คันจิ = 96 px ในกรอบเดิม",
+    "display_site": {
+      "pc": "0x0C979A",
+      "cpu": "$CC:979A",
+      "bytes": "FBFF0B",
+      "note": "สคริปต์หน้าต่างข้อมูลช่องบนแผนที่เรียก catalog 11 ด้วย record index จาก runtime"
+    },
+    "master_entry": 11
+  },
+  "records": [
+    {
+      "pointer": "0x7FC3",
+      "source_pc": "0x127FC3",
+      "source_hex": "FF",
+      "source": "",
+      "translation": "",
+      "slots": [
+        0,
+        93,
+        94,
+        95
+      ]
+    },
+    {
+      "pointer": "0x7FC4",
+      "source_pc": "0x127FC4",
+      "source_hex": "F117F118FF",
+      "source": "道路",
+      "translation": "ถนน",
+      "slots": [
+        1,
+        2,
+        49,
+        50,
+        84,
+        85
+      ]
+    },
+    {
+      "pointer": "0x7FC9",
+      "source_pc": "0x127FC9",
+      "source_hex": "F560FF",
+      "source": "橋",
+      "translation": "สะพาน",
+      "slots": [
+        3,
+        51,
+        81,
+        82
+      ]
+    },
+    {
+      "pointer": "0x7FCC",
+      "source_pc": "0x127FCC",
+      "source_hex": "F116FF",
+      "source": "街",
+      "translation": "เมือง",
+      "slots": [
+        4,
+        52,
+        83
+      ]
+    },
+    {
+      "pointer": "0x7FCF",
+      "source_pc": "0x127FCF",
+      "source_hex": "F111F013FF",
+      "source": "平原",
+      "translation": "ที่ราบ",
+      "slots": [
+        5,
+        53
+      ]
+    },
+    {
+      "pointer": "0x7FD4",
+      "source_pc": "0x127FD4",
+      "source_hex": "F342FF",
+      "source": "林",
+      "translation": "ป่าโปร่ง",
+      "slots": [
+        6,
+        54,
+        62
+      ]
+    },
+    {
+      "pointer": "0x7FD7",
+      "source_pc": "0x127FD7",
+      "source_hex": "F113FF",
+      "source": "森",
+      "translation": "ป่าทึบ",
+      "slots": [
+        7,
+        63
+      ]
+    },
+    {
+      "pointer": "0x7FDA",
+      "source_pc": "0x127FDA",
+      "source_hex": "F0C1FF",
+      "source": "山",
+      "translation": "ภูเขา",
+      "slots": [
+        8
+      ]
+    },
+    {
+      "pointer": "0x7FDD",
+      "source_pc": "0x127FDD",
+      "source_hex": "F04FFF",
+      "source": "海",
+      "translation": "ทะเล",
+      "slots": [
+        9,
+        45
+      ]
+    },
+    {
+      "pointer": "0x7FE0",
+      "source_pc": "0x127FE0",
+      "source_hex": "F112F04FFF",
+      "source": "深海",
+      "translation": "ทะเลลึก",
+      "slots": [
+        10
+      ]
+    },
+    {
+      "pointer": "0x7FE5",
+      "source_pc": "0x127FE5",
+      "source_hex": "F015FF",
+      "source": "川",
+      "translation": "แม่น้ำ",
+      "slots": [
+        11,
+        57,
+        80
+      ]
+    },
+    {
+      "pointer": "0x7FE8",
+      "source_pc": "0x127FE8",
+      "source_hex": "F114F06FFF",
+      "source": "砂地",
+      "translation": "พื้นทราย",
+      "slots": [
+        12,
+        58
+      ]
+    },
+    {
+      "pointer": "0x7FED",
+      "source_pc": "0x127FED",
+      "source_hex": "F0A5F0A6F0BEF06FFF",
+      "source": "軍事基地",
+      "translation": "ฐานทัพ",
+      "slots": [
+        13
+      ]
+    },
+    {
+      "pointer": "0x7FF6",
+      "source_pc": "0x127FF6",
+      "source_hex": "F083F084F02CF097F098F099FF",
+      "source": "光子力研究所",
+      "translation": "สถาบันโฟตอน",
+      "slots": [
+        14
+      ]
+    },
+    {
+      "pointer": "0x8003",
+      "source_pc": "0x128003",
+      "source_hex": "F210F027F028F029F097F098F099FF",
+      "source": "新早乙女研究所",
+      "translation": "สถาบันซาโอโตเมะ",
+      "slots": [
+        15
+      ]
+    },
+    {
+      "pointer": "0x8012",
+      "source_pc": "0x128012",
+      "source_hex": "F012F013A2BC9EA6D6DFFF",
+      "source": "南原コネクション",
+      "translation": "นัมบาระคอนเนกชัน",
+      "slots": [
+        16
+      ]
+    },
+    {
+      "pointer": "0x801D",
+      "source_pc": "0x12801D",
+      "source_hex": "AF93D1C2B29EFF",
+      "source": "ダイモビック",
+      "translation": "ไดโมบิค",
+      "slots": [
+        17
+      ]
+    },
+    {
+      "pointer": "0x8024",
+      "source_pc": "0x128024",
+      "source_hex": "F114F30AFF",
+      "source": "砂漠",
+      "translation": "ทะเลทราย",
+      "slots": [
+        18,
+        19
+      ]
+    },
+    {
+      "pointer": "0x8029",
+      "source_pc": "0x128029",
+      "source_hex": "F0B8F499C2DAFF",
+      "source": "高層ビル",
+      "translation": "ตึกสูง",
+      "slots": [
+        20,
+        21
+      ]
+    },
+    {
+      "pointer": "0x8030",
+      "source_pc": "0x128030",
+      "source_hex": "F082F267F244F0A6F495FF",
+      "source": "国会議事堂",
+      "translation": "รัฐสภา",
+      "slots": [
+        22,
+        23
+      ]
+    },
+    {
+      "pointer": "0x803B",
+      "source_pc": "0x12803B",
+      "source_hex": "F40DF40EF0B6F160FF",
+      "source": "宇宙空間",
+      "translation": "อวกาศ",
+      "slots": [
+        24
+      ]
+    },
+    {
+      "pointer": "0x8044",
+      "source_pc": "0x128044",
+      "source_hex": "F0A0F11DF0B6F11EFF",
+      "source": "暗礁空域",
+      "translation": "เขตซากอวกาศ",
+      "slots": [
+        25
+      ]
+    },
+    {
+      "pointer": "0x804D",
+      "source_pc": "0x12804D",
+      "source_hex": "F0604B43FF",
+      "source": "残がい",
+      "translation": "ซากปรักหักพัง",
+      "slots": [
+        26,
+        42
+      ]
+    },
+    {
+      "pointer": "0x8052",
+      "source_pc": "0x128052",
+      "source_hex": "A2DCBA11F0604B43FF",
+      "source": "コロニー残がい",
+      "translation": "ซากโคโลนี",
+      "slots": [
+        27
+      ]
+    },
+    {
+      "pointer": "0x805B",
+      "source_pc": "0x12805B",
+      "source_hex": "A2DCBA11FF",
+      "source": "コロニー",
+      "translation": "โคโลนี",
+      "slots": [
+        28
+      ]
+    },
+    {
+      "pointer": "0x8060",
+      "source_pc": "0x128060",
+      "source_hex": "D8C291DFDC11A9FF",
+      "source": "ラビアンローズ",
+      "translation": "ลาวีอองโรส",
+      "slots": [
+        29
+      ]
+    },
+    {
+      "pointer": "0x8068",
+      "source_pc": "0x128068",
+      "source_hex": "F06FF1CCFF",
+      "source": "地球",
+      "translation": "โลก",
+      "slots": [
+        30
+      ]
+    },
+    {
+      "pointer": "0x806D",
+      "source_pc": "0x12806D",
+      "source_hex": "F0DCF2D2FF",
+      "source": "火星",
+      "translation": "ดาวอังคาร",
+      "slots": [
+        31
+      ]
+    },
+    {
+      "pointer": "0x8072",
+      "source_pc": "0x128072",
+      "source_hex": "F095FF",
+      "source": "月",
+      "translation": "ดวงจันทร์",
+      "slots": [
+        32
+      ]
+    },
+    {
+      "pointer": "0x8075",
+      "source_pc": "0x128075",
+      "source_hex": "C498E098A8FF",
+      "source": "フォヴォス",
+      "translation": "โฟบอส",
+      "slots": [
+        33
+      ]
+    },
+    {
+      "pointer": "0x807B",
+      "source_pc": "0x12807B",
+      "source_hex": "AF93D1A8FF",
+      "source": "ダイモス",
+      "translation": "ไดมอส",
+      "slots": [
+        34
+      ]
+    },
+    {
+      "pointer": "0x8080",
+      "source_pc": "0x128080",
+      "source_hex": "A2DCBA11DB11A511FF",
+      "source": "コロニーレーザー",
+      "translation": "โคโลนีเลเซอร์",
+      "slots": [
+        35
+      ]
+    },
+    {
+      "pointer": "0x8089",
+      "source_pc": "0x128089",
+      "source_hex": "CED811FF",
+      "source": "ミラー",
+      "translation": "กระจก",
+      "slots": [
+        36
+      ]
+    },
+    {
+      "pointer": "0x808D",
+      "source_pc": "0x12808D",
+      "source_hex": "913BBF99913B9E11FF",
+      "source": "ア・バオア・クー",
+      "translation": "อะ บาโออา คู",
+      "slots": [
+        37
+      ]
+    },
+    {
+      "pointer": "0x8096",
+      "source_pc": "0x128096",
+      "source_hex": "ACDCD1DFFF",
+      "source": "ソロモン",
+      "translation": "โซโลมอน",
+      "slots": [
+        38
+      ]
+    },
+    {
+      "pointer": "0x809B",
+      "source_pc": "0x12809B",
+      "source_hex": "919EA6A9FF",
+      "source": "アクシズ",
+      "translation": "แอ็กซิส",
+      "slots": [
+        39
+      ]
+    },
+    {
+      "pointer": "0x80A0",
+      "source_pc": "0x1280A0",
+      "source_hex": "DAB901FF",
+      "source": "ルナⅡ",
+      "translation": "ลูนา 2",
+      "slots": [
+        40
+      ]
+    },
+    {
+      "pointer": "0x80A4",
+      "source_pc": "0x1280A4",
+      "source_hex": "9EDB11AE11FF",
+      "source": "クレーター",
+      "translation": "หลุมอุกกาบาต",
+      "slots": [
+        41,
+        44,
+        48
+      ]
+    },
+    {
+      "pointer": "0x80AA",
+      "source_pc": "0x1280AA",
+      "source_hex": "F095F11AF187F115FF",
+      "source": "月面都市",
+      "translation": "เมืองบนดวงจันทร์",
+      "slots": [
+        43
+      ]
+    },
+    {
+      "pointer": "0x80B3",
+      "source_pc": "0x1280B3",
+      "source_hex": "9EDBBFA8FF",
+      "source": "クレバス",
+      "translation": "รอยแยก",
+      "slots": [
+        46,
+        90
+      ]
+    },
+    {
+      "pointer": "0x80B8",
+      "source_pc": "0x1280B8",
+      "source_hex": "F095F11AFF",
+      "source": "月面",
+      "translation": "ผิวดวงจันทร์",
+      "slots": [
+        47
+      ]
+    },
+    {
+      "pointer": "0x80BD",
+      "source_pc": "0x1280BD",
+      "source_hex": "F561FF",
+      "source": "丘",
+      "translation": "เนินเขา",
+      "slots": [
+        55
+      ]
+    },
+    {
+      "pointer": "0x80C0",
+      "source_pc": "0x1280C0",
+      "source_hex": "F346FF",
+      "source": "湖",
+      "translation": "ทะเลสาบ",
+      "slots": [
+        56
+      ]
+    },
+    {
+      "pointer": "0x80C3",
+      "source_pc": "0x1280C3",
+      "source_hex": "9BA0FF",
+      "source": "ガケ",
+      "translation": "หน้าผา",
+      "slots": [
+        59,
+        73,
+        74,
+        86,
+        87
+      ]
+    },
+    {
+      "pointer": "0x80C6",
+      "source_pc": "0x1280C6",
+      "source_hex": "F4F9F11AFF",
+      "source": "斜面",
+      "translation": "ทางลาด",
+      "slots": [
+        60
+      ]
+    },
+    {
+      "pointer": "0x80CB",
+      "source_pc": "0x1280CB",
+      "source_hex": "CED811FF",
+      "source": "ミラー",
+      "translation": "กระจก",
+      "slots": [
+        61
+      ]
+    },
+    {
+      "pointer": "0x80CF",
+      "source_pc": "0x1280CF",
+      "source_hex": "F1B3F1A9F151F10FFF",
+      "source": "進入不可",
+      "translation": "ห้ามเข้า",
+      "slots": [
+        64
+      ]
+    },
+    {
+      "pointer": "0x80D8",
+      "source_pc": "0x1280D8",
+      "source_hex": "F11BFF",
+      "source": "壁",
+      "translation": "กำแพง",
+      "slots": [
+        65
+      ]
+    },
+    {
+      "pointer": "0x80DB",
+      "source_pc": "0x1280DB",
+      "source_hex": "97BCDA9D11AEDF9EFF",
+      "source": "エネルギータンク",
+      "translation": "ถังพลังงาน",
+      "slots": [
+        66
+      ]
+    },
+    {
+      "pointer": "0x80E4",
+      "source_pc": "0x1280E4",
+      "source_hex": "F348FF",
+      "source": "床",
+      "translation": "พื้น",
+      "slots": [
+        67,
+        68,
+        69,
+        70
+      ]
+    },
+    {
+      "pointer": "0x80E7",
+      "source_pc": "0x1280E7",
+      "source_hex": "F0B6FF",
+      "source": "空",
+      "translation": "ท้องฟ้า",
+      "slots": [
+        71
+      ]
+    },
+    {
+      "pointer": "0x80EA",
+      "source_pc": "0x1280EA",
+      "source_hex": "F3CDFF",
+      "source": "雲",
+      "translation": "เมฆ",
+      "slots": [
+        72
+      ]
+    },
+    {
+      "pointer": "0x80ED",
+      "source_pc": "0x1280ED",
+      "source_hex": "F2EAF06FFF",
+      "source": "荒地",
+      "translation": "ที่รกร้าง",
+      "slots": [
+        75,
+        79,
+        88,
+        92
+      ]
+    },
+    {
+      "pointer": "0x80F2",
+      "source_pc": "0x1280F2",
+      "source_hex": "F2ADF127FF",
+      "source": "低木",
+      "translation": "พุ่มไม้",
+      "slots": [
+        76,
+        77
+      ]
+    },
+    {
+      "pointer": "0x80F7",
+      "source_pc": "0x1280F7",
+      "source_hex": "F347FF",
+      "source": "岩",
+      "translation": "โขดหิน",
+      "slots": [
+        78,
+        89
+      ]
+    },
+    {
+      "pointer": "0x80FA",
+      "source_pc": "0x1280FA",
+      "source_hex": "F0DCF2D2F0BEF06FFF",
+      "source": "火星基地",
+      "translation": "ฐานดาวอังคาร",
+      "slots": [
+        91
+      ]
+    }
+  ]
+}

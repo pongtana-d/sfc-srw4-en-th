@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "surface": "EN battle information preview",
+  "fields": [
+    {
+      "key": "level_left",
+      "address": "0x3E2FCD",
+      "source_hex": "21 94 A5 94 9B",
+      "source": "Level",
+      "translation": "เลเวล",
+      "compact_initial_e": true,
+      "max_width_px": 40
+    },
+    {
+      "key": "level_right",
+      "address": "0x3E301E",
+      "source_hex": "21 94 A5 94 9B",
+      "source": "Level",
+      "translation": "เลเวล",
+      "compact_initial_e": true,
+      "max_width_px": 40
+    },
+    {
+      "key": "cant_counter_left",
+      "address": "0x3ED788",
+      "source_hex": "18 90 9D AE A3 43 18 9E A4 9D A3 94 A1",
+      "source": "Can't Counter",
+      "translation": "โต้กลับไม่ได้",
+      "max_width_px": 104
+    },
+    {
+      "key": "accuracy_left",
+      "address": "0x3E3004",
+      "source_hex": "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94",
+      "source": "Accuracy Rate",
+      "translation": "แม่นยำ",
+      "max_width_px": 64
+    },
+    {
+      "key": "accuracy_right",
+      "address": "0x3E3055",
+      "source_hex": "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94",
+      "source": "Accuracy Rate",
+      "translation": "แม่นยำ",
+      "max_width_px": 64
+    }
+  ]
+}

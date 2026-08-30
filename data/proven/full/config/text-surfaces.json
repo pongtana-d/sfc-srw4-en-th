@@ -1,0 +1,357 @@
+{
+  "schema_version": 1,
+  "final_rules": {
+    "japanese_allowed": false,
+    "japanese_exceptions": [
+      "title.stock_branding_and_credits",
+      "menu.bgm_titles",
+      "song.lyrics"
+    ],
+    "stock_english_allowed": true,
+    "stock_digits_allowed": true,
+    "unknown_surfaces_allowed": false,
+    "required_test_modes": [
+      "cold_boot",
+      "redraw",
+      "reentry",
+      "navigation",
+      "save_reload"
+    ]
+  },
+  "surfaces": [
+    {
+      "id": "story.dialogue",
+      "source": "translations/script.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "story.battle_quotes",
+      "source": "translations/script.th.json blocks 20-26",
+      "engine": "battle",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "story.runtime_fb_names",
+      "source": "translations/pilots.th.json and player buffers",
+      "engine": "ordinary-and-battle",
+      "policy": "thai",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "catalog.weapon_names",
+      "source": "translations/weapons.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "catalog.unit_names",
+      "source": "translations/units.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "catalog.pilot_names",
+      "source": "translations/pilots.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "catalog.battle_pilot_labels",
+      "source": "translations/glossary.th.json",
+      "engine": "battle",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.weapon_detail",
+      "source": "translations/weapons.th.json and translations/weapon-detail.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "tested"
+    },
+    {
+      "id": "menu.unit_status",
+      "source": "translations/unit-status.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.pilot_status",
+      "source": "translations/pilot-status.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.unit_abilities",
+      "source": "translations/unit-abilities.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.unit_commands",
+      "source": "translations/unit-commands.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.spirit_selector",
+      "source": "translations/pilot-status.th.json",
+      "engine": "ordinary",
+      "policy": "thai",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.spirit_help",
+      "source": "translations/spirit-descriptions.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.map_commands",
+      "source": "translations/map-menu.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "tested"
+    },
+    {
+      "id": "menu.map_hud",
+      "source": "translations/map-hud.th.json",
+      "engine": "ordinary",
+      "policy": "stock-english-and-digits",
+      "state": "tested"
+    },
+    {
+      "id": "menu.main_and_system",
+      "source": "translations/main-menu-screens.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.objective_text",
+      "source": "translations/script.th.json block 1",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "intro.crawl_pages",
+      "source": "translations/intro*.th.json",
+      "engine": "intro-special",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "title.menu",
+      "source": "assets/title-menu.json",
+      "engine": "title-obj-resource",
+      "policy": "stock-or-new-english",
+      "state": "tested"
+    },
+    {
+      "id": "title.stock_branding_and_credits",
+      "source": "stock title logo and legal-credit resources",
+      "engine": "title-resource",
+      "policy": "retain-original-japanese-branding-and-legal-credits-by-user-approval",
+      "state": "tested"
+    },
+    {
+      "id": "naming.labels",
+      "source": "translations/naming-screen.th.json and translations/protagonist-settings.th.json",
+      "engine": "ordinary",
+      "policy": "thai",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "naming.keyboard",
+      "source": "font/thai.json",
+      "engine": "naming-special",
+      "policy": "thai-only-no-japanese-or-english-pages",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "naming.typed_buffer",
+      "source": "player input",
+      "engine": "ordinary-and-battle",
+      "policy": "thai",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "naming.presets",
+      "source": "translations/naming-screen.th.json presets",
+      "engine": "naming-special",
+      "policy": "thai",
+      "state": "adapter_active_needs_full_regression"
+    },
+    {
+      "id": "menu.field_screens",
+      "source": "translations/screens.th.json",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "adapter_active_needs_full_regression",
+      "adapter": {
+        "catalog": "$CC:8E88",
+        "records": 39,
+        "labels": 69,
+        "pool": "the span the Intermission move released in bank $CC, minus the bytes earlier adapters wrote",
+        "kept_japanese": {
+          "0x9069": "boot copyright warning, kept by the user's decision",
+          "0x90F2/0x9223/0x92C5/0x93F9/0xAABA/0xBD62": "character-picker grids for the name-entry screens; turning them Thai means replacing the key table and input mapping, not the words"
+        },
+        "verified": {
+          "genuine_redraw": "the post-save message reads บันทึกเสร็จแล้ว เล่นต่อไหม? on screen"
+        }
+      }
+    },
+    {
+      "id": "menu.intermission",
+      "source": "translations/intermission.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression",
+      "adapter": {
+        "catalog": "$CC:C1FF",
+        "relocated_to": "$FA:4500",
+        "records": 196,
+        "rebuilt_records": 70,
+        "labels": 144,
+        "released_bytes_in_bank_cc": 9887,
+        "note": "main-menu and protagonist fields inside this catalog travel with it; their routes follow the records",
+        "verified": {
+          "cold_boot": "900 frames: screen, tilemap and tiles match the previous milestone byte for byte",
+          "genuine_redraw": "map menu -> SYSTEM, ORDER and the save prompt drawn from the relocated catalog",
+          "carried_fields": "main-menu SYSTEM/button pages and the ORDER list still render Thai after the move",
+          "pending": "the Intermission screen itself needs a between-map save from this build"
+        }
+      }
+    },
+    {
+      "id": "menu.part_effects",
+      "source": "clean ROM catalog $CC:E9BD",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "discovered_untranslated",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$CC:E9BD",
+        "untranslated_records": 67,
+        "report": "build/catalog-residue.json",
+        "measured": "build/residue-measure.json"
+      }
+    },
+    {
+      "id": "map.terrain_names",
+      "source": "translations/terrain-names.th.json",
+      "engine": "ordinary",
+      "policy": "thai",
+      "state": "adapter_active_needs_full_regression",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$D2:7F03",
+        "untranslated_records": 0,
+        "report": "build/catalog-residue.json",
+        "relocated_to": "$FA (text_data region)"
+      }
+    },
+    {
+      "id": "menu.bgm_titles",
+      "source": "clean ROM catalog $D2:9389",
+      "engine": "ordinary",
+      "policy": "retain-original-japanese-song-titles-by-user-request",
+      "state": "retained_japanese_by_user_request",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$D2:9389",
+        "untranslated_records": 52,
+        "report": "build/catalog-residue.json"
+      }
+    },
+    {
+      "id": "menu.scenario_titles",
+      "source": "translations/scenario-titles.th.json",
+      "engine": "ordinary",
+      "policy": "thai-with-stock-english-and-digits",
+      "state": "adapter_active_needs_full_regression",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$D2:9009",
+        "untranslated_records": 0,
+        "report": "build/catalog-residue.json",
+        "relocated_to": "$FA (text_data region)"
+      }
+    },
+    {
+      "id": "battle.status_tokens",
+      "source": "clean ROM catalog $D2:8B8A (battle background names, including 夕/夜 variants)",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "discovered_untranslated",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$D2:8B8A",
+        "untranslated_records": 143,
+        "report": "build/catalog-residue.json",
+        "measured": "build/residue-measure.json"
+      }
+    },
+    {
+      "id": "menu.unit_status_extras",
+      "source": "clean ROM catalog $D2:8103 records left by the unit-status adapter",
+      "engine": "ordinary",
+      "policy": "thai-or-stock-english",
+      "state": "discovered_untranslated",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$D2:8103",
+        "untranslated_records": 99,
+        "report": "build/catalog-residue.json",
+        "measured": "build/residue-measure.json"
+      }
+    },
+    {
+      "id": "song.lyrics",
+      "source": "clean ROM catalog $CB:667C",
+      "engine": "ordinary",
+      "policy": "retain-original-japanese-song-lyrics-by-user-request",
+      "state": "retained_japanese_by_user_request",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$CB:667C",
+        "untranslated_records": 134,
+        "report": "build/catalog-residue.json"
+      }
+    },
+    {
+      "id": "menu.option_screen",
+      "source": "translations/option-menu.th.json",
+      "engine": "ordinary",
+      "policy": "stock-english-with-thai-prompts",
+      "state": "adapter_active_needs_full_regression",
+      "discovery": {
+        "master_table": "$C9:00D8",
+        "catalog": "$CC:E9BD",
+        "records": 6,
+        "note": "repointed inside bank $CC: the verified FF run first, then spans the rebuilt records vacate; the catalog table never moves"
+      },
+      "evidence": "title OPTION menu, the BGM submenu, and the CHARACTERS/ROBOTS encyclopedia headers and prompts rendered from the rebuilt records"
+    },
+    {
+      "id": "unknown.discovery",
+      "source": "master catalog table $C9:00D8 scan (tools/scan_catalog_residue.py) and runtime trace",
+      "engine": "unknown",
+      "policy": "must-resolve-before-release",
+      "state": "static_scan_done_runtime_trace_pending"
+    }
+  ]
+}

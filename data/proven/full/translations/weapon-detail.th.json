@@ -1,0 +1,47 @@
+{
+  "_comment": [
+    "Fixed labels on the weapon list/detail page.",
+    "All replacements use the original stock 8x16 Latin font and stay inside",
+    "their exact source spans. Unused bytes become stock full-cell spaces, so",
+    "the page needs no extra Thai route, cache control, or relocated script."
+  ],
+  "_layout": {
+    "script": {
+      "address": "0x0CA600",
+      "end": "0x0CA681",
+      "source_sha256": "c322a0c7d812e5db1abff7b2f42c15cb1c98111e93ffb0dc309a971b4ad03397"
+    },
+    "fields": {
+      "weapon": {"address": "0x0CA606", "end": "0x0CA60C", "source_hex": "F0 0A F0 56 F0 DA", "visible_cells": 6},
+      "power": {"address": "0x0CA60F", "end": "0x0CA615", "source_hex": "F0 54 F0 55 F0 2C", "visible_cells": 6},
+      "range": {"address": "0x0CA618", "end": "0x0CA61C", "source_hex": "F0 5A F0 5B", "visible_cells": 4},
+      "hit": {"address": "0x0CA61F", "end": "0x0CA623", "source_hex": "F0 57 F0 58", "visible_cells": 4},
+      "ammo": {"address": "0x0CA626", "end": "0x0CA62A", "source_hex": "F0 60 F0 A3", "visible_cells": 4},
+      "terrain": {"address": "0x0CA62D", "end": "0x0CA631", "source_hex": "F0 6F F0 81", "visible_cells": 4},
+      "air": {"address": "0x0CA634", "end": "0x0CA636", "source_hex": "F0 B6", "visible_cells": 2},
+      "land": {"address": "0x0CA639", "end": "0x0CA63B", "source_hex": "F0 F1", "visible_cells": 2},
+      "sea": {"address": "0x0CA63E", "end": "0x0CA640", "source_hex": "F0 4F", "visible_cells": 2},
+      "space": {"address": "0x0CA643", "end": "0x0CA645", "source_hex": "F4 0D", "visible_cells": 2},
+      "will": {"address": "0x0CA648", "end": "0x0CA650", "source_hex": "F0 89 F0 91 F0 75 F0 2C", "visible_cells": 8},
+      "energy": {"address": "0x0CA65A", "end": "0x0CA660", "source_hex": "F0 C8 F0 F4 1A 23", "visible_cells": 6},
+      "skill": {"address": "0x0CA66A", "end": "0x0CA672", "source_hex": "F0 89 F0 91 F2 DB F0 79", "visible_cells": 8},
+      "critical": {"address": "0x0CA675", "end": "0x0CA67F", "source_hex": "9E D9 B5 92 9A DA F1 DE F0 7F", "visible_cells": 10}
+    }
+  },
+  "fixed_labels": [
+    {"key": "weapon", "source": "武器名", "translation": "WEAPON"},
+    {"key": "power", "source": "攻撃力", "translation": "POWER"},
+    {"key": "range", "source": "射程", "translation": "RNG"},
+    {"key": "hit", "source": "命中", "translation": "HIT"},
+    {"key": "ammo", "source": "残弾", "translation": "AMMO"},
+    {"key": "terrain", "source": "地形", "translation": "TERR"},
+    {"key": "air", "source": "空", "translation": "<AiL><AiR>"},
+    {"key": "land", "source": "陸", "translation": "<LaL><a>"},
+    {"key": "sea", "source": "海", "translation": "<WaL><a>"},
+    {"key": "space", "source": "宇", "translation": "<SpL><SpR>"},
+    {"key": "will", "source": "必要気力", "translation": "WILL"},
+    {"key": "energy", "source": "ＥＮ消費", "translation": "EN"},
+    {"key": "skill", "source": "必要技能", "translation": "SKILL"},
+    {"key": "critical", "source": "クリティカル補正", "translation": "CRI"}
+  ]
+}

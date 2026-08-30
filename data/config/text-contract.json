@@ -1,0 +1,32 @@
+{
+  "schema": "srw4-text-contract/1",
+  "encoding_version": 1,
+  "glyph": {
+    "direct_slots": 208,
+    "extended_lead": 240,
+    "extended_pages": 4,
+    "extended_page_size": 256,
+    "engine_code_base": 256
+  },
+  "bands": {
+    "reserved_first": 208,
+    "reserved_last": 235,
+    "engine_first": 236
+  },
+  "controls": {
+    "newline": 246,
+    "terminators": [247, 255],
+    "operands": {
+      "F0": 1,
+      "F1": 1,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "F5": 1,
+      "FB": 2,
+      "FC": 1,
+      "FD": 1,
+      "FE": 2
+    }
+  }
+}

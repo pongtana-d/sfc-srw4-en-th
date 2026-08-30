@@ -1,0 +1,388 @@
+{
+ "_note": "Surfaces and evidence for the current adapter baseline. Prefer repointing a record over hooking, and hooking a surface entry over routing bytes; a surface only moves to tested once its entry has actually been traced on hardware. See PLAN.md P8 and docs/PROGRESS.md.",
+ "schema": "renewal-surfaces/1",
+ "rom_sha256": "efd72094b2727c4903924cf9296b3946b95a354f639b600e1d76d9ec6b9ca18b",
+ "traced_with": {
+  "tool": "legacy/tools/run_mesen.py --watch",
+  "build": "build/SRW4-TH.sfc",
+  "build_sha256": "4e699f722b624c19480b90e747b3ff9e8146501e4ccd5935322adffc19242f1e",
+  "state": "build/renewal/states/dialogue.mss",
+  "recipe": "python3 legacy/tools/run_mesen.py build/SRW4-TH.sfc --state saves/SRW4-TH_2.mss --frames 400 --watch 0x8183FB --save-state build/renewal/states/dialogue.mss --press 30:40:a --press 90:100:a --press 150:160:a --press 210:220:a --press 270:280:a --press 330:340:a"
+ },
+ "surfaces": [
+  {
+   "id": "catalog_names",
+   "status": "traced",
+   "entry": "$C1:83C6",
+   "pc": "0x0183C6",
+   "expected": "C2 30 85 00 0A 29 FE 01 A8 A5 01 29 FF 00 85 00",
+   "untouched_by_current_build": true,
+   "entry_contract": "16-bit A/X/Y. A is (catalog_id << 8) | index. The low byte doubles into Y, the index inside that catalog's own pointer table; the high byte times three indexes the descriptor table below and loads a 24-bit pointer into $1A-$1C. Measured by watching A at the entry: $01B3 fetches string $B3 of catalog 1, not string 1 of catalog $B3. The entry then clears $2A, which is what puts the loop in entry mode.",
+   "descriptor_table": {
+    "cpu": "$C9:00D8",
+    "entry_bytes": 3,
+    "observed": [
+     "$CC:8E88",
+     "$CC:C1FF",
+     "$CC:E9BD",
+     "$00:0000",
+     "$D2:6050",
+     "$D2:6250",
+     "$D2:6B34",
+     "$D2:772B"
+    ],
+    "note": "Entries 4, 6 and 7 are the unit_names, pilot_names and battle_pilot_names tables config/rom-map.json already records, which is what identifies this as the catalog entry rather than a per-message table."
+   },
+   "callers": [
+    {
+     "jsl": "$C2:843B",
+     "returns_to": "$82:843E",
+     "hits": 34
+    },
+    {
+     "jsl": "$C2:84D7",
+     "returns_to": "$82:84DA",
+     "hits": 51
+    },
+    {
+     "jsl": "$C2:84ED",
+     "returns_to": "$82:84F0",
+     "hits": 193
+    }
+   ],
+   "renewal_plan": "§12 priority 1 still holds for the records - the descriptor table switches a whole catalog in one 3-byte entry - but the drawing goes through the Phase 6 seam at $C1:84EB with a catalog context, not through a tile allocator.",
+   "drawing_mechanism": {
+    "kind": "rasterised tiles, the same as the dialogue window",
+    "the_loop_has_two_modes": "$C1:83FB fetches a byte and BIT $2A picks what happens to it. Bit 14 clear is entry mode: $C1:842A adds $2E and the store at $C1:8449 writes one tilemap word. Bit 14 set is text mode: $C1:8456 spends the row width, $C1:84BD/$84C5 write a top and a bottom entry naming ($D0 + $0E18) and ($D0 + $0E18) + 1, and $C1:84E4 JSLs the rasteriser at $C1:84EB.",
+    "what_each_mode_actually_draws": "Measured on the unit upgrade list of build/SRW4-renewal-pilot.sfc, left and re-entered so the screen really redraws. Entry mode ran 162 times, every one of them from $82:843E - the return of the JSL to this surface - and every word it stored named tile $11, $12, $1B or $1C: window frame pieces. Text mode ran 310 times and the rasteriser exactly as often. In the one frame where the eight unit names were fetched - 120 bytes read from $D2:62ED onward through the fetch helper $81:8A7A - there are 110 text-mode entry pairs and 55 rasteriser calls, and not a single entry-mode store.",
+    "why_no_screen_can_draw_text_in_entry_mode": "The stock font is not in VRAM. $C1:851A sets the data bank to $EE and reads the glyph out of ROM into the arena at $D0, so a tilemap entry can only name a tile that is already loaded - the UI set - and never a letter. Entry mode is for artwork, not for text.",
+    "consequence_for_renewal": "Phase 8 is the Phase 6 adapter with a different context after all. $C1:84EB is the same JSL config/rom-map.json records as battle_text_entry, so map dialogue, battle quotes and catalog names all funnel through one rasteriser. A Renewal catalog needs that seam and a context descriptor, not a tile pool of its own.",
+    "overturned": {
+     "claim": "A catalog character is not drawn.  The engine writes a tilemap entry whose tile number is the stock font's glyph, so the glyph is the tilemap entry.  Nothing is rasterised and no tile is uploaded, which is why $D0 never moves.",
+     "why_it_looked_true": "$D0 really does stand still at 0x162 on this screen - it is the arena's base, not the cursor. The tile number advances through $0E18, which that trace did not watch, so a static $D0 read as 'nothing is rasterised'. $C1:8492 adds the two together, and the dialogue work had already measured $D0 as a line base.",
+     "how_it_was_settled": "Exec watches on $81:842A, $81:8456 and $81:84EB with per-frame counts, beside a read watch on the unit name pool $D2:62B0-$D2:6B33, on a save state made at the screen itself.",
+     "also_wrong": "The same trace read $CC:DA28 as the weapon/unit name pool. It is a screen layout script - record $98 of catalog 1 - which is why the loop was walking it."
+    }
+   },
+   "tile_pool": {
+    "question": "Catalogs name stock glyphs in tilemap entries, so a Thai cluster needs a tile of its own.  Is there room for one, and where?",
+    "bank": "$2000 - both text layers of a catalog screen read the same character bank",
+    "ceiling": "$8000 - sprite tiles start here (ppu.oamBaseAddress), so the pool ends at tile 767",
+    "what_the_dump_said": "A single frame shows tiles 256..767 blank, and blank on all three screens surveyed, which would read as 481 free tiles.",
+    "what_the_writes_said": "Driving the screens instead of watching them idle overturns that.  On the map the engine writes every page from $4400 to $9300, tiles 256..767 included, so blankness in one frame was scratch between uploads and not ownership - exactly the trap §9.1 names.",
+    "pool": {
+     "first_tile": 576,
+     "last_tile": 767,
+     "tiles": 192,
+     "bytes": "$6800-$7FFF",
+     "evidence": "On both catalog screens - pilot-menu and pilot-intermission - 1800 driven frames write $3000-$37FF, $5000-$67FF and the tilemaps at $F000, and nothing at all above $6800.",
+     "must_be_reuploaded_on_entry": "The map screen does write this range, so a catalog cannot assume its clusters survived being away.  Upload on entry, every time.",
+     "residual_risk": "Not proven free, only unclaimed so far.  The shadow tilemap at $7E8000 holds several screens' worth of entries, and 31 of them do name tiles inside 576..767 - none of them on screen at the frame surveyed, and none of the range written across 1800 driven frames on either catalog screen, but that is evidence and not a guarantee.",
+     "what_would_settle_it": "Run the write watch across a tour of every catalog the game has, and check the visible tilemap of each for a tile in the range.  Until then the adapter should assert its pool is untouched at the moment it uploads, so a screen that does claim the range fails loudly instead of drawing over Thai."
+    },
+    "demand": {
+     "measured": "The worst ten-row page of the finished translations needs 50 distinct clusters (units 48, pilots 50, weapons 50).",
+     "cost": "100 tiles at two 8x8 tiles per 16px cluster",
+     "verdict": "fits the 192-tile pool with room for a taller list"
+    },
+    "still_to_trace": "Whether the engine rewrites a catalog's whole tilemap on every redraw or only the rows that changed, and how many rows the widest catalog shows.",
+    "status_after_the_correction": "Not needed for names. Kept because the measurement stands on its own - tiles 576..767 went unwritten across 1800 driven frames on both catalog screens - and a surface that does draw from VRAM tiles would need exactly this pool."
+   },
+   "writer": {
+    "disassembled": "$C1:83FB - $C1:8453",
+    "shadow_tilemap": "$7E:8000, indexed by the byte cursor $18",
+    "note": "The earlier trace called $18 a tilemap cursor, which was half right.  The loop never touches the PPU: it stores into a shadow tilemap in WRAM at $7E8000 that is uploaded later, the same shape as the dialogue arena at $7F8000 one bank over.",
+    "two_paths": {
+     "selector": "BIT $2A - bit 15 chooses which",
+     "byte": "$C1:8437  LDA $7E8000,X / AND #$FF00 / ORA $00 / STA $7E8000,X, then INC $18 once.  Only the low byte moves, so the entry keeps whatever palette and page bits were already there - which caps a glyph at tile 0..255 plus the page bit the high byte happens to carry.",
+     "word": "$C1:8449  LDA $00 / STA $7E8000,X, then INC $18 twice.  A whole entry, tile number and attributes together."
+    },
+    "consequence_for_renewal": "The word path is the one a Thai catalog needs.  The pool at tiles 576..767 is out of reach of the byte path, whose low byte cannot name a tile above 255, but an adapter writing full entries picks the tile and its palette in one store - and writes into WRAM, so it never has to think about vblank.",
+    "direct_page": {
+     "$1A-$1C": "source pointer, incremented by the fetch helper at $C1:8A71",
+     "$1E": "run counter - while non-zero the fetch returns a space instead of reading",
+     "$16": "start of the current row in the shadow",
+     "$18": "cursor into the shadow at $7E8000",
+     "$28": "width left on the row, counted down by two per cell",
+     "$2A": "flags.  Bit 15 selects word entries - it doubles the row stride at $C1:8AB4 and picks the word store.  Bit 14 changes what a run of spaces fetches.  The low byte is the width a new row resets to.",
+     "$2E": "the value a glyph byte is added to: tile base and attributes together"
+    },
+    "how_a_glyph_becomes_an_entry": "$C1:842A is the whole of it: ADC $2E turns a glyph byte into a finished tilemap entry, because $2E already carries the tile base and the attribute bits.  Everything after it - the cursor advance at $C1:8AA1, the row wrap, the control jump table - is about position, not about which glyph."
+   },
+   "renewal_adapter_shape": "Current adapter baseline: own the rasteriser for routed records, hook the JSL at $C1:84E4 (target $C1:84EB), draw the cluster into the arena the engine is about to name, and let the engine keep the cursor, the row wrap, the tilemap entries and the controls. The adapter that replaces the addition at $C1:842A, and the tile pool it allocates from, are kept but not hooked: they answer a question no text-drawing surface asks. Re-evaluate during PLAN.md P5/P8 before production cutover.",
+   "redraw": {
+    "measured": "Driving the menus shows a redraw is wholesale: 180 entries written in a single frame on pilot-menu, nothing in the frames around it.",
+    "consequence": "The allocator's unit is one redraw.  The worst screenful of the finished catalogs needs 67 distinct clusters - 134 of the 192 tiles - where the catalog as a whole would need 187 clusters and never fit, so it has to be per redraw and cannot be assigned once at build time."
+   }
+  },
+  {
+   "id": "story_message_start",
+   "status": "traced",
+   "entry": "$C2:8497",
+   "pc": "0x028497",
+   "expected": "8D 30 0E 0A 29 FE 01 A8 AD 31 0E 29 3F 00 85 00 0A 65 00 AA BF 00 00 E8 85 CB BF 01 00 E8 85 CC B7 CB 85 CB",
+   "untouched_by_current_build": true,
+   "entry_contract": "16-bit A. A is the message index within the block and is kept in $0E30; $0E31 holds the block id, masked to six bits. The block id times three indexes the story master table into the block's 24-bit base in $CB-$CD, then LDA [$CB],Y with Y = index * 2 replaces the low word with the message's own offset. The routine then clears $0E26-$0E29 and $0E2A, which is the pacing and pen state story_message_loop consumes.",
+   "tables": {
+    "master": {
+     "cpu": "$E8:0000",
+     "entry_bytes": 3,
+     "note": "config/rom-map.json already records this as story_master, 52 entries."
+    },
+    "per_block": {
+     "entry_bytes": 2,
+     "note": "Each block opens with its own pointer table; the message offset is read straight through the block base, so a record can be repointed without touching any code."
+    }
+   },
+   "state_bytes": {
+    "$0E30": "message index within the block",
+    "$0E31": "block id, six bits",
+    "$0E26-$0E29": "pacing counters cleared at the start of a message",
+    "$0E2A": "pen position, cleared with them"
+   },
+   "evidence": "A write watch on direct page $CB-$CD in the map-dialogue context named $82:84B1, $82:84B7 and $82:84BB as the only setters; everything else was $81:977D, the INC inside the byte fetch.",
+   "renewal_plan": "§12 priority 1 for Phase 6. src/srw4th/story.py already repacks these blocks and rewrites both tables, so pointing one verified block's records at Renewal streams needs no new code path - only an adapter on story_message_loop to draw them, and the pilot can be turned off by leaving every other block's pointers alone."
+  },
+  {
+   "id": "story_message_loop",
+   "status": "traced",
+   "entry": "$C1:91E3",
+   "pc": "0x0191E3",
+   "expected": "AD 29 0E 29 FF 00 F0 0E CE 29 0E A5 D0 C5 D2 F0 04 22 25 8A 81 6B",
+   "untouched_by_current_build": false,
+   "entry_contract": "16-bit A. The loop head at $C1:91E3 draws pending characters and returns through the RTL at $C1:91F8 once $0E29 reaches zero. Source is the 24-bit pointer in direct page $CB-$CD; $C1:9763 fetches one byte through it and advances it. Byte classes: below $EC is a glyph, $EC-$EF is artwork, $F0-$F4 takes a second byte, and $F5 and above dispatch through the control table.",
+   "state_bytes": {
+    "$0E29": "characters still to draw this frame - the typewriter pacing",
+    "$0E2A": "running pen/cell position for the current line",
+    "$0E2C": "line width limit the loop compares $0E2A against",
+    "$CB-$CD": "24-bit source pointer into the story stream"
+   },
+   "byte_fetch": {
+    "cpu": "$C1:9763",
+    "expected": "AD 28 0E 29 FF 00 D0 13 AD 27 0E 29 FF 00 D0 12 A0 00 00 B7 CB 29 FF 00 E6 CB 60",
+    "call_sites": [
+     "$C1:91F9",
+     "$C1:9211"
+    ],
+    "note": "The only two callers in the clean ROM, both inside this loop."
+   },
+   "glyph_dispatch": {
+    "cpu": "$C1:9238",
+    "expected": "22 EB 84 81",
+    "note": "config/hooks.json already books this as battle_renderer_dispatch, and config/rom-map.json as battle_text_entry; the trace shows it is the draw call of this loop."
+   },
+   "evidence": "A read watch over $F0:0000-$F0:FFFF in the map-dialogue context caught $81:9778 fetching story bytes; that instruction is the LDA [$CB],Y inside $C1:9763. Its caller in the current build is $FC:91FB, the relocated copy of this loop, and the clean ROM has exactly two JSR $9763 sites, both here.",
+   "renewal_plan": "§12 priority 2 for Phase 6 and 7: hook this loop head and hand the Renewal renderer a context descriptor built from $CB-$CD and $0E2A/$0E2C, instead of classifying bytes at $C1:8402 the way the current system does. The pacing counter $0E29 is what keeps the typewriter speed, so the adapter has to drive one token per pending character rather than draw the whole line."
+  },
+  {
+   "id": "ordinary_text_loop",
+   "status": "traced",
+   "entry": "$C1:83FB",
+   "pc": "0x0183FB",
+   "expected": "20 71 8A 24 2A 70 0D C9 F0 00 90 23",
+   "untouched_by_current_build": false,
+   "entry_contract": "The per-byte loop of the stock engine. The current system hooks five bytes into it at $C1:8402, which is the byte classifier, not a surface entry.",
+   "renewal_plan": "§12 priority 2: hook the surface that calls this and pass a context descriptor, rather than classifying bytes inside the loop."
+  },
+  {
+   "id": "battle_text_entry",
+   "status": "traced",
+   "entry": "$C1:9238",
+   "pc": "0x019238",
+   "source": "config/rom-map.json stock_text_engine",
+   "renewal_plan": "Phase 7 inherits nearly all of Phase 6: same loop, same source pointer, same arena and the same tile mapping, so the adapter should need no new drawing path. What is not yet known is the battle window's line width and palette, and §9.1 still wants battle to have its own state block and canvas so the two contexts cannot reenter each other. Confirming it needs a battle reached on the pilot ROM, which needs someone to play into one.",
+   "shared_with_dialogue": {
+    "loop": "$C1:91E3 — battle quotes come through the same story loop",
+    "draw_call": "$C1:9238, the JSL this surface already names",
+    "source": "$CB-$CD, the same 24-bit pointer",
+    "arena": "0x7F8000 -> VRAM tile 0x200, the same mapping the dialogue window uses",
+    "evidence": "Logging VMADD beside every VRAM transfer from a battle-quote save state shows $7F8000 going to VMADD 0x2000, which is tile 0x200 - byte for byte the rule measured for the map dialogue window."
+   },
+   "expected": "22 EB 84 81",
+   "note": "The address config/rom-map.json records as battle_text_entry is the story loop's own draw call - the same JSL config/hooks.json books as battle_renderer_dispatch - which is why battle and dialogue share a path rather than having one each."
+  },
+  {
+   "id": "map_dialogue_window",
+   "status": "traced",
+   "evidence": "PPU state during the map-dialogue context: BG mode 1, BG1 chr base word $1000 and tilemap word $7800. Diffing VRAM across one message advance changed only tile pixels - not one tilemap entry - so the window's grid is static and drawing text means rewriting tiles in place.",
+   "renewal_plan": "Done for Phase 6: the pilot renders Thai dialogue on screen in the real game. What remains is quality rather than mechanism - a long message that wraps still overlaps its own lines.",
+   "vram_contract": {
+    "bg": 1,
+    "bg_mode": 1,
+    "chr_base_word": "0x1000",
+    "tilemap_base_word": "0x7800",
+    "tilemap_is_static": true,
+    "cells_per_line": 30,
+    "first_column": 1,
+    "lines": [
+     {
+      "line": 0,
+      "tilemap_row": 2,
+      "first_tile": "0x100",
+      "tile_base_word": "0x2000"
+     },
+     {
+      "line": 1,
+      "tilemap_row": 4,
+      "first_tile": "0x13C",
+      "tile_base_word": "0x23C0"
+     },
+     {
+      "line": 2,
+      "tilemap_row": 6,
+      "first_tile": "0x178",
+      "tile_base_word": "0x2780"
+     }
+    ],
+    "cell_layout": "Cell k of a line is the tile pair first_tile + 2k (upper eight rows) and + 2k + 1 (lower eight). That is cell-major, top tile then bottom tile, 32 words per cell - the same order renewal_dma writes, so the upload needs no rearranging to land here.",
+    "portrait": {
+     "tiles": "0xF0-0xFF",
+     "tilemap_rows": "11-14",
+     "columns": 4
+    },
+    "border": {
+     "top": "0x011/0x019/0x012",
+     "sides": "0x01B/0x01C",
+     "bottom": "0x028"
+    }
+   },
+   "renewal_context": {
+    "mode": "streaming",
+    "width": 240,
+    "cells": 30,
+    "lines": 3,
+    "tile_capacity": 60,
+    "line_stride_tiles": "0x3C",
+    "line_stride_tilemap_words": 64,
+    "note": "240px over 30 cells is the same geometry the Phase 5 fixture already renders and uploads, so the pilot inherits a verified path."
+   },
+   "shadow_contract": {
+    "base": "0x7F8000",
+    "bytes": 5760,
+    "line_stride": "0x780",
+    "tilemap_shadow": {
+     "base": "0x7E8000",
+     "cursor": "$18 for the ordinary text path; the story path's own cursor is not traced",
+     "entry_bytes": 2,
+     "written_by": "$C1:844B (STA $7E8000,X) with the entry in direct page $00",
+     "observed_entry": "0x2011",
+     "transferred_from": "0x7EA000",
+     "evidence": "A write watch over 0x7EA000-0x7EA7FF during a message names $81:844F, which is the instruction after STA $7E8000,X at $C1:844B; X was 0x2340, so the base is 0x7E8000 and the cursor $18 had reached 0x2340. $18 advances by two per cell.",
+     "consequence": "The drawing path owns the tilemap as well as the tiles. A Renewal adapter that writes only tiles leaves the window pointing wherever the previous message left it, which is exactly what the pilot does today.",
+     "lower_row_offset": "0x40",
+     "entry_pattern": "Cell c of a line takes attributes | (arena_tile + 2c) in the upper row and the same plus one 0x40 bytes further on. Observed: 0x2200, 0x2202, ... at 0x7EA502 with 0x2201, 0x2203, ... at 0x7EA542."
+    },
+    "written_by": "$81:97F5",
+    "evidence": "The WRAM write watch for the dialogue context shows exactly 0x7F8000..0x7F9680 written - 3 lines x 30 cells x 2 tiles x 32 bytes - and a 2 KiB tilemap shadow at 0x7EA000.",
+    "note": "The CPU never writes these tiles to VRAM: the engine composes them here and sends the buffer down its own DMA channel. Renewal writes here too, so it inherits that transfer and needs no VBlank window of its own. Layout is cell-major, top tile then bottom, 64 bytes per cell, which is what renewal_dma already produces.",
+    "palette": {
+     "ink": 3,
+     "paper": 2,
+     "evidence": "The stock blitter at $C1:851A stores the font row into plane 0 and $FD into plane 1 for every row of the cell, and the shadow reads back as 00 FF / 20 FF - plane 1 lit everywhere. So the cell's background is palette index 2 and its ink is 3.",
+     "why_it_matters": "Index 0 is transparent. Tiles written with plane 1 clear show the map through the window instead of the window, and ink at index 1 is not the colour the window's palette gives text."
+    },
+    "arena": {
+     "origin": "0x7F8000",
+     "cursor": "$D0",
+     "sent": "$D2",
+     "queue": {
+      "base": "0x000400",
+      "index": "$8C",
+      "scheduler": "$C1:8A25"
+     },
+     "tiles_per_cell": 2,
+     "evidence": "The stock blitter's tail at $C1:8553 adds two to $D0 per cell and masks to $03FF. The loop head compares $D0 with $D2 on its delay path and calls $C1:8A25, which builds a queue entry whose source is $8000 + $D2 * 32. Logging DMA channel setups shows transfers running from $7F:C680, not from $7F:8000, and a 0x40-byte transfer - one cell - while text types out.",
+     "consequence": "The shadow is not a fixed pool per window: it is one rolling arena and $D0 is the cursor. A destination baked in as $7F8000 writes over whatever cells the arena happens to be holding, and the window's tilemap points somewhere else entirely. Renewal takes its base from $D0 at the start of a line and advances $D0 by two per cell so the engine schedules the transfer.",
+     "still_open": "The tilemap shadow at $7EA000 is rewritten per message by $C1:8AE0, and whether the drawing path is expected to add per-cell entries as it goes has not been traced. Until it is, the pilot writes tiles the window does not yet point at, which is why it draws nothing on screen while every byte it writes matches the reference.",
+     "how_renewal_tracks_it": "The adapter compares $D0 against ARENA + 2 * (pen >> 3) - where its own pen says the cursor should be. A difference means the engine moved it, so the engine started something new and the line restarts from wherever the cursor now points. That needs no message hook and self-corrects after a window change, which the message-start hook could not: $C2:849A fires about once per scene, not once per message.",
+     "observed_bases": "The stock blitter's first store of a message lands at X = 0x2000, so the line begins at arena tile 0x100; another message used 0x200. The window alternates between two runs, which is why a fixed destination cannot work.",
+     "confirmed": "At the engine's first glyph store of a message the index X equals $D0 * 32 and $08 equals $D0 * 16: one message showed X=0x2000 with $D0=0x100, another X=0 with $D0=0. So $D0 is the line's arena base in tiles after all, and the engine sets it when the window opens - which happens in a migrated record too."
+    },
+    "vram_mapping": {
+     "measured": [
+      {
+       "source": "0x7F8000",
+       "vram_word": "0x2000",
+       "first_tile": "0x200",
+       "size": "0x1300"
+      },
+      {
+       "source": "0x7F9300",
+       "vram_word": "0x2980",
+       "first_tile": "0x298",
+       "size": "0x0380"
+      },
+      {
+       "source": "0x7FA000",
+       "vram_word": "0x3000",
+       "first_tile": "0x300",
+       "size": "0x1300"
+      },
+      {
+       "source": "0x7FB300",
+       "vram_word": "0x3980",
+       "first_tile": "0x398",
+       "size": "0x0380"
+      }
+     ],
+     "rule": "Shadow offset N lands on VRAM tile 0x200 + N / 32.  A 4bpp tile is sixteen words, so the tile number is the transfer's VMADD divided by sixteen, and the two buffers at 0x7F8000 and 0x7FA000 land on tiles 0x200 and 0x300.",
+     "consequence": "A window whose tilemap entries say tile T is backed by shadow offset (T - 0x200) * 32.  Renewal writes at offset 0, so it is right only for a window sitting on tile 0x200 and wrong for every other - which is what the pilot shows: the run where the tilemap said 0x100 drew nowhere the window was looking."
+    },
+    "transfer_scheduling": {
+     "queue_routine": "$C1:8A25",
+     "compare": "$D0 against $D2",
+     "where_the_engine_does_it": "the loop head's delay path, which the adapter replaces",
+     "timing": "The call has to happen in the same breath as the drawing. Something syncs $D2 to $D0 between frames, so a tick that compares them later always finds them equal - measured as 62 delay ticks in a row with the two identical and not one transfer scheduled. Every return from the adapter now funnels through one tail that queues what was just written."
+    }
+   }
+  },
+  {
+   "id": "unit_ability_pool_label",
+   "status": "traced",
+   "entry": "$C1:84EB",
+   "pc": "0x0184EB",
+   "expected": "24 CE 30 03 4C B3 87",
+   "untouched_by_current_build": false,
+   "entry_contract": "No entry of its own: the unit ability screen draws through the ordinary text loop at $C1:83FB, whose text mode calls the shared rasteriser at $C1:84EB.  A label is reached by the screen script rather than by the catalog entry - $C1:83C6 is called 21 times on this screen and never with a $D2 record - so the unit that can be migrated is the label, not a catalog.",
+   "evidence": "On the clean ROM, driven to the ユニット能力 screen and then out with B and back in with A: a read watch over $D2:8729-$D2:8737 caught $81:8A7A - the LDA [$1A],Y inside the fetch helper $C1:8A71 - reading every byte of シールド無, at frame 352 and again at frame 502, which is what makes the second draw a real redraw rather than the save state's own screen.  An exec watch on $C1:84EB in the same run counted 629 calls, every one from $81:84E7, and calls 299-303 carry the record's own bytes: A=$00A6, $0011, $00DA, $00B8 and $0209 with the source pointer walking $D2:872A..$D2:872F, $D0 stepping by two each time.",
+   "pool": {
+    "bank": "$D2",
+    "block": [
+     "0x128729",
+     "0x128737"
+    ],
+    "slots": 2,
+    "slot_bytes": 7,
+    "pointed_at_from": {
+     "0x8729": [
+      "0x128263"
+     ],
+     "0x8730": [
+      "0x128265"
+     ]
+    },
+    "note": "Each string is pointed at from exactly one slot, both inside the 0x128161-0x128300 range the old system scans.  The scan exists because other pool strings are shared; these two are not, which is why rewriting them in place moves no pointer and leaves the game's own selection bit for bit as it was."
+   },
+   "renewal_plan": "Done and replayed from save/shield.mss: the two records are rewritten in place as Renewal streams and the source router is told the range. A pool label cannot move banks because the script points at it with a two-byte offset inside $D2. The final phrase โล่ is one shorthand byte so the unit-ability compositor cannot leave a ghost cell for a separate tone-mark source byte.",
+   "measured": {
+    "ไม่มีโล่": {
+     "stream": "40 B3 A3 CB FF",
+     "px": 33,
+     "cells": 5,
+     "was": "シールド無, 5 cells"
+    },
+    "มีโล่": {
+     "stream": "A3 CB FF",
+     "px": 19,
+     "cells": 3,
+     "was": "シールド有, 5 cells"
+    }
+   }
+  }
+ ],
+ "not_yet_traced": [
+  "naming",
+  "map_command",
+  "intermission"
+ ]
+}

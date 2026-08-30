@@ -1,0 +1,13 @@
+{
+ "_comment": [
+  "ROM-only display forms. Keep this file small: an entry belongs here only",
+  "when the canonical Thai name from translations/glossary.th.json has been",
+  "measured against its actual field and does not fit.",
+  "",
+  "The canonical glossary remains authoritative for dialogue and reference.",
+  "The build report records the measured width of every unit and pilot name."
+ ],
+ "display_names": {
+  "メカ戦士ゾンネカイザー": "ซอนเนไคเซอร์"
+ }
+}
