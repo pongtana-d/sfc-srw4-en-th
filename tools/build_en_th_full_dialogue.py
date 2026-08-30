@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from srw4.en_baseline import EN_SHA256
 from srw4.en_dialogue_streams import compile_text
 from srw4.en_ff_router import install as install_router
+from srw4.en_intro import install as install_intro
 from srw4.en_story_build import install_full_story
 from srw4.en_th_catalogs import install as install_catalogs
 from srw4.en_th_renderer import install as install_renderer
@@ -82,6 +83,7 @@ def main() -> int:
     router = install_router(rom.data, font_hooks=True, alt_hook=False, width_hooks=True)
     catalogs = install_catalogs(rom.data, base)
     title = install_en_title_logo(rom.data, ROOT / "data", base)
+    intro = install_intro(rom.data, base, ROOT)
     checksum = rom.fix_checksum()
     output = rom.to_bytes()
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -92,7 +94,7 @@ def main() -> int:
     report = {
         "scope": (
             "EN Thai story, battle quotes, pilot/unit/weapon names, "
-            "Spirit descriptions, and title logo"
+            "Spirit descriptions, title logo, and opening crawl"
         ),
         "story_repack": {"blocks": full.blocks, "records": full.records,
                           "bytes": full.bytes, "relocated_fields": full.relocated_fields,
@@ -113,6 +115,7 @@ def main() -> int:
             "battle_info_labels": catalogs.battle_info_labels,
         },
         "title": title,
+        "intro": intro,
         "output": {"path": str(args.output.relative_to(ROOT)), "sha256": sha256(output),
                    "checksum": f"0x{checksum:04X}", "bytes": len(output)},
         "patch": {"format": "IPS", "path": str(args.patch.relative_to(ROOT)),

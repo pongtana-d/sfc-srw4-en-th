@@ -27,16 +27,21 @@ class Pipeline:
     renderer: Renderer
 
     @classmethod
-    def load(cls, root: Path, rom_path: Path) -> "Pipeline":
+    def from_rom_bytes(cls, root: Path, rom: bytes) -> "Pipeline":
+        """Build the text pipeline from an already validated ROM image."""
         font_dir = root / "data" / "font"
         token_map = TokenMap.load(font_dir / "renewal-clusters.json")
-        builder = AtlasBuilder(font_dir, Rom.load_clean(rom_path).to_bytes())
+        builder = AtlasBuilder(font_dir, rom)
         atlas = {token: builder.build(token) for token in token_map.tokens}
         tokenizer = Tokenizer(
             set(json.loads((font_dir / "renewal-icons.json").read_text())["glyphs"]),
             load_stock_codes(font_dir / "renewal-stock.json"),
         )
         return cls(token_map, tokenizer, atlas, Renderer(token_map, atlas))
+
+    @classmethod
+    def load(cls, root: Path, rom_path: Path) -> "Pipeline":
+        return cls.from_rom_bytes(root, Rom.load_clean(rom_path).to_bytes())
 
     def compile(self, text: str, *, where: str = "", branch_range: range = range(0)) -> Record:
         result = self.tokenizer.tokenize(text, where=where, branch_range=branch_range)

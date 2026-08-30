@@ -32,6 +32,17 @@ PAGES = (
     ("intro_page4", "intro-page4.th.json", 0x0CEFC4, 0x0CF05C, 0xF05B),
     ("intro_page5", "intro-page5.th.json", 0x0CF063, 0x0CF10C, 0xF10B),
 )
+# The EN patch keeps the original JP crawl records as inactive reference data,
+# but its live English crawl is in bank $FE.  Source ranges below still verify
+# that the existing Thai translations correspond to the original five pages;
+# the final field is the measured terminator of each active EN record.
+EN_PAGES = (
+    ("intro", "intro.th.json", 0x0CEA8E, 0x0CEC42, 0x6A60),
+    ("intro_page2", "intro-page2.th.json", 0x0CEC49, 0x0CEE39, 0x6D50),
+    ("intro_page3", "intro-page3.th.json", 0x0CEE40, 0x0CEFBD, 0x6FAC),
+    ("intro_page4", "intro-page4.th.json", 0x0CEFC4, 0x0CF05C, 0x708B),
+    ("intro_page5", "intro-page5.th.json", 0x0CF063, 0x0CF10C, 0x71D7),
+)
 
 
 @dataclass(frozen=True)
@@ -72,10 +83,21 @@ def _page(root: Path, clean: bytes, pipeline: Pipeline, item: tuple[str, str, in
             raise RomError(f"{key}: verified source hash changed")
     elif source != bytes.fromhex(entry["source_hex"]):
         raise RomError(f"{key}: verified source bytes changed")
-    tiles = bytearray(b"\xff" * TILE_BYTES)
+    # Unreferenced glyph slots must be transparent.  Filling them with $FF
+    # sets every 4bpp plane and produces a solid palette-15 block if the stock
+    # crawl briefly touches a spare tile during a page transition.
+    tiles = bytearray(TILE_BYTES)
     tile_for: dict[str, int] = {}
     tilemap = bytearray(MAP_BYTES)
-    lines = [line for line in str(entry["translation"]).splitlines() if line and "<END" not in line]
+    # A visible final line commonly carries ``<FE><ENDFF>`` at its tail.  Keep
+    # that line while removing only its terminator controls.
+    lines = []
+    for authored in str(entry["translation"]).splitlines():
+        line = authored
+        for ending in ("<FE><ENDFF>", "<ENDFF>", "<ENDF7>"):
+            line = line.removesuffix(ending)
+        if line:
+            lines.append(line)
     if len(lines) > 16:
         raise RomError(f"{key}: overlay has over sixteen lines")
     for line_no, line in enumerate(lines):
@@ -100,9 +122,14 @@ def _page(root: Path, clean: bytes, pipeline: Pipeline, item: tuple[str, str, in
     return bytes(tiles), bytes(tilemap), {"key": key, "lines": len(lines), "glyphs": len(tile_for), "source_sha256": hashlib.sha256(source).hexdigest()}
 
 
-def _hook(origin: int, pages: list[tuple[int, int]]) -> bytes:
-    body = [".a16", ".i16", "intro_overlay:", "  phx", "  phy", "  lda.l $00001C", "  cmp #$00CC", "  beq crawl", "  brl stock", "crawl:", "  lda.l $00001A"]
-    for index, item in enumerate(PAGES):
+def _hook(
+    origin: int,
+    pages: list[tuple[int, int]],
+    page_specs: tuple[tuple[str, str, int, int, int], ...] = PAGES,
+    source_bank: int = 0xCC,
+) -> bytes:
+    body = [".a16", ".i16", "intro_overlay:", "  phx", "  phy", "  lda.l $00001C", f"  cmp #${source_bank:04X}", "  beq crawl", "  brl stock", "crawl:", "  lda.l $00001A"]
+    for index, item in enumerate(page_specs):
         body += [f"  cmp #${item[4]:04X}", f"  bne next{index + 1}", f"  brl page{index + 1}", f"next{index + 1}:"]
     body += ["  brl stock"]
     for index, (tiles, tilemap) in enumerate(pages):
@@ -111,18 +138,26 @@ def _hook(origin: int, pages: list[tuple[int, int]]) -> bytes:
     return assemble("\n".join(body), _cpu(origin)).code
 
 
-def build(root: Path, clean: bytes, pipeline: Pipeline, allocation) -> IntroBuild:
+def build(
+    root: Path,
+    clean: bytes,
+    pipeline: Pipeline,
+    allocation,
+    *,
+    page_specs: tuple[tuple[str, str, int, int, int], ...] = PAGES,
+    source_bank: int = 0xCC,
+) -> IntroBuild:
     writes: list[tuple[int, bytes]] = []
     pages: list[tuple[int, int]] = []
     report_pages = []
-    for item in PAGES:
+    for item in page_specs:
         tiles, tilemap, report = _page(root, clean, pipeline, item)
         tiles_at = allocation.allocate("spare", f"{item[0]}.tiles", len(tiles), align=0x100)
         map_at = allocation.allocate("spare", f"{item[0]}.map", len(tilemap), align=0x100)
         writes += [(tiles_at, tiles), (map_at, tilemap)]
         pages.append((tiles_at, map_at)); report_pages.append(report)
     hook_at = allocation.allocate("hook_trampolines", "intro.overlay", 0x800, align=0x100)
-    hook = _hook(hook_at, pages)
+    hook = _hook(hook_at, pages, page_specs, source_bank)
     if len(hook) > 0x800:
         raise RomError("intro overlay hook exceeds reservation")
     return IntroBuild(tuple(writes), hook_at, hook, {"pages": report_pages, "hook": f"${_cpu(hook_at):06X}", "hook_bytes": len(hook)})
