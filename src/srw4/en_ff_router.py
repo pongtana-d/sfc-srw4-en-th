@@ -1,15 +1,16 @@
 """FF-stream router for English-ROM story and battle dialogue.
 
-The EN renderer calls the shared dispatcher at $C1:9238 for both map/event
-text and battle quotes.  This adapter reserves $C0-$C2 as private Thai page
-leads only while the source bank is $F1, $F7, or $FF.  `$C2 $EB` is the
-documented split escape: it switches to an FF-bank relocated stream.
+The EN engine already turns `$00-$CF` and native `$F0-$F3 + index` pairs into
+five glyph-code pages.  This adapter only records which final atlas page that
+code belongs to; no vowel or tone positioning happens at runtime.
 """
 from __future__ import annotations
 
 from dataclasses import dataclass
 
 from .asm65816 import assemble
+from .en_precomposed import PAGE_STATES as PRECOMPOSED_PAGE_STATES
+from .en_precomposed import WIDTH_PC as PRECOMPOSED_WIDTH_PC
 from .proven.assembler import pc_to_cpu
 from .proven.renderer65816 import BATTLE_STATE_BASE, STATE_SIGNATURE
 
@@ -97,56 +98,42 @@ story_dispatch:
   jml stock_story
 story_private:
   lda $02
-  and #$00FF
-  cmp #$00C0
-  bcs story_page
-  brl stock_story
-story_page:
-  cmp #$00C2
-  bne story_page_lead
-  phy
-  ldy #$0000
-  lda [$CB],y
-  and #$00FF
-  cmp #$00EB
-  bne story_not_split
-  ldy #$0003
-  lda [$CB],y
-  and #$00FF
-.a8
-  sep #$20
-  sta $CD
-  rep #$20
-.a16
-  inc $CB
-  lda [$CB]
-  sta $CB
-  lda [$CB]
-  and #$00FF
-  sta $02
-  inc $CB
-  ply
-  lda #$1234
-  sta $7FFFFC
-  lda $0E2A
-  rtl
-story_not_split:
-  ply
-story_page_lead:
-  cmp #$00C0
+  cmp #$00D0
+  bcc precomposed_direct
+  cmp #$0100
   bcc stock_story
-  cmp #$00C3
+  cmp #$0500
   bcs stock_story
-  sec
-  sbc #$00C0
-  inc a
+  and #$FF00
+  cmp #$0100
+  beq precomposed_extended_1
+  cmp #$0200
+  beq precomposed_extended_2
+  cmp #$0300
+  beq precomposed_extended_3
+  cmp #$0400
+  beq precomposed_extended_4
+  brl stock_story
+precomposed_direct:
+  lda #${PRECOMPOSED_PAGE_STATES[0]:04X}
   sta.l ${ROUTER_PAGE_STATE:06X}
-  lda [$CB]
-  and #$00FF
-  sta $02
-  inc $CB
-  lda #$1234
-  sta $7FFFFC
+  brl precomposed_done
+precomposed_extended_1:
+  lda #${PRECOMPOSED_PAGE_STATES[1]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_done
+precomposed_extended_2:
+  lda #${PRECOMPOSED_PAGE_STATES[2]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_done
+precomposed_extended_3:
+  lda #${PRECOMPOSED_PAGE_STATES[3]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_done
+precomposed_extended_4:
+  lda #${PRECOMPOSED_PAGE_STATES[4]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+precomposed_done:
   lda $0E2A
   rtl
 stock_story:
@@ -183,6 +170,16 @@ glyph_width:
   cmp #${STATE_SIGNATURE:04X}
   bne stock
   lda.l ${ROUTER_PAGE_STATE:06X}
+  cmp #${PRECOMPOSED_PAGE_STATES[0]:04X}
+  beq precomposed_page_0
+  cmp #${PRECOMPOSED_PAGE_STATES[1]:04X}
+  beq precomposed_page_1
+  cmp #${PRECOMPOSED_PAGE_STATES[2]:04X}
+  beq precomposed_page_2
+  cmp #${PRECOMPOSED_PAGE_STATES[3]:04X}
+  beq precomposed_page_3
+  cmp #${PRECOMPOSED_PAGE_STATES[4]:04X}
+  beq precomposed_page_4
   cmp #$0001
   beq page_one
   cmp #$0002
@@ -195,6 +192,21 @@ stock:
   rtl
 page_one:
   lda.l $FF7000,x
+  bra private
+precomposed_page_0:
+  lda.l ${pc_to_cpu(PRECOMPOSED_WIDTH_PC):06X},x
+  bra private
+precomposed_page_1:
+  lda.l ${pc_to_cpu(PRECOMPOSED_WIDTH_PC + 0x100):06X},x
+  bra private
+precomposed_page_2:
+  lda.l ${pc_to_cpu(PRECOMPOSED_WIDTH_PC + 0x200):06X},x
+  bra private
+precomposed_page_3:
+  lda.l ${pc_to_cpu(PRECOMPOSED_WIDTH_PC + 0x300):06X},x
+  bra private
+precomposed_page_4:
+  lda.l ${pc_to_cpu(PRECOMPOSED_WIDTH_PC + 0x400):06X},x
   bra private
 thai:
   lda.l ${THAI_WIDTH_TABLE_CPU:06X},x

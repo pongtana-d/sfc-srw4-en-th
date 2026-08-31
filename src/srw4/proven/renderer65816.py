@@ -451,6 +451,7 @@ def build_renderer(origin: int, source_base: int, advance: int,
                    source_page_state: int | None = None,
                    alternate_advance: tuple[int, int] | None = None,
                    third_advance: tuple[int, int] | None = None,
+                   page_advances: tuple[tuple[int, int], ...] | None = None,
                    caller_reuses_cell_cursor: bool = False,
                    entry_cursor_is_cell: bool = False,
                    compact_grid: bool = False,
@@ -488,20 +489,38 @@ def build_renderer(origin: int, source_base: int, advance: int,
         raise ValueError("renderer source bank must fit one byte")
     if combining and source_bank != 0xFF:
         raise ValueError("non-$FF combining pages are not supported")
-    if (source_page_state is None) != (alternate_advance is None):
-        raise ValueError(
-            "dynamic source page state and alternate advance must be supplied together"
-        )
-    if source_page_state is not None:
-        alternate_page, _alternate_advance_pc = alternate_advance
+    if source_page_state is None:
+        if alternate_advance is not None or third_advance is not None or page_advances is not None:
+            raise ValueError("dynamic page advances require a dynamic source page state")
+        dynamic_advances: tuple[tuple[int, int], ...] = ()
+    else:
+        if page_advances is not None and (
+            alternate_advance is not None or third_advance is not None
+        ):
+            raise ValueError(
+                "page_advances cannot be combined with legacy alternate page advances"
+            )
+        if page_advances is None:
+            if alternate_advance is None:
+                raise ValueError(
+                    "dynamic source page state requires at least one page advance"
+                )
+            dynamic_advances = (alternate_advance,) + (
+                (third_advance,) if third_advance is not None else ()
+            )
+        else:
+            if not page_advances:
+                raise ValueError("dynamic source page state requires at least one page advance")
+            dynamic_advances = page_advances
         if source_base != 0:
             raise ValueError("dynamic source pages require a zero renderer source base")
-        if alternate_page & 0x0FFF:
-            raise ValueError("dynamic renderer source pages must be 4 KiB aligned")
-        if third_advance is not None and third_advance[0] & 0x0FFF:
-            raise ValueError("third renderer source page must be 4 KiB aligned")
-    elif third_advance is not None:
-        raise ValueError("third advance requires dynamic source page state")
+        page_offsets = set()
+        for page, _advance_pc in dynamic_advances:
+            if not 0 <= page <= 0xFFFF or page & 0x0FFF:
+                raise ValueError("dynamic renderer source pages must be 4 KiB aligned")
+            if page in page_offsets:
+                raise ValueError("dynamic renderer source pages must be distinct")
+            page_offsets.add(page)
     if caller_reuses_cell_cursor or entry_cursor_is_cell:
         if battle or external_tilemap:
             raise ValueError("cell-cursor contracts are ordinary internal-tilemap only")
@@ -536,6 +555,21 @@ def build_renderer(origin: int, source_base: int, advance: int,
     ) != (origin & 0xFF0000):
         raise ValueError("renderer shift tables must share its ROM bank")
     asm = Asm(origin)
+    # `emit_row` needs DB for the shift tables, while a precomposed source page
+    # may deliberately live in another bank.  Keep the common same-bank path
+    # byte-for-byte compact; the cross-bank path reads the glyph with LDA long,X.
+    shift_bank = pc_to_cpu(shift_right) >> 16
+    source_reads_are_long = source_bank != shift_bank
+    source_cpu = (source_bank << 16) | source_base
+
+    def emit_advance_load(table_pc: int) -> None:
+        """Load the glyph advance indexed by X without assuming DB owns it."""
+        table_cpu = pc_to_cpu(table_pc)
+        if table_cpu >> 16 == shift_bank:
+            asm.emit(0xBD, table_pc & 0xFF, (table_pc >> 8) & 0xFF)
+        else:
+            asm.long_index(0xBF, table_cpu)
+
     asm.fixups_abs = []
     # With shorthand in play the body becomes a subroutine the prologue calls
     # once per component, so every exit returns to it rather than to the engine.
@@ -747,9 +781,10 @@ def build_renderer(origin: int, source_base: int, advance: int,
     asm.emit(0xC2, 0x20)
     asm.var(0x85, memory.index)                 # pen * 256
 
+    row_source = source_cpu if source_reads_are_long else source_base
     asm.emit(0xE2, 0x20)
     asm.emit(0x8B)                             # PHB
-    asm.emit(0xA9, source_bank)
+    asm.emit(0xA9, shift_bank)
     asm.emit(0x48, 0xAB)
     asm.emit(0xA9, 0x08)
     asm.var(0x85, memory.rows)
@@ -757,10 +792,14 @@ def build_renderer(origin: int, source_base: int, advance: int,
     asm.var(0x85, memory.tail_ink)
 
     asm.label("row")
-    emit_row(asm, memory, source_base, 0x0000, 0x0040,
-             shift_right, shift_left)
-    emit_row(asm, memory, source_base + 8, 0x0020, 0x0060,
-             shift_right, shift_left)
+    emit_row(
+        asm, memory, row_source, 0x0000, 0x0040, shift_right, shift_left,
+        source_long=source_reads_are_long,
+    )
+    emit_row(
+        asm, memory, row_source + 8, 0x0020, 0x0060, shift_right, shift_left,
+        source_long=source_reads_are_long,
+    )
 
     asm.emit(0xA5, 0xFD)
     asm.var_to_x_from_m8(memory.tile)
@@ -793,32 +832,18 @@ def build_renderer(origin: int, source_base: int, advance: int,
     asm.emit(0xC2, 0x10)                       # REP #$10
     asm.var_to_x_from_m8(memory.glyph_id)
     if source_page_state is None:
-        asm.emit(0xBD, advance & 0xFF, (advance >> 8) & 0xFF)
+        emit_advance_load(advance)
     else:
-        alternate_page, alternate_advance_pc = alternate_advance
         asm.var(0xA5, source_page_state + 1)
-        asm.emit(0xC9, alternate_page >> 8)
-        asm.branch(0xF0, "alternate_advance")
-        if third_advance is not None:
-            third_page, third_advance_pc = third_advance
-            asm.emit(0xC9, third_page >> 8)
-            asm.branch(0xF0, "third_advance")
-        asm.emit(0xBD, advance & 0xFF, (advance >> 8) & 0xFF)
+        for index, (page, _page_advance_pc) in enumerate(dynamic_advances):
+            asm.emit(0xC9, page >> 8)
+            asm.branch(0xF0, f"page_advance_{index}")
+        emit_advance_load(advance)
         asm.branch(0x80, "advance_ready")
-        asm.label("alternate_advance")
-        asm.emit(
-            0xBD,
-            alternate_advance_pc & 0xFF,
-            (alternate_advance_pc >> 8) & 0xFF,
-        )
-        if third_advance is not None:
+        for index, (_page, page_advance_pc) in enumerate(dynamic_advances):
+            asm.label(f"page_advance_{index}")
+            emit_advance_load(page_advance_pc)
             asm.branch(0x80, "advance_ready")
-            asm.label("third_advance")
-            asm.emit(
-                0xBD,
-                third_advance_pc & 0xFF,
-                (third_advance_pc >> 8) & 0xFF,
-            )
         asm.label("advance_ready")
     asm.emit(0x18)
     asm.var(0x65, memory.pen)
@@ -1495,10 +1520,15 @@ def emit_mark_lift(
 def emit_row(
     asm: "Asm", memory: RendererMemory, source: int, target: int, spill: int,
     shift_right: int = SHR_TABLE, shift_left: int = SHL_TABLE,
+    *, source_long: bool = False,
 ) -> None:
     """One glyph row: shift into the current pair, carry the rest to the next."""
     for table, offset, merge in ((shift_right, target, True), (shift_left, spill, True)):
-        asm.emit(0xB9, source & 0xFF, (source >> 8) & 0xFF)  # LDA $8000,Y
+        if source_long:
+            asm.emit(0xBB)                                   # TYX
+            asm.long_index(0xBF, source)                     # LDA long,X
+        else:
+            asm.emit(0xB9, source & 0xFF, (source >> 8) & 0xFF)  # LDA page,Y
         asm.emit(0xC2, 0x20)
         asm.emit(0x29, 0xFF, 0x00)
         asm.emit(0x18)

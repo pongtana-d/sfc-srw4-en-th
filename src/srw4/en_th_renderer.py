@@ -13,6 +13,16 @@ from .en_ff_router import (
     SUPPLEMENT_WIDTH_TABLE_CPU,
     THAI_WIDTH_TABLE_CPU,
 )
+from .en_precomposed import (
+    ADVANCE_PC as PRECOMPOSED_ADVANCE_PC,
+    PAGE_BYTES as PRECOMPOSED_PAGE_BYTES,
+    PAGE_COUNT as PRECOMPOSED_PAGE_COUNT,
+    PAGE_PC as PRECOMPOSED_PAGE_PC,
+    PAGE_STATES as PRECOMPOSED_PAGE_STATES,
+    SOURCE_BANK as PRECOMPOSED_SOURCE_BANK,
+    WIDTH_PC as PRECOMPOSED_WIDTH_PC,
+    build_assets as build_precomposed_assets,
+)
 from .proven.assembler import pc_to_cpu
 from .proven.renderer65816 import (
     BATTLE_STATE_BASE,
@@ -65,6 +75,8 @@ STOCK_PAGE_PC = 0x3F7300
 STOCK_ADVANCE_PC = 0x3F8300
 WIDTH_ENTRY_PC = 0x3F8500
 ENTRY_PC = 0x3F8800
+# Story and battle now share one precomposed renderer.  Its page selection is
+# the engine's native direct/extended glyph code, never a Thai mark placement.
 THAI_RENDERER_PC = 0x3FA000
 SUPPLEMENT_RENDERER_PC = 0x3FB000
 STOCK_RENDERER_PC = 0x3FC000
@@ -171,24 +183,46 @@ stock:
   and #$00FF
   jml ${pc_to_cpu(STOCK_RENDERER_PC):06X}
 private:
-  lda.l ${ROUTER_PAGE_STATE:06X}
-  cmp #$0002
-  beq thai
-  cmp #$0003
-  beq supplement
-  ; A battle savestate can resume after its C1/C2 lead has already been
-  ; consumed.  All relocated private story/battle streams are Thai page one
-  ; unless an explicit C2 lead selected the supplement page, so recover page
-  ; one here instead of handing raw Thai slots to the stock renderer.
-  bra thai
-thai:
+  lda $00
+  cmp #$00D0
+  bcc precomposed_direct
+  cmp #$0100
+  bcc stock
+  cmp #$0500
+  bcs stock
+  and #$FF00
+  cmp #$0100
+  beq precomposed_extended_1
+  cmp #$0200
+  beq precomposed_extended_2
+  cmp #$0300
+  beq precomposed_extended_3
+  cmp #$0400
+  beq precomposed_extended_4
+  brl stock
+precomposed_direct:
+  lda #${PRECOMPOSED_PAGE_STATES[0]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_glyph
+precomposed_extended_1:
+  lda #${PRECOMPOSED_PAGE_STATES[1]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_glyph
+precomposed_extended_2:
+  lda #${PRECOMPOSED_PAGE_STATES[2]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_glyph
+precomposed_extended_3:
+  lda #${PRECOMPOSED_PAGE_STATES[3]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_glyph
+precomposed_extended_4:
+  lda #${PRECOMPOSED_PAGE_STATES[4]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+precomposed_glyph:
   lda $00
   and #$00FF
   jml ${pc_to_cpu(THAI_RENDERER_PC):06X}
-supplement:
-  lda $00
-  and #$00FF
-  jml ${pc_to_cpu(SUPPLEMENT_RENDERER_PC):06X}
 """, ENTRY_PC).code
 
 
@@ -231,28 +265,47 @@ stock:
   cmp #$0100
   jml $81921E
 private:
-  lda.l ${ROUTER_PAGE_STATE:06X}
-  cmp #$0002
-  beq thai
-  cmp #$0003
-  beq supplement
-  ; Match the draw-side stale-page recovery above.  Width runs before draw;
-  ; charging this as stock would advance the battle compositor before the
-  ; Thai renderer gets a chance to restore its persistent run.
-  bra thai
-supplement:
+  lda $02
+  cmp #$00D0
+  bcc precomposed_direct
+  cmp #$0100
+  bcc stock
+  cmp #$0500
+  bcs stock
+  and #$FF00
+  cmp #$0100
+  beq precomposed_extended_1
+  cmp #$0200
+  beq precomposed_extended_2
+  cmp #$0300
+  beq precomposed_extended_3
+  cmp #$0400
+  beq precomposed_extended_4
+  brl stock
+precomposed_direct:
+  lda #${PRECOMPOSED_PAGE_STATES[0]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_index
+precomposed_extended_1:
+  lda #${PRECOMPOSED_PAGE_STATES[1]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_index
+precomposed_extended_2:
+  lda #${PRECOMPOSED_PAGE_STATES[2]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_index
+precomposed_extended_3:
+  lda #${PRECOMPOSED_PAGE_STATES[3]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+  brl precomposed_index
+precomposed_extended_4:
+  lda #${PRECOMPOSED_PAGE_STATES[4]:04X}
+  sta.l ${ROUTER_PAGE_STATE:06X}
+precomposed_index:
   lda $02
   and #$00FF
-  cmp #$00C0
-  bcs stock
   tax
   brl index_ready
-thai:
-  lda $02
-  and #$00FF
-  cmp #$00C0
-  bcs stock
-  tax
 index_ready:
   lda.l ${state:06X}
   cmp #$A55A
@@ -269,6 +322,31 @@ fresh:
 pen:
   clc
   pha
+  lda.l ${ROUTER_PAGE_STATE + 1:06X}
+  cmp #${PRECOMPOSED_PAGE_STATES[0] >> 8:02X}
+  pla
+  beq precomposed_page_0
+  pha
+  lda.l ${ROUTER_PAGE_STATE + 1:06X}
+  cmp #${PRECOMPOSED_PAGE_STATES[1] >> 8:02X}
+  pla
+  beq precomposed_page_1
+  pha
+  lda.l ${ROUTER_PAGE_STATE + 1:06X}
+  cmp #${PRECOMPOSED_PAGE_STATES[2] >> 8:02X}
+  pla
+  beq precomposed_page_2
+  pha
+  lda.l ${ROUTER_PAGE_STATE + 1:06X}
+  cmp #${PRECOMPOSED_PAGE_STATES[3] >> 8:02X}
+  pla
+  beq precomposed_page_3
+  pha
+  lda.l ${ROUTER_PAGE_STATE + 1:06X}
+  cmp #${PRECOMPOSED_PAGE_STATES[4] >> 8:02X}
+  pla
+  beq precomposed_page_4
+  pha
   lda.l ${ROUTER_PAGE_STATE:06X}
   cmp #$03
   pla
@@ -279,6 +357,21 @@ pen:
   pla
   beq catalog_page
   adc.l ${pc_to_cpu(ADVANCE_PC):06X},x
+  bra measured
+precomposed_page_0:
+  adc.l ${pc_to_cpu(PRECOMPOSED_ADVANCE_PC):06X},x
+  bra measured
+precomposed_page_1:
+  adc.l ${pc_to_cpu(PRECOMPOSED_ADVANCE_PC + 0x100):06X},x
+  bra measured
+precomposed_page_2:
+  adc.l ${pc_to_cpu(PRECOMPOSED_ADVANCE_PC + 0x200):06X},x
+  bra measured
+precomposed_page_3:
+  adc.l ${pc_to_cpu(PRECOMPOSED_ADVANCE_PC + 0x300):06X},x
+  bra measured
+precomposed_page_4:
+  adc.l ${pc_to_cpu(PRECOMPOSED_ADVANCE_PC + 0x400):06X},x
   bra measured
 supplement_page:
   adc.l ${pc_to_cpu(SUPPLEMENT_ADVANCE_PC):06X},x
@@ -311,8 +404,33 @@ def _renderer_assets(
         raise ValueError("EN dialogue stock glyph page is truncated")
     stock_advance = _true_advances(stock_widths)
     thai_advance = assets["thai-advance.bin"]
+    precomposed_assets = build_precomposed_assets(en_rom)
     shr, shl = shift_tables()
     placements = [
+        *(
+            (
+                PRECOMPOSED_PAGE_PC + page * PRECOMPOSED_PAGE_BYTES,
+                precomposed_assets.pages[page],
+                f"EN precomposed dialogue glyph page {page}",
+            )
+            for page in range(PRECOMPOSED_PAGE_COUNT)
+        ),
+        *(
+            (
+                PRECOMPOSED_ADVANCE_PC + page * 0x100,
+                precomposed_assets.advances[page],
+                f"EN precomposed dialogue advances {page}",
+            )
+            for page in range(PRECOMPOSED_PAGE_COUNT)
+        ),
+        *(
+            (
+                PRECOMPOSED_WIDTH_PC + page * 0x100,
+                precomposed_assets.widths[page],
+                f"EN precomposed dialogue EN widths {page}",
+            )
+            for page in range(PRECOMPOSED_PAGE_COUNT)
+        ),
         (SHIFT_RIGHT_PC, shr, "Thai shift-right table"),
         (SHIFT_LEFT_PC, shl, "Thai shift-left table"),
         (PAGE_PC, assets["thai-page.bin"], "Thai glyph page"),
@@ -346,21 +464,14 @@ def _renderer_assets(
     )
     thai = build_renderer(
         THAI_RENDERER_PC,
-        source_base=PAGE_PC & 0xFFFF,
-        advance=ADVANCE_PC,
-        combining={
-            "mark_dx": MARK_DX_PC, "mark_y": MARK_Y_PC,
-            "mark_size": MARK_SIZE_PC, "base_ink": BASE_INK_PC,
-            "raised_y": RAISED_Y_PC,
-        },
-        shorthand={
-            "first": SHORTHAND_1_PC, "second": SHORTHAND_2_PC,
-            "third": SHORTHAND_3_PC,
-        },
-        upper_stacks={
-            "overlay": UPPER_OVERLAY_PC, "dx": UPPER_DX_PC,
-            "dy": UPPER_DY_PC, "size": UPPER_SIZE_PC,
-        },
+        source_base=0,
+        advance=PRECOMPOSED_ADVANCE_PC,
+        source_page_state=ROUTER_PAGE_STATE,
+        page_advances=tuple(
+            (PRECOMPOSED_PAGE_STATES[page], PRECOMPOSED_ADVANCE_PC + page * 0x100)
+            for page in range(1, PRECOMPOSED_PAGE_COUNT)
+        ),
+        source_bank=PRECOMPOSED_SOURCE_BANK,
         **common,
     )
     supplement = build_renderer(
@@ -432,7 +543,7 @@ def install(
         placements.extend((
             (WIDTH_ENTRY_PC, width_entry, "English-dialogue Thai VWF width adapter"),
             (ENTRY_PC, entry, "English-dialogue Thai VWF dispatcher"),
-            (THAI_RENDERER_PC, thai, "English-dialogue Thai VWF"),
+            (THAI_RENDERER_PC, thai, "English-dialogue precomposed VWF"),
             (SUPPLEMENT_RENDERER_PC, supplement, "English-dialogue supplement VWF"),
             (STOCK_RENDERER_PC, stock, "English-dialogue stock-glyph VWF"),
         ))

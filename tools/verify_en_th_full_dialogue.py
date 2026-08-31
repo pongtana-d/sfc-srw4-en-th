@@ -11,7 +11,17 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from srw4.en_baseline import EN_SHA256
-from srw4.en_dialogue_streams import compile_text
+from srw4.en_dialogue_font import BATTLE_QUOTE_PADDING, BATTLE_QUOTE_PADDING_TOKEN
+from srw4.en_dialogue_streams import PrecomposedDialogueCompiler
+from srw4.en_precomposed import (
+    ADVANCE_PC as PRECOMPOSED_ADVANCE_PC,
+    PAGE_BYTES as PRECOMPOSED_PAGE_BYTES,
+    PAGE_COUNT as PRECOMPOSED_PAGE_COUNT,
+    PAGE_PC as PRECOMPOSED_PAGE_PC,
+    WIDTH_PC as PRECOMPOSED_WIDTH_PC,
+    build_assets as build_precomposed_assets,
+    slot_for_token,
+)
 from srw4.rom import sha256
 from srw4.script import read_master_table
 
@@ -21,12 +31,53 @@ def main() -> int:
     parser.add_argument("--rom", type=Path, default=ROOT / "build" / "srw4-en-th.sfc")
     args = parser.parse_args()
     rom = args.rom.read_bytes()
+    base = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc").read_bytes()
+    if sha256(base) != EN_SHA256:
+        raise SystemExit("workspace EN base ROM does not match the pinned hash")
     source = json.loads((ROOT / "data" / "translations" / "script.source.json").read_text())
     translations = json.loads((ROOT / "data" / "translations" / "script.th.json").read_text())["messages"]
-    layout = json.loads((ROOT / "data" / "font" / "encoding.json").read_text())
-    streams = {key: compile_text(value, layout) for key, value in translations.items()}
+    rows_by_block: dict[int, list[dict]] = {}
+    for row in source["messages"]:
+        rows_by_block.setdefault(int(row["block"]), []).append(row)
+    branch_ranges = {
+        block: range(
+            min(int(row["offset"], 0) for row in rows),
+            int(next(item for item in source["summary"]["blocks"]
+                     if int(item["slot"]) == block)["extent"], 0) + 1,
+        )
+        for block, rows in rows_by_block.items()
+    }
+    compiler = PrecomposedDialogueCompiler()
+    streams = {
+        str(row["id"]): compiler.compile(
+            translations[str(row["id"])],
+            where=str(row["id"]),
+            branch_range=branch_ranges[int(row["block"])],
+        )
+        for row in source["messages"]
+    }
     if len(streams) != 9382:
         raise SystemExit(f"expected 9382 translated records, got {len(streams)}")
+    assets = build_precomposed_assets(base)
+    for page in range(PRECOMPOSED_PAGE_COUNT):
+        page_at = PRECOMPOSED_PAGE_PC + page * PRECOMPOSED_PAGE_BYTES
+        if rom[page_at:page_at + PRECOMPOSED_PAGE_BYTES] != assets.pages[page]:
+            raise SystemExit(f"precomposed glyph page {page} differs from editable font source")
+        advance_at = PRECOMPOSED_ADVANCE_PC + page * 0x100
+        if rom[advance_at:advance_at + 0x100] != assets.advances[page]:
+            raise SystemExit(f"precomposed advance page {page} differs from editable font source")
+        width_at = PRECOMPOSED_WIDTH_PC + page * 0x100
+        if rom[width_at:width_at + 0x100] != assets.widths[page]:
+            raise SystemExit(f"precomposed EN-width page {page} differs from editable font source")
+    pad_page, pad_slot = slot_for_token(assets.token_map, BATTLE_QUOTE_PADDING_TOKEN)
+    if BATTLE_QUOTE_PADDING != assets.token_map.encode_glyph(BATTLE_QUOTE_PADDING_TOKEN):
+        raise SystemExit("battle quote padding does not use the locked precomposed token")
+    if len(BATTLE_QUOTE_PADDING) != 2:
+        raise SystemExit("battle quote padding changed the EN dispatch record length")
+    if assets.advances[pad_page][pad_slot] != 0 or any(
+        assets.pages[pad_page][pad_slot * 16:(pad_slot + 1) * 16]
+    ):
+        raise SystemExit("battle quote padding is not blank and zero-advance")
     master = read_master_table(rom)
     active = [block for block in source["summary"]["blocks"] if block.get("kind") != "unused"]
     grouped: dict[int, list[tuple[int, int, dict]]] = {}
@@ -59,6 +110,8 @@ def main() -> int:
         "blocks": len(active),
         "records": len(streams),
         "table_pointers": pointer_count,
+        "precomposed_tokens": len(assets.token_map.tokens),
+        "precomposed_pages": PRECOMPOSED_PAGE_COUNT,
         "status": "ok",
     }, ensure_ascii=False))
     return 0

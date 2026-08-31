@@ -4,6 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from .atlas import AtlasBuilder
+from .tokens import TokenMap
 
 
 # Only glyphs used by the current EN-ROM Thai build are authored here.  Codes
@@ -25,10 +26,16 @@ SLOT = {
 
 # EN battle dispatch headers reserve two bytes between the pilot-name command
 # and the quote selector. Thai quote records already begin with their own
-# ``: `` separator. Primary slot $03 is deliberately unallocated, blank and
-# zero-advance; the percent glyph remains at supplement slot $00.
-BATTLE_QUOTE_PADDING_SLOT = 0x03
-BATTLE_QUOTE_PADDING = bytes((0xC1, BATTLE_QUOTE_PADDING_SLOT))
+# ``: `` separator.  The locked precomposed token map owns an explicit blank,
+# zero-advance ``icon:Pad`` glyph; it deliberately encodes to two native
+# `$F0-$F3` bytes so dispatch offsets stay unchanged.
+_FONT = Path(__file__).resolve().parents[2] / "data" / "font"
+BATTLE_QUOTE_PADDING_TOKEN = "icon:Pad"
+BATTLE_QUOTE_PADDING = TokenMap.load(
+    _FONT / "renewal-clusters.json"
+).encode_glyph(BATTLE_QUOTE_PADDING_TOKEN)
+if len(BATTLE_QUOTE_PADDING) != 2:
+    raise RuntimeError("battle quote padding must retain the EN header's two bytes")
 
 # Weapon badges must not be allocated at the tail of the full catalog-cluster
 # page.  The live weapon-list path drops cluster codes $E8-$EA before they

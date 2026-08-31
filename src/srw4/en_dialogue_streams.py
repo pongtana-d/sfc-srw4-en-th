@@ -1,12 +1,17 @@
 """Compile translated EN dialogue text into private FF-page byte streams."""
 from __future__ import annotations
 
+import json
 import re
 from collections.abc import Mapping
+from pathlib import Path
 
 from .en_dialogue_font import SLOT
 from .en_dialogue_codec import DictionaryCodec, build as build_dictionary
-from .proven.text.encoding import encode
+from .proven.text.encoding import encode as encode_legacy
+from .stream import decode, encode as encode_precomposed
+from .text import Tokenizer, load_stock_codes
+from .tokens import TokenMap
 
 
 _TAG = re.compile(r"<[^>]+>")
@@ -57,7 +62,7 @@ def _plain(text: str, layout: Mapping[str, object]) -> bytes:
         def flush() -> None:
             if not chunk:
                 return
-            for byte in encode("".join(chunk), codes, shorthand, phrases):
+            for byte in encode_legacy("".join(chunk), codes, shorthand, phrases):
                 # `$C0`-$EB overlap engine controls and must always be led.
                 # The first byte of each render run also establishes the page.
                 emit(byte)
@@ -79,18 +84,81 @@ def _plain(text: str, layout: Mapping[str, object]) -> bytes:
     return bytes(output)
 
 
-def compile_text(text: str, layout: Mapping[str, object]) -> bytes:
-    """Compile one authored translation, retaining every explicit control."""
-    output = bytearray()
-    cursor = 0
-    for match in _TAG.finditer(text):
-        output.extend(_plain(text[cursor:match.start()], layout))
-        output.extend(_control(match.group()))
-        cursor = match.end()
-    output.extend(_plain(text[cursor:], layout))
-    if not output or output[-1] not in (0xF7, 0xFF):
-        raise ValueError("dialogue stream has no authored terminator")
-    return bytes(output)
+class PrecomposedDialogueCompiler:
+    """Compile EN story records into the locked direct/extended token stream."""
+
+    def __init__(self) -> None:
+        root = Path(__file__).resolve().parents[2]
+        font = root / "data" / "font"
+        self.token_map = TokenMap.load(font / "renewal-clusters.json")
+        self.tokenizer = Tokenizer(
+            set(json.loads((font / "renewal-icons.json").read_text(encoding="utf-8"))["glyphs"]),
+            load_stock_codes(font / "renewal-stock.json"),
+        )
+
+    def compile(
+        self,
+        text: str,
+        *,
+        where: str = "",
+        branch_range: range | None = None,
+    ) -> bytes:
+        """Return a record whose glyph bytes select final atlas cells directly."""
+        parsed = self.tokenizer.tokenize(
+            text,
+            where=where,
+            # Standalone callers do not have a block map.  The production
+            # repacker always supplies the exact block span below.
+            branch_range=range(0x10000) if branch_range is None else branch_range,
+        )
+        if parsed.issues:
+            label = f"{where}: " if where else ""
+            raise ValueError(label + "; ".join(parsed.issues))
+        missing = sorted(
+            {
+                piece.token
+                for piece in parsed.pieces
+                if hasattr(piece, "token") and piece.token not in self.token_map
+            }
+        )
+        if missing:
+            label = f"{where}: " if where else ""
+            raise ValueError(label + "tokens outside renewal manifest: " + ", ".join(missing))
+        record = encode_precomposed(parsed.pieces, self.token_map)
+        # This catches a malformed `$F0-$F3` pair or a control operand before
+        # relocation can put it in a live story bank.
+        decode(record.data, self.token_map, record.branch_tables)
+        if not record.data or record.data[-1] not in (0xF7, 0xFF):
+            raise ValueError("dialogue stream has no authored terminator")
+        return record.data
+
+
+_PRECOMPOSED_COMPILER: PrecomposedDialogueCompiler | None = None
+
+
+def _precomposed_compiler() -> PrecomposedDialogueCompiler:
+    global _PRECOMPOSED_COMPILER
+    if _PRECOMPOSED_COMPILER is None:
+        _PRECOMPOSED_COMPILER = PrecomposedDialogueCompiler()
+    return _PRECOMPOSED_COMPILER
+
+
+def compile_text(
+    text: str,
+    layout: Mapping[str, object] | None = None,
+    *,
+    where: str = "",
+    branch_range: range | None = None,
+) -> bytes:
+    """Compile one EN dialogue record with the precomposed runtime contract.
+
+    ``layout`` remains accepted for callers from the legacy page-lead compiler;
+    it does not participate in this stream format.
+    """
+    del layout
+    return _precomposed_compiler().compile(
+        text, where=where, branch_range=branch_range
+    )
 
 
 def compile_ordinary_text(
@@ -120,7 +188,7 @@ def compile_ordinary_text(
             def flush_primary() -> None:
                 if not primary:
                     return
-                encoded = encode(
+                encoded = encode_legacy(
                     "".join(primary),
                     layout["codes"],
                     layout["shorthand"],

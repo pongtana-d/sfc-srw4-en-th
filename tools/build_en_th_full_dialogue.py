@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from srw4.en_baseline import EN_SHA256
-from srw4.en_dialogue_streams import compile_text
+from srw4.en_dialogue_streams import PrecomposedDialogueCompiler
 from srw4.en_ff_router import install as install_router
 from srw4.en_intro import install as install_intro
 from srw4.en_story_build import install_full_story
@@ -30,9 +30,6 @@ from srw4.rom import Rom, sha256
 BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
 SOURCE = ROOT / "data" / "translations" / "script.source.json"
 TRANSLATIONS = ROOT / "data" / "translations" / "script.th.json"
-# The editable atlas and encoding are the sole source of truth.  `proven/`
-# remains only the renderer-side page serializer used by this EN adapter.
-FONT = ROOT / "data" / "font"
 # Character Archives owns all 240 pointer rows in block 48, then continues
 # through rows 0-37 of block 49. Row 38 starts the unrelated Astonaige event.
 PROFILE_CONTINUATION_POINTERS = 38
@@ -112,7 +109,7 @@ def main() -> int:
 
     document = json.loads(SOURCE.read_text(encoding="utf-8"))
     translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]
-    layout = json.loads((FONT / "encoding.json").read_text(encoding="utf-8"))
+    dialogue_compiler = PrecomposedDialogueCompiler()
     profile_ids = set()
     for row in document["messages"]:
         block = int(row["block"])
@@ -140,7 +137,9 @@ def main() -> int:
         base,
         document,
         translated,
-        lambda text: compile_text(text, layout),
+        lambda text, where, branch_range: dialogue_compiler.compile(
+            text, where=where, branch_range=branch_range
+        ),
         ordinary_records=profile_records,
     )
 

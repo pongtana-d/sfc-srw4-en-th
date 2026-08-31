@@ -60,13 +60,16 @@ def test_every_glyph_is_one_cell_of_sixteen_rows(glyphs):
 
 
 def test_advances_stay_inside_the_cell(glyphs):
-    for glyph in glyphs.values():
-        assert MIN_ADVANCE <= glyph.advance <= MAX_ADVANCE
+    for token, glyph in glyphs.items():
+        if token == "icon:Pad":
+            assert glyph.advance == 0
+        else:
+            assert MIN_ADVANCE <= glyph.advance <= MAX_ADVANCE
 
 
-def test_the_only_blank_glyph_is_the_space(glyphs):
+def test_blank_glyphs_are_the_space_and_explicit_battle_padding(glyphs):
     blank = [token for token, glyph in glyphs.items() if glyph.ink_width == 0]
-    assert blank == ["char: "]
+    assert blank == ["char: ", "icon:Pad"]
 
 
 def test_the_atlas_fits_well_under_one_bank(glyphs):

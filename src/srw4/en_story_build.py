@@ -46,11 +46,6 @@ def fields(data: bytes, *, where: str) -> tuple[int, ...]:
     index = 0
     while index < len(data):
         lead = data[index]
-        if lead in (0xC0, 0xC1, 0xC2):
-            if index + 1 >= len(data):
-                raise RomError(f"{where}: private page lead has no slot")
-            index += 2
-            continue
         if lead < 0xF0:
             index += 1
             continue
@@ -124,8 +119,8 @@ def replace_en_quote_separators(data: bytearray) -> int:
 
     ``$AB $43`` supplies colon and space for English quote bodies, but Thai
     quote bodies already begin with their own separator. Use the dedicated
-    zero-advance primary slot; replacement stays in-place so every dispatch
-    offset remains unchanged.
+    zero-advance precomposed glyph; replacement stays in-place so every
+    dispatch offset remains unchanged.
     """
     count = 0
     cursor = 0
@@ -209,7 +204,7 @@ def _en_record_source(clean: bytes, slot: int, table_bytes: int) -> tuple[int, i
 
 def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                        messages: Mapping[str, str],
-                       compile_text: Callable[[str], bytes],
+                       compile_text: Callable[[str, str, range], bytes],
                        ordinary_records: Mapping[
                            str, tuple[bytes, tuple[int, ...]]
                        ] | None = None) -> StoryBuildReport:
@@ -219,6 +214,14 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
         slot: sorted((row for row in document["messages"] if int(row["block"]) == slot),
                      key=lambda row: int(row["offset"], 0))
         for slot in blocks
+    }
+    branch_ranges = {
+        slot: range(
+            min(int(row["offset"], 0) for row in rows),
+            int(blocks[slot]["extent"], 0) + 1,
+        )
+        for slot, rows in rows_by_block.items()
+        if rows
     }
     spans = [[bank, 1, 0x10000] for bank in STORY_BANKS]
     order = [49, 50, 51, *range(43), 48]
@@ -244,7 +247,11 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
         for row in rows:
             message_id = str(row["id"])
             routed = ordinary_records.get(message_id)
-            payload = routed[0] if routed is not None else compile_text(messages[message_id])
+            payload = (
+                routed[0]
+                if routed is not None
+                else compile_text(messages[message_id], message_id, branch_ranges[slot])
+            )
             streams[message_id] = bytearray(payload)
         if any(not stream or stream[-1] not in (0xF7, 0xFF) for stream in streams.values()):
             raise RomError(f"story block {slot}: stream has no terminator")
