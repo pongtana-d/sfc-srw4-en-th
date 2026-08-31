@@ -1342,7 +1342,7 @@
     },
     "terrain": {
       "アクシズ": "แอ็กซิส",
-      "ア・バオア・クー": "อะ บาโออา คู",
+      "ア・バオア・クー": "อา บาโออา คู",
       "エネルギータンク": "ถังพลังงาน",
       "ガケ": "หน้าผา",
       "クレバス": "รอยแยก",
@@ -1656,7 +1656,7 @@
         "アデレード": "แอดิเลด",
         "アフリカ": "แอฟริกา",
         "アメリカ": "อเมริกา",
-        "ア・バオア・クー": "อะ บาโออา คู",
+        "ア・バオア・クー": "อา บาโออา คู",
         "インド": "อินเดีย",
         "オオサカシティ": "เมืองโอซาก้า",
         "オーストラリア": "ออสเตรเลีย",
@@ -1760,6 +1760,29 @@
         "レーダー": "เรดาร์",
         "ロボット": "หุ่นยนต์",
         "ロマン": "โรแมนซ์"
+      },
+      "ranks": {
+        "中佐": "พันโท",
+        "中将": "พลโท",
+        "中尉": "ร้อยโท",
+        "伍長": "สิบตรี",
+        "准将": "พลจัตวา",
+        "准尉": "ว่าที่ร้อยตรี",
+        "大佐": "พันเอก",
+        "大元帥": "มหาจอมทัพ",
+        "大将": "พลเอก",
+        "大将軍": "จอมทัพ",
+        "大尉": "ร้อยเอก",
+        "将軍": "แม่ทัพ",
+        "少佐": "พันตรี",
+        "少将": "พลตรี",
+        "少尉": "ร้อยตรี",
+        "提督": "แม่ทัพ",
+        "曹長": "จ่าสิบเอก",
+        "総帥": "ผู้นำสูงสุด",
+        "艦長": "กัปตัน",
+        "軍曹": "จ่า",
+        "長官": "ผบ."
       }
     }
   },
@@ -2182,7 +2205,7 @@
       ]
     },
     "ア・バオア・クー": {
-      "translation": "อะ บาโออา คู",
+      "translation": "อา บาโออา คู",
       "origins": [
         "terrain",
         "glossary.places"
@@ -9072,6 +9095,24 @@
         "terrain"
       ]
     },
+    "中佐": {
+      "translation": "พันโท",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "中将": {
+      "translation": "พลโท",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "中尉": {
+      "translation": "ร้อยโท",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
     "中性子レーザー": {
       "translation": "เลเซอร์นิวตรอน",
       "origins": [
@@ -9102,6 +9143,12 @@
       "translation": "AI รุ่นปรับปรุง",
       "origins": [
         "pilots"
+      ]
+    },
+    "伍長": {
+      "translation": "สิบตรี",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "低木": {
@@ -9206,6 +9253,18 @@
       "translation": "ลำแสงเยือกแข็ง",
       "origins": [
         "weapons"
+      ]
+    },
+    "准将": {
+      "translation": "พลจัตวา",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "准尉": {
+      "translation": "ว่าที่ร้อยตรี",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "剣鉄也": {
@@ -9358,11 +9417,23 @@
         "pilots"
       ]
     },
+    "大佐": {
+      "translation": "พันเอก",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
     "大作": {
       "translation": "ไดซากุ",
       "origins": [
         "pilot_labels",
         "glossary.battle_labels"
+      ]
+    },
+    "大元帥": {
+      "translation": "มหาจอมทัพ",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "大口径ビーム砲<B>": {
@@ -9399,6 +9470,24 @@
       "translation": "ปืนอนุภาคขนาดใหญ่",
       "origins": [
         "weapons"
+      ]
+    },
+    "大将": {
+      "translation": "พลเอก",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "大将軍": {
+      "translation": "จอมทัพ",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "大尉": {
+      "translation": "ร้อยเอก",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "大火炎": {
@@ -9481,6 +9570,12 @@
         "weapons"
       ]
     },
+    "将軍": {
+      "translation": "แม่ทัพ",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
     "小介": {
       "translation": "โคสุเกะ",
       "origins": [
@@ -9504,6 +9599,24 @@
       "translation": "ปืนใหญ่เมก้าบีมเล็ก",
       "origins": [
         "weapons"
+      ]
+    },
+    "少佐": {
+      "translation": "พันตรี",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "少将": {
+      "translation": "พลตรี",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
+    "少尉": {
+      "translation": "ร้อยตรี",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "山": {
@@ -9674,6 +9787,12 @@
         "weapons"
       ]
     },
+    "提督": {
+      "translation": "แม่ทัพ",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
     "放電": {
       "translation": "ปล่อยไฟฟ้า",
       "origins": [
@@ -9748,6 +9867,12 @@
         "pilot_labels",
         "units",
         "glossary.characters"
+      ]
+    },
+    "曹長": {
+      "translation": "จ่าสิบเอก",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "月": {
@@ -10231,6 +10356,12 @@
         "pilots"
       ]
     },
+    "総帥": {
+      "translation": "ผู้นำสูงสุด",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
     "縮退砲": {
       "translation": "ปืนใหญ่ยุบตัว",
       "origins": [
@@ -10247,6 +10378,12 @@
       "translation": "ดันไบน์ OVA",
       "origins": [
         "series"
+      ]
+    },
+    "艦長": {
+      "translation": "กัปตัน",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "荒地": {
@@ -10421,6 +10558,12 @@
         "terrain"
       ]
     },
+    "軍曹": {
+      "translation": "จ่า",
+      "origins": [
+        "glossary.ranks"
+      ]
+    },
     "逆襲のシャア": {
       "translation": "ชาร์โต้กลับ",
       "origins": [
@@ -10462,6 +10605,12 @@
       "origins": [
         "pilot_labels",
         "glossary.battle_labels"
+      ]
+    },
+    "長官": {
+      "translation": "ผบ.",
+      "origins": [
+        "glossary.ranks"
       ]
     },
     "闘将ダイモス": {
