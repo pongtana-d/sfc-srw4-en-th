@@ -19,16 +19,15 @@ from srw4.atlas import (  # noqa: E402
     ink_box,
 )
 from srw4.png import write_greyscale  # noqa: E402
-from srw4.rom import Rom  # noqa: E402
 from srw4.tokens import EncodingError, TokenMap  # noqa: E402
 
 FONT_DIR = ROOT / "data" / "font"
-CLEAN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
 
 
 @pytest.fixture(scope="module")
 def rom() -> bytes:
-    return Rom.load_clean(CLEAN_ROM).to_bytes()
+    return EN_ROM.read_bytes()
 
 
 @pytest.fixture(scope="module")
@@ -139,6 +138,24 @@ def test_a_tone_mark_rises_above_an_above_vowel(builder):
     alone = builder.build("cluster:ส้")
     stacked = builder.build("cluster:สี้")
     assert stacked.top < alone.top
+
+
+def test_contextual_stacks_are_used_at_their_saved_absolute_positions(builder, monkeypatch):
+    normal = [0b00000001] + [0] * (CELL_ROWS - 1)
+    left = [0b00000010] + [0] * (CELL_ROWS - 1)
+    monkeypatch.setitem(builder.contextual["upper_stacks"]["normal"], "ี้", normal)
+    monkeypatch.setitem(builder.contextual["upper_stacks"]["left"], "ี้", left)
+    for token, stack in (("cluster:สี้", normal), ("cluster:ปี้", left)):
+        glyph = builder.build(token)
+        base = builder.bases[token.split(":", 1)[1][0]]["rows"]
+        assert glyph.rows == tuple(a | b for a, b in zip(base, stack))
+
+
+def test_yo_ying_uses_its_tail_cut_base_before_a_lower_vowel(builder):
+    glyph = builder.build("cluster:ญู")
+    cut = builder.contextual["lower_base_variants"]["ญ"]["rows"]
+    lower = builder.contextual["lower_stacks"]["normal"]["ู"]
+    assert glyph.rows == tuple(a | b for a, b in zip(cut, lower))
 
 
 def test_a_tall_vowel_does_not_swallow_the_tone_above_it(builder):

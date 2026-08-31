@@ -13,14 +13,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 MESEN = Path("/Applications/Mesen.app/Contents/MacOS/Mesen")
 LUA = ROOT / "tools" / "lua" / "wram-snapshots.lua"
-STATE_ROM_SHA256 = "824f093378607a7cd98b42ec2f77cd40f6f432b24fe13d6315586b084b393787"
-FRAMES = (240, 500, 700, 900, 1100)
+ROM_SHA256 = "9cf335b68afe051a9ec3c6058c894abcfcaa047bc89f58a341c73face774e2b9"
+STATE_SHA256 = "d3102a5c156f735f73495a315b99fff9302bcd4b04dc6017ec08d12756356526"
+FRAMES = (240, 500, 700, 900, 1200)
 GOLDEN = {
-    240: "6ce9c6c6d1997d3e18c7280aed0d2b75dc10fe1d21aacbf5e496c99aedd1f1e5",
-    500: "ae9bbe6f5e9fc201ec7b45910496590cb14f91e55b83b07999702d5d7db3bd02",
-    700: "5297c26903adf820868147a01c03753b186101a86fff989525c21be4917eae5f",
-    900: "2af8d01a6b82d9eacf0f20325a26c55eda5fc8df46d5336ce47cd88754c90c29",
-    1100: "30b016bf2271c93cfb7de4388c8914d5fac3079236d7cd0fb66449d82effb622",
+    240: "19f7e36dc0b3b2f937974e23c8f3b8300b53a76d46ab902221d78d71939de555",
+    500: "28579ba5863182d5711dd7b51658d7c6483def521ebfdf4e784485f37fc4728b",
+    700: "0d798f0d12df4d0e385fba5905e3b79d36e460bf6c84394d2c0ce57ced531e7d",
+    900: "886f220d7f857b19dfbb0809e22f62b5069cd7ca37097ecb2ae43d7b9c6f36fd",
+    1200: "4981d56d88de75911b6fbfbeac519431534e7c8a3f07f4127fdbbf87c2144ad3",
 }
 
 
@@ -28,7 +29,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--rom", type=Path, default=ROOT / "build" / "srw4-en-th.sfc")
     parser.add_argument(
-        "--state", type=Path, default=ROOT / "save" / "en-battle-quote.mss"
+        "--state", type=Path, default=ROOT / "save" / "battle.mss"
     )
     args = parser.parse_args()
     rom, state = args.rom.resolve(), args.state.resolve()
@@ -36,10 +37,16 @@ def main() -> int:
         if not path.is_file():
             raise SystemExit(f"required battle gate input is missing: {path}")
     actual_rom_sha256 = hashlib.sha256(rom.read_bytes()).hexdigest()
-    if actual_rom_sha256 != STATE_ROM_SHA256:
+    if actual_rom_sha256 != ROM_SHA256:
         raise SystemExit(
-            "EN battle quote state is stale for this ROM: "
-            f"state expects {STATE_ROM_SHA256}, ROM is {actual_rom_sha256}"
+            "EN battle quote gate expects the verified ROM: "
+            f"expected {ROM_SHA256}, got {actual_rom_sha256}"
+        )
+    actual_state_sha256 = hashlib.sha256(state.read_bytes()).hexdigest()
+    if actual_state_sha256 != STATE_SHA256:
+        raise SystemExit(
+            "EN battle quote gate expects the verified state: "
+            f"expected {STATE_SHA256}, got {actual_state_sha256}"
         )
 
     with tempfile.TemporaryDirectory(prefix="srw4-en-battle-") as temporary:
@@ -53,7 +60,7 @@ def main() -> int:
                 SRW4_OUT=str(prefix),
                 SRW4_PRESS="5:a",
                 SRW4_SHOTS=",".join(map(str, FRAMES)),
-                SRW4_FRAMES="1105",
+                SRW4_FRAMES="1205",
             ),
             stdout=subprocess.DEVNULL,
             stderr=subprocess.STDOUT,

@@ -34,6 +34,7 @@ Thai precompose + VWF, string pool แบบ variable-length และกรอ�
 | ไฟล์ | หน้าที่ |
 |---|---|
 | data/translations/ | source และคำแปลของ script/catalog/menu |
+| data/translations/references/ | reference รวมแบบ generated สำหรับแปลบทสนทนา |
 | data/font/ | glyph, cluster, encoding, icon และ override |
 | data/config/ | ROM map, hooks, allocation, windows และ surfaces |
 | src/srw4/ | parser, tokenizer, atlas, reference, repack และ runtime support |

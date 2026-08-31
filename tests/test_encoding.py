@@ -40,6 +40,12 @@ def test_marks_attach_to_the_character_before_them():
     assert segment("กา") == ["ก", "า"]
 
 
+def test_sara_am_becomes_nikhahit_on_the_base_plus_spacing_aa():
+    assert segment("กำ") == ["กํ", "า"]
+    assert segment("น้ำ") == ["นํ้", "า"]
+    assert segment("ต่ำ") == ["ตํ่", "า"]
+
+
 def test_a_leading_vowel_is_its_own_cluster():
     # เ and แ are written before their consonant and stand alone as glyphs.
     assert segment("เกม") == ["เ", "ก", "ม"]

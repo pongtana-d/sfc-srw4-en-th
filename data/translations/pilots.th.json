@@ -7,7 +7,7 @@
     ],
     "source": "チャム＝ファウ",
     "source_hex": "B0 D2 CF E3 C4 90 95 FF",
-    "translation": "ชัม ฮวาว",
+    "translation": "ชัม ฟาว",
     "method": "reviewed_name_report"
   },
   {
@@ -17,7 +17,7 @@
     ],
     "source": "ベル＝ア－ル",
     "source_hex": "C8 DA E3 91 11 DA FF",
-    "translation": "เบล เอิร์ล",
+    "translation": "เบล อาร์ล",
     "method": "reviewed_exact"
   },
   {
@@ -27,7 +27,7 @@
     ],
     "source": "エル＝フィノ",
     "source_hex": "97 DA E3 C4 92 BD FF",
-    "translation": "เอล ฟีโน",
+    "translation": "เอล ฟิโน",
     "method": "reviewed_exact"
   },
   {
@@ -37,7 +37,7 @@
     ],
     "source": "リリス＝ファウ",
     "source_hex": "D9 D9 A8 E3 C4 90 95 FF",
-    "translation": "ลิลิส ฟอว์",
+    "translation": "ลิลิส ฟาว",
     "method": "reviewed_name_report"
   },
   {
@@ -47,7 +47,7 @@
     ],
     "source": "シルキ－＝マウ",
     "source_hex": "A6 DA 9C 11 E3 CD 95 FF",
-    "translation": "ซิลกี เมาว์",
+    "translation": "ซิลกี้ เมา",
     "method": "reviewed_exact"
   },
   {
@@ -67,7 +67,7 @@
     ],
     "source": "ジャック＝キング",
     "source_hex": "A7 D2 B2 9E E3 9C DF 9F FF",
-    "translation": "แจ็ก คิง",
+    "translation": "แจ็ค คิง",
     "method": "reviewed_exact"
   },
   {
@@ -77,7 +77,7 @@
     ],
     "source": "メリ－＝キング",
     "source_hex": "D0 D9 11 E3 9C DF 9F FF",
-    "translation": "แมรี คิง",
+    "translation": "แมรี่ คิง",
     "method": "reviewed_exact"
   },
   {
@@ -117,7 +117,7 @@
     ],
     "source": "北条真吾",
     "source_hex": "F0 18 F0 37 F1 D2 F3 02 FF",
-    "translation": "ชิงโง โฮโจ",
+    "translation": "ชินโง โฮโจ",
     "method": "reviewed_exact"
   },
   {
@@ -127,7 +127,7 @@
     ],
     "source": "レミ－島田",
     "source_hex": "DB CE 11 F2 06 F3 27 FF",
-    "translation": "เรมี ชิมาดะ",
+    "translation": "เรมี่ ชิมาดะ",
     "method": "reviewed_exact"
   },
   {
@@ -137,7 +137,7 @@
     ],
     "source": "キリ－＝ギャグレイ",
     "source_hex": "9C D9 11 E3 9D D2 9F DB 93 FF",
-    "translation": "คิลลี แก็กลี",
+    "translation": "คิลลี่ แก็กลีย์",
     "method": "reviewed_name_report"
   },
   {
@@ -147,7 +147,7 @@
     ],
     "source": "神勝平",
     "source_hex": "F0 06 F0 C9 F1 11 FF",
-    "translation": "คัปเป จิน",
+    "translation": "คัปเปย์ จิน",
     "method": "reviewed_exact"
   },
   {
@@ -167,7 +167,7 @@
     ],
     "source": "神北恵子",
     "source_hex": "F0 06 F0 18 F3 84 F0 84 FF",
-    "translation": "เคโกะ คามิคิตะ",
+    "translation": "เคโกะ คามิกิตะ",
     "method": "reviewed_exact"
   },
   {
@@ -177,7 +177,7 @@
     ],
     "source": "藤原忍",
     "source_hex": "F4 1E F0 13 F4 1F FF",
-    "translation": "ชิโนบุ ฟูจิวาระ",
+    "translation": "ชิโนบุ ฟุจิวาระ",
     "method": "reviewed_exact"
   },
   {
@@ -187,7 +187,7 @@
     ],
     "source": "結城沙羅",
     "source_hex": "F1 3D F3 B4 F4 20 F4 21 FF",
-    "translation": "ซาระ ยูกิ",
+    "translation": "ซาร่า ยูกิ",
     "method": "reviewed_exact"
   },
   {
@@ -247,7 +247,7 @@
     ],
     "source": "南原ちずる",
     "source_hex": "F0 12 F0 13 60 59 8A FF",
-    "translation": "จิซึรุ นันบาระ",
+    "translation": "จิซึรุ นัมบาระ",
     "method": "reviewed_exact"
   },
   {
@@ -297,8 +297,8 @@
     ],
     "source": "リュ－ネ＝ゾルダ－ク",
     "source_hex": "D9 D4 11 BC E3 AD DA AF 11 9E FF",
-    "translation": "ริวเน โซลดาร์ก",
-    "method": "reviewed_exact"
+    "translation": "ริวเน่ ซอลดาร์ก",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x6EAA",
@@ -317,7 +317,7 @@
     ],
     "source": "クワトロ＝バジ－ナ",
     "source_hex": "9E DD B7 DC E3 BF A7 11 B9 FF",
-    "translation": "ควัตโตร บาจีนา",
+    "translation": "ควาโทร บาจิน่า",
     "method": "reviewed_name_report"
   },
   {
@@ -357,7 +357,7 @@
     ],
     "source": "マチルダ＝アジャン",
     "source_hex": "CD B0 DA AF E3 91 A7 D2 DF FF",
-    "translation": "มาทิลดา อาจาน",
+    "translation": "มาทิลด้า อาจาน",
     "method": "reviewed_exact"
   },
   {
@@ -367,7 +367,7 @@
     ],
     "source": "セイラ＝マス",
     "source_hex": "AA 93 D8 E3 CD A8 FF",
-    "translation": "เซย์ลา มาส",
+    "translation": "เซย์ล่า มาส",
     "method": "reviewed_exact"
   },
   {
@@ -387,7 +387,7 @@
     ],
     "source": "ティアンム",
     "source_hex": "B5 92 91 DF CF FF",
-    "translation": "เทียเนม",
+    "translation": "เทียนัม",
     "method": "reviewed_name_report"
   },
   {
@@ -397,7 +397,7 @@
     ],
     "source": "エマ＝シ－ン",
     "source_hex": "97 CD E3 A6 11 DF FF",
-    "translation": "เอ็มมา ชีน",
+    "translation": "เอ็มม่า ชีน",
     "method": "reviewed_exact"
   },
   {
@@ -417,7 +417,7 @@
     ],
     "source": "ファ＝ユイリィ",
     "source_hex": "C4 90 E3 D5 93 D9 92 FF",
-    "translation": "ฟา ยูอิรี",
+    "translation": "ฟา ยูอิรี่",
     "method": "reviewed_exact"
   },
   {
@@ -427,7 +427,7 @@
     ],
     "source": "カツ＝コバヤシ",
     "source_hex": "9A B3 E3 A2 BF D3 A6 FF",
-    "translation": "คัตซ์ โคบายาชิ",
+    "translation": "คัตสึ โคบายาชิ",
     "method": "reviewed_exact"
   },
   {
@@ -447,7 +447,7 @@
     ],
     "source": "ベルト－チカ＝イルマ",
     "source_hex": "C8 DA B7 11 B0 9A E3 93 DA CD FF",
-    "translation": "เบลทอร์ชิกา อิลมา",
+    "translation": "เบลทอร์ชิกา เออร์มา",
     "method": "reviewed_exact"
   },
   {
@@ -457,7 +457,7 @@
     ],
     "source": "ケリィ＝レズナ－",
     "source_hex": "A0 D9 92 E3 DB A9 B9 11 FF",
-    "translation": "เคลลี เลย์ซเนอร์",
+    "translation": "เคลลี่ เลซเนอร์",
     "method": "reviewed_roman"
   },
   {
@@ -467,7 +467,7 @@
     ],
     "source": "ヘンケン＝ベッケナ－",
     "source_hex": "C7 DF A0 DF E3 C8 B2 A0 B9 11 FF",
-    "translation": "เฮนเคน เบ็กเคเนอร์",
+    "translation": "เฮนเคน เบ็กเกเนอร์",
     "method": "reviewed_name_report"
   },
   {
@@ -487,7 +487,7 @@
     ],
     "source": "ル－＝ルカ",
     "source_hex": "DA 11 E3 DA 9A FF",
-    "translation": "รู ลูคา",
+    "translation": "รู ลูค่า",
     "method": "reviewed_name_report"
   },
   {
@@ -497,7 +497,7 @@
     ],
     "source": "エルピ－＝プル",
     "source_hex": "97 DA C3 11 E3 C6 DA FF",
-    "translation": "เอลพีโอ พลี",
+    "translation": "เอลพี พลู",
     "method": "reviewed_name_report"
   },
   {
@@ -507,7 +507,7 @@
     ],
     "source": "プルツ－",
     "source_hex": "C6 DA B3 11 FF",
-    "translation": "พลี ทู",
+    "translation": "พลูทู",
     "method": "reviewed_name_report"
   },
   {
@@ -517,7 +517,7 @@
     ],
     "source": "リィナ＝ア－シタ",
     "source_hex": "D9 92 B9 E3 91 11 A6 AE FF",
-    "translation": "ลีนา อาชตา",
+    "translation": "ลีน่า อาชิตะ",
     "method": "reviewed_exact"
   },
   {
@@ -527,7 +527,7 @@
     ],
     "source": "ビ－チャ＝オレ－グ",
     "source_hex": "C2 11 B0 D2 E3 99 DB 11 9F FF",
-    "translation": "บีชา โอเล็ก",
+    "translation": "บีช่า โอเลก",
     "method": "reviewed_roman"
   },
   {
@@ -537,7 +537,7 @@
     ],
     "source": "モンド＝アガケ",
     "source_hex": "D1 DF B8 E3 91 9B A0 FF",
-    "translation": "มอนโด อากาเกะ",
+    "translation": "มอนโด้ อากาเกะ",
     "method": "reviewed_roman"
   },
   {
@@ -547,7 +547,7 @@
     ],
     "source": "エル＝ビアンノ",
     "source_hex": "97 DA E3 C2 91 DF BD FF",
-    "translation": "เอล เวียโน",
+    "translation": "เอล บิอันโน่",
     "method": "reviewed_name_report"
   },
   {
@@ -557,7 +557,7 @@
     ],
     "source": "イ－ノ＝アッバ－ブ",
     "source_hex": "93 11 BD E3 91 B2 BF 11 C5 FF",
-    "translation": "อีโน อับบาฟ",
+    "translation": "อีโน่ อับบาฟ",
     "method": "reviewed_roman"
   },
   {
@@ -567,7 +567,7 @@
     ],
     "source": "エマリ－＝オンス",
     "source_hex": "97 CD D9 11 E3 99 DF A8 FF",
-    "translation": "เอมารี ออนซ์",
+    "translation": "เอมารี่ ออนซ์",
     "method": "reviewed_roman"
   },
   {
@@ -577,7 +577,7 @@
     ],
     "source": "クェス＝パラヤ",
     "source_hex": "9E 96 A8 E3 C0 D8 D3 FF",
-    "translation": "เควส พารายา",
+    "translation": "เควส พาราย่า",
     "method": "reviewed_exact"
   },
   {
@@ -597,7 +597,7 @@
     ],
     "source": "ケ－ラ＝スゥ",
     "source_hex": "A0 11 D8 E3 A8 94 FF",
-    "translation": "เคย์รา ซู",
+    "translation": "เคย์ร่า ซู",
     "method": "reviewed_exact"
   },
   {
@@ -607,7 +607,7 @@
     ],
     "source": "ハサウェイ＝ノア",
     "source_hex": "BE A4 95 96 93 E3 BD 91 FF",
-    "translation": "ฮาธาเวย์ โนอา",
+    "translation": "ฮาซาเวย์ โนอา",
     "method": "reviewed_name_report"
   },
   {
@@ -617,7 +617,7 @@
     ],
     "source": "クリスチ－ナ＝マッケンジ－",
     "source_hex": "9E D9 A8 B0 11 B9 E3 CD B2 A0 DF A7 11 FF",
-    "translation": "คริสตีนา แมกเคนซี",
+    "translation": "คริสติน่า แมคเคนซี่",
     "method": "reviewed_name_report"
   },
   {
@@ -637,7 +637,7 @@
     ],
     "source": "セシリ－＝フェアチャイルド",
     "source_hex": "AA A6 D9 11 E3 C4 96 91 B0 D2 93 DA B8 FF",
-    "translation": "เซสซิลี แฟร์ไชลด์",
+    "translation": "เซซิลี่ แฟร์ไชลด์",
     "method": "reviewed_name_report"
   },
   {
@@ -647,7 +647,7 @@
     ],
     "source": "ニナ＝パ－プルトン",
     "source_hex": "BA B9 E3 C0 11 C6 DA B7 DF FF",
-    "translation": "นีนา เพอร์เพิลตัน",
+    "translation": "นีน่า เพอร์เพิลตัน",
     "method": "reviewed_exact"
   },
   {
@@ -657,7 +657,7 @@
     ],
     "source": "アナベル＝ガト－",
     "source_hex": "91 B9 C8 DA E3 9B B7 11 FF",
-    "translation": "อนาเวล กาโต",
+    "translation": "อนาเบล กาโต้",
     "method": "reviewed_exact"
   },
   {
@@ -727,7 +727,7 @@
     ],
     "source": "マリア＝フリ－ド",
     "source_hex": "CD D9 91 E3 C4 D9 11 B8 FF",
-    "translation": "มาเรีย ฟลีด",
+    "translation": "มาเรีย ฟรีด",
     "method": "reviewed_name_report"
   },
   {
@@ -737,7 +737,7 @@
     ],
     "source": "牧場ひかる",
     "source_hex": "F0 3F F0 40 71 4A 8A FF",
-    "translation": "ฮิคารุ มาคิบะ",
+    "translation": "ฮิคารุ มากิบะ",
     "method": "reviewed_exact"
   },
   {
@@ -757,7 +757,7 @@
     ],
     "source": "ダンゲル＝ク－パ－",
     "source_hex": "AF DF A1 DA E3 9E 11 C0 11 FF",
-    "translation": "ดุงเคิล คูเปอร์",
+    "translation": "ดังก์เลอร์ คูเปอร์",
     "method": "reviewed_name_report"
   },
   {
@@ -767,7 +767,7 @@
     ],
     "source": "神宮寺力",
     "source_hex": "F0 06 F4 13 F4 14 F0 2C FF",
-    "translation": "ริกิ จิงงูจิ",
+    "translation": "ชิคาระ จิงกูจิ",
     "method": "reviewed_name_report"
   },
   {
@@ -777,7 +777,7 @@
     ],
     "source": "明日香麗",
     "source_hex": "F0 33 F0 34 F0 35 F0 36 FF",
-    "translation": "เร อาสึกะ",
+    "translation": "เรย์ อาสึกะ",
     "method": "reviewed_exact"
   },
   {
@@ -797,7 +797,7 @@
     ],
     "source": "アムロ＝レイ",
     "source_hex": "91 CF DC E3 DB 93 FF",
-    "translation": "อามุโร เรย์",
+    "translation": "อามุโร่ เรย์",
     "method": "reviewed_exact"
   },
   {
@@ -807,7 +807,7 @@
     ],
     "source": "カミ－ユ＝ビダン",
     "source_hex": "9A CE 11 D5 E3 C2 AF DF FF",
-    "translation": "คามิลล์ บีดัน",
+    "translation": "คามิล บีดัน",
     "method": "reviewed_exact"
   },
   {
@@ -817,7 +817,7 @@
     ],
     "source": "ジュド－＝ア－シタ",
     "source_hex": "A7 D4 B8 11 E3 91 11 A6 AE FF",
-    "translation": "จูโด อาชตา",
+    "translation": "จูโด้ อาชิตะ",
     "method": "reviewed_exact"
   },
   {
@@ -827,7 +827,7 @@
     ],
     "source": "シ－ブック＝アノ－",
     "source_hex": "A6 11 C5 B2 9E E3 91 BD 11 FF",
-    "translation": "ซีบุ๊ก อาร์โน",
+    "translation": "ซีบุ๊ค อาโน",
     "method": "reviewed_exact"
   },
   {
@@ -867,7 +867,7 @@
     ],
     "source": "神梅江",
     "source_hex": "F0 06 F4 18 F4 0C FF",
-    "translation": "อุเม จิน",
+    "translation": "อุเมะ จิน",
     "method": "reviewed_name_report"
   },
   {
@@ -877,7 +877,7 @@
     ],
     "source": "神源五郎",
     "source_hex": "F0 06 F2 86 F4 19 F0 30 FF",
-    "translation": "เก็นโกโร จิน",
+    "translation": "เก็นโกโร่ จิน",
     "method": "reviewed_exact"
   },
   {
@@ -887,7 +887,7 @@
     ],
     "source": "神一太郎",
     "source_hex": "F0 06 F1 4E F0 2F F0 30 FF",
-    "translation": "อิจิทาโร จิน",
+    "translation": "อิจิทาโร่ จิน",
     "method": "reviewed_exact"
   },
   {
@@ -897,7 +897,7 @@
     ],
     "source": "ギャリソン時田",
     "source_hex": "9D D2 D9 AC DF F0 38 F3 27 FF",
-    "translation": "แกริสัน โทคิดะ",
+    "translation": "แกริสัน โทคิตะ",
     "method": "reviewed_name_report"
   },
   {
@@ -907,7 +907,7 @@
     ],
     "source": "ビュ－ティフル＝タチバナ",
     "source_hex": "C2 D4 11 B5 92 C4 DA E3 AE B0 BF B9 FF",
-    "translation": "บิวทิฟูล ทาจิบานะ",
+    "translation": "บิวตี้ฟูล ทาจิบานะ",
     "method": "reviewed_name_report"
   },
   {
@@ -917,7 +917,7 @@
     ],
     "source": "三条レイカ",
     "source_hex": "F0 11 F0 37 DB 93 9A FF",
-    "translation": "เรกะ ซันโจ",
+    "translation": "เรย์กะ ซันโจ",
     "method": "reviewed_exact"
   },
   {
@@ -927,7 +927,7 @@
     ],
     "source": "戸田突太",
     "source_hex": "F4 1A F3 27 F0 3B F0 2F FF",
-    "translation": "ต็อตตะ โทดะ",
+    "translation": "ท็อตตะ โทดะ",
     "method": "reviewed_exact"
   },
   {
@@ -947,7 +947,7 @@
     ],
     "source": "夕月京四郎",
     "source_hex": "F4 1B F0 95 F4 1C F0 46 F0 30 FF",
-    "translation": "เคียวชิโร ยูซึกิ",
+    "translation": "เคียวชิโร่ ยูซึกิ",
     "method": "reviewed_exact"
   },
   {
@@ -957,7 +957,7 @@
     ],
     "source": "和泉ナナ",
     "source_hex": "F1 CB F4 1D B9 B9 FF",
-    "translation": "นานะ อิซูมิ",
+    "translation": "นานะ อิซึมิ",
     "method": "reviewed_exact"
   },
   {
@@ -967,7 +967,7 @@
     ],
     "source": "デュ－ク＝フリ－ド",
     "source_hex": "B6 D4 11 9E E3 C4 D9 11 B8 FF",
-    "translation": "ดุ๊ก ฟลีด",
+    "translation": "ดุ๊ค ฟรีด",
     "method": "reviewed_name_report"
   },
   {
@@ -977,7 +977,7 @@
     ],
     "source": "マ－ベル＝フロ－ズン",
     "source_hex": "CD 11 C8 DA E3 C4 DC 11 A9 DF FF",
-    "translation": "มาร์เวล โฟรเซน",
+    "translation": "มาร์เวล โฟรเซ่น",
     "method": "reviewed_exact"
   },
   {
@@ -997,7 +997,7 @@
     ],
     "source": "ニ－＝ギブン",
     "source_hex": "BA 11 E3 9D C5 DF FF",
-    "translation": "นี กิฟเวน",
+    "translation": "นี กิฟเว่น",
     "method": "reviewed_exact"
   },
   {
@@ -1007,7 +1007,7 @@
     ],
     "source": "キ－ン＝キッス",
     "source_hex": "9C 11 DF E3 9C B2 A8 FF",
-    "translation": "คีน คิส",
+    "translation": "คีน คิสส์",
     "method": "reviewed_exact"
   },
   {
@@ -1038,7 +1038,7 @@
     ],
     "source": "リムル＝ルフト",
     "source_hex": "D9 CF DA E3 DA C4 B7 FF",
-    "translation": "ริมล์ ลุฟท์",
+    "translation": "ริมุล ลุฟท์",
     "method": "reviewed_name_report"
   },
   {
@@ -1099,7 +1099,7 @@
     ],
     "source": "テュッティ＝ノ－ルバック",
     "source_hex": "B5 D4 B2 B5 92 E3 BD 11 DA BF B2 9E FF",
-    "translation": "ตึตติ นอร์แบ็ก",
+    "translation": "ทุตตี้ นอร์บัค",
     "method": "reviewed_name_report"
   },
   {
@@ -1119,7 +1119,7 @@
     ],
     "source": "サウス＝バニング",
     "source_hex": "A4 95 A8 E3 BF BA DF 9F FF",
-    "translation": "เซาท์ เบิร์นนิง",
+    "translation": "เซาท์ เบิร์นนิ่ง",
     "method": "reviewed_roman"
   },
   {
@@ -1129,7 +1129,7 @@
     ],
     "source": "ホワン＝ヤンロン",
     "source_hex": "CA DD DF E3 D3 DF DC DF FF",
-    "translation": "หวง เหยียนหลง",
+    "translation": "หวง หยางหลง",
     "method": "reviewed_name_report"
   },
   {
@@ -1139,8 +1139,8 @@
     ],
     "source": "プレシア＝ゼノサキス",
     "source_hex": "C6 DB A6 91 E3 AB BD A4 9C A8 FF",
-    "translation": "พรีเซีย เซโนซากิส",
-    "method": "reviewed_exact"
+    "translation": "เพรเซีย เซโนซาคิส",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x718B",
@@ -1169,7 +1169,7 @@
     ],
     "source": "モニカ＝ビルセイア",
     "source_hex": "D1 BA 9A E3 C2 DA AA 93 91 FF",
-    "translation": "โมนิกา บิลเซอา",
+    "translation": "โมนิก้า บิลเซย่า",
     "method": "reviewed_exact"
   },
   {
@@ -1179,7 +1179,7 @@
     ],
     "source": "サフィ－ネ＝グレイス",
     "source_hex": "A4 C4 92 11 BC E3 9F DB 93 A8 FF",
-    "translation": "ซาฟีน เกรซ",
+    "translation": "ซาฟิเน่ เกรซ",
     "method": "reviewed_name_report"
   },
   {
@@ -1199,7 +1199,7 @@
     ],
     "source": "ランバ＝ラル",
     "source_hex": "D8 DF BF E3 D8 DA FF",
-    "translation": "รัมบา ราล",
+    "translation": "รัมบะ ราล",
     "method": "reviewed_exact"
   },
   {
@@ -1209,7 +1209,7 @@
     ],
     "source": "クラウレ＝ハモン",
     "source_hex": "9E D8 95 DB E3 BE D1 DF FF",
-    "translation": "คราวลีย์ ฮามอน",
+    "translation": "คราวเล่ย์ ฮามอน",
     "method": "reviewed_roman"
   },
   {
@@ -1249,7 +1249,7 @@
     ],
     "source": "オルテガ",
     "source_hex": "99 DA B5 9B FF",
-    "translation": "ออร์เทก้า",
+    "translation": "ออร์เตก้า",
     "method": "reviewed_name_report"
   },
   {
@@ -1259,7 +1259,7 @@
     ],
     "source": "シャリア＝ブル",
     "source_hex": "A6 D2 D9 91 E3 C5 DA FF",
-    "translation": "ชาเลีย บูล",
+    "translation": "ชาเรีย บูล",
     "method": "reviewed_name_report"
   },
   {
@@ -1279,7 +1279,7 @@
     ],
     "source": "ガディ＝キンゼ－",
     "source_hex": "9B B6 92 E3 9C DF AB 11 FF",
-    "translation": "กาดี คินซีย์",
+    "translation": "กาดี คินเซย์",
     "method": "reviewed_roman"
   },
   {
@@ -1299,7 +1299,7 @@
     ],
     "source": "サラ＝ザビアロフ",
     "source_hex": "A4 D8 E3 A5 C2 91 DC C4 FF",
-    "translation": "ซาราห์ ซาเบียรอฟ",
+    "translation": "ซาร่าห์ ซาเบียรอฟ",
     "method": "reviewed_roman"
   },
   {
@@ -1309,7 +1309,7 @@
     ],
     "source": "ゲ－ツ＝キャパ",
     "source_hex": "A1 11 B3 E3 9C D2 C0 FF",
-    "translation": "เกตส์ คาปา",
+    "translation": "เกทส์ แคปป้า",
     "method": "reviewed_roman"
   },
   {
@@ -1319,7 +1319,7 @@
     ],
     "source": "ジェリド＝メサ",
     "source_hex": "A7 96 D9 B8 E3 D0 A4 FF",
-    "translation": "เจริด เมสซา",
+    "translation": "เจริด เมซซ่า",
     "method": "reviewed_roman"
   },
   {
@@ -1329,7 +1329,7 @@
     ],
     "source": "ジャマイカン＝ダニンガン",
     "source_hex": "A7 D2 CD 93 9A DF E3 AF BA DF 9B DF FF",
-    "translation": "จาเมกัน ดานิงกัน",
+    "translation": "จาไมคัน ดานิงกัน",
     "method": "reviewed_name_report"
   },
   {
@@ -1339,7 +1339,7 @@
     ],
     "source": "ジャミトフ＝ハイマン",
     "source_hex": "A7 D2 CE B7 C4 E3 BE 93 CD DF FF",
-    "translation": "จามิทอฟ ไฮเมม",
+    "translation": "จามิทอฟ ไฮแมน",
     "method": "reviewed_roman"
   },
   {
@@ -1349,7 +1349,7 @@
     ],
     "source": "ハマ－ン＝カ－ン",
     "source_hex": "BE CD 11 DF E3 9A 11 DF FF",
-    "translation": "ฮามาน คาร์น",
+    "translation": "ฮามาน คาน",
     "method": "reviewed_exact"
   },
   {
@@ -1359,7 +1359,7 @@
     ],
     "source": "ブラン＝ブルタ－ク",
     "source_hex": "C5 D8 DF E3 C5 DA AE 11 9E FF",
-    "translation": "บรัน บลูทาร์ค",
+    "translation": "บรัน บลูตาร์ช",
     "method": "reviewed_name_report"
   },
   {
@@ -1369,7 +1369,7 @@
     ],
     "source": "ベン＝ウッダ－",
     "source_hex": "C8 DF E3 95 B2 AF 11 FF",
-    "translation": "เบน วูดเดอร์",
+    "translation": "เบน วู้ดเดอร์",
     "method": "reviewed_roman"
   },
   {
@@ -1379,7 +1379,7 @@
     ],
     "source": "マウア－＝ファラオ",
     "source_hex": "CD 95 91 11 E3 C4 90 D8 99 FF",
-    "translation": "มูอาร์ ฟาโรห์",
+    "translation": "เมาเออร์ ฟาโรห์",
     "method": "reviewed_roman"
   },
   {
@@ -1389,7 +1389,7 @@
     ],
     "source": "ミネバ＝ザビ",
     "source_hex": "CE BC BF E3 A5 C2 FF",
-    "translation": "มิเนวา ซาบี้",
+    "translation": "มิเนว่า ซาบี้",
     "method": "reviewed_name_report"
   },
   {
@@ -1399,8 +1399,8 @@
     ],
     "source": "ライラ＝ミラ＝ライラ",
     "source_hex": "D8 93 D8 E3 CE D8 E3 D8 93 D8 FF",
-    "translation": "ไลลา มิลลา ไรลา",
-    "method": "reviewed_roman"
+    "translation": "ไลล่า มิลล่า ไลล่า",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x7265",
@@ -1429,7 +1429,7 @@
     ],
     "source": "マシュマ－＝セロ",
     "source_hex": "CD A6 D4 CD 11 E3 AA DC FF",
-    "translation": "มาชีมาร์ เชลโล",
+    "translation": "มาชูม่าร์ เซลโล",
     "method": "reviewed_name_report"
   },
   {
@@ -1449,7 +1449,7 @@
     ],
     "source": "キャラ＝ス－ン",
     "source_hex": "9C D2 D8 E3 A8 11 DF FF",
-    "translation": "คารา ซูน",
+    "translation": "คาร่า ซูน",
     "method": "reviewed_roman"
   },
   {
@@ -1459,7 +1459,7 @@
     ],
     "source": "グレミ－＝トト",
     "source_hex": "9F DB CE 11 E3 B7 B7 FF",
-    "translation": "เกลมี โตโต",
+    "translation": "เกรมี โตโต้",
     "method": "reviewed_roman"
   },
   {
@@ -1499,7 +1499,7 @@
     ],
     "source": "ラカン＝ダカラン",
     "source_hex": "D8 9A DF E3 AF 9A D8 DF FF",
-    "translation": "รากัน ดาคารัน",
+    "translation": "ราคัน ดาคารัน",
     "method": "reviewed_roman"
   },
   {
@@ -1539,7 +1539,7 @@
     ],
     "source": "ザビ－ネ＝シャル",
     "source_hex": "A5 C2 11 BC E3 A6 D2 DA FF",
-    "translation": "ซาบิเน ชาเรอ",
+    "translation": "ซาบีน ชาร์ล",
     "method": "reviewed_roman"
   },
   {
@@ -1549,7 +1549,7 @@
     ],
     "source": "アンナマリ－＝ブル－ジュ",
     "source_hex": "91 DF B9 CD D9 11 E3 C5 DA 11 A7 D4 FF",
-    "translation": "แอนนา มารี บูร์เฌ",
+    "translation": "แอนนามารี่ บูร์ช",
     "method": "reviewed_name_report"
   },
   {
@@ -1559,7 +1559,7 @@
     ],
     "source": "ドレル＝ロナ",
     "source_hex": "B8 DB DA E3 DC B9 FF",
-    "translation": "ดอเรล โรนา",
+    "translation": "โดเรล โรน่า",
     "method": "reviewed_name_report"
   },
   {
@@ -1569,7 +1569,7 @@
     ],
     "source": "カロッゾ＝ロナ",
     "source_hex": "9A DC B2 AD E3 DC B9 FF",
-    "translation": "คาร์ร็อตโซ โรนา",
+    "translation": "คาล็อตโซ่ โรน่า",
     "method": "reviewed_name_report"
   },
   {
@@ -1579,7 +1579,7 @@
     ],
     "source": "シュタイナ－",
     "source_hex": "A6 D4 AE 93 B9 11 FF",
-    "translation": "ชไตเนอร์",
+    "translation": "สไตเนอร์",
     "method": "reviewed_name_report"
   },
   {
@@ -1589,7 +1589,7 @@
     ],
     "source": "シ－マ＝ガラハウ",
     "source_hex": "A6 11 CD E3 9B D8 BE 95 FF",
-    "translation": "ชีมา การาฮาว",
+    "translation": "ซีมา การาฮาว",
     "method": "reviewed_name_report"
   },
   {
@@ -1599,7 +1599,7 @@
     ],
     "source": "あしゅら男爵",
     "source_hex": "41 56 84 88 F0 3C F0 3D FF",
-    "translation": "บารอน อาชูรา",
+    "translation": "บารอน อาชูร่า",
     "method": "reviewed_name_report"
   },
   {
@@ -1619,7 +1619,7 @@
     ],
     "source": "Ｄｒヘル",
     "source_hex": "19 06 C7 DA FF",
-    "translation": "ดร. เฮล",
+    "translation": "ดร.เฮล",
     "method": "reviewed_name_report"
   },
   {
@@ -1659,7 +1659,7 @@
     ],
     "source": "ガル－ダ",
     "source_hex": "9B DA 11 AF FF",
-    "translation": "การูดา",
+    "translation": "การูด้า",
     "method": "reviewed_roman"
   },
   {
@@ -1679,7 +1679,7 @@
     ],
     "source": "オレアナ",
     "source_hex": "99 DB 91 B9 FF",
-    "translation": "โอเรอานา",
+    "translation": "โอเรอาน่า",
     "method": "reviewed_name_report"
   },
   {
@@ -1719,7 +1719,7 @@
     ],
     "source": "リヒテル",
     "source_hex": "D9 C1 B5 DA FF",
-    "translation": "ริชเทอร์",
+    "translation": "ริฮ์เทล",
     "method": "reviewed_roman"
   },
   {
@@ -1739,7 +1739,7 @@
     ],
     "source": "ライザ",
     "source_hex": "D8 93 A5 FF",
-    "translation": "ไรซา",
+    "translation": "ไลซ่า",
     "method": "reviewed_roman"
   },
   {
@@ -1749,7 +1749,7 @@
     ],
     "source": "アイザム",
     "source_hex": "91 93 A5 CF FF",
-    "translation": "ไอซัม",
+    "translation": "ไอแซม",
     "method": "reviewed_roman"
   },
   {
@@ -1759,7 +1759,7 @@
     ],
     "source": "レオナルド＝メディチ＝ブンドル",
     "source_hex": "DB 99 B9 DA B8 E3 D0 B6 92 B0 E3 C5 DF B8 DA FF",
-    "translation": "เลโอนาร์โด เมดิชี บันเดิล",
+    "translation": "เลโอนาร์โด เมดิชี บุนเดิล",
     "method": "reviewed_name_report"
   },
   {
@@ -1769,7 +1769,7 @@
     ],
     "source": "ス－グニ＝カットナル",
     "source_hex": "A8 11 9F BA E3 9A B2 B7 B9 DA FF",
-    "translation": "ซูกุนิ คัตโตนารุ",
+    "translation": "ซูกุนิ คัตนอล",
     "method": "reviewed_name_report"
   },
   {
@@ -1779,7 +1779,7 @@
     ],
     "source": "ヤッタ－＝ラ＝ケルナグ－ル",
     "source_hex": "D3 B2 AE 11 E3 D8 E3 A0 DA B9 9F 11 DA FF",
-    "translation": "ยัตตา ลา เครุนากูรุ",
+    "translation": "ยัตต้า ลา เคอนากูล",
     "method": "reviewed_name_report"
   },
   {
@@ -1789,7 +1789,7 @@
     ],
     "source": "トッド＝ギネス",
     "source_hex": "B7 B2 B8 E3 9D BC A8 FF",
-    "translation": "ท็อด กินเนสส์",
+    "translation": "ท็อดด์ กินเนส",
     "method": "reviewed_name_report"
   },
   {
@@ -1799,7 +1799,7 @@
     ],
     "source": "バ－ン＝バニングス",
     "source_hex": "BF 11 DF E3 BF BA DF 9F A8 FF",
-    "translation": "เบิร์น บันนิงส์",
+    "translation": "บาร์น บันนิ่งส์",
     "method": "reviewed_name_report"
   },
   {
@@ -1819,7 +1819,7 @@
     ],
     "source": "ドレイク＝ルフト",
     "source_hex": "B8 DB 93 9E E3 DA C4 B7 FF",
-    "translation": "เดรก ลุฟท์",
+    "translation": "เดรค ลุฟท์",
     "method": "reviewed_name_report"
   },
   {
@@ -1829,7 +1829,7 @@
     ],
     "source": "ショット＝ウェポン",
     "source_hex": "A6 D6 B2 B7 E3 95 96 CC DF FF",
-    "translation": "ช็อต เวพเพิน",
+    "translation": "ช็อต เวพอน",
     "method": "reviewed_name_report"
   },
   {
@@ -1839,7 +1839,7 @@
     ],
     "source": "ビショット＝ハッタ",
     "source_hex": "C2 A6 D6 B2 B7 E3 BE B2 AE FF",
-    "translation": "บิช็อต เฮต",
+    "translation": "บิช็อต แฮตต้า",
     "method": "reviewed_roman"
   },
   {
@@ -1849,7 +1849,7 @@
     ],
     "source": "ル－ザ＝ルフト",
     "source_hex": "DA 11 A5 E3 DA C4 B7 FF",
-    "translation": "ลูเซอร์ ลุฟท์",
+    "translation": "ลูซ่า ลุฟท์",
     "method": "reviewed_name_report"
   },
   {
@@ -1859,7 +1859,7 @@
     ],
     "source": "ミュ－ジィ＝ポ－",
     "source_hex": "CE D4 11 A7 92 E3 CC 11 FF",
-    "translation": "มัซซี โพ",
+    "translation": "มิวซี่ โพ",
     "method": "reviewed_name_report"
   },
   {
@@ -1879,7 +1879,7 @@
     ],
     "source": "トルスト－ル＝チェシレンコ",
     "source_hex": "B7 DA A8 B7 11 DA E3 B0 96 A6 DB DF A2 FF",
-    "translation": "ทอลสตอร์ เชชิเลนโก",
+    "translation": "ตอลสตอย เชชิเลนโก",
     "method": "reviewed_name_report"
   },
   {
@@ -1889,7 +1889,7 @@
     ],
     "source": "ジェリル＝クチビ",
     "source_hex": "A7 96 D9 DA E3 9E B0 C2 FF",
-    "translation": "เจริล คูชิบี",
+    "translation": "เจริล คูชิบิ",
     "method": "reviewed_roman"
   },
   {
@@ -1899,7 +1899,7 @@
     ],
     "source": "アレン＝ブレディ",
     "source_hex": "91 DB DF E3 C5 DB B6 92 FF",
-    "translation": "แอลเลน เบรดี",
+    "translation": "อัลเลน เบรดี้",
     "method": "reviewed_name_report"
   },
   {
@@ -1909,7 +1909,7 @@
     ],
     "source": "フェイ＝チェンカ",
     "source_hex": "C4 96 93 E3 B0 96 DF 9A FF",
-    "translation": "เฟย์ เชนกา",
+    "translation": "เฟย์ เชนก้า",
     "method": "reviewed_roman"
   },
   {
@@ -1919,7 +1919,7 @@
     ],
     "source": "ガラリア＝ニャムヒ－",
     "source_hex": "9B D8 D9 91 E3 BA D2 CF C1 11 FF",
-    "translation": "การาเลีย เนียมฮี",
+    "translation": "กาลาเรีย นยัมฮี",
     "method": "reviewed_name_report"
   },
   {
@@ -1929,7 +1929,7 @@
     ],
     "source": "ガラミティ＝マンガン",
     "source_hex": "9B D8 CE B5 92 E3 CD DF 9B DF FF",
-    "translation": "กาลามิตี แมงกานีส",
+    "translation": "กาลาซิตี มังกาน",
     "method": "reviewed_name_report"
   },
   {
@@ -1959,7 +1959,7 @@
     ],
     "source": "暗黒大将軍",
     "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
-    "translation": "จอมทัพแห่งความมืด",
+    "translation": "จอมทัพทมิฬ",
     "method": "reviewed_name_report"
   },
   {
@@ -1979,7 +1979,7 @@
     ],
     "source": "妖爬虫将軍ドレイドウ",
     "source_hex": "F2 4F F4 26 F4 2C F0 A4 F0 A5 B8 DB 93 B8 95 FF",
-    "translation": "แม่ทัพอสูรสัตว์เลื้อยคลาน เดรย์โด",
+    "translation": "แม่ทัพอสูรเลื้อยคลาน เดรย์โด",
     "method": "reviewed_name_report"
   },
   {
@@ -2059,7 +2059,7 @@
     ],
     "source": "ポセイダル兵",
     "source_hex": "CC AA 93 AF DA F0 4E FF",
-    "translation": "ทหารโพเซดัล",
+    "translation": "ทหารโพไซดัล",
     "method": "reviewed_exact"
   },
   {
@@ -2069,7 +2069,7 @@
     ],
     "source": "ポセイダル親衛隊兵",
     "source_hex": "CC AA 93 AF DA F2 6C F2 7B F0 E7 F0 4E FF",
-    "translation": "องครักษ์โพเซดัล",
+    "translation": "องครักษ์โพไซดัล",
     "method": "reviewed_exact"
   },
   {
@@ -2079,7 +2079,7 @@
     ],
     "source": "エギ－ユ＝デラ－ズ",
     "source_hex": "97 9D 11 D5 E3 B6 D8 11 A9 FF",
-    "translation": "เอกวีย์ เดลาซ",
+    "translation": "เอกิล เดลาซ",
     "method": "reviewed_name_report"
   },
   {
@@ -2089,7 +2089,7 @@
     ],
     "source": "ダバ＝マイロ－ド",
     "source_hex": "AF BF E3 CD 93 DC 11 B8 FF",
-    "translation": "ดาบา มายโรด",
+    "translation": "ดาบา ไมโรด",
     "method": "reviewed_name_report"
   },
   {
@@ -2099,7 +2099,7 @@
     ],
     "source": "ガウ＝ハ＝レッシィ",
     "source_hex": "9B 95 E3 BE E3 DB B2 A6 92 FF",
-    "translation": "กอว์ ฮา เลสซี",
+    "translation": "เกา ฮา เลสซี่",
     "method": "reviewed_name_report"
   },
   {
@@ -2109,7 +2109,7 @@
     ],
     "source": "ミラウ－＝キャオ",
     "source_hex": "CE D8 95 11 E3 9C D2 99 FF",
-    "translation": "มิราวู คยาโอ",
+    "translation": "มิราอู แคร์ว",
     "method": "reviewed_name_report"
   },
   {
@@ -2119,7 +2119,7 @@
     ],
     "source": "ファンネリア＝アム",
     "source_hex": "C4 90 DF BC D9 91 E3 91 CF FF",
-    "translation": "แฟนนาเรีย แอม",
+    "translation": "ฟานเนเรีย แอม",
     "method": "reviewed_name_report"
   },
   {
@@ -2129,7 +2129,7 @@
     ],
     "source": "ハッシャ＝モッシャ",
     "source_hex": "BE B2 A6 D2 E3 D1 B2 A6 D2 FF",
-    "translation": "แฮตเชีย มอตเชีย",
+    "translation": "แฮชชา ม็อชชา",
     "method": "reviewed_name_report"
   },
   {
@@ -2139,7 +2139,7 @@
     ],
     "source": "ギャブレット＝ギャブレ－",
     "source_hex": "9D D2 C5 DB B2 B7 E3 9D D2 C5 DB 11 FF",
-    "translation": "แกฟเล็ต แกบเลย์",
+    "translation": "แกบเล็ต แกบเล่ย์",
     "method": "reviewed_exact"
   },
   {
@@ -2149,7 +2149,7 @@
     ],
     "source": "アマンダラ＝カマンダラ",
     "source_hex": "91 CD DF AF D8 E3 9A CD DF AF D8 FF",
-    "translation": "อามันดรา คามันดรา",
+    "translation": "อามันดาร่า คามันดาร่า",
     "method": "reviewed_exact"
   },
   {
@@ -2159,7 +2159,7 @@
     ],
     "source": "オルドナ＝ポセイダル",
     "source_hex": "99 DA B8 B9 E3 CC AA 93 AF DA FF",
-    "translation": "โอลด์นา โพเซย์ดัล",
+    "translation": "ออลโดน่า โพไซดัล",
     "method": "reviewed_name_report"
   },
   {
@@ -2179,7 +2179,7 @@
     ],
     "source": "ギワザ＝ロワウ",
     "source_hex": "9D DD A5 E3 DC DD 95 FF",
-    "translation": "กิวาซา โลวาว",
+    "translation": "กิวาซ่า โลวาอู",
     "method": "reviewed_roman"
   },
   {
@@ -2199,7 +2199,7 @@
     ],
     "source": "クワサン＝オリビ－",
     "source_hex": "9E DD A4 DF E3 99 D9 C2 11 FF",
-    "translation": "ควาซาน โอลิบี",
+    "translation": "ควาซาน โอลิวี่",
     "method": "reviewed_roman"
   },
   {
@@ -2209,7 +2209,7 @@
     ],
     "source": "リョクレイ＝ロン",
     "source_hex": "D9 D6 9E DB 93 E3 DC DF FF",
-    "translation": "ร็อกลี รอน",
+    "translation": "ร็อกเลย์ รอน",
     "method": "reviewed_roman"
   },
   {
@@ -2219,7 +2219,7 @@
     ],
     "source": "アントン＝ランド",
     "source_hex": "91 DF B7 DF E3 D8 DF B8 FF",
-    "translation": "แอนตัน แรนโด",
+    "translation": "แอนตัน แรนด์",
     "method": "reviewed_roman"
   },
   {
@@ -2239,7 +2239,7 @@
     ],
     "source": "リィリィ＝ハッシ－",
     "source_hex": "D9 92 D9 92 E3 BE B2 A6 11 FF",
-    "translation": "ลิลี แฮสซี",
+    "translation": "ลิลี่ แฮชชี่",
     "method": "reviewed_name_report"
   },
   {
@@ -2259,7 +2259,7 @@
     ],
     "source": "ワザン＝ル－ン",
     "source_hex": "DD A5 DF E3 DA 11 DF FF",
-    "translation": "วาซัน ลูน",
+    "translation": "วาซัน รูน",
     "method": "reviewed_roman"
   },
   {
@@ -2269,7 +2269,7 @@
     ],
     "source": "マフ＝マクトミン",
     "source_hex": "CD C4 E3 CD 9E B7 CE DF FF",
-    "translation": "MF แม็กโทมิน",
+    "translation": "มาฟ แม็กโทมิน",
     "method": "reviewed_name_report"
   },
   {
@@ -2279,7 +2279,7 @@
     ],
     "source": "バ－ン＝ガニア＝キラ－ズ",
     "source_hex": "BF 11 DF E3 9B BA 91 E3 9C D8 11 A9 FF",
-    "translation": "บาน กาเนีย คิลเลอร์ส",
+    "translation": "บาร์น กาเนีย คิลเลอร์ส",
     "method": "reviewed_name_report"
   },
   {
@@ -2299,7 +2299,7 @@
     ],
     "source": "グロフィス＝ラクレイン",
     "source_hex": "9F DC C4 92 A8 E3 D8 9E DB 93 DF FF",
-    "translation": "โกรฟิส แรคไลน์",
+    "translation": "โกรฟิส ลาแคลน",
     "method": "reviewed_name_report"
   },
   {
@@ -2309,7 +2309,7 @@
     ],
     "source": "ジュスティヌ＝シャフラワ－ス",
     "source_hex": "A7 D4 A8 B5 92 BB E3 A6 D2 C4 D8 DD 11 A8 FF",
-    "translation": "ฌุสตีน ชาฟรัว",
+    "translation": "จัสทีน แชฟรอยส์",
     "method": "reviewed_name_report"
   },
   {
@@ -2319,7 +2319,7 @@
     ],
     "source": "ゼブリ－ズ＝フルシュワ",
     "source_hex": "AB C5 D9 11 A9 E3 C4 DA A6 D4 DD FF",
-    "translation": "เซบริส ฟอร์ชวา",
+    "translation": "เซบรีส ฟูลชวา",
     "method": "reviewed_roman"
   },
   {
@@ -2329,7 +2329,7 @@
     ],
     "source": "テイニクェット＝ゼゼ－ナン",
     "source_hex": "B5 93 BA 9E 96 B2 B7 E3 AB AB 11 B9 DF FF",
-    "translation": "เทนิเค็ต เซเซอร์นัน",
+    "translation": "เทนเควต เซเซนัน",
     "method": "reviewed_exact"
   },
   {
@@ -2349,7 +2349,7 @@
     ],
     "source": "テリウス＝ビルセイア",
     "source_hex": "B5 D9 95 A8 E3 C2 DA AA 93 91 FF",
-    "translation": "เทเรียส บิลเซอา",
+    "translation": "เทริอุส บิลเซย่า",
     "method": "reviewed_roman"
   },
   {
@@ -2535,7 +2535,7 @@
     ],
     "source": "アストナ－ジ＝メドッソ",
     "source_hex": "91 A8 B7 B9 11 A7 E3 D0 B8 B2 AC FF",
-    "translation": "แอสโทนาจ เมดอซ",
+    "translation": "แอสโทนาจ เมดอสซี่",
     "method": "reviewed_exact"
   },
   {
@@ -2565,7 +2565,7 @@
     ],
     "source": "猿丸太郎",
     "source_hex": "F4 16 F4 17 F0 2F F0 30 FF",
-    "translation": "ทาโร ซารุมารุ",
+    "translation": "ทาโร่ ซารุมารุ",
     "method": "reviewed_exact"
   },
   {
@@ -2595,7 +2595,7 @@
     ],
     "source": "香月真吾",
     "source_hex": "F0 35 F0 95 F1 D2 F3 02 FF",
-    "translation": "ชิงโง โคซึกิ",
+    "translation": "คัตสึกิ ชินโง",
     "method": "reviewed_exact"
   },
   {
@@ -2625,7 +2625,7 @@
     ],
     "source": "エリカ",
     "source_hex": "97 D9 9A FF",
-    "translation": "เอริกา",
+    "translation": "เอริก้า",
     "method": "reviewed_roman"
   },
   {
@@ -2635,7 +2635,7 @@
     ],
     "source": "和泉博士",
     "source_hex": "F1 CB F4 1D F0 48 F0 49 FF",
-    "translation": "ดร.อิซูมิ",
+    "translation": "ดร.อิซึมิ",
     "method": "reviewed_exact"
   },
   {
@@ -2645,7 +2645,7 @@
     ],
     "source": "シロ",
     "source_hex": "A6 DC FF",
-    "translation": "ชิโระ",
+    "translation": "ชิโร่",
     "method": "reviewed_roman"
   },
   {
@@ -2655,7 +2655,7 @@
     ],
     "source": "クロ",
     "source_hex": "9E DC FF",
-    "translation": "คุโระ",
+    "translation": "คุโร่",
     "method": "reviewed_roman"
   },
   {
@@ -2665,7 +2665,7 @@
     ],
     "source": "フレキ",
     "source_hex": "C4 DB 9C FF",
-    "translation": "เฟรกี",
+    "translation": "เฟรกิ",
     "method": "reviewed_name_report"
   },
   {
@@ -2675,7 +2675,7 @@
     ],
     "source": "ゲリ",
     "source_hex": "A1 D9 FF",
-    "translation": "เกรี",
+    "translation": "เกริ",
     "method": "reviewed_roman"
   },
   {
@@ -2685,8 +2685,8 @@
     ],
     "source": "ランシャオ",
     "source_hex": "D8 DF A6 D2 99 FF",
-    "translation": "รันเซา",
-    "method": "reviewed_roman"
+    "translation": "แลง เซียว",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x7687",
@@ -2695,7 +2695,7 @@
     ],
     "source": "チカ",
     "source_hex": "B0 9A FF",
-    "translation": "จิกะ",
+    "translation": "ชิกะ",
     "method": "reviewed_roman"
   },
   {
@@ -2705,7 +2705,7 @@
     ],
     "source": "ベロスタン",
     "source_hex": "C8 DC A8 AE DF FF",
-    "translation": "เบโรสตัน",
+    "translation": "เบโลสตัน",
     "method": "reviewed_name_report"
   },
   {
@@ -2795,7 +2795,7 @@
     ],
     "source": "モ－ラ＝バシット",
     "source_hex": "D1 11 D8 E3 BF A6 B2 B7 FF",
-    "translation": "โมรา บัชท์",
+    "translation": "โมรา แบชต์",
     "method": "reviewed_name_report"
   },
   {
@@ -2805,7 +2805,7 @@
     ],
     "source": "エギ－ユ＝デラ－ズ",
     "source_hex": "97 9D 11 D5 E3 B6 D8 11 A9 FF",
-    "translation": "เอกวีย์ เดลาซ",
+    "translation": "เอกิล เดลาซ",
     "method": "reviewed_name_report"
   },
   {
@@ -2815,7 +2815,7 @@
     ],
     "source": "ハロ",
     "source_hex": "BE DC FF",
-    "translation": "ฮาโร",
+    "translation": "ฮาโร่",
     "method": "reviewed_roman"
   },
   {
@@ -2855,7 +2855,7 @@
     ],
     "source": "葉月考太郎",
     "source_hex": "F1 C9 F0 95 F1 64 F0 2F F0 30 FF",
-    "translation": "โคทาโร ฮาซึกิ",
+    "translation": "โคทาโร่ ฮาซึกิ",
     "method": "reviewed_exact"
   },
   {
@@ -2905,7 +2905,7 @@
     ],
     "source": "マルガレ－テ",
     "source_hex": "CD DA 9B DB 11 B5 FF",
-    "translation": "มาร์กาเรเทอ",
+    "translation": "มาร์กาเร็ต",
     "method": "reviewed_roman"
   },
   {

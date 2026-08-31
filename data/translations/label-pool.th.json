@@ -287,7 +287,7 @@
       "source_pc": "0x128499",
       "source_hex": "97 DA 9B 93 CF F2 E8 FF",
       "source": "エルガイム系",
-      "translation": "ซีรีส์แอลไกม์",
+      "translation": "ซีรีส์ L-ไกม์",
       "slots": [
         35
       ]
@@ -297,7 +297,7 @@
       "source_pc": "0x1284A1",
       "source_hex": "AF 93 AE 11 DF F2 E8 FF",
       "source": "ダイターン系",
-      "translation": "ซีรีส์ไดทาน",
+      "translation": "ซีรีส์ไดทาร์น",
       "slots": [
         36
       ]
@@ -307,7 +307,7 @@
       "source_pc": "0x1284A9",
       "source_hex": "A5 DF CB B2 B7 F2 E8 FF",
       "source": "ザンボット系",
-      "translation": "ซีรีส์ซัมบ็อต",
+      "translation": "ซีรีส์แซมบ็อต",
       "slots": [
         37
       ]
@@ -1518,7 +1518,7 @@
       "source_pc": "0x128B0D",
       "source_hex": "A5 DF CB B2 B7 33 F0 F7 F0 74 FF",
       "source": "ザンボット３合体",
-      "translation": "ซัมบ็อต 3 รวมร่าง",
+      "translation": "แซมบ็อต 3 รวมร่าง",
       "slots": [
         359
       ]

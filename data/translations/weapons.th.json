@@ -300,7 +300,7 @@
     ],
     "source": "メガビ－ム砲<B>",
     "source_hex": "D0 9B C2 11 CF F0 AE EE FF",
-    "translation": "ปืนใหญ่บีมเมก้า",
+    "translation": "ปืนใหญ่เมก้าบีม",
     "method": "exact"
   },
   {
@@ -1022,7 +1022,7 @@
     ],
     "source": "ダイアナンミサイル",
     "source_hex": "AF 93 91 B9 DF CE A4 93 DA FF",
-    "translation": "ไดอานามิสไซล์",
+    "translation": "ไดอานันมิสไซล์",
     "method": "glossary"
   },
   {
@@ -1457,7 +1457,7 @@
     ],
     "source": "ゴッドボイス",
     "source_hex": "A3 B2 B8 CB 93 A8 FF",
-    "translation": "ก็อด วอยซ์",
+    "translation": "ก็อดวอยซ์",
     "method": "reviewed_name_report"
   },
   {
@@ -1738,7 +1738,7 @@
     ],
     "source": "ザンボライフル",
     "source_hex": "A5 DF CB D8 93 C4 DA FF",
-    "translation": "ซัมโบไรเฟิล",
+    "translation": "แซมโบไรเฟิล",
     "method": "glossary"
   },
   {
@@ -1828,7 +1828,7 @@
     ],
     "source": "ザンボットグラップ",
     "source_hex": "A5 DF CB B2 B7 9F D8 B2 C6 FF",
-    "translation": "ซัมบ็อตแกรป",
+    "translation": "แซมบ็อตแกรป",
     "method": "glossary"
   },
   {
@@ -1838,7 +1838,7 @@
     ],
     "source": "ザンボットブロ－",
     "source_hex": "A5 DF CB B2 B7 C5 DC 11 FF",
-    "translation": "ซัมบ็อตโบลว์",
+    "translation": "แซมบ็อตโบลว์",
     "method": "glossary"
   },
   {
@@ -1848,7 +1848,7 @@
     ],
     "source": "ザンボットバスタ－<P>",
     "source_hex": "A5 DF CB B2 B7 BF A8 AE 11 EF FF",
-    "translation": "ซัมบ็อตบัสเตอร์",
+    "translation": "แซมบ็อตบัสเตอร์",
     "method": "glossary"
   },
   {
@@ -1858,7 +1858,7 @@
     ],
     "source": "ザンボットカッタ－",
     "source_hex": "A5 DF CB B2 B7 9A B2 AE 11 FF",
-    "translation": "ซัมบ็อตคัตเตอร์",
+    "translation": "แซมบ็อตคัตเตอร์",
     "method": "glossary"
   },
   {
@@ -2434,7 +2434,7 @@
     ],
     "source": "グラビトロンカノン<MAP_L><MAP_R>",
     "source_hex": "9F D8 C2 B7 DC DF 9A BD DF EC ED FF",
-    "translation": "กราวิตรอนคานอน",
+    "translation": "กราวิตรอนแคนนอน",
     "method": "glossary"
   },
   {
@@ -2894,7 +2894,7 @@
     ],
     "source": "メガバズ－カランチャ－<MAP_L><MAP_R><B>",
     "source_hex": "D0 9B BF A9 11 9A D8 DF B0 D2 11 EC ED EE FF",
-    "translation": "เมก้าบาซูก้า",
+    "translation": "เมก้าบาซูก้าลอนเชอร์",
     "method": "glossary+compact_overlong"
   },
   {
@@ -4423,7 +4423,7 @@
     ],
     "source": "計都羅睺剣",
     "source_hex": "F2 68 F1 87 F4 21 F4 2A F0 20 FF",
-    "translation": "ดาบเคย์โตราโก",
+    "translation": "ดาบเกตุราหู",
     "method": "exact"
   },
   {
@@ -4805,7 +4805,7 @@
     ],
     "source": "計都羅睺剣・暗剣殺",
     "source_hex": "F2 68 F1 87 F4 21 F4 2A F0 20 3B F0 A0 F0 20 F0 8A FF",
-    "translation": "เคย์โตราโก อันเคนซัตสึ",
+    "translation": "ดาบเกตุราหู อังเคนซัตสึ",
     "method": "exact"
   },
   {
@@ -4915,7 +4915,7 @@
     ],
     "source": "アッザムリ－ダ－<MAP_L><MAP_R>",
     "source_hex": "91 B2 A5 CF D9 11 AF 11 EC ED FF",
-    "translation": "อัซซัมลีดเดอร์",
+    "translation": "แอดซัมลีดเดอร์",
     "method": "glossary"
   },
   {
@@ -5076,7 +5076,7 @@
     ],
     "source": "大雪山おろし二段返し",
     "source_hex": "F0 16 F4 07 F0 C1 49 8C 56 F3 0E F2 A3 F2 15 56 FF",
-    "translation": "ท่าทุ่มไดเซ็ตสึซัน2",
+    "translation": "พายุหิมะไดเซ็ตสึซัน 2 จังหวะ",
     "method": "exact"
   },
   {

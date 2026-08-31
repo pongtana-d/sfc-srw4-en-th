@@ -26,18 +26,58 @@
       "source_hex": "DB C8 DA F6 F0 75 F0 2C"
     },
     "fields": {
-      "tab_unit_wide": {"address": "0x0CA0C1", "end": "0x0CA0C9", "source_hex": "D5 BA B2 B7 F0 79 F0 2C"},
-      "tab_pilot": {"address": "0x0CA0CC", "end": "0x0CA0D5", "source_hex": "C0 93 DC B2 B7 F0 79 F0 2C"},
-      "tab_weapon": {"address": "0x0CA0D8", "end": "0x0CA0E0", "source_hex": "F0 0A F0 56 F1 01 F0 79"},
-      "tab_unit_only": {"address": "0x0CA252", "end": "0x0CA25A", "source_hex": "D5 BA B2 B7 F0 79 F0 2C"},
-      "parts": {"address": "0x0CA263", "end": "0x0CA26A", "source_hex": "F1 7A F1 1F C0 11 B3"},
-      "size": {"address": "0x0CA280", "end": "0x0CA284", "source_hex": "A4 93 A9 00"},
-      "terrain": {"address": "0x0CA28A", "end": "0x0CA28E", "source_hex": "F0 6F F0 81"},
-      "terrain_wide": {"address": "0x0CA10D", "end": "0x0CA111", "source_hex": "F0 6F F0 81"}
+      "tab_unit_wide": {
+        "address": "0x0CA0C1",
+        "end": "0x0CA0C9",
+        "source_hex": "D5 BA B2 B7 F0 79 F0 2C"
+      },
+      "tab_pilot": {
+        "address": "0x0CA0CC",
+        "end": "0x0CA0D5",
+        "source_hex": "C0 93 DC B2 B7 F0 79 F0 2C"
+      },
+      "tab_weapon": {
+        "address": "0x0CA0D8",
+        "end": "0x0CA0E0",
+        "source_hex": "F0 0A F0 56 F1 01 F0 79"
+      },
+      "tab_unit_only": {
+        "address": "0x0CA252",
+        "end": "0x0CA25A",
+        "source_hex": "D5 BA B2 B7 F0 79 F0 2C"
+      },
+      "parts": {
+        "address": "0x0CA263",
+        "end": "0x0CA26A",
+        "source_hex": "F1 7A F1 1F C0 11 B3"
+      },
+      "size": {
+        "address": "0x0CA280",
+        "end": "0x0CA284",
+        "source_hex": "A4 93 A9 00"
+      },
+      "terrain": {
+        "address": "0x0CA28A",
+        "end": "0x0CA28E",
+        "source_hex": "F0 6F F0 81"
+      },
+      "terrain_wide": {
+        "address": "0x0CA10D",
+        "end": "0x0CA111",
+        "source_hex": "F0 6F F0 81"
+      }
     },
     "terrain_boxes": [
-      {"address": "0x0CA291", "end": "0x0CA29C", "source_hex": "F0 B6 F6 F0 F1 F6 F0 4F F6 F4 0D"},
-      {"address": "0x0CA114", "end": "0x0CA11F", "source_hex": "F0 B6 F6 F0 F1 F6 F0 4F F6 F4 0D"}
+      {
+        "address": "0x0CA291",
+        "end": "0x0CA29C",
+        "source_hex": "F0 B6 F6 F0 F1 F6 F0 4F F6 F4 0D"
+      },
+      {
+        "address": "0x0CA114",
+        "end": "0x0CA11F",
+        "source_hex": "F0 B6 F6 F0 F1 F6 F0 4F F6 F4 0D"
+      }
     ],
     "type_pointers": {
       "address": "0x128109",
@@ -243,17 +283,17 @@
     {
       "address": "0x128499",
       "source": "エルガイム系",
-      "translation": "ซีรีส์แอลไกม์"
+      "translation": "ซีรีส์ L-ไกม์"
     },
     {
       "address": "0x1284A1",
       "source": "ダイターン系",
-      "translation": "ซีรีส์ไดทาน"
+      "translation": "ซีรีส์ไดทาร์น"
     },
     {
       "address": "0x1284A9",
       "source": "ザンボット系",
-      "translation": "ซีรีส์ซัมบ็อต"
+      "translation": "ซีรีส์แซมบ็อต"
     },
     {
       "address": "0x1284B1",

@@ -54,6 +54,7 @@
   #grid div.bearing { background: var(--bearing); }
   #grid div.lit { background: var(--lit); }
   #grid div.base { background: #3b4453; }
+  #grid div.selected { outline: 2px solid var(--warn); outline-offset: -2px; }
   #grid div.baseline { box-shadow: inset 0 -1px 0 #3a4250; }
   .meta { display: grid; grid-template-columns: auto auto; gap: 4px 10px;
           align-items: center; color: var(--dim); }
@@ -76,8 +77,8 @@
 
 <header>
   <h1>SRW4 FONT EDITOR</h1>
-  <button id="save">Save</button>
-  <button id="revert">Revert</button>
+  <button id="save">Save to disk</button>
+  <button id="revert">Discard draft</button>
   <button id="rebuild">Rebuild atlas</button>
   <span id="dirty"></span>
 </header>
@@ -105,6 +106,10 @@
           <button data-nudge="0,-1">↑</button><button data-nudge="0,1">↓</button>
           <button id="clear">Clear</button><button id="undo">Undo</button>
         </div>
+        <div class="row">
+          <button id="selectInk">Select ink</button><button id="deselectInk">Deselect</button>
+          <span class="note" id="selectionStatus"></span>
+        </div>
         <div class="note" id="hint"></div>
       </div>
     </div>
@@ -130,8 +135,9 @@
 </main>
 
 <script>
-const S = { st: null, kind: null, char: null, rows: [], advance: null, dx: 0,
-            undo: [], tab: "thai", sel: null };
+const S = { st: null, kind: null, char: null, rows: [], advance: null,
+            tab: "thai", sel: null, area: null, family: null,
+            selectMode: false, selection: new Set() };
 const ROWS = 16, W = 8;
 
 const api = async (path, body) => {
@@ -173,7 +179,8 @@ const CATS = {
 
 function renderTabs() {
   $("tabs").innerHTML = "";
-  for (const name of [...Object.keys(CATS), "marks", "icons"]) {
+  for (const name of [...Object.keys(CATS), "upper-normal", "upper-left",
+                      "lower-normal", "lower-left", "base-variants", "icons"]) {
     const b = document.createElement("button");
     b.textContent = name;
     b.className = S.tab === name ? "on" : "";
@@ -182,8 +189,21 @@ function renderTabs() {
   }
 }
 
-const KIND_OF_TAB = t => t === "marks" ? "mark" : t === "icons" ? "icon" : "base";
-const SOURCE = k => k === "mark" ? S.st.marks : k === "icon" ? S.st.icons : S.st.bases;
+const CONTEXT_TAB = {
+  "upper-normal": ["upper", "normal"], "upper-left": ["upper", "left"],
+  "lower-normal": ["lower", "normal"], "lower-left": ["lower", "left"],
+};
+const KIND_OF_TAB = t => t === "icons" ? "icon"
+  : t === "base-variants" ? "variant" : CONTEXT_TAB[t] ? "stack" : "base";
+function SOURCE(kind) {
+  if (kind === "icon") return S.st.icons;
+  if (kind === "variant") return S.st.contextual.lower_base_variants;
+  if (kind === "stack") {
+    const [area, family] = CONTEXT_TAB[S.tab];
+    return S.st.contextual[area + "_stacks"][family];
+  }
+  return S.st.bases;
+}
 
 function renderList() {
   const q = $("search").value.trim().toLowerCase();
@@ -197,9 +217,11 @@ function renderList() {
                    + (kind === "base" && S.st.hand_drawn.includes(c) ? " hand" : "");
     cell.title = kind === "icon"
       ? `<${c}>  advance ${src[c].advance}` + (src[c].redrawn ? "  (redrawn)" : "")
+      : kind === "stack" ? `${S.tab} ${c}`
+      : kind === "variant" ? `${c} lower-base variant`
       : c + "  U+" + c.codePointAt(0).toString(16).toUpperCase();
-    cell.append(draw(kind === "mark" ? markCell(src[c]) : src[c].rows, 3,
-                     kind === "mark" ? null : src[c].advance));
+    cell.append(draw(kind === "stack" ? src[c] : src[c].rows, 3,
+                     kind === "base" ? src[c].advance : null));
     cell.onclick = () => pick(kind, c);
     list.append(cell);
   }
@@ -237,27 +259,42 @@ function showPartner() {
   $("pGname").textContent = S.kind === "icon" ? `<${S.char}>` : "";
 }
 
-/* a mark lives left-aligned in its sprite; show it where it sits in the cell */
-function markCell(m) {
-  const rows = Array(ROWS).fill(0);
-  (m.sprite || []).forEach((bits, i) => { if (m.y + i < ROWS) rows[m.y + i] = bits; });
-  return rows;
-}
-
 /* ---- the pixel grid ----------------------------------------------------- */
 
-let paintMode = null;
+let paintMode = null, selectionDrag = null;
+const pixelKey = (x, y) => `${x},${y}`;
+
+function selectInkRect(x, y) {
+  const x0 = Math.min(selectionDrag.x, x), x1 = Math.max(selectionDrag.x, x);
+  const y0 = Math.min(selectionDrag.y, y), y1 = Math.max(selectionDrag.y, y);
+  S.selection = new Set();
+  for (let py = y0; py <= y1; py++) for (let px = x0; px <= x1; px++)
+    if (S.rows[py] >> (7 - px) & 1) S.selection.add(pixelKey(px, py));
+  paintGrid(); updateSelectionUI();
+}
+
 function buildGrid() {
   const g = $("grid"); g.innerHTML = "";
   for (let y = 0; y < ROWS; y++) for (let x = 0; x < W; x++) {
     const d = document.createElement("div");
     d.dataset.x = x; d.dataset.y = y;
     d.onmousedown = e => { e.preventDefault();
-      paintMode = !(S.rows[y] >> (7 - x) & 1); set(x, y, paintMode); };
-    d.onmouseenter = () => { if (paintMode !== null) set(x, y, paintMode); };
+      if (S.selectMode) {
+        selectionDrag = {x, y}; selectInkRect(x, y);
+      } else {
+        paintMode = !(S.rows[y] >> (7 - x) & 1); set(x, y, paintMode);
+      }
+    };
+    d.onmouseenter = () => {
+      if (selectionDrag) selectInkRect(x, y);
+      else if (paintMode !== null) set(x, y, paintMode);
+    };
     g.append(d);
   }
-  document.addEventListener("mouseup", () => { if (paintMode !== null) { paintMode = null; commit(); } });
+  document.addEventListener("mouseup", () => {
+    if (selectionDrag) selectionDrag = null;
+    if (paintMode !== null) { paintMode = null; commit(); }
+  });
 }
 
 function set(x, y, on) {
@@ -269,13 +306,14 @@ function set(x, y, on) {
 }
 
 function paintGrid() {
-  const adv = S.kind === "mark" ? 8 : (S.advance ?? 8);
-  const base = S.kind === "mark" && S.sel ? S.sel : null;
+  const adv = S.kind === "base" || S.kind === "icon" ? (S.advance ?? 8) : 8;
+  const base = S.sel;
   [...$("grid").children].forEach(d => {
     const x = +d.dataset.x, y = +d.dataset.y;
     const lit = S.rows[y] >> (7 - x) & 1;
     const under = base && (base.rows[y] >> (7 - x) & 1);
     d.className = lit ? "lit" : under ? "base" : (x < adv ? "" : "bearing");
+    if (S.selection.has(pixelKey(x, y))) d.className += " selected";
     if (y === 12) d.className += " baseline";
   });
   showMetrics();
@@ -306,23 +344,38 @@ function showMetrics() {
 /* ---- selection ---------------------------------------------------------- */
 
 function pick(kind, char) {
-  S.kind = kind; S.char = char; S.undo = [];
+  S.kind = kind; S.char = char;
+  S.selectMode = false; S.selection = new Set(); selectionDrag = null;
   const src = SOURCE(kind)[char];
-  S.rows = kind === "mark" ? markCell(src) : src.rows.slice();
-  S.advance = kind === "mark" ? null : src.advance;
+  S.rows = (kind === "stack" ? src : src.rows).slice();
+  S.advance = kind === "base" || kind === "icon" ? src.advance : null;
   S.span = kind === "icon" ? (src.cell_span || 1) : 1;
-  S.dx = kind === "mark" ? (src.dx || 0) : 0;
-  S.sel = kind === "mark" ? S.st.bases["ก"] : null;   // preview a mark over ก
+  if (kind === "stack") {
+    [S.area, S.family] = CONTEXT_TAB[S.tab];
+    const preview = S.area === "upper"
+      ? (S.family === "left" ? "ป" : "ก")
+      : (S.family === "left" ? "ฏ" : "ก");
+    S.sel = S.st.bases[preview];
+  } else if (kind === "variant") {
+    S.area = "base"; S.family = null; S.sel = S.st.bases[char];
+  } else {
+    S.area = null; S.family = null; S.sel = null;
+  }
   $("title").textContent = kind === "icon"
     ? `icon  <${char}>` + (src.redrawn ? "   (redrawn)" : "")
+    : kind === "stack" ? `${S.area} stack  ${char}  [${S.family}]`
+    : kind === "variant" ? `lower-base variant  ${char}`
     : `${kind}  ${char}  U+${char.codePointAt(0).toString(16).toUpperCase()}`
       + (S.st.hand_drawn.includes(char) ? "   (hand-drawn)" : "");
   renderControls();
   renderTabs(); renderList(); showPartner(); paintGrid(); renderOverride();
+  updateSelectionUI(); updateUndoUI();
   $("hint").textContent = kind === "base"
     ? "left / ink / top are derived from the pixels on every stroke. advance is yours."
-    : kind === "mark"
-    ? "sprite / height / width / y are derived from the pixels. dx is your nudge; the grey shape is ก for reference."
+    : kind === "stack"
+    ? `full-cell ${S.family} overlay — saved pixels are the final position; grey is the reference base.`
+    : kind === "variant"
+    ? "full replacement base used before a lower vowel; grey is the ordinary base."
     : "fixed artwork — the bitmap is the whole glyph, nothing is composed on top. "
       + "Saving restamps its sha256 and marks it redrawn, so the file stops claiming "
       + "it still matches the manifest it was migrated from.";
@@ -347,34 +400,78 @@ function renderControls() {
       value="${S.span}" style="width:52px"></label>`;
     $("adv").oninput = () => { S.advance = +$("adv").value; paintGrid(); commit(); };
     $("span").oninput = () => { S.span = +$("span").value; commit(); };
-  } else if (S.kind === "mark") {
-    c.innerHTML = `<label>dx <input id="dx" type="number" min="-4" max="4" value="${S.dx}"
-      style="width:52px"></label> <label>over <select id="over"></select></label>`;
-    $("dx").oninput = () => { S.dx = +$("dx").value; commit(); };
-    const sel = $("over");
-    for (const ch of Object.keys(S.st.bases).filter(CATS.thai))
-      sel.append(new Option(ch, ch));
-    sel.value = "ก";
-    sel.onchange = () => { S.sel = S.st.bases[sel.value]; paintGrid(); };
   }
+}
+
+function historyKey() {
+  if (S.kind === "stack") return `${S.area}:${S.family}:${S.char}`;
+  if (S.kind === "variant") return `variant::${S.char}`;
+  return `${S.kind}:${S.char}`;
+}
+
+function updateUndoUI() {
+  if (!$("undo") || !S.st || !S.char) return;
+  $("undo").disabled = !(S.st.undo_depths[historyKey()] > 0);
 }
 
 async function commit() {
   if (!S.char) return;
-  S.undo.push({ rows: S.rows.slice(), advance: S.advance, dx: S.dx });
-  if (S.undo.length > 60) S.undo.shift();
-  const path = { mark: "/api/mark", icon: "/api/icon", base: "/api/base" }[S.kind];
-  const body = S.kind === "mark" ? { char: S.char, rows: S.rows, dx: S.dx }
+  const path = S.kind === "stack" || S.kind === "variant"
+    ? "/api/contextual" : { icon: "/api/icon", base: "/api/base" }[S.kind];
+  const body = S.kind === "stack" || S.kind === "variant"
+    ? { area: S.area, family: S.family, key: S.char, rows: S.rows }
     : S.kind === "icon" ? { name: S.char, rows: S.rows, advance: S.advance,
                             cell_span: S.span }
     : { char: S.char, rows: S.rows, advance: S.advance };
   const r = await api(path, body);
-  SOURCE(S.kind)[S.char] = r.entry;
-  markDirty(true);
+  if (S.kind === "stack") {
+    S.st.contextual = r.contextual;
+  } else if (S.kind === "variant") {
+    S.st.contextual = r.contextual;
+  } else {
+    SOURCE(S.kind)[S.char] = r.entry;
+  }
+  S.st.undo_depths[historyKey()] = r.undo_depth;
+  markDirty(r.dirty); updateUndoUI();
   renderList(); showPartner(); refreshClusters(); refreshText();
 }
 
-function markDirty(on) { $("dirty").textContent = on ? "unsaved changes" : ""; }
+function markDirty(on) {
+  $("dirty").textContent = on ? "draft only — not saved to disk" : "saved on disk";
+}
+
+function updateSelectionUI() {
+  if (!$("selectInk")) return;
+  $("selectInk").classList.toggle("on", S.selectMode);
+  $("selectInk").textContent = S.selectMode ? "Selecting…" : "Select ink";
+  $("deselectInk").disabled = !S.selection.size;
+  $("selectionStatus").textContent = S.selection.size
+    ? `${S.selection.size} ink pixel${S.selection.size === 1 ? "" : "s"}`
+    : (S.selectMode ? "drag a rectangle over the grid" : "");
+}
+
+function moveSelected(dx, dy) {
+  const destinations = [...S.selection].map(key => {
+    const [x, y] = key.split(",").map(Number);
+    return { x: x + dx, y: y + dy };
+  });
+  if (destinations.some(({x, y}) => x < 0 || x >= W || y < 0 || y >= ROWS)) {
+    note("selected ink cannot move outside the 8x16 cell", "warn");
+    return false;
+  }
+  const rows = S.rows.slice();
+  for (const key of S.selection) {
+    const [x, y] = key.split(",").map(Number);
+    rows[y] &= ~(1 << (7 - x));
+  }
+  const moved = new Set();
+  for (const {x, y} of destinations) {
+    rows[y] |= 1 << (7 - x);
+    moved.add(pixelKey(x, y));
+  }
+  S.rows = rows; S.selection = moved; updateSelectionUI();
+  return true;
+}
 
 /* ---- cluster previews --------------------------------------------------- */
 
@@ -391,9 +488,9 @@ function refreshClusters() {
           ? "icon:" + partnerOf(S.char).name : null].filter(Boolean)
       : S.kind === "base"
       ? (S.st.clusters[S.char] || [])
-      : Object.keys(S.st.bases).filter(CATS.thai)
-          .map(b => "cluster:" + b + S.char)
-          .filter(t => (S.st.clusters[t.split(":")[1][0]] || []).includes(t));
+      : S.kind === "stack" || S.kind === "variant"
+      ? (S.st.contextual_clusters[`${S.area}:${S.family || ""}:${S.char}`] || [])
+      : [];
     if (!tokens.length) { box.innerHTML = "<span class='note'>no cluster in the manifest uses this</span>"; return; }
     const { glyphs } = await api("/api/compose", { tokens });
     box.innerHTML = "";
@@ -501,35 +598,60 @@ async function boot() {
 
   document.querySelectorAll("[data-nudge]").forEach(b => b.onclick = () => {
     const [dx, dy] = b.dataset.nudge.split(",").map(Number);
-    let rows = S.rows.slice();
-    if (dy) rows = dy > 0 ? [0, ...rows.slice(0, -1)] : [...rows.slice(1), 0];
-    S.rows = rows.map(r => dx > 0 ? (r >> dx) & 0xFF : (r << -dx) & 0xFF);
+    if (S.selection.size) {
+      if (!moveSelected(dx, dy)) return;
+    } else {
+      let rows = S.rows.slice();
+      if (dy) rows = dy > 0 ? [0, ...rows.slice(0, -1)] : [...rows.slice(1), 0];
+      S.rows = rows.map(r => dx > 0 ? (r >> dx) & 0xFF : (r << -dx) & 0xFF);
+    }
     paintGrid(); commit();
   });
-  $("clear").onclick = () => { S.rows = Array(ROWS).fill(0); paintGrid(); commit(); };
-  $("undo").onclick = () => {
-    S.undo.pop();
-    const prev = S.undo[S.undo.length - 1]; if (!prev) return;
-    S.rows = prev.rows.slice(); S.advance = prev.advance; S.dx = prev.dx;
-    renderControls(); paintGrid(); commit();
+  $("clear").onclick = () => {
+    if (S.selection.size) {
+      for (const key of S.selection) {
+        const [x, y] = key.split(",").map(Number);
+        S.rows[y] &= ~(1 << (7 - x));
+      }
+      S.selection = new Set(); updateSelectionUI();
+    } else {
+      S.rows = Array(ROWS).fill(0);
+    }
+    paintGrid(); commit();
+  };
+  $("selectInk").onclick = () => { S.selectMode = !S.selectMode; updateSelectionUI(); };
+  $("deselectInk").onclick = () => {
+    S.selection = new Set(); S.selectMode = false; updateSelectionUI(); paintGrid();
+  };
+  $("undo").onclick = async () => {
+    const r = await api("/api/undo", {
+      kind: S.kind, key: S.char, area: S.area, family: S.family
+    });
+    if (!r.changed) { updateUndoUI(); return; }
+    const kind = S.kind, char = S.char;
+    S.st = await api("/api/state");
+    S.selection = new Set(); S.selectMode = false;
+    pick(kind, char); markDirty(S.st.dirty);
   };
   $("save").onclick = async () => {
     const r = await api("/api/save", {});
-    markDirty(false); note("wrote " + r.written.join(", "), "good");
+    S.st.undo_depths = (await api("/api/state")).undo_depths;
+    markDirty(false); updateUndoUI();
+    note("saved to disk: " + r.written.join(", "), "good");
   };
   let armed = null;                       // revert asks twice, in the button itself
   $("revert").onclick = async () => {
     if (!armed) {
-      $("revert").textContent = "Revert — sure?"; $("revert").classList.add("on");
-      armed = setTimeout(() => { armed = null; $("revert").textContent = "Revert";
+      $("revert").textContent = "Discard — sure?"; $("revert").classList.add("on");
+      armed = setTimeout(() => { armed = null; $("revert").textContent = "Discard draft";
                                  $("revert").classList.remove("on"); }, 4000);
       return;
     }
     clearTimeout(armed); armed = null;
-    $("revert").textContent = "Revert"; $("revert").classList.remove("on");
+    $("revert").textContent = "Discard draft"; $("revert").classList.remove("on");
     await api("/api/revert", {}); S.st = await api("/api/state");
     markDirty(false); if (S.char) pick(S.kind, S.char); renderList();
-    note("reverted to what is on disk");
+    note("discarded draft; reloaded what is on disk");
   };
   $("rebuild").onclick = async () => {
     note("building…"); const r = await api("/api/rebuild", {});

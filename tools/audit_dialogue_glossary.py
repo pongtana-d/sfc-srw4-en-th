@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report dialogue whose Japanese source uses a glossary key but Thai omits its canonical form.
+"""Report dialogue whose Japanese source uses a reference key but Thai omits its canonical form.
 
 This is a strict review aid, not a pass/fail test: ordinary terms may be translated
 idiomatically.  Names and proper nouns in the report should normally be corrected.
@@ -10,34 +10,57 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
 TRANS = ROOT / "data" / "translations"
+DASHES = str.maketrans({"－": "ー"})
+STRICT_CATEGORIES = {"pilots", "pilot_labels", "units", "weapons", "series"}
+STRICT_GLOSSARY_GROUPS = {
+    "characters",
+    "battle_labels",
+    "organisations",
+    "mecha",
+    "canonical_full_mecha",
+    "ships",
+    "places",
+}
+sys.path.insert(0, str(ROOT / "tools"))
+
+from build_dialogue_reference import build  # noqa: E402
 
 
-def leaves(node: object) -> dict[str, str]:
-    result: dict[str, str] = {}
-    if not isinstance(node, dict):
-        return result
-    for key, value in node.items():
-        if key.startswith("_"):
-            continue
-        if isinstance(value, str):
-            result[key] = value
-        elif isinstance(value, dict):
-            result.update(leaves(value))
-    return result
+def compact_source(value: str) -> str:
+    return re.sub(r"\s+", "", value).translate(DASHES)
+
+
+def is_katakana(character: str) -> bool:
+    return "ァ" <= character <= "ヶ" or character == "ー"
+
+
+def is_kana(character: str) -> bool:
+    return "ぁ" <= character <= "ん" or is_katakana(character)
 
 
 def has_source_key(source: str, key: str) -> bool:
-    source = re.sub(r"\s+", "", source)
-    key = re.sub(r"\s+", "", key)
-    left = r"(?<![ァ-ヶー])" if key and re.match(r"[ァ-ヶー]", key[0]) else ""
-    right = r"(?![ァ-ヶー])" if key and re.match(r"[ァ-ヶー]", key[-1]) else ""
-    return re.search(left + re.escape(key) + right, source) is not None
+    """Match an already compacted key without accepting a kana-word substring."""
+    start = source.find(key)
+    while start >= 0:
+        end = start + len(key)
+        left_ok = not (key and is_kana(key[0]) and start and is_kana(source[start - 1]))
+        right_ok = not (
+            key
+            and is_kana(key[-1])
+            and end < len(source)
+            and is_kana(source[end])
+        )
+        if left_ok and right_ok:
+            return True
+        start = source.find(key, start + 1)
+    return False
 
 
 def contains_rendered_term(translation: str, expected: str) -> bool:
@@ -52,19 +75,29 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=100)
     args = parser.parse_args()
 
-    glossary = leaves(json.loads((TRANS / "glossary.th.json").read_text(encoding="utf-8")))
+    glossary = {}
+    for source, entry in build()["lookup"].items():
+        origins = entry["origins"]
+        strict = any(origin in STRICT_CATEGORIES for origin in origins) or any(
+            origin.startswith("glossary.")
+            and origin.removeprefix("glossary.") in STRICT_GLOSSARY_GROUPS
+            for origin in origins
+        )
+        if strict:
+            glossary[compact_source(source)] = (source, str(entry["translation"]))
     thai = json.loads((TRANS / "script.th.json").read_text(encoding="utf-8"))["messages"]
     source_rows = json.loads((TRANS / "script.source.json").read_text(encoding="utf-8"))["messages"]
     missing: dict[tuple[str, str], list[tuple[str, str, str]]] = defaultdict(list)
     for row in source_rows:
         message_id, source = row["id"], row["source"]
+        compact = compact_source(source)
         translation = thai[message_id]
-        for key, expected in glossary.items():
-            if has_source_key(source, key) and not contains_rendered_term(translation, expected):
+        for search_key, (key, expected) in glossary.items():
+            if has_source_key(compact, search_key) and not contains_rendered_term(translation, expected):
                 missing[(key, expected)].append((message_id, source, translation))
 
     total = sum(len(rows) for rows in missing.values())
-    print(f"strict glossary mismatches: {total} uses in {len(missing)} groups")
+    print(f"strict dialogue-reference mismatches: {total} uses in {len(missing)} groups")
     ordered = sorted(missing.items(), key=lambda item: (-len(item[1]), item[0][0]))
     for (key, expected), rows in ordered[: args.limit]:
         print(f"\n{key} -> {expected}: {len(rows)}")

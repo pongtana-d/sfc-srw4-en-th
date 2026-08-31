@@ -33,9 +33,9 @@
 ประกอบ base+มาร์คเป็น "หนึ่ง cluster = หนึ่งกลิฟ" ตั้งแต่ตอน build แล้วให้ตัววาด
 ในเกมทำแค่ blit ตัวเลข จาก corpus จริง:
 
-- token ไม่ซ้ำ 625 ตัว (cluster ไทย 563 / char ละติน-ตัวเลข 55 / icon 7)
-- direct 208 + extended 417 → coverage ของบล็อก direct 97.61%
-- bitmap หลัง dedupe 624 ตัว เนื้อ bitmap 9,984 ไบต์ — **เล็กกว่าหนึ่งแบงก์**
+- token 783 ตัว รวม contextual NIKHAHIT สำหรับการแยก `ำ`
+- direct 208 ตัวคง id เดิม; token ใหม่ append ใน extended โดยไม่ renumber ของเก่า
+- bitmap หลัง dedupe 782 ตัว เนื้อ bitmap 12,512 ไบต์ — **เล็กกว่าหนึ่งแบงก์**
 - ทุกตัว `cell_span = 1` ยังไม่มีกลิฟที่ล้นเซลล์
 
 metrics ใช้ schema เดียวกันหมดทุกแหล่ง: `advance`, `ink_width`, `left`, `top`, English production glyph ทุกตัวต้องผ่าน atlas นี้ด้วย
@@ -67,19 +67,26 @@ metrics ใช้ schema เดียวกันหมดทุกแหล่�
 python3 tools/font_editor.py
 ```
 
-เปิดหน้าแก้กลิฟที่ `http://127.0.0.1:8731` — แก้ `data/font/thai.json` (bases 133,
-marks 13) และ `data/font/renewal-overrides.json`
+เปิดหน้าแก้กลิฟที่ `http://127.0.0.1:8731` — แก้ `data/font/thai.json`
+(base, upper/lower contextual stacks และ `ญ/ฐ` lower-base variants), icon และ
+`data/font/renewal-overrides.json`
 
 **พรีวิวเดินผ่าน `AtlasBuilder` ตัวจริง** ไม่ได้เขียนกฎการประกอบซ้ำในเบราว์เซอร์
-สิ่งที่เห็นคือสิ่งที่ atlas จะสร้าง แก้ base แล้วทุกคลัสเตอร์ที่ใช้ base นั้น
-เลื่อนมาร์คตามทันที (มาร์คเกาะขอบขวาของหมึก base ตามกฎใน `placement`)
+สิ่งที่เห็นคือสิ่งที่ atlas จะสร้าง stack เป็น bitmap 8×16 เต็มเซลล์และตำแหน่ง
+พิกเซลที่บันทึกคือผลจริง ไม่มีการคำนวณ `dx` หรือยกวรรณยุกต์ตอน build
+
+- upper `left`: `ป ฝ ฟ ฬ`
+- lower `left`: `ฏ ฎ`
+- `ญ ฐ` ใช้ base ตัดหางเมื่อมี `ุ/ู`
+- `ำ` แยกเป็น NIKHAHIT บนพยัญชนะ + `า`; เช่น `น้ำ` → `นํ้` + `า`
 
 เมตริกที่**อธิบายบิตแมป** ถูกคำนวณใหม่ทุกครั้งที่วาด จึงไม่มีทางเพี้ยนจากพิกเซล:
 
 | ชนิด | คำนวณให้ | ยังแก้เองได้ |
 |---|---|---|
 | base | `left` `ink` `top` | `advance` |
-| mark | `sprite` `height` `width` `y` | `dx` |
+| contextual stack | bitmap 8×16 และตำแหน่งจริง | — |
+| lower-base variant | bitmap 8×16 | — |
 | icon | `sha256` | `advance` `cell_span` |
 
 มาร์คถูกเก็บชิดซ้ายเสมอ วาดตรงไหนในเซลล์ก็ได้ ตอน commit จะเลื่อนชิดซ้ายให้

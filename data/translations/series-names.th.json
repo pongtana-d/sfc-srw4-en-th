@@ -109,7 +109,7 @@
       "source_end": "0x1289ED",
       "source_hex": "F109F093F04BF00800A5DFCBB2B733FF",
       "source": "無敵超人　ザンボット３",
-      "translation": "ซัมบ็อต 3"
+      "translation": "แซมบ็อต 3"
     },
     {
       "pointer": "0x89ED",
@@ -120,7 +120,7 @@
       "source_end": "0x1289FD",
       "source_hex": "F109F093F5A8F00800AF93AE11DF33FF",
       "source": "無敵鋼人　ダイターン３",
-      "translation": "ไดตาน 3"
+      "translation": "ไดทาร์น 3"
     },
     {
       "pointer": "0x89FD",
@@ -153,7 +153,7 @@
       "source_end": "0x128A24",
       "source_hex": "F0B7F052F0E197DA9B93CFFF",
       "source": "重戦機エルガイム",
-      "translation": "แอลไกม์"
+      "translation": "L-ไกม์"
     },
     {
       "pointer": "0x8A24",
@@ -241,7 +241,7 @@
       "source_end": "0x128A94",
       "source_hex": "F0E1F051F052F0499BDFAFCF1B113931FF",
       "source": "機動戦士ガンダムＦー９１",
-      "translation": "กันดั้ม F91"
+      "translation": "กันดั้ม F-91"
     },
     {
       "pointer": "0x8A94",

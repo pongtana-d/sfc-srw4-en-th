@@ -3,13 +3,13 @@
 Three sources feed the same atlas, and they all come out with the same metrics
 schema so a single blitter can draw any of them:
 
-  cluster:  composed here from the project's hand-drawn Thai bases and marks
+  cluster:  composed from hand-drawn bases and exact contextual stack bitmaps
   char:     the image is imported from the game's own font in the clean ROM
   icon:     fixed artwork that ships in the manifest
 
-Composition follows the rule recorded in `data/font/thai.json`: a mark's right
-edge lines up with the base's ink right edge plus the mark's own dx, and a tone
-mark moves up to its raised row when an above-vowel already sits over the base.
+Thai composition uses hand-tuned full-cell contextual stacks recorded in
+`data/font/thai.json`.  Their pixels already contain the final x/y position;
+the builder only selects normal/left and ORs those rows over the base.
 """
 
 from __future__ import annotations
@@ -76,8 +76,7 @@ class AtlasBuilder:
     def __init__(self, font_dir: Path, rom: bytes):
         thai = json.loads((font_dir / "thai.json").read_text())
         self.bases = thai["bases"]
-        self.marks = thai["marks"]
-        self.raised_rows = thai["raised_rows"]
+        self.contextual = thai["contextual"]
         self.icons = json.loads((font_dir / "renewal-icons.json").read_text())["glyphs"]
         self.stock = json.loads((font_dir / "renewal-stock.json").read_text())["glyphs"]
         self.overrides = json.loads((font_dir / "renewal-overrides.json").read_text())["overrides"]
@@ -144,49 +143,43 @@ class AtlasBuilder:
         if base is None:
             raise EncodingError(f"{token}: no drawing for the base {base_char!r}")
 
-        rows = list(base["rows"])
-        # A tone mark only moves up when a vowel already occupies the row above
-        # the base. Tone marks themselves are the ones listed in raised_rows.
-        vowels = [
-            self.marks[m]
-            for m in marks
-            if self._mark_class(m) == "above" and m not in self.raised_rows
-        ]
-        vowel_top = min((v["y"] for v in vowels), default=None)
-        for mark_char in marks:
-            mark = self.marks.get(mark_char)
-            if mark is None:
-                raise EncodingError(f"{token}: no drawing for the mark {mark_char!r}")
-            self._stamp(rows, base, mark, mark_char, vowel_top)
+        lower = [mark for mark in marks if self._mark_class(mark) == "below"]
+        upper = "".join(mark for mark in marks if self._mark_class(mark) == "above")
+        if len(lower) > 1:
+            raise EncodingError(f"{token}: more than one lower mark")
+
+        variant = self.contextual["lower_base_variants"].get(base_char) if lower else None
+        rows = list(variant["rows"] if variant else base["rows"])
+
+        if upper:
+            family = "left" if base_char in self.contextual["upper_left_bases"] else "normal"
+            stack = self.contextual["upper_stacks"][family].get(upper)
+            if stack is None:
+                raise EncodingError(f"{token}: no {family} upper stack for {upper!r}")
+            self._overlay(rows, stack, token, f"{family} upper {upper!r}")
+
+        if lower:
+            family = "left" if base_char in self.contextual["lower_left_bases"] else "normal"
+            stack = self.contextual["lower_stacks"][family].get(lower[0])
+            if stack is None:
+                raise EncodingError(f"{token}: no {family} lower stack for {lower[0]!r}")
+            self._overlay(rows, stack, token, f"{family} lower {lower[0]!r}")
 
         return self._finish(token, tuple(rows), "composed", base["advance"])
 
     def _mark_class(self, mark_char: str) -> str:
-        """Above or below. One mark in the data has no class; its row says which."""
-        mark = self.marks[mark_char]
-        recorded = mark.get("class")
-        if recorded:
-            return recorded
-        return "above" if mark["y"] < CELL_ROWS // 2 else "below"
+        """Return the recorded contextual family; placement is never inferred."""
+        recorded = self.contextual["mark_classes"].get(mark_char)
+        if recorded not in {"above", "below"}:
+            raise EncodingError(f"no contextual class for mark {mark_char!r}")
+        return recorded
 
-    def _stamp(
-        self, rows: list[int], base: dict, mark: dict, mark_char: str, vowel_top: int | None
-    ) -> None:
-        # The mark's right edge follows the base's ink, nudged by the mark's dx.
-        x = base["left"] + base["ink"] - mark["width"] + mark["dx"]
-        x = max(0, min(x, CELL_WIDTH - mark["width"]))
-
-        top = mark["y"]
-        if vowel_top is not None and mark_char in self.raised_rows:
-            # Clear the vowel rather than trusting the recorded row on its own:
-            # a tall vowel such as "ue" starts higher than the usual one, and
-            # sitting on it would merge the two into a single shape.
-            top = max(0, min(self.raised_rows[mark_char], vowel_top - len(mark["sprite"])))
-
-        for offset, sprite_row in enumerate(mark["sprite"]):
-            row = top + offset
-            if 0 <= row < CELL_ROWS:
-                rows[row] |= _shift(sprite_row, x)
+    @staticmethod
+    def _overlay(rows: list[int], stack: list[int], token: str, label: str) -> None:
+        if len(stack) != CELL_ROWS or any(not 0 <= row <= 0xFF for row in stack):
+            raise EncodingError(f"{token}: {label} must be {CELL_ROWS} byte rows")
+        for index, bits in enumerate(stack):
+            rows[index] |= bits
 
     # --- metrics ------------------------------------------------------------
 

@@ -24,6 +24,9 @@ from .contract import ENGINE_FLOOR, ENGINE_OPERANDS, NEWLINE_BYTE, RESERVED_FIRS
 # Combining marks never start a cluster; they attach to the character before.
 THAI_MARKS = frozenset("ัิีึืฺุู็่้๊๋์ํ๎")
 THAI_RANGE = ("฀", "๿")
+SARA_AM = "ำ"
+NIKHAHIT = "ํ"
+TONE_MARKS = frozenset("่้๊๋์")
 
 ESCAPE = re.compile(r"<([^<>]*)>")
 HEX_ESCAPE = re.compile(r"^[0-9A-F]{2}(?::(?:[0-9A-F]{2})+)*$")
@@ -154,7 +157,16 @@ def segment(text: str) -> list[str]:
     """Split plain text into grapheme clusters (a base plus its marks)."""
     clusters: list[str] = []
     for ch in text:
-        if ch in THAI_MARKS and clusters:
+        if ch == SARA_AM and clusters and THAI_RANGE[0] <= clusters[-1][0] <= THAI_RANGE[1]:
+            # SARA AM is drawn as NIKHAHIT over the preceding consonant plus a
+            # spacing SARA AA.  Put NIKHAHIT below any tone in the saved upper
+            # stack even though ordinary input spells the tone before SARA AM.
+            previous = clusters.pop()
+            base, marks = previous[0], previous[1:]
+            split = next((i for i, mark in enumerate(marks) if mark in TONE_MARKS), len(marks))
+            clusters.append(base + marks[:split] + NIKHAHIT + marks[split:])
+            clusters.append("า")
+        elif ch in THAI_MARKS and clusters:
             clusters[-1] += ch
         else:
             clusters.append(ch)

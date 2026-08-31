@@ -108,7 +108,7 @@
       "source_pc": "0x129159",
       "source_hex": "A5DFCBB2B733F329F040FF",
       "source": "ザンボット３登場",
-      "translation": "ซัมบ็อต 3 ปรากฏตัว",
+      "translation": "แซมบ็อต 3 ปรากฏตัว",
       "slots": [
         9
       ]
@@ -139,7 +139,7 @@
       "source_pc": "0x12917E",
       "source_hex": "9B93ADB29E6DF29BF2B4FF",
       "source": "ガイゾックの恐怖",
-      "translation": "ความน่ากลัวของไกซ็อค",
+      "translation": "ความน่ากลัวของไกโซคุ",
       "slots": [
         12
       ]
@@ -179,7 +179,7 @@
       "source_pc": "0x1291A3",
       "source_hex": "F016F0A4F0A59BDA11AF6DF2E3F2BCFF",
       "source": "大将軍ガルーダの悲劇",
-      "translation": "โศกนาฏกรรมของกาลูด้า",
+      "translation": "โศกนาฏกรรมของแม่ทัพการูด้า",
       "slots": [
         16
       ]
@@ -221,7 +221,7 @@
       "source_pc": "0x1291D4",
       "source_hex": "1906C7DA6DF032F086FF",
       "source": "Ｄｒヘルの野望",
-      "translation": "ความทะยานอยากของดร.เฮลล์",
+      "translation": "ความทะยานอยากของ ดร.เฮล",
       "slots": [
         20
       ]
@@ -261,7 +261,7 @@
       "source_pc": "0x1291FC",
       "source_hex": "B592AE11DFA9F22DF250FF",
       "source": "ティターンズ台頭",
-      "translation": "ทีทานส์ผงาด",
+      "translation": "ทิทานส์ผงาด",
       "slots": [
         24
       ]
@@ -271,7 +271,7 @@
       "source_pc": "0x129207",
       "source_hex": "979411A3676DF1E1F28CFF",
       "source": "エゥーゴとの接触",
-      "translation": "พบกับเอวโก้",
+      "translation": "พบกับ AEUG",
       "slots": [
         25
       ]
@@ -332,7 +332,7 @@
       "source_pc": "0x129247",
       "source_hex": "F3B5F3ACF293F261F1F29193A5CF6DF374F052FF",
       "source": "天才科学者アイザムの挑戦",
-      "translation": "คำท้าของอัจฉริยะไอซามุ",
+      "translation": "คำท้าของนักวิทยาศาสตร์อัจฉริยะไอแซม",
       "slots": [
         31
       ]
@@ -342,7 +342,7 @@
       "source_pc": "0x12925B",
       "source_hex": "A2DCA867B8DF3BA595A411FF",
       "source": "コロスとドン・ザウサー",
-      "translation": "โคโรสกับดอน ซาวเซอร์",
+      "translation": "โครอสกับดอน ซาวเซอร์",
       "slots": [
         32
       ]
@@ -382,7 +382,7 @@
       "source_pc": "0x129284",
       "source_hex": "C2D7DF3BA53BB7B2B8FF",
       "source": "ビヨン・ザ・トッド",
-      "translation": "บียอนด์ เดอะ ท็อด",
+      "translation": "บียอนด์ เดอะ ท็อดด์",
       "slots": [
         36
       ]
@@ -422,7 +422,7 @@
       "source_pc": "0x1292AB",
       "source_hex": "A1A8B76793DFA8C99EAE11FF",
       "source": "ゲストとインスペクター",
-      "translation": "เกสต์กับอินสเปคเตอร์",
+      "translation": "เกสต์กับอินสเปกเตอร์",
       "slots": [
         40
       ]
@@ -442,11 +442,12 @@
       "source_pc": "0x1292C2",
       "source_hex": "D9D411BC3B9AC6D9B2B099FF",
       "source": "リューネ・カプリッチオ",
-      "translation": "ริวเนะ คาปริชโช",
+      "translation": "ริวเน่ คาปริชโช",
       "slots": [
         42,
         75
-      ]
+      ],
+      "method": "reviewed_name_report"
     },
     {
       "pointer": "0x92CE",
@@ -473,7 +474,7 @@
       "source_pc": "0x1292DF",
       "source_hex": "99DAB8B9E3CCAA93AFDAFF",
       "source": "オルドナ＝ポセイダル",
-      "translation": "โอลด์นา โพเซย์ดัล",
+      "translation": "ออลโดน่า โพไซดัล",
       "slots": [
         45,
         62,
@@ -622,7 +623,7 @@
       "source_pc": "0x12932F",
       "source_hex": "D9C1B5DA679193A5CFFF",
       "source": "リヒテルとアイザム",
-      "translation": "ริชเทอร์กับไอซามุ",
+      "translation": "ริฮ์เทลกับไอแซม",
       "slots": [
         63
       ]
@@ -632,7 +633,7 @@
       "source_pc": "0x129339",
       "source_hex": "AFBFE3CD93DC11B8FF",
       "source": "ダバ＝マイロード",
-      "translation": "ดาบา มายโรด",
+      "translation": "ดาบา ไมโรด",
       "slots": [
         64
       ]

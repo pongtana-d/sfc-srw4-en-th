@@ -47,7 +47,7 @@
     ],
     "source": "シルキー",
     "source_hex": "A6 DA 9C 11 FF",
-    "translation": "ซิลกี",
+    "translation": "ซิลกี้",
     "method": "reviewed_glossary"
   },
   {
@@ -67,7 +67,7 @@
     ],
     "source": "ジャック",
     "source_hex": "A7 D2 B2 9E FF",
-    "translation": "แจ็ก",
+    "translation": "แจ็ค",
     "method": "reviewed_glossary"
   },
   {
@@ -77,7 +77,7 @@
     ],
     "source": "メリー",
     "source_hex": "D0 D9 11 FF",
-    "translation": "แมรี",
+    "translation": "แมรี่",
     "method": "reviewed_glossary"
   },
   {
@@ -117,7 +117,7 @@
     ],
     "source": "真吾",
     "source_hex": "F1 D2 F3 02 FF",
-    "translation": "ชิงโง",
+    "translation": "ชินโง",
     "method": "reviewed_glossary"
   },
   {
@@ -127,7 +127,7 @@
     ],
     "source": "レミー",
     "source_hex": "DB CE 11 FF",
-    "translation": "เรมี",
+    "translation": "เรมี่",
     "method": "reviewed_glossary"
   },
   {
@@ -137,7 +137,7 @@
     ],
     "source": "キリー",
     "source_hex": "9C D9 11 FF",
-    "translation": "คิลลี",
+    "translation": "คิลลี่",
     "method": "reviewed_glossary"
   },
   {
@@ -147,7 +147,7 @@
     ],
     "source": "勝平",
     "source_hex": "F0 C9 F1 11 FF",
-    "translation": "คัปเป",
+    "translation": "คัปเปย์",
     "method": "reviewed_glossary"
   },
   {
@@ -187,7 +187,7 @@
     ],
     "source": "沙羅",
     "source_hex": "F4 20 F4 21 FF",
-    "translation": "ซาระ",
+    "translation": "ซาร่า",
     "method": "reviewed_glossary"
   },
   {
@@ -297,8 +297,8 @@
     ],
     "source": "リューネ",
     "source_hex": "D9 D4 11 BC FF",
-    "translation": "ริวเน",
-    "method": "reviewed_glossary"
+    "translation": "ริวเน่",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x7A32",
@@ -317,7 +317,7 @@
     ],
     "source": "クワトロ",
     "source_hex": "9E DD B7 DC FF",
-    "translation": "ควัตโตร",
+    "translation": "ควาโทร",
     "method": "reviewed_name_report"
   },
   {
@@ -357,7 +357,7 @@
     ],
     "source": "マチルダ",
     "source_hex": "CD B0 DA AF FF",
-    "translation": "มาทิลดา",
+    "translation": "มาทิลด้า",
     "method": "reviewed_glossary"
   },
   {
@@ -367,7 +367,7 @@
     ],
     "source": "セイラ",
     "source_hex": "AA 93 D8 FF",
-    "translation": "เซย์ลา",
+    "translation": "เซย์ล่า",
     "method": "reviewed_glossary"
   },
   {
@@ -387,7 +387,7 @@
     ],
     "source": "ティアンム",
     "source_hex": "B5 92 91 DF CF FF",
-    "translation": "เทียเนม",
+    "translation": "เทียนัม",
     "method": "reviewed_name_report"
   },
   {
@@ -397,7 +397,7 @@
     ],
     "source": "エマ",
     "source_hex": "97 CD FF",
-    "translation": "เอ็มมา",
+    "translation": "เอ็มม่า",
     "method": "reviewed_glossary"
   },
   {
@@ -427,7 +427,7 @@
     ],
     "source": "カツ",
     "source_hex": "9A B3 FF",
-    "translation": "คัตซ์",
+    "translation": "คัตสึ",
     "method": "reviewed_glossary"
   },
   {
@@ -447,7 +447,7 @@
     ],
     "source": "ベルトーチカ",
     "source_hex": "C8 DA B7 11 B0 9A FF",
-    "translation": "เบลทอร์ชิกา",
+    "translation": "เบลทอร์ชิก้า",
     "method": "reviewed_glossary"
   },
   {
@@ -457,7 +457,7 @@
     ],
     "source": "ケリィ",
     "source_hex": "A0 D9 92 FF",
-    "translation": "เคลลี",
+    "translation": "เคลลี่",
     "method": "reviewed_glossary"
   },
   {
@@ -507,7 +507,7 @@
     ],
     "source": "プルツー",
     "source_hex": "C6 DA B3 11 FF",
-    "translation": "พลี ทู",
+    "translation": "พลูทู",
     "method": "reviewed_name_report"
   },
   {
@@ -517,7 +517,7 @@
     ],
     "source": "リィナ",
     "source_hex": "D9 92 B9 FF",
-    "translation": "ลีนา",
+    "translation": "ลีน่า",
     "method": "reviewed_glossary"
   },
   {
@@ -527,7 +527,7 @@
     ],
     "source": "ビーチャ",
     "source_hex": "C2 11 B0 D2 FF",
-    "translation": "บีชา",
+    "translation": "บีช่า",
     "method": "reviewed_glossary"
   },
   {
@@ -537,7 +537,7 @@
     ],
     "source": "モンド",
     "source_hex": "D1 DF B8 FF",
-    "translation": "มอนโด",
+    "translation": "มอนโด้",
     "method": "reviewed_glossary"
   },
   {
@@ -557,7 +557,7 @@
     ],
     "source": "イーノ",
     "source_hex": "93 11 BD FF",
-    "translation": "อีโน",
+    "translation": "อีโน่",
     "method": "reviewed_glossary"
   },
   {
@@ -567,7 +567,7 @@
     ],
     "source": "エマリー",
     "source_hex": "97 CD D9 11 FF",
-    "translation": "เอมารี",
+    "translation": "เอมารี่",
     "method": "reviewed_glossary"
   },
   {
@@ -597,7 +597,7 @@
     ],
     "source": "ケーラ",
     "source_hex": "A0 11 D8 FF",
-    "translation": "เคย์รา",
+    "translation": "เคย์ร่า",
     "method": "reviewed_glossary"
   },
   {
@@ -607,7 +607,7 @@
     ],
     "source": "ハサウェイ",
     "source_hex": "BE A4 95 96 93 FF",
-    "translation": "ฮาธาเวย์",
+    "translation": "ฮาซาเวย์",
     "method": "reviewed_name_report"
   },
   {
@@ -627,7 +627,7 @@
     ],
     "source": "バーニィ",
     "source_hex": "BF 11 BA 92 FF",
-    "translation": "เบอร์นี",
+    "translation": "เบอร์นี่",
     "method": "reviewed_glossary"
   },
   {
@@ -637,7 +637,7 @@
     ],
     "source": "セシリー",
     "source_hex": "AA A6 D9 11 FF",
-    "translation": "เซสซิลี",
+    "translation": "เซซิลี่",
     "method": "reviewed_name_report"
   },
   {
@@ -657,7 +657,7 @@
     ],
     "source": "ガトー",
     "source_hex": "9B B7 11 FF",
-    "translation": "กาโต",
+    "translation": "กาโต้",
     "method": "reviewed_glossary"
   },
   {
@@ -757,7 +757,7 @@
     ],
     "source": "ダンゲル",
     "source_hex": "AF DF A1 DA FF",
-    "translation": "ดุงเคิล",
+    "translation": "ดังก์เลอร์",
     "method": "reviewed_name_report"
   },
   {
@@ -767,7 +767,7 @@
     ],
     "source": "神宮寺",
     "source_hex": "F0 06 F4 13 F4 14 FF",
-    "translation": "จิงงูจิ",
+    "translation": "จิงกูจิ",
     "method": "reviewed_name_report"
   },
   {
@@ -777,7 +777,7 @@
     ],
     "source": "麗",
     "source_hex": "F0 36 FF",
-    "translation": "เร",
+    "translation": "เรย์",
     "method": "reviewed_glossary"
   },
   {
@@ -797,7 +797,7 @@
     ],
     "source": "アムロ",
     "source_hex": "91 CF DC FF",
-    "translation": "อามุโร",
+    "translation": "อามุโร่",
     "method": "reviewed_glossary"
   },
   {
@@ -807,7 +807,7 @@
     ],
     "source": "カミーユ",
     "source_hex": "9A CE 11 D5 FF",
-    "translation": "คามิลล์",
+    "translation": "คามิล",
     "method": "reviewed_glossary"
   },
   {
@@ -817,7 +817,7 @@
     ],
     "source": "ジュドー",
     "source_hex": "A7 D4 B8 11 FF",
-    "translation": "จูโด",
+    "translation": "จูโด้",
     "method": "reviewed_glossary"
   },
   {
@@ -827,7 +827,7 @@
     ],
     "source": "シーブック",
     "source_hex": "A6 11 C5 B2 9E FF",
-    "translation": "ซีบุ๊ก",
+    "translation": "ซีบุ๊ค",
     "method": "reviewed_glossary"
   },
   {
@@ -868,7 +868,7 @@
     ],
     "source": "梅江",
     "source_hex": "F4 18 F4 0C FF",
-    "translation": "อุเม",
+    "translation": "อุเมะ",
     "method": "reviewed_name_report"
   },
   {
@@ -878,7 +878,7 @@
     ],
     "source": "源五郎",
     "source_hex": "F2 86 F4 19 F0 30 FF",
-    "translation": "เก็นโกโร",
+    "translation": "เก็นโกโร่",
     "method": "reviewed_glossary"
   },
   {
@@ -888,7 +888,7 @@
     ],
     "source": "一太郎",
     "source_hex": "F1 4E F0 2F F0 30 FF",
-    "translation": "อิจิทาโร",
+    "translation": "อิจิทาโร่",
     "method": "reviewed_glossary"
   },
   {
@@ -918,7 +918,7 @@
     ],
     "source": "レイカ",
     "source_hex": "DB 93 9A FF",
-    "translation": "เรกะ",
+    "translation": "เรย์กะ",
     "method": "reviewed_glossary"
   },
   {
@@ -948,7 +948,7 @@
     ],
     "source": "京四郎",
     "source_hex": "F4 1C F0 46 F0 30 FF",
-    "translation": "เคียวชิโร",
+    "translation": "เคียวชิโร่",
     "method": "reviewed_glossary"
   },
   {
@@ -968,7 +968,7 @@
     ],
     "source": "デューク",
     "source_hex": "B6 D4 11 9E FF",
-    "translation": "ดุ๊ก",
+    "translation": "ดุ๊ค",
     "method": "reviewed_glossary"
   },
   {
@@ -1039,7 +1039,7 @@
     ],
     "source": "リムル",
     "source_hex": "D9 CF DA FF",
-    "translation": "ริมูล",
+    "translation": "ริมุล",
     "method": "reviewed_glossary"
   },
   {
@@ -1093,7 +1093,7 @@
     ],
     "source": "テュッティ",
     "source_hex": "B5 D4 B2 B5 92 FF",
-    "translation": "ตึตติ",
+    "translation": "ทุตตี้",
     "method": "reviewed_name_report"
   },
   {
@@ -1113,7 +1113,7 @@
     ],
     "source": "バニング",
     "source_hex": "BF BA DF 9F FF",
-    "translation": "เบิร์นนิง",
+    "translation": "เบิร์นนิ่ง",
     "method": "reviewed_glossary"
   },
   {
@@ -1123,7 +1123,7 @@
     ],
     "source": "ヤンロン",
     "source_hex": "D3 DF DC DF FF",
-    "translation": "เหยียนหลง",
+    "translation": "หยางหลง",
     "method": "reviewed_name_report"
   },
   {
@@ -1133,7 +1133,7 @@
     ],
     "source": "プレシア",
     "source_hex": "C6 DB A6 91 FF",
-    "translation": "พรีเซีย",
+    "translation": "เพรเซีย",
     "method": "reviewed_glossary"
   },
   {
@@ -1163,7 +1163,7 @@
     ],
     "source": "モニカ",
     "source_hex": "D1 BA 9A FF",
-    "translation": "โมนิกา",
+    "translation": "โมนิก้า",
     "method": "reviewed_glossary"
   },
   {
@@ -1173,7 +1173,7 @@
     ],
     "source": "サフィーネ",
     "source_hex": "A4 C4 92 11 BC FF",
-    "translation": "ซาฟีน",
+    "translation": "ซาฟิเน่",
     "method": "reviewed_name_report"
   },
   {
@@ -1243,7 +1243,7 @@
     ],
     "source": "オルテガ",
     "source_hex": "99 DA B5 9B FF",
-    "translation": "ออร์เทก้า",
+    "translation": "ออร์เตก้า",
     "method": "reviewed_name_report"
   },
   {
@@ -1253,7 +1253,7 @@
     ],
     "source": "シャリア",
     "source_hex": "A6 D2 D9 91 FF",
-    "translation": "ชาเลีย",
+    "translation": "ชาเรีย",
     "method": "reviewed_name_report"
   },
   {
@@ -1293,7 +1293,7 @@
     ],
     "source": "サラ",
     "source_hex": "A4 D8 FF",
-    "translation": "ซาราห์",
+    "translation": "ซาร่าห์",
     "method": "reviewed_glossary"
   },
   {
@@ -1303,7 +1303,7 @@
     ],
     "source": "ゲーツ",
     "source_hex": "A1 11 B3 FF",
-    "translation": "เกตส์",
+    "translation": "เกทส์",
     "method": "reviewed_glossary"
   },
   {
@@ -1323,7 +1323,7 @@
     ],
     "source": "ジャマイカン",
     "source_hex": "A7 D2 CD 93 9A DF FF",
-    "translation": "จาเมกัน",
+    "translation": "จาไมคัน",
     "method": "reviewed_name_report"
   },
   {
@@ -1373,7 +1373,7 @@
     ],
     "source": "マウアー",
     "source_hex": "CD 95 91 11 FF",
-    "translation": "มูอาร์",
+    "translation": "เมาเออร์",
     "method": "reviewed_glossary"
   },
   {
@@ -1383,7 +1383,7 @@
     ],
     "source": "ミネバ",
     "source_hex": "CE BC BF FF",
-    "translation": "มิเนวา",
+    "translation": "มิเนว่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1393,7 +1393,7 @@
     ],
     "source": "ライラ",
     "source_hex": "D8 93 D8 FF",
-    "translation": "ไลลา",
+    "translation": "ไลล่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1423,7 +1423,7 @@
     ],
     "source": "マシュマー",
     "source_hex": "CD A6 D4 CD 11 FF",
-    "translation": "มาชีมาร์",
+    "translation": "มาชูม่าร์",
     "method": "reviewed_glossary"
   },
   {
@@ -1443,7 +1443,7 @@
     ],
     "source": "キャラ",
     "source_hex": "9C D2 D8 FF",
-    "translation": "คารา",
+    "translation": "คาร่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1453,7 +1453,7 @@
     ],
     "source": "グレミー",
     "source_hex": "9F DB CE 11 FF",
-    "translation": "เกลมี",
+    "translation": "เกรมี",
     "method": "reviewed_glossary"
   },
   {
@@ -1493,7 +1493,7 @@
     ],
     "source": "ラカン",
     "source_hex": "D8 9A DF FF",
-    "translation": "รากัน",
+    "translation": "ราคัน",
     "method": "reviewed_glossary"
   },
   {
@@ -1533,7 +1533,7 @@
     ],
     "source": "ザビーネ",
     "source_hex": "A5 C2 11 BC FF",
-    "translation": "ซาบิเน",
+    "translation": "ซาบีน",
     "method": "reviewed_glossary"
   },
   {
@@ -1543,7 +1543,7 @@
     ],
     "source": "アンナマリー",
     "source_hex": "91 DF B9 CD D9 11 FF",
-    "translation": "แอนนา มารี",
+    "translation": "แอนนามารี่",
     "method": "reviewed_glossary"
   },
   {
@@ -1553,7 +1553,7 @@
     ],
     "source": "ドレル",
     "source_hex": "B8 DB DA FF",
-    "translation": "ดอเรล",
+    "translation": "โดเรล",
     "method": "reviewed_glossary"
   },
   {
@@ -1563,7 +1563,7 @@
     ],
     "source": "カロッゾ",
     "source_hex": "9A DC B2 AD FF",
-    "translation": "คาร์ร็อตโซ",
+    "translation": "คาล็อตโซ่",
     "method": "reviewed_name_report"
   },
   {
@@ -1573,7 +1573,7 @@
     ],
     "source": "シュタイナー",
     "source_hex": "A6 D4 AE 93 B9 11 FF",
-    "translation": "ชไตเนอร์",
+    "translation": "สไตเนอร์",
     "method": "reviewed_name_report"
   },
   {
@@ -1583,7 +1583,7 @@
     ],
     "source": "シーマ",
     "source_hex": "A6 11 CD FF",
-    "translation": "ชีมา",
+    "translation": "ซีมา",
     "method": "reviewed_name_report"
   },
   {
@@ -1593,7 +1593,7 @@
     ],
     "source": "あしゅら",
     "source_hex": "41 56 84 88 FF",
-    "translation": "อาชูรา",
+    "translation": "อาชูร่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1653,7 +1653,7 @@
     ],
     "source": "ガルーダ",
     "source_hex": "9B DA 11 AF FF",
-    "translation": "การูดา",
+    "translation": "การูด้า",
     "method": "reviewed_glossary"
   },
   {
@@ -1673,7 +1673,7 @@
     ],
     "source": "オレアナ",
     "source_hex": "99 DB 91 B9 FF",
-    "translation": "โอเรอานา",
+    "translation": "โอเรอาน่า",
     "method": "reviewed_name_report"
   },
   {
@@ -1713,7 +1713,7 @@
     ],
     "source": "リヒテル",
     "source_hex": "D9 C1 B5 DA FF",
-    "translation": "ริชเทอร์",
+    "translation": "ริฮ์เทล",
     "method": "reviewed_glossary"
   },
   {
@@ -1733,7 +1733,7 @@
     ],
     "source": "ライザ",
     "source_hex": "D8 93 A5 FF",
-    "translation": "ไรซา",
+    "translation": "ไลซ่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1743,7 +1743,7 @@
     ],
     "source": "アイザム",
     "source_hex": "91 93 A5 CF FF",
-    "translation": "ไอซัม",
+    "translation": "ไอแซม",
     "method": "reviewed_glossary"
   },
   {
@@ -1753,7 +1753,7 @@
     ],
     "source": "ブンドル",
     "source_hex": "C5 DF B8 DA FF",
-    "translation": "บันเดิล",
+    "translation": "บุนเดิล",
     "method": "reviewed_name_report"
   },
   {
@@ -1763,7 +1763,7 @@
     ],
     "source": "カットナル",
     "source_hex": "9A B2 B7 B9 DA FF",
-    "translation": "คัตโตนารุ",
+    "translation": "คัตนอล",
     "method": "reviewed_name_report"
   },
   {
@@ -1773,7 +1773,7 @@
     ],
     "source": "ケルナグール",
     "source_hex": "A0 DA B9 9F 11 DA FF",
-    "translation": "เครุนากูรุ",
+    "translation": "เคอนากูล",
     "method": "reviewed_name_report"
   },
   {
@@ -1783,7 +1783,7 @@
     ],
     "source": "トッド",
     "source_hex": "B7 B2 B8 FF",
-    "translation": "ท็อด",
+    "translation": "ท็อดด์",
     "method": "reviewed_glossary"
   },
   {
@@ -1793,7 +1793,7 @@
     ],
     "source": "バーン",
     "source_hex": "BF 11 DF FF",
-    "translation": "เบิร์น",
+    "translation": "บาร์น",
     "method": "reviewed_name_report_context"
   },
   {
@@ -1813,7 +1813,7 @@
     ],
     "source": "ドレイク",
     "source_hex": "B8 DB 93 9E FF",
-    "translation": "เดรก",
+    "translation": "เดรค",
     "method": "reviewed_glossary"
   },
   {
@@ -1843,7 +1843,7 @@
     ],
     "source": "ルーザ",
     "source_hex": "DA 11 A5 FF",
-    "translation": "ลูเซอร์",
+    "translation": "ลูซ่า",
     "method": "reviewed_name_report"
   },
   {
@@ -1853,7 +1853,7 @@
     ],
     "source": "ミュージィ",
     "source_hex": "CE D4 11 A7 92 FF",
-    "translation": "มัซซี",
+    "translation": "มิวซี่",
     "method": "reviewed_name_report"
   },
   {
@@ -1873,7 +1873,7 @@
     ],
     "source": "トルストール",
     "source_hex": "B7 DA A8 B7 11 DA FF",
-    "translation": "ทอลสตอร์",
+    "translation": "ตอลสตอย",
     "method": "reviewed_name_report"
   },
   {
@@ -1893,7 +1893,7 @@
     ],
     "source": "アレン",
     "source_hex": "91 DB DF FF",
-    "translation": "แอลเลน",
+    "translation": "อัลเลน",
     "method": "reviewed_name_report"
   },
   {
@@ -1913,7 +1913,7 @@
     ],
     "source": "ガラリア",
     "source_hex": "9B D8 D9 91 FF",
-    "translation": "การาเลีย",
+    "translation": "กาลาเรีย",
     "method": "reviewed_name_report"
   },
   {
@@ -1923,7 +1923,7 @@
     ],
     "source": "ガラミティ",
     "source_hex": "9B D8 CE B5 92 FF",
-    "translation": "กาลามิตี",
+    "translation": "กาลาซิตี",
     "method": "reviewed_glossary"
   },
   {
@@ -1953,7 +1953,7 @@
     ],
     "source": "暗黒大将軍",
     "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
-    "translation": "จอมทัพแห่งความมืด",
+    "translation": "จอมทัพทมิฬ",
     "method": "reviewed_name_report"
   },
   {
@@ -2036,7 +2036,7 @@
     ],
     "source": "ポセイダル兵",
     "source_hex": "CC AA 93 AF DA F0 4E FF",
-    "translation": "ทหารโพเซดัล",
+    "translation": "ทหารโพเซย์ดัล",
     "method": "reviewed_glossary"
   },
   {
@@ -2066,7 +2066,7 @@
     ],
     "source": "レッシィ",
     "source_hex": "DB B2 A6 92 FF",
-    "translation": "เลสซี",
+    "translation": "เลสซี่",
     "method": "reviewed_name_report"
   },
   {
@@ -2076,7 +2076,7 @@
     ],
     "source": "キャオ",
     "source_hex": "9C D2 99 FF",
-    "translation": "คยาโอ",
+    "translation": "แคร์ว",
     "method": "reviewed_name_report"
   },
   {
@@ -2096,7 +2096,7 @@
     ],
     "source": "ハッシャ",
     "source_hex": "BE B2 A6 D2 FF",
-    "translation": "แฮตเชีย",
+    "translation": "แฮชชา",
     "method": "reviewed_name_report"
   },
   {
@@ -2106,7 +2106,7 @@
     ],
     "source": "ギャブレー",
     "source_hex": "9D D2 C5 DB 11 FF",
-    "translation": "แกบเลย์",
+    "translation": "แกบเล่ย์",
     "method": "reviewed_glossary"
   },
   {
@@ -2116,7 +2116,7 @@
     ],
     "source": "アマンダラ",
     "source_hex": "91 CD DF AF D8 FF",
-    "translation": "อามันดรา",
+    "translation": "อามันดาร่า",
     "method": "reviewed_glossary"
   },
   {
@@ -2126,7 +2126,7 @@
     ],
     "source": "ポセイダル",
     "source_hex": "CC AA 93 AF DA FF",
-    "translation": "โพเซย์ดัล",
+    "translation": "โพไซดัล",
     "method": "reviewed_name_report"
   },
   {
@@ -2146,7 +2146,7 @@
     ],
     "source": "ギワザ",
     "source_hex": "9D DD A5 FF",
-    "translation": "กิวาซา",
+    "translation": "กิวาซ่า",
     "method": "reviewed_glossary"
   },
   {
@@ -2166,7 +2166,7 @@
     ],
     "source": "オリビー",
     "source_hex": "99 D9 C2 11 FF",
-    "translation": "โอลิบี",
+    "translation": "โอลิวี่",
     "method": "reviewed_glossary"
   },
   {
@@ -2176,7 +2176,7 @@
     ],
     "source": "リョクレイ",
     "source_hex": "D9 D6 9E DB 93 FF",
-    "translation": "ร็อกลี",
+    "translation": "ร็อกเลย์",
     "method": "reviewed_glossary"
   },
   {
@@ -2206,7 +2206,7 @@
     ],
     "source": "リィリィ",
     "source_hex": "D9 92 D9 92 FF",
-    "translation": "ลิลี",
+    "translation": "ลิลี่",
     "method": "reviewed_glossary"
   },
   {
@@ -2296,7 +2296,7 @@
     ],
     "source": "ゼゼーナン",
     "source_hex": "AB AB 11 B9 DF FF",
-    "translation": "เซเซอร์นัน",
+    "translation": "เซเซนัน",
     "method": "reviewed_glossary"
   },
   {
@@ -2316,7 +2316,7 @@
     ],
     "source": "テリウス",
     "source_hex": "B5 D9 95 A8 FF",
-    "translation": "เทเรียส",
+    "translation": "เทริอุส",
     "method": "reviewed_glossary"
   },
   {
@@ -2549,7 +2549,7 @@
     ],
     "source": "香月",
     "source_hex": "F0 35 F0 95 FF",
-    "translation": "โคซึกิ",
+    "translation": "คัตสึกิ",
     "method": "reviewed_glossary"
   },
   {
@@ -2579,7 +2579,7 @@
     ],
     "source": "エリカ",
     "source_hex": "97 D9 9A FF",
-    "translation": "เอริกา",
+    "translation": "เอริก้า",
     "method": "reviewed_glossary"
   },
   {
@@ -2599,7 +2599,7 @@
     ],
     "source": "シロ",
     "source_hex": "A6 DC FF",
-    "translation": "ชิโระ",
+    "translation": "ชิโร่",
     "method": "reviewed_glossary"
   },
   {
@@ -2609,7 +2609,7 @@
     ],
     "source": "クロ",
     "source_hex": "9E DC FF",
-    "translation": "คุโระ",
+    "translation": "คุโร่",
     "method": "reviewed_glossary"
   },
   {
@@ -2619,7 +2619,7 @@
     ],
     "source": "フレキ",
     "source_hex": "C4 DB 9C FF",
-    "translation": "เฟรกี",
+    "translation": "เฟรกิ",
     "method": "reviewed_name_report"
   },
   {
@@ -2629,7 +2629,7 @@
     ],
     "source": "ゲリ",
     "source_hex": "A1 D9 FF",
-    "translation": "เกรี",
+    "translation": "เกริ",
     "method": "reviewed_glossary"
   },
   {
@@ -2639,8 +2639,8 @@
     ],
     "source": "ランシャオ",
     "source_hex": "D8 DF A6 D2 99 FF",
-    "translation": "รันเซา",
-    "method": "reviewed_glossary"
+    "translation": "แลง เซียว",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x7E8E",
@@ -2649,7 +2649,7 @@
     ],
     "source": "チカ",
     "source_hex": "B0 9A FF",
-    "translation": "จิกะ",
+    "translation": "ชิกะ",
     "method": "reviewed_glossary"
   },
   {
@@ -2659,7 +2659,7 @@
     ],
     "source": "ベロスタン",
     "source_hex": "C8 DC A8 AE DF FF",
-    "translation": "เบโรสตัน",
+    "translation": "เบโลสตัน",
     "method": "reviewed_name_report"
   },
   {
@@ -2749,7 +2749,7 @@
     ],
     "source": "モーラ",
     "source_hex": "D1 11 D8 FF",
-    "translation": "โมรา",
+    "translation": "โมร่า",
     "method": "reviewed_glossary"
   },
   {
@@ -2769,7 +2769,7 @@
     ],
     "source": "ハロ",
     "source_hex": "BE DC FF",
-    "translation": "ฮาโร",
+    "translation": "ฮาโร่",
     "method": "reviewed_glossary"
   },
   {

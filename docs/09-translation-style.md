@@ -1,7 +1,11 @@
 # 9. แนวการแปลที่ตกลงไว้แล้ว
 
-ไฟล์อ้างอิง: `data/translations/glossary.th.json`, `rom-glossary.th.json`,
-`name-review.md`, `pilot-status-review.md`, `spirit-descriptions-review.md`
+ไฟล์อ้างอิงหลักตอนแปลบทสนทนา:
+`data/translations/references/dialogue.th.json`
+
+ไฟล์นี้สร้างจาก catalog ชื่อนักบิน ชื่อสั้น ยูนิต อาวุธ ซีรีส์ ภูมิประเทศ และ
+`glossary.th.json` ด้วย `python3 tools/build_dialogue_reference.py` ห้ามแก้ไฟล์ generated
+โดยตรง ส่วน `rom-glossary.th.json` เป็น override สำหรับช่อง ROM ที่แคบ ไม่ใช่ศัพท์หลัก
 
 ## ชื่อคน ชื่อหุ่น
 
