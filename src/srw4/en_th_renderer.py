@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .asm65816 import assemble
-from .en_dialogue_font import build_page_two
+from .en_dialogue_font import build_page_two, overlay_primary_dialogue_glyphs
 from .en_ff_router import (
     DEFAULT_STORY_BANKS,
     ROUTER_PAGE_STATE,
@@ -214,14 +214,14 @@ width_entry:
   tax
   lda #$0003
   sta.l ${ROUTER_PAGE_STATE:06X}
-  bra index_ready
+  brl index_ready
 catalog_thai:
   sec
   sbc #${CATALOG_INTERNAL_BASE:04X}
   tax
   lda #$0004
   sta.l ${ROUTER_PAGE_STATE:06X}
-  bra index_ready
+  brl index_ready
 source_route:
   lda $CD
   and #$00FF
@@ -235,11 +235,18 @@ private:
   cmp #$0002
   beq thai
   cmp #$0003
-  beq supplement_page
+  beq supplement
   ; Match the draw-side stale-page recovery above.  Width runs before draw;
   ; charging this as stock would advance the battle compositor before the
   ; Thai renderer gets a chance to restore its persistent run.
   bra thai
+supplement:
+  lda $02
+  and #$00FF
+  cmp #$00C0
+  bcs stock
+  tax
+  brl index_ready
 thai:
   lda $02
   and #$00FF
@@ -295,6 +302,7 @@ def _renderer_assets(
     model = json.loads((FONT / "thai.json").read_text(encoding="utf-8"))
     layout = json.loads((FONT / "encoding.json").read_text(encoding="utf-8"))
     assets = build_page(model, layout)
+    assets = overlay_primary_dialogue_glyphs(assets, layout, FONT, en_rom)
     assets.update(build_upper_stack_assets(model, layout))
     supplement_page, supplement_advance = build_page_two(FONT, en_rom)
     stock_page = en_rom[EN_FONT_PAGE_PC:EN_FONT_PAGE_PC + 0x1000]

@@ -1,7 +1,8 @@
-"""Contracts for Thai unit and pilot names on the pinned English ROM."""
+"""Contracts for mixed Thai catalogs on the pinned English ROM."""
 
 import sys
 import json
+import re
 from pathlib import Path
 
 
@@ -9,13 +10,18 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from srw4.en_ff_router import install as install_router  # noqa: E402
+from srw4.en_dialogue_streams import compile_text  # noqa: E402
 from srw4.en_dialogue_font import SLOT as SUPPLEMENT_SLOT  # noqa: E402
 from srw4.en_dialogue_font import (  # noqa: E402
+    CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
     WEAPON_ATTRIBUTE_SLOTS,
     build_page_two,
 )
 from srw4.en_th_catalogs import (  # noqa: E402
     ADAPTER_BASE_PC,
+    EN_BATTLE_PILOT_COUNT,
+    EN_BATTLE_PILOT_POOL_END_PC,
+    EN_BATTLE_PILOT_POOL_PC,
     EN_BATTLE_PILOT_TABLE_PC,
     EN_CATALOG_PAGE_STATE,
     EN_CATALOG_RENDERER_PC,
@@ -23,22 +29,23 @@ from srw4.en_th_catalogs import (  # noqa: E402
     EN_CLUSTER_PAGE_PC,
     EN_CLUSTER_RENDERER_PC,
     EN_CLUSTER_WIDTH_PC,
+    EN_PILOT_COUNT,
+    EN_PILOT_POOL_END_PC,
+    EN_PILOT_POOL_PC,
+    EN_PILOT_TABLE_PC,
     EN_SPIRIT_COUNT,
-    EN_SPIRIT_NAME_ADVANCE_PC,
     EN_SPIRIT_NAME_COUNT,
-    EN_SPIRIT_NAME_FIELD_WIDTH,
-    EN_SPIRIT_NAME_PAGE_PC,
     EN_SPIRIT_NAME_POOL_END_PC,
     EN_SPIRIT_NAME_POOL_PC,
-    EN_SPIRIT_NAME_RENDERER_PC,
-    EN_SPIRIT_NAME_SHIFT_LEFT_PC,
-    EN_SPIRIT_NAME_SHIFT_RIGHT_PC,
     EN_SPIRIT_NAME_TABLE_PC,
-    EN_SPIRIT_NAME_WIDTH_PC,
     EN_SPIRIT_POINTER_TABLE_PC,
     EN_SPIRIT_POOL_END_PC,
     EN_SPIRIT_POOL_PC,
+    EN_UNIT_COUNT,
+    EN_UNIT_POOL_END_PC,
+    EN_UNIT_POOL_PC,
     EN_UNIT_TABLE_PC,
+    EN_WEAPON_COUNT,
     EN_WEAPON_POOL_END_PC,
     EN_WEAPON_POOL_PC,
     EN_WEAPON_TABLE_PC,
@@ -47,16 +54,14 @@ from srw4.en_th_catalogs import (  # noqa: E402
     STOCK_TABLE_PC,
     EN_SUPPLEMENT_RENDERER_PC,
     _ClusterCatalogEncoder,
-    _SpiritNameEncoder,
     _build_cluster_page_dispatch,
     _build_catalog_renderer,
     _build_battle_catalog_renderer,
-    _build_en_spirit_names,
+    _preserve_en_spirit_names,
     _build_en_spirit_help,
     _build_battle_info_labels,
-    _build_spirit_name_renderer,
-    _battle_name,
     _catalog_layout,
+    _preserve_en_name_catalog,
     install as install_catalogs,
 )
 from srw4.en_th_renderer import (  # noqa: E402
@@ -84,13 +89,13 @@ def test_en_catalogs_install_all_unit_and_pilot_id_tables():
     install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
     report = install_catalogs(image, clean)
 
-    assert report.unit_records == 295
-    assert report.pilot_records == 290
-    assert report.battle_pilot_records == 285
-    assert report.weapon_records == 503
+    assert report.unit_records == EN_UNIT_COUNT
+    assert report.pilot_records == EN_PILOT_COUNT
+    assert report.battle_pilot_records == EN_BATTLE_PILOT_COUNT
+    assert report.weapon_records == EN_WEAPON_COUNT
     assert report.spirit_name_records == 30
     assert report.spirit_help_records == 29
-    assert report.battle_info_labels == 5
+    assert report.battle_info_labels == 1
     assert image[STOCK_TABLE_PC:STOCK_TABLE_PC + 3] != b"\xFF" * 3
     assert image[ADAPTER_BASE_PC] != 0xFF
     assert image[ROUTE_TABLE_PC:ROUTE_TABLE_PC + report.route_bytes] != b"\xFF" * report.route_bytes
@@ -113,59 +118,99 @@ def test_en_catalogs_install_all_unit_and_pilot_id_tables():
         CATALOG_BATTLE_RENDERER_PC:CATALOG_BATTLE_RENDERER_PC + len(battle_renderer)
     ] == battle_renderer
     assert EN_CATALOG_RENDERER_PC + len(renderer) <= 0x400000
-    spirit_renderer = _build_spirit_name_renderer()
-    assert image[
-        EN_SPIRIT_NAME_RENDERER_PC:EN_SPIRIT_NAME_RENDERER_PC + len(spirit_renderer)
-    ] == spirit_renderer
-    assert EN_SPIRIT_NAME_RENDERER_PC + len(spirit_renderer) <= EN_SPIRIT_NAME_PAGE_PC
+    # Spirit names stay on the original English renderer and data path.
+    assert image[EN_SPIRIT_NAME_POOL_PC:EN_SPIRIT_NAME_POOL_END_PC] == clean[
+        EN_SPIRIT_NAME_POOL_PC:EN_SPIRIT_NAME_POOL_END_PC
+    ]
+    for table_pc, count, pool_pc, pool_end_pc in (
+        (EN_UNIT_TABLE_PC, EN_UNIT_COUNT, EN_UNIT_POOL_PC, EN_UNIT_POOL_END_PC),
+        (EN_PILOT_TABLE_PC, EN_PILOT_COUNT, EN_PILOT_POOL_PC, EN_PILOT_POOL_END_PC),
+        (
+            EN_BATTLE_PILOT_TABLE_PC,
+            EN_BATTLE_PILOT_COUNT,
+            EN_BATTLE_PILOT_POOL_PC,
+            EN_BATTLE_PILOT_POOL_END_PC,
+        ),
+        (
+            EN_WEAPON_TABLE_PC,
+            EN_WEAPON_COUNT,
+            EN_WEAPON_POOL_PC,
+            EN_WEAPON_POOL_END_PC,
+        ),
+    ):
+        assert image[table_pc:table_pc + count * 2] == clean[
+            table_pc:table_pc + count * 2
+        ]
+        assert image[pool_pc:pool_end_pc] == clean[pool_pc:pool_end_pc]
     # The current EN battle renderer hooks stay owned by en_th_renderer.
     assert image[0x019219] == 0x5C
     assert image[0x019238] == 0x22
 
 
-def test_en_battle_info_labels_are_thai_and_exactly_fill_the_runtime_spans():
+def test_en_battle_info_preserves_level_and_accuracy_and_translates_counter():
     clean = BASE.read_bytes()
     encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
     patches, thai, supplement = _build_battle_info_labels(clean, encoder)
 
-    assert [pc for pc, _payload, _owner in patches] == [
-        0x3E2FCD, 0x3E301E, 0x3ED788, 0x3E3004, 0x3E3055,
-    ]
-    assert [len(payload) for _pc, payload, _owner in patches] == [5, 5, 13, 13, 13]
-    assert patches[0][1] == patches[1][1] == bytes.fromhex("7F AE E3 BD AE")
-    assert patches[2][1] == bytes.fromhex(
-        "E5 4A 00 AF 69 E7 98 E7 40 1B 1B 1B 1B"
-    )
-    assert patches[3][1] == patches[4][1] == bytes.fromhex(
-        "E4 98 60 9A E2 1B 1B 1B 1B 1B 1B 1B 1B"
-    )
+    assert [pc for pc, _payload, _owner in patches] == [0x3ED788]
+    assert [len(payload) for _pc, payload, _owner in patches] == [13]
+    counter, _width, _routes = encoder.visible("โต้กลับไม่ได้")
+    assert patches[0][1] == counter + bytes((encoder.supplement_codes[" "],)) * 4
+    for pc, source_hex in (
+        (0x3E2FCD, "21 94 A5 94 9B"),
+        (0x3E301E, "21 94 A5 94 9B"),
+        (0x3E3004, "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94"),
+        (0x3E3055, "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94"),
+    ):
+        expected = bytes.fromhex(source_hex)
+        assert clean[pc:pc + len(expected)] == expected
     assert 0xFE in thai and 0xFE in supplement
-    assert sum(end - start for start, end in thai[0xFE]) == 27
-    assert sum(end - start for start, end in supplement[0xFE]) == 22
+    assert sum(end - start for start, end in thai[0xFE]) == 9
+    assert sum(end - start for start, end in supplement[0xFE]) == 4
 
 
-def test_en_weapon_catalog_uses_reviewed_thai_names_and_fits_its_pool():
+def test_en_weapon_catalog_preserves_english_source_exactly():
     clean = BASE.read_bytes()
     image = bytearray(clean)
     install_renderer(image)
     install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
     install_catalogs(image, clean)
 
-    # Weapon ID 1 is Beam Saber / บีมเซเบอร์.
-    at = EN_WEAPON_TABLE_PC + 2
-    pointer = int.from_bytes(image[at:at + 2], "little") + 0x3E0000
-    reviewed = json.loads(
-        (ROOT / "data" / "translations" / "weapons.th.json").read_text()
+    assert image[
+        EN_WEAPON_TABLE_PC:EN_WEAPON_TABLE_PC + EN_WEAPON_COUNT * 2
+    ] == clean[
+        EN_WEAPON_TABLE_PC:EN_WEAPON_TABLE_PC + EN_WEAPON_COUNT * 2
+    ]
+    assert image[EN_WEAPON_POOL_PC:EN_WEAPON_POOL_END_PC] == clean[
+        EN_WEAPON_POOL_PC:EN_WEAPON_POOL_END_PC
+    ]
+
+
+def test_battle_quote_weapon_insertions_remain_fc03_over_english_catalog():
+    messages = json.loads(
+        (ROOT / "data" / "translations" / "script.th.json").read_text()
+    )["messages"]
+    layout = json.loads(
+        (ROOT / "data" / "font" / "encoding.json").read_text()
     )
-    entry = next(item for item in reviewed if 1 in item["weapon_ids"])
-    expected, _, _ = _ClusterCatalogEncoder(clean, StockCatalog.locked()).weapon(entry)
-    assert image[pointer:pointer + len(expected)] == expected
-    assert EN_WEAPON_POOL_PC <= pointer < EN_WEAPON_POOL_END_PC
+    weapon_quotes = {
+        record_id: text
+        for record_id, text in messages.items()
+        if "<FC:03>" in text
+    }
+
+    assert weapon_quotes
+    assert all(record_id.startswith("22_") for record_id in weapon_quotes)
+    for text in weapon_quotes.values():
+        encoded = compile_text(text, layout)
+        assert encoded.count(b"\xFC\x03") == text.count("<FC:03>")
 
 
 def test_mixed_catalog_text_uses_thai_authored_proportional_latin_and_digits():
     clean = BASE.read_bytes()
-    encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
+    encoder = _ClusterCatalogEncoder(
+        clean, StockCatalog.locked(), include_weapon_reference=True
+    )
     payload, width, routes = encoder.visible("A120มม.")
 
     expected_chars = "A120"
@@ -195,6 +240,92 @@ def test_cluster_renderer_has_true_advances_beside_stock_widths():
     assert image[EN_CLUSTER_WIDTH_PC:EN_CLUSTER_WIDTH_PC + 0x100] == encoder.widths
 
 
+def test_new_spirit_help_clusters_use_explicit_supplement_slots():
+    clean = BASE.read_bytes()
+    encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
+    supplement_page, supplement_advances = build_page_two(
+        ROOT / "data" / "font", clean
+    )
+
+    assert set(CATALOG_CLUSTER_SUPPLEMENT_SLOTS).isdisjoint(encoder.codes)
+    for token, code in CATALOG_CLUSTER_SUPPLEMENT_SLOTS.items():
+        payload, routes, width, _, _ = encoder.spirit_line(token.removeprefix("cluster:"))
+        assert payload == bytes((code,))
+        assert routes == [2]
+        assert width == supplement_advances[code]
+        assert supplement_page[code * 16:(code + 1) * 16] != bytes(16)
+
+
+def test_preserved_english_name_files_do_not_allocate_catalog_glyphs():
+    clean = BASE.read_bytes()
+    encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
+    weapon_reference = _ClusterCatalogEncoder(
+        clean, StockCatalog.locked(), include_weapon_reference=True
+    )
+
+    assert set(encoder.codes) < set(weapon_reference.codes)
+    for unused_name_cluster in (
+        "cluster:ซุ", "cluster:ฌ", "cluster:ฌุ", "cluster:ณ",
+        "cluster:ดุ", "cluster:ตึ", "cluster:ผู้", "cluster:ม้",
+        "cluster:ยี", "cluster:รุ่", "cluster:ห่", "cluster:ฮุ",
+    ):
+        assert unused_name_cluster not in encoder.codes
+        assert unused_name_cluster not in CATALOG_CLUSTER_SUPPLEMENT_SLOTS
+
+
+def test_every_declared_supplement_text_glyph_is_used_or_primary_owned():
+    clean = BASE.read_bytes()
+    encoder = _ClusterCatalogEncoder(
+        clean, StockCatalog.locked(), include_weapon_reference=True
+    )
+    layout = json.loads((ROOT / "data" / "font" / "encoding.json").read_text())
+    slot_codes = set(SUPPLEMENT_SLOT.values())
+    used: set[int] = set()
+
+    messages = json.loads(
+        (ROOT / "data" / "translations" / "script.th.json").read_text()
+    )["messages"]
+    for text in messages.values():
+        plain = re.sub(r"<[^>]+>", "", text)
+        used.update(
+            SUPPLEMENT_SLOT[char]
+            for char in plain
+            if char not in layout["codes"] and char in SUPPLEMENT_SLOT
+        )
+
+    for entry in json.loads(
+        (ROOT / "data" / "translations" / "weapons.th.json").read_text()
+    ):
+        if entry.get("kind") == "non_text_sentinel":
+            continue
+        payload, _width, routes = encoder.weapon(entry)
+        used.update(byte for byte, route in zip(payload, routes) if route == 2)
+
+    spirit = json.loads(
+        (ROOT / "data" / "translations" / "spirit-descriptions.th.json").read_text()
+    )
+    for entry in spirit["script_messages"]:
+        for line in entry["translation"].split("\n"):
+            payload, routes, *_rest = encoder.spirit_line(line)
+            used.update(byte for byte, route in zip(payload, routes) if route == 2)
+
+    battle_info = json.loads(
+        (ROOT / "data" / "translations" / "en-battle-info.th.json").read_text()
+    )
+    for field in battle_info["fields"]:
+        if field.get("keep_original"):
+            continue
+        payload, _width, routes = encoder.visible(field["translation"])
+        used.update(byte for byte, route in zip(payload, routes) if route == 2)
+
+    primary_owned = {
+        SUPPLEMENT_SLOT[char]
+        for char in SUPPLEMENT_SLOT
+        if char in layout["codes"]
+    }
+    assert (used | primary_owned) & slot_codes == slot_codes
+
+
 def test_catalog_renderer_reuses_its_live_cell_for_the_callers_next_glyph():
     renderer = _build_catalog_renderer()
     memory = renderer_memory(ORDINARY_STATE_BASE)
@@ -212,7 +343,9 @@ def test_catalog_renderer_reuses_its_live_cell_for_the_callers_next_glyph():
 
 def test_weapon_attribute_badges_are_exact_en_glyphs_and_stay_in_the_payload():
     clean = BASE.read_bytes()
-    encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
+    encoder = _ClusterCatalogEncoder(
+        clean, StockCatalog.locked(), include_weapon_reference=True
+    )
     supplement_page, supplement_advances = build_page_two(
         ROOT / "data" / "font", clean
     )
@@ -260,20 +393,19 @@ def test_weapon_attribute_badges_are_exact_en_glyphs_and_stay_in_the_payload():
             assert routes[-len(expected) - 1:-1] == (2,) * len(expected)
 
 
-def test_retired_thai_glyph_slots_are_blank_without_renumbering_live_codes():
+def test_retired_thai_glyph_slots_are_reused_by_primary_dialogue_glyphs():
     model = json.loads((ROOT / "data" / "font" / "thai.json").read_text())
     layout = json.loads((ROOT / "data" / "font" / "encoding.json").read_text())
     assert all(char not in model["bases"] for char in "ฦฯๅ")
     assert all(char not in layout["codes"] for char in "ฦฯๅ")
-    assert layout["retired_spacing_slots"] == [38, 65, 67]
+    assert layout["retired_spacing_slots"] == []
     assert layout["codes"]["ล"] == 37
     assert layout["codes"]["ว"] == 39
     assert layout["codes"]["ๆ"] == 66
 
-    image = bytearray(BASE.read_bytes())
-    install_renderer(image)
-    for code in layout["retired_spacing_slots"]:
-        assert image[PAGE_PC + code * 16:PAGE_PC + (code + 1) * 16] == bytes(16)
+    assert {layout["codes"][char] for char in layout["dialogue_primary_glyphs"]}.issuperset(
+        {38, 65, 67}
+    )
 
 
 def test_en_spirit_help_repoints_all_live_english_records_to_thai():
@@ -311,35 +443,18 @@ def test_en_spirit_help_repoints_all_live_english_records_to_thai():
     )
 
 
-def test_en_spirit_names_use_a_dedicated_exact_cluster_page_and_fit_en_width():
+def test_en_spirit_names_remain_byte_identical_to_english_rom():
     clean = BASE.read_bytes()
-    encoder = _SpiritNameEncoder(clean)
-    catalog = _build_en_spirit_names(clean, encoder)
+    catalog = _preserve_en_spirit_names(clean)
     assert catalog.records == EN_SPIRIT_NAME_COUNT
     assert catalog.pool_pc == EN_SPIRIT_NAME_POOL_PC
     assert len(catalog.pool) == EN_SPIRIT_NAME_POOL_END_PC - EN_SPIRIT_NAME_POOL_PC
-
-    reviewed = json.loads(
-        (ROOT / "data" / "translations" / "spirit-descriptions.th.json").read_text()
-    )["spirits"]
-    expected_names = {
-        1: "ใจสู้", 2: "ใจสู้สุด", 3: "เติมเสบียง", 4: "มิตรภาพ",
-        5: "เชื่อใจ", 6: "ความรัก", 7: "พิโรธ", 8: "ฮึกเหิม",
-        9: "เร่ง", 10: "เลือดร้อน", 11: "แม่นยำ", 12: "ไหวพริบ",
-        13: "โชคดี", 14: "ตื่นตัว", 15: "ข่มขวัญ", 16: "ยั้งมือ",
-        17: "จดจ่อ", 18: "ปลุกใจ", 19: "ยิงซ้ำ", 20: "คืนชีพ",
-        21: "ซ่อนกาย", 22: "หมดแรง", 23: "พลีชีพ", 24: "ค้นหา",
-        25: "โซ่ตรวน", 26: "ก่อกวน", 27: "สอดแนม", 28: "กำแพง",
-        29: "วิญญาณ", 30: "ปาฏิหาริย์",
-    }
-    assert {int(item["id"]): item["translation"] for item in reviewed} == expected_names
-    for item in reviewed:
-        payload, width, _routes = encoder.name(item)
-        assert width <= EN_SPIRIT_NAME_FIELD_WIDTH
-        at = (int(item["id"]) - 1) * 2
-        pointer = int.from_bytes(catalog.table[at:at + 2], "little") + 0x3E0000
-        offset = pointer - catalog.pool_pc
-        assert catalog.pool[offset:offset + len(payload)] == payload
+    assert catalog.thai_routes == ()
+    assert catalog.supplement_routes == ()
+    assert catalog.table == clean[
+        EN_SPIRIT_NAME_TABLE_PC:EN_SPIRIT_NAME_TABLE_PC + EN_SPIRIT_NAME_COUNT * 2
+    ]
+    assert catalog.pool == clean[EN_SPIRIT_NAME_POOL_PC:EN_SPIRIT_NAME_POOL_END_PC]
 
     image = bytearray(clean)
     install_renderer(image)
@@ -348,104 +463,34 @@ def test_en_spirit_names_use_a_dedicated_exact_cluster_page_and_fit_en_width():
     assert image[
         EN_SPIRIT_NAME_TABLE_PC:EN_SPIRIT_NAME_TABLE_PC + EN_SPIRIT_NAME_COUNT * 2
     ] == catalog.table
-    assert image[EN_SPIRIT_NAME_PAGE_PC:EN_SPIRIT_NAME_PAGE_PC + 0x1000] == encoder.page
-    assert image[EN_SPIRIT_NAME_WIDTH_PC:EN_SPIRIT_NAME_WIDTH_PC + 0x100] == encoder.widths
-    assert image[
-        EN_SPIRIT_NAME_ADVANCE_PC:EN_SPIRIT_NAME_ADVANCE_PC + 0x100
-    ] == encoder.advances
-    from srw4.proven.renderer65816 import shift_tables
-    shift_right, shift_left = shift_tables()
-    assert image[
-        EN_SPIRIT_NAME_SHIFT_RIGHT_PC:EN_SPIRIT_NAME_SHIFT_RIGHT_PC + len(shift_right)
-    ] == shift_right
-    assert image[
-        EN_SPIRIT_NAME_SHIFT_LEFT_PC:EN_SPIRIT_NAME_SHIFT_LEFT_PC + len(shift_left)
-    ] == shift_left
+    assert image[EN_SPIRIT_NAME_POOL_PC:EN_SPIRIT_NAME_POOL_END_PC] == clean[
+        EN_SPIRIT_NAME_POOL_PC:EN_SPIRIT_NAME_POOL_END_PC
+    ]
 
 
-def test_battle_catalog_uses_reviewed_short_name_file_exactly():
+def test_unit_pilot_battle_and_weapon_name_catalogs_preserve_english_source_exactly():
     clean = BASE.read_bytes()
-    image = bytearray(clean)
-    install_renderer(image)
-    install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
-    install_catalogs(image, clean)
-    reviewed = json.loads(
-        (ROOT / "data" / "translations" / "pilot-short-names.th.json").read_text()
-    )
-    cluster_encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
-    for entry in reviewed:
-        encoded = _battle_name(entry, cluster_encoder)
-        expected = encoded[0]
-        for pilot_id in entry["battle_pilot_ids"]:
-            at = EN_BATTLE_PILOT_TABLE_PC + pilot_id * 2
-            pointer = int.from_bytes(image[at:at + 2], "little") + 0x3E0000
-            assert image[pointer:pointer + len(expected)] == expected
-
-
-def test_garada_k7_unit_name_keeps_canonical_word_boundaries():
-    clean = BASE.read_bytes()
-    image = bytearray(clean)
-    install_renderer(image)
-    install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
-    install_catalogs(image, clean)
-
-    reviewed = json.loads(
-        (ROOT / "data" / "translations" / "units.th.json").read_text()
-    )
-    entry = next(item for item in reviewed if 150 in item["unit_ids"])
-    assert entry["translation"] == "อสูรกล การาดา K7"
-
-    encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
-    expected, width, routes = encoder.name(entry)
-    assert width == 84
-    assert routes[:-1].count(2) == 4
-    at = EN_UNIT_TABLE_PC + 150 * 2
-    pointer = int.from_bytes(image[at:at + 2], "little") + 0x3E0000
-    assert image[pointer:pointer + len(expected)] == expected
-
-
-def test_koji_battle_name_uses_literal_ji_components():
-    clean = BASE.read_bytes()
-    image = bytearray(clean)
-    install_renderer(image)
-    install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
-    install_catalogs(image, clean)
-
-    at = EN_BATTLE_PILOT_TABLE_PC + 85 * 2
-    assert int.from_bytes(image[at:at + 2], "little") == 0xA55D
-    pointer = int.from_bytes(image[at:at + 2], "little") + 0x3E0000
-    expected = _ClusterCatalogEncoder(clean, StockCatalog.locked()).name(
-        {"translation": "โคจิ"}
-    )[0]
-    assert expected == bytes.fromhex("E5 0E 1C FF")
-    assert image[pointer:pointer + len(expected)] == expected
-
-
-def test_reviewed_ele_names_keep_later_en_pool_addresses_stable():
-    clean = BASE.read_bytes()
-    image = bytearray(clean)
-    install_renderer(image)
-    install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
-    install_catalogs(image, clean)
-
-    # The 202 AI speaker pointer was cached by save/en-battle-quote.mss before
-    # エレ was shortened.  The compatibility reservation must keep it fixed.
-    at = EN_BATTLE_PILOT_TABLE_PC + 202 * 2
-    assert int.from_bytes(image[at:at + 2], "little") == 0xA86B
-
-
-def test_enemy_ai_battle_name_uses_the_reviewed_literal_label():
-    clean = BASE.read_bytes()
-    image = bytearray(clean)
-    install_renderer(image)
-    install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
-    install_catalogs(image, clean)
-
-    at = EN_BATTLE_PILOT_TABLE_PC + 202 * 2
-    pointer = int.from_bytes(image[at:at + 2], "little") + 0x3E0000
-    expected, _width, routes = _ClusterCatalogEncoder(clean, StockCatalog.locked()).name(
-        {"translation": "AI"}
-    )
-    assert expected == bytes.fromhex("01 09 FF")
-    assert routes == (2, 2, 0)
-    assert image[pointer:pointer + len(expected)] == expected
+    for owner, table_pc, count, pool_pc, pool_end_pc in (
+        ("English unit names", EN_UNIT_TABLE_PC, EN_UNIT_COUNT,
+         EN_UNIT_POOL_PC, EN_UNIT_POOL_END_PC),
+        ("English pilot names", EN_PILOT_TABLE_PC, EN_PILOT_COUNT,
+         EN_PILOT_POOL_PC, EN_PILOT_POOL_END_PC),
+        ("English battle pilot names", EN_BATTLE_PILOT_TABLE_PC,
+         EN_BATTLE_PILOT_COUNT, EN_BATTLE_PILOT_POOL_PC,
+         EN_BATTLE_PILOT_POOL_END_PC),
+        ("English weapon names", EN_WEAPON_TABLE_PC, EN_WEAPON_COUNT,
+         EN_WEAPON_POOL_PC, EN_WEAPON_POOL_END_PC),
+    ):
+        catalog = _preserve_en_name_catalog(
+            clean,
+            owner=owner,
+            count=count,
+            table_pc=table_pc,
+            pool_pc=pool_pc,
+            pool_end_pc=pool_end_pc,
+        )
+        assert catalog.records == count
+        assert catalog.thai_routes == ()
+        assert catalog.supplement_routes == ()
+        assert catalog.table == clean[table_pc:table_pc + count * 2]
+        assert catalog.pool == clean[pool_pc:pool_end_pc]

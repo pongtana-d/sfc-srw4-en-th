@@ -27,6 +27,7 @@ from srw4.en_th_renderer import (  # noqa: E402
     DRAW_HOOK_PC,
     EN_FONT_PAGE_PC,
     EN_WIDTH_TABLE_PC,
+    ADVANCE_PC,
     PAGE_PC,
     STOCK_ADVANCE_PC,
     STOCK_PAGE_PC,
@@ -43,36 +44,54 @@ from srw4.en_th_renderer import (  # noqa: E402
 from srw4.proven.renderer65816 import pc_to_cpu  # noqa: E402
 from srw4.atlas import AtlasBuilder  # noqa: E402
 from srw4.en_dialogue_font import (  # noqa: E402
-    BATTLE_INFO_COMPACT_E_ADVANCE,
-    BATTLE_INFO_COMPACT_E_CODE,
-    BATTLE_PILOT_PHO_PHUNG_CODE,
+    BATTLE_QUOTE_PADDING_SLOT,
+    CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
+    SLOT,
     WEAPON_ATTRIBUTE_SLOTS,
+    build_page_two,
 )
 
 
 BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
 
 
-def test_battle_info_compact_e_uses_the_authored_bitmap_and_scoped_advance():
+def test_live_dialogue_latin_glyphs_are_installed_on_the_thai_page():
     clean = BASE.read_bytes()
     image = bytearray(clean)
     install_renderer(image)
-    expected = bytes(AtlasBuilder(ROOT / "data" / "font", clean).build("cluster:เ").rows)
-    start = SUPPLEMENT_PAGE_PC + BATTLE_INFO_COMPACT_E_CODE * 16
-    assert image[start:start + 16] == expected
-    assert image[SUPPLEMENT_ADVANCE_PC + BATTLE_INFO_COMPACT_E_CODE] == (
-        BATTLE_INFO_COMPACT_E_ADVANCE
-    )
+    layout = json.loads((ROOT / "data" / "font" / "encoding.json").read_text())
+    atlas = AtlasBuilder(ROOT / "data" / "font", clean)
+
+    for char in layout["dialogue_primary_glyphs"]:
+        code = layout["codes"][char]
+        glyph = atlas.build(f"char:{char}")
+        start = PAGE_PC + code * 16
+        assert image[start:start + 16] == bytes(glyph.rows)
+        assert image[ADVANCE_PC + code] == glyph.advance
 
 
-def test_battle_pilot_pho_phung_uses_the_authored_supplement_bitmap():
+def test_supplement_page_contains_only_declared_live_glyphs():
+    clean = BASE.read_bytes()
+    page, advances = build_page_two(ROOT / "data" / "font", clean)
+    live = {
+        *SLOT.values(),
+        *WEAPON_ATTRIBUTE_SLOTS.values(),
+        *CATALOG_CLUSTER_SUPPLEMENT_SLOTS.values(),
+    }
+
+    for code in range(0x100):
+        glyph = page[code * 16:(code + 1) * 16]
+        assert (glyph != bytes(16) or advances[code] != 0) == (code in live)
+
+
+def test_battle_quote_padding_is_invisible_and_zero_advance_on_primary_page():
     clean = BASE.read_bytes()
     image = bytearray(clean)
     install_renderer(image)
-    glyph = AtlasBuilder(ROOT / "data" / "font", clean).build("cluster:ผ")
-    start = SUPPLEMENT_PAGE_PC + BATTLE_PILOT_PHO_PHUNG_CODE * 16
-    assert image[start:start + 16] == bytes(glyph.rows)
-    assert image[SUPPLEMENT_ADVANCE_PC + BATTLE_PILOT_PHO_PHUNG_CODE] == glyph.advance
+    start = PAGE_PC + BATTLE_QUOTE_PADDING_SLOT * 16
+
+    assert image[start:start + 16] == bytes(16)
+    assert image[ADVANCE_PC + BATTLE_QUOTE_PADDING_SLOT] == 0
 
 
 def test_weapon_badges_use_fixed_supplement_slots_with_authored_bitmaps():
@@ -116,6 +135,15 @@ def test_dispatch_does_not_let_restored_glyph_flags_choose_the_page():
     # Runtime-name glyphs no longer enter the independent stock rasterizer.
     assert bytes.fromhex("5C 49 E0 F0") not in code
     assert CATALOG_INTERNAL_BASE.to_bytes(2, "little") in code
+
+
+def test_private_supplement_width_loads_glyph_index_before_advance_lookup():
+    code = _width_entry(DEFAULT_STORY_BANKS)
+    load_private_index = bytes.fromhex("A5 02 29 FF 00 C9 C0 00")
+
+    # Thai and supplement pages each validate and load their own glyph index;
+    # page 3 must not branch straight into an advance lookup with stale X/A.
+    assert code.count(load_private_index) == 2
 
 
 def test_catalog_width_keeps_internal_tag_for_draw_dispatch():

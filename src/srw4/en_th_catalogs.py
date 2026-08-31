@@ -9,9 +9,7 @@ from pathlib import Path
 
 from .atlas import AtlasBuilder
 from .en_dialogue_font import (
-    BATTLE_INFO_COMPACT_E_ADVANCE,
-    BATTLE_INFO_COMPACT_E_CODE,
-    BATTLE_PILOT_PHO_PHUNG_CODE,
+    CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
     SLOT as SUPPLEMENT_SLOT,
     WEAPON_ATTRIBUTE_SLOTS,
 )
@@ -231,21 +229,26 @@ class _SpiritNameEncoder:
 
 
 class _ClusterCatalogEncoder:
-    """Encode EN status names as one precomposed bitmap per Thai cluster."""
+    """Encode translated EN UI text as one bitmap per Thai cluster."""
 
-    def __init__(self, clean: bytes, stock: StockCatalog) -> None:
+    def __init__(
+        self,
+        clean: bytes,
+        stock: StockCatalog,
+        *,
+        include_weapon_reference: bool = False,
+    ) -> None:
         self.stock = stock
         self.tokenizer = Tokenizer(
             set(json.loads((FONT_ROOT / "renewal-icons.json").read_text())["glyphs"]),
             load_stock_codes(FONT_ROOT / "renewal-stock.json"),
             engine="catalog",
         )
-        translations = (
-            "units.th.json", "pilots.th.json", "pilot-short-names.th.json",
-            "weapons.th.json",
-        )
         tokens: set[str] = set()
-        for file_name in translations:
+        # Production preserves the weapon catalog from the English ROM and
+        # must not depend on weapons.th.json.  The opt-in path is retained
+        # solely for validating the dormant translation asset and encoder.
+        for file_name in (("weapons.th.json",) if include_weapon_reference else ()):
             for entry in _load_translation(file_name):
                 text = str(entry["translation"]).removeprefix("<FB>")
                 for piece in self.tokenizer.tokenize(text, where=file_name).pieces:
@@ -262,10 +265,22 @@ class _ClusterCatalogEncoder:
             ).pieces:
                 if isinstance(piece, TextGlyph) and piece.token.startswith("cluster:"):
                     tokens.add(piece.token)
-        # ผ occurs only in the battle-pilot additions and lives in a reserved
-        # supplement slot. Weapon badges also stay on that supplement page;
-        # the live weapon-list path does not reliably render tail codes $E8-$EA.
-        tokens.discard("cluster:ผ")
+        battle_info = json.loads(
+            (DATA / "translations" / "en-battle-info.th.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        for field in battle_info["fields"]:
+            if field.get("keep_original"):
+                continue
+            for piece in self.tokenizer.tokenize(
+                str(field["translation"]), where="en-battle-info.th.json"
+            ).pieces:
+                if isinstance(piece, TextGlyph) and piece.token.startswith("cluster:"):
+                    tokens.add(piece.token)
+        # Weapon badges stay on the supplement page; the live weapon-list
+        # path does not reliably render tail codes $E8-$EA.
+        tokens.difference_update(CATALOG_CLUSTER_SUPPLEMENT_SLOTS)
         if len(tokens) > 0xEC:
             raise ValueError(f"EN catalog cluster page needs {len(tokens)} glyphs; holds 236")
         self.codes = {token: code for code, token in enumerate(sorted(tokens))}
@@ -277,10 +292,11 @@ class _ClusterCatalogEncoder:
             for char in self.supplement_codes
         }
         self.supplement_cluster_codes = {
-            "cluster:ผ": BATTLE_PILOT_PHO_PHUNG_CODE,
+            **CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
         }
         self.supplement_cluster_widths = {
-            "cluster:ผ": atlas.build("cluster:ผ").advance,
+            token: atlas.build(token).advance
+            for token in self.supplement_cluster_codes
         }
         self.supplement_icon_codes = dict(WEAPON_ATTRIBUTE_SLOTS)
         self.supplement_icon_widths = {
@@ -436,6 +452,13 @@ class _ClusterCatalogEncoder:
                 payload.append(code)
                 routes.append(2)
                 width += self.supplement_widths[char]
+                continue
+            supplement_cluster = self.supplement_cluster_codes.get(piece.token)
+            if supplement_cluster is not None:
+                flush_stock()
+                payload.append(supplement_cluster)
+                routes.append(2)
+                width += self.supplement_cluster_widths[piece.token]
                 continue
             flush_stock()
             code = self.codes[piece.token]
@@ -637,16 +660,15 @@ def _build_battle_info_labels(
         expected = bytes.fromhex(str(field["source_hex"]))
         if clean[pc:pc + len(expected)] != expected:
             raise ValueError(f"EN battle-info source changed for {field['key']}")
-        payload, width, routes = encoder.visible(str(field["translation"]))
-        if field.get("compact_initial_e"):
-            regular_e = encoder.codes["cluster:เ"]
-            if not payload or payload[0] != regular_e or routes[0] != 1:
+        # Labels marked as original remain on the stock English data and
+        # renderer paths.  Do not encode or register routes for these spans.
+        if field.get("keep_original"):
+            if field.get("translation") != field.get("source"):
                 raise ValueError(
-                    f"EN battle-info {field['key']} compact initial is not เ"
+                    f"EN battle-info {field['key']} original label drifted"
                 )
-            payload = bytes((BATTLE_INFO_COMPACT_E_CODE,)) + payload[1:]
-            routes = (2,) + routes[1:]
-            width -= encoder.advances[regular_e] - BATTLE_INFO_COMPACT_E_ADVANCE
+            continue
+        payload, width, routes = encoder.visible(str(field["translation"]))
         if len(payload) > len(expected):
             raise ValueError(
                 f"EN battle-info {field['key']} needs {len(payload)} bytes; "
@@ -859,10 +881,8 @@ def _build_en_spirit_help(
     )
 
 
-def _build_en_spirit_names(
-    clean: bytes, encoder: _SpiritNameEncoder
-) -> _NameCatalog:
-    """Repack the active EN Spirit-name table without touching JP leftovers."""
+def _preserve_en_spirit_names(clean: bytes) -> _NameCatalog:
+    """Keep the active English Spirit-name table and pool byte-identical."""
     pointers = [
         int.from_bytes(
             clean[
@@ -881,55 +901,54 @@ def _build_en_spirit_names(
         if end <= start or clean[0x3E0000 + end - 1] != 0xFF:
             raise ValueError(f"EN Spirit-name source record {index} changed")
 
-    document = json.loads(
-        (DATA / "translations" / "spirit-descriptions.th.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    entries = sorted(document["spirits"], key=lambda item: int(item["id"]))
-    if [int(item["id"]) for item in entries] != list(
-        range(1, EN_SPIRIT_NAME_COUNT + 1)
-    ):
-        raise ValueError("EN Spirit names must cover IDs 1-30 exactly")
-    status = json.loads(
-        (DATA / "translations" / "pilot-status.th.json").read_text(encoding="utf-8")
-    )
-    status_names = {
-        int(item["id"]): str(item["translation"]) for item in status["spirits"]
-    }
-    canonical_names = {
-        int(item["id"]): str(item["translation"]) for item in entries
-    }
-    if status_names != canonical_names:
-        raise ValueError("Spirit names drifted between EN help and pilot-status data")
-
-    table = bytearray()
-    pool = bytearray()
-    route_flags: list[int] = []
-    for entry in entries:
-        payload, width, routes = encoder.name(entry)
-        if width > EN_SPIRIT_NAME_FIELD_WIDTH:
-            raise ValueError(
-                f"EN Spirit name {entry['id']} is {width}px; "
-                f"field limit is {EN_SPIRIT_NAME_FIELD_WIDTH}px"
-            )
-        if EN_SPIRIT_NAME_POOL_PC + len(pool) + len(payload) > EN_SPIRIT_NAME_POOL_END_PC:
-            raise ValueError("Thai EN Spirit names overflow their source pool")
-        table.extend(((EN_SPIRIT_NAME_POOL_PC + len(pool)) & 0xFFFF).to_bytes(2, "little"))
-        pool.extend(payload)
-        route_flags.extend(routes)
-
-    padded_pool = bytes(pool) + b"\xFF" * (
-        EN_SPIRIT_NAME_POOL_END_PC - EN_SPIRIT_NAME_POOL_PC - len(pool)
-    )
+    table_end = EN_SPIRIT_NAME_TABLE_PC + EN_SPIRIT_NAME_COUNT * 2
+    table = clean[EN_SPIRIT_NAME_TABLE_PC:table_end]
+    pool = clean[EN_SPIRIT_NAME_POOL_PC:EN_SPIRIT_NAME_POOL_END_PC]
     return _NameCatalog(
-        "EN Spirit names",
+        "preserved English Spirit names",
         EN_SPIRIT_NAME_TABLE_PC,
-        bytes(table),
+        table,
         EN_SPIRIT_NAME_POOL_PC,
-        padded_pool,
-        len(entries),
-        _route_spans(route_flags, EN_SPIRIT_NAME_POOL_PC, 1),
+        pool,
+        EN_SPIRIT_NAME_COUNT,
+        (),
+        (),
+    )
+
+
+def _preserve_en_name_catalog(
+    clean: bytes,
+    *,
+    owner: str,
+    count: int,
+    table_pc: int,
+    pool_pc: int,
+    pool_end_pc: int,
+) -> _NameCatalog:
+    """Keep one active English name table and pool byte-identical."""
+    table_end = table_pc + count * 2
+    if table_end > pool_pc:
+        raise ValueError(f"{owner} pointer table overlaps its pool")
+    table = clean[table_pc:table_end]
+    pool = clean[pool_pc:pool_end_pc]
+    if len(table) != count * 2 or len(pool) != pool_end_pc - pool_pc:
+        raise ValueError(f"{owner} source is truncated")
+    pool_start = pool_pc & 0xFFFF
+    pool_end = pool_end_pc & 0xFFFF
+    for index in range(count):
+        pointer = int.from_bytes(table[index * 2:index * 2 + 2], "little")
+        if not pool_start <= pointer < pool_end:
+            raise ValueError(f"{owner} pointer {index} is outside its English pool")
+        if clean.find(b"\xFF", 0x3E0000 + pointer, pool_end_pc) < 0:
+            raise ValueError(f"{owner} record {index} has no terminator")
+    return _NameCatalog(
+        f"preserved {owner}",
+        table_pc,
+        table,
+        pool_pc,
+        pool,
+        count,
+        (),
         (),
     )
 
@@ -1024,45 +1043,37 @@ def _pack_adapters(route_tables_cpu: int, stock_table_pc: int) -> tuple[list[tup
 
 
 def install(image: bytearray, clean: bytes) -> CatalogReport:
-    """Install translated unit, pilot, and battle-pilot names on EN ROM."""
+    """Install translated UI catalogs while preserving all active EN names."""
     stock = StockCatalog.locked()
     cluster_encoder = _ClusterCatalogEncoder(clean, stock)
-    spirit_name_encoder = _SpiritNameEncoder(clean)
     catalogs = (
-        _build_catalog(
-            clean, cluster_encoder.name, owner="EN unit names", file_name="units.th.json",
-            id_key="unit_ids", count=EN_UNIT_COUNT,
+        _preserve_en_name_catalog(
+            clean, owner="English unit names", count=EN_UNIT_COUNT,
             table_pc=EN_UNIT_TABLE_PC, pool_pc=EN_UNIT_POOL_PC,
             pool_end_pc=EN_UNIT_POOL_END_PC,
         ),
-        _build_catalog(
-            clean, cluster_encoder.name, owner="EN pilot names", file_name="pilots.th.json",
-            id_key="pilot_ids", count=EN_PILOT_COUNT,
+        _preserve_en_name_catalog(
+            clean, owner="English pilot names", count=EN_PILOT_COUNT,
             table_pc=EN_PILOT_TABLE_PC, pool_pc=EN_PILOT_POOL_PC,
             pool_end_pc=EN_PILOT_POOL_END_PC,
         ),
-        _build_catalog(
-            clean,
-            lambda entry: _battle_name(entry, cluster_encoder),
-            owner="EN battle pilot names",
-            file_name="pilot-short-names.th.json", id_key="battle_pilot_ids",
-            count=EN_BATTLE_PILOT_COUNT, table_pc=EN_BATTLE_PILOT_TABLE_PC,
+        _preserve_en_name_catalog(
+            clean, owner="English battle pilot names", count=EN_BATTLE_PILOT_COUNT,
+            table_pc=EN_BATTLE_PILOT_TABLE_PC,
             pool_pc=EN_BATTLE_PILOT_POOL_PC,
             pool_end_pc=EN_BATTLE_PILOT_POOL_END_PC,
         ),
-        _build_catalog(
-            clean, cluster_encoder.weapon, owner="EN weapon names",
-            file_name="weapons.th.json", id_key="weapon_ids",
-            count=EN_WEAPON_COUNT, table_pc=EN_WEAPON_TABLE_PC,
-            pool_pc=EN_WEAPON_POOL_PC, pool_end_pc=EN_WEAPON_POOL_END_PC,
-            max_width=120,
+        _preserve_en_name_catalog(
+            clean, owner="English weapon names", count=EN_WEAPON_COUNT,
+            table_pc=EN_WEAPON_TABLE_PC, pool_pc=EN_WEAPON_POOL_PC,
+            pool_end_pc=EN_WEAPON_POOL_END_PC,
         ),
     )
     for catalog in catalogs:
         _patch_clean(image, clean, catalog.table_pc, catalog.table, f"{catalog.owner} table")
         _patch_clean(image, clean, catalog.pool_pc, catalog.pool, f"{catalog.owner} pool")
 
-    spirit_names = _build_en_spirit_names(clean, spirit_name_encoder)
+    spirit_names = _preserve_en_spirit_names(clean)
     _patch_clean(
         image, clean, spirit_names.table_pc, spirit_names.table,
         "EN Spirit-name pointer table",
@@ -1126,47 +1137,6 @@ def install(image: bytearray, clean: bytes) -> CatalogReport:
         catalog_renderer,
         "EN catalog unified VWF",
     )
-    _place_fill(
-        image,
-        EN_SPIRIT_NAME_PAGE_PC,
-        spirit_name_encoder.page,
-        "EN Spirit-name cluster page",
-    )
-    _place_fill(
-        image,
-        EN_SPIRIT_NAME_WIDTH_PC,
-        spirit_name_encoder.widths,
-        "EN Spirit-name cluster widths",
-    )
-    _place_fill(
-        image,
-        EN_SPIRIT_NAME_ADVANCE_PC,
-        spirit_name_encoder.advances,
-        "EN Spirit-name cluster advances",
-    )
-    spirit_name_renderer = _build_spirit_name_renderer()
-    if EN_SPIRIT_NAME_RENDERER_PC + len(spirit_name_renderer) > EN_SPIRIT_NAME_PAGE_PC:
-        raise ValueError("EN Spirit-name renderer overlaps its cluster page")
-    _place_fill(
-        image,
-        EN_SPIRIT_NAME_RENDERER_PC,
-        spirit_name_renderer,
-        "EN Spirit-name VWF",
-    )
-    spirit_shift_right, spirit_shift_left = shift_tables()
-    _place_fill(
-        image,
-        EN_SPIRIT_NAME_SHIFT_RIGHT_PC,
-        spirit_shift_right,
-        "EN Spirit-name shift-right table",
-    )
-    _place_fill(
-        image,
-        EN_SPIRIT_NAME_SHIFT_LEFT_PC,
-        spirit_shift_left,
-        "EN Spirit-name shift-left table",
-    )
-
     stock_table, stock_pool, _ = stock.assets(STOCK_POOL_PC)
     if len(stock_table) != STOCK_POOL_PC - STOCK_TABLE_PC:
         raise ValueError("EN stock-run pointer table size changed")

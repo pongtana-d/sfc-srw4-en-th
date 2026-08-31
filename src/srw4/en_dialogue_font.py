@@ -6,35 +6,27 @@ from pathlib import Path
 from .atlas import AtlasBuilder
 
 
-# These are the only authored dialogue characters absent from encoding.json.
-# Slot order is part of the compressed EN dialogue stream contract.
-PAGE_TWO_TOKENS = (
-    "%", "A", "B", "C", "D", "E", "F", "G", "H", "I", "K", "L", "M",
-    "N", "O", "P", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "x", "♥",
-    # Preserve the released dialogue slots above. Catalog text appends every
-    # remaining authored Latin/digit glyph to this same proportional page.
-    " ", "(", ")", "+", "-", ".", "/",
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9",
-    "J", "Q", "b", "k", "m", "ν",
-    # Complete the authored non-Thai set from thai.json. These currently
-    # unused catalog characters cost no extra ROM space because the bitmap
-    # page and advance table are fixed at 256 entries.
-    "!", ",", ":", "?", "a", "c", "d", "e", "f", "g", "h", "i", "j",
-    "l", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "y", "z",
-    "~", "Ⅱ",
-)
-SLOT = {token: index for index, token in enumerate(PAGE_TWO_TOKENS)}
+# Only glyphs used by the current EN-ROM Thai build are authored here.  Codes
+# stay explicit so deleting a dead glyph never renumbers a live byte stream.
+SLOT = {
+    "%": 0x00,
+    "A": 0x01, "B": 0x02, "C": 0x03, "D": 0x04, "E": 0x05,
+    "F": 0x06, "G": 0x07, "H": 0x08, "I": 0x09, "K": 0x0A,
+    "L": 0x0B, "M": 0x0C, "N": 0x0D, "O": 0x0E, "P": 0x0F,
+    "R": 0x10, "S": 0x11, "T": 0x12, "U": 0x13, "V": 0x14,
+    "W": 0x15, "X": 0x16, "Z": 0x18, "x": 0x19, "♥": 0x1A,
+    " ": 0x1B, "(": 0x1C, ")": 0x1D, "-": 0x1F, ".": 0x20,
+    "/": 0x21, "0": 0x22, "1": 0x23, "2": 0x24, "3": 0x25,
+    "4": 0x26, "5": 0x27, "6": 0x28, "7": 0x29, "8": 0x2A,
+    "9": 0x2B, "e": 0x39,
+}
 
-# Battle Info prints a stock glyph immediately after ``เลเวล``.  With the
-# normal 4px advance of เ, the final ล crosses into that stock cell and loses
-# its right edge.  This duplicate keeps the same authored bitmap but advances
-# 3px, allowing the final ล to remain wholly inside its VWF cell.
-BATTLE_INFO_COMPACT_E_CODE = 0x7F
-BATTLE_INFO_COMPACT_E_ADVANCE = 3
-# Battle-pilot short names add one otherwise absent Thai cluster, ผ. Keep that
-# authored bitmap in a stable supplement slot instead of changing catalog-page
-# numbering when the battle-name corpus changes.
-BATTLE_PILOT_PHO_PHUNG_CODE = 0x7E
+# EN battle dispatch headers reserve two bytes between the pilot-name command
+# and the quote selector. Thai quote records already begin with their own
+# ``: `` separator. Primary slot $03 is deliberately unallocated, blank and
+# zero-advance; the percent glyph remains at supplement slot $00.
+BATTLE_QUOTE_PADDING_SLOT = 0x03
+BATTLE_QUOTE_PADDING = bytes((0xC1, BATTLE_QUOTE_PADDING_SLOT))
 
 # Weapon badges must not be allocated at the tail of the full catalog-cluster
 # page.  The live weapon-list path drops cluster codes $E8-$EA before they
@@ -48,6 +40,32 @@ WEAPON_ATTRIBUTE_SLOTS = {
     "P": 0x7D,
 }
 
+# The reviewed Spirit-help wording added these clusters after the primary
+# catalog page had reached its parser-safe $00-$EB capacity.  Keep them in
+# explicit free supplement slots so later corpus changes cannot renumber them.
+CATALOG_CLUSTER_SUPPLEMENT_SLOTS = {
+    "cluster:ก่": 0x71,
+    "cluster:ค่": 0x72,
+    "cluster:ค้": 0x73,
+    "cluster:ชิ้": 0x74,
+    "cluster:นึ่": 0x75,
+    "cluster:ป้": 0x76,
+    "cluster:ฝั": 0x77,
+    "cluster:ยู่": 0x78,
+    "cluster:รึ่": 0x79,
+}
+
+_SUPPLEMENT_RESERVED_SLOTS = {
+    *SLOT.values(),
+    *WEAPON_ATTRIBUTE_SLOTS.values(),
+}
+if _SUPPLEMENT_RESERVED_SLOTS.intersection(CATALOG_CLUSTER_SUPPLEMENT_SLOTS.values()):
+    raise ValueError("catalog cluster supplement slots overlap another dialogue glyph")
+if len(set(CATALOG_CLUSTER_SUPPLEMENT_SLOTS.values())) != len(
+    CATALOG_CLUSTER_SUPPLEMENT_SLOTS
+):
+    raise ValueError("catalog cluster supplement slots contain a duplicate")
+
 
 def build_page_two(font_dir: Path, en_rom: bytes) -> tuple[bytes, bytes]:
     """Return the 256×16 bitmap page and matching 256-byte width table."""
@@ -58,17 +76,43 @@ def build_page_two(font_dir: Path, en_rom: bytes) -> tuple[bytes, bytes]:
         glyph = atlas.build(f"char:{token}")
         page[slot * 16:(slot + 1) * 16] = bytes(glyph.rows)
         widths[slot] = glyph.advance
-    compact_e = atlas.build("cluster:เ")
-    start = BATTLE_INFO_COMPACT_E_CODE * 16
-    page[start:start + 16] = bytes(compact_e.rows)
-    widths[BATTLE_INFO_COMPACT_E_CODE] = BATTLE_INFO_COMPACT_E_ADVANCE
-    pho_phung = atlas.build("cluster:ผ")
-    start = BATTLE_PILOT_PHO_PHUNG_CODE * 16
-    page[start:start + 16] = bytes(pho_phung.rows)
-    widths[BATTLE_PILOT_PHO_PHUNG_CODE] = pho_phung.advance
     for name, slot in WEAPON_ATTRIBUTE_SLOTS.items():
         glyph = atlas.build(f"icon:{name}")
         start = slot * 16
         page[start:start + 16] = bytes(glyph.rows)
         widths[slot] = glyph.advance
+    for token, slot in CATALOG_CLUSTER_SUPPLEMENT_SLOTS.items():
+        glyph = atlas.build(token)
+        start = slot * 16
+        page[start:start + 16] = bytes(glyph.rows)
+        widths[slot] = glyph.advance
     return bytes(page), bytes(widths)
+
+
+def overlay_primary_dialogue_glyphs(
+    assets: dict[str, bytes], layout: dict, font_dir: Path, en_rom: bytes
+) -> dict[str, bytes]:
+    """Copy every live dialogue Latin/icon glyph onto the primary Thai page."""
+    atlas = AtlasBuilder(font_dir, en_rom)
+    page = bytearray(assets["thai-page.bin"])
+    advance = bytearray(assets["thai-advance.bin"])
+    base_ink = bytearray(assets["thai-base-ink.bin"])
+    chars = str(layout["dialogue_primary_glyphs"])
+    codes = layout["codes"]
+    if len(chars) != len(set(chars)):
+        raise ValueError("dialogue primary glyph list contains a duplicate")
+    for char in chars:
+        code = int(codes[char])
+        if code >= 0xC0:
+            raise ValueError(f"dialogue primary glyph {char!r} uses reserved code {code:#x}")
+        glyph = atlas.build(f"char:{char}")
+        start = code * 16
+        page[start:start + 16] = bytes(glyph.rows)
+        advance[code] = glyph.advance
+        base_ink[code] = min(glyph.ink_width, 15)
+    return {
+        **assets,
+        "thai-page.bin": bytes(page),
+        "thai-advance.bin": bytes(advance),
+        "thai-base-ink.bin": bytes(base_ink),
+    }

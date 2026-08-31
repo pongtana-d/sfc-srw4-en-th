@@ -9,10 +9,11 @@ from .pipeline import Pipeline
 from .proven.assembler import pc_to_cpu
 
 
-# Banks $EC-$ED are erased in the pinned EN ROM and excluded from the EN story
-# repacker.  One bank holds five 0x3000 overlay resources plus the 0x800 hook.
-EN_INTRO_REGION_START = 0x2C0000
-EN_INTRO_REGION_END = 0x2CF800
+# Bank $ED is erased in the pinned EN ROM and excluded from the EN story
+# repacker. Bank $EC is already owned by the Spirit-name renderer and assets.
+# One bank holds five 0x3000 overlay resources plus the 0x800 hook.
+EN_INTRO_REGION_START = 0x2D0000
+EN_INTRO_REGION_END = 0x2DF800
 EN_CRAWL_BANK = 0xFE
 EN_TERMINATOR_TAIL = bytes.fromhex("FF FE 00 FE 01 FF")
 
@@ -27,7 +28,7 @@ class _LinearAllocator:
         start = (self.cursor + align - 1) & ~(align - 1)
         end = start + size
         if end > EN_INTRO_REGION_END:
-            raise ValueError("EN intro assets exceed their reserved bank-$EC region")
+            raise ValueError("EN intro assets exceed their reserved bank-$ED region")
         self.cursor = end
         return start
 

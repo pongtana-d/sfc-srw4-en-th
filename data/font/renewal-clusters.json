@@ -656,6 +656,9 @@
     "char:v",
     "char:w",
     "char:y",
-    "char:z"
+    "char:z",
+    "cluster:ฌ",
+    "cluster:ฌุ",
+    "char:α"
   ]
 }

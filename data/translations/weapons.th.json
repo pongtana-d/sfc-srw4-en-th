@@ -1457,8 +1457,8 @@
     ],
     "source": "ゴッドボイス",
     "source_hex": "A3 B2 B8 CB 93 A8 FF",
-    "translation": "ก็อดวอยซ์",
-    "method": "glossary"
+    "translation": "ก็อด วอยซ์",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x8186",
@@ -2394,8 +2394,8 @@
     ],
     "source": "ハイファミリア",
     "source_hex": "BE 93 C4 90 CE D9 91 FF",
-    "translation": "ไฮแฟมิเลีย",
-    "method": "glossary"
+    "translation": "ไฮแฟมิเลียร์",
+    "method": "reviewed_name_report"
   },
   {
     "source_pointer": "0x84E7",

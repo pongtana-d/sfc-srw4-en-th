@@ -301,10 +301,11 @@
       "source_pc": "0x12922C",
       "source_hex": "DCDFB6BA99DFFF",
       "source": "ロンデニオン",
-      "translation": "ลอนเดเนียน",
+      "translation": "ลอนเดนิออน",
       "slots": [
         28
-      ]
+      ],
+      "method": "reviewed_name_report"
     },
     {
       "pointer": "0x9233",
@@ -472,12 +473,13 @@
       "source_pc": "0x1292DF",
       "source_hex": "99DAB8B9E3CCAA93AFDAFF",
       "source": "オルドナ＝ポセイダル",
-      "translation": "ออลโดนา โพไซดัล",
+      "translation": "โอลด์นา โพเซย์ดัล",
       "slots": [
         45,
         62,
         68
-      ]
+      ],
+      "method": "reviewed_name_report"
     },
     {
       "pointer": "0x92EA",

@@ -93,8 +93,8 @@ def main() -> int:
     args.patch.write_bytes(patch)
     report = {
         "scope": (
-            "EN Thai story, battle quotes, pilot/unit/weapon names, "
-            "Spirit descriptions, title logo, and opening crawl"
+            "EN Thai story, battle quotes, Spirit descriptions, title logo, and "
+            "opening crawl; original English unit/pilot/weapon names"
         ),
         "story_repack": {"blocks": full.blocks, "records": full.records,
                           "bytes": full.bytes, "relocated_fields": full.relocated_fields,

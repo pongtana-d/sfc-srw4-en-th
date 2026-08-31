@@ -5,6 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Mapping
 
+from .en_dialogue_font import BATTLE_QUOTE_PADDING
 from .rom import Rom, RomError
 
 
@@ -115,21 +116,18 @@ def quote_fields(data: bytes) -> tuple[int, ...]:
     return tuple(result)
 
 
-def replace_en_quote_separators(data: bytearray, separator: bytes) -> int:
+def replace_en_quote_separators(data: bytearray) -> int:
     """Replace the EN renderer's raw separator after a battle pilot name.
 
     ``$AB $43`` supplies colon and space for English quote bodies, but Thai
-    quote bodies already begin with their own separator.  Relocated records
-    also see these slots as ``ดิฯ`` on the Thai page.  The caller supplies one
-    explicit page lead plus one zero-advance blank slot; replacement stays
-    in-place so every dispatch offset remains unchanged.
+    quote bodies already begin with their own separator. Use the dedicated
+    zero-advance primary slot; replacement stays in-place so every dispatch
+    offset remains unchanged.
     """
-    if len(separator) != 2 or separator[0] != 0xC1 or separator[1] >= 0xC0:
-        raise RomError("Thai battle quote separator must select one blank Thai slot")
     count = 0
     cursor = 0
     while (at := data.find(EN_QUOTE_HEADER, cursor)) >= 0:
-        data[at + 2:at + 4] = separator
+        data[at + 2:at + 4] = BATTLE_QUOTE_PADDING
         count += 1
         cursor = at + 4
     return count
@@ -143,15 +141,32 @@ def _slots(document: Mapping[str, object]) -> list[dict[str, object]]:
     return [item for item in document["summary"]["blocks"] if item.get("kind") != "unused"]
 
 
-def _dispatch_records(data: bytes, prefix: bytes) -> list[list[tuple[int, int]]]:
+def _dispatch_records(data: bytes, header: bytes) -> list[list[tuple[int, int]]]:
+    """Return every quote-pointer record following one dispatch header.
+
+    Quote selectors have two shapes: ``$FA count + pointer table`` and the
+    single ``$FC $07 pointer`` form.  Both must participate in EN/JP record
+    alignment; otherwise direct weapon quotes silently relocate to the empty
+    terminator.
+    """
     records: list[list[tuple[int, int]]] = []
     cursor = 0
-    while (at := data.find(prefix, cursor)) >= 0:
-        count_at = at + len(prefix)
-        if count_at >= len(data):
+    while (at := data.find(header, cursor)) >= 0:
+        command_at = at + len(header)
+        if command_at >= len(data):
             raise RomError("truncated battle quote dispatch record")
-        first = count_at + 1
-        end = first + data[count_at] * 2
+        if data[command_at] == 0xFA:
+            count_at = command_at + 1
+            if count_at >= len(data):
+                raise RomError("truncated battle quote dispatch record")
+            first = count_at + 1
+            end = first + data[count_at] * 2
+        elif data[command_at:command_at + 2] == b"\xFC\x07":
+            first = command_at + 2
+            end = first + 2
+        else:
+            cursor = command_at + 1
+            continue
         if end > len(data):
             raise RomError("truncated battle quote dispatch record")
         records.append([
@@ -209,11 +224,6 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
     }
     jp_reference = (Path(__file__).resolve().parents[2] / "rom" /
                     "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc").read_bytes()
-    # Slot $03 was freed when obsolete `ฃ` was removed from the current EN
-    # atlas.  It has no pixels and zero advance, so this two-byte page-select
-    # consumes the fixed EN header without drawing or moving the cursor.
-    quote_separator = b"\xC1\x03"
-
     for slot in order:
         block = blocks[slot]
         rows = rows_by_block[slot]
@@ -294,8 +304,8 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                 int(reference, 0) - jp_start: int(row["offset"], 0)
                 for row in rows for reference in row.get("record_refs", ())
             }
-            en_records = _dispatch_records(bytes(dispatch), b"\xFC\x01\xAB\x43\xFA")
-            jp_records = _dispatch_records(jp_dispatch, b"\xFC\x01\xFA")
+            en_records = _dispatch_records(bytes(dispatch), EN_QUOTE_HEADER)
+            jp_records = _dispatch_records(jp_dispatch, b"\xFC\x01")
             if len(en_records) > len(jp_records):
                 raise RomError(f"battle block {slot}: EN dispatch record count changed")
             for en_record, jp_record in zip(en_records, jp_records):
@@ -312,11 +322,17 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                         )
             for at in quote_fields(bytes(dispatch)):
                 target = dispatch[at] | dispatch[at + 1] << 8
-                address = starts.get(source_by_target.get(target, -1), empty)
+                source_offset = source_by_target.get(target)
+                if source_offset is None or source_offset not in starts:
+                    raise RomError(
+                        f"battle block {slot}: quote target "
+                        f"${source_bank:02X}:{target:04X} has no translated record"
+                    )
+                address = starts[source_offset]
                 dispatch[at:at + 2] = address.to_bytes(2, "little")
                 relocated += 1
             expected_separators = dispatch.count(EN_QUOTE_HEADER)
-            replaced = replace_en_quote_separators(dispatch, quote_separator)
+            replaced = replace_en_quote_separators(dispatch)
             if not replaced or replaced != expected_separators:
                 raise RomError(
                     f"battle block {slot}: replaced {replaced} of "

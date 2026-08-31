@@ -4,7 +4,7 @@
     "story.dialogue": {"state": "runtime_verified", "evidence": "E-158/E-165 ordinary story and current corpus routes"},
     "story.battle_quotes": {"state": "runtime_verified", "evidence": "Mesen battle golden frames 700/900/1100"},
     "story.runtime_fb_names": {"state": "runtime_verified", "evidence": "E-010 runtime-name dialogue redraw"},
-    "catalog.weapon_names": {"state": "build_verified", "evidence": "current catalog compiler and slot coverage"},
+    "catalog.weapon_names": {"state": "runtime_verified", "evidence": "active EN table/pool are byte-identical to the pinned English ROM; Mesen FC03 battle quote redraw showed Special DX Borot Punch from source FEB574"},
     "catalog.unit_names": {"state": "build_verified", "evidence": "current catalog compiler and slot coverage"},
     "catalog.pilot_names": {"state": "build_verified", "evidence": "E-172 current pilot catalog route"},
     "catalog.battle_pilot_labels": {"state": "runtime_verified", "evidence": "Mesen battle quote screenshots"},

@@ -42,10 +42,10 @@
     },
     {
       "id": "catalog.weapon_names",
-      "source": "translations/weapons.th.json",
-      "engine": "ordinary",
-      "policy": "thai-with-stock-english-and-digits",
-      "state": "adapter_active_needs_full_regression"
+      "source": "pinned English ROM active weapon table and pool",
+      "engine": "ordinary-and-battle-runtime-fc03",
+      "policy": "stock-english",
+      "state": "preserved_english_runtime_verified"
     },
     {
       "id": "catalog.unit_names",

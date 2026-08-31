@@ -7,7 +7,12 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from srw4.en_story_build import quote_fields, replace_en_quote_separators  # noqa: E402
+from srw4.en_story_build import (  # noqa: E402
+    _dispatch_records,
+    quote_fields,
+    replace_en_quote_separators,
+)
+from srw4.en_dialogue_font import BATTLE_QUOTE_PADDING  # noqa: E402
 
 
 def test_quote_fields_accepts_english_battle_dispatch_header():
@@ -33,5 +38,27 @@ def test_quote_fields_relocates_japanese_direct_quote_pointer():
 
 def test_english_quote_separator_becomes_zero_advance_thai_padding_in_place():
     record = bytearray.fromhex("FC 01 AB 43 FA 02 34 12 78 56 FF")
-    assert replace_en_quote_separators(record, bytes.fromhex("C1 03")) == 1
-    assert record == bytearray.fromhex("FC 01 C1 03 FA 02 34 12 78 56 FF")
+    assert replace_en_quote_separators(record) == 1
+    assert record == bytearray(
+        b"\xFC\x01" + BATTLE_QUOTE_PADDING
+        + bytes.fromhex("FA 02 34 12 78 56 FF")
+    )
+
+
+def test_dispatch_records_aligns_table_and_direct_quote_pointers():
+    english = bytes.fromhex(
+        "FC 01 AB 43 FA 02 34 12 78 56 "
+        "FC 01 AB 43 FC 07 CE 7E"
+    )
+    japanese = bytes.fromhex(
+        "FC 01 FA 02 80 51 88 51 "
+        "FC 01 FC 07 8C 56"
+    )
+    assert _dispatch_records(english, bytes.fromhex("FC 01 AB 43")) == [
+        [(6, 0x1234), (8, 0x5678)],
+        [(16, 0x7ECE)],
+    ]
+    assert _dispatch_records(japanese, bytes.fromhex("FC 01")) == [
+        [(4, 0x5180), (6, 0x5188)],
+        [(12, 0x568C)],
+    ]

@@ -100,9 +100,7 @@ story_private:
   and #$00FF
   cmp #$00C0
   bcs story_page
-  lda #$0002
-  sta.l ${ROUTER_PAGE_STATE:06X}
-  jml stock_story
+  brl stock_story
 story_page:
   cmp #$00C2
   bne story_page_lead

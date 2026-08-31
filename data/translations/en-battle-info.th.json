@@ -7,8 +7,8 @@
       "address": "0x3E2FCD",
       "source_hex": "21 94 A5 94 9B",
       "source": "Level",
-      "translation": "เลเวล",
-      "compact_initial_e": true,
+      "translation": "Level",
+      "keep_original": true,
       "max_width_px": 40
     },
     {
@@ -16,8 +16,8 @@
       "address": "0x3E301E",
       "source_hex": "21 94 A5 94 9B",
       "source": "Level",
-      "translation": "เลเวล",
-      "compact_initial_e": true,
+      "translation": "Level",
+      "keep_original": true,
       "max_width_px": 40
     },
     {
@@ -33,7 +33,8 @@
       "address": "0x3E3004",
       "source_hex": "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94",
       "source": "Accuracy Rate",
-      "translation": "แม่นยำ",
+      "translation": "Accuracy Rate",
+      "keep_original": true,
       "max_width_px": 64
     },
     {
@@ -41,7 +42,8 @@
       "address": "0x3E3055",
       "source_hex": "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94",
       "source": "Accuracy Rate",
-      "translation": "แม่นยำ",
+      "translation": "Accuracy Rate",
+      "keep_original": true,
       "max_width_px": 64
     }
   ]
