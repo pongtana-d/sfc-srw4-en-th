@@ -1027,7 +1027,7 @@
     ],
     "source": "エレ＝ハンム",
     "source_hex": "97 DB E3 BE DF CF FF",
-    "translation": "เอล ฮันม์",
+    "translation": "เอเล่ ฮัม",
     "en_pool_bytes": 10,
     "method": "reviewed_name_report"
   },
@@ -1879,7 +1879,7 @@
     ],
     "source": "トルスト－ル＝チェシレンコ",
     "source_hex": "B7 DA A8 B7 11 DA E3 B0 96 A6 DB DF A2 FF",
-    "translation": "ตอลสตอย เชชิเลนโก",
+    "translation": "ทอลสตอล เชชิเลนโก",
     "method": "reviewed_name_report"
   },
   {
@@ -2109,7 +2109,7 @@
     ],
     "source": "ミラウ－＝キャオ",
     "source_hex": "CE D8 95 11 E3 9C D2 99 FF",
-    "translation": "มิราอู แคร์ว",
+    "translation": "มิราอู เคียว",
     "method": "reviewed_name_report"
   },
   {

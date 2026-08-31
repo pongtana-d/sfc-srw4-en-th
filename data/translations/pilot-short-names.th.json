@@ -447,7 +447,7 @@
     ],
     "source": "ベルトーチカ",
     "source_hex": "C8 DA B7 11 B0 9A FF",
-    "translation": "เบลทอร์ชิก้า",
+    "translation": "เบลทอร์ชิกา",
     "method": "reviewed_glossary"
   },
   {
@@ -647,7 +647,7 @@
     ],
     "source": "ニナ",
     "source_hex": "BA B9 FF",
-    "translation": "นีนา",
+    "translation": "นีน่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1028,7 +1028,7 @@
     ],
     "source": "エレ",
     "source_hex": "97 DB FF",
-    "translation": "เอล",
+    "translation": "เอเล่",
     "en_pool_bytes": 6,
     "method": "reviewed_name_report"
   },
@@ -1873,7 +1873,7 @@
     ],
     "source": "トルストール",
     "source_hex": "B7 DA A8 B7 11 DA FF",
-    "translation": "ตอลสตอย",
+    "translation": "ทอลสตอล",
     "method": "reviewed_name_report"
   },
   {
@@ -2076,7 +2076,7 @@
     ],
     "source": "キャオ",
     "source_hex": "9C D2 99 FF",
-    "translation": "แคร์ว",
+    "translation": "เคียว",
     "method": "reviewed_name_report"
   },
   {

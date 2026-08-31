@@ -58,6 +58,7 @@ from srw4.en_th_catalogs import (  # noqa: E402
     _build_cluster_page_dispatch,
     _build_catalog_renderer,
     _build_battle_catalog_renderer,
+    build_part_stock_catalog,
     _preserve_en_spirit_names,
     _build_en_spirit_help,
     _build_battle_info_labels,
@@ -294,11 +295,17 @@ def test_mixed_catalog_text_uses_thai_authored_proportional_latin_and_digits():
 
 def test_cluster_renderer_has_true_advances_beside_stock_widths():
     clean = BASE.read_bytes()
-    encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
+    stock, en_direct_runs = build_part_stock_catalog()
+    encoder = _ClusterCatalogEncoder(
+        clean,
+        stock,
+        include_part_effects=True,
+        en_direct_stock_runs=en_direct_runs,
+    )
     image = bytearray(clean)
     install_renderer(image)
     install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
-    install_catalogs(image, clean)
+    install_catalogs(image, clean, cluster_encoder=encoder)
 
     for code in encoder.codes.values():
         assert encoder.advances[code] == encoder.widths[code] + 1

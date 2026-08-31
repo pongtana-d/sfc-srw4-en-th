@@ -1708,7 +1708,7 @@
     ],
     "source": "レプラカ－ン",
     "source_hex": "DB C6 D8 9A 11 DF FF",
-    "translation": "เลปราคาร์น",
+    "translation": "เลเปรอคอน",
     "method": "reviewed_name_report"
   },
   {
@@ -2421,7 +2421,7 @@
     ],
     "source": "カルバリ－テンプル",
     "source_hex": "9A DA BF D9 11 B5 DF C6 DA FF",
-    "translation": "คาลวารี่ เทมเปิล",
+    "translation": "แคลเวอรี เทมเปิล",
     "method": "reviewed_name_report"
   },
   {
@@ -2885,7 +2885,7 @@
     ],
     "source": "ハイパ－レプラカ－ン",
     "source_hex": "BE 93 C0 11 DB C6 D8 9A 11 DF FF",
-    "translation": "ไฮเปอร์เลปราคาร์น",
+    "translation": "ไฮเปอร์เลเปรอคอน",
     "method": "reviewed_name_report"
   },
   {
