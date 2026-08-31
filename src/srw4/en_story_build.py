@@ -348,13 +348,6 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
             direct = starts.get(target)
             if direct is not None:
                 return direct
-            # Block 1's five-way objective selects a translated tail.  The
-            # anchors are explicit controls retained by the translator.
-            if str(row["id"]) == "01_0811":
-                anchors = {0x081B: 10, 0x0825: 20, 0x082F: 30, 0x0839: 40,
-                           0x0843: 81, 0x0844: 82}
-                if target in anchors:
-                    return starts[int(row["offset"], 0)] + anchors[target]
             for old, owner in source_rows.items():
                 delta = target - old
                 if 0 <= delta < int(owner["size"]):

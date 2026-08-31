@@ -30,6 +30,7 @@ from srw4.rom import Rom, sha256
 BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
 SOURCE = ROOT / "data" / "translations" / "script.source.json"
 TRANSLATIONS = ROOT / "data" / "translations" / "script.th.json"
+OBJECTIVES = ROOT / "data" / "translations" / "objectives.en.json"
 # Character Archives owns all 240 pointer rows in block 48, then continues
 # through rows 0-37 of block 49. Row 38 starts the unrelated Astonaige event.
 PROFILE_CONTINUATION_POINTERS = 38
@@ -109,6 +110,7 @@ def main() -> int:
 
     document = json.loads(SOURCE.read_text(encoding="utf-8"))
     translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]
+    translated.update(json.loads(OBJECTIVES.read_text(encoding="utf-8"))["messages"])
     dialogue_compiler = PrecomposedDialogueCompiler()
     profile_ids = set()
     for row in document["messages"]:
