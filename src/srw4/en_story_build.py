@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Callable, Mapping
 
-from .en_dialogue_font import BATTLE_QUOTE_PADDING
+from .en_dialogue_font import BATTLE_QUOTE_PADDING, BATTLE_QUOTE_SEPARATOR
 from .rom import Rom, RomError
 
 
@@ -14,6 +14,8 @@ STORY_BANKS = (0xEB, *range(0xF1, 0xFD))
 ENGINE_OPERANDS = {0xF0: 1, 0xF1: 1, 0xF2: 1, 0xF3: 1, 0xF4: 1,
                    0xF5: 1, 0xFB: 2, 0xFC: 1, 0xFD: 1, 0xFE: 2}
 EN_QUOTE_HEADER = b"\xFC\x01\xAB\x43"
+EN_PERSONALITY_HEADER = EN_QUOTE_HEADER + b"\xFC\x08"
+PERSONALITY_SELECTOR_COUNT = 8
 
 
 @dataclass(frozen=True)
@@ -115,20 +117,59 @@ def quote_fields(data: bytes) -> tuple[int, ...]:
 
 
 def replace_en_quote_separators(data: bytearray) -> int:
-    """Replace the EN renderer's raw separator after a battle pilot name.
+    """Normalize the EN separator after a battle pilot name.
 
-    ``$AB $43`` supplies colon and space for English quote bodies, but Thai
-    quote bodies already begin with their own separator. Use the dedicated
-    zero-advance precomposed glyph; replacement stays in-place so every
-    dispatch offset remains unchanged.
+    Fixed quote tables (``FA``/``FC:07``) are relocated to the beginning of a
+    Thai record, which already contains ``: ``.  Replace their stock separator
+    with the zero-advance pad.  Personality branches (``FC:08``) retain an
+    interior target after the source record's separator, so their header gets
+    the private-page ``: `` pair instead.  Both forms remain four bytes,
+    preserving every dispatch offset and every dynamic name length.
     """
     count = 0
     cursor = 0
     while (at := data.find(EN_QUOTE_HEADER, cursor)) >= 0:
-        data[at + 2:at + 4] = BATTLE_QUOTE_PADDING
+        command_at = at + len(EN_QUOTE_HEADER)
+        replacement = (
+            BATTLE_QUOTE_SEPARATOR
+            if data[command_at:command_at + 2] == b"\xFC\x08"
+            else BATTLE_QUOTE_PADDING
+        )
+        data[at + 2:at + 4] = replacement
         count += 1
         cursor = at + 4
     return count
+
+
+def _personality_records(data: bytes, header: bytes) -> list[list[tuple[int, int]]]:
+    """Return the eight selector pointers following each personality header."""
+    records: list[list[tuple[int, int]]] = []
+    cursor = 0
+    while (at := data.find(header, cursor)) >= 0:
+        first = at + len(header)
+        end = first + PERSONALITY_SELECTOR_COUNT * 2
+        if end > len(data):
+            raise RomError("truncated personality branch table")
+        records.append([
+            (pointer_at, data[pointer_at] | data[pointer_at + 1] << 8)
+            for pointer_at in range(first, end, 2)
+        ])
+        cursor = end
+    return records
+
+
+def _fa_selector_fields(data: bytes, selector_at: int) -> list[tuple[int, int]]:
+    """Return pointer fields from one bare ``FA count`` selector record."""
+    if not 0 <= selector_at < len(data) - 1 or data[selector_at] != 0xFA:
+        raise RomError(f"personality selector at {selector_at:#06x} is not FA")
+    first = selector_at + 2
+    end = first + data[selector_at + 1] * 2
+    if end > len(data):
+        raise RomError("truncated personality FA selector")
+    return [
+        (pointer_at, data[pointer_at] | data[pointer_at + 1] << 8)
+        for pointer_at in range(first, end, 2)
+    ]
 
 
 def _cpu_to_pc(bank: int, address: int) -> int:
@@ -358,6 +399,56 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                 int(reference, 0) - jp_start: int(row["offset"], 0)
                 for row in rows for reference in row.get("record_refs", ())
             }
+            source_dispatch_start = source_start + table_bytes
+            moved_dispatch_start = start + table_bytes
+            en_personality = _personality_records(
+                bytes(dispatch), EN_PERSONALITY_HEADER
+            )
+            jp_personality = _personality_records(
+                jp_dispatch, b"\xFC\x01\xFC\x08"
+            )
+            if len(en_personality) != len(jp_personality):
+                raise RomError(
+                    f"battle block {slot}: EN/JP personality record count changed"
+                )
+            for en_record, jp_record in zip(en_personality, jp_personality):
+                if len(en_record) != len(jp_record):
+                    raise RomError(
+                        f"battle block {slot}: EN/JP personality shape changed"
+                    )
+                for (_, jp_selector), (en_branch_at, en_selector) in zip(
+                    jp_record, en_record
+                ):
+                    jp_fields = _fa_selector_fields(
+                        jp_dispatch, jp_selector - jp_start
+                    )
+                    en_fields = _fa_selector_fields(
+                        bytes(dispatch), en_selector - source_dispatch_start
+                    )
+                    if len(en_fields) != len(jp_fields):
+                        raise RomError(
+                            f"battle block {slot}: EN/JP personality selector shape changed"
+                        )
+                    for (jp_at, _), (en_at, _) in zip(jp_fields, en_fields):
+                        source_offset = by_jp_field.get(jp_at)
+                        if source_offset is None or source_offset not in starts:
+                            raise RomError(
+                                f"battle block {slot}: personality field "
+                                f"{jp_at + jp_start:#06x} has no translated record"
+                            )
+                        address = starts[source_offset]
+                        message_id = str(source_rows[source_offset]["id"])
+                        if original[message_id].startswith(BATTLE_QUOTE_SEPARATOR):
+                            address += len(BATTLE_QUOTE_SEPARATOR)
+                        dispatch[en_at:en_at + 2] = address.to_bytes(2, "little")
+                        relocated += 1
+                    moved_selector = (
+                        moved_dispatch_start + en_selector - source_dispatch_start
+                    )
+                    dispatch[en_branch_at:en_branch_at + 2] = moved_selector.to_bytes(
+                        2, "little"
+                    )
+                    relocated += 1
             en_records = _dispatch_records(bytes(dispatch), EN_QUOTE_HEADER)
             jp_records = _dispatch_records(jp_dispatch, b"\xFC\x01")
             if len(en_records) > len(jp_records):

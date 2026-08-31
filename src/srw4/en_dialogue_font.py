@@ -24,18 +24,23 @@ SLOT = {
     "ν": 0x3D,
 }
 
-# EN battle dispatch headers reserve two bytes between the pilot-name command
-# and the quote selector. Thai quote records already begin with their own
-# ``: `` separator.  The locked precomposed token map owns an explicit blank,
-# zero-advance ``icon:Pad`` glyph; it deliberately encodes to two native
-# `$F0-$F3` bytes so dispatch offsets stay unchanged.
+# EN battle headers reserve two bytes after the pilot-name command. Fixed
+# quote targets already begin with ``: ``, while personality-branch targets
+# skip that prefix. The locked token map therefore supplies both a blank Pad
+# and a private-page separator, each encoded to exactly two bytes so dispatch
+# offsets stay unchanged.
 _FONT = Path(__file__).resolve().parents[2] / "data" / "font"
+_TOKEN_MAP = TokenMap.load(_FONT / "renewal-clusters.json")
 BATTLE_QUOTE_PADDING_TOKEN = "icon:Pad"
-BATTLE_QUOTE_PADDING = TokenMap.load(
-    _FONT / "renewal-clusters.json"
-).encode_glyph(BATTLE_QUOTE_PADDING_TOKEN)
+BATTLE_QUOTE_PADDING = _TOKEN_MAP.encode_glyph(BATTLE_QUOTE_PADDING_TOKEN)
 if len(BATTLE_QUOTE_PADDING) != 2:
     raise RuntimeError("battle quote padding must retain the EN header's two bytes")
+BATTLE_QUOTE_SEPARATOR_TOKENS = ("char::", "char: ")
+BATTLE_QUOTE_SEPARATOR = b"".join(
+    _TOKEN_MAP.encode_glyph(token) for token in BATTLE_QUOTE_SEPARATOR_TOKENS
+)
+if len(BATTLE_QUOTE_SEPARATOR) != 2:
+    raise RuntimeError("battle quote separator must retain the EN header's two bytes")
 
 # Weapon badges must not be allocated at the tail of the full catalog-cluster
 # page.  The live weapon-list path drops cluster codes $E8-$EA before they
