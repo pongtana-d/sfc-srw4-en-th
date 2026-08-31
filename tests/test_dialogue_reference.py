@@ -9,7 +9,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
 from build_dialogue_reference import OUTPUT, build  # noqa: E402
-from audit_dialogue_glossary import compact_source, has_source_key  # noqa: E402
+from audit_dialogue_reference import compact_source, has_source_key  # noqa: E402
 
 
 def test_dialogue_reference_is_current():

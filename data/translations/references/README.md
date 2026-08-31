@@ -15,6 +15,16 @@
 python3 tools/build_dialogue_reference.py
 ```
 
+ตรวจชื่อและศัพท์อ้างอิงทั้งหมดในบทสนทนาด้วย:
+
+```bash
+python3 tools/audit_dialogue_reference.py --limit 10000 --samples 3
+```
+
+ตัวตรวจเทียบ `script.source.json` กับ `script.th.json` โดยใช้ `lookup` จาก
+reference รวม ต้องตรวจผลแต่ละกลุ่มตามบริบท ห้าม bulk replace จากรายงานโดยไม่อ่าน
+ต้นฉบับญี่ปุ่น
+
 `glossary.th.json` ยังจำเป็น แต่มีหน้าที่เป็น **ศัพท์เสริมและคำสะกด canonical**
 ที่ไม่มี record ใน catalog หรือใช้ override การสะกด ไม่ได้มีหน้าที่เก็บชื่อทุกชื่อ
 ซ้ำกับ `pilots.th.json`, `units.th.json` และ `weapons.th.json`

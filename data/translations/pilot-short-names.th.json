@@ -497,7 +497,7 @@
     ],
     "source": "プル",
     "source_hex": "C6 DA FF",
-    "translation": "พลี",
+    "translation": "พลู",
     "method": "reviewed_name_report"
   },
   {
@@ -1613,7 +1613,7 @@
     ],
     "source": "Ｄｒヘル",
     "source_hex": "19 06 C7 DA FF",
-    "translation": "ดร. เฮล",
+    "translation": "ดร.เฮล",
     "method": "reviewed_name_report"
   },
   {
@@ -1733,7 +1733,7 @@
     ],
     "source": "ライザ",
     "source_hex": "D8 93 A5 FF",
-    "translation": "ไลซ่า",
+    "translation": "ไรซ่า",
     "method": "reviewed_glossary"
   },
   {
@@ -1773,7 +1773,7 @@
     ],
     "source": "ケルナグール",
     "source_hex": "A0 DA B9 9F 11 DA FF",
-    "translation": "เคอนากูล",
+    "translation": "เคอร์นากูล",
     "method": "reviewed_name_report"
   },
   {
@@ -1923,7 +1923,7 @@
     ],
     "source": "ガラミティ",
     "source_hex": "9B D8 CE B5 92 FF",
-    "translation": "กาลาซิตี",
+    "translation": "การามิตี",
     "method": "reviewed_glossary"
   },
   {
@@ -2126,7 +2126,7 @@
     ],
     "source": "ポセイダル",
     "source_hex": "CC AA 93 AF DA FF",
-    "translation": "โพไซดัล",
+    "translation": "โพเซย์ดัล",
     "method": "reviewed_name_report"
   },
   {
@@ -2146,7 +2146,7 @@
     ],
     "source": "ギワザ",
     "source_hex": "9D DD A5 FF",
-    "translation": "กิวาซ่า",
+    "translation": "กิวาซา",
     "method": "reviewed_glossary"
   },
   {
@@ -2176,7 +2176,7 @@
     ],
     "source": "リョクレイ",
     "source_hex": "D9 D6 9E DB 93 FF",
-    "translation": "ร็อกเลย์",
+    "translation": "เรียวคุเรย์",
     "method": "reviewed_glossary"
   },
   {
@@ -2529,7 +2529,7 @@
     ],
     "source": "四谷博士",
     "source_hex": "F0 46 F0 47 F0 48 F0 49 FF",
-    "translation": "ดร.โยตสึยะ",
+    "translation": "ดร.โยสึยะ",
     "method": "reviewed_glossary"
   },
   {
@@ -2549,7 +2549,7 @@
     ],
     "source": "香月",
     "source_hex": "F0 35 F0 95 FF",
-    "translation": "คัตสึกิ",
+    "translation": "โคซึกิ",
     "method": "reviewed_glossary"
   },
   {
@@ -2639,7 +2639,7 @@
     ],
     "source": "ランシャオ",
     "source_hex": "D8 DF A6 D2 99 FF",
-    "translation": "แลง เซียว",
+    "translation": "หลางเซียว",
     "method": "reviewed_name_report"
   },
   {

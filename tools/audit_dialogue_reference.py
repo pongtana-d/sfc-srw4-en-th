@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report dialogue whose Japanese source uses a reference key but Thai omits its canonical form.
+"""Audit dialogue against the complete generated translation reference.
 
 This is a strict review aid, not a pass/fail test: ordinary terms may be translated
 idiomatically.  Names and proper nouns in the report should normally be corrected.

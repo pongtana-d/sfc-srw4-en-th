@@ -7,6 +7,16 @@
 `glossary.th.json` ด้วย `python3 tools/build_dialogue_reference.py` ห้ามแก้ไฟล์ generated
 โดยตรง ส่วน `rom-glossary.th.json` เป็น override สำหรับช่อง ROM ที่แคบ ไม่ใช่ศัพท์หลัก
 
+ก่อนและหลังแก้ชื่อหรือศัพท์ในบทสนทนา ให้รัน:
+
+```bash
+python3 tools/build_dialogue_reference.py
+python3 tools/audit_dialogue_reference.py --limit 10000 --samples 3
+```
+
+ต้องให้ `_meta.conflicts` ใน reference เป็น `0` และตรวจรายงาน audit ทีละกลุ่มตามบริบท
+ห้ามแก้ `references/dialogue.th.json` โดยตรงหรือ bulk replace โดยไม่อ่านต้นฉบับญี่ปุ่น
+
 ## ชื่อคน ชื่อหุ่น
 
 - **ชื่อสั้นต้องยึดตามญี่ปุ่นที่ถอดมา** เพราะมันคือ "ชื่อเล่น" ไม่ใช่ตัวย่อของชื่อเต็ม

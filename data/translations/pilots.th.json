@@ -957,7 +957,7 @@
     ],
     "source": "和泉ナナ",
     "source_hex": "F1 CB F4 1D B9 B9 FF",
-    "translation": "นานะ อิซึมิ",
+    "translation": "นานะ อิซูมิ",
     "method": "reviewed_exact"
   },
   {
@@ -1739,7 +1739,7 @@
     ],
     "source": "ライザ",
     "source_hex": "D8 93 A5 FF",
-    "translation": "ไลซ่า",
+    "translation": "ไรซ่า",
     "method": "reviewed_roman"
   },
   {
@@ -1777,9 +1777,9 @@
     "pilot_ids": [
       179
     ],
-    "source": "ヤッタ－＝ラ＝ケルナグ－ル",
-    "source_hex": "D3 B2 AE 11 E3 D8 E3 A0 DA B9 9F 11 DA FF",
-    "translation": "ยัตต้า ลา เคอนากูล",
+    "source": "ヤッター＝ラ＝ケルナグール",
+    "source_hex": "E4 8F C0 92 E7 92 E5 C9 B7 DF FF",
+    "translation": "ยัตต้า ลา เคอร์นากูล",
     "method": "reviewed_name_report"
   },
   {
@@ -1929,7 +1929,7 @@
     ],
     "source": "ガラミティ＝マンガン",
     "source_hex": "9B D8 CE B5 92 E3 CD DF 9B DF FF",
-    "translation": "กาลาซิตี มังกาน",
+    "translation": "การามิตี มังกาน",
     "method": "reviewed_name_report"
   },
   {
@@ -2059,7 +2059,7 @@
     ],
     "source": "ポセイダル兵",
     "source_hex": "CC AA 93 AF DA F0 4E FF",
-    "translation": "ทหารโพไซดัล",
+    "translation": "ทหารโพเซย์ดัล",
     "method": "reviewed_exact"
   },
   {
@@ -2069,7 +2069,7 @@
     ],
     "source": "ポセイダル親衛隊兵",
     "source_hex": "CC AA 93 AF DA F2 6C F2 7B F0 E7 F0 4E FF",
-    "translation": "องครักษ์โพไซดัล",
+    "translation": "องครักษ์โพเซย์ดัล",
     "method": "reviewed_exact"
   },
   {
@@ -2159,7 +2159,7 @@
     ],
     "source": "オルドナ＝ポセイダル",
     "source_hex": "99 DA B8 B9 E3 CC AA 93 AF DA FF",
-    "translation": "ออลโดน่า โพไซดัล",
+    "translation": "ออลโดน่า โพเซย์ดัล",
     "method": "reviewed_name_report"
   },
   {
@@ -2179,7 +2179,7 @@
     ],
     "source": "ギワザ＝ロワウ",
     "source_hex": "9D DD A5 E3 DC DD 95 FF",
-    "translation": "กิวาซ่า โลวาอู",
+    "translation": "กิวาซา โลวาว",
     "method": "reviewed_roman"
   },
   {
@@ -2209,7 +2209,7 @@
     ],
     "source": "リョクレイ＝ロン",
     "source_hex": "D9 D6 9E DB 93 E3 DC DF FF",
-    "translation": "ร็อกเลย์ รอน",
+    "translation": "เรียวคุเรย์ รอน",
     "method": "reviewed_roman"
   },
   {
@@ -2279,7 +2279,7 @@
     ],
     "source": "バ－ン＝ガニア＝キラ－ズ",
     "source_hex": "BF 11 DF E3 9B BA 91 E3 9C D8 11 A9 FF",
-    "translation": "บาร์น กาเนีย คิลเลอร์ส",
+    "translation": "บาน กาเนีย คิลเลอร์ส",
     "method": "reviewed_name_report"
   },
   {
@@ -2575,7 +2575,7 @@
     ],
     "source": "四谷博士",
     "source_hex": "F0 46 F0 47 F0 48 F0 49 FF",
-    "translation": "ดร.โยตสึยะ",
+    "translation": "ดร.โยสึยะ",
     "method": "reviewed_exact"
   },
   {
@@ -2595,7 +2595,7 @@
     ],
     "source": "香月真吾",
     "source_hex": "F0 35 F0 95 F1 D2 F3 02 FF",
-    "translation": "คัตสึกิ ชินโง",
+    "translation": "ชินโง โคซึกิ",
     "method": "reviewed_exact"
   },
   {
@@ -2635,7 +2635,7 @@
     ],
     "source": "和泉博士",
     "source_hex": "F1 CB F4 1D F0 48 F0 49 FF",
-    "translation": "ดร.อิซึมิ",
+    "translation": "ดร.อิซูมิ",
     "method": "reviewed_exact"
   },
   {
@@ -2685,7 +2685,7 @@
     ],
     "source": "ランシャオ",
     "source_hex": "D8 DF A6 D2 99 FF",
-    "translation": "แลง เซียว",
+    "translation": "หลางเซียว",
     "method": "reviewed_name_report"
   },
   {

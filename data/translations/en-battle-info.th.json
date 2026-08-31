@@ -25,7 +25,8 @@
       "address": "0x3ED788",
       "source_hex": "18 90 9D AE A3 43 18 9E A4 9D A3 94 A1",
       "source": "Can't Counter",
-      "translation": "โต้กลับไม่ได้",
+      "translation": "Can't Counter",
+      "keep_original": true,
       "max_width_px": 104
     },
     {

@@ -95,7 +95,7 @@ def test_en_catalogs_install_all_unit_and_pilot_id_tables():
     assert report.weapon_records == EN_WEAPON_COUNT
     assert report.spirit_name_records == 30
     assert report.spirit_help_records == 29
-    assert report.battle_info_labels == 1
+    assert report.battle_info_labels == 0
     assert image[STOCK_TABLE_PC:STOCK_TABLE_PC + 3] != b"\xFF" * 3
     assert image[ADAPTER_BASE_PC] != 0xFF
     assert image[ROUTE_TABLE_PC:ROUTE_TABLE_PC + report.route_bytes] != b"\xFF" * report.route_bytes
@@ -147,26 +147,23 @@ def test_en_catalogs_install_all_unit_and_pilot_id_tables():
     assert image[0x019238] == 0x22
 
 
-def test_en_battle_info_preserves_level_and_accuracy_and_translates_counter():
+def test_en_battle_info_preserves_every_label_in_original_english():
     clean = BASE.read_bytes()
     encoder = _ClusterCatalogEncoder(clean, StockCatalog.locked())
     patches, thai, supplement = _build_battle_info_labels(clean, encoder)
 
-    assert [pc for pc, _payload, _owner in patches] == [0x3ED788]
-    assert [len(payload) for _pc, payload, _owner in patches] == [13]
-    counter, _width, _routes = encoder.visible("โต้กลับไม่ได้")
-    assert patches[0][1] == counter + bytes((encoder.supplement_codes[" "],)) * 4
+    assert patches == []
     for pc, source_hex in (
         (0x3E2FCD, "21 94 A5 94 9B"),
         (0x3E301E, "21 94 A5 94 9B"),
+        (0x3ED788, "18 90 9D AE A3 43 18 9E A4 9D A3 94 A1"),
         (0x3E3004, "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94"),
         (0x3E3055, "16 92 92 A4 A1 90 92 A8 43 27 90 A3 94"),
     ):
         expected = bytes.fromhex(source_hex)
         assert clean[pc:pc + len(expected)] == expected
-    assert 0xFE in thai and 0xFE in supplement
-    assert sum(end - start for start, end in thai[0xFE]) == 9
-    assert sum(end - start for start, end in supplement[0xFE]) == 4
+    assert thai == {0xFE: ()}
+    assert supplement == {0xFE: ()}
 
 
 def test_en_weapon_catalog_preserves_english_source_exactly():
