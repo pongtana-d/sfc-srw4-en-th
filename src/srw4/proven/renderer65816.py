@@ -450,6 +450,7 @@ def build_renderer(origin: int, source_base: int, advance: int,
                    tilemap_preserve: dict[str, int] | None = None,
                    source_page_state: int | None = None,
                    alternate_advance: tuple[int, int] | None = None,
+                   third_advance: tuple[int, int] | None = None,
                    caller_reuses_cell_cursor: bool = False,
                    entry_cursor_is_cell: bool = False,
                    compact_grid: bool = False,
@@ -497,6 +498,10 @@ def build_renderer(origin: int, source_base: int, advance: int,
             raise ValueError("dynamic source pages require a zero renderer source base")
         if alternate_page & 0x0FFF:
             raise ValueError("dynamic renderer source pages must be 4 KiB aligned")
+        if third_advance is not None and third_advance[0] & 0x0FFF:
+            raise ValueError("third renderer source page must be 4 KiB aligned")
+    elif third_advance is not None:
+        raise ValueError("third advance requires dynamic source page state")
     if caller_reuses_cell_cursor or entry_cursor_is_cell:
         if battle or external_tilemap:
             raise ValueError("cell-cursor contracts are ordinary internal-tilemap only")
@@ -794,6 +799,10 @@ def build_renderer(origin: int, source_base: int, advance: int,
         asm.var(0xA5, source_page_state + 1)
         asm.emit(0xC9, alternate_page >> 8)
         asm.branch(0xF0, "alternate_advance")
+        if third_advance is not None:
+            third_page, third_advance_pc = third_advance
+            asm.emit(0xC9, third_page >> 8)
+            asm.branch(0xF0, "third_advance")
         asm.emit(0xBD, advance & 0xFF, (advance >> 8) & 0xFF)
         asm.branch(0x80, "advance_ready")
         asm.label("alternate_advance")
@@ -802,6 +811,14 @@ def build_renderer(origin: int, source_base: int, advance: int,
             alternate_advance_pc & 0xFF,
             (alternate_advance_pc >> 8) & 0xFF,
         )
+        if third_advance is not None:
+            asm.branch(0x80, "advance_ready")
+            asm.label("third_advance")
+            asm.emit(
+                0xBD,
+                third_advance_pc & 0xFF,
+                (third_advance_pc >> 8) & 0xFF,
+            )
         asm.label("advance_ready")
     asm.emit(0x18)
     asm.var(0x65, memory.pen)

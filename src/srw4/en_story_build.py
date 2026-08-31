@@ -24,7 +24,7 @@ class StoryBuildReport:
     relocated_fields: int
     banks: tuple[int, ...]
     ordinary_thai_routes: dict[int, tuple[tuple[int, int], ...]]
-    ordinary_supplement_routes: dict[int, tuple[tuple[int, int], ...]]
+    ordinary_profile_page2_routes: dict[int, tuple[tuple[int, int], ...]]
     ordinary_alternate_routes: dict[int, tuple[tuple[int, int], ...]]
 
 
@@ -226,7 +226,7 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
     relocated = 0
     ordinary_records = ordinary_records or {}
     ordinary_routes: dict[int, list[tuple[int, int]]] = {}
-    ordinary_supplement_routes: dict[int, list[tuple[int, int]]] = {}
+    ordinary_profile_page2_routes: dict[int, list[tuple[int, int]]] = {}
     ordinary_alternate_routes: dict[int, list[tuple[int, int]]] = {}
     record_sources = {
         slot: _en_record_source(clean, slot, int(block["pointers"]) * 2)
@@ -277,7 +277,7 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
             # Visible bytes use page 1, the shared supplement, or page 2.
             targets = {
                 1: ordinary_routes,
-                2: ordinary_supplement_routes,
+                2: ordinary_profile_page2_routes,
                 3: ordinary_alternate_routes,
             }
             index = 0
@@ -425,9 +425,9 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
         ordinary_thai_routes={
             bank: tuple(_merge_ranges(spans)) for bank, spans in ordinary_routes.items()
         },
-        ordinary_supplement_routes={
+        ordinary_profile_page2_routes={
             bank: tuple(_merge_ranges(spans))
-            for bank, spans in ordinary_supplement_routes.items()
+            for bank, spans in ordinary_profile_page2_routes.items()
         },
         ordinary_alternate_routes={
             bank: tuple(_merge_ranges(spans))

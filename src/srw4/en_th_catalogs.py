@@ -13,6 +13,7 @@ from .en_dialogue_font import (
     CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
     SLOT as SUPPLEMENT_SLOT,
     WEAPON_ATTRIBUTE_SLOTS,
+    build_page_two,
 )
 from .en_text import EN_DIRECT_REVERSE, encode_en_direct
 from .en_th_renderer import (
@@ -73,10 +74,11 @@ HOOKS = DATA / "config" / "hooks.json"
 STOCK_TABLE_PC = 0x3D9200
 STOCK_POOL_PC = STOCK_TABLE_PC + 0x300
 # Part help adds exact-case EN stock runs to the shared $FB table.  Leave the
-# verified $FD:9500-$FD:99FF range to that pool, then keep the adapter's prior
-# 0x900-byte capacity in the adjacent erased block.
+# verified $FD:9500-$FD:99FF range to that pool.  The third profile route adds
+# 96 bytes of parser/dispatcher code, so reserve the verified erased block
+# through $FD:A3FF.
 ADAPTER_BASE_PC = 0x3D9A00
-ADAPTER_LIMIT_PC = 0x3DA300
+ADAPTER_LIMIT_PC = 0x3DA400
 # Per-byte routing distinguishes the cluster pages. The 240 profiles alternate
 # between two atlases often enough that their bitmaps no longer fit beside the
 # bank-$FD adapters; bank $EC:8000-$EC:FFFF is a verified erased route block.
@@ -136,14 +138,16 @@ EN_SPIRIT_NAME_SHIFT_RIGHT_PC = 0x2C2000
 EN_SPIRIT_NAME_SHIFT_LEFT_PC = 0x2C2800
 EN_PROFILE_PAGE_1_PC = 0x2C3000
 EN_PROFILE_PAGE_2_PC = 0x2C4000
+EN_PROFILE_PAGE_3_PC = 0x2C8000
 EN_PROFILE_ADVANCE_1_PC = 0x2C5000
 EN_PROFILE_ADVANCE_2_PC = 0x2C5100
+EN_PROFILE_ADVANCE_3_PC = 0x2C5200
 EN_PROFILE_SHIFT_RIGHT_PC = 0x2C5800
 EN_PROFILE_SHIFT_LEFT_PC = 0x2C6000
 EN_PROFILE_RENDERER_PC = 0x2C6800
 EN_PROFILE_RENDERER_1_PC = 0x2C7800
 EN_PROFILE_RENDERER_2_PC = 0x2C7810
-EN_PROFILE_SUPPLEMENT_RENDERER_PC = 0x2C7900
+EN_PROFILE_RENDERER_3_PC = 0x2C7820
 EN_VWF_PC = 0x30E045
 EN_VWF_END_PC = 0x30E1B2
 
@@ -628,14 +632,14 @@ class ProfileCatalogEncoder:
             raise ValueError(f"EN profile pages need {len(ordered)} glyphs; hold {0xEC * 2}")
         self.codes = {
             **{token: (1, code) for code, token in enumerate(ordered[:0xEC])},
-            **{token: (3, code) for code, token in enumerate(ordered[0xEC:])},
+            **{token: (2, code) for code, token in enumerate(ordered[0xEC:])},
         }
         atlas = AtlasBuilder(FONT_ROOT, clean)
         pages = [bytearray(0x1000), bytearray(0x1000)]
         advances = [bytearray(0x100), bytearray(0x100)]
         for token, (route, code) in self.codes.items():
             glyph = atlas.build(token)
-            page_index = 0 if route == 1 else 1
+            page_index = route - 1
             pages[page_index][code * 16:(code + 1) * 16] = bytes(glyph.rows)
             advances[page_index][code] = glyph.advance
         self.pages = tuple(map(bytes, pages))
@@ -676,7 +680,7 @@ class ProfileCatalogEncoder:
                             f"EN profile character {char!r} has no supplement slot"
                         ) from error
                     payload.append(code)
-                    routes.append(2)
+                    routes.append(3)
                     continue
                 route, code = entry
                 payload.append(code)
@@ -1255,7 +1259,7 @@ def _pack_adapters(
                 pc, 0x1A, 0x8184F7, ORDINARY_RENDERER_PC, route_tables_cpu,
                 fixed_renderer_pc=EN_SUPPLEMENT_RENDERER_PC,
                 alternate_renderer_pc=(
-                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
+                    EN_PROFILE_RENDERER_3_PC if ordinary_private_banks else None
                 ),
             ),
         ),
@@ -1265,7 +1269,7 @@ def _pack_adapters(
                 pc, 0xCB, 0x8187B8, ORDINARY_RENDERER_PC, route_tables_cpu,
                 fixed_renderer_pc=EN_SUPPLEMENT_RENDERER_PC,
                 alternate_renderer_pc=(
-                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
+                    EN_PROFILE_RENDERER_3_PC if ordinary_private_banks else None
                 ),
             ),
         ),
@@ -1300,14 +1304,13 @@ def _pack_adapters(
                 stock_renderer_cpu=0xF0E045,
                 fixed_renderer_pc=EN_SUPPLEMENT_RENDERER_PC,
                 alternate_renderer_pc=(
-                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
+                    EN_PROFILE_RENDERER_3_PC if ordinary_private_banks else None
                 ),
                 private_renderer_pc=(
                     EN_PROFILE_RENDERER_1_PC if ordinary_private_banks else None
                 ),
                 private_fixed_renderer_pc=(
-                    EN_PROFILE_SUPPLEMENT_RENDERER_PC
-                    if ordinary_private_banks else None
+                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
                 ),
                 private_banks=ordinary_private_banks,
             ),
@@ -1493,11 +1496,14 @@ def install(
     _place_fill(image, ORDINARY_RENDERER_PC, ordinary_renderer, "EN ordinary Thai renderer")
     if profile_encoder is not None:
         profile_shift_right, profile_shift_left = shift_tables()
+        profile_ascii_page, profile_ascii_advance = build_page_two(FONT_ROOT, clean)
         for pc, payload, owner in (
             (EN_PROFILE_PAGE_1_PC, profile_encoder.pages[0], "EN profile cluster page 1"),
             (EN_PROFILE_PAGE_2_PC, profile_encoder.pages[1], "EN profile cluster page 2"),
+            (EN_PROFILE_PAGE_3_PC, profile_ascii_page, "EN profile ASCII page"),
             (EN_PROFILE_ADVANCE_1_PC, profile_encoder.advances[0], "EN profile advances 1"),
             (EN_PROFILE_ADVANCE_2_PC, profile_encoder.advances[1], "EN profile advances 2"),
+            (EN_PROFILE_ADVANCE_3_PC, profile_ascii_advance, "EN profile ASCII advances"),
             (EN_PROFILE_SHIFT_RIGHT_PC, profile_shift_right, "EN profile shift right"),
             (EN_PROFILE_SHIFT_LEFT_PC, profile_shift_left, "EN profile shift left"),
         ):
@@ -1513,6 +1519,10 @@ def install(
             alternate_advance=(
                 EN_PROFILE_PAGE_2_PC & 0xFFFF,
                 EN_PROFILE_ADVANCE_2_PC,
+            ),
+            third_advance=(
+                EN_PROFILE_PAGE_3_PC & 0xFFFF,
+                EN_PROFILE_ADVANCE_3_PC,
             ),
             caller_reuses_cell_cursor=True,
             entry_cursor_is_cell=True,
@@ -1536,27 +1546,11 @@ def install(
             _build_catalog_page_entry(EN_PROFILE_PAGE_2_PC, EN_PROFILE_RENDERER_PC),
             "EN profile page-2 entry",
         )
-        profile_supplement_renderer = build_renderer(
-            EN_PROFILE_SUPPLEMENT_RENDERER_PC,
-            source_base=SUPPLEMENT_PAGE_PC & 0xFFFF,
-            advance=SUPPLEMENT_ADVANCE_PC,
-            lock=LOCK_PC,
-            state_base=ORDINARY_STATE_BASE,
-            battle=False,
-            caller_reuses_cell_cursor=True,
-            entry_cursor_is_cell=True,
-            shift_tables_base=(EN_PROFILE_SHIFT_RIGHT_PC, EN_PROFILE_SHIFT_LEFT_PC),
-            source_bank=pc_to_cpu(SUPPLEMENT_PAGE_PC) >> 16,
-        )
-        if EN_PROFILE_SUPPLEMENT_RENDERER_PC + len(
-            profile_supplement_renderer
-        ) > ROUTE_TABLE_PC:
-            raise ValueError("EN profile supplement renderer overlaps route tables")
         _place_fill(
             image,
-            EN_PROFILE_SUPPLEMENT_RENDERER_PC,
-            profile_supplement_renderer,
-            "EN profile supplement renderer",
+            EN_PROFILE_RENDERER_3_PC,
+            _build_catalog_page_entry(EN_PROFILE_PAGE_3_PC, EN_PROFILE_RENDERER_PC),
+            "EN profile page-3 entry",
         )
     adapters, entries = _pack_adapters(
         pc_to_cpu(ROUTE_TABLE_PC),

@@ -77,10 +77,47 @@ from srw4.proven.renderer65816 import (  # noqa: E402
     ORDINARY_STATE_BASE,
     renderer_memory,
 )
+from srw4.proven.catalog_router import (  # noqa: E402
+    DESC_STRIDE,
+    PAGE_BITMAP_BYTES,
+    ROUTE_ALTERNATE,
+    ROUTE_MIXED,
+    ROUTE_OFFSET_MASK,
+    build_route_tables,
+)
 from srw4.proven.text.stock import StockCatalog  # noqa: E402
 
 
 BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+
+
+def test_route_table_distinguishes_three_pages_on_one_source_page():
+    bank = 0xF1
+    table = build_route_tables(
+        {bank: ((0x1200, 0x1202),)},
+        {bank: ((0x1202, 0x1204),)},
+        {bank: ((0x1204, 0x1206),)},
+    )
+    descriptor = int.from_bytes(
+        table[bank * DESC_STRIDE:bank * DESC_STRIDE + 2], "little"
+    )
+    entry = int.from_bytes(
+        table[descriptor + 0x12 * 2:descriptor + 0x12 * 2 + 2], "little"
+    )
+    assert entry & ROUTE_MIXED
+    bitmap = entry & ROUTE_OFFSET_MASK
+    assert table[bitmap] & 0b00000011 == 0b00000011
+    assert table[bitmap + PAGE_BITMAP_BYTES] & 0b00001100 == 0b00001100
+    assert table[bitmap + PAGE_BITMAP_BYTES * 2] & 0b00110000 == 0b00110000
+
+    alternate_only = build_route_tables({}, {}, {bank: ((0x3400, 0x3500),)})
+    descriptor = int.from_bytes(
+        alternate_only[bank * DESC_STRIDE:bank * DESC_STRIDE + 2], "little"
+    )
+    entry = int.from_bytes(
+        alternate_only[descriptor + 0x34 * 2:descriptor + 0x34 * 2 + 2], "little"
+    )
+    assert entry == ROUTE_ALTERNATE
 
 
 def test_en_catalogs_install_all_unit_and_pilot_id_tables():
