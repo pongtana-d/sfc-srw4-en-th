@@ -6,6 +6,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 import json
 from pathlib import Path
+import re
 
 from .atlas import AtlasBuilder
 from .en_dialogue_font import (
@@ -13,6 +14,7 @@ from .en_dialogue_font import (
     SLOT as SUPPLEMENT_SLOT,
     WEAPON_ATTRIBUTE_SLOTS,
 )
+from .en_text import EN_DIRECT_REVERSE, encode_en_direct
 from .en_th_renderer import (
     CATALOG_BATTLE_PAGE_STATE,
     CATALOG_BATTLE_RENDERER_PC,
@@ -70,12 +72,16 @@ HOOKS = DATA / "config" / "hooks.json"
 # tables, and the bank-$FF renderer separate so every placement can assert FF.
 STOCK_TABLE_PC = 0x3D9200
 STOCK_POOL_PC = STOCK_TABLE_PC + 0x300
-ADAPTER_BASE_PC = 0x3D9800
-ADAPTER_LIMIT_PC = 0x3DA000
-# Per-byte routing distinguishes the cluster and proportional Latin pages.
-# Pack the assets into the verified erased run at $FD:9200-$FD:BFFF.
-ROUTE_TABLE_PC = 0x3DA000
-ROUTE_TABLE_LIMIT_PC = 0x3DC000
+# Part help adds exact-case EN stock runs to the shared $FB table.  Leave the
+# verified $FD:9500-$FD:99FF range to that pool, then keep the adapter's prior
+# 0x900-byte capacity in the adjacent erased block.
+ADAPTER_BASE_PC = 0x3D9A00
+ADAPTER_LIMIT_PC = 0x3DA300
+# Per-byte routing distinguishes the cluster pages. The 240 profiles alternate
+# between two atlases often enough that their bitmaps no longer fit beside the
+# bank-$FD adapters; bank $EC:8000-$EC:FFFF is a verified erased route block.
+ROUTE_TABLE_PC = 0x2C9000
+ROUTE_TABLE_LIMIT_PC = 0x2D0000
 
 # The English patch uses its own bank-$FE name catalogs.  The stock $D2
 # tables still present in the ROM are Japanese leftovers and are not the
@@ -128,8 +134,43 @@ EN_SPIRIT_NAME_RENDERER_PC = 0x2C0200
 EN_SPIRIT_NAME_PAGE_PC = 0x2C1000
 EN_SPIRIT_NAME_SHIFT_RIGHT_PC = 0x2C2000
 EN_SPIRIT_NAME_SHIFT_LEFT_PC = 0x2C2800
+EN_PROFILE_PAGE_1_PC = 0x2C3000
+EN_PROFILE_PAGE_2_PC = 0x2C4000
+EN_PROFILE_ADVANCE_1_PC = 0x2C5000
+EN_PROFILE_ADVANCE_2_PC = 0x2C5100
+EN_PROFILE_SHIFT_RIGHT_PC = 0x2C5800
+EN_PROFILE_SHIFT_LEFT_PC = 0x2C6000
+EN_PROFILE_RENDERER_PC = 0x2C6800
+EN_PROFILE_RENDERER_1_PC = 0x2C7800
+EN_PROFILE_RENDERER_2_PC = 0x2C7810
+EN_PROFILE_SUPPLEMENT_RENDERER_PC = 0x2C7900
 EN_VWF_PC = 0x30E045
 EN_VWF_END_PC = 0x30E1B2
+
+
+def build_part_stock_catalog() -> tuple[StockCatalog, frozenset[str]]:
+    """Extend the locked stock IDs with exact EN runs used by Part help."""
+    base = StockCatalog.locked()
+    document = json.loads(
+        (DATA / "translations" / "part-effects.th.json").read_text(encoding="utf-8")
+    )
+    direct_runs: set[str] = set()
+    for lines in document["records"].values():
+        for text in lines:
+            run = ""
+            for char in str(text):
+                if char in EN_DIRECT_REVERSE:
+                    run += char
+                    continue
+                if run:
+                    direct_runs.add(run)
+                    run = ""
+            if run:
+                direct_runs.add(run)
+    extras = tuple(sorted(direct_runs - set(base.runs)))
+    if len(base.runs) + len(extras) > 256:
+        raise ValueError("EN Part stock runs exceed the 256-entry catalog")
+    return StockCatalog(base.runs + extras), frozenset(extras)
 
 
 @dataclass(frozen=True)
@@ -237,8 +278,11 @@ class _ClusterCatalogEncoder:
         stock: StockCatalog,
         *,
         include_weapon_reference: bool = False,
+        include_part_effects: bool = False,
+        en_direct_stock_runs: frozenset[str] = frozenset(),
     ) -> None:
         self.stock = stock
+        self.en_direct_stock_runs = en_direct_stock_runs
         self.tokenizer = Tokenizer(
             set(json.loads((FONT_ROOT / "renewal-icons.json").read_text())["glyphs"]),
             load_stock_codes(FONT_ROOT / "renewal-stock.json"),
@@ -254,6 +298,28 @@ class _ClusterCatalogEncoder:
                 for piece in self.tokenizer.tokenize(text, where=file_name).pieces:
                     if isinstance(piece, TextGlyph) and piece.token.startswith("cluster:"):
                         tokens.add(piece.token)
+        if include_part_effects:
+            part_effects = json.loads(
+                (DATA / "translations" / "part-effects.th.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+            for lines in part_effects["records"].values():
+                for text in lines:
+                    parsed = self.tokenizer.tokenize(
+                        str(text), where="part-effects.th.json"
+                    )
+                    if parsed.issues:
+                        raise ValueError(
+                            "EN Part-effect tokenization failed: "
+                            + "; ".join(parsed.issues)
+                        )
+                    for piece in parsed.pieces:
+                        if (
+                            isinstance(piece, TextGlyph)
+                            and piece.token.startswith("cluster:")
+                        ):
+                            tokens.add(piece.token)
         spirit_help = json.loads(
             (DATA / "translations" / "spirit-descriptions.th.json").read_text(
                 encoding="utf-8"
@@ -314,6 +380,60 @@ class _ClusterCatalogEncoder:
         self.page = bytes(page)
         self.widths = bytes(widths)
         self.advances = bytes(advances)
+
+
+    def part_runs(self, text: str) -> tuple[list[tuple[bytes, bool]], int]:
+        """Encode Part help with FB-bounded EN runs and catalog Thai clusters."""
+        tokenized = self.tokenizer.tokenize(text, where="EN Part effect")
+        if tokenized.issues:
+            raise ValueError(
+                "EN Part-effect tokenization failed: " + "; ".join(tokenized.issues)
+            )
+        runs: list[tuple[bytes, bool]] = []
+        width = 0
+        stock_run = ""
+
+        def append(payload: bytes, thai: bool) -> None:
+            if runs and runs[-1][1] == thai:
+                runs[-1] = (runs[-1][0] + payload, thai)
+            else:
+                runs.append((payload, thai))
+
+        def flush_stock() -> None:
+            nonlocal stock_run, width
+            if not stock_run:
+                return
+            append(self.stock.control(stock_run), False)
+            width += len(stock_run) * 8
+            stock_run = ""
+
+        for piece in tokenized.pieces:
+            if not isinstance(piece, TextGlyph):
+                raise ValueError(f"EN Part effect contains engine token {piece!r}")
+            if piece.token.startswith("char:"):
+                char = piece.token.split(":", 1)[1]
+                if char not in EN_DIRECT_REVERSE:
+                    raise ValueError(f"EN Part effect has no direct glyph for {char!r}")
+                stock_run += char
+                continue
+            flush_stock()
+            try:
+                code = self.codes[piece.token]
+            except KeyError as error:
+                raise ValueError(
+                    f"EN Part effect has no cluster code for {piece.token!r}"
+                ) from error
+            append(bytes((code,)), True)
+            width += self.advances[code]
+        flush_stock()
+        return runs, width
+
+    def encode_stock_run(self, run: str) -> bytes:
+        """Encode dynamic Part runs with EN glyphs; retain proven JP codes otherwise."""
+        if run in self.en_direct_stock_runs:
+            return encode_en_direct(run)
+        return encode_stock(run)
+
 
     def visible(self, text: str) -> tuple[bytes, int, tuple[int, ...]]:
         payload = bytearray()
@@ -467,6 +587,120 @@ class _ClusterCatalogEncoder:
             width += self.widths[code] + 1
         flush_stock()
         return bytes(payload), routes, width, 0, stock_text
+
+
+ClusterCatalogEncoder = _ClusterCatalogEncoder
+
+
+class ProfileCatalogEncoder:
+    """Encode Character Archives with two Thai pages and one supplement page."""
+
+    _CONTROL = re.compile(r"<[^>]+>")
+
+    def __init__(self, clean: bytes, texts: list[str]) -> None:
+        self.supplement_codes = dict(SUPPLEMENT_SLOT)
+        self.tokenizer = Tokenizer(
+            set(json.loads((FONT_ROOT / "renewal-icons.json").read_text())["glyphs"]),
+            load_stock_codes(FONT_ROOT / "renewal-stock.json"),
+            engine="catalog",
+        )
+        tokens: set[str] = set()
+        for index, text in enumerate(texts):
+            parsed = self.tokenizer.tokenize(
+                self._CONTROL.sub("", text).replace("\n", ""),
+                where=f"EN profile {index}",
+            )
+            if parsed.issues:
+                raise ValueError("EN profile tokenization failed: " + "; ".join(parsed.issues))
+            for piece in parsed.pieces:
+                if not isinstance(piece, TextGlyph):
+                    continue
+                if piece.token.startswith("cluster:"):
+                    tokens.add(piece.token)
+                    continue
+                char = piece.token.split(":", 1)[1]
+                if char not in self.supplement_codes:
+                    raise ValueError(
+                        f"EN profile character {char!r} has no supplement slot"
+                    )
+        ordered = sorted(tokens)
+        if len(ordered) > 0xEC * 2:
+            raise ValueError(f"EN profile pages need {len(ordered)} glyphs; hold {0xEC * 2}")
+        self.codes = {
+            **{token: (1, code) for code, token in enumerate(ordered[:0xEC])},
+            **{token: (3, code) for code, token in enumerate(ordered[0xEC:])},
+        }
+        atlas = AtlasBuilder(FONT_ROOT, clean)
+        pages = [bytearray(0x1000), bytearray(0x1000)]
+        advances = [bytearray(0x100), bytearray(0x100)]
+        for token, (route, code) in self.codes.items():
+            glyph = atlas.build(token)
+            page_index = 0 if route == 1 else 1
+            pages[page_index][code * 16:(code + 1) * 16] = bytes(glyph.rows)
+            advances[page_index][code] = glyph.advance
+        self.pages = tuple(map(bytes, pages))
+        self.advances = tuple(map(bytes, advances))
+
+    @staticmethod
+    def _control(tag: str) -> bytes:
+        if tag == "<ENDFF>": return b"\xFF"
+        if tag == "<ENDF7>": return b"\xF7"
+        try:
+            return bytes.fromhex(tag[1:-1].replace(":", ""))
+        except ValueError as error:
+            raise ValueError(f"invalid profile control {tag}") from error
+
+    def _visible(self, text: str) -> tuple[bytes, tuple[int, ...]]:
+        payload = bytearray()
+        routes: list[int] = []
+
+        for line_index, line in enumerate(text.split("\n")):
+            if line_index:
+                payload.append(0xF6)
+                routes.append(0)
+            parsed = self.tokenizer.tokenize(line, where="EN profile")
+            if parsed.issues:
+                raise ValueError("EN profile tokenization failed: " + "; ".join(parsed.issues))
+            for piece in parsed.pieces:
+                if not isinstance(piece, TextGlyph):
+                    raise ValueError(f"EN profile visible text contains engine token {piece!r}")
+                entry = self.codes.get(piece.token)
+                if entry is None:
+                    if not piece.token.startswith("char:"):
+                        raise ValueError(f"EN profile has unassigned glyph {piece.token}")
+                    char = piece.token.split(":", 1)[1]
+                    try:
+                        code = self.supplement_codes[char]
+                    except KeyError as error:
+                        raise ValueError(
+                            f"EN profile character {char!r} has no supplement slot"
+                        ) from error
+                    payload.append(code)
+                    routes.append(2)
+                    continue
+                route, code = entry
+                payload.append(code)
+                routes.append(route)
+        return bytes(payload), tuple(routes)
+
+    def record(self, text: str) -> tuple[bytes, tuple[int, ...]]:
+        payload = bytearray()
+        routes: list[int] = []
+        cursor = 0
+        for match in self._CONTROL.finditer(text):
+            visible, visible_routes = self._visible(text[cursor:match.start()])
+            payload.extend(visible)
+            routes.extend(visible_routes)
+            control = self._control(match.group())
+            payload.extend(control)
+            routes.extend((0,) * len(control))
+            cursor = match.end()
+        visible, visible_routes = self._visible(text[cursor:])
+        payload.extend(visible)
+        routes.extend(visible_routes)
+        if not payload or payload[-1] not in (0xF7, 0xFF):
+            raise ValueError("profile stream has no authored terminator")
+        return bytes(payload), tuple(routes)
 
 
 def _place_fill(image: bytearray, pc: int, payload: bytes, owner: str) -> None:
@@ -976,7 +1210,12 @@ def _catalog_routes(
     return thai, supplement
 
 
-def _pack_adapters(route_tables_cpu: int, stock_table_pc: int) -> tuple[list[tuple[int, bytes, str]], int]:
+def _pack_adapters(
+    route_tables_cpu: int,
+    stock_table_pc: int,
+    *,
+    ordinary_private_banks: tuple[int, ...] = (),
+) -> tuple[list[tuple[int, bytes, str]], int]:
     cursor = ADAPTER_BASE_PC
     payloads: list[tuple[int, bytes, str]] = []
 
@@ -989,16 +1228,35 @@ def _pack_adapters(route_tables_cpu: int, stock_table_pc: int) -> tuple[list[tup
         return pc
 
     entries = {
-        "parser_1": add("EN catalog parser 1", lambda pc: build_parser_1(pc, route_tables_cpu)),
-        "parser_1_alt": add(
-            "EN catalog parser 1 alternate", lambda pc: build_parser_1_alt(pc, route_tables_cpu)
+        "parser_1": add(
+            "EN catalog parser 1",
+            lambda pc: build_parser_1(
+                pc, route_tables_cpu,
+                include_alternate=bool(ordinary_private_banks),
+            ),
         ),
-        "parser_2": add("EN catalog parser 2", lambda pc: build_parser_2(pc, route_tables_cpu)),
+        "parser_1_alt": add(
+            "EN catalog parser 1 alternate",
+            lambda pc: build_parser_1_alt(
+                pc, route_tables_cpu,
+                include_alternate=bool(ordinary_private_banks),
+            ),
+        ),
+        "parser_2": add(
+            "EN catalog parser 2",
+            lambda pc: build_parser_2(
+                pc, route_tables_cpu,
+                include_alternate=bool(ordinary_private_banks),
+            ),
+        ),
         "classifier_1": add(
             "EN catalog classifier 1",
             lambda pc: build_classifier(
                 pc, 0x1A, 0x8184F7, ORDINARY_RENDERER_PC, route_tables_cpu,
                 fixed_renderer_pc=EN_SUPPLEMENT_RENDERER_PC,
+                alternate_renderer_pc=(
+                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
+                ),
             ),
         ),
         "classifier_2": add(
@@ -1006,19 +1264,34 @@ def _pack_adapters(route_tables_cpu: int, stock_table_pc: int) -> tuple[list[tup
             lambda pc: build_classifier(
                 pc, 0xCB, 0x8187B8, ORDINARY_RENDERER_PC, route_tables_cpu,
                 fixed_renderer_pc=EN_SUPPLEMENT_RENDERER_PC,
+                alternate_renderer_pc=(
+                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
+                ),
             ),
         ),
         "width_1": add(
             "EN catalog width 1",
             lambda pc: build_en_cluster_width(
-                pc, 0x26, 0x81845B, include_fixed=True
+                pc,
+                0x26,
+                0x81845B,
+                include_fixed=True,
+                include_alternate=bool(ordinary_private_banks),
             ),
         ),
         "halfwidth_left": add(
-            "EN catalog halfwidth left", lambda pc: build_halfwidth(pc, 0x8184B9, 0x8184E0)
+            "EN catalog halfwidth left",
+            lambda pc: build_halfwidth(
+                pc, 0x8184B9, 0x8184E0,
+                include_alternate=bool(ordinary_private_banks),
+            ),
         ),
         "halfwidth_right": add(
-            "EN catalog halfwidth right", lambda pc: build_halfwidth(pc, 0x8184D0, 0x8184E0)
+            "EN catalog halfwidth right",
+            lambda pc: build_halfwidth(
+                pc, 0x8184D0, 0x8184E0,
+                include_alternate=bool(ordinary_private_banks),
+            ),
         ),
         "ordinary_dispatch": add(
             "EN ordinary Thai draw dispatcher",
@@ -1026,6 +1299,17 @@ def _pack_adapters(route_tables_cpu: int, stock_table_pc: int) -> tuple[list[tup
                 pc, EN_CLUSTER_RENDERER_PC, route_tables_cpu,
                 stock_renderer_cpu=0xF0E045,
                 fixed_renderer_pc=EN_SUPPLEMENT_RENDERER_PC,
+                alternate_renderer_pc=(
+                    EN_PROFILE_RENDERER_2_PC if ordinary_private_banks else None
+                ),
+                private_renderer_pc=(
+                    EN_PROFILE_RENDERER_1_PC if ordinary_private_banks else None
+                ),
+                private_fixed_renderer_pc=(
+                    EN_PROFILE_SUPPLEMENT_RENDERER_PC
+                    if ordinary_private_banks else None
+                ),
+                private_banks=ordinary_private_banks,
             ),
         ),
         "stock_fb_ordinary": add(
@@ -1038,14 +1322,35 @@ def _pack_adapters(route_tables_cpu: int, stock_table_pc: int) -> tuple[list[tup
         ),
     }
     if cursor > ADAPTER_LIMIT_PC:
-        raise ValueError("EN pilot/unit catalog adapters overflow their reserved block")
+        raise ValueError(
+            "EN pilot/unit catalog adapters overflow their reserved block: "
+            f"{cursor - ADAPTER_BASE_PC} bytes > {ADAPTER_LIMIT_PC - ADAPTER_BASE_PC}"
+        )
     return payloads, entries
 
 
-def install(image: bytearray, clean: bytes) -> CatalogReport:
+def install(
+    image: bytearray,
+    clean: bytes,
+    *,
+    extra_thai_routes: dict[int, tuple[tuple[int, int], ...]] | None = None,
+    extra_supplement_routes: dict[int, tuple[tuple[int, int], ...]] | None = None,
+    extra_alternate_routes: dict[int, tuple[tuple[int, int], ...]] | None = None,
+    profile_encoder: ProfileCatalogEncoder | None = None,
+    profile_banks: tuple[int, ...] = (),
+    cluster_encoder: ClusterCatalogEncoder | None = None,
+) -> CatalogReport:
     """Install translated UI catalogs while preserving all active EN names."""
-    stock = StockCatalog.locked()
-    cluster_encoder = _ClusterCatalogEncoder(clean, stock)
+    if cluster_encoder is None:
+        stock, en_direct_runs = build_part_stock_catalog()
+        cluster_encoder = _ClusterCatalogEncoder(
+            clean,
+            stock,
+            include_part_effects=True,
+            en_direct_stock_runs=en_direct_runs,
+        )
+    else:
+        stock = cluster_encoder.stock
     catalogs = (
         _preserve_en_name_catalog(
             clean, owner="English unit names", count=EN_UNIT_COUNT,
@@ -1137,7 +1442,9 @@ def install(image: bytearray, clean: bytes) -> CatalogReport:
         catalog_renderer,
         "EN catalog unified VWF",
     )
-    stock_table, stock_pool, _ = stock.assets(STOCK_POOL_PC)
+    stock_table, stock_pool, _ = stock.assets(
+        STOCK_POOL_PC, encoder=cluster_encoder.encode_stock_run
+    )
     if len(stock_table) != STOCK_POOL_PC - STOCK_TABLE_PC:
         raise ValueError("EN stock-run pointer table size changed")
     if STOCK_POOL_PC + len(stock_pool) > ADAPTER_BASE_PC:
@@ -1145,31 +1452,117 @@ def install(image: bytearray, clean: bytes) -> CatalogReport:
     _place_fill(image, STOCK_TABLE_PC, stock_table, "EN catalog stock-run pointers")
     _place_fill(image, STOCK_POOL_PC, stock_pool, "EN catalog stock-run strings")
 
+    ordinary_extras = {
+        bank: tuple(spans) for bank, spans in (extra_thai_routes or {}).items()
+    }
+    ordinary_extras[0xFE] = tuple(sorted((
+        *ordinary_extras.get(0xFE, ()),
+        *battle_info_thai[0xFE],
+        *spirit_help.routes,
+        *spirit_names.thai_routes,
+    )))
+    supplement_extras = {
+        bank: tuple(spans)
+        for bank, spans in (extra_supplement_routes or {}).items()
+    }
+    supplement_extras[0xFE] = tuple(sorted((
+        *supplement_extras.get(0xFE, ()),
+        *battle_info_supplement[0xFE],
+        *spirit_help.supplement_routes,
+    )))
     thai_routes, supplement_routes = _catalog_routes(
         catalogs,
-        {
-            0xFE: tuple(sorted((
-                *battle_info_thai[0xFE],
-                *spirit_help.routes,
-                *spirit_names.thai_routes,
-            ))),
-        },
-        {
-            0xFE: tuple(sorted((
-                *battle_info_supplement[0xFE],
-                *spirit_help.supplement_routes,
-            ))),
-        },
+        ordinary_extras,
+        supplement_extras,
     )
-    route_data = build_route_tables(thai_routes, supplement_routes)
+    alternate_routes = {
+        bank: tuple(sorted(spans))
+        for bank, spans in (extra_alternate_routes or {}).items()
+    }
+    route_data = build_route_tables(
+        thai_routes, supplement_routes, alternate_routes
+    )
     if ROUTE_TABLE_PC + len(route_data) > ROUTE_TABLE_LIMIT_PC:
-        raise ValueError("EN pilot/unit route table overflow")
+        raise ValueError(
+            f"EN pilot/unit route table needs {len(route_data)} bytes; "
+            f"holds {ROUTE_TABLE_LIMIT_PC - ROUTE_TABLE_PC}"
+        )
     _place_fill(image, ROUTE_TABLE_PC, route_data, "EN pilot/unit route table")
 
     ordinary_renderer = build_ordinary_renderer()
     _place_fill(image, ORDINARY_RENDERER_PC, ordinary_renderer, "EN ordinary Thai renderer")
-
-    adapters, entries = _pack_adapters(pc_to_cpu(ROUTE_TABLE_PC), STOCK_TABLE_PC)
+    if profile_encoder is not None:
+        profile_shift_right, profile_shift_left = shift_tables()
+        for pc, payload, owner in (
+            (EN_PROFILE_PAGE_1_PC, profile_encoder.pages[0], "EN profile cluster page 1"),
+            (EN_PROFILE_PAGE_2_PC, profile_encoder.pages[1], "EN profile cluster page 2"),
+            (EN_PROFILE_ADVANCE_1_PC, profile_encoder.advances[0], "EN profile advances 1"),
+            (EN_PROFILE_ADVANCE_2_PC, profile_encoder.advances[1], "EN profile advances 2"),
+            (EN_PROFILE_SHIFT_RIGHT_PC, profile_shift_right, "EN profile shift right"),
+            (EN_PROFILE_SHIFT_LEFT_PC, profile_shift_left, "EN profile shift left"),
+        ):
+            _place_fill(image, pc, payload, owner)
+        profile_renderer = build_renderer(
+            EN_PROFILE_RENDERER_PC,
+            source_base=0,
+            advance=EN_PROFILE_ADVANCE_1_PC,
+            lock=LOCK_PC,
+            state_base=ORDINARY_STATE_BASE,
+            battle=False,
+            source_page_state=EN_CATALOG_PAGE_STATE,
+            alternate_advance=(
+                EN_PROFILE_PAGE_2_PC & 0xFFFF,
+                EN_PROFILE_ADVANCE_2_PC,
+            ),
+            caller_reuses_cell_cursor=True,
+            entry_cursor_is_cell=True,
+            shift_tables_base=(EN_PROFILE_SHIFT_RIGHT_PC, EN_PROFILE_SHIFT_LEFT_PC),
+            source_bank=0xEC,
+        )
+        if len(profile_renderer) > 0x1000:
+            raise ValueError("EN profile renderer exceeds its 4 KiB slot")
+        _place_fill(
+            image, EN_PROFILE_RENDERER_PC, profile_renderer, "EN profile renderer"
+        )
+        _place_fill(
+            image,
+            EN_PROFILE_RENDERER_1_PC,
+            _build_catalog_page_entry(EN_PROFILE_PAGE_1_PC, EN_PROFILE_RENDERER_PC),
+            "EN profile page-1 entry",
+        )
+        _place_fill(
+            image,
+            EN_PROFILE_RENDERER_2_PC,
+            _build_catalog_page_entry(EN_PROFILE_PAGE_2_PC, EN_PROFILE_RENDERER_PC),
+            "EN profile page-2 entry",
+        )
+        profile_supplement_renderer = build_renderer(
+            EN_PROFILE_SUPPLEMENT_RENDERER_PC,
+            source_base=SUPPLEMENT_PAGE_PC & 0xFFFF,
+            advance=SUPPLEMENT_ADVANCE_PC,
+            lock=LOCK_PC,
+            state_base=ORDINARY_STATE_BASE,
+            battle=False,
+            caller_reuses_cell_cursor=True,
+            entry_cursor_is_cell=True,
+            shift_tables_base=(EN_PROFILE_SHIFT_RIGHT_PC, EN_PROFILE_SHIFT_LEFT_PC),
+            source_bank=pc_to_cpu(SUPPLEMENT_PAGE_PC) >> 16,
+        )
+        if EN_PROFILE_SUPPLEMENT_RENDERER_PC + len(
+            profile_supplement_renderer
+        ) > ROUTE_TABLE_PC:
+            raise ValueError("EN profile supplement renderer overlaps route tables")
+        _place_fill(
+            image,
+            EN_PROFILE_SUPPLEMENT_RENDERER_PC,
+            profile_supplement_renderer,
+            "EN profile supplement renderer",
+        )
+    adapters, entries = _pack_adapters(
+        pc_to_cpu(ROUTE_TABLE_PC),
+        STOCK_TABLE_PC,
+        ordinary_private_banks=profile_banks,
+    )
     for pc, payload, owner in adapters:
         _place_fill(image, pc, payload, owner)
 

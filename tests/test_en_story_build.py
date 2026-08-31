@@ -9,6 +9,7 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from srw4.en_story_build import (  # noqa: E402
     _dispatch_records,
+    _merge_ranges,
     quote_fields,
     replace_en_quote_separators,
 )
@@ -61,4 +62,11 @@ def test_dispatch_records_aligns_table_and_direct_quote_pointers():
     assert _dispatch_records(japanese, bytes.fromhex("FC 01")) == [
         [(4, 0x5180), (6, 0x5188)],
         [(12, 0x568C)],
+    ]
+
+
+def test_character_archive_route_ranges_merge_only_when_contiguous():
+    assert _merge_ranges([(0x1200, 0x1300), (0x1100, 0x1200), (0x1400, 0x1500)]) == [
+        (0x1100, 0x1300),
+        (0x1400, 0x1500),
     ]

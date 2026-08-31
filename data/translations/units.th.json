@@ -646,7 +646,7 @@
     ],
     "source": "ウィングキャリバ－",
     "source_hex": "95 92 DF 9F 9C D2 D9 BF 11 FF",
-    "translation": "วิงแบลลิเบอร์",
+    "translation": "วิงคาลิเบอร์",
     "method": "reviewed_name_report"
   },
   {
@@ -937,7 +937,7 @@
     ],
     "source": "ゲシュペンスト",
     "source_hex": "A1 A6 D4 C9 DF A8 B7 FF",
-    "translation": "เกอชเป็นสท์",
+    "translation": "เกชเพนสท์",
     "method": "reviewed_name_report"
   },
   {
@@ -1057,7 +1057,7 @@
     ],
     "source": "バイアラン",
     "source_hex": "BF 93 91 D8 DF FF",
-    "translation": "ไบอาร์แลนต์",
+    "translation": "ไบยารัน",
     "method": "reviewed_name_report"
   },
   {
@@ -1277,7 +1277,7 @@
     ],
     "source": "バウ",
     "source_hex": "BF 95 FF",
-    "translation": "เบา",
+    "translation": "บาว",
     "method": "reviewed_exact"
   },
   {
@@ -1287,7 +1287,7 @@
     ],
     "source": "バウ",
     "source_hex": "BF 95 FF",
-    "translation": "เบา",
+    "translation": "บาว",
     "method": "reviewed_exact"
   },
   {
@@ -2341,7 +2341,7 @@
     ],
     "source": "ゲシュペンストｍｋⅡ",
     "source_hex": "A1 A6 D4 C9 DF A8 B7 07 08 01 FF",
-    "translation": "เกอชเป็นสท์ Mk-II",
+    "translation": "เกชเพนสท์ Mk-II",
     "method": "reviewed_name_report"
   },
   {
@@ -2685,7 +2685,7 @@
     ],
     "source": "暗黒大将軍",
     "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
-    "translation": "จอมทัพทมิฬ",
+    "translation": "จอมทัพแห่งความมืด",
     "method": "reviewed_name_report"
   },
   {
@@ -2845,7 +2845,7 @@
     ],
     "source": "ボチュ－ン",
     "source_hex": "CB B0 D4 11 DF FF",
-    "translation": "โบทูน",
+    "translation": "โบชูน",
     "method": "reviewed_roman"
   },
   {
@@ -2865,7 +2865,7 @@
     ],
     "source": "アウドムラ",
     "source_hex": "91 95 B8 CF D8 FF",
-    "translation": "อัดดัมร่า",
+    "translation": "อาวโดมูลา",
     "method": "reviewed_name_report"
   },
   {

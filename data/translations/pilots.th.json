@@ -607,7 +607,7 @@
     ],
     "source": "ハサウェイ＝ノア",
     "source_hex": "BE A4 95 96 93 E3 BD 91 FF",
-    "translation": "ฮาซาเวย์ โนอา",
+    "translation": "ฮาธาเวย์ โนอา",
     "method": "reviewed_name_report"
   },
   {
@@ -1099,7 +1099,7 @@
     ],
     "source": "テュッティ＝ノ－ルバック",
     "source_hex": "B5 D4 B2 B5 92 E3 BD 11 DA BF B2 9E FF",
-    "translation": "ทุตตี้ นอร์บัค",
+    "translation": "ทุตตี้ นอร์แบค",
     "method": "reviewed_name_report"
   },
   {
@@ -1719,7 +1719,7 @@
     ],
     "source": "リヒテル",
     "source_hex": "D9 C1 B5 DA FF",
-    "translation": "ริฮ์เทล",
+    "translation": "ริชเทอร์",
     "method": "reviewed_roman"
   },
   {
@@ -1959,7 +1959,7 @@
     ],
     "source": "暗黒大将軍",
     "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
-    "translation": "จอมทัพทมิฬ",
+    "translation": "จอมทัพแห่งความมืด",
     "method": "reviewed_name_report"
   },
   {
@@ -2645,7 +2645,7 @@
     ],
     "source": "シロ",
     "source_hex": "A6 DC FF",
-    "translation": "ชิโร่",
+    "translation": "ชิโระ",
     "method": "reviewed_roman"
   },
   {
@@ -2655,7 +2655,7 @@
     ],
     "source": "クロ",
     "source_hex": "9E DC FF",
-    "translation": "คุโร่",
+    "translation": "คุโระ",
     "method": "reviewed_roman"
   },
   {
@@ -2795,7 +2795,7 @@
     ],
     "source": "モ－ラ＝バシット",
     "source_hex": "D1 11 D8 E3 BF A6 B2 B7 FF",
-    "translation": "โมรา แบชต์",
+    "translation": "โมร่า แบชต์",
     "method": "reviewed_name_report"
   },
   {

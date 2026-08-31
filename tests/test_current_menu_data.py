@@ -9,7 +9,12 @@ from srw4.proven.map_hud import build_map_hud_data
 from srw4.proven.map_menu import build_map_menu_data
 from srw4.proven.naming import build_naming_data
 from srw4.proven.main_menu import build_main_menu_data
-from srw4.proven.option_menu import FREE_RUN, build_option_menu_data
+from srw4.proven.option_menu import (
+    FREE_RUN,
+    build_en_part_effect_data,
+    build_option_menu_data,
+    build_part_effect_data,
+)
 from srw4.proven.pilot_status import build_pilot_status_data
 from srw4.proven.protagonist import build_protagonist_data
 from srw4.proven.spirit_help import build_spirit_help_data
@@ -19,6 +24,7 @@ from srw4.proven.unit_commands import build_unit_commands_data
 from srw4.proven.catalogs import CatalogEncoder
 from srw4.proven.text.stock import StockCatalog
 from srw4.proven.weapon_detail import build_weapon_detail_data
+from srw4.en_th_catalogs import ClusterCatalogEncoder, build_part_stock_catalog
 
 
 CLEAN = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
@@ -169,3 +175,39 @@ def test_shield_tail_is_one_renderer_call_instead_of_a_separate_tone_byte():
     assert shield == bytes.fromhex("A3 CB")
     assert (no_shield_width, shield_width) == (33, 19)
     assert layout["phrase_expansions"]["โล่"] == ["โ", "ล", "่"]
+
+
+def test_en_part_effect_stage_rebuilds_active_fe_catalog_without_part_names():
+    clean = (ROOT / "rom/Dai-4-ji Super Robot Taisen English.sfc").read_bytes()
+    part_stock, en_direct_runs = build_part_stock_catalog()
+    encoder = ClusterCatalogEncoder(
+        clean,
+        part_stock,
+        include_part_effects=True,
+        en_direct_stock_runs=en_direct_runs,
+    )
+    writes, report = build_en_part_effect_data(
+        ROOT / "data", clean, label_encoder=encoder.part_runs
+    )
+
+    assert len(report["records"]) == 22
+    assert {int(record["slot"]) for record in report["records"]} == {
+        6, *range(17, 38)
+    }
+    alias_owners = {f"en-part-effects-slot-{slot}" for slot in range(7, 17)}
+    assert {write.owner for write in writes if write.owner in alias_owners} == alias_owners
+    assert all(not write.owner.startswith("part-name:") for write in writes)
+    assert report["source_routes"]["0xFE"]
+    movement = next(write for write in writes if write.owner == "en-part-effects-record-18")
+    assert movement.payload.startswith(b"\xFB")
+    assert movement.payload.endswith(b"\xFE\xFF")
+    minovsky = next(
+        write for write in writes if write.owner == "en-part-effects-record-17"
+    )
+    minovsky_runs, _ = encoder.part_runs("ชนิด Movement เป็น Air-Ground")
+    assert minovsky.payload == b"".join(payload for payload, _ in minovsky_runs) + b"\xFF"
+    labels = {
+        int(record["slot"]): record["labels"] for record in report["records"]
+    }
+    assert labels[6][0]["text"] == "Range +1 (ยกเว้น MAP, Range 1)"
+    assert labels[18][0]["text"] == "Movement +1"

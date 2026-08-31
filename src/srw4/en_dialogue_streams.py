@@ -93,6 +93,68 @@ def compile_text(text: str, layout: Mapping[str, object]) -> bytes:
     return bytes(output)
 
 
+def compile_ordinary_text(
+    text: str, layout: Mapping[str, object]
+) -> tuple[bytes, tuple[int, ...]]:
+    """Compile a story record drawn by the ordinary/menu text engine.
+
+    Block 48 (the Character Archives biographies) is stored in the story
+    pointer graph, but the English ROM draws it through the ordinary callsite.
+    That parser cannot consume the dialogue-only C1/C2 page leads.  Emit the
+    same game-ready glyph ids without page leads and return a byte route mask:
+    visible glyphs use the ordinary Thai renderer, while line/control bytes
+    remain owned by the stock parser.
+    """
+    output = bytearray()
+    routes: list[int] = []
+
+    def visible(chunk: str) -> None:
+        if not chunk:
+            return
+        for line_index, line in enumerate(chunk.split("\n")):
+            if line_index:
+                output.append(0xF6)
+                routes.append(0)
+            primary: list[str] = []
+
+            def flush_primary() -> None:
+                if not primary:
+                    return
+                encoded = encode(
+                    "".join(primary),
+                    layout["codes"],
+                    layout["shorthand"],
+                    layout["phrases"],
+                )
+                if any(byte >= 0xEC for byte in encoded):
+                    raise ValueError("ordinary text glyph overlaps the engine control range")
+                output.extend(encoded)
+                routes.extend((1,) * len(encoded))
+                primary.clear()
+
+            for character in line:
+                supplement = None if character in layout["codes"] else SLOT.get(character)
+                if supplement is None:
+                    primary.append(character)
+                    continue
+                flush_primary()
+                output.append(supplement)
+                routes.append(2)
+            flush_primary()
+
+    cursor = 0
+    for match in _TAG.finditer(text):
+        visible(text[cursor:match.start()])
+        control = _control(match.group())
+        output.extend(control)
+        routes.extend((0,) * len(control))
+        cursor = match.end()
+    visible(text[cursor:])
+    if not output or output[-1] not in (0xF7, 0xFF):
+        raise ValueError("ordinary text stream has no authored terminator")
+    return bytes(output), tuple(routes)
+
+
 def compile_catalog(messages: Mapping[str, str], layout: Mapping[str, object]) -> tuple[dict[str, bytes], DictionaryCodec]:
     """Return independently decodable records and their shared dictionary."""
     streams = {message_id: compile_text(text, layout) for message_id, text in messages.items()}

@@ -23,6 +23,9 @@ class StoryBuildReport:
     bytes: int
     relocated_fields: int
     banks: tuple[int, ...]
+    ordinary_thai_routes: dict[int, tuple[tuple[int, int], ...]]
+    ordinary_supplement_routes: dict[int, tuple[tuple[int, int], ...]]
+    ordinary_alternate_routes: dict[int, tuple[tuple[int, int], ...]]
 
 
 def _shape(lead: int, operands: list[int]) -> str | None:
@@ -206,7 +209,10 @@ def _en_record_source(clean: bytes, slot: int, table_bytes: int) -> tuple[int, i
 
 def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                        messages: Mapping[str, str],
-                       compile_text: Callable[[str], bytes]) -> StoryBuildReport:
+                       compile_text: Callable[[str], bytes],
+                       ordinary_records: Mapping[
+                           str, tuple[bytes, tuple[int, ...]]
+                       ] | None = None) -> StoryBuildReport:
     """Pack all active EN story blocks and rebase their owned pointers."""
     blocks = {int(item["slot"]): item for item in _slots(document)}
     rows_by_block = {
@@ -218,6 +224,10 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
     order = [49, 50, 51, *range(43), 48]
     placed: list[tuple[int, int, int, bytes, int, int]] = []
     relocated = 0
+    ordinary_records = ordinary_records or {}
+    ordinary_routes: dict[int, list[tuple[int, int]]] = {}
+    ordinary_supplement_routes: dict[int, list[tuple[int, int]]] = {}
+    ordinary_alternate_routes: dict[int, list[tuple[int, int]]] = {}
     record_sources = {
         slot: _en_record_source(clean, slot, int(block["pointers"]) * 2)
         for slot, block in blocks.items() if block.get("kind") == "record"
@@ -230,7 +240,12 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
         table_bytes = int(block["pointers"]) * 2
         record_source = record_sources.get(slot)
         dispatch_bytes = len(record_source[3]) if record_source else 0
-        streams = {str(row["id"]): bytearray(compile_text(messages[str(row["id"])])) for row in rows}
+        streams: dict[str, bytearray] = {}
+        for row in rows:
+            message_id = str(row["id"])
+            routed = ordinary_records.get(message_id)
+            payload = routed[0] if routed is not None else compile_text(messages[message_id])
+            streams[message_id] = bytearray(payload)
         if any(not stream or stream[-1] not in (0xF7, 0xFF) for stream in streams.values()):
             raise RomError(f"story block {slot}: stream has no terminator")
         size = table_bytes + dispatch_bytes + sum(len(streams[str(row["id"])]) for row in rows) + 1
@@ -248,6 +263,38 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
             starts[int(row["offset"], 0)] = cursor
             cursor += len(streams[str(row["id"])] )
         empty = cursor
+
+        for row in rows:
+            routed = ordinary_records.get(str(row["id"]))
+            if routed is None:
+                continue
+            payload, route_mask = routed
+            if len(payload) != len(route_mask):
+                raise RomError(f"{row['id']}: ordinary route mask length changed")
+            record_start = starts[int(row["offset"], 0)]
+            # Route controls with the primary page: the parser checks engine
+            # controls before tagging a glyph, so F6/F7/FF remain stock-owned.
+            # Visible bytes use page 1, the shared supplement, or page 2.
+            targets = {
+                1: ordinary_routes,
+                2: ordinary_supplement_routes,
+                3: ordinary_alternate_routes,
+            }
+            index = 0
+            while index < len(route_mask):
+                kind = route_mask[index] if route_mask[index] in targets else 1
+                first = index
+                while index < len(route_mask):
+                    current = (
+                        route_mask[index] if route_mask[index] in targets else 1
+                    )
+                    if current != kind:
+                        break
+                    index += 1
+                target = targets[kind]
+                target.setdefault(bank, []).append(
+                    (record_start + first + 1, record_start + index + 1)
+                )
 
         def resolve(row: Mapping[str, object], target: int) -> int:
             direct = starts.get(target)
@@ -375,4 +422,26 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
         blocks=len(placed), records=sum(item[4] for item in placed),
         bytes=sum(len(item[3]) for item in placed), relocated_fields=relocated,
         banks=tuple(sorted({item[1] for item in placed})),
+        ordinary_thai_routes={
+            bank: tuple(_merge_ranges(spans)) for bank, spans in ordinary_routes.items()
+        },
+        ordinary_supplement_routes={
+            bank: tuple(_merge_ranges(spans))
+            for bank, spans in ordinary_supplement_routes.items()
+        },
+        ordinary_alternate_routes={
+            bank: tuple(_merge_ranges(spans))
+            for bank, spans in ordinary_alternate_routes.items()
+        },
     )
+
+
+def _merge_ranges(spans: list[tuple[int, int]]) -> list[tuple[int, int]]:
+    """Merge adjacent source-router ranges without widening their ownership."""
+    merged: list[tuple[int, int]] = []
+    for start, end in sorted(spans):
+        if merged and start <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+        else:
+            merged.append((start, end))
+    return merged

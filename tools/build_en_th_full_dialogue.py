@@ -15,9 +15,15 @@ from srw4.en_dialogue_streams import compile_text
 from srw4.en_ff_router import install as install_router
 from srw4.en_intro import install as install_intro
 from srw4.en_story_build import install_full_story
-from srw4.en_th_catalogs import install as install_catalogs
+from srw4.en_th_catalogs import (
+    ClusterCatalogEncoder,
+    ProfileCatalogEncoder,
+    build_part_stock_catalog,
+    install as install_catalogs,
+)
 from srw4.en_th_renderer import install as install_renderer
 from srw4.en_title import install_en_title_logo
+from srw4.proven.option_menu import build_en_part_effect_data
 from srw4.rom import Rom, sha256
 
 
@@ -27,6 +33,9 @@ TRANSLATIONS = ROOT / "data" / "translations" / "script.th.json"
 # The editable atlas and encoding are the sole source of truth.  `proven/`
 # remains only the renderer-side page serializer used by this EN adapter.
 FONT = ROOT / "data" / "font"
+# Character Archives owns all 240 pointer rows in block 48, then continues
+# through rows 0-37 of block 49. Row 38 starts the unrelated Astonaige event.
+PROFILE_CONTINUATION_POINTERS = 38
 
 # EN dialogue data is placed before this area.  The title resource must occupy
 # a contiguous erased range below the stock text-data boundary.
@@ -56,6 +65,37 @@ def _place_fill(image: bytearray, pc: int, data: bytes, owner: str) -> None:
         raise ValueError(f"{owner} overlaps occupied ROM bytes at {pc:#08x}")
     image[pc:pc + len(data)] = data
 
+
+def _merge_routes(
+    *groups: dict[int, tuple[tuple[int, int], ...]],
+) -> dict[int, tuple[tuple[int, int], ...]]:
+    merged: dict[int, list[tuple[int, int]]] = {}
+    for group in groups:
+        for bank, spans in group.items():
+            merged.setdefault(bank, []).extend(spans)
+    return {bank: tuple(sorted(spans)) for bank, spans in merged.items()}
+
+
+def _apply_writes(image: bytearray, clean: bytes, writes) -> None:
+    for write in writes:
+        expected = (
+            b"\xFF" * len(write.payload)
+            if write.expected_ff
+            else clean[write.pc:write.pc + len(write.payload)]
+        )
+        actual = bytes(image[write.pc:write.pc + len(write.payload)])
+        if actual != expected:
+            raise ValueError(f"{write.owner} overlaps changed bytes at {write.pc:#08x}")
+        image[write.pc:write.pc + len(write.payload)] = write.payload
+
+
+def _report_path(path: Path) -> str:
+    """Use a workspace-relative path when possible, without rejecting --output."""
+    try:
+        return str(path.resolve().relative_to(ROOT))
+    except ValueError:
+        return str(path.resolve())
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=BASE)
@@ -73,15 +113,69 @@ def main() -> int:
     document = json.loads(SOURCE.read_text(encoding="utf-8"))
     translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]
     layout = json.loads((FONT / "encoding.json").read_text(encoding="utf-8"))
+    profile_ids = set()
+    for row in document["messages"]:
+        block = int(row["block"])
+        pointer_rows = tuple(int(index) for index in row.get("table_slots", ()))
+        if block == 48 or (
+            block == 49
+            and pointer_rows
+            and max(pointer_rows) < PROFILE_CONTINUATION_POINTERS
+        ):
+            profile_ids.add(str(row["id"]))
+    if len(profile_ids) != 240:
+        raise ValueError(
+            f"Character Archives record contract changed: expected 240, got {len(profile_ids)}"
+        )
+    profile_encoder = ProfileCatalogEncoder(
+        base, [translated[message_id] for message_id in sorted(profile_ids)]
+    )
+    profile_records = {
+        message_id: profile_encoder.record(translated[message_id])
+        for message_id in profile_ids
+    }
     rom = Rom(bytearray(base))
     full = install_full_story(
-        rom, base, document, translated, lambda text: compile_text(text, layout)
+        rom,
+        base,
+        document,
+        translated,
+        lambda text: compile_text(text, layout),
+        ordinary_records=profile_records,
     )
 
     renderer = install_renderer(rom.data)
     # The Thai copier uploads its dynamic tiles; retain parser and width hooks.
     router = install_router(rom.data, font_hooks=True, alt_hook=False, width_hooks=True)
-    catalogs = install_catalogs(rom.data, base)
+    part_stock, en_direct_runs = build_part_stock_catalog()
+    cluster_encoder = ClusterCatalogEncoder(
+        base,
+        part_stock,
+        include_part_effects=True,
+        en_direct_stock_runs=en_direct_runs,
+    )
+    part_writes, part_effects = build_en_part_effect_data(
+        ROOT / "data", base, label_encoder=cluster_encoder.part_runs
+    )
+    _apply_writes(rom.data, base, part_writes)
+    part_routes = {
+        int(bank, 16): tuple((int(start), int(end)) for start, end in spans)
+        for bank, spans in part_effects["source_routes"].items()
+    }
+    catalogs = install_catalogs(
+        rom.data,
+        base,
+        extra_thai_routes=_merge_routes(full.ordinary_thai_routes, part_routes),
+        extra_supplement_routes=full.ordinary_supplement_routes,
+        extra_alternate_routes=full.ordinary_alternate_routes,
+        profile_encoder=profile_encoder,
+        profile_banks=tuple(sorted({
+            *full.ordinary_thai_routes,
+            *full.ordinary_supplement_routes,
+            *full.ordinary_alternate_routes,
+        })),
+        cluster_encoder=cluster_encoder,
+    )
     title = install_en_title_logo(rom.data, ROOT / "data", base)
     intro = install_intro(rom.data, base, ROOT)
     checksum = rom.fix_checksum()
@@ -93,7 +187,7 @@ def main() -> int:
     args.patch.write_bytes(patch)
     report = {
         "scope": (
-            "EN Thai story, battle quotes, Spirit descriptions, title logo, and "
+            "EN Thai story, battle quotes, Spirit and Part descriptions, title logo, and "
             "opening crawl; original English unit/pilot/weapon names"
         ),
         "story_repack": {"blocks": full.blocks, "records": full.records,
@@ -114,11 +208,16 @@ def main() -> int:
             "ordinary_renderer_bytes": catalogs.ordinary_renderer_bytes,
             "battle_info_labels": catalogs.battle_info_labels,
         },
+        "part_effects": {
+            "records": len(part_effects["records"]),
+            "routes": sum(len(spans) for spans in part_routes.values()),
+            "translation": "data/translations/part-effects.th.json",
+        },
         "title": title,
         "intro": intro,
-        "output": {"path": str(args.output.relative_to(ROOT)), "sha256": sha256(output),
+        "output": {"path": _report_path(args.output), "sha256": sha256(output),
                    "checksum": f"0x{checksum:04X}", "bytes": len(output)},
-        "patch": {"format": "IPS", "path": str(args.patch.relative_to(ROOT)),
+        "patch": {"format": "IPS", "path": _report_path(args.patch),
                   "sha256": sha256(patch), "bytes": len(patch),
                   "base_sha256": EN_SHA256},
     }

@@ -607,7 +607,7 @@
     ],
     "source": "ハサウェイ",
     "source_hex": "BE A4 95 96 93 FF",
-    "translation": "ฮาซาเวย์",
+    "translation": "ฮาธาเวย์",
     "method": "reviewed_name_report"
   },
   {
@@ -1713,7 +1713,7 @@
     ],
     "source": "リヒテル",
     "source_hex": "D9 C1 B5 DA FF",
-    "translation": "ริฮ์เทล",
+    "translation": "ริชเทอร์",
     "method": "reviewed_glossary"
   },
   {
@@ -1953,7 +1953,7 @@
     ],
     "source": "暗黒大将軍",
     "source_hex": "F0 A0 F0 A1 F0 16 F0 A4 F0 A5 FF",
-    "translation": "จอมทัพทมิฬ",
+    "translation": "จอมทัพแห่งความมืด",
     "method": "reviewed_name_report"
   },
   {
@@ -2336,7 +2336,7 @@
     ],
     "source": "三輪長官",
     "source_hex": "F0 11 F4 2D F0 9A F2 69 FF",
-    "translation": "ผู้บัญชาการมิวะ",
+    "translation": "ผบ.มิวะ",
     "method": "reviewed_name_report"
   },
   {
@@ -2599,7 +2599,7 @@
     ],
     "source": "シロ",
     "source_hex": "A6 DC FF",
-    "translation": "ชิโร่",
+    "translation": "ชิโระ",
     "method": "reviewed_glossary"
   },
   {
@@ -2609,7 +2609,7 @@
     ],
     "source": "クロ",
     "source_hex": "9E DC FF",
-    "translation": "คุโร่",
+    "translation": "คุโระ",
     "method": "reviewed_glossary"
   },
   {

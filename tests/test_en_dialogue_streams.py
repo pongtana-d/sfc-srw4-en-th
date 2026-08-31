@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from srw4.en_dialogue_streams import compile_text  # noqa: E402
+from srw4.en_dialogue_streams import compile_ordinary_text, compile_text  # noqa: E402
 from srw4.en_dialogue_font import SLOT  # noqa: E402
 
 
@@ -81,3 +81,26 @@ def test_primary_dialogue_glyph_codes_do_not_overlap_controls_or_marks():
         for code in LAYOUT[section].values()
     }
     assert set(codes).isdisjoint(occupied)
+
+
+def test_character_archive_stream_uses_no_dialogue_page_leads():
+    payload, routes = compile_ordinary_text(
+        "ภาษาไทย\nA<FB:EEC0><ENDFF>", LAYOUT
+    )
+
+    line_break = payload.index(0xF6)
+    insertion = payload.index(0xFB)
+    assert payload[0] == LAYOUT["codes"]["ภ"]
+    assert payload[line_break + 1] == LAYOUT["codes"]["A"]
+    assert all(route == 1 for route in routes[:line_break])
+    assert routes[line_break] == 0
+    assert routes[insertion:insertion + 4] == (0, 0, 0, 0)
+    assert payload[-1] == 0xFF
+
+
+def test_character_archive_lowercase_latin_uses_the_supplement_page():
+    payload, routes = compile_ordinary_text("Mk-II<ENDFF>", LAYOUT)
+
+    assert payload[1] == SLOT["k"]
+    assert routes[1] == 2
+    assert routes[0] == routes[2] == routes[3] == routes[4] == 1

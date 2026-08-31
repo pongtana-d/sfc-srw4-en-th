@@ -53,6 +53,7 @@ from srw4.en_th_catalogs import (  # noqa: E402
     ROUTE_TABLE_PC,
     STOCK_TABLE_PC,
     EN_SUPPLEMENT_RENDERER_PC,
+    ProfileCatalogEncoder,
     _ClusterCatalogEncoder,
     _build_cluster_page_dispatch,
     _build_catalog_renderer,
@@ -164,6 +165,39 @@ def test_en_battle_info_preserves_every_label_in_original_english():
         assert clean[pc:pc + len(expected)] == expected
     assert thai == {0xFE: ()}
     assert supplement == {0xFE: ()}
+
+
+def test_profile_catalog_routes_visible_ascii_through_shared_supplement():
+    clean = BASE.read_bytes()
+    source = json.loads(
+        (ROOT / "data" / "translations" / "script.source.json").read_text()
+    )["messages"]
+    translated = json.loads(
+        (ROOT / "data" / "translations" / "script.th.json").read_text()
+    )["messages"]
+    profile_ids = []
+    for row in source:
+        slots = tuple(int(value) for value in row.get("table_slots", ()))
+        if int(row["block"]) == 48 or (
+            int(row["block"]) == 49 and slots and max(slots) < 38
+        ):
+            profile_ids.append(str(row["id"]))
+    encoder = ProfileCatalogEncoder(clean, [translated[key] for key in profile_ids])
+
+    assert len(profile_ids) == 240
+    assert 0xEC < len(encoder.codes) <= 0xEC * 2
+    assert all(token.startswith("cluster:") for token in encoder.codes)
+    payload, routes = encoder.record("ก 30 ซม.!?<ENDFF>")
+    assert payload[-1] == 0xFF
+    assert routes[-1] == 0
+    assert 0xFB not in payload
+    assert {1, 2, 3}.issubset(routes[:-1])
+    assert payload[1:5] == bytes(
+        SUPPLEMENT_SLOT[char] for char in " 30 "
+    )
+    _profile_payload, profile_routes = encoder.record(translated["49_A64A"])
+    assert 0xFB not in _profile_payload
+    assert {1, 2, 3}.issubset(profile_routes)
 
 
 def test_en_weapon_catalog_preserves_english_source_exactly():

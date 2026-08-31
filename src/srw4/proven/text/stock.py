@@ -159,7 +159,12 @@ class StockCatalog:
             payload.extend((0xFB, index, STOCK_OPERAND_HIGH))
         return bytes(payload)
 
-    def assets(self, string_pool_pc: int) -> tuple[bytes, bytes, list[dict[str, object]]]:
+    def assets(
+        self,
+        string_pool_pc: int,
+        *,
+        encoder: Callable[[str], bytes] = encode_stock,
+    ) -> tuple[bytes, bytes, list[dict[str, object]]]:
         """Build a 256-entry 24-bit table plus terminated stock strings."""
         table = bytearray(b"\xFF" * (256 * 3))
         pool = bytearray()
@@ -167,7 +172,7 @@ class StockCatalog:
         for index, run in enumerate(self.runs):
             pc = string_pool_pc + len(pool)
             cpu = ((0xC0 + (pc >> 16)) << 16) | (pc & 0xFFFF)
-            encoded = encode_stock(run) + b"\xFF"
+            encoded = encoder(run) + b"\xFF"
             table[index * 3:index * 3 + 3] = cpu.to_bytes(3, "little")
             pool.extend(encoded)
             report.append({"id": index, "text": run, "cpu": f"0x{cpu:06X}"})

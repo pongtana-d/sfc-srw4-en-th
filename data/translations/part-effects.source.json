@@ -1,0 +1,938 @@
+{
+  "schema": "srw4.part-effects.source.v2",
+  "authority": "ROM EN catalog $FE:66BB คือ source runtime และเป้าหมาย build; ROM JP catalog $CC:E9BD เก็บเป็น reference สำหรับตรวจความหมายเท่านั้น",
+  "catalog": {
+    "en_pointer_table_pc": "0x3E66BB",
+    "en_pointer_table_cpu": "$FE:E6BB",
+    "jp_reference_pointer_table_pc": "0x0CE9BD",
+    "jp_reference_pointer_table_cpu": "$CC:E9BD",
+    "item_id_range": [
+      6,
+      37
+    ],
+    "items": 32,
+    "unique_effect_records": 22
+  },
+  "roms": {
+    "en": {
+      "path": "rom/Dai-4-ji Super Robot Taisen English.sfc",
+      "sha256": "7cac9fc9c092c82cb753ebc8c8af6de25c2957ee4fbdee0f10676f1d0a661f2c"
+    },
+    "jp": {
+      "path": "rom/Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc",
+      "sha256": "efd72094b2727c4903924cf9296b3946b95a354f639b600e1d76d9ec6b9ca18b"
+    }
+  },
+  "translation_target": "data/translations/part-effects.th.json",
+  "names_jp_reference": [
+    {
+      "name_index": 0,
+      "source_pc": "0x12875D",
+      "source": "高性能レーダー",
+      "source_hex": "F0 B8 F1 01 F0 79 DB 11 AF 11 FF"
+    },
+    {
+      "name_index": 1,
+      "source_pc": "0x128768",
+      "source": "ミノフスキークラフト",
+      "source_hex": "CE BD C4 A8 9C 11 9E D8 C4 B7 FF"
+    },
+    {
+      "name_index": 2,
+      "source_pc": "0x128773",
+      "source": "ブースター",
+      "source_hex": "C5 11 A8 AE 11 FF"
+    },
+    {
+      "name_index": 3,
+      "source_pc": "0x128779",
+      "source": "メガブースター",
+      "source_hex": "D0 9B C5 11 A8 AE 11 FF"
+    },
+    {
+      "name_index": 4,
+      "source_pc": "0x128781",
+      "source": "アポジモーター",
+      "source_hex": "91 CC A7 D1 11 AE 11 FF"
+    },
+    {
+      "name_index": 5,
+      "source_pc": "0x128789",
+      "source": "ファティマ",
+      "source_hex": "C4 90 B5 92 CD FF"
+    },
+    {
+      "name_index": 6,
+      "source_pc": "0x12878F",
+      "source": "ＡＬＩＣＥ",
+      "source_hex": "16 21 1E 18 1A FF"
+    },
+    {
+      "name_index": 7,
+      "source_pc": "0x128795",
+      "source": "サイコフレーム",
+      "source_hex": "A4 93 A2 C4 DB 11 CF FF"
+    },
+    {
+      "name_index": 8,
+      "source_pc": "0x12879D",
+      "source": "バイオセンサー",
+      "source_hex": "BF 93 99 AA DF A4 11 FF"
+    },
+    {
+      "name_index": 9,
+      "source_pc": "0x1287A5",
+      "source": "マグネットコーティング",
+      "source_hex": "CD 9F BC B2 B7 A2 11 B5 92 DF 9F FF"
+    },
+    {
+      "name_index": 10,
+      "source_pc": "0x1287B1",
+      "source": "Ｉフィールド発生機",
+      "source_hex": "1E C4 92 11 DA B8 F0 C2 F1 2B F0 E1 FF"
+    },
+    {
+      "name_index": 11,
+      "source_pc": "0x1287BE",
+      "source": "チョバムアーマー",
+      "source_hex": "B0 D6 BF CF 91 11 CD 11 FF"
+    },
+    {
+      "name_index": 12,
+      "source_pc": "0x1287C7",
+      "source": "ハイブリッドアーマー",
+      "source_hex": "BE 93 C5 D9 B2 B8 91 11 CD 11 FF"
+    },
+    {
+      "name_index": 13,
+      "source_pc": "0x1287D2",
+      "source": "バリアジェネレーター",
+      "source_hex": "BF D9 91 A7 96 BC DB 11 AE 11 FF"
+    },
+    {
+      "name_index": 14,
+      "source_pc": "0x1287DD",
+      "source": "対ビームコーティング",
+      "source_hex": "F0 B5 C2 11 CF A2 11 B5 92 DF 9F FF"
+    },
+    {
+      "name_index": 15,
+      "source_pc": "0x1287E9",
+      "source": "リペアキット",
+      "source_hex": "D9 C9 91 9C B2 B7 FF"
+    },
+    {
+      "name_index": 16,
+      "source_pc": "0x1287F0",
+      "source": "プロペラントタンク",
+      "source_hex": "C6 DC C9 D8 DF B7 AE DF 9E FF"
+    },
+    {
+      "name_index": 17,
+      "source_pc": "0x1287FA",
+      "source": "プロペラントタンクＳ",
+      "source_hex": "C6 DC C9 D8 DF B7 AE DF 9E 28 FF"
+    },
+    {
+      "name_index": 18,
+      "source_pc": "0x128805",
+      "source": "金塊",
+      "source_hex": "F0 F3 F4 CA FF"
+    }
+  ],
+  "items": [
+    {
+      "id": 6,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 7,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 8,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 9,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 10,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 11,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 12,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 13,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 14,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 15,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 16,
+      "part_name_jp_reference": "高性能レーダー",
+      "name_index": 0,
+      "en_effect_pointer": "0x71DD",
+      "jp_effect_pointer": "0xF111"
+    },
+    {
+      "id": 17,
+      "part_name_jp_reference": "ミノフスキークラフト",
+      "name_index": 1,
+      "en_effect_pointer": "0x722A",
+      "jp_effect_pointer": "0xF13A"
+    },
+    {
+      "id": 18,
+      "part_name_jp_reference": "ブースター",
+      "name_index": 2,
+      "en_effect_pointer": "0x724F",
+      "jp_effect_pointer": "0xF14D"
+    },
+    {
+      "id": 19,
+      "part_name_jp_reference": "メガブースター",
+      "name_index": 3,
+      "en_effect_pointer": "0x725B",
+      "jp_effect_pointer": "0xF156"
+    },
+    {
+      "id": 20,
+      "part_name_jp_reference": "アポジモーター",
+      "name_index": 4,
+      "en_effect_pointer": "0x7267",
+      "jp_effect_pointer": "0xF15F"
+    },
+    {
+      "id": 21,
+      "part_name_jp_reference": "ファティマ",
+      "name_index": 5,
+      "en_effect_pointer": "0x727D",
+      "jp_effect_pointer": "0xF171"
+    },
+    {
+      "id": 22,
+      "part_name_jp_reference": "ＡＬＩＣＥ",
+      "name_index": 6,
+      "en_effect_pointer": "0x729F",
+      "jp_effect_pointer": "0xF190"
+    },
+    {
+      "id": 23,
+      "part_name_jp_reference": "サイコフレーム",
+      "name_index": 7,
+      "en_effect_pointer": "0x72B4",
+      "jp_effect_pointer": "0xF1A6"
+    },
+    {
+      "id": 24,
+      "part_name_jp_reference": "バイオセンサー",
+      "name_index": 8,
+      "en_effect_pointer": "0x72C9",
+      "jp_effect_pointer": "0xF1BC"
+    },
+    {
+      "id": 25,
+      "part_name_jp_reference": "マグネットコーティング",
+      "name_index": 9,
+      "en_effect_pointer": "0x72DD",
+      "jp_effect_pointer": "0xF1D1"
+    },
+    {
+      "id": 26,
+      "part_name_jp_reference": "Ｉフィールド発生機",
+      "name_index": 10,
+      "en_effect_pointer": "0x72F1",
+      "jp_effect_pointer": "0xF1E6"
+    },
+    {
+      "id": 27,
+      "part_name_jp_reference": "チョバムアーマー",
+      "name_index": 11,
+      "en_effect_pointer": "0x7303",
+      "jp_effect_pointer": "0xF1F6"
+    },
+    {
+      "id": 28,
+      "part_name_jp_reference": "ハイブリッドアーマー",
+      "name_index": 12,
+      "en_effect_pointer": "0x7317",
+      "jp_effect_pointer": "0xF206"
+    },
+    {
+      "id": 29,
+      "part_name_jp_reference": "バリアジェネレーター",
+      "name_index": 13,
+      "en_effect_pointer": "0x732B",
+      "jp_effect_pointer": "0xF216"
+    },
+    {
+      "id": 30,
+      "part_name_jp_reference": "対ビームコーティング",
+      "name_index": 14,
+      "en_effect_pointer": "0x7342",
+      "jp_effect_pointer": "0xF225"
+    },
+    {
+      "id": 31,
+      "part_name_jp_reference": "リペアキット",
+      "name_index": 15,
+      "en_effect_pointer": "0x7355",
+      "jp_effect_pointer": "0xF234"
+    },
+    {
+      "id": 32,
+      "part_name_jp_reference": "プロペラントタンク",
+      "name_index": 16,
+      "en_effect_pointer": "0x7373",
+      "jp_effect_pointer": "0xF246"
+    },
+    {
+      "id": 33,
+      "part_name_jp_reference": "プロペラントタンクＳ",
+      "name_index": 17,
+      "en_effect_pointer": "0x738F",
+      "jp_effect_pointer": "0xF259"
+    },
+    {
+      "id": 34,
+      "part_name_jp_reference": "金塊",
+      "name_index": 18,
+      "en_effect_pointer": "0x73AC",
+      "jp_effect_pointer": "0xF26D"
+    },
+    {
+      "id": 35,
+      "part_name_jp_reference": "金塊",
+      "name_index": 18,
+      "en_effect_pointer": "0x73B8",
+      "jp_effect_pointer": "0xF278"
+    },
+    {
+      "id": 36,
+      "part_name_jp_reference": "金塊",
+      "name_index": 18,
+      "en_effect_pointer": "0x73C4",
+      "jp_effect_pointer": "0xF283"
+    },
+    {
+      "id": 37,
+      "part_name_jp_reference": "金塊",
+      "name_index": 18,
+      "en_effect_pointer": "0x73D1",
+      "jp_effect_pointer": "0xF28F"
+    }
+  ],
+  "effect_records": [
+    {
+      "record": "6",
+      "item_ids": [
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ],
+      "part_names_jp_reference": [
+        "高性能レーダー"
+      ],
+      "en_active": {
+        "pointer": "0x71DD",
+        "source_pc": "0x3E71DD",
+        "source_lines": [
+          "Increases the range of all weapons by 1 (excluding MAP and 1-range weapons)."
+        ],
+        "source_hex": "1E 9D 92 A1 94 90 A2 94 A2 43 A3 97 94 43 A1 90 9D 96 94 43 9E 95 43 90 9B 9B 43 A6 94 90 9F 9E 9D A2 43 91 A8 43 B1 43 68 94 A7 92 9B A4 93 98 9D 96 43 22 16 25 43 90 9D 93 43 B1 60 A1 90 9D 96 94 43 A6 94 90 9F 9E 9D A2 69 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF111",
+        "source_pc": "0x0CF111",
+        "source_lines": [
+          "マップ兵器、射程１の武器以外の武器の",
+          "射程が１増えます"
+        ],
+        "source_hex": "CD B2 C6 F0 4E F0 56 3A F0 5A F0 5B 31 6D F0 0A F0 56 F1 0D F1 10 6D F0 0A F0 56 6D F6 F0 5A F0 5B 4B 31 F1 53 47 7D 58 FF"
+      }
+    },
+    {
+      "record": "17",
+      "item_ids": [
+        17
+      ],
+      "part_names_jp_reference": [
+        "ミノフスキークラフト"
+      ],
+      "en_active": {
+        "pointer": "0x722A",
+        "source_pc": "0x3E722A",
+        "source_lines": [
+          "Changes movement type to Air-Ground."
+        ],
+        "source_hex": "18 97 90 9D 96 94 A2 43 9C 9E A5 94 9C 94 9D A3 43 A3 A8 9F 94 43 A3 9E 43 16 98 A1 60 1C A1 9E A4 9D 93 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF13A",
+        "source_pc": "0x0CF13A",
+        "source_lines": [
+          "移動タイプを空陸に変えます"
+        ],
+        "source_hex": "F0 50 F0 51 AE 93 C6 8E F0 B6 F0 F1 6A F0 80 47 7D 58 FF"
+      }
+    },
+    {
+      "record": "18",
+      "item_ids": [
+        18
+      ],
+      "part_names_jp_reference": [
+        "ブースター"
+      ],
+      "en_active": {
+        "pointer": "0x724F",
+        "source_pc": "0x3E724F",
+        "source_lines": [
+          "Movement +1"
+        ],
+        "source_hex": "22 9E A5 94 9C 94 9D A3 43 10 B1 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF14D",
+        "source_pc": "0x0CF14D",
+        "source_lines": [
+          "移動力＋１"
+        ],
+        "source_hex": "F0 50 F0 51 F0 2C 10 31 FF"
+      }
+    },
+    {
+      "record": "19",
+      "item_ids": [
+        19
+      ],
+      "part_names_jp_reference": [
+        "メガブースター"
+      ],
+      "en_active": {
+        "pointer": "0x725B",
+        "source_pc": "0x3E725B",
+        "source_lines": [
+          "Movement +2"
+        ],
+        "source_hex": "22 9E A5 94 9C 94 9D A3 43 10 B2 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF156",
+        "source_pc": "0x0CF156",
+        "source_lines": [
+          "移動力＋２"
+        ],
+        "source_hex": "F0 50 F0 51 F0 2C 10 32 FF"
+      }
+    },
+    {
+      "record": "20",
+      "item_ids": [
+        20
+      ],
+      "part_names_jp_reference": [
+        "アポジモーター"
+      ],
+      "en_active": {
+        "pointer": "0x7267",
+        "source_pc": "0x3E7267",
+        "source_lines": [
+          "Movement +1, Speed +5"
+        ],
+        "source_hex": "22 9E A5 94 9C 94 9D A3 43 10 B1 3A 43 28 9F 94 94 93 43 10 B5 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF15F",
+        "source_pc": "0x0CF15F",
+        "source_lines": [
+          "移動力＋１、運動性＋５"
+        ],
+        "source_hex": "F0 50 F0 51 F0 2C 10 31 3A F1 A6 F0 51 F1 01 10 35 FF"
+      }
+    },
+    {
+      "record": "21",
+      "item_ids": [
+        21
+      ],
+      "part_names_jp_reference": [
+        "ファティマ"
+      ],
+      "en_active": {
+        "pointer": "0x727D",
+        "source_pc": "0x3E727D",
+        "source_lines": [
+          "Limit +10, Speed +18, Movement +2"
+        ],
+        "source_hex": "21 98 9C 98 A3 43 10 B1 B0 3A 43 28 9F 94 94 93 43 10 B1 B8 3A 43 22 9E A5 94 9C 94 9D A3 43 10 B2 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF171",
+        "source_pc": "0x0CF171",
+        "source_lines": [
+          "限界反応＋２０、運動性＋１８、移動力＋２"
+        ],
+        "source_hex": "F0 63 F0 64 F0 65 F0 66 10 32 30 3A F1 A6 F0 51 F1 01 10 31 38 3A F0 50 F0 51 F0 2C 10 32 FF"
+      }
+    },
+    {
+      "record": "22",
+      "item_ids": [
+        22
+      ],
+      "part_names_jp_reference": [
+        "ＡＬＩＣＥ"
+      ],
+      "en_active": {
+        "pointer": "0x729F",
+        "source_pc": "0x3E729F",
+        "source_lines": [
+          "Limit +20, Speed +12"
+        ],
+        "source_hex": "21 98 9C 98 A3 43 10 B2 B0 3A 43 28 9F 94 94 93 43 10 B1 B2 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF190",
+        "source_pc": "0x0CF190",
+        "source_lines": [
+          "限界反応＋２０、運動性＋１２"
+        ],
+        "source_hex": "F0 63 F0 64 F0 65 F0 66 10 32 30 3A F1 A6 F0 51 F1 01 10 31 32 FF"
+      }
+    },
+    {
+      "record": "23",
+      "item_ids": [
+        23
+      ],
+      "part_names_jp_reference": [
+        "サイコフレーム"
+      ],
+      "en_active": {
+        "pointer": "0x72B4",
+        "source_pc": "0x3E72B4",
+        "source_lines": [
+          "Limit +25, Speed +10"
+        ],
+        "source_hex": "21 98 9C 98 A3 43 10 B2 B5 3A 43 28 9F 94 94 93 43 10 B1 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF1A6",
+        "source_pc": "0x0CF1A6",
+        "source_lines": [
+          "限界反応＋２５、運動性＋１０"
+        ],
+        "source_hex": "F0 63 F0 64 F0 65 F0 66 10 32 35 3A F1 A6 F0 51 F1 01 10 31 30 FF"
+      }
+    },
+    {
+      "record": "24",
+      "item_ids": [
+        24
+      ],
+      "part_names_jp_reference": [
+        "バイオセンサー"
+      ],
+      "en_active": {
+        "pointer": "0x72C9",
+        "source_pc": "0x3E72C9",
+        "source_lines": [
+          "Limit +15, Speed +8"
+        ],
+        "source_hex": "21 98 9C 98 A3 43 10 B1 B5 3A 43 28 9F 94 94 93 43 10 B8 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF1BC",
+        "source_pc": "0x0CF1BC",
+        "source_lines": [
+          "限界反応＋１５、運動性＋８"
+        ],
+        "source_hex": "F0 63 F0 64 F0 65 F0 66 10 31 35 3A F1 A6 F0 51 F1 01 10 38 FF"
+      }
+    },
+    {
+      "record": "25",
+      "item_ids": [
+        25
+      ],
+      "part_names_jp_reference": [
+        "マグネットコーティング"
+      ],
+      "en_active": {
+        "pointer": "0x72DD",
+        "source_pc": "0x3E72DD",
+        "source_lines": [
+          "Limit +10, Speed +5"
+        ],
+        "source_hex": "21 98 9C 98 A3 43 10 B1 B0 3A 43 28 9F 94 94 93 43 10 B5 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF1D1",
+        "source_pc": "0x0CF1D1",
+        "source_lines": [
+          "限界反応＋１０、運動性＋５"
+        ],
+        "source_hex": "F0 63 F0 64 F0 65 F0 66 10 31 30 3A F1 A6 F0 51 F1 01 10 35 FF"
+      }
+    },
+    {
+      "record": "26",
+      "item_ids": [
+        26
+      ],
+      "part_names_jp_reference": [
+        "Ｉフィールド発生機"
+      ],
+      "en_active": {
+        "pointer": "0x72F1",
+        "source_pc": "0x3E72F1",
+        "source_lines": [
+          "Installs I-Field."
+        ],
+        "source_hex": "1E 9D A2 A3 90 9B 9B A2 43 1E 60 1B 98 94 9B 93 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF1E6",
+        "source_pc": "0x0CF1E6",
+        "source_lines": [
+          "Ｉフィールドを装備できます"
+        ],
+        "source_hex": "1E C4 92 11 DA B8 8E F0 62 F1 FE 66 4C 7D 58 FF"
+      }
+    },
+    {
+      "record": "27",
+      "item_ids": [
+        27
+      ],
+      "part_names_jp_reference": [
+        "チョバムアーマー"
+      ],
+      "en_active": {
+        "pointer": "0x7303",
+        "source_pc": "0x3E7303",
+        "source_lines": [
+          "Armor +150, HP +500"
+        ],
+        "source_hex": "16 A1 9C 9E A1 43 10 B1 B5 B0 3A 43 1D 25 43 10 B5 B0 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF1F6",
+        "source_pc": "0x0CF1F6",
+        "source_lines": [
+          "装甲＋１５０、ＨＰ＋５００"
+        ],
+        "source_hex": "F0 62 F0 01 10 31 35 30 3A 1D 25 10 35 30 30 FF"
+      }
+    },
+    {
+      "record": "28",
+      "item_ids": [
+        28
+      ],
+      "part_names_jp_reference": [
+        "ハイブリッドアーマー"
+      ],
+      "en_active": {
+        "pointer": "0x7317",
+        "source_pc": "0x3E7317",
+        "source_lines": [
+          "Armor +200, HP +800"
+        ],
+        "source_hex": "16 A1 9C 9E A1 43 10 B2 B0 B0 3A 43 1D 25 43 10 B8 B0 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF206",
+        "source_pc": "0x0CF206",
+        "source_lines": [
+          "装甲＋２００、ＨＰ＋８００"
+        ],
+        "source_hex": "F0 62 F0 01 10 32 30 30 3A 1D 25 10 38 30 30 FF"
+      }
+    },
+    {
+      "record": "29",
+      "item_ids": [
+        29
+      ],
+      "part_names_jp_reference": [
+        "バリアジェネレーター"
+      ],
+      "en_active": {
+        "pointer": "0x732B",
+        "source_pc": "0x3E732B",
+        "source_lines": [
+          "Installs Beam Barrier."
+        ],
+        "source_hex": "1E 9D A2 A3 90 9B 9B A2 43 17 94 90 9C 43 17 90 A1 A1 98 94 A1 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF216",
+        "source_pc": "0x0CF216",
+        "source_lines": [
+          "ビームバリアを装備できる"
+        ],
+        "source_hex": "C2 11 CF BF D9 91 8E F0 62 F1 FE 66 4C 8A FF"
+      }
+    },
+    {
+      "record": "30",
+      "item_ids": [
+        30
+      ],
+      "part_names_jp_reference": [
+        "対ビームコーティング"
+      ],
+      "en_active": {
+        "pointer": "0x7342",
+        "source_pc": "0x3E7342",
+        "source_lines": [
+          "Installs Beam Coat"
+        ],
+        "source_hex": "1E 9D A2 A3 90 9B 9B A2 43 17 94 90 9C 43 18 9E 90 A3 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF225",
+        "source_pc": "0x0CF225",
+        "source_lines": [
+          "ビームコートを装備できる"
+        ],
+        "source_hex": "C2 11 CF A2 11 B7 8E F0 62 F1 FE 66 4C 8A FF"
+      }
+    },
+    {
+      "record": "31",
+      "item_ids": [
+        31
+      ],
+      "part_names_jp_reference": [
+        "リペアキット"
+      ],
+      "en_active": {
+        "pointer": "0x7355",
+        "source_pc": "0x3E7355",
+        "source_lines": [
+          "Restores 2000 HP.",
+          "Consumable."
+        ],
+        "source_hex": "27 94 A2 A3 9E A1 94 A2 43 B2 B0 B0 B0 43 1D 25 AA F6 18 9E 9D A2 A4 9C 90 91 9B 94 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF234",
+        "source_pc": "0x0CF234",
+        "source_lines": [
+          "ＨＰ２０００回復",
+          "使い捨て"
+        ],
+        "source_hex": "1D 25 32 30 30 30 F0 71 F2 59 F6 F1 04 43 F4 4C 65 FF"
+      }
+    },
+    {
+      "record": "32",
+      "item_ids": [
+        32
+      ],
+      "part_names_jp_reference": [
+        "プロペラントタンク"
+      ],
+      "en_active": {
+        "pointer": "0x7373",
+        "source_pc": "0x3E7373",
+        "source_lines": [
+          "Restores 50 EN.",
+          "Consumable."
+        ],
+        "source_hex": "27 94 A2 A3 9E A1 94 A2 43 B5 B0 43 1A 23 AA F6 18 9E 9D A2 A4 9C 90 91 9B 94 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF246",
+        "source_pc": "0x0CF246",
+        "source_lines": [
+          "エネルギー５０回復",
+          "使い捨て"
+        ],
+        "source_hex": "97 BC DA 9D 11 35 30 F0 71 F2 59 F6 F1 04 43 F4 4C 65 FF"
+      }
+    },
+    {
+      "record": "33",
+      "item_ids": [
+        33
+      ],
+      "part_names_jp_reference": [
+        "プロペラントタンクＳ"
+      ],
+      "en_active": {
+        "pointer": "0x738F",
+        "source_pc": "0x3E738F",
+        "source_lines": [
+          "Restores 150 EN.",
+          "Consumable."
+        ],
+        "source_hex": "27 94 A2 A3 9E A1 94 A2 43 B1 B5 B0 43 1A 23 AA F6 18 9E 9D A2 A4 9C 90 91 9B 94 AA FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF259",
+        "source_pc": "0x0CF259",
+        "source_lines": [
+          "エネルギー１５０回復",
+          "使い捨て"
+        ],
+        "source_hex": "97 BC DA 9D 11 31 35 30 F0 71 F2 59 F6 F1 04 43 F4 4C 65 FF"
+      }
+    },
+    {
+      "record": "34",
+      "item_ids": [
+        34
+      ],
+      "part_names_jp_reference": [
+        "金塊"
+      ],
+      "en_active": {
+        "pointer": "0x73AC",
+        "source_pc": "0x3E73AC",
+        "source_lines": [
+          "Funds +2000"
+        ],
+        "source_hex": "1B A4 9D 93 A2 43 10 B2 B0 B0 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF26D",
+        "source_pc": "0x0CF26D",
+        "source_lines": [
+          "資金　＋２０００"
+        ],
+        "source_hex": "F1 F1 F0 F3 00 10 32 30 30 30 FF"
+      }
+    },
+    {
+      "record": "35",
+      "item_ids": [
+        35
+      ],
+      "part_names_jp_reference": [
+        "金塊"
+      ],
+      "en_active": {
+        "pointer": "0x73B8",
+        "source_pc": "0x3E73B8",
+        "source_lines": [
+          "Funds +5000"
+        ],
+        "source_hex": "1B A4 9D 93 A2 43 10 B5 B0 B0 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF278",
+        "source_pc": "0x0CF278",
+        "source_lines": [
+          "資金　＋５０００"
+        ],
+        "source_hex": "F1 F1 F0 F3 00 10 35 30 30 30 FF"
+      }
+    },
+    {
+      "record": "36",
+      "item_ids": [
+        36
+      ],
+      "part_names_jp_reference": [
+        "金塊"
+      ],
+      "en_active": {
+        "pointer": "0x73C4",
+        "source_pc": "0x3E73C4",
+        "source_lines": [
+          "Funds +10000"
+        ],
+        "source_hex": "1B A4 9D 93 A2 43 10 B1 B0 B0 B0 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF283",
+        "source_pc": "0x0CF283",
+        "source_lines": [
+          "資金　＋１００００"
+        ],
+        "source_hex": "F1 F1 F0 F3 00 10 31 30 30 30 30 FF"
+      }
+    },
+    {
+      "record": "37",
+      "item_ids": [
+        37
+      ],
+      "part_names_jp_reference": [
+        "金塊"
+      ],
+      "en_active": {
+        "pointer": "0x73D1",
+        "source_pc": "0x3E73D1",
+        "source_lines": [
+          "Funds +20000"
+        ],
+        "source_hex": "1B A4 9D 93 A2 43 10 B2 B0 B0 B0 B0 FF"
+      },
+      "jp_reference": {
+        "pointer": "0xF28F",
+        "source_pc": "0x0CF28F",
+        "source_lines": [
+          "資金　＋２００００"
+        ],
+        "source_hex": "F1 F1 F0 F3 00 10 32 30 30 30 30 FF"
+      }
+    }
+  ]
+}

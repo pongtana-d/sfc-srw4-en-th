@@ -18,6 +18,8 @@ INTERNAL_BASE = 0x0A00
 INTERNAL_LIMIT = 0x0AEC
 FIXED_BASE = 0x0B00
 FIXED_LIMIT = 0x0BEC
+ALTERNATE_BASE = 0x0C00
+ALTERNATE_LIMIT = 0x0CEC
 CONTROL_BASE = 0xEC
 
 
@@ -31,14 +33,29 @@ PAGE_BITMAP_BYTES = 32
 ROUTE_ORIGINAL = 0x0000
 ROUTE_THAI = 0x0001
 ROUTE_FIXED = 0x0002
+ROUTE_ALTERNATE = 0x0003
 ROUTE_MIXED = 0x8000
 ROUTE_OFFSET_MASK = 0x7FFF
 ROUTE_BLOCK_LIMIT = 0x10000
 
 
+def _bank_spans(banks: Sequence[int]) -> tuple[tuple[int, int], ...]:
+    """Coalesce source banks so generated adapters remain compact."""
+    spans: list[tuple[int, int]] = []
+    for bank in sorted(set(banks)):
+        if not 0 <= bank <= 0xFF:
+            raise ValueError(f"source bank does not fit one byte: {bank:#x}")
+        if spans and bank == spans[-1][1] + 1:
+            spans[-1] = (spans[-1][0], bank)
+        else:
+            spans.append((bank, bank))
+    return tuple(spans)
+
+
 def build_route_tables(
     ranges: Mapping[int, Sequence[tuple[int, int]]],
     fixed_ranges: Mapping[int, Sequence[tuple[int, int]]] | None = None,
+    alternate_ranges: Mapping[int, Sequence[tuple[int, int]]] | None = None,
     *,
     capacity: int = ROUTE_BLOCK_LIMIT,
 ) -> bytes:
@@ -56,7 +73,9 @@ def build_route_tables(
     through one 24-bit base with a 16-bit index.
     """
     fixed_ranges = fixed_ranges or {}
-    banks = sorted(set(ranges) | set(fixed_ranges))
+    alternate_ranges = alternate_ranges or {}
+    route_kinds = 3 if alternate_ranges else 2
+    banks = sorted(set(ranges) | set(fixed_ranges) | set(alternate_ranges))
     descriptors = bytearray(256 * DESC_STRIDE)
     tables = bytearray()
     bitmaps = bytearray()
@@ -69,10 +88,11 @@ def build_route_tables(
     for bank in banks:
         thai = tuple(sorted(ranges.get(bank, ())))
         fixed = tuple(sorted(fixed_ranges.get(bank, ())))
-        if not thai and not fixed:
+        alternate = tuple(sorted(alternate_ranges.get(bank, ())))
+        if not thai and not fixed and not alternate:
             continue
         marks = bytearray(0x10000)
-        for kind, entries in ((1, thai), (2, fixed)):
+        for kind, entries in ((1, thai), (2, fixed), (3, alternate)):
             for start_address, end_address in entries:
                 if end_address > 0x10000:
                     raise ValueError(f"route range past the bank end: {end_address:#06x}")
@@ -93,9 +113,12 @@ def build_route_tables(
             if kinds == {2}:
                 word(table, page * 2, ROUTE_FIXED)
                 continue
-            # A mixed page carries both bitmaps back to back: Thai first, then
-            # fixed-width.  Pages that mix the two do exist ($CC:AB).
-            bits = bytearray(PAGE_BITMAP_BYTES * 2)
+            if kinds == {3}:
+                word(table, page * 2, ROUTE_ALTERNATE)
+                continue
+            # A mixed page carries one bitmap per routed page: primary first,
+            # supplement second, and the optional alternate page last.
+            bits = bytearray(PAGE_BITMAP_BYTES * route_kinds)
             for index, value in enumerate(span):
                 if value:
                     bits[(index >> 3) + (value - 1) * PAGE_BITMAP_BYTES] |= 1 << (index & 7)
@@ -137,6 +160,7 @@ def _emit_source_route(
     cursor_left_pointers: Mapping[int, Sequence[int]] | None = None,
     *,
     use_fixed: bool = True,
+    alternate: str | None = None,
 ) -> None:
     """Route by the already-advanced 24-bit source pointer.
 
@@ -198,8 +222,12 @@ def _emit_source_route(
     # The second parser never saw the fixed-width ranges, so it keeps sending
     # them down the original path.
     far(0xF0, f"{prefix}_fixed_exit" if use_fixed else f"{prefix}_original_exit")
+    if alternate is not None:
+        asm.emit(0xC9, ROUTE_ALTERNATE & 0xFF, ROUTE_ALTERNATE >> 8)
+        far(0xF0, f"{prefix}_alternate_exit")
 
-    # Mixed page: one bit per byte, Thai bitmap first and fixed-width second.
+    # Mixed page: one bit per byte, primary first, supplement second, and the
+    # optional alternate page third.
     # The offset and the caller's Y live on the stack -- every spare byte of
     # bank $7E is either the renderer's or the game's battle line tables.
     asm.emit(0x29, ROUTE_OFFSET_MASK & 0xFF, ROUTE_OFFSET_MASK >> 8)
@@ -244,6 +272,23 @@ def _emit_source_route(
     asm.label(f"{prefix}_tested_fixed")
     asm.emit(0x29, 0x01)
     asm.branch(0xD0, f"{prefix}_mixed_fixed")
+    if alternate is not None:
+        asm.emit(0xC2, 0x20)                    # REP #$20
+        asm.emit(0x8A)                          # TXA
+        asm.emit(0x18, 0x69, PAGE_BITMAP_BYTES, 0x00)
+        asm.emit(0xAA)                          # TAX -- alternate bitmap
+        asm.emit(0xA5, pointer_dp, 0x29, 0x07, 0x00)
+        asm.emit(0xA8)
+        asm.emit(0xE2, 0x20)
+        asm.long_index(0xBF, tables)
+        asm.label(f"{prefix}_shift_alternate")
+        asm.emit(0xC0, 0x00, 0x00)
+        asm.branch(0xF0, f"{prefix}_tested_alternate")
+        asm.emit(0x4A, 0x88)
+        asm.branch(0x80, f"{prefix}_shift_alternate")
+        asm.label(f"{prefix}_tested_alternate")
+        asm.emit(0x29, 0x01)
+        asm.branch(0xD0, f"{prefix}_mixed_alternate")
     asm.emit(0xC2, 0x20)                        # REP #$20
     asm.emit(0x7A, 0x68)                        # PLY : PLA
     asm.brl(f"{prefix}_original_exit")
@@ -256,6 +301,11 @@ def _emit_source_route(
     asm.emit(0xC2, 0x20)
     asm.emit(0x7A, 0x68)
     asm.brl(f"{prefix}_fixed_exit")
+    if alternate is not None:
+        asm.label(f"{prefix}_mixed_alternate")
+        asm.emit(0xC2, 0x20)
+        asm.emit(0x7A, 0x68)
+        asm.brl(f"{prefix}_alternate_exit")
 
     # The walk this replaced always fell into its Thai and fixed-width targets
     # straight off a successful range compare, so both ran with carry clear.
@@ -268,17 +318,24 @@ def _emit_source_route(
     asm.label(f"{prefix}_fixed_exit")
     asm.emit(0xFA, 0x28, 0x18)
     asm.brl(fixed)
+    if alternate is not None:
+        asm.label(f"{prefix}_alternate_exit")
+        asm.emit(0xFA, 0x28, 0x18)
+        asm.brl(alternate)
 
 
 def build_parser_1(
     origin: int,
     tables: int,
     cursor_left_pointers: Mapping[int, Sequence[int]] | None = None,
+    *,
+    include_alternate: bool = False,
 ) -> bytes:
     asm = Asm(origin)
     _emit_source_route(
         asm, 0x1A, tables, "thai", "fixed", "original", "p1",
         cursor_left_pointers,
+        alternate="alternate" if include_alternate else None,
     )
     asm.label("original")
     asm.emit(0x68, 0xC9, 0xF0, 0x00)
@@ -300,6 +357,14 @@ def build_parser_1(
     _jml(asm, 0x818456)
     asm.label("original_fixed_control")
     _jml(asm, 0x818407)
+    if include_alternate:
+        asm.label("alternate")
+        asm.emit(0x68, 0xC9, CONTROL_BASE, 0x00)
+        asm.branch(0xB0, "original_alternate_control")
+        asm.emit(0x09, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        _jml(asm, 0x818456)
+        asm.label("original_alternate_control")
+        _jml(asm, 0x818407)
     return asm.finish()
 
 
@@ -307,11 +372,14 @@ def build_parser_1_alt(
     origin: int,
     tables: int,
     cursor_left_pointers: Mapping[int, Sequence[int]] | None = None,
+    *,
+    include_alternate: bool = False,
 ) -> bytes:
     asm = Asm(origin)
     _emit_source_route(
         asm, 0x1A, tables, "thai", "fixed", "original", "p1a",
         cursor_left_pointers,
+        alternate="alternate" if include_alternate else None,
     )
     asm.label("original")
     asm.emit(0x68, 0xC9, 0xF6, 0x00)
@@ -333,13 +401,24 @@ def build_parser_1_alt(
     _jml(asm, 0x818456)
     asm.label("original_fixed_control")
     _jml(asm, 0x818407)
+    if include_alternate:
+        asm.label("alternate")
+        asm.emit(0x68, 0xC9, CONTROL_BASE, 0x00)
+        asm.branch(0xB0, "original_alternate_control")
+        asm.emit(0x09, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        _jml(asm, 0x818456)
+        asm.label("original_alternate_control")
+        _jml(asm, 0x818407)
     return asm.finish()
 
 
-def build_parser_2(origin: int, tables: int) -> bytes:
+def build_parser_2(
+    origin: int, tables: int, *, include_alternate: bool = False
+) -> bytes:
     asm = Asm(origin)
     _emit_source_route(
-        asm, 0xCB, tables, "thai", "fixed", "original", "p2"
+        asm, 0xCB, tables, "thai", "fixed", "original", "p2",
+        alternate="alternate" if include_alternate else None,
     )
     asm.label("thai")
     asm.emit(0x68, 0xC9, CONTROL_BASE, 0x00)
@@ -374,6 +453,14 @@ def build_parser_2(origin: int, tables: int) -> bytes:
     _jml(asm, 0x819219)
     asm.label("fixed_control")
     _jml(asm, 0x81923F)
+    if include_alternate:
+        asm.label("alternate")
+        asm.emit(0x68, 0xC9, CONTROL_BASE, 0x00)
+        asm.branch(0xB0, "alternate_control")
+        asm.emit(0x09, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        _jml(asm, 0x819219)
+        asm.label("alternate_control")
+        _jml(asm, 0x81923F)
     return asm.finish()
 
 
@@ -385,8 +472,11 @@ def build_classifier(
     tables: int,
     *,
     fixed_renderer_pc: int | None = None,
+    alternate_renderer_pc: int | None = None,
     special_renderers: Sequence[tuple[int, int, int, int]] = (),
 ) -> bytes:
+    if alternate_renderer_pc is not None and fixed_renderer_pc is None:
+        raise ValueError("alternate renderer requires the fixed renderer route")
     asm = Asm(origin)
     asm.emit(0x85, 0x00)                       # displaced STA $00
     asm.emit(0xC9, INTERNAL_BASE & 0xFF, INTERNAL_BASE >> 8)
@@ -398,6 +488,12 @@ def build_classifier(
         asm.branch(0x90, "tagged_original")
         asm.emit(0xC9, FIXED_LIMIT & 0xFF, FIXED_LIMIT >> 8)
         asm.branch(0x90, "fixed_internal")
+    if alternate_renderer_pc is not None:
+        asm.emit(0xC9, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        asm.branch(0x90, "tagged_original")
+        asm.emit(0xC9, ALTERNATE_LIMIT & 0xFF, ALTERNATE_LIMIT >> 8)
+        asm.branch(0x90, "alternate_internal")
+    if fixed_renderer_pc is not None:
         asm.label("tagged_original")
     asm.emit(0xC9, 0x00, 0x01)
     _jml(asm, continuation)
@@ -425,6 +521,10 @@ def build_classifier(
         asm.label("fixed_internal")
         asm.emit(0x38, 0xE9, FIXED_BASE & 0xFF, FIXED_BASE >> 8)
         _jml(asm, pc_to_cpu(fixed_renderer_pc))
+    if alternate_renderer_pc is not None:
+        asm.label("alternate_internal")
+        asm.emit(0x38, 0xE9, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        _jml(asm, pc_to_cpu(alternate_renderer_pc))
 
     asm.label("raw")
     asm.emit(0xC9, CONTROL_BASE, 0x00)
@@ -440,6 +540,7 @@ def build_classifier(
         "raw_fixed",
         "raw_original",
         "class",
+        alternate="raw_alternate" if alternate_renderer_pc is not None else None,
     )
     asm.label("raw_thai")
     asm.emit(0x68)
@@ -455,6 +556,10 @@ def build_classifier(
         _jml(asm, continuation)
     else:
         _jml(asm, pc_to_cpu(fixed_renderer_pc))
+    if alternate_renderer_pc is not None:
+        asm.label("raw_alternate")
+        asm.emit(0x68)
+        _jml(asm, pc_to_cpu(alternate_renderer_pc))
     return asm.finish()
 
 
@@ -526,9 +631,16 @@ def build_width(
 
 
 def build_en_cluster_width(
-    origin: int, dp: int, continuation: int, *, include_fixed: bool = False
+    origin: int,
+    dp: int,
+    continuation: int,
+    *,
+    include_fixed: bool = False,
+    include_alternate: bool = False,
 ) -> bytes:
-    """Strip either private catalog-page tag before the ordinary width path."""
+    """Strip private catalog-page tags before the ordinary width path."""
+    if include_alternate and not include_fixed:
+        raise ValueError("alternate width route requires the fixed route")
     asm = Asm(origin)
     asm.emit(0x85, dp)
     asm.emit(0xC9, INTERNAL_BASE & 0xFF, INTERNAL_BASE >> 8)
@@ -543,16 +655,27 @@ def build_en_cluster_width(
         asm.emit(0xC9, FIXED_BASE & 0xFF, FIXED_BASE >> 8)
         asm.branch(0x90, "original")
         asm.emit(0xC9, FIXED_LIMIT & 0xFF, FIXED_LIMIT >> 8)
-        asm.branch(0xB0, "original")
+        asm.branch(0xB0, "alternate" if include_alternate else "original")
         asm.emit(0x38, 0xE9, FIXED_BASE & 0xFF, FIXED_BASE >> 8)
         asm.emit(0x85, dp)
+        if include_alternate:
+            asm.branch(0x80, "original")
+            asm.label("alternate")
+            asm.emit(0xC9, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+            asm.branch(0x90, "original")
+            asm.emit(0xC9, ALTERNATE_LIMIT & 0xFF, ALTERNATE_LIMIT >> 8)
+            asm.branch(0xB0, "original")
+            asm.emit(0x38, 0xE9, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+            asm.emit(0x85, dp)
     asm.label("original")
     asm.emit(0xC9, 0x00, 0x01)
     _jml(asm, continuation)
     return asm.finish()
 
 
-def build_halfwidth(origin: int, original_wide: int, done: int) -> bytes:
+def build_halfwidth(
+    origin: int, original_wide: int, done: int, *, include_alternate: bool = False
+) -> bytes:
     asm = Asm(origin)
     asm.emit(0xC0, INTERNAL_BASE & 0xFF, INTERNAL_BASE >> 8)
     asm.branch(0x90, "original")
@@ -562,6 +685,11 @@ def build_halfwidth(origin: int, original_wide: int, done: int) -> bytes:
     asm.branch(0x90, "original")
     asm.emit(0xC0, FIXED_LIMIT & 0xFF, FIXED_LIMIT >> 8)
     asm.branch(0x90, "done")
+    if include_alternate:
+        asm.emit(0xC0, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        asm.branch(0x90, "original")
+        asm.emit(0xC0, ALTERNATE_LIMIT & 0xFF, ALTERNATE_LIMIT >> 8)
+        asm.branch(0x90, "done")
     asm.label("original")
     asm.emit(0xC0, 0x00, 0x01)
     asm.branch(0x90, "done")
@@ -591,6 +719,10 @@ def build_ordinary_dispatch(
     *,
     stock_renderer_cpu: int,
     fixed_renderer_pc: int | None = None,
+    alternate_renderer_pc: int | None = None,
+    private_renderer_pc: int | None = None,
+    private_fixed_renderer_pc: int | None = None,
+    private_banks: Sequence[int] = (),
 ) -> bytes:
     """Dispatch the EN ordinary VWF callsite to Thai or its stock renderer.
 
@@ -598,7 +730,60 @@ def build_ordinary_dispatch(
     VWF directly from $81:84E4.  Check both parser-tagged glyphs and the live
     source pointer here so catalog strings still reach the Thai renderer.
     """
+    if bool(private_renderer_pc is not None) != bool(private_banks):
+        raise ValueError("private ordinary renderer requires its source banks")
+    if private_fixed_renderer_pc is not None and private_renderer_pc is None:
+        raise ValueError("private fixed renderer requires a private primary renderer")
+    if alternate_renderer_pc is not None and fixed_renderer_pc is None:
+        raise ValueError("alternate renderer requires the fixed renderer route")
     asm = Asm(origin)
+
+    def primary_renderer(prefix: str) -> None:
+        """Select the component page for relocated ordinary/story records."""
+        if private_renderer_pc is None:
+            _jml(asm, pc_to_cpu(ordinary_renderer_pc))
+            return
+        asm.emit(0x48)                          # preserve decoded glyph
+        asm.emit(0xA5, 0x1C, 0x29, 0xFF, 0x00) # source bank
+        for index, (start, end) in enumerate(_bank_spans(private_banks)):
+            if start == end:
+                asm.emit(0xC9, start, 0x00)
+                asm.branch(0xF0, f"{prefix}_private")
+                continue
+            asm.emit(0xC9, start, 0x00)
+            asm.branch(0x90, f"{prefix}_next_span_{index}")
+            asm.emit(0xC9, end + 1, 0x00)
+            asm.branch(0x90, f"{prefix}_private")
+            asm.label(f"{prefix}_next_span_{index}")
+        asm.emit(0x68)
+        _jml(asm, pc_to_cpu(ordinary_renderer_pc))
+        asm.label(f"{prefix}_private")
+        asm.emit(0x68)
+        _jml(asm, pc_to_cpu(private_renderer_pc))
+
+    def fixed_renderer(prefix: str) -> None:
+        if fixed_renderer_pc is None:
+            raise ValueError("fixed renderer path was requested without a renderer")
+        if private_fixed_renderer_pc is None:
+            _jml(asm, pc_to_cpu(fixed_renderer_pc))
+            return
+        asm.emit(0x48)
+        asm.emit(0xA5, 0x1C, 0x29, 0xFF, 0x00)
+        for index, (start, end) in enumerate(_bank_spans(private_banks)):
+            if start == end:
+                asm.emit(0xC9, start, 0x00)
+                asm.branch(0xF0, f"{prefix}_private")
+                continue
+            asm.emit(0xC9, start, 0x00)
+            asm.branch(0x90, f"{prefix}_next_span_{index}")
+            asm.emit(0xC9, end + 1, 0x00)
+            asm.branch(0x90, f"{prefix}_private")
+            asm.label(f"{prefix}_next_span_{index}")
+        asm.emit(0x68)
+        _jml(asm, pc_to_cpu(fixed_renderer_pc))
+        asm.label(f"{prefix}_private")
+        asm.emit(0x68)
+        _jml(asm, pc_to_cpu(private_fixed_renderer_pc))
     asm.emit(0xC9, INTERNAL_BASE & 0xFF, INTERNAL_BASE >> 8)
     asm.branch(0x90, "raw")
     asm.emit(0xC9, INTERNAL_LIMIT & 0xFF, INTERNAL_LIMIT >> 8)
@@ -608,15 +793,25 @@ def build_ordinary_dispatch(
         asm.branch(0x90, "tagged_stock")
         asm.emit(0xC9, FIXED_LIMIT & 0xFF, FIXED_LIMIT >> 8)
         asm.branch(0x90, "fixed_internal")
+    if alternate_renderer_pc is not None:
+        asm.emit(0xC9, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        asm.branch(0x90, "tagged_stock")
+        asm.emit(0xC9, ALTERNATE_LIMIT & 0xFF, ALTERNATE_LIMIT >> 8)
+        asm.branch(0x90, "alternate_internal")
+    if fixed_renderer_pc is not None:
         asm.label("tagged_stock")
     asm.brl("stock")
     asm.label("internal")
     asm.emit(0x38, 0xE9, INTERNAL_BASE & 0xFF, INTERNAL_BASE >> 8)
-    _jml(asm, pc_to_cpu(ordinary_renderer_pc))
+    primary_renderer("internal")
     if fixed_renderer_pc is not None:
         asm.label("fixed_internal")
         asm.emit(0x38, 0xE9, FIXED_BASE & 0xFF, FIXED_BASE >> 8)
-        _jml(asm, pc_to_cpu(fixed_renderer_pc))
+        fixed_renderer("fixed_internal")
+    if alternate_renderer_pc is not None:
+        asm.label("alternate_internal")
+        asm.emit(0x38, 0xE9, ALTERNATE_BASE & 0xFF, ALTERNATE_BASE >> 8)
+        _jml(asm, pc_to_cpu(alternate_renderer_pc))
 
     asm.label("raw")
     asm.emit(0xC9, CONTROL_BASE, 0x00)
@@ -626,14 +821,19 @@ def build_ordinary_dispatch(
     _emit_source_route(
         asm, 0x1A, tables, "raw_thai", "raw_fixed", "raw_stock",
         "ordinary_dispatch", use_fixed=fixed_renderer_pc is not None,
+        alternate="raw_alternate" if alternate_renderer_pc is not None else None,
     )
     asm.label("raw_thai")
     asm.emit(0x68)
-    _jml(asm, pc_to_cpu(ordinary_renderer_pc))
+    primary_renderer("raw_thai")
     if fixed_renderer_pc is not None:
         asm.label("raw_fixed")
         asm.emit(0x68)
-        _jml(asm, pc_to_cpu(fixed_renderer_pc))
+        fixed_renderer("raw_fixed")
+    if alternate_renderer_pc is not None:
+        asm.label("raw_alternate")
+        asm.emit(0x68)
+        _jml(asm, pc_to_cpu(alternate_renderer_pc))
     asm.label("raw_stock")
     asm.emit(0x68)
 

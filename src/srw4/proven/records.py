@@ -16,10 +16,14 @@ from __future__ import annotations
 from hashlib import sha256
 import json
 from pathlib import Path
+from collections.abc import Callable
 
 from .catalogs import Write
 from .text.encoding import advance_table, encode
 from .text.stock import StockCatalog, encode_stock, mixed_segments
+
+
+LabelEncoder = Callable[[str], tuple[list[tuple[bytes, bool]], int]]
 
 
 def _number(value: str) -> int:
@@ -65,6 +69,7 @@ def rebuild_record(
     stock: StockCatalog,
     default_width: int,
     owner: str,
+    label_encoder: LabelEncoder | None = None,
 ) -> tuple[bytes, list[tuple[int, int]], list[dict[str, object]]]:
     """Replace the declared labels inside one record, keeping every other byte.
 
@@ -85,7 +90,11 @@ def rebuild_record(
         if len(expected) != length or source[offset:offset + length] != expected:
             raise ValueError(f"{owner}: label {label['source']!r} is not at offset {offset}")
         replacement = str(label["text"])
-        runs, width = _encode_label(replacement, codes, advances, stock)
+        runs, width = (
+            label_encoder(replacement)
+            if label_encoder is not None
+            else _encode_label(replacement, codes, advances, stock)
+        )
         limit = int(label.get("max_width_px", default_width))
         if width > limit:
             raise ValueError(f"{owner}: {replacement!r} is {width}px; the field holds {limit}px")
@@ -134,6 +143,8 @@ def build_record_config_patches(
     text: dict,
     owner: str,
     pools: list[dict],
+    *,
+    label_encoder: LabelEncoder | None = None,
 ) -> tuple[list[Write], dict[str, object]]:
     """Rebuild records declared by an already-loaded translation document."""
     codes = json.loads((root / "font/encoding.json").read_text(encoding="utf-8"))
@@ -176,7 +187,7 @@ def build_record_config_patches(
         # have to be routed to the VWF renderer at their new address.
         payload, routes, labels = rebuild_record(
             source, record["labels"], codes, advances, stock, default_width,
-            f"{owner}: record {slot}",
+            f"{owner}: record {slot}", label_encoder,
         )
 
         built.append(
