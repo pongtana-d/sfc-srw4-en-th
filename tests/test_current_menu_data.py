@@ -178,7 +178,7 @@ def test_shield_tail_is_one_renderer_call_instead_of_a_separate_tone_byte():
 
 
 def test_en_part_effect_stage_rebuilds_active_fe_catalog_without_part_names():
-    clean = (ROOT / "rom/Dai-4-ji Super Robot Taisen (English).sfc").read_bytes()
+    clean = (ROOT / "rom/Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
     part_stock, en_direct_runs = build_part_stock_catalog()
     encoder = ClusterCatalogEncoder(
         clean,

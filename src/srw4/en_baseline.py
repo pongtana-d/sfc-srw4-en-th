@@ -1,4 +1,4 @@
-"""Locked P0 identities and reproducibility checks for the English base ROM."""
+"""Locked identity and integrity checks for the English-combo base ROM."""
 
 from __future__ import annotations
 
@@ -13,14 +13,8 @@ from .rom import (
     compute_checksum,
 )
 
-JP_SIZE = 3_145_728
-JP_SHA256 = "efd72094b2727c4903924cf9296b3946b95a354f639b600e1d76d9ec6b9ca18b"
 EN_SIZE = 4_194_304
-EN_SHA256 = "7cac9fc9c092c82cb753ebc8c8af6de25c2957ee4fbdee0f10676f1d0a661f2c"
-IPS_SHA256 = "2f1e764589633a52ae914cb8ef98ba71d43fa7abe1d90f45a41d3513472f291c"
-XDELTA_SHA256 = "5e00c2d541943e580325c5a63912b766697e6bdb635d6c022136d4d55821db86"
-IPS_SIZE = 922_478
-XDELTA_SIZE = 415_683
+EN_SHA256 = "a66dd3c3349ab7f7718f033537c134354b881a6d72ab618df696403a25829408"
 
 EN_TITLE = "SUPER ROBOT WARS 4"
 EN_MAP_MODE = 0x31
@@ -128,44 +122,25 @@ def _header_report(image: bytes) -> dict[str, object]:
     }
 
 
-def verify_baseline(
-    jp: bytes,
-    english: bytes,
-    ips: bytes,
-    xdelta: bytes,
-    xdelta_output: bytes,
-) -> dict[str, object]:
-    """Validate every P0 input and return a deterministic JSON-ready report."""
-    _require_identity("JP Rev 1 ROM", jp, JP_SIZE, JP_SHA256)
-    _require_identity("English ROM", english, EN_SIZE, EN_SHA256)
-    _require_identity("English IPS", ips, IPS_SIZE, IPS_SHA256)
-    _require_identity("English xdelta", xdelta, XDELTA_SIZE, XDELTA_SHA256)
-    _require_identity("xdelta output", xdelta_output, EN_SIZE, EN_SHA256)
+def verify_baseline(english: bytes) -> dict[str, object]:
+    """Validate the one canonical English-combo build input."""
+    _require_identity("English-combo ROM", english, EN_SIZE, EN_SHA256)
 
     header = _header_report(english)
     if header["title"] != EN_TITLE:
         raise BaselineError(
-            f"English title mismatch: expected {EN_TITLE!r}, got {header['title']!r}"
+            f"English-combo title mismatch: expected {EN_TITLE!r}, got {header['title']!r}"
         )
     if english[OFF_MAP_MODE] != EN_MAP_MODE:
         raise BaselineError(
-            f"English map mode must be 0x{EN_MAP_MODE:02X}, "
+            f"English-combo map mode must be 0x{EN_MAP_MODE:02X}, "
             f"got 0x{english[OFF_MAP_MODE]:02X}"
         )
     if not header["checksum_valid"] or not header["complement_valid"]:
-        raise BaselineError("English checksum/complement is invalid")
-
-    ips_result = apply_ips(jp, ips)
-    if ips_result.image != english:
-        raise BaselineError(
-            "IPS output is not byte-identical to the locked English ROM: "
-            f"got {_sha256(ips_result.image)}"
-        )
-    if xdelta_output != english:
-        raise BaselineError("xdelta output is not byte-identical to English ROM")
+        raise BaselineError("English-combo checksum/complement is invalid")
 
     return {
-        "schema": "srw4.en-th-dialogue-baseline.v1",
+        "schema": "srw4.en-th-dialogue-baseline.v2",
         "scope": {
             "story_blocks": 47,
             "includes": [
@@ -178,26 +153,9 @@ def verify_baseline(
             "runtime_catalog_names": "English",
         },
         "inputs": {
-            "jp_rev1": {"bytes": len(jp), "sha256": _sha256(jp)},
-            "english": {"bytes": len(english), "sha256": _sha256(english)},
-            "ips": {"bytes": len(ips), "sha256": _sha256(ips)},
-            "xdelta": {"bytes": len(xdelta), "sha256": _sha256(xdelta)},
+            "english_combo": {"bytes": len(english), "sha256": _sha256(english)},
         },
-        "english_header": header,
-        "reproduction": {
-            "ips": {
-                "records": ips_result.records,
-                "rle_records": ips_result.rle_records,
-                "output_bytes": len(ips_result.image),
-                "output_sha256": _sha256(ips_result.image),
-                "byte_identical": True,
-            },
-            "xdelta": {
-                "output_bytes": len(xdelta_output),
-                "output_sha256": _sha256(xdelta_output),
-                "byte_identical": True,
-            },
-        },
+        "english_combo_header": header,
         "source_roms_modified": False,
         "p0_pass": True,
     }

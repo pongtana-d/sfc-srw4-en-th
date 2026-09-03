@@ -1,4 +1,4 @@
-"""Thai pilot and unit catalogs for the pinned English ROM."""
+"""Thai pilot and unit catalogs for the pinned English-combo ROM."""
 
 from __future__ import annotations
 
@@ -1342,8 +1342,13 @@ def install(
     profile_encoder: ProfileCatalogEncoder | None = None,
     profile_banks: tuple[int, ...] = (),
     cluster_encoder: ClusterCatalogEncoder | None = None,
+    enable_battle_stock_fb: bool = False,
 ) -> CatalogReport:
-    """Install translated UI catalogs while preserving all active EN names."""
+    """Install translated UI catalogs while preserving all active EN names.
+
+    Battle text keeps its stock ``FB`` handler unless a caller explicitly emits
+    private battle ``FB xx FE`` runs and opts into the matching adapter.
+    """
     if cluster_encoder is None:
         stock, en_direct_runs = build_part_stock_catalog()
         cluster_encoder = _ClusterCatalogEncoder(
@@ -1579,13 +1584,31 @@ def install(
         if image[pc:pc + len(expected)] != expected:
             raise ValueError(f"{hook_id} is already occupied in the EN build")
         image[pc:pc + len(expected)] = hook_jml(entries[entry_name])
-    for pc, expected, entry_name, owner in (
-        (ORDINARY_HOOK_SITE, ORDINARY_HOOK_EXPECTED, "stock_fb_ordinary", "ordinary_stock_fb"),
-        (BATTLE_HOOK_SITE, BATTLE_HOOK_EXPECTED, "stock_fb_battle", "battle_stock_fb"),
+    if (
+        clean[ORDINARY_HOOK_SITE:ORDINARY_HOOK_SITE + len(ORDINARY_HOOK_EXPECTED)]
+        != ORDINARY_HOOK_EXPECTED
     ):
-        if clean[pc:pc + len(expected)] != expected:
-            raise ValueError(f"{owner} clean EN contract changed")
-        _patch_clean(image, clean, pc, hook_jump(entries[entry_name]), owner)
+        raise ValueError("ordinary_stock_fb clean EN contract changed")
+    _patch_clean(
+        image,
+        clean,
+        ORDINARY_HOOK_SITE,
+        hook_jump(entries["stock_fb_ordinary"]),
+        "ordinary_stock_fb",
+    )
+    if enable_battle_stock_fb:
+        if (
+            clean[BATTLE_HOOK_SITE:BATTLE_HOOK_SITE + len(BATTLE_HOOK_EXPECTED)]
+            != BATTLE_HOOK_EXPECTED
+        ):
+            raise ValueError("battle_stock_fb clean EN contract changed")
+        _patch_clean(
+            image,
+            clean,
+            BATTLE_HOOK_SITE,
+            hook_jump(entries["stock_fb_battle"]),
+            "battle_stock_fb",
+        )
     if clean[
         EN_ORDINARY_DRAW_HOOK_PC:EN_ORDINARY_DRAW_HOOK_PC + 4
     ] != EN_ORDINARY_DRAW_HOOK_EXPECTED:

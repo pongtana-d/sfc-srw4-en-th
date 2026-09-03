@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build Thai story/map/event and battle dialogue on the pinned English ROM."""
+"""Build Thai story/map/event and battle dialogue on the pinned English-combo ROM."""
 from __future__ import annotations
 
 import argparse
@@ -27,7 +27,7 @@ from srw4.proven.option_menu import build_en_part_effect_data
 from srw4.rom import Rom, sha256
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 SOURCE = ROOT / "data" / "translations" / "script.source.json"
 TRANSLATIONS = ROOT / "data" / "translations" / "script.th.json"
 # The editable atlas and encoding are the sole source of truth.  `proven/`
@@ -108,7 +108,7 @@ def main() -> int:
     args = parser.parse_args()
     base = args.input.read_bytes()
     if sha256(base) != EN_SHA256:
-        raise SystemExit("input is not the pinned English base ROM")
+        raise SystemExit("input is not the pinned English-combo base ROM")
 
     document = json.loads(SOURCE.read_text(encoding="utf-8"))
     translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]

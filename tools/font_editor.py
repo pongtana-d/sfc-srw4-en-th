@@ -31,7 +31,7 @@ from srw4.atlas import CELL_ROWS, CELL_WIDTH, MAX_ADVANCE, MIN_ADVANCE, AtlasBui
 from srw4.text import segment, token_for  # noqa: E402
 from srw4.tokens import EncodingError, TokenMap  # noqa: E402
 
-EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 FONT_DIR = ROOT / "data" / "font"
 THAI = FONT_DIR / "thai.json"
 OVERRIDES = FONT_DIR / "renewal-overrides.json"

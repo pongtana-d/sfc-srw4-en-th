@@ -2,7 +2,7 @@
 
 สถานะ: แผนก่อนเริ่ม implementation  
 วันที่: 2026-08-28  
-เป้าหมายฐาน: `rom/Dai-4-ji Super Robot Taisen (English).sfc`
+เป้าหมายฐาน: `rom/Dai-4-ji Super Robot Taisen (English combo).sfc`
 
 ## 1. ข้อสรุปความเป็นไปได้
 
@@ -14,9 +14,9 @@ patch ย้าย story blocks จากช่วงเดิม `$E8-$ED` ไ�
 
 - JP Rev 1: 3,145,728 bytes, SHA-256
   `efd72094b2727c4903924cf9296b3946b95a354f639b600e1d76d9ec6b9ca18b`
-- English: 4,194,304 bytes, SHA-256
-  `7cac9fc9c092c82cb753ebc8c8af6de25c2957ee4fbdee0f10676f1d0a661f2c`
-- `srw4e.xdelta` สร้าง English ROM hash เดียวกันจาก JP Rev 1 จึงยืนยันว่าเป็นเกมฐานเดียวกัน
+- English combo: 4,194,304 bytes, SHA-256
+  `a66dd3c3349ab7f7718f033537c134354b881a6d72ab618df696403a25829408`
+- English combo คือ ROM ฐาน canonical สำหรับการ build และ release patch ปัจจุบัน
 - story master table ยังมี 52 slots โดย 47 slots เป็น text blocks
 - corpus ปัจจุบันมี pointer slots 10,439 ช่อง, message occurrences 9,400 รายการ
   และคำแปลไทย 9,382 unique records

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the small Thai dialogue vertical slice on the English ROM."""
+"""Build the small Thai dialogue vertical slice on the English-combo ROM."""
 from __future__ import annotations
 
 import argparse
@@ -15,7 +15,7 @@ from srw4.en_vertical_slice import apply  # noqa: E402
 from srw4.rom import Rom, sha256  # noqa: E402
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 
 
 def main() -> int:
@@ -30,7 +30,7 @@ def main() -> int:
     args.report = args.report.resolve()
     base = args.input.read_bytes()
     if sha256(base) != EN_SHA256:
-        raise SystemExit("input is not the pinned English base ROM")
+        raise SystemExit("input is not the pinned English-combo base ROM")
     built, report = apply(base)
     rom = Rom(bytearray(built))
     checksum = rom.fix_checksum()

@@ -1,4 +1,4 @@
-"""Install the existing Thai opening crawl on the pinned English ROM."""
+"""Install the existing Thai opening crawl on the pinned English-combo ROM."""
 
 from __future__ import annotations
 
@@ -74,6 +74,6 @@ def install(image: bytearray, clean: bytes, root: Path) -> dict[str, object]:
     return {
         **result.report,
         "source": "data/translations/intro*.th.json",
-        "base": "pinned English ROM",
+        "base": "pinned English-combo ROM",
         "region": f"0x{EN_INTRO_REGION_START:06X}-0x{EN_INTRO_REGION_END:06X}",
     }

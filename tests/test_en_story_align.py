@@ -13,7 +13,7 @@ from srw4.en_story_extract import extract_story  # noqa: E402
 
 def test_structural_alignment_covers_every_source_message_without_guessing():
     jp_rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc").read_bytes()
-    en_rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc").read_bytes()
+    en_rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
     source = json.loads((ROOT / "data" / "translations" / "script.source.json").read_text())
     en_source = extract_story(en_rom, source["summary"]["blocks"])
     document = align_story(jp_rom, en_rom, source, en_source)

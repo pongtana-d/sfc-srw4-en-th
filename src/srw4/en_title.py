@@ -1,4 +1,4 @@
-"""Thai title logo for the pinned English-ROM title layout."""
+"""Thai title logo for the pinned English-combo title layout."""
 
 from __future__ import annotations
 
@@ -14,7 +14,7 @@ EXPECTED_PALETTE = (
     "017F", "00FB", "0017", "0047", "4C00", "3C00", "2C00", "1C00",
 )
 
-# Captured from the pinned English ROM's live title OAM.  These are the
+# Captured from the pinned English-combo ROM's live title OAM.  These are the
 # 16x16 sprites in name table 0; Start/Load/Continue/Option use another name
 # table and are intentionally outside this asset.
 EN_LOGO_X = (*range(16, 193, 16), 200, 216, 232)

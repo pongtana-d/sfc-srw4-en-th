@@ -11,7 +11,7 @@ from srw4.en_story_extract import extract_story  # noqa: E402
 
 
 def test_english_story_topology_matches_the_locked_corpus_shape():
-    rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc").read_bytes()
+    rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
     summary = json.loads(
         (ROOT / "data" / "translations" / "script.source.json").read_text()
     )["summary"]["blocks"]

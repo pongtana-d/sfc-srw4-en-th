@@ -20,7 +20,7 @@ def test_intro_pages_compile_to_fixed_overlay_resources():
 
 
 def test_existing_intro_translation_installs_on_english_rom():
-    english = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc").read_bytes()
+    english = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
     image = bytearray(english)
 
     report = install(image, english, ROOT)

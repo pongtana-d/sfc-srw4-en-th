@@ -57,7 +57,7 @@ from srw4.en_dialogue_font import (  # noqa: E402
 from srw4.proven.text.upper_stacks import build_contextual_upper_stack_assets  # noqa: E402
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 
 
 def test_live_dialogue_latin_glyphs_are_installed_on_the_thai_page():

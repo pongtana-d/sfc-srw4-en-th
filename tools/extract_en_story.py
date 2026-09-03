@@ -15,7 +15,7 @@ from srw4.en_baseline import EN_SHA256  # noqa: E402
 from srw4.en_story_extract import extract_story  # noqa: E402
 from srw4.rom import RomError, sha256  # noqa: E402
 
-ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 SUMMARY = ROOT / "data" / "translations" / "script.source.json"
 OUT = ROOT / "data" / "reference" / "en-story.source.json"
 
@@ -29,7 +29,7 @@ def main() -> int:
     try:
         rom = args.rom.read_bytes()
         if sha256(rom) != EN_SHA256:
-            raise RomError("English ROM hash does not match the P0-locked base")
+            raise RomError("English-combo ROM hash does not match the locked base")
         summary = json.loads(args.summary.read_text(encoding="utf-8"))["summary"]["blocks"]
         document = extract_story(rom, summary)
     except (KeyError, OSError, ValueError, RomError) as exc:

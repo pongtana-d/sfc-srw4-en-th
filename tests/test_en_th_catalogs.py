@@ -1,4 +1,4 @@
-"""Contracts for mixed Thai catalogs on the pinned English ROM."""
+"""Contracts for mixed Thai catalogs on the pinned English-combo ROM."""
 
 import sys
 import json
@@ -19,6 +19,8 @@ from srw4.en_dialogue_font import (  # noqa: E402
 )
 from srw4.en_th_catalogs import (  # noqa: E402
     ADAPTER_BASE_PC,
+    BATTLE_HOOK_EXPECTED,
+    BATTLE_HOOK_SITE,
     EN_BATTLE_PILOT_COUNT,
     EN_BATTLE_PILOT_POOL_END_PC,
     EN_BATTLE_PILOT_POOL_PC,
@@ -89,7 +91,7 @@ from srw4.proven.catalog_router import (  # noqa: E402
 from srw4.proven.text.stock import StockCatalog  # noqa: E402
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 
 
 def test_route_table_distinguishes_three_pages_on_one_source_page():
@@ -184,6 +186,25 @@ def test_en_catalogs_install_all_unit_and_pilot_id_tables():
     # The current EN battle renderer hooks stay owned by en_th_renderer.
     assert image[0x019219] == 0x5C
     assert image[0x019238] == 0x22
+    # No private battle FB runs are emitted by the default EN build, so retain
+    # the stock handler for normal battle continuation records.
+    assert (
+        image[BATTLE_HOOK_SITE:BATTLE_HOOK_SITE + len(BATTLE_HOOK_EXPECTED)]
+        == BATTLE_HOOK_EXPECTED
+    )
+
+
+def test_battle_stock_fb_adapter_requires_explicit_opt_in():
+    clean = BASE.read_bytes()
+    image = bytearray(clean)
+    install_renderer(image)
+    install_router(image, font_hooks=True, alt_hook=False, width_hooks=True)
+    install_catalogs(image, clean, enable_battle_stock_fb=True)
+
+    assert (
+        image[BATTLE_HOOK_SITE:BATTLE_HOOK_SITE + len(BATTLE_HOOK_EXPECTED)]
+        != BATTLE_HOOK_EXPECTED
+    )
 
 
 def test_en_battle_info_preserves_every_label_in_original_english():

@@ -17,7 +17,7 @@ from srw4.en_story_extract import extract_story  # noqa: E402
 from srw4.rom import CLEAN_SHA256, RomError, sha256  # noqa: E402
 
 JP_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
-EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 JP_SOURCE = ROOT / "data" / "translations" / "script.source.json"
 OUT = ROOT / "data" / "mappings" / "jp-en-story-map.json"
 REPORT = ROOT / "build" / "reports" / "jp-en-story-alignment.md"
@@ -84,7 +84,7 @@ def main() -> int:
         if sha256(jp_rom) != CLEAN_SHA256:
             raise RomError("JP ROM hash does not match the locked Rev 1 base")
         if sha256(en_rom) != EN_SHA256:
-            raise RomError("English ROM hash does not match the P0-locked base")
+            raise RomError("English-combo ROM hash does not match the locked base")
         jp_source = json.loads(args.source.read_text(encoding="utf-8"))
         en_source = extract_story(en_rom, jp_source["summary"]["blocks"])
         document = align_story(jp_rom, en_rom, jp_source, en_source)
