@@ -27,7 +27,7 @@ from srw4.proven.option_menu import build_en_part_effect_data
 from srw4.rom import Rom, sha256
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 SOURCE = ROOT / "data" / "translations" / "script.source.json"
 TRANSLATIONS = ROOT / "data" / "translations" / "script.th.json"
 # The editable atlas and encoding are the sole source of truth.  `proven/`

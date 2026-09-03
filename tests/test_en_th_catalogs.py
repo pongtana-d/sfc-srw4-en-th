@@ -89,7 +89,7 @@ from srw4.proven.catalog_router import (  # noqa: E402
 from srw4.proven.text.stock import StockCatalog  # noqa: E402
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 
 
 def test_route_table_distinguishes_three_pages_on_one_source_page():

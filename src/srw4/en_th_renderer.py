@@ -21,7 +21,10 @@ from .proven.renderer65816 import (
     shift_tables,
 )
 from .proven.text.font import build_page
-from .proven.text.upper_stacks import build_upper_stack_assets
+from .proven.text.upper_stacks import (
+    build_contextual_upper_stack_assets,
+    build_upper_stack_assets,
+)
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -52,6 +55,15 @@ UPPER_OVERLAY_PC = 0x3F5A00
 UPPER_DX_PC = 0x3F5C00
 UPPER_DY_PC = 0x3F5D00
 UPPER_SIZE_PC = 0x3F5E00
+# Full-cell upper stacks used by the glyph editor.  `$FF:9300-$FF:9FFF` is
+# erased after the router (`$FF:9000-$FF:928A`) and before renderer code at
+# `$FF:A000`; all placements below are fixed and asserted pristine on install.
+CONTEXTUAL_UPPER_OVERLAY_PC = 0x3F9300
+CONTEXTUAL_UPPER_CLEAR_PC = 0x3F9700
+CONTEXTUAL_UPPER_SIZE_PC = 0x3F9B00
+CONTEXTUAL_UPPER_DIRECT_PC = 0x3F9B40
+CONTEXTUAL_UPPER_PAIRS_PC = 0x3F9C40
+CONTEXTUAL_UPPER_FAMILY_PC = 0x3F9C80
 SUPPLEMENT_PAGE_PC = 0x3F6000
 SUPPLEMENT_ADVANCE_PC = 0x3F7000
 THAI_STOCK_WIDTH_PC = 0x3F7100
@@ -304,6 +316,7 @@ def _renderer_assets(
     assets = build_page(model, layout)
     assets = overlay_primary_dialogue_glyphs(assets, layout, FONT, en_rom)
     assets.update(build_upper_stack_assets(model, layout))
+    assets.update(build_contextual_upper_stack_assets(model, layout))
     supplement_page, supplement_advance = build_page_two(FONT, en_rom)
     stock_page = en_rom[EN_FONT_PAGE_PC:EN_FONT_PAGE_PC + 0x1000]
     stock_widths = en_rom[EN_WIDTH_TABLE_PC:EN_WIDTH_TABLE_PC + 0x100]
@@ -330,6 +343,18 @@ def _renderer_assets(
         (UPPER_DX_PC, assets["thai-upper-stack-dx.bin"], "Thai upper dx table"),
         (UPPER_DY_PC, assets["thai-upper-stack-dy.bin"], "Thai upper dy table"),
         (UPPER_SIZE_PC, assets["thai-upper-stack-size.bin"], "Thai upper size table"),
+        (CONTEXTUAL_UPPER_OVERLAY_PC, assets["thai-contextual-upper-overlay.bin"],
+         "Thai contextual upper overlays"),
+        (CONTEXTUAL_UPPER_CLEAR_PC, assets["thai-contextual-upper-clear.bin"],
+         "Thai contextual upper clear masks"),
+        (CONTEXTUAL_UPPER_SIZE_PC, assets["thai-contextual-upper-size.bin"],
+         "Thai contextual upper sizes"),
+        (CONTEXTUAL_UPPER_DIRECT_PC, assets["thai-contextual-upper-direct.bin"],
+         "Thai contextual upper direct map"),
+        (CONTEXTUAL_UPPER_PAIRS_PC, assets["thai-contextual-upper-pairs.bin"],
+         "Thai contextual upper pair map"),
+        (CONTEXTUAL_UPPER_FAMILY_PC, assets["thai-contextual-upper-family.bin"],
+         "Thai contextual upper family map"),
         (SUPPLEMENT_PAGE_PC, supplement_page, "Thai dialogue supplement page"),
         (SUPPLEMENT_ADVANCE_PC, supplement_advance, "Thai dialogue supplement advances"),
         (THAI_STOCK_WIDTH_PC, _stock_widths(thai_advance), "Thai EN width table"),
@@ -360,6 +385,14 @@ def _renderer_assets(
         upper_stacks={
             "overlay": UPPER_OVERLAY_PC, "dx": UPPER_DX_PC,
             "dy": UPPER_DY_PC, "size": UPPER_SIZE_PC,
+        },
+        contextual_upper={
+            "overlay": CONTEXTUAL_UPPER_OVERLAY_PC,
+            "clear": CONTEXTUAL_UPPER_CLEAR_PC,
+            "size": CONTEXTUAL_UPPER_SIZE_PC,
+            "direct": CONTEXTUAL_UPPER_DIRECT_PC,
+            "pairs": CONTEXTUAL_UPPER_PAIRS_PC,
+            "family": CONTEXTUAL_UPPER_FAMILY_PC,
         },
         **common,
     )
@@ -400,6 +433,14 @@ def build_ordinary_renderer() -> bytes:
         upper_stacks={
             "overlay": UPPER_OVERLAY_PC, "dx": UPPER_DX_PC,
             "dy": UPPER_DY_PC, "size": UPPER_SIZE_PC,
+        },
+        contextual_upper={
+            "overlay": CONTEXTUAL_UPPER_OVERLAY_PC,
+            "clear": CONTEXTUAL_UPPER_CLEAR_PC,
+            "size": CONTEXTUAL_UPPER_SIZE_PC,
+            "direct": CONTEXTUAL_UPPER_DIRECT_PC,
+            "pairs": CONTEXTUAL_UPPER_PAIRS_PC,
+            "family": CONTEXTUAL_UPPER_FAMILY_PC,
         },
     )
 

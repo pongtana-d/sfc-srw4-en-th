@@ -17,7 +17,7 @@ from srw4.en_story_extract import extract_story  # noqa: E402
 from srw4.rom import CLEAN_SHA256, RomError, sha256  # noqa: E402
 
 JP_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
-EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 JP_SOURCE = ROOT / "data" / "translations" / "script.source.json"
 OUT = ROOT / "data" / "mappings" / "jp-en-story-map.json"
 REPORT = ROOT / "build" / "reports" / "jp-en-story-alignment.md"

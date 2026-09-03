@@ -15,7 +15,7 @@ from srw4.en_baseline import EN_SHA256  # noqa: E402
 from srw4.en_story_controls import story_control_contract  # noqa: E402
 from srw4.rom import RomError, sha256  # noqa: E402
 
-ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 OUT = ROOT / "data" / "reference" / "en-story-control-contract.json"
 
 

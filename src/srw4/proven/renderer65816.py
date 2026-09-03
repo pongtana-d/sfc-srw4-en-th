@@ -79,6 +79,7 @@ class RendererMemory:
     has_vowel: int
     upper_x: int
     upper_top: int
+    base_glyph: int
     rows: int
     tile: int
     glyph: int
@@ -104,6 +105,7 @@ def renderer_memory(state_base: int) -> RendererMemory:
         "expect_col": 0x0C, "run_cell": 0x0E, "base_left": 0x10,
         "base_ink": 0x12, "base_cell": 0x14, "has_vowel": 0x16,
         "upper_x": 0x18, "upper_top": 0x1A,
+        "base_glyph": 0x1C,
     }
     scratch = {
         "rows": 0x00, "tile": 0x02, "glyph": 0x04, "index": 0x06,
@@ -228,6 +230,7 @@ def validate_renderer_scratch() -> None:
             memory.cell, memory.col, memory.expect_col, memory.run_cell,
             memory.base_left, memory.base_ink, memory.base_cell, memory.has_vowel,
             memory.upper_x, memory.upper_top,
+            memory.base_glyph,
         )
         if any(not state_base <= address < state_base + STATE_BLOCK_SIZE
                for address in persistent):
@@ -442,6 +445,7 @@ def build_renderer(origin: int, source_base: int, advance: int,
                    combining: dict[str, int] | None = None,
                    shorthand: dict[str, int] | None = None,
                    upper_stacks: dict[str, int] | None = None,
+                   contextual_upper: dict[str, int] | None = None,
                    preview_ranges: tuple[tuple[int, int], ...] = (),
                    *, state_base: int = ORDINARY_STATE_BASE,
                    battle: bool = False,
@@ -527,6 +531,8 @@ def build_renderer(origin: int, source_base: int, advance: int,
             )
     if (upper_stacks is None) != (combining is None):
         raise ValueError("combining-mark and upper-stack tables must be supplied together")
+    if contextual_upper is not None and combining is None:
+        raise ValueError("contextual upper stacks require combining-mark tables")
     memory = renderer_memory(state_base)
     shift_right, shift_left = shift_tables_base
     if shift_right & 0x7FF or shift_left & 0x7FF:
@@ -736,6 +742,8 @@ def build_renderer(origin: int, source_base: int, advance: int,
         asm.var_to_x_from_m8(memory.glyph_id)
         asm.long_index(0xBF, pc_to_cpu(combining["base_ink"]))
         asm.var(0x85, memory.base_ink)
+        asm.var(0xA5, memory.glyph_id)
+        asm.var(0x85, memory.base_glyph)
         asm.emit(0xA9, 0x00)                   # no STZ long; A is dead here
         asm.var(0x85, memory.has_vowel)
         asm.emit(0xC2, 0x20)                   # REP #$20
@@ -1014,6 +1022,7 @@ def build_renderer(origin: int, source_base: int, advance: int,
             source_base,
             combining,
             upper_stacks,
+            contextual_upper,
             battle,
             exit_op,
             external_tilemap,
@@ -1065,6 +1074,7 @@ def build_renderer(origin: int, source_base: int, advance: int,
 def emit_mark_path(
     asm: "Asm", memory: RendererMemory, source_base: int,
     tables: dict[str, int], upper_stacks: dict[str, int],
+    contextual_upper: dict[str, int] | None,
     battle: bool, exit_op: int = 0x6B, external_tilemap: bool = False,
     shift_right: int = SHR_TABLE, shift_left: int = SHL_TABLE,
 ) -> None:
@@ -1125,7 +1135,60 @@ def emit_mark_path(
     asm.var(0x85, memory.stack_index)
     asm.label("stack_classified")
 
+    # The editor stores final upper stacks as full 8x16 overlays.  Prefer that
+    # exact artwork whenever this base/mark sequence has an entry; retaining
+    # ``stack_index`` separately leaves the historical generic path available
+    # for an unsupported sequence.
+    if contextual_upper:
+        asm.emit(0xA9, 0xFF)
+        asm.var(0x85, memory.tail_ink)
+        asm.var(0xA5, memory.stack_index)
+        asm.emit(0xC9, 0xFF)
+        asm.branch(0xF0, "contextual_direct")
+        asm.var_to_x_from_m8(memory.stack_index)
+        asm.emit(
+            0xBD,
+            contextual_upper["pairs"] & 0xFF,
+            (contextual_upper["pairs"] >> 8) & 0xFF,
+        )
+        asm.emit(0xC9, 0xFF)
+        asm.branch(0xD0, "contextual_stack_found")
+        asm.label("contextual_direct")
+        asm.var_to_x_from_m8(memory.glyph_id)
+        asm.emit(
+            0xBD,
+            contextual_upper["direct"] & 0xFF,
+            (contextual_upper["direct"] >> 8) & 0xFF,
+        )
+        asm.emit(0xC9, 0xFF)
+        asm.branch(0xF0, "contextual_stack_done")
+        asm.label("contextual_stack_found")
+        asm.var(0x85, memory.tail_ink)
+        asm.var_to_x_from_m8(memory.base_glyph)
+        asm.emit(
+            0xBD,
+            contextual_upper["family"] & 0xFF,
+            (contextual_upper["family"] >> 8) & 0xFF,
+        )
+        asm.branch(0xF0, "contextual_stack_done")
+        asm.var(0xA5, memory.tail_ink)
+        asm.emit(0x18, 0x69, 0x20)
+        asm.var(0x85, memory.tail_ink)
+        asm.label("contextual_stack_done")
+
     # Width and height live in private scratch, never battle geometry DP.
+    if contextual_upper:
+        asm.var(0xA5, memory.tail_ink)
+        asm.emit(0xC9, 0xFF)
+        asm.branch(0xF0, "mark_noncontextual_size")
+        asm.var_to_x_from_m8(memory.tail_ink)
+        asm.emit(
+            0xBD,
+            contextual_upper["size"] & 0xFF,
+            (contextual_upper["size"] >> 8) & 0xFF,
+        )
+        asm.brl("mark_size_loaded")
+        asm.label("mark_noncontextual_size")
     asm.var(0xA5, memory.stack_index)
     asm.emit(0xC9, 0xFF)
     asm.branch(0xF0, "mark_regular_size")
@@ -1146,6 +1209,20 @@ def emit_mark_path(
     asm.emit(0x68)                             # PLA
     asm.emit(0x4A, 0x4A, 0x4A, 0x4A)           # LSR x4
     asm.var(0x85, memory.rows)
+
+    if contextual_upper:
+        asm.var(0xA5, memory.tail_ink)
+        asm.emit(0xC9, 0xFF)
+        asm.branch(0xF0, "mark_noncontextual_position")
+        # Full-cell contextual bitmaps are anchored at the start of the base.
+        # MARK_X carries an eight-pixel bias for the pair-index calculation.
+        asm.var(0xA5, memory.base_left)
+        asm.emit(0x18, 0x69, 0x08)
+        asm.var(0x85, memory.mark_x)
+        asm.emit(0xA9, 0x00)
+        asm.var(0x85, memory.mark_top)
+        asm.brl("mark_classify")
+        asm.label("mark_noncontextual_position")
 
     # A precomposed second layer follows the final position of its vowel.  Its
     # signed dx/dy were generated from the pair, so no collision probe or
@@ -1246,6 +1323,15 @@ def emit_mark_path(
     asm.emit(0x29, 0xFF, 0x03)                 # AND #$03FF
     asm.emit(0x0A, 0x0A, 0x0A, 0x0A, 0x0A)
     asm.var(0x85, memory.tile)
+    if contextual_upper:
+        asm.var(0xA5, memory.tail_ink)
+        asm.emit(0xC9, 0xFF, 0x00)
+        asm.branch(0xF0, "mark_noncontextual_source")
+        asm.var(0xA5, memory.tail_ink)
+        asm.emit(0x0A, 0x0A, 0x0A, 0x0A)       # Y = contextual index * 16
+        asm.emit(0xA8)
+        asm.brl("mark_source_ready")
+        asm.label("mark_noncontextual_source")
     asm.var(0xA5, memory.stack_index)
     asm.emit(0xC9, 0xFF, 0x00)                 # M=16 here after tile arithmetic
     asm.branch(0xF0, "mark_regular_source")
@@ -1267,6 +1353,12 @@ def emit_mark_path(
     asm.var(0x85, memory.index)                 # sub-pixel column * 256
     asm.emit(0xE2, 0x20)                       # SEP #$20
 
+    if contextual_upper:
+        asm.var(0xA5, memory.tail_ink)
+        asm.emit(0xC9, 0xFF)
+        asm.branch(0xF0, "mark_noncontextual_lift")
+        asm.brl("mark_lift_done")              # contextual stack is final artwork
+        asm.label("mark_noncontextual_lift")
     asm.var(0xA5, memory.stack_index)
     asm.emit(0xC9, 0xFF)
     asm.branch(0xF0, "mark_generic_lift")
@@ -1315,6 +1407,44 @@ def emit_mark_path(
     for table, spill in ((shift_right, 0x0000), (shift_left, 0x0040)):
         source_regular = f"mark_regular_row_source_{spill:04X}"
         source_ready = f"mark_row_source_ready_{spill:04X}"
+        if contextual_upper:
+            clear_done = f"contextual_clear_done_{spill:04X}"
+            asm.var(0xA5, memory.tail_ink)
+            asm.emit(0xC9, 0xFF)
+            asm.branch(0xF0, clear_done)
+            # Two reviewed stacks move a vowel when a tone arrives. Clear only
+            # those old overlay pixels before OR-ing the final bitmap; the mask
+            # is otherwise all zero and cannot disturb adjacent VWF glyphs.
+            asm.emit(
+                0xB9,
+                contextual_upper["clear"] & 0xFF,
+                (contextual_upper["clear"] >> 8) & 0xFF,
+            )
+            asm.emit(0xC2, 0x20)
+            asm.emit(0x29, 0xFF, 0x00)
+            asm.emit(0x18)
+            asm.var(0x65, memory.index)
+            asm.emit(0xAA)
+            asm.emit(0xE2, 0x20)
+            asm.emit(0xBD, table & 0xFF, (table >> 8) & 0xFF)
+            asm.emit(0x49, 0xFF)
+            asm.var(0x85, memory.temp)
+            asm.var_to_x_from_m8(memory.glyph)
+            asm.long_index(0xBF, 0x7F8000 + spill)
+            asm.var(0x25, memory.temp)
+            asm.long_index(0x9F, 0x7F8000 + spill)
+            asm.label(clear_done)
+        if contextual_upper:
+            asm.var(0xA5, memory.tail_ink)
+            asm.emit(0xC9, 0xFF)
+            asm.branch(0xF0, f"mark_noncontextual_row_source_{spill:04X}")
+            asm.emit(
+                0xB9,
+                contextual_upper["overlay"] & 0xFF,
+                (contextual_upper["overlay"] >> 8) & 0xFF,
+            )
+            asm.branch(0x80, source_ready)
+            asm.label(f"mark_noncontextual_row_source_{spill:04X}")
         asm.var(0xA5, memory.stack_index)
         asm.emit(0xC9, 0xFF)
         asm.branch(0xF0, source_regular)

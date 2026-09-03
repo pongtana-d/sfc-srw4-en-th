@@ -2,7 +2,7 @@
 
 สถานะ: แผนก่อนเริ่ม implementation  
 วันที่: 2026-08-28  
-เป้าหมายฐาน: `rom/Dai-4-ji Super Robot Taisen English.sfc`
+เป้าหมายฐาน: `rom/Dai-4-ji Super Robot Taisen (English).sfc`
 
 ## 1. ข้อสรุปความเป็นไปได้
 

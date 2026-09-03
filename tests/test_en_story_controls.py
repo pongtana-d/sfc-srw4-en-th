@@ -10,7 +10,7 @@ from srw4.en_story_controls import story_control_contract  # noqa: E402
 
 
 def test_english_story_control_table_has_the_observed_handler_shape():
-    rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc").read_bytes()
+    rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc").read_bytes()
     document = story_control_contract(rom)
     assert document["byte_classes"][2] == {
         "range": "$F0-$F4", "kind": "inline-control", "operand_bytes": 1

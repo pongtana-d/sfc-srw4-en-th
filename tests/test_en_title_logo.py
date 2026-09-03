@@ -14,7 +14,7 @@ from srw4.en_title import (  # noqa: E402
 
 
 def test_en_title_logo_uses_english_logo_page_only():
-    base = (ROOT / "rom/Dai-4-ji Super Robot Taisen English.sfc").read_bytes()
+    base = (ROOT / "rom/Dai-4-ji Super Robot Taisen (English).sfc").read_bytes()
     payload, report = build_en_title_logo(ROOT / "data", base)
     assert len(payload) == EN_TITLE_LOGO_SIZE
     assert payload != base[EN_TITLE_LOGO_PC:EN_TITLE_LOGO_PC + EN_TITLE_LOGO_SIZE]

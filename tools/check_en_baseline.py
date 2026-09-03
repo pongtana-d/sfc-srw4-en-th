@@ -17,7 +17,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from srw4.en_baseline import BaselineError, verify_baseline  # noqa: E402
 
 JP_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
-EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 IPS = ROOT / "rom" / "srw4e.ips"
 XDELTA = ROOT / "rom" / "srw4e.xdelta"
 OUT = ROOT / "build" / "reports" / "en-th-dialogue-baseline.json"

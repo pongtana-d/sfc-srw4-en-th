@@ -23,6 +23,10 @@ from srw4.en_th_renderer import (  # noqa: E402
     CATALOG_CLUSTER_PAGE_PC,
     CATALOG_FIXED_BASE,
     CATALOG_FIXED_LIMIT,
+    CONTEXTUAL_UPPER_DIRECT_PC,
+    CONTEXTUAL_UPPER_FAMILY_PC,
+    CONTEXTUAL_UPPER_OVERLAY_PC,
+    CONTEXTUAL_UPPER_PAIRS_PC,
     CATALOG_INTERNAL_BASE,
     DRAW_HOOK_PC,
     EN_FONT_PAGE_PC,
@@ -50,9 +54,10 @@ from srw4.en_dialogue_font import (  # noqa: E402
     WEAPON_ATTRIBUTE_SLOTS,
     build_page_two,
 )
+from srw4.proven.text.upper_stacks import build_contextual_upper_stack_assets  # noqa: E402
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 
 
 def test_live_dialogue_latin_glyphs_are_installed_on_the_thai_page():
@@ -68,6 +73,31 @@ def test_live_dialogue_latin_glyphs_are_installed_on_the_thai_page():
         start = PAGE_PC + code * 16
         assert image[start:start + 16] == bytes(glyph.rows)
         assert image[ADVANCE_PC + code] == glyph.advance
+
+
+def test_contextual_upper_stack_for_ng_sara_a_tone_matches_editor_bitmap():
+    """`งั้` is the regression that exposed the generic EN mark placement."""
+    clean = BASE.read_bytes()
+    image = bytearray(clean)
+    install_renderer(image)
+    model = json.loads((ROOT / "data" / "font" / "thai.json").read_text())
+    layout = json.loads((ROOT / "data" / "font" / "encoding.json").read_text())
+    assets = build_contextual_upper_stack_assets(model, layout)
+    atlas = AtlasBuilder(ROOT / "data" / "font", clean)
+
+    pair = 0 * 5 + 1  # `ั` (D0) followed by `้` (DB)
+    stack = assets["thai-contextual-upper-pairs.bin"][pair]
+    assert stack != 0xFF
+    assert image[CONTEXTUAL_UPPER_PAIRS_PC + pair] == stack
+    assert image[CONTEXTUAL_UPPER_DIRECT_PC + layout["codes"]["ั"]] != 0xFF
+    assert image[CONTEXTUAL_UPPER_FAMILY_PC + layout["codes"]["ง"]] == 0
+
+    overlay = image[
+        CONTEXTUAL_UPPER_OVERLAY_PC + stack * 16:
+        CONTEXTUAL_UPPER_OVERLAY_PC + (stack + 1) * 16
+    ]
+    base = atlas.build("cluster:ง").rows
+    assert tuple(a | b for a, b in zip(base, overlay)) == atlas.build("cluster:งั้").rows
 
 
 def test_supplement_page_contains_only_declared_live_glyphs():

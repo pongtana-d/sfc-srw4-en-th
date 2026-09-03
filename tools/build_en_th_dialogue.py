@@ -15,7 +15,7 @@ from srw4.en_vertical_slice import apply  # noqa: E402
 from srw4.rom import Rom, sha256  # noqa: E402
 
 
-BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+BASE = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 
 
 def main() -> int:

@@ -22,7 +22,7 @@ from srw4.png import write_greyscale  # noqa: E402
 from srw4.tokens import EncodingError, TokenMap  # noqa: E402
 
 FONT_DIR = ROOT / "data" / "font"
-EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 
 
 @pytest.fixture(scope="module")

@@ -23,7 +23,7 @@ from srw4.proven.text.japanese import CatalogDecoder, read_catalog_string  # noq
 from srw4.proven.text.residue import lenient_decode, read_string  # noqa: E402
 
 
-EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen English.sfc"
+EN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English).sfc"
 JP_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
 OUTPUT = ROOT / "data" / "translations" / "part-effects.source.json"
 JP_CATALOG_PC = 0x0CE9BD
