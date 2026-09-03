@@ -92,6 +92,18 @@ def build() -> dict[str, object]:
             origins = entry["origins"]
             if origin not in origins:  # type: ignore[operator]
                 origins.append(origin)  # type: ignore[union-attr]
+        elif origin.startswith("glossary.") and not any(
+            str(previous).startswith("glossary.") for previous in entry["origins"]  # type: ignore[union-attr]
+        ):
+            # A canonical dialogue form may intentionally be longer than a
+            # catalog field can display. Preserve the measured display form
+            # without treating the reviewed glossary override as a conflict.
+            entry["overridden_display"] = {
+                "translation": entry["translation"],
+                "origins": list(entry["origins"]),  # type: ignore[arg-type]
+            }
+            entry["translation"] = thai
+            entry["origins"] = [origin]
         else:
             alternatives = entry.setdefault("alternatives", [])
             alternative = {
@@ -104,6 +116,7 @@ def build() -> dict[str, object]:
             entry["origins"] = [origin]
 
     conflict_count = sum("alternatives" in entry for entry in lookup.values())
+    override_count = sum("overridden_display" in entry for entry in lookup.values())
 
     return {
         "_meta": {
@@ -121,6 +134,7 @@ def build() -> dict[str, object]:
             ],
             "precedence": "glossary overrides catalog entries with the same normalized source",
             "conflicts": conflict_count,
+            "intentional_display_overrides": override_count,
             "conflict_policy": "lookup shows the selected value and preserves every displaced value in alternatives",
         },
         "categories": categories,

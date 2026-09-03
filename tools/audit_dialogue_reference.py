@@ -22,6 +22,7 @@ STRICT_CATEGORIES = {"pilots", "pilot_labels", "units", "weapons", "series"}
 STRICT_GLOSSARY_GROUPS = {
     "characters",
     "battle_labels",
+    "ranks",
     "organisations",
     "mecha",
     "canonical_full_mecha",
@@ -41,22 +42,49 @@ def is_katakana(character: str) -> bool:
     return "ァ" <= character <= "ヶ" or character == "ー"
 
 
+def is_hiragana(character: str) -> bool:
+    return "ぁ" <= character <= "ゖ"
+
+
+def is_kanji(character: str) -> bool:
+    return "一" <= character <= "龯"
+
+
 def is_kana(character: str) -> bool:
     return "ぁ" <= character <= "ん" or is_katakana(character)
 
 
 def has_source_key(source: str, key: str) -> bool:
-    """Match an already compacted key without accepting a kana-word substring."""
+    """Match a compacted key without accepting an obvious word substring.
+
+    Katakana names may follow hiragana particles (for example, ``このリィリィ``),
+    so only adjacent katakana blocks are treated as a spelling continuation.
+    Hiragana terms, on the other hand, must not match inside a word such as
+    ``了解した``.  A one-character kanji label is bounded on both sides to
+    avoid matching ordinary words such as ``残忍``.
+    """
     start = source.find(key)
     while start >= 0:
         end = start + len(key)
-        left_ok = not (key and is_kana(key[0]) and start and is_kana(source[start - 1]))
-        right_ok = not (
-            key
-            and is_kana(key[-1])
-            and end < len(source)
-            and is_kana(source[end])
-        )
+        previous = source[start - 1] if start else ""
+        following = source[end] if end < len(source) else ""
+        if key and is_hiragana(key[0]):
+            left_ok = not (start and (is_kana(previous) or is_kanji(previous)))
+        elif key and is_katakana(key[0]):
+            left_ok = not (start and is_katakana(previous))
+        elif len(key) == 1 and key and is_kanji(key[0]):
+            left_ok = not (start and (is_kana(previous) or is_kanji(previous)))
+        else:
+            left_ok = True
+
+        if key and is_hiragana(key[-1]):
+            right_ok = not (following and (is_kana(following) or is_kanji(following)))
+        elif key and is_katakana(key[-1]):
+            right_ok = not (following and is_katakana(following))
+        elif len(key) == 1 and key and is_kanji(key[-1]):
+            right_ok = not (following and (is_kana(following) or is_kanji(following)))
+        else:
+            right_ok = True
         if left_ok and right_ok:
             return True
         start = source.find(key, start + 1)
@@ -92,8 +120,22 @@ def main() -> int:
         message_id, source = row["id"], row["source"]
         compact = compact_source(source)
         translation = thai[message_id]
-        for search_key, (key, expected) in glossary.items():
-            if has_source_key(compact, search_key) and not contains_rendered_term(translation, expected):
+        matches = [
+            (search_key, key, expected)
+            for search_key, (key, expected) in glossary.items()
+            if has_source_key(compact, search_key)
+        ]
+        # Prefer a specific catalog/glossary name over a shorter key contained
+        # inside it (for example ``獣魔将軍`` over ``将軍``).
+        matches = [
+            match for match in matches
+            if not any(
+                match[0] != other[0] and match[0] in other[0]
+                for other in matches
+            )
+        ]
+        for search_key, key, expected in matches:
+            if not contains_rendered_term(translation, expected):
                 missing[(key, expected)].append((message_id, source, translation))
 
     total = sum(len(rows) for rows in missing.values())
