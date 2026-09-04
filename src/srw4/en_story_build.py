@@ -14,6 +14,7 @@ STORY_BANKS = (0xEB, *range(0xF1, 0xFD))
 ENGINE_OPERANDS = {0xF0: 1, 0xF1: 1, 0xF2: 1, 0xF3: 1, 0xF4: 1,
                    0xF5: 1, 0xFB: 2, 0xFC: 1, 0xFD: 1, 0xFE: 2}
 EN_QUOTE_HEADER = b"\xFC\x01\xAB\x43"
+FC08_BRANCH_ENTRIES = 8
 
 
 @dataclass(frozen=True)
@@ -61,10 +62,11 @@ def fields(data: bytes, *, where: str) -> tuple[int, ...]:
         after = index + 1 + operands
         shape = _shape(lead, values)
         if shape == "branch":
-            if after + 16 > len(data):
+            branch_bytes = FC08_BRANCH_ENTRIES * 2
+            if after + branch_bytes > len(data):
                 raise RomError(f"{where}: $FC:08 branch table is truncated")
-            result.extend(after + 2 * item for item in range(8))
-            index = after + 16
+            result.extend(after + 2 * item for item in range(FC08_BRANCH_ENTRIES))
+            index = after + branch_bytes
         elif shape == "address":
             if after + 2 > len(data):
                 raise RomError(f"{where}: ${lead:02X} address is truncated")
@@ -83,10 +85,10 @@ def quote_fields(data: bytes) -> tuple[int, ...]:
     """Locate table and direct pointer words in JP/EN battle-quote records.
 
     The English engine inserted ``$AB $43`` between the shared ``$FC $01``
-    lead and the quote selector.  Records either use ``$FA count + pointers``
-    or a direct ``$FC $07 pointer``.  Both forms must move with the translated
-    streams; leaving a direct pointer unchanged can land in the middle of an
-    unrelated record after repacking.
+    lead and the quote selector.  Records use ``$FA count + pointers``, a
+    direct ``$FC $07 pointer``, or an eight-way ``$FC $08`` protagonist branch
+    table.  Every form must move with the translated streams; leaving one
+    unchanged can land in the middle of an unrelated record after repacking.
     """
     result: list[int] = []
     index = 0
@@ -109,6 +111,9 @@ def quote_fields(data: bytes) -> tuple[int, ...]:
         elif data[command_at:command_at + 2] == b"\xFC\x07":
             start = command_at + 2
             end = start + 2
+        elif data[command_at:command_at + 2] == b"\xFC\x08":
+            start = command_at + 2
+            end = start + FC08_BRANCH_ENTRIES * 2
         else:
             index = command_at + 1
             continue
@@ -144,39 +149,82 @@ def _slots(document: Mapping[str, object]) -> list[dict[str, object]]:
     return [item for item in document["summary"]["blocks"] if item.get("kind") != "unused"]
 
 
-def _dispatch_records(data: bytes, header: bytes) -> list[list[tuple[int, int]]]:
-    """Return every quote-pointer record following one dispatch header.
+def _selector_fields(
+    data: bytes,
+    command_at: int,
+    *,
+    dispatch_start: int,
+    seen: set[int],
+) -> list[tuple[int, int]]:
+    """Walk one battle selector, including nested selectors reached by `$FC $08`."""
+    if command_at in seen:
+        return []
+    seen.add(command_at)
+    if command_at >= len(data):
+        raise RomError("truncated battle quote dispatch record")
+    if data[command_at] == 0xFA:
+        count_at = command_at + 1
+        if count_at >= len(data):
+            raise RomError("truncated battle quote dispatch record")
+        first = count_at + 1
+        end = first + data[count_at] * 2
+        nested_targets = False
+    elif data[command_at:command_at + 2] == b"\xFC\x07":
+        first = command_at + 2
+        end = first + 2
+        nested_targets = False
+    elif data[command_at:command_at + 2] == b"\xFC\x08":
+        first = command_at + 2
+        end = first + FC08_BRANCH_ENTRIES * 2
+        nested_targets = True
+    else:
+        return []
+    if end > len(data):
+        raise RomError("truncated battle quote dispatch record")
+    fields = [
+        (pointer_at, data[pointer_at] | data[pointer_at + 1] << 8)
+        for pointer_at in range(first, end, 2)
+    ]
+    if nested_targets:
+        for _, target in fields.copy():
+            nested_at = target - dispatch_start
+            if 0 <= nested_at < len(data):
+                fields.extend(_selector_fields(
+                    data,
+                    nested_at,
+                    dispatch_start=dispatch_start,
+                    seen=seen,
+                ))
+    return fields
+
+
+def _dispatch_records(
+    data: bytes,
+    header: bytes,
+    *,
+    dispatch_start: int = 0,
+) -> list[list[tuple[int, int]]]:
+    """Return every pointer graph following one battle dispatch header.
 
     Quote selectors have two shapes: ``$FA count + pointer table`` and the
-    single ``$FC $07 pointer`` form.  Both must participate in EN/JP record
-    alignment; otherwise direct weapon quotes silently relocate to the empty
-    terminator.
+    single ``$FC $07 pointer`` form.  An ``$FC $08`` selector adds eight
+    protagonist branches which can lead to nested ``$FA`` selectors.  Every
+    reachable field must participate in EN/JP alignment; otherwise nested
+    battle quotes retain their old address after repacking.
     """
     records: list[list[tuple[int, int]]] = []
     cursor = 0
     while (at := data.find(header, cursor)) >= 0:
         command_at = at + len(header)
-        if command_at >= len(data):
-            raise RomError("truncated battle quote dispatch record")
-        if data[command_at] == 0xFA:
-            count_at = command_at + 1
-            if count_at >= len(data):
-                raise RomError("truncated battle quote dispatch record")
-            first = count_at + 1
-            end = first + data[count_at] * 2
-        elif data[command_at:command_at + 2] == b"\xFC\x07":
-            first = command_at + 2
-            end = first + 2
-        else:
-            cursor = command_at + 1
-            continue
-        if end > len(data):
-            raise RomError("truncated battle quote dispatch record")
-        records.append([
-            (pointer_at, data[pointer_at] | data[pointer_at + 1] << 8)
-            for pointer_at in range(first, end, 2)
-        ])
-        cursor = end
+        fields = _selector_fields(
+            data,
+            command_at,
+            dispatch_start=dispatch_start,
+            seen=set(),
+        )
+        if fields:
+            records.append(fields)
+        cursor = command_at + 1
     return records
 
 
@@ -205,6 +253,22 @@ def _en_record_source(clean: bytes, slot: int, table_bytes: int) -> tuple[int, i
         raise RomError(f"battle block {slot}: cannot derive EN dispatch extent")
     dispatch_end = max(ends)
     return start, bank, table, clean[_cpu_to_pc(bank, dispatch_start):_cpu_to_pc(bank, dispatch_end)]
+
+
+def _relocated_dispatch_target(
+    target: int,
+    *,
+    source_dispatch_start: int,
+    source_dispatch_end: int,
+    destination_dispatch_start: int,
+    source_by_target: Mapping[int, int],
+    starts: Mapping[int, int],
+) -> int | None:
+    """Rebase an internal dispatch target or resolve a translated text target."""
+    if source_dispatch_start <= target < source_dispatch_end:
+        return destination_dispatch_start + target - source_dispatch_start
+    source_offset = source_by_target.get(target)
+    return starts.get(source_offset) if source_offset is not None else None
 
 
 def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
@@ -351,8 +415,16 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                 int(reference, 0) - jp_start: int(row["offset"], 0)
                 for row in rows for reference in row.get("record_refs", ())
             }
-            en_records = _dispatch_records(bytes(dispatch), EN_QUOTE_HEADER)
-            jp_records = _dispatch_records(jp_dispatch, b"\xFC\x01")
+            en_records = _dispatch_records(
+                bytes(dispatch),
+                EN_QUOTE_HEADER,
+                dispatch_start=source_start + table_bytes,
+            )
+            jp_records = _dispatch_records(
+                jp_dispatch,
+                b"\xFC\x01",
+                dispatch_start=jp_start,
+            )
             if len(en_records) > len(jp_records):
                 raise RomError(f"battle block {slot}: EN dispatch record count changed")
             for en_record, jp_record in zip(en_records, jp_records):
@@ -367,15 +439,24 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                         source_by_target[en_target] = next(
                             offset for offset, address in starts.items() if address == source_offset
                         )
-            for at in quote_fields(bytes(dispatch)):
+            pointer_fields = sorted({
+                at for record in en_records for at, _ in record
+            })
+            for at in pointer_fields:
                 target = dispatch[at] | dispatch[at + 1] << 8
-                source_offset = source_by_target.get(target)
-                if source_offset is None or source_offset not in starts:
+                address = _relocated_dispatch_target(
+                    target,
+                    source_dispatch_start=source_start + table_bytes,
+                    source_dispatch_end=source_start + table_bytes + dispatch_bytes,
+                    destination_dispatch_start=start + table_bytes,
+                    source_by_target=source_by_target,
+                    starts=starts,
+                )
+                if address is None:
                     raise RomError(
                         f"battle block {slot}: quote target "
                         f"${source_bank:02X}:{target:04X} has no translated record"
                     )
-                address = starts[source_offset]
                 dispatch[at:at + 2] = address.to_bytes(2, "little")
                 relocated += 1
             expected_separators = dispatch.count(EN_QUOTE_HEADER)

@@ -1,4 +1,0 @@
-{
- "_note": "Per-cluster bitmap and metric overrides. Every entry needs a reason and a regression sample (RENEWAL.md §6.2); the atlas compiler refuses an override without one. Empty until a proof sheet says otherwise.",
- "overrides": {}
-}

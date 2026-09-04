@@ -1,6 +1,6 @@
 {
   "schema": "srw4-wram-map/1",
-  "_note": "WRAM the renderer owns. Every span here was measured on a build this repo produced (tools/build.py), with tools/probe_wram.py, by resetting Mesen's access counters once a context was on screen and recording what the game wrote afterwards. Evidence: build/reports/wram.json. Ranges are start-inclusive, end-exclusive.",
+  "_note": "WRAM the renderer owns. Every span here was measured on an EN-combo build produced by tools/build_en_th_full_dialogue.py, with tools/probe_wram.py, by resetting Mesen's access counters once a context was on screen and recording what the game wrote afterwards. Evidence: build/reports/wram.json. Ranges are start-inclusive, end-exclusive.",
   "mirror_floor": "0x7E2000",
   "mirror_note": "Below $7E:2000 WRAM is mirrored into banks $00-$3F, so a write through the mirror never names $7E. Rather than prove the mirror quiet, nothing is reserved down there.",
   "avoid": [

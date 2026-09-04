@@ -167,34 +167,6 @@
       "state": "tested"
     },
     {
-      "id": "naming.labels",
-      "source": "translations/naming-screen.th.json and translations/protagonist-settings.th.json",
-      "engine": "ordinary",
-      "policy": "thai",
-      "state": "adapter_active_needs_full_regression"
-    },
-    {
-      "id": "naming.keyboard",
-      "source": "font/thai.json",
-      "engine": "naming-special",
-      "policy": "thai-only-no-japanese-or-english-pages",
-      "state": "adapter_active_needs_full_regression"
-    },
-    {
-      "id": "naming.typed_buffer",
-      "source": "player input",
-      "engine": "ordinary-and-battle",
-      "policy": "thai",
-      "state": "adapter_active_needs_full_regression"
-    },
-    {
-      "id": "naming.presets",
-      "source": "translations/naming-screen.th.json presets",
-      "engine": "naming-special",
-      "policy": "thai",
-      "state": "adapter_active_needs_full_regression"
-    },
-    {
       "id": "menu.field_screens",
       "source": "translations/screens.th.json",
       "engine": "ordinary",

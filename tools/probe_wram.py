@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 MESEN = Path("/Applications/Mesen.app/Contents/MacOS/Mesen")
-ROM = ROOT / "build" / "srw4-th.sfc"
+ROM = ROOT / "build" / "srw4-en-th.sfc"
 LUA = ROOT / "tools" / "lua" / "wram-probe.lua"
 STATE_DIR = ROOT / "build" / "states"
 OUT_DIR = ROOT / "build" / "wram"
@@ -225,7 +225,9 @@ def main() -> int:
     if not names:
         parser.error("name at least one context, or pass --all")
     if not ROM.exists():
-        raise SystemExit(f"no build to probe: run tools/build.py first ({ROM})")
+        raise SystemExit(
+            f"no build to probe: run tools/build_en_th_full_dialogue.py first ({ROM})"
+        )
 
     results = {}
     for name in names:
@@ -271,7 +273,10 @@ def main() -> int:
 
     report = {
         "stage": "P1",
-        "rom": {"path": str(ROM.relative_to(ROOT)), "note": "built by tools/build.py"},
+        "rom": {
+            "path": str(ROM.relative_to(ROOT)),
+            "note": "built by tools/build_en_th_full_dialogue.py",
+        },
         "mirror_floor": f"{SAFE_FLOOR:#08x}",
         "contexts": results,
         "quiet_in_every_context": {
