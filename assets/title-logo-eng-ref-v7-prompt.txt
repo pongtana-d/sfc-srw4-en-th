@@ -1,0 +1,43 @@
+TASK: Create a production Thai SNES title sprite, refining image 2 without changing its lettering. This is indexed pixel art, not a high-resolution logo illustration.
+
+INPUT ROLES:
+Image 1 = genuine English ROM screenshot from Mesen. Authoritative reference for gold bevel style, narrow reflection band, orange/red depth on letter faces and dark-blue extrusion. Do not copy its English text, Earth or menus.
+Image 2 = preferred Thai V5 silhouette/layout. Preserve exact Thai characters, vowel marks, forward slant, spacing, and numeral 4. Only refine shading and pixel edges.
+Image 3 = palette swatches. They are reference only, never draw them.
+Image 4 = exactly 2000x640 cell-grid canvas, 200 columns by 64 rows. Fill these cells and erase all grid lines.
+
+TEXT EXACTLY: "ซูเปอร์โรบอตวอร์ส 4".
+Single line. No other lettering, labels, border, background scene or menu.
+
+VERIFIED EN HARDWARE PALETTE:
+There are FIFTEEN VISIBLE colors plus ONE transparent index, NOT sixteen visible colors.
+Index 0 = transparent. For this deliverable encode it as pure RGB #000000 against the isolated logo; this is a transparency KEY, never a visible black stroke. Holes and outside areas must be this key.
+Face/bevel colors: 1 #FFFFFF, 2 #FFFFAC, 3 #FFFF00, 4 #FFDE00, 5 #FFBD00, 6 #FF9C00, 7 #FF7B00, 8 #FF5A00, 9 #DE3900, A #BD0000, B #391000.
+Blue extrusion only: C #00009C, D #00007B, E #00005A, F #000039.
+These match the original English game's live OBJ palette 7 exactly. All 15 visible entries occur in the English logo. Use only these exact RGB triplets. No intermediate RGB, semitransparency, texture, lighting overlay, color grading, gamma adjustment, antialiasing, noise or dithering. Do not sample muted screenshot RGB: sample the provided palette. Emulator brightness is applied later.
+
+EXACT CELL MATH:
+Output exactly W=2000, H=640. Origin (0,0) at top-left. Game dimensions Wg=200,Hg=64; scale S=10.
+For each logical pixel (c,r), c in [0,199], r in [0,63], select ONE palette index P[c,r].
+Fill all 100 physical pixels of rectangle [10c,10c+9] x [10r,10r+9] with the SAME RGB(P[c,r]).
+Thus for all dx,dy=0..9: RGB(10c+dx,10r+dy)=RGB(P[c,r]).
+Every boundary lies on a multiple of ten. Include the former grid lines in the solid fill; there are no seams.
+Final game pixel (c,r) will be read at physical pixel (10c+5,10r+5). Do not place any subcell feature: it will be lost.
+Examples: one logical bevel pixel = a full 10x10 square, two-pixel stem = 20 output pixels, one-step diagonal = 10 right then 10 down. A solid 200x64 mosaic enlarged 10 times should look IDENTICAL to the delivered picture.
+Do NOT create smooth art then decorate it with pixel-like edges. Design each logical cell first, enlarge only after.
+
+COMPOSITION:
+Use the preferred V5 layout, including its Thai marks and numeral 4. Entire visible silhouette including all shadows must fit logical x=4..195 and y=3..60 (physical x40..1959 and y30..609). Keep aspect and do not stretch individual letters. Keep counters at least 1 logical cell open. No clipped diacritics.
+One-cell light bevel and coherent stair-step contours. Avoid isolated bright speckles.
+Blue extrusion about 8 logical cells down and 3 right, continuous and clean, using all four blue shades where useful.
+
+COLOR DISTRIBUTION AND FORM:
+The Thai V5 became too pale and flat after conversion. Match the English original's metallic gold rather than lemon yellow.
+Measure face cells only, excluding transparent and blue:
+indices 1+2 combined approximately 13% (NOT 26%);
+indices 3+4+5 combined approximately 40%;
+indices 6+7+8+9+A+B combined approximately 47%.
+These are approximate artistic area targets, not a request for random pixels or uniform stripes. Build coherent bevel facets with distinct palette steps. Narrow the central cream reflection to about one cell over most strokes. Give lower faces orange/red body and dark reddish-brown edge facets like the English reference. Preserve bright gold upper planes, do not darken the whole logo. No broad flat cream regions. Palette agreement alone is insufficient: follow the placement and proportions of highlights/shadows in English.
+
+FINAL SELF-CHECK:
+2000x640 canvas; exactly 200x64 logical cells; every 10x10 cell uniform; no off-palette pixels; background/holes pure #000000 key; exact Thai text with all marks; no swatches/grid/menu/Earth. Return ONLY the isolated sprite image.

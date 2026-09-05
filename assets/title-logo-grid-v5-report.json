@@ -1,0 +1,13 @@
+{
+  "requested_size": [
+    2000,
+    640
+  ],
+  "actual_size": [
+    2191,
+    718
+  ],
+  "unique_rgb_colors": 106464,
+  "uniform_10x10_blocks_percent": 0.01,
+  "grid_contract_passed": false
+}

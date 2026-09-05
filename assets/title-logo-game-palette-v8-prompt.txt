@@ -1,0 +1,44 @@
+Generate a NEW Thai SNES title logo with CORRECT SPELLING and native-pixel planning.
+Image 1: verified ROM-to-game palette mapping. For output use ONLY the swatches labeled GAME, not ROM. Image 2: original ENGLISH game title screenshot, style reference for gold/red faces and dark blue depth. Image 3: logical grid scaffold, not something visible in final.
+Output only an isolated logo on pure black. No menus, Earth, swatches or labels.
+
+TEXT EXACTLY: ซูเปอร์โรบอตวอร์ส 4
+Careful character sequence: ซ + ู + เ + ป + อ + ร + ์ + โ + ร + บ + อ + ต + ว + อ + ร + ์ + ส + space + 4.
+The word ซูเปอร์ uses ONE เ (U+0E40), NEVER แ (U+0E41). The vowel เ is one leading stroke, not two. Do not accidentally draw แ from a doubled stem. There is NO large gap after ซู; use tight consistent letterspacing across ซูเปอร์โรบอตวอร์ส.
+There are TWO karan marks total: one over the ร at the end of เปอร์ and one over the ร in วอร์ส. NONE over ส. ส has only its normal short rising terminal, no giant floating hook. Position each mark over its own ร, aligned to the forward slant, with a clear gap from adjacent glyphs.
+
+PALETTE SEMANTICS:
+15 visible indexed colors + index 0 transparency. Use pure #000000 as transparency key for background/holes, not visible black outlines.
+Output GAME RGB ONLY, exactly by index:
+0 #000000
+1 #C6C6C6
+2 #C6C684
+3 #C6C600
+4 #C6AD00
+5 #C69400
+6 #C67B00
+7 #C66300
+8 #C64200
+9 #AD2900
+A #940000
+B #290800
+C #00007B
+D #000063
+E #000042
+F #000029
+These are measured actual title colors, not arbitrary darkened approximations. When imported we will map each GAME RGB back to the SAME ROM palette INDEX, NOT quantize these darker RGB against the raw ROM colors (that would darken twice). The raw ROM swatches in image 1 show the corresponding stored values only.
+Do not add any other RGB, color grades, noise, continuous gradients, alpha, antialiasing, texture or glow.
+
+GRID:
+Exact output 2000x640. Native sprite 200x64. Scale factor 10.
+For each logical (c,r) with c=0..199, r=0..63, choose one palette index. ALL physical pixels x=10c..10c+9 and y=10r..10r+9 have exactly its single GAME RGB. Uniform 10x10 squares with zero seams. Cell boundaries exclusively at multiples of 10. Fill over grid lines; no grid visible.
+Final game pixel (c,r) will be sampled at (10c+5,10r+5).
+1 logical pixel=10x10 output block, 2-pixel stem=20px, staircase step=10px right/10px down. Absolutely no subcell details. Design the 200x64 mosaic FIRST, then enlarge 10 times.
+Use visible bounds logical x=2..197,y=2..61 including marks and shadow. Balanced centering and tight text, largest readable silhouette that fits. Avoid wide wasted margins.
+
+STYLE:
+Bold forward-slanted Thai action-game lettering, orange-red lower face and metallic gold upper face, blue extrusion 8 logical pixels down /3 right, using C..F.
+No bright outlines around letter silhouettes. Exterior edges should use nearby face colors (gold at top, orange/red below), NOT pale cream or white strokes.
+Only a subtle narrow interior reflection band is allowed; no pale lower-edge fringe.
+Use original English reference's intentional beveled facets and color contrast. Approximate face-color distribution excluding blues/background: pale 1/2 no more than 10-13%; gold 3/4/5 about40%; orange/red/dark remaining47-50%. Keep edge cells consistent with their adjacent face.
+Check spelling, exactly one เ, both ์ above ร only, tight gap after ซู, 200x64 logical grid, uniform 10x10 blocks, only GAME colors. Return the isolated sprite, not a presentation.

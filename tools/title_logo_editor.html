@@ -48,7 +48,7 @@
 <header>
   <h1>SRW4 THAI TITLE-LOGO EDITOR</h1>
   <button id="save">Save</button><button id="revert">Revert</button>
-  <button id="verify">Verify build</button>
+  <button id="verify">บันทึก + สร้าง ROM EN</button>
   <span id="status">loading…</span>
 </header>
 
@@ -68,6 +68,8 @@
       <button id="left">←</button><button id="right">→</button>
       <button id="up">↑</button><button id="down">↓</button>
       <label>Zoom <select id="zoom"><option>4</option><option>6</option><option selected>8</option><option>10</option></select></label>
+      <label><input id="gameColors" type="checkbox" checked> สีตามเกม</label>
+      <label><input id="showGrid" type="checkbox"> เส้นกริด</label>
       <span id="coord">x— y—</span>
     </div>
     <div class="viewport"><canvas id="grid"></canvas></div>
@@ -90,6 +92,9 @@ const NAMES = ["transparent","white highlight","pale yellow","yellow","gold 1","
   "blue near","blue mid","blue dark","blue far"];
 const S = { state:null, pixels:[], saved:[], undo:[], color:6, tool:"draw", zoom:8,
   painting:false, strokeSaved:false, dirty:false };
+const titleBackground = new Image();
+titleBackground.onload=()=>{if(S.state)renderPreview()};
+titleBackground.src="/title-background.png";
 
 async function api(path, body) {
   const response = await fetch(path, body === undefined ? {} : {
@@ -105,10 +110,11 @@ function encode() { return S.pixels.map(row => row.map(v => v.toString(16).toUpp
 function snapshot() { return S.pixels.map(row => row.slice()); }
 function setStatus(text, kind="") { $("status").textContent=text; $("status").className=kind; }
 function markDirty() { S.dirty=true; setStatus("unsaved changes","dirty"); $("undo").disabled=!S.undo.length; }
+function displayPalette() { return $("gameColors").checked && S.state.palette_display_rgb ? S.state.palette_display_rgb : S.state.palette_rgb; }
 
 function renderPalette() {
   const root=$("palette"); root.innerHTML="";
-  S.state.palette_rgb.forEach((rgb,index) => {
+  displayPalette().forEach((rgb,index) => {
     const row=document.createElement("div"); row.className="color"+(index===S.color?" on":"");
     const sw=document.createElement("span"); sw.className="swatch"+(index===0?" transparent":"");
     if(index) sw.style.background=rgb;
@@ -126,9 +132,9 @@ function renderGrid() {
   const ctx=c.getContext("2d"); ctx.imageSmoothingEnabled=false;
   for(let y=0;y<S.state.height;y++) for(let x=0;x<S.state.width;x++) {
     const value=S.pixels[y][x];
-    if(value) { ctx.fillStyle=S.state.palette_rgb[value]; ctx.fillRect(x*z,y*z,z,z); }
+    if(value) { ctx.fillStyle=displayPalette()[value]; ctx.fillRect(x*z,y*z,z,z); }
     else checker(ctx,x,y,z);
-    if(z>=6) { ctx.strokeStyle="rgba(0,0,0,.16)"; ctx.strokeRect(x*z+.5,y*z+.5,z-1,z-1); }
+    if(z>=6 && $("showGrid").checked) { ctx.strokeStyle="rgba(0,0,0,.16)"; ctx.strokeRect(x*z+.5,y*z+.5,z-1,z-1); }
   }
   renderPreview();
 }
@@ -136,12 +142,12 @@ function renderGrid() {
 function renderPreview() {
   const c=$("preview"), ctx=c.getContext("2d"); ctx.imageSmoothingEnabled=false;
   ctx.fillStyle="#171A20"; ctx.fillRect(0,0,c.width,c.height);
+  if(titleBackground.complete && titleBackground.naturalWidth)ctx.drawImage(titleBackground,0,0);
   const box=S.state.screen_box;
   for(let y=0;y<S.state.height;y++) for(let x=0;x<S.state.width;x++) {
     const value=S.pixels[y][x]; if(!value) continue;
-    ctx.fillStyle=S.state.palette_rgb[value]; ctx.fillRect(box.x+x,box.y+y,1,1);
+    ctx.fillStyle=displayPalette()[value]; ctx.fillRect(box.x+x,box.y+y,1,1);
   }
-  ctx.strokeStyle="#4D5666"; ctx.strokeRect(box.x-.5,box.y-.5,box.width+1,box.height+1);
 }
 
 function renderMeta() {
@@ -159,9 +165,14 @@ function point(event) {
 function paint(event) {
   const [x,y]=point(event); if(x<0||y<0||x>=S.state.width||y>=S.state.height)return;
   $("coord").textContent=`x${x} y${y}  color ${S.pixels[y][x].toString(16).toUpperCase()}`;
-  const tool=(event.altKey?"pick":event.buttons===2?"erase":S.tool);
-  if(tool==="pick") { S.color=S.pixels[y][x]; S.tool="draw"; renderPalette(); renderTools(); return; }
   if(!S.painting)return;
+  const tool=(event.altKey?"pick":event.buttons===2?"erase":S.tool);
+  if(tool==="pick") {
+    S.color=S.pixels[y][x]; S.tool="draw";
+    // End the gesture so a picker click/drag cannot become a paint stroke.
+    S.painting=false; S.strokeSaved=false;
+    renderPalette(); renderTools(); return;
+  }
   if(!S.strokeSaved){S.undo.push(snapshot()); if(S.undo.length>40)S.undo.shift(); S.strokeSaved=true;}
   const value=tool==="erase"?0:S.color; if(S.pixels[y][x]===value)return;
   S.pixels[y][x]=value; markDirty(); renderGrid();
@@ -181,15 +192,19 @@ async function load(state) {
 
 document.querySelectorAll("[data-tool]").forEach(b=>b.onclick=()=>{S.tool=b.dataset.tool;renderTools()});
 $("zoom").onchange=()=>{S.zoom=+$('zoom').value;renderGrid()};
+$("gameColors").onchange=()=>{renderPalette();renderGrid()};
+$("showGrid").onchange=renderGrid;
 $("undo").onclick=()=>{if(!S.undo.length)return;S.pixels=S.undo.pop();markDirty();renderGrid()};
 $("left").onclick=()=>nudge(-1,0); $("right").onclick=()=>nudge(1,0);
 $("up").onclick=()=>nudge(0,-1); $("down").onclick=()=>nudge(0,1);
 $("grid").oncontextmenu=e=>e.preventDefault();
 $("grid").onpointerdown=e=>{e.preventDefault();S.painting=true;S.strokeSaved=false;$("grid").setPointerCapture(e.pointerId);paint(e)};
 $("grid").onpointermove=paint; $("grid").onpointerup=e=>{S.painting=false;S.strokeSaved=false};
+$("grid").onpointercancel=$("grid").onlostpointercapture=()=>{S.painting=false;S.strokeSaved=false};
 $("save").onclick=async()=>{try{setStatus("saving…");const r=await api("/api/save",{rows:encode()});await load(r.state)}catch(e){setStatus(e.message,"bad")}};
 $("revert").onclick=async()=>{if(S.dirty&&!confirm("Discard unsaved pixel edits?"))return;try{const r=await api("/api/revert",{});await load(r.state)}catch(e){setStatus(e.message,"bad")}};
-$("verify").onclick=async()=>{try{setStatus("verifying…");const r=await api("/api/verify",{});$("out").textContent=JSON.stringify(r,null,2);setStatus("build accepted asset","good")}catch(e){setStatus(e.message,"bad")}};
+$("verify").onclick=async()=>{try{setStatus("saving…");const saved=await api("/api/save",{rows:encode()});await load(saved.state);setStatus("building EN…");const r=await api("/api/verify",{});$("out").textContent="ROM พร้อมทดสอบ:\n"+r.output+"\n\nพิกเซลตรงกับที่บันทึกครบทุกจุด";setStatus("EN ROM built","good")}catch(e){setStatus(e.message,"bad")}};
+window.addEventListener("keydown",e=>{if(e.ctrlKey||e.metaKey){if(e.key.toLowerCase()==="s"){e.preventDefault();$("save").click()}if(e.key.toLowerCase()==="z"){e.preventDefault();$("undo").click()}}});
 window.addEventListener("beforeunload",e=>{if(S.dirty){e.preventDefault();e.returnValue=""}});
 api("/api/state").then(load).catch(e=>setStatus(e.message,"bad"));
 </script>

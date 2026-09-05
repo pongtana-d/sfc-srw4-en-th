@@ -337,3 +337,16 @@ P0–P6 ทำเสร็จแล้ว; blocker ปัจจุบันจ�
 4. วัด VRAM/DMA/VBlank/WRAM guard ใน full route แล้วทำ P10 release audit
 
 ห้ามเปิด generic story blitter ใน battle อีกจน adapter เฉพาะทางผ่าน route ครบ lifecycle
+
+### 2026-09-05 — Approved EN title logo cutover
+
+- User approved the filled-transparent-hole logo, including the latest saved editor refinements. Source: `data/assets/title-logo.json`; row SHA-256 `b2046bf56cf53c58dd682e206975a295aa30d29b2f7bf3fc9745bb1bed4f3f8e`.
+- Rebuilt production ROM and IPS from the pinned English-combo base with `tools/build_en_th_full_dialogue.py`. ROM SHA-256: `a6ff13345665c7a56a17b49513d396c18b414ac043c37efd9d0096f5130492a7`.
+- Verification: 65 EN/editor Python tests and 2 eyedropper tests passed; story pointer audit passed; repeat ROM/IPS builds were byte-identical; IPS applied to EN base reproduces production ROM exactly. Mesen cold-boot title pixels match the saved asset and game display palette exactly, including transparent pixels. Menu selection differs from the older background reference because LOAD is available.
+- Evidence: `build/repro/title-approved-20260905/`. Previous release and experimental title ROMs moved into its `previous-roms/` directory. Current playable ROM: `build/srw4-en-th.sfc`; distributable patch: `build/srw4-en-th.ips`.
+
+### 2026-09-05 — Latest saved logo rebuild and artifact cleanup
+
+- Rebuilt EN production from current sources; ROM SHA-256 `059c33e25f18fc1177433fc7f9a9ddbd25d76f6ce70491a154685f099bc62418`; logo rows SHA-256 `2a442a6cf4232998b68a855a65b77d0ae0dc1d815558eb5444df4fa2e878f4ad`.
+- 65 EN/editor Python tests and 2 eyedropper tests passed. Two clean EN builds match; IPS round-trip and Mesen title pixel comparison passed. Current evidence: `build/reports/latest/`.
+- Removed old title test builds/captures and duplicate ROM/IPS files from `build/repro`, including the superseded title-approved-20260905 evidence directory. Cleanup inventory: `build/reports/latest/cleanup.json`. Kept stock EN reference, editor backups, save-related artifacts, source assets, and automated test suites.

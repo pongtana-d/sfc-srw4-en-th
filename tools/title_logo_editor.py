@@ -17,17 +17,27 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
-from srw4.proven.title import build_title_data  # noqa: E402
+from srw4.en_title import build_en_title_logo, EN_TITLE_LOGO_PC  # noqa: E402
+from srw4.en_baseline import EN_SHA256  # noqa: E402
+from srw4.rom import Rom, sha256  # noqa: E402
 
 
 ASSET = ROOT / "data" / "assets" / "title-logo.json"
 PAGE = Path(__file__).with_name("title_logo_editor.html")
-CLEAN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc"
+CLEAN_ROM = ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc"
 WIDTH = 200
 HEIGHT = 64
 PALETTE = (
     "0000", "7FFF", "57FF", "03FF", "037F", "02FF", "027F", "01FF",
     "017F", "00FB", "0017", "0047", "4C00", "3C00", "2C00", "1C00",
+)
+
+# Measured per palette index from the stable EN title screenshot in Mesen.
+# Display only: saved indices and ROM BGR555 entries remain authoritative.
+TITLE_DISPLAY_RGB = (
+    "#000000", "#C6C6C6", "#C6C684", "#C6C600", "#C6AD00", "#C69400",
+    "#C67B00", "#C66300", "#C64200", "#AD2900", "#940000", "#290800",
+    "#00007B", "#000063", "#000042", "#000029",
 )
 
 
@@ -85,6 +95,7 @@ class LogoDocument:
             "screen_box": self.document["screen_box"],
             "palette_bgr555": list(PALETTE),
             "palette_rgb": [rgb_from_bgr555(value) for value in PALETTE],
+            "palette_display_rgb": list(TITLE_DISPLAY_RGB),
             "sha256": hashlib.sha256("".join(rows).encode()).hexdigest(),
             "path": display_path,
         }
@@ -112,15 +123,23 @@ class LogoDocument:
         return self.state()
 
     def verify(self) -> dict[str, object]:
-        writes, report = build_title_data(
-            ROOT / "data", CLEAN_ROM.read_bytes(), 0x3A0600
-        )
+        self.reload()
+        base = CLEAN_ROM.read_bytes()
+        if sha256(base) != EN_SHA256:
+            raise ValueError("English base ROM does not match the pinned version")
+        payload, report = build_en_title_logo(self.path.parent.parent, base)
+        current = (ROOT / "build/srw4-en-th.sfc").read_bytes()
+        image = Rom(bytearray(current))
+        image.write_at(EN_TITLE_LOGO_PC, payload)
+        image.fix_checksum()
+        output = ROOT / "build/srw4-en-th-title-edited.sfc"
+        output.write_bytes(image.to_bytes())
         return {
             "ok": True,
-            "logo": report["logo"],
-            "decoded_size": report["decoded_size"],
-            "packed_size": report["new_packed_size"],
-            "writes": [write.owner for write in writes],
+            "logo": report,
+            "output": str(output),
+            "sha256": sha256(output.read_bytes()),
+            "pixel_roundtrip": "exact",
         }
 
 
@@ -149,6 +168,8 @@ class Handler(BaseHTTPRequestHandler):
             self.send_body(200, PAGE.read_bytes(), "text/html; charset=utf-8")
         elif self.path == "/api/state":
             self.send_json(self.logo.state())
+        elif self.path == "/title-background.png":
+            self.send_body(200, (ROOT / "assets/title-background-en.png").read_bytes(), "image/png")
         else:
             self.send_json({"error": "no such path"}, 404)
 
