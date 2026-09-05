@@ -6,6 +6,14 @@
 - ห้ามเปลี่ยนเป้าหมายไป build/release ROM JP หรือใช้ savestate JP เพื่อยืนยันบั๊กของ ROM EN เว้นแต่ผู้ใช้สั่งชัดเจน
 - Mesen2 savestate อยู่ที่ `/Users/mono-tong/Library/Application Support/Mesen2/SaveStates`
 
+# Savestate Selection
+
+- เมื่อผู้ใช้สั่งตรวจหรือโหลด `sstate` / `savestate` ให้ค้นหาใน `/Users/mono-tong/Library/Application Support/Mesen2/SaveStates` เป็นค่าเริ่มต้นเสมอ เว้นแต่ผู้ใช้ระบุ path อื่นชัดเจน
+- `sstate1` หมายถึง slot 1 ของ ROM EN: `/Users/mono-tong/Library/Application Support/Mesen2/SaveStates/srw4-en-th_1.mss`; `sstateN` ให้ใช้ `srw4-en-th_N.mss` ตามหมายเลข slot
+- ไฟล์ slot ในโฟลเดอร์นี้คือ savestate ที่ผู้ใช้ระบุ ห้ามตีความว่าเป็นเพียง cache แล้วเปลี่ยนไปใช้ไฟล์อื่น
+- ห้ามใช้ state ใน workspace เช่น `bil.mss` หรือไฟล์ใน `build/` แทนเอง แม้ภาพหน้าจอจะคล้ายกัน หากไม่พบไฟล์ที่ระบุให้แจ้งผู้ใช้ก่อนเลือก state อื่น
+- ก่อนทดสอบ ให้ยืนยัน path ของ state และ ROM EN ที่ใช้จริง ไม่ใช้ภาพหน้าจออย่างเดียวเป็นหลักฐานว่าโหลดถูกไฟล์
+
 # Dialogue Translation Reference
 
 - ก่อนตรวจหรือแก้ชื่อ/ศัพท์ในบทสนทนา ต้องอ่าน `data/translations/references/README.md`
