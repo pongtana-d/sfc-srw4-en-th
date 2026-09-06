@@ -81,6 +81,9 @@ THAI_RENDERER_PC = 0x3FA000
 SUPPLEMENT_RENDERER_PC = 0x3FB000
 STOCK_RENDERER_PC = 0x3FC000
 ORDINARY_RENDERER_PC = 0x3FD000
+# Stock EN rasterizer consumes this one-glyph alternate-font latch and clears
+# it before returning. Our dialogue replacement must preserve that contract.
+EN_ALTERNATE_FONT_STATE = 0x7FFFFC
 
 # Catalog parsers tag Thai bytes so they cannot be confused with the stock
 # direct page.  The dialogue adapter consumes the same public tag contract as
@@ -160,7 +163,8 @@ entry:
   lda #${SUPPLEMENT_PAGE_PC & 0xFFFF:04X}
   sta.l ${CATALOG_BATTLE_PAGE_STATE:06X}
   pla
-  jml ${pc_to_cpu(CATALOG_BATTLE_RENDERER_PC):06X}
+  jsl ${pc_to_cpu(CATALOG_BATTLE_RENDERER_PC):06X}
+  brl draw_done
 catalog_thai:
   sec
   sbc #${CATALOG_INTERNAL_BASE:04X}
@@ -168,7 +172,8 @@ catalog_thai:
   lda #${CATALOG_CLUSTER_PAGE_PC & 0xFFFF:04X}
   sta.l ${CATALOG_BATTLE_PAGE_STATE:06X}
   pla
-  jml ${pc_to_cpu(CATALOG_BATTLE_RENDERER_PC):06X}
+  jsl ${pc_to_cpu(CATALOG_BATTLE_RENDERER_PC):06X}
+  brl draw_done
 source_route:
   lda $CD
   and #$00FF
@@ -181,7 +186,8 @@ stock:
   ; menu/status calls to $F0:E045 remain untouched.
   lda $00
   and #$00FF
-  jml ${pc_to_cpu(STOCK_RENDERER_PC):06X}
+  jsl ${pc_to_cpu(STOCK_RENDERER_PC):06X}
+  brl draw_done
 private:
   lda.l ${ROUTER_PAGE_STATE:06X}
   cmp #$0002
@@ -196,11 +202,23 @@ private:
 thai:
   lda $00
   and #$00FF
-  jml ${pc_to_cpu(THAI_RENDERER_PC):06X}
+  jsl ${pc_to_cpu(THAI_RENDERER_PC):06X}
+  brl draw_done
 supplement:
   lda $00
   and #$00FF
-  jml ${pc_to_cpu(SUPPLEMENT_RENDERER_PC):06X}
+  jsl ${pc_to_cpu(SUPPLEMENT_RENDERER_PC):06X}
+draw_done:
+  ; Match the stock EN postcondition without running its allocation tail.
+  ; Preserve the replacement renderer's returned accumulator and flags.
+  php
+  rep #$20
+  pha
+  lda #$0000
+  sta.l ${EN_ALTERNATE_FONT_STATE:06X}
+  pla
+  plp
+  rtl
 """, ENTRY_PC).code
 
 

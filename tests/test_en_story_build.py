@@ -11,6 +11,7 @@ from srw4.en_story_build import (  # noqa: E402
     _dispatch_records,
     _merge_ranges,
     _relocated_dispatch_target,
+    _relocated_interior_table_target,
     quote_fields,
     replace_en_quote_separators,
 )
@@ -152,6 +153,34 @@ def test_dispatch_target_maps_external_quote_to_translated_record_start():
         source_by_target={0x75BB: 0x76BF},
         starts={0x76BF: 0x75A9},
     ) == 0x75A9
+
+
+def test_interior_table_target_preserves_unchanged_portrait_prefix():
+    row = {
+        "id": "07_28DD",
+        "size": 8,
+        "source_hex": "FE 1F 01 10 11 12 3F FF",
+    }
+    assert _relocated_interior_table_target(
+        0x28E0,
+        source_rows={0x28DD: row},
+        starts={0x28DD: 0x031A},
+        translated={"07_28DD": bytes.fromhex("FE 1F 01 C0 20 3F FF")},
+    ) == 0x031D
+
+
+def test_interior_table_target_rejects_a_changed_skipped_prefix():
+    row = {
+        "id": "38_6754",
+        "size": 8,
+        "source_hex": "FE 20 01 10 11 12 3F FF",
+    }
+    assert _relocated_interior_table_target(
+        0x6757,
+        source_rows={0x6754: row},
+        starts={0x6754: 0x2200},
+        translated={"38_6754": bytes.fromhex("FE 21 01 C0 20 3F FF")},
+    ) is None
 
 
 def test_character_archive_route_ranges_merge_only_when_contiguous():

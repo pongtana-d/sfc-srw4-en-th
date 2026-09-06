@@ -49,6 +49,10 @@ ESCAPE = re.compile(r"<[^<>]+>")
 def walk(node, path: str = ""):
     """Every string in the tree, with the path that leads to it."""
     if isinstance(node, dict):
+        # These records deliberately retain the English ROM bytes.  Their
+        # display text is documentation, not input to the Thai encoder.
+        if node.get("keep_original") is True:
+            return
         for key, value in node.items():
             if key.startswith("_") or key in SKIP_KEYS:
                 continue

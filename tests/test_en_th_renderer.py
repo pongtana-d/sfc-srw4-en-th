@@ -159,12 +159,21 @@ def test_dispatch_does_not_let_restored_glyph_flags_choose_the_page():
     # Custom renderers already own the battle tile allocation.  Re-entering
     # the EN raster tail applies width/tile movement a second time.
     assert bytes.fromhex("5C 2D E1 F0") not in code
-    assert bytes.fromhex("5C 00 A0 FF") in code
-    assert bytes.fromhex("5C 00 B0 FF") in code
-    assert bytes.fromhex("5C 00 C0 FF") in code
+    assert bytes.fromhex("22 00 A0 FF") in code
+    assert bytes.fromhex("22 00 B0 FF") in code
+    assert bytes.fromhex("22 00 C0 FF") in code
     # Runtime-name glyphs no longer enter the independent stock rasterizer.
     assert bytes.fromhex("5C 49 E0 F0") not in code
     assert CATALOG_INTERNAL_BASE.to_bytes(2, "little") in code
+
+
+def test_dialogue_draw_returns_with_stock_alternate_font_latch_cleared():
+    code = _entry(DEFAULT_STORY_BANKS)
+    # Every replacement returns to one cleanup epilogue, preserving A and P.
+    assert code.endswith(bytes.fromhex("08 C2 20 48 A9 00 00 8F FC FF 7F 68 28 6B"))
+    assert code.count(bytes.fromhex("22 10 F4 FF")) == 2
+    for target in ("00 A0 FF", "00 B0 FF", "00 C0 FF", "10 F4 FF"):
+        assert bytes.fromhex("5C " + target) not in code
 
 
 def test_private_supplement_width_loads_glyph_index_before_advance_lookup():

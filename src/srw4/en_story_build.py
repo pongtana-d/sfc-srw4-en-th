@@ -271,6 +271,34 @@ def _relocated_dispatch_target(
     return starts.get(source_offset) if source_offset is not None else None
 
 
+def _relocated_interior_table_target(
+    target: int,
+    *,
+    source_rows: Mapping[int, Mapping[str, object]],
+    starts: Mapping[int, int],
+    translated: Mapping[str, bytes],
+) -> int | None:
+    """Relocate a pointer-table target that intentionally skips record controls.
+
+    A few story table rows enter an otherwise sequential message after its
+    leading portrait command.  The extractor correctly does not call those
+    rows message starts, but dropping them to the empty terminator creates a
+    blank dialogue box.  Preserve the interior offset only when every skipped
+    source byte is unchanged in the translated stream.
+    """
+    for source_start, row in source_rows.items():
+        delta = target - source_start
+        if not 0 < delta < int(row["size"]):
+            continue
+        source = bytes.fromhex(str(row["source_hex"]))
+        message_id = str(row["id"])
+        payload = translated[message_id]
+        if source[:delta] != payload[:delta]:
+            return None
+        return starts[source_start] + delta
+    return None
+
+
 def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                        messages: Mapping[str, str],
                        compile_text: Callable[[str], bytes],
@@ -481,6 +509,26 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                 for index in row["table_slots"]:
                     at = int(index) * 2
                     table[at:at + 2] = starts[int(row["offset"], 0)].to_bytes(2, "little")
+            # Some JP table rows deliberately point inside a message (for
+            # example, past an already-established portrait command).  They
+            # are absent from ``table_slots`` because they are not record
+            # starts, so recover them from the authoritative JP table.
+            jp_pc = int(str(block["pc"]), 0)
+            jp_table = jp_reference[jp_pc:jp_pc + table_bytes]
+            for index in range(int(block["pointers"])):
+                at = index * 2
+                if table[at:at + 2] != b"\x00\x00":
+                    continue
+                target = jp_table[at] | jp_table[at + 1] << 8
+                moved = _relocated_interior_table_target(
+                    target,
+                    source_rows=source_rows,
+                    starts=starts,
+                    translated=original,
+                )
+                if moved is not None:
+                    table[at:at + 2] = moved.to_bytes(2, "little")
+                    relocated += 1
         # The engine may reach an unreferenced table slot through a dynamic
         # dispatch.  Preserve the EN convention: it points at the block's
         # single empty terminator, rather than becoming a dangerous $0000.

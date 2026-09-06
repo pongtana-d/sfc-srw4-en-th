@@ -58,6 +58,16 @@ def test_nesting_is_followed_and_the_path_says_where():
     ]
 
 
+def test_keep_original_records_are_not_treated_as_translation_input():
+    tree = {
+        "fields": [
+            {"translation": "Can't Counter", "keep_original": True},
+            {"translation": "แปลจริง", "keep_original": False},
+        ]
+    }
+    assert list(walk(tree)) == [("fields[1].translation", "แปลจริง")]
+
+
 def test_strings_are_sorted_by_what_they_hold():
     assert classify("ไทย") == "check"
     assert classify("<FC:05>ก") == "check"
