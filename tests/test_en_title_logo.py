@@ -27,3 +27,24 @@ def test_en_logo_oam_has_all_fifteen_sprites_per_row():
     assert [x for x, y, _ in EN_LOGO_SPRITES if y == 48] == [
         *range(16, 193, 16), 200, 216, 232
     ]
+
+
+def test_version_preserves_logo_and_only_moves_two_blank_sprites():
+    from srw4.en_title import install_en_title_logo, VERSION_SPRITES
+    base = (ROOT / "rom/Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
+    logo, _ = build_en_title_logo(ROOT / "data", base)
+    image = bytearray(base)
+    report = install_en_title_logo(image, ROOT / "data", base)
+    assert report["version"]["text"] == "v1.3"
+    version_tiles = {part for _, tile, _, _ in VERSION_SPRITES
+                     for part in (tile, tile + 1, tile + 16, tile + 17)}
+    for tile in range(256):
+        start = tile * 32
+        if tile not in version_tiles:
+            assert image[EN_TITLE_LOGO_PC + start:EN_TITLE_LOGO_PC + start + 32] == logo[start:start + 32]
+    allowed = {pc + offset for pc, _, _, _ in VERSION_SPRITES for offset in (2, 3)}
+    allowed.update(range(0xE19E, 0xE1A3))
+    allowed.update(range(0x7FF52, 0x7FF70))
+    allowed.update(range(0x7FF24, 0x7FF52, 4))
+    assert all(a == b or i in allowed or EN_TITLE_LOGO_PC <= i < EN_TITLE_LOGO_PC + EN_TITLE_LOGO_SIZE
+               for i, (a, b) in enumerate(zip(base, image)))

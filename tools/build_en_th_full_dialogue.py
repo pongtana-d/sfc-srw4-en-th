@@ -22,6 +22,7 @@ from srw4.en_th_catalogs import (
     install as install_catalogs,
 )
 from srw4.en_th_renderer import install as install_renderer
+from srw4.en_scarlet_upgrade import install as install_scarlet_upgrade
 from srw4.en_title import install_en_title_logo
 from srw4.proven.option_menu import build_en_part_effect_data
 from srw4.rom import Rom, sha256
@@ -178,6 +179,7 @@ def main() -> int:
     )
     title = install_en_title_logo(rom.data, ROOT / "data", base)
     intro = install_intro(rom.data, base, ROOT)
+    scarlet_upgrade = install_scarlet_upgrade(rom.data)
     verify_stock_objectives(rom.data, base)
     checksum = rom.fix_checksum()
     output = rom.to_bytes()
@@ -217,6 +219,7 @@ def main() -> int:
         },
         "title": title,
         "intro": intro,
+        "scarlet_upgrade": scarlet_upgrade,
         "output": {"path": _report_path(args.output), "sha256": sha256(output),
                    "checksum": f"0x{checksum:04X}", "bytes": len(output)},
         "patch": {"format": "IPS", "path": _report_path(args.patch),

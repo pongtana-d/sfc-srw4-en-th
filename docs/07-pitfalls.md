@@ -117,3 +117,39 @@ The baseline verifier pins that range to the renderer guard.
 `tools/lua/en-objective-regression.lua` closes and reopens Objectives from an EN
 state and fails if a Thai renderer handles the fresh draw. On 2026-09-07, user
 slot 1 redrew “Within 6 turns, all members must retreat.” with stock glyphs.
+
+## Diana A / Scarlet Beam upgrade allocation
+
+The supplied EN slot-2 Diana A record has descriptor `$0C0A` at `$138A`:
+three weapon levels starting at nibble 10, inherited from Aphrodite's size.
+Diana's stock EN record declares four levels. Scarlet's upgrade index 3 writes
+nibble 13 into the following unit, while `$80:B466` loads only three levels and
+zero-fills Scarlet's temporary level. Actual A purchases reach 2600, then B/A
+reentry recalculates 1200. This is not evidence of a Thai numeric-renderer bug.
+
+The current `en_scarlet_upgrade.py` changes only PC `$0B9CB2`, the fourth
+weapon entry's upgrade index, from 3 to 0. This uses the unused Repair level.
+It does not change the count, allocate memory, migrate saves or install CPU
+hooks. Native `$80:B3C7` and the upgrade-menu list both consume this index;
+`$80:B416–B421` suppresses the upgrade bonus for support weapons. Repair stays
+at zero and the native purchase gate rejects support weapons. Diana's record
+has no other unit-table aliases and belongs to the non-sharing allocator group.
+
+Native EN slot-2 input tests: seven Scarlet purchases, B/A reentry, power 2600;
+Repair rejected with no fund/level change; Melee and Diana Missiles each bought
+one level independently and retained it after reentry. Full-roster and form
+stress both keep Scarlet 2600, original descriptors, other levels and EN names.
+Pool ends at 353 / 310 respectively. These are synthetic allocator tests, not
+all story routes or an actual battlefield healing-action test. The underlying
+stock allocator's 544-level limit is unchanged. Evidence:
+`build/repro/scarlet-repair-slot/`.
+
+The withdrawn append-migration implementation and its release binaries were
+removed. It expanded the pool 314→357 during the same roster stress, crossing
+EN names at `$14D0` (356 levels). Historical diagnostic reports remain under
+`build/repro/scarlet-roster-stress/` and `build/repro/scarlet-patch/`.
+
+After loading a savestate made with the previous ROM, leave/reenter the weapon
+menu before purchasing so the cached weapon indices are rebuilt. This patch
+does not recover previously misdirected levels, refund funds, or undo save
+allocations made by the withdrawn patch. Do not guess neighboring ownership.
