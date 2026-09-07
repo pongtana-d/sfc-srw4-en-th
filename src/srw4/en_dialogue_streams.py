@@ -4,12 +4,14 @@ from __future__ import annotations
 import re
 from collections.abc import Mapping
 
-from .en_dialogue_font import SLOT
+from .en_dialogue_font import SLOT, DIALOGUE_AM_SLOTS
+from .text import segment, token_for
 from .en_dialogue_codec import DictionaryCodec, build as build_dictionary
 from .proven.text.encoding import encode
 
 
 _TAG = re.compile(r"<[^>]+>")
+_SARA_AM_CLUSTER = re.compile(r"[ก-ฮ][ัิีึืฺุู็่้๊๋์ํ๎]*ำ")
 # Corpus audit: largest current decoded record is 777 bytes (`48_17CE`).
 # One 1 KiB WRAM buffer therefore has headroom without a magic allocation.
 WRAM_BUFFER_BYTES = 0x400
@@ -57,9 +59,18 @@ def _plain(text: str, layout: Mapping[str, object]) -> bytes:
         def flush() -> None:
             if not chunk:
                 return
-            for byte in encode("".join(chunk), codes, shorthand, phrases):
-                # `$C0`-$EB overlap engine controls and must always be led.
-                # The first byte of each render run also establishes the page.
+            text = "".join(chunk)
+            cursor = 0
+            for match in _SARA_AM_CLUSTER.finditer(text):
+                for byte in encode(text[cursor:match.start()], codes, shorthand, phrases):
+                    emit(byte)
+                clusters = segment(match.group())
+                if len(clusters) != 2 or clusters[1] != "า":
+                    raise ValueError("unexpected SARA AM segmentation")
+                emit(DIALOGUE_AM_SLOTS[token_for(clusters[0])], 0xC2)
+                emit(codes["า"])
+                cursor = match.end()
+            for byte in encode(text[cursor:], codes, shorthand, phrases):
                 emit(byte)
             chunk.clear()
 
@@ -85,7 +96,21 @@ def compile_text(text: str, layout: Mapping[str, object]) -> bytes:
     cursor = 0
     for match in _TAG.finditer(text):
         output.extend(_plain(text[cursor:match.start()], layout))
-        output.extend(_control(match.group()))
+        control = _control(match.group())
+        if len(control) == 3 and control[0] == 0xFB and 0x08 <= control[2] <= 0x0F:
+            # Conditional flag commands consume a raw 16-bit branch target.
+            # Never let the first translated glyph become that address.
+            operand_end = match.end()
+            operand = bytearray()
+            while len(operand) < 2:
+                raw = _TAG.match(text, operand_end)
+                if raw is None:
+                    raise ValueError(f"{match.group()}: missing explicit branch pointer")
+                operand.extend(_control(raw.group()))
+                operand_end = raw.end()
+            if len(operand) != 2:
+                raise ValueError(f"{match.group()}: branch pointer must be two bytes")
+        output.extend(control)
         cursor = match.end()
     output.extend(_plain(text[cursor:], layout))
     if not output or output[-1] not in (0xF7, 0xFF):

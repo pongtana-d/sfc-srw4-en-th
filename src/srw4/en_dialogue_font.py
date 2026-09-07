@@ -4,6 +4,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from .atlas import AtlasBuilder
+from .tokens import TokenMap
 
 
 # Only glyphs used by the current EN-ROM Thai build are authored here.  Codes
@@ -68,6 +69,22 @@ if len(set(CATALOG_CLUSTER_SUPPLEMENT_SLOTS.values())) != len(
 ):
     raise ValueError("catalog cluster supplement slots contain a duplicate")
 
+# Append-only manifest order keeps these slots stable across translation edits.
+# Reuse the existing supplement renderer: these are complete atlas bitmaps.
+_am_tokens = [token for token in TokenMap.load(
+    Path(__file__).resolve().parents[2] / "data/font/renewal-clusters.json"
+).tokens if token.startswith("cluster:") and "ํ" in token]
+_am_free = [code for code in range(0xEC)
+            if code not in _SUPPLEMENT_RESERVED_SLOTS
+            and code not in CATALOG_CLUSTER_SUPPLEMENT_SLOTS.values()]
+if len(_am_tokens) > len(_am_free):
+    raise ValueError("dialogue SARA AM clusters exceed supplement page capacity")
+DIALOGUE_AM_SLOTS = dict(zip(_am_tokens, _am_free))
+if max(DIALOGUE_AM_SLOTS.values(), default=0) > 0xC0:
+    raise ValueError(
+        "dialogue SARA AM clusters need a new private-page protocol above slot C0"
+    )
+
 
 def build_page_two(font_dir: Path, en_rom: bytes) -> tuple[bytes, bytes]:
     """Return the 256×16 bitmap page and matching 256-byte width table."""
@@ -83,7 +100,7 @@ def build_page_two(font_dir: Path, en_rom: bytes) -> tuple[bytes, bytes]:
         start = slot * 16
         page[start:start + 16] = bytes(glyph.rows)
         widths[slot] = glyph.advance
-    for token, slot in CATALOG_CLUSTER_SUPPLEMENT_SLOTS.items():
+    for token, slot in {**CATALOG_CLUSTER_SUPPLEMENT_SLOTS, **DIALOGUE_AM_SLOTS}.items():
         glyph = atlas.build(token)
         start = slot * 16
         page[start:start + 16] = bytes(glyph.rows)

@@ -3,12 +3,15 @@
 import sys
 from pathlib import Path
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from srw4.en_story_build import (  # noqa: E402
     _dispatch_records,
+    fields,
     _merge_ranges,
     _relocated_dispatch_target,
     _relocated_interior_table_target,
@@ -16,6 +19,13 @@ from srw4.en_story_build import (  # noqa: E402
     replace_en_quote_separators,
 )
 from srw4.en_dialogue_font import BATTLE_QUOTE_PADDING  # noqa: E402
+
+
+@pytest.mark.parametrize("flag_high", range(0x08, 0x10))
+def test_flag_branch_pointer_is_relocated_for_both_polarities(flag_high):
+    # $A16E is a pointer even though both bytes resemble ordinary glyphs.
+    stream = bytes((0xFB, 0x48, flag_high, 0x6E, 0xA1, 0xC1, 0x04, 0xFF))
+    assert fields(stream, where="conditional retreat") == (3,)
 
 
 def test_quote_fields_accepts_english_battle_dispatch_header():

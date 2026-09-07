@@ -350,3 +350,44 @@ P0–P6 ทำเสร็จแล้ว; blocker ปัจจุบันจ�
 - Rebuilt EN production from current sources; ROM SHA-256 `059c33e25f18fc1177433fc7f9a9ddbd25d76f6ce70491a154685f099bc62418`; logo rows SHA-256 `2a442a6cf4232998b68a855a65b77d0ae0dc1d815558eb5444df4fa2e878f4ad`.
 - 65 EN/editor Python tests and 2 eyedropper tests passed. Two clean EN builds match; IPS round-trip and Mesen title pixel comparison passed. Current evidence: `build/reports/latest/`.
 - Removed old title test builds/captures and duplicate ROM/IPS files from `build/repro`, including the superseded title-approved-20260905 evidence directory. Cleanup inventory: `build/reports/latest/cleanup.json`. Kept stock EN reference, editor backups, save-related artifacts, source assets, and automated test suites.
+# 2026-09-07: EN dialogue SARA AM atlas clusters
+
+- Dialogue compilation now emits the editor's precomposed NIKHAHIT cluster on
+  the existing C2 supplement page, followed by primary-page SARA AA. Other Thai
+  clusters retain their existing encoding. 129 manifest AM clusters have reserved
+  supplement slots; existing ASCII, icons and catalog supplement slots are preserved.
+- Fixed C2 router lookahead losing the original page lead, and extended supplement
+  width classification through slot EB. No new renderer or WRAM allocation.
+- Restored `/Users/mono-tong/Library/Application Support/Mesen2/SaveStates/srw4-en-th_1.mss`
+  against `build/srw4-en-th.sfc`. The isolated replay harness redirects the next
+  story record to `09_9DE6` at CPU F2:A932, forcing a new draw without changing the
+  saved state. `build/am-replay.txt` records slot 4D with page 0003 twice.
+  `build/am-replay.png` matches the editor's complete 8x16 `cluster:ซํ้` bitmap
+  exactly at (147,15) and (179,15).
+- Encoder/font/catalog/story/codec tests: 58 passing. Full suite has unrelated
+  missing legacy snapshots, reference data and existing corpus/title expectations;
+  it is not a clean release gate. Battle animation runtime remains unverified:
+  available EN slot 2 produced a black frame and slot 11 is a map dialogue state.
+- Final ROM SHA-256: `7e7382b2b148263650a4a2e0293e6005306c4e66e7e1e7f0bb87f3304630e296`.
+
+### 2026-09-07 — EN post-battle conditional retreat pointer
+
+- Reproduced from the user's Mesen EN `srw4-en-th_1.mss` (SHA-256
+  `d91949664ce656d519a95c90a0a28c1fae6b4a8cf02485c7540bdc45e459c1f7`).
+  The loader correctly selected block 28, row 93 at `$F5:A0E5`.
+  `$FB:4808` then read the first Thai glyph bytes `C1 04` as a branch address,
+  jumping at `$81:96D6` to `$F5:04C1` inside unrelated story record `19_03E2`.
+- Restored the omitted raw source pointer `<6E><A1>` in `28_A778` and taught
+  the repacker to relocate both flag-test families (`$FB` high byte `$08-$0F`).
+  EN dispatch `$C1:9381` selects `$96B0` / `$96C6`; both consume a pointer.
+  Compilation now rejects flag branches without explicit two-byte targets.
+- The native state takes the branch to `28_A16E`, now `$F5:97D2`, and displays
+  `Olibee: แย่แล้ว! ขอสละยาน!`; the Quwasan line is the untaken branch.
+  Mesen replay with A at frames 30 and 280 passes the quote and map
+  return. The saved state was read only. Evidence: `build/repro/sstate2-check/`.
+- 58 related tests and 10,439 pointer checks pass. Independent builds produce
+  identical ROM/IPS; applying the IPS to the pinned EN base reproduces the ROM.
+  Reference conflicts remain 0; the unrelated glossary audit reports 26 uses
+  in 11 groups, with no wording changed by this fix.
+- Production ROM SHA-256:
+  `94d5e29b88fb0d465bcb8d5b71da34282d456d49f81fcb9d9b86f85d8ec771fe`.

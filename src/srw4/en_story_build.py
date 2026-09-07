@@ -32,7 +32,9 @@ class StoryBuildReport:
 def _shape(lead: int, operands: list[int]) -> str | None:
     if (lead, operands) == (0xFC, [0x08]):
         return "branch"
-    if lead == 0xFB and len(operands) == 2 and operands[1] == 0x0C:
+    # EN $C1:9381 dispatches on the flag word's high byte. $08-$0B
+    # and $0C-$0F are opposite flag tests, both followed by a pointer.
+    if lead == 0xFB and len(operands) == 2 and 0x08 <= operands[1] <= 0x0F:
         return "address"
     if (lead, operands) == (0xFC, [0x07]):
         return "address"

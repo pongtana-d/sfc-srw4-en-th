@@ -6,7 +6,11 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .asm65816 import assemble
-from .en_dialogue_font import build_page_two, overlay_primary_dialogue_glyphs
+from .en_dialogue_font import (
+    DIALOGUE_AM_SLOTS,
+    build_page_two,
+    overlay_primary_dialogue_glyphs,
+)
 from .en_ff_router import (
     DEFAULT_STORY_BANKS,
     ROUTER_PAGE_STATE,
@@ -68,6 +72,10 @@ SUPPLEMENT_PAGE_PC = 0x3F6000
 SUPPLEMENT_ADVANCE_PC = 0x3F7000
 THAI_STOCK_WIDTH_PC = 0x3F7100
 SUPPLEMENT_STOCK_WIDTH_PC = 0x3F7200
+# A C2 lead is consumed by the story router, which then hands its slot directly
+# to the width hook.  Keep the supplement range no wider than the allocated
+# slots: EN glyph bytes above this range must return to the stock renderer.
+SUPPLEMENT_PRIVATE_SLOT_LIMIT = max(DIALOGUE_AM_SLOTS.values(), default=0xBF) + 1
 # Runtime names reached through `$FB` live outside the relocated story banks.
 # Keep their original EN glyph codes, but draw them through the same persistent
 # VWF run as the adjacent Thai text so the first Thai glyph cannot clear them.
@@ -273,7 +281,8 @@ private:
 supplement:
   lda $02
   and #$00FF
-  cmp #$00C0
+  ; Accept allocated C2 slots, but do not reinterpret EN glyph bytes as Thai.
+  cmp #${SUPPLEMENT_PRIVATE_SLOT_LIMIT:04X}
   bcs stock
   tax
   brl index_ready

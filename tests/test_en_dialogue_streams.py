@@ -5,15 +5,56 @@ import re
 import sys
 from pathlib import Path
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
 
 from srw4.en_dialogue_streams import compile_ordinary_text, compile_text  # noqa: E402
 from srw4.en_dialogue_font import SLOT  # noqa: E402
+from srw4.en_dialogue_font import DIALOGUE_AM_SLOTS, build_page_two
+from srw4.atlas import AtlasBuilder
+from srw4.text import segment, token_for
 
 
 LAYOUT = json.loads((ROOT / "data" / "font" / "encoding.json").read_text())
+
+
+def test_retreat_flag_branch_retains_its_source_pointer():
+    messages = json.loads((ROOT / "data/translations/script.th.json").read_text())["messages"]
+    payload = compile_text(messages["28_A778"], LAYOUT)
+    assert payload[:5] == bytes.fromhex("FB 48 08 6E A1")
+
+
+@pytest.mark.parametrize("flag_high", range(0x08, 0x10))
+def test_flag_branch_rejects_translated_text_in_place_of_pointer(flag_high):
+    with pytest.raises(ValueError, match="missing explicit branch pointer"):
+        compile_text(f"<FB:48{flag_high:02X}>ควาซาน<ENDFF>", LAYOUT)
+
+
+def test_flag_branch_accepts_raw_pointer_bytes_that_look_like_controls():
+    payload = compile_text("<FB:F10C><ENDF7><09>ทดสอบ<ENDFF>", LAYOUT)
+    assert payload[:5] == bytes.fromhex("FB F1 0C F7 09")
+
+
+def test_sara_am_uses_editor_clusters_and_returns_to_primary_page():
+    for text in ("กำ", "สำ", "ซ้ำ", "น้ำ", "ป้ำ"):
+        cluster = token_for(segment(text)[0])
+        assert compile_text(text + "<ENDFF>", LAYOUT) == bytes((
+            0xC2, DIALOGUE_AM_SLOTS[cluster],
+            0xC1, LAYOUT["codes"]["า"], 0xFF,
+        ))
+
+
+def test_all_sara_am_supplement_bitmaps_match_editor():
+    rom = (ROOT / "rom" / "Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
+    page, advances = build_page_two(ROOT / "data/font", rom)
+    atlas = AtlasBuilder(ROOT / "data/font", rom)
+    for token, slot in DIALOGUE_AM_SLOTS.items():
+        glyph = atlas.build(token)
+        assert page[slot * 16:(slot + 1) * 16] == bytes(glyph.rows)
+        assert advances[slot] == glyph.advance
 
 
 def test_primary_page_owns_colon_and_space_between_thai_runs():

@@ -35,6 +35,7 @@ from srw4.en_th_renderer import (  # noqa: E402
     PAGE_PC,
     STOCK_ADVANCE_PC,
     STOCK_PAGE_PC,
+    SUPPLEMENT_PRIVATE_SLOT_LIMIT,
     SUPPLEMENT_ADVANCE_PC,
     SUPPLEMENT_PAGE_PC,
     SUPPLEMENT_STOCK_WIDTH_PC,
@@ -50,6 +51,7 @@ from srw4.atlas import AtlasBuilder  # noqa: E402
 from srw4.en_dialogue_font import (  # noqa: E402
     BATTLE_QUOTE_PADDING_SLOT,
     CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
+    DIALOGUE_AM_SLOTS,
     SLOT,
     WEAPON_ATTRIBUTE_SLOTS,
     build_page_two,
@@ -101,12 +103,14 @@ def test_contextual_upper_stack_for_ng_sara_a_tone_matches_editor_bitmap():
 
 
 def test_supplement_page_contains_only_declared_live_glyphs():
+    from srw4.en_dialogue_font import DIALOGUE_AM_SLOTS
     clean = BASE.read_bytes()
     page, advances = build_page_two(ROOT / "data" / "font", clean)
     live = {
         *SLOT.values(),
         *WEAPON_ATTRIBUTE_SLOTS.values(),
         *CATALOG_CLUSTER_SUPPLEMENT_SLOTS.values(),
+        *DIALOGUE_AM_SLOTS.values(),
     }
 
     for code in range(0x100):
@@ -182,7 +186,12 @@ def test_private_supplement_width_loads_glyph_index_before_advance_lookup():
 
     # Thai and supplement pages each validate and load their own glyph index;
     # page 3 must not branch straight into an advance lookup with stale X/A.
-    assert code.count(load_private_index) == 2
+    assert code.count(load_private_index) == 1
+    limit = SUPPLEMENT_PRIVATE_SLOT_LIMIT.to_bytes(2, "little")
+    assert code.count(bytes.fromhex("A5 02 29 FF 00 C9") + limit) == 1
+    # `$C1+` are EN glyph bytes in the battle quote path, not C2 slots.
+    assert max(DIALOGUE_AM_SLOTS.values()) == 0xC0
+    assert SUPPLEMENT_PRIVATE_SLOT_LIMIT == 0xC1
 
 
 def test_catalog_width_keeps_internal_tag_for_draw_dispatch():

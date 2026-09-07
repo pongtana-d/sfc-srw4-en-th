@@ -132,6 +132,8 @@ story_page:
   rtl
 story_not_split:
   ply
+  ; Lookahead loaded the glyph into A. Restore the page lead before classifying.
+  lda #$00C2
 story_page_lead:
   cmp #$00C0
   bcc stock_story
