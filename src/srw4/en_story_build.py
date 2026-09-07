@@ -15,6 +15,31 @@ ENGINE_OPERANDS = {0xF0: 1, 0xF1: 1, 0xF2: 1, 0xF3: 1, 0xF4: 1,
                    0xF5: 1, 0xFB: 2, 0xFC: 1, 0xFD: 1, 0xFE: 2}
 EN_QUOTE_HEADER = b"\xFC\x01\xAB\x43"
 FC08_BRANCH_ENTRIES = 8
+# Block 1 is the stock EN objective table and its conditional text.
+OBJECTIVE_BLOCK = 1
+
+
+def objective_span(clean: bytes) -> tuple[int, int, int]:
+    at = MASTER_TABLE_PC + OBJECTIVE_BLOCK * 3
+    start = int.from_bytes(clean[at:at + 2], "little")
+    bank = clean[at + 2]
+    end = int.from_bytes(clean[at + 3:at + 5], "little")
+    if clean[at + 5] != bank or end <= start:
+        raise RomError("EN objective block boundary changed")
+    return bank, start, end
+
+
+def verify_stock_objectives(image: bytes, clean: bytes) -> None:
+    from .en_ff_router import STOCK_OBJECTIVE_SPAN
+    bank, start, end = objective_span(clean)
+    if (bank, start, end) != STOCK_OBJECTIVE_SPAN:
+        raise RomError("EN objective renderer range does not match the baseline")
+    at = MASTER_TABLE_PC + OBJECTIVE_BLOCK * 3
+    pc = _cpu_to_pc(bank, start)
+    if (image[at:at + 3] != clean[at:at + 3]
+            or image[pc:pc + end - start] != clean[pc:pc + end - start]):
+        raise RomError("Objectives must remain byte-identical to stock English")
+
 
 
 @dataclass(frozen=True)
@@ -315,6 +340,12 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
         for slot in blocks
     }
     spans = [[bank, 1, 0x10000] for bank in STORY_BANKS]
+    # Reserve the original EN objective bytes even inside a repacking bank.
+    objective_bank, objective_start, objective_end = objective_span(clean)
+    spans = [piece for bank, start, end in spans for piece in (
+        [[bank, start, objective_start], [bank, objective_end, end]]
+        if bank == objective_bank else [[bank, start, end]]
+    )]
     order = [49, 50, 51, *range(43), 48]
     placed: list[tuple[int, int, int, bytes, int, int]] = []
     relocated = 0
@@ -329,6 +360,8 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
     jp_reference = (Path(__file__).resolve().parents[2] / "rom" /
                     "Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc").read_bytes()
     for slot in order:
+        if slot == OBJECTIVE_BLOCK:
+            continue
         block = blocks[slot]
         rows = rows_by_block[slot]
         table_bytes = int(block["pointers"]) * 2
@@ -394,13 +427,6 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
             direct = starts.get(target)
             if direct is not None:
                 return direct
-            # Block 1's five-way objective selects a translated tail.  The
-            # anchors are explicit controls retained by the translator.
-            if str(row["id"]) == "01_0811":
-                anchors = {0x081B: 10, 0x0825: 20, 0x082F: 30, 0x0839: 40,
-                           0x0843: 81, 0x0844: 82}
-                if target in anchors:
-                    return starts[int(row["offset"], 0)] + anchors[target]
             for old, owner in source_rows.items():
                 delta = target - old
                 if 0 <= delta < int(owner["size"]):

@@ -14,7 +14,7 @@ from srw4.en_baseline import EN_SHA256
 from srw4.en_dialogue_streams import compile_text
 from srw4.en_ff_router import install as install_router
 from srw4.en_intro import install as install_intro
-from srw4.en_story_build import install_full_story
+from srw4.en_story_build import install_full_story, verify_stock_objectives
 from srw4.en_th_catalogs import (
     ClusterCatalogEncoder,
     ProfileCatalogEncoder,
@@ -178,6 +178,7 @@ def main() -> int:
     )
     title = install_en_title_logo(rom.data, ROOT / "data", base)
     intro = install_intro(rom.data, base, ROOT)
+    verify_stock_objectives(rom.data, base)
     checksum = rom.fix_checksum()
     output = rom.to_bytes()
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -190,6 +191,7 @@ def main() -> int:
             "EN Thai story, battle quotes, Spirit and Part descriptions, title logo, and "
             "opening crawl; original English unit/pilot/weapon names"
         ),
+        "objectives": {"policy": "stock-english", "byte_identical": True},
         "story_repack": {"blocks": full.blocks, "records": full.records,
                           "bytes": full.bytes, "relocated_fields": full.relocated_fields,
                           "banks": list(full.banks)},

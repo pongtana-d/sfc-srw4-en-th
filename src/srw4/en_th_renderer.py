@@ -13,6 +13,7 @@ from .en_dialogue_font import (
 )
 from .en_ff_router import (
     DEFAULT_STORY_BANKS,
+    stock_objective_guard,
     ROUTER_PAGE_STATE,
     SUPPLEMENT_WIDTH_TABLE_CPU,
     THAI_WIDTH_TABLE_CPU,
@@ -183,6 +184,7 @@ catalog_thai:
   jsl ${pc_to_cpu(CATALOG_BATTLE_RENDERER_PC):06X}
   brl draw_done
 source_route:
+{stock_objective_guard("stock")}
   lda $CD
   and #$00FF
 {checks}
@@ -261,6 +263,7 @@ catalog_thai:
   sta.l ${ROUTER_PAGE_STATE:06X}
   brl index_ready
 source_route:
+{stock_objective_guard("stock")}
   lda $CD
   and #$00FF
 {checks}

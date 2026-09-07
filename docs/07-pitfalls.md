@@ -78,3 +78,42 @@ sha256 เท่ากัน และ byte diff เทียบบิลด์�
 message จึงไม่โผล่ใน audit ไม่โผล่ใน sweep ไม่โผล่ใน golden fixture — **มีแต่
 ฉากต่อสู้จริงเท่านั้นที่รู้ว่ามันหายไป** ถ้าเขียนโค้ดที่คิดว่า "บล็อก = ตาราง +
 ข้อความ" ให้เช็ค `record_bytes` ก่อนเสมอ
+
+## EN savestate max-upgrade edits must preserve dynamic robot names
+
+The English-combo ROM relocates the three editable robot names to WRAM
+`$7E:14D0–14DC`, `$7E:14DD–14E9`, and `$7E:14EA–14F6` (13 bytes each).
+Do not fill a broad upgrade-table range across these addresses. In the reported
+2026-09-07 slots 1 and 2, a max-upgrade save edit had filled through `$14EB` with
+`$77`, including both complete name buffers and the beginning of the third.
+The EN font renders `$77` as `È`; losing the `$FF` terminator also makes the
+name renderer read past the field. The corruption already exists before the
+slot-1 A press and reproduces with the stock EN renderer.
+
+Default EN strings are at ROM PC `$3EDC4D` (Grungust), `$3EDC56` (Wing Gust),
+and `$3EDC60` (Gust Lander). Restore defaults only when the user authorizes
+repair; custom names cannot be inferred from overwritten bytes. Future upgrade
+edits must target verified real-unit entries and assert all three name buffers
+remain byte-identical. Repair evidence/backups: `build/repro/robot-naming/repair/`.
+
+## Objectives must remain stock English
+
+The old English override was lost, allowing Thai block 1 back into builds.
+The EN builder now skips block 1 and reserves its original ROM range before
+packing other story blocks. Skipping the block alone is insufficient because
+its original bank is also a repacking destination.
+
+Before writing ROM/IPS, `verify_stock_objectives` checks the master pointer and
+entire original block against the pinned EN base. Regression tests build without
+objective translations and reject mutations to the pointer or payload.
+Thai block 1 entries are legacy corpus data only; never enable them implicitly.
+Existing savestates may contain an already rendered screen or obsolete repacked
+cursors; reload the rebuilt ROM and reopen the objective window for a fresh draw.
+
+Stock objective bytes alone do not ensure English rendering: `$F1` also holds
+private Thai streams. The story parser, width adapter and draw adapter must all
+exclude the stock objective extent, accounting for the already advanced cursor.
+The baseline verifier pins that range to the renderer guard.
+`tools/lua/en-objective-regression.lua` closes and reopens Objectives from an EN
+state and fails if a Thai renderer handles the fresh draw. On 2026-09-07, user
+slot 1 redrew “Within 6 turns, all members must retreat.” with stock glyphs.

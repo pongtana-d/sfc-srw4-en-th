@@ -74,5 +74,6 @@ python3 tools/audit_dialogue_reference.py --limit 10000 --samples 3
 
 ## สิ่งที่ตกลงว่าคงข้อความเดิมไว้
 
+- Objective/เงื่อนไขภารกิจ: ใช้ block 1 จาก ROM EN เดิมทั้ง pointer ข้อความและเงื่อนไข ห้ามแปลหรือ repack; คำแปล block 1 ใน `script.th.json` เป็นข้อมูลเก่าที่ไม่ใช้ใน build
 - ชื่อเพลง BGM และเนื้อเพลง (ตามคำขอของผู้ใช้)
 - โลโก้/เครดิตที่เป็นภาพ

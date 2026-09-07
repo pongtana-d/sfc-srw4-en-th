@@ -6,6 +6,13 @@
 - ห้ามเปลี่ยนเป้าหมายไป build/release ROM JP หรือใช้ savestate JP เพื่อยืนยันบั๊กของ ROM EN เว้นแต่ผู้ใช้สั่งชัดเจน
 - Mesen2 savestate อยู่ที่ `/Users/mono-tong/Library/Application Support/Mesen2/SaveStates`
 
+# Objective Policy
+
+- Objective/เงื่อนไขภารกิจต้องคงภาษาอังกฤษจาก ROM EN เดิม (story block 1)
+- ห้ามนำคำแปล block 1 ใน `script.th.json` กลับเข้า build หรือ repack block นี้
+- ต้องสำรองช่วงข้อมูลเดิมจาก allocator และผ่าน `verify_stock_objectives` ก่อนเขียน ROM/IPS
+- การเปลี่ยนนโยบายนี้ต้องมีคำสั่งผู้ใช้ชัดเจน
+
 # Savestate Selection
 
 - เมื่อผู้ใช้สั่งตรวจหรือโหลด `sstate` / `savestate` ให้ค้นหาใน `/Users/mono-tong/Library/Application Support/Mesen2/SaveStates` เป็นค่าเริ่มต้นเสมอ เว้นแต่ผู้ใช้ระบุ path อื่นชัดเจน

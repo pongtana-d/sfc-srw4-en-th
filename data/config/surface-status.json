@@ -18,7 +18,7 @@
     "menu.map_commands": {"state": "runtime_verified", "evidence": "native battle route opens END map menu"},
     "menu.map_hud": {"state": "runtime_verified", "evidence": "battle/map return golden frame 2400"},
     "menu.main_and_system": {"state": "runtime_verified", "evidence": "E-181 automated same-build Mesen golden gate for UNITS, ORDER, and SYSTEM"},
-    "menu.objective_text": {"state": "runtime_verified", "evidence": "command-state redraw showed Thai objective text"},
+    "menu.objective_text": {"state": "runtime_verified", "evidence": "EN slot 1 close/reopen: English objective with zero Thai renderer calls; build also pins stock pointer/payload. tools/lua/en-objective-regression.lua"},
     "intro.crawl_pages": {"state": "runtime_verified", "evidence": "E-193 automated isolated cold gate genuine redraw frames 2000/2400/3200"},
     "title.menu": {"state": "runtime_verified", "evidence": "E-193 automated isolated cold gate frame 900"},
     "title.stock_branding_and_credits": {"state": "runtime_verified", "evidence": "revised hand-tuned Thai logo from direct pixel editor; isolated cold redraw frame 900 hash 51a8f5c8…3d1717"},

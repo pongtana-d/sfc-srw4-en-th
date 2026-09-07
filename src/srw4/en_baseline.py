@@ -147,9 +147,9 @@ def verify_baseline(english: bytes) -> dict[str, object]:
                 "map dialogue",
                 "event dialogue",
                 "battle quotes",
-                "objective/game-over/system records in the story corpus",
+                "game-over/system records in the story corpus",
             ],
-            "excludes": ["catalog/UI outside the story corpus"],
+            "excludes": ["catalog/UI outside the story corpus", "objectives (stock EN block 1)"],
             "runtime_catalog_names": "English",
         },
         "inputs": {

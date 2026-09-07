@@ -198,3 +198,28 @@ def test_character_archive_route_ranges_merge_only_when_contiguous():
         (0x1100, 0x1300),
         (0x1400, 0x1500),
     ]
+
+
+def test_full_story_preserves_stock_english_objectives():
+    import json
+    from srw4.en_story_build import install_full_story, verify_stock_objectives
+    from srw4.en_dialogue_streams import compile_text
+    from srw4.rom import Rom, RomError
+
+    base = (ROOT / 'rom/Dai-4-ji Super Robot Taisen (English combo).sfc').read_bytes()
+    document = json.loads((ROOT / 'data/translations/script.source.json').read_text())
+    messages = json.loads((ROOT / 'data/translations/script.th.json').read_text())['messages']
+    # Objective translations must never be accessed, even if they are absent.
+    messages = {key: value for key, value in messages.items() if not key.startswith('01_')}
+    rom = Rom(bytearray(base))
+    layout = json.loads((ROOT / "data/font/encoding.json").read_text())
+    install_full_story(rom, base, document, messages, lambda text: compile_text(text, layout))
+    verify_stock_objectives(rom.data, base)
+    # Independently pin the objective extent of the canonical EN input.
+    assert rom.data[0x280003:0x280006] == base[0x280003:0x280006]
+    assert rom.data[0x3108DF:0x310DE8] == base[0x3108DF:0x310DE8]
+    for address in (0x280003, 0x3108DF, 0x310DE7):
+        changed = bytearray(rom.data)
+        changed[address] ^= 1
+        with pytest.raises(RomError, match='stock English'):
+            verify_stock_objectives(changed, base)

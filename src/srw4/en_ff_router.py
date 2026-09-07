@@ -79,6 +79,28 @@ ENTRY = {
 DEFAULT_STORY_BANKS = (0xEB, *range(0xF1, 0xFD))
 
 
+# Canonical EN master-table block 1: $F1:08DF up to block 2 at $F1:0DE8.
+# The source cursor has already advanced past the glyph at these hooks.
+STOCK_OBJECTIVE_SPAN = (0xF1, 0x08DF, 0x0DE8)
+
+
+def stock_objective_guard(stock: str) -> str:
+    bank, start, end = STOCK_OBJECTIVE_SPAN
+    return f"""
+  lda $CD
+  and #$00FF
+  cmp #${bank:04X}
+  bne objective_not_stock
+  lda $CB
+  cmp #${start + 1:04X}
+  bcc objective_not_stock
+  cmp #${end + 1:04X}
+  bcs objective_not_stock
+  brl {stock}
+objective_not_stock:
+"""
+
+
 def _story_dispatch(story_banks: tuple[int, ...]) -> bytes:
     """Return the story-side router, with one-byte Thai glyphs enabled."""
     if not story_banks or any(not 0x80 <= bank <= 0xFF for bank in story_banks):
@@ -89,9 +111,11 @@ def _story_dispatch(story_banks: tuple[int, ...]) -> bytes:
     source = f""".a16
 .i16
 story_dispatch:
+{stock_objective_guard("story_stock")}
   lda $CD
   and #$00FF
 {checks}
+story_stock:
   lda #$0000
   sta.l ${ROUTER_PAGE_STATE:06X}
   jml stock_story

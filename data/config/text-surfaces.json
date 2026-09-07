@@ -140,10 +140,10 @@
     },
     {
       "id": "menu.objective_text",
-      "source": "translations/script.th.json block 1",
+      "source": "stock EN ROM block 1",
       "engine": "ordinary",
-      "policy": "thai-with-stock-english-and-digits",
-      "state": "adapter_active_needs_full_regression"
+      "policy": "stock-english-and-digits",
+      "state": "runtime_verified"
     },
     {
       "id": "intro.crawl_pages",

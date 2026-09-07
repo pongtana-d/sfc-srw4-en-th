@@ -21,7 +21,7 @@
 | `menu.main_and_system` | `main-menu-screens.th.json` | ordinary | thai-or-new-english-glyph |
 | `menu.map_commands` | `map-menu.th.json` | ordinary | thai-or-new-english-glyph |
 | `menu.map_hud` | `map-hud.th.json` | ordinary | new-english-glyph-and-digits |
-| `menu.objective_text` | `script.th.json block 1` | ordinary | thai-with-new-english-glyph-and-digits |
+| `menu.objective_text` | stock EN ROM block 1 (reserved; no repack) | ordinary | stock-english |
 | `menu.option_screen` | `option-menu.th.json` | ordinary | new-english-glyph-with-thai-prompts |
 | `menu.part_effects` | clean ROM catalog $CC:E9BD | ordinary | thai-with-new-english-glyph-and-digits |
 | `menu.pilot_status` | `pilot-status.th.json` | ordinary | thai-or-new-english-glyph |
