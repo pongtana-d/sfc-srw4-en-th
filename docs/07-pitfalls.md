@@ -54,6 +54,14 @@ operand ผิดเป็นชื่อ runtime แล้วเลยขอบ
 
 ## การ build
 
+**EN ending cards span two story blocks.** Block 51 rows 35 onward are only
+one set. Block 42 rows 125–175 and 195–197 also render through the ordinary
+profile compositor. Encode these 52 additional records with `ProfileCatalogEncoder`
+and its font routes, not the FF dialogue encoder. EN slot 4 reproduces the
+failure: Juzo's text at `$F6:ED2B` went to stock `$F0:E045` and displayed garbage.
+Fresh card draws after the fix render Juzo, Daisaku, Chizuru and Kosuke in Thai.
+Keep the adjacent block-42 dialogue rows on the story engine.
+
 **record ของฉากต่อสู้เป็น bytecode ไม่ใช่คำ 16 บิตที่ซ้อนกัน**
 
 **จำนวนไบต์ไม่ใช่ค่าคงที่** ให้คำนวณจากข้อมูลจริงทุกครั้ง

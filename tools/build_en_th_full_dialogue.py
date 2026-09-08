@@ -114,7 +114,8 @@ def main() -> int:
     document = json.loads(SOURCE.read_text(encoding="utf-8"))
     translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]
     layout = json.loads((FONT / "encoding.json").read_text(encoding="utf-8"))
-    profile_ids = set()
+    archive_profile_ids = set()
+    ending_profile_ids = set()
     for row in document["messages"]:
         block = int(row["block"])
         pointer_rows = tuple(int(index) for index in row.get("table_slots", ()))
@@ -123,13 +124,28 @@ def main() -> int:
             and pointer_rows
             and max(pointer_rows) < PROFILE_CONTINUATION_POINTERS
         ):
-            profile_ids.add(str(row["id"]))
-    if len(profile_ids) != 240:
-        raise ValueError(
-            f"Character Archives record contract changed: expected 240, got {len(profile_ids)}"
+            archive_profile_ids.add(str(row["id"]))
+        # Ending cards also use block 42 rows 125-175 and the three
+        # La Gias variants at 195-197; adjacent rows are story dialogue.
+        is_block42_ending = block == 42 and pointer_rows and all(
+            125 <= index <= 175 or 195 <= index <= 197 for index in pointer_rows
         )
+        if is_block42_ending or (block == 51 and pointer_rows and max(pointer_rows) >= 35):
+            ending_profile_ids.add(str(row["id"]))
+    if len(archive_profile_ids) != 240:
+        raise ValueError(
+            "Character Archives record contract changed: "
+            f"expected 240, got {len(archive_profile_ids)}"
+        )
+    if len(ending_profile_ids) != 99:
+        raise ValueError(
+            "pilot ending record contract changed: "
+            f"expected 99, got {len(ending_profile_ids)}"
+        )
+    profile_ids = archive_profile_ids | ending_profile_ids
     profile_encoder = ProfileCatalogEncoder(
-        base, [translated[message_id] for message_id in sorted(profile_ids)]
+        base,
+        [translated[message_id] for message_id in sorted(profile_ids)],
     )
     profile_records = {
         message_id: profile_encoder.record(translated[message_id])
@@ -144,10 +160,9 @@ def main() -> int:
         lambda text: compile_text(text, layout),
         ordinary_records=profile_records,
     )
-
     renderer = install_renderer(rom.data)
     # The Thai copier uploads its dynamic tiles; retain parser and width hooks.
-    router = install_router(rom.data, font_hooks=True, alt_hook=False, width_hooks=True)
+    router = install_router(rom.data, font_hooks=True, alt_hook=True, width_hooks=True)
     part_stock, en_direct_runs = build_part_stock_catalog()
     cluster_encoder = ClusterCatalogEncoder(
         base,
@@ -217,6 +232,7 @@ def main() -> int:
             "routes": sum(len(spans) for spans in part_routes.values()),
             "translation": "data/translations/part-effects.th.json",
         },
+        "ending_narratives": {"records": 2, "translation": "data/translations/ending-narratives.th.json"},
         "title": title,
         "intro": intro,
         "scarlet_upgrade": scarlet_upgrade,

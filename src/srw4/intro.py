@@ -71,9 +71,10 @@ def _visible_tokens(pipeline: Pipeline, line: str, where: str) -> list[str]:
     return [piece.token for piece in result.pieces if isinstance(piece, TextGlyph)]
 
 
-def _page(root: Path, clean: bytes, pipeline: Pipeline, item: tuple[str, str, int, int, int]):
+def _page(root: Path, clean: bytes, pipeline: Pipeline, item: tuple[str, str, int, int, int], entry=None):
     key, filename, start, end, _terminator = item
-    entry = json.loads((root / "data" / "translations" / filename).read_text())
+    if entry is None:
+        entry = json.loads((root / "data" / "translations" / filename).read_text())
     if int(entry["address"], 0) != start or int(entry["end"], 0) != end:
         raise RomError(f"{key}: verified source range changed")
     source = clean[start:end]
@@ -101,7 +102,10 @@ def _page(root: Path, clean: bytes, pipeline: Pipeline, item: tuple[str, str, in
     if len(lines) > 16:
         raise RomError(f"{key}: overlay has over sixteen lines")
     for line_no, line in enumerate(lines):
-        row = 8 + line_no * 3 if line_no < 8 else 32 + (line_no - 8) * 3
+        if entry.get("compact_lines"):
+            row = 8 + line_no * 2
+        else:
+            row = 8 + line_no * 3 if line_no < 8 else 32 + (line_no - 8) * 3
         column = 3
         for token in _visible_tokens(pipeline, line, f"{key}:{line_no}"):
             if token == "char: ":

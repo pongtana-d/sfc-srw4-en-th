@@ -4,7 +4,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from .intro import EN_PAGES, HOOK_AT, HOOK_EXPECTED, build
+from .intro import EN_PAGES, HOOK_AT, HOOK_EXPECTED, build, _page, _hook
+from .en_endings import load, encode_source
 from .pipeline import Pipeline
 from .proven.assembler import pc_to_cpu
 
@@ -16,6 +17,8 @@ EN_INTRO_REGION_START = 0x2D0000
 EN_INTRO_REGION_END = 0x2DF800
 EN_CRAWL_BANK = 0xFE
 EN_TERMINATOR_TAIL = bytes.fromhex("FF FE 00 FE 01 FF")
+ENDING_REGION_START = 0x2A8000
+ENDING_PAGE_BYTES = 0x3000
 
 
 class _LinearAllocator:
@@ -59,9 +62,30 @@ def install(image: bytearray, clean: bytes, root: Path) -> dict[str, object]:
         page_specs=EN_PAGES,
         source_bank=EN_CRAWL_BANK,
     )
+    pages = [(result.writes[i][0], result.writes[i + 1][0])
+             for i in range(0, len(result.writes), 2)]
+    specs = list(EN_PAGES)
+    ending_reports = []
+    for index, record in enumerate(load(root / "data/translations/ending-narratives.th.json")):
+        start = int(str(record["pc"]), 0)
+        source = encode_source(str(record["source"]))
+        spec = (str(record["id"]), "", start, start + len(source), (start + len(source) - 1) & 0xFFFF)
+        entry = {"address": hex(start), "end": hex(start + len(source)),
+                 "source_hex": source.hex(), "translation": record["overlay"],
+                 "compact_lines": True}
+        tiles, tilemap, report = _page(root, clean, pipeline, spec, entry)
+        # Erased EN space below the catalog routing bank, checked before writes.
+        at = ENDING_REGION_START + index * ENDING_PAGE_BYTES
+        _place_fill(image, at, tiles + tilemap, str(record["id"]))
+        pages.append((at, at + len(tiles)))
+        specs.append(spec)
+        ending_reports.append(report)
+    hook_code = _hook(result.hook_pc, pages, tuple(specs), EN_CRAWL_BANK)
+    if len(hook_code) > 0x800:
+        raise ValueError("EN crawl hook exceeds reserved space")
     for index, (pc, payload) in enumerate(result.writes):
         _place_fill(image, pc, payload, f"EN intro resource {index + 1}")
-    _place_fill(image, result.hook_pc, result.hook_code, "EN intro hook body")
+    _place_fill(image, result.hook_pc, hook_code, "EN crawl hook body")
 
     hook_cpu = pc_to_cpu(result.hook_pc)
     image[HOOK_AT:HOOK_AT + len(HOOK_EXPECTED)] = bytes((
@@ -73,6 +97,8 @@ def install(image: bytearray, clean: bytes, root: Path) -> dict[str, object]:
     ))
     return {
         **result.report,
+        "hook_bytes": len(hook_code),
+        "endings": ending_reports,
         "source": "data/translations/intro*.th.json",
         "base": "pinned English-combo ROM",
         "region": f"0x{EN_INTRO_REGION_START:06X}-0x{EN_INTRO_REGION_END:06X}",

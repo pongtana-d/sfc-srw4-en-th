@@ -1,0 +1,19 @@
+{
+  "schema": "srw4-en-ending-narratives/1",
+  "records": [
+    {
+      "id": "guest-inspector-peace",
+      "pc": "0x3E7BF2",
+      "overlay": "หลังเหตุการณ์เหล่านี้\nเกสต์กับอินสเปกเตอร์\nก็ปรองดองกันได้ในที่สุด\nและส่งทูตมายังโลกเพื่อลงนาม\nสนธิสัญญาไมตรีอย่างเป็นทางการ\nสหพันธ์โลกภายใต้โครงสร้างใหม่\nยินดีตอบรับ นี่คือก้าวแรก\nสู่อนาคตใหม่ที่ดีกว่า\nสำหรับมนุษยชาติ",
+      "source": "After these events, both the Guests and the\nInspectors were finally able to reconcile, and\nsent an envoy to Earth to sign an official\nTreaty of Amity. The Earth Federation, now under\na new institution, gladly agreed. It was the\nfirst step into a new, better future for mankind.<FE><ENDFF>",
+      "translation": "หลังเหตุการณ์เหล่านี้ เกสต์กับอินสเปกเตอร์\n<FC:00:01>ก็ปรองดองกันได้ในที่สุด และส่งทูตมายังโลก\n<FC:00:01>เพื่อลงนามสนธิสัญญาไมตรีอย่างเป็นทางการ\n<FC:00:01>สหพันธ์โลกภายใต้โครงสร้างใหม่ยินดีตอบรับ\n<FC:00:01>นี่คือก้าวแรกสู่อนาคตใหม่ที่ดีกว่า\n<FC:00:01>สำหรับมนุษยชาติ<FE><ENDFF>"
+    },
+    {
+      "id": "guest-inspector-war",
+      "pc": "0x3E7D23",
+      "overlay": "หลังเหตุการณ์เหล่านี้\nการเจรจาสันติภาพระหว่างโลก\nกับเกสต์ล้มเหลว สงครามระหว่าง\nเกสต์กับอินสเปกเตอร์\nดำเนินต่อไปอย่างไร้จุดจบ\nเป็นฝันร้ายที่พวกเรา\nจะไม่มีวันตื่น...",
+      "source": "After these events, peace talks between Earth\nand the Guests broke down. The war between the\nGuests and the Inspectors continued with no end in\nsight, a nightmare from which we would never wake...<FE><ENDFF>",
+      "translation": "หลังเหตุการณ์เหล่านี้ การเจรจาสันติภาพ\n<FC:00:01>ระหว่างโลกกับเกสต์ล้มเหลว สงครามระหว่าง\n<FC:00:01>เกสต์กับอินสเปกเตอร์ดำเนินต่อไปอย่างไร้จุดจบ\n<FC:00:01>เป็นฝันร้ายที่พวกเราจะไม่มีวันตื่น...<FE><ENDFF>"
+    }
+  ]
+}
