@@ -11,6 +11,7 @@ import re
 from .atlas import AtlasBuilder
 from .en_dialogue_font import (
     CATALOG_CLUSTER_SUPPLEMENT_SLOTS,
+    DIALOGUE_AM_SLOTS,
     SLOT as SUPPLEMENT_SLOT,
     WEAPON_ATTRIBUTE_SLOTS,
     build_page_two,
@@ -597,7 +598,7 @@ ClusterCatalogEncoder = _ClusterCatalogEncoder
 
 
 class ProfileCatalogEncoder:
-    """Encode Character Archives with two Thai pages and one supplement page."""
+    """Encode archive/ending cards with two glyph pages and a shared supplement."""
 
     _CONTROL = re.compile(r"<[^>]+>")
 
@@ -624,13 +625,15 @@ class ProfileCatalogEncoder:
                     continue
                 char = piece.token.split(":", 1)[1]
                 if char not in self.supplement_codes:
-                    raise ValueError(
-                        f"EN profile character {char!r} has no supplement slot"
-                    )
-        ordered = sorted(tokens)
+                    # Rare punctuation can use the private profile pages without
+                    # changing the shared dialogue supplement's stable slots.
+                    tokens.add(piece.token)
+        shared_clusters = {**CATALOG_CLUSTER_SUPPLEMENT_SLOTS, **DIALOGUE_AM_SLOTS}
+        ordered = sorted(tokens - shared_clusters.keys())
         if len(ordered) > 0xEC * 2:
             raise ValueError(f"EN profile pages need {len(ordered)} glyphs; hold {0xEC * 2}")
         self.codes = {
+            **{token: (3, code) for token, code in shared_clusters.items() if token in tokens},
             **{token: (1, code) for code, token in enumerate(ordered[:0xEC])},
             **{token: (2, code) for code, token in enumerate(ordered[0xEC:])},
         }
@@ -638,6 +641,8 @@ class ProfileCatalogEncoder:
         pages = [bytearray(0x1000), bytearray(0x1000)]
         advances = [bytearray(0x100), bytearray(0x100)]
         for token, (route, code) in self.codes.items():
+            if route == 3:
+                continue  # Already present in build_page_two's shared supplement.
             glyph = atlas.build(token)
             page_index = route - 1
             pages[page_index][code * 16:(code + 1) * 16] = bytes(glyph.rows)

@@ -54,6 +54,15 @@ operand ผิดเป็นชื่อ runtime แล้วเลยขอบ
 
 ## การ build
 
+**EN Robot Archives uses the ordinary profile renderer.** Include all block-50
+records and block-51 pointer rows 0–34 in `ProfileCatalogEncoder` (264 records).
+The FF dialogue encoder produces garbage on this surface. Old JP static-text
+macros `FB:F8C2`, `FB:F9C2`, and `FB:AEA1` must be translated inline from the EN
+record, not passed to the runtime as name-buffer commands. EN slot 2 reproduces
+the A-Taul case. Routing uses two bitplanes for four route values so the complete
+archive corpus fits the reserved route-table region; bitmap offsets must also
+fit the 15-bit offset mask. Evidence: `build/repro/robot-history/`.
+
 **EN ending cards span two story blocks.** Block 51 rows 35 onward are only
 one set. Block 42 rows 125–175 and 195–197 also render through the ordinary
 profile compositor. Encode these 52 additional records with `ProfileCatalogEncoder`

@@ -31,3 +31,6 @@ save/
 # Local backups
 *.bak
 *.bak-*
+
+# Archived local test artifacts and previous releases
+.local-archive/

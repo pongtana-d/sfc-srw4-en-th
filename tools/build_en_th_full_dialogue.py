@@ -24,6 +24,7 @@ from srw4.en_th_catalogs import (
 from srw4.en_th_renderer import install as install_renderer
 from srw4.en_scarlet_upgrade import install as install_scarlet_upgrade
 from srw4.en_title import install_en_title_logo
+from srw4.en_splash import install_en_splash_credit
 from srw4.proven.option_menu import build_en_part_effect_data
 from srw4.rom import Rom, sha256
 
@@ -115,6 +116,7 @@ def main() -> int:
     translated = json.loads(TRANSLATIONS.read_text(encoding="utf-8"))["messages"]
     layout = json.loads((FONT / "encoding.json").read_text(encoding="utf-8"))
     archive_profile_ids = set()
+    robot_profile_ids = set()
     ending_profile_ids = set()
     for row in document["messages"]:
         block = int(row["block"])
@@ -125,6 +127,10 @@ def main() -> int:
             and max(pointer_rows) < PROFILE_CONTINUATION_POINTERS
         ):
             archive_profile_ids.add(str(row["id"]))
+        # Robot Archives continues from block 50 through block 51 rows 0-34.
+        # Row 35 switches to pilot endings; both use the ordinary compositor.
+        if block == 50 or (block == 51 and pointer_rows and max(pointer_rows) < 35):
+            robot_profile_ids.add(str(row["id"]))
         # Ending cards also use block 42 rows 125-175 and the three
         # La Gias variants at 195-197; adjacent rows are story dialogue.
         is_block42_ending = block == 42 and pointer_rows and all(
@@ -142,7 +148,9 @@ def main() -> int:
             "pilot ending record contract changed: "
             f"expected 99, got {len(ending_profile_ids)}"
         )
-    profile_ids = archive_profile_ids | ending_profile_ids
+    if len(robot_profile_ids) != 264:
+        raise ValueError(f"Robot Archives record contract changed: {len(robot_profile_ids)}")
+    profile_ids = archive_profile_ids | robot_profile_ids | ending_profile_ids
     profile_encoder = ProfileCatalogEncoder(
         base,
         [translated[message_id] for message_id in sorted(profile_ids)],
@@ -192,6 +200,7 @@ def main() -> int:
         })),
         cluster_encoder=cluster_encoder,
     )
+    splash = install_en_splash_credit(rom.data, base)
     title = install_en_title_logo(rom.data, ROOT / "data", base)
     intro = install_intro(rom.data, base, ROOT)
     scarlet_upgrade = install_scarlet_upgrade(rom.data)
@@ -234,6 +243,7 @@ def main() -> int:
         },
         "ending_narratives": {"records": 2, "translation": "data/translations/ending-narratives.th.json"},
         "title": title,
+        "splash": splash,
         "intro": intro,
         "scarlet_upgrade": scarlet_upgrade,
         "output": {"path": _report_path(args.output), "sha256": sha256(output),

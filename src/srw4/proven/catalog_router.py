@@ -74,7 +74,6 @@ def build_route_tables(
     """
     fixed_ranges = fixed_ranges or {}
     alternate_ranges = alternate_ranges or {}
-    route_kinds = 3 if alternate_ranges else 2
     banks = sorted(set(ranges) | set(fixed_ranges) | set(alternate_ranges))
     descriptors = bytearray(256 * DESC_STRIDE)
     tables = bytearray()
@@ -116,12 +115,12 @@ def build_route_tables(
             if kinds == {3}:
                 word(table, page * 2, ROUTE_ALTERNATE)
                 continue
-            # A mixed page carries one bitmap per routed page: primary first,
-            # supplement second, and the optional alternate page last.
-            bits = bytearray(PAGE_BITMAP_BYTES * route_kinds)
+            # Two bitplanes encode all four routes (0=stock, 1/2/3=pages).
+            bits = bytearray(PAGE_BITMAP_BYTES * 2)
             for index, value in enumerate(span):
-                if value:
-                    bits[(index >> 3) + (value - 1) * PAGE_BITMAP_BYTES] |= 1 << (index & 7)
+                for plane in range(2):
+                    if value & (1 << plane):
+                        bits[(index >> 3) + plane * PAGE_BITMAP_BYTES] |= 1 << (index & 7)
             pending.append((page, bytes(bits)))
             word(table, page * 2, ROUTE_MIXED)
         descriptors[bank * DESC_STRIDE:bank * DESC_STRIDE + 2] = (
@@ -142,7 +141,7 @@ def build_route_tables(
         entry = int.from_bytes(tables[at:at + 2], "little")
         word(tables, at, ROUTE_MIXED | (entry & ROUTE_OFFSET_MASK) + offset_base)
     block = bytes(descriptors) + bytes(tables) + bytes(bitmaps)
-    if offset_base + len(bitmaps) > capacity or len(bitmaps) > ROUTE_OFFSET_MASK:
+    if offset_base + len(bitmaps) > min(capacity, ROUTE_OFFSET_MASK + 1):
         raise ValueError(f"route tables need {len(block)} bytes, capacity is {capacity}")
     if table_base + len(tables) > 0xFFFF:
         raise ValueError("route page tables outrun a 16-bit offset")
@@ -226,8 +225,7 @@ def _emit_source_route(
         asm.emit(0xC9, ROUTE_ALTERNATE & 0xFF, ROUTE_ALTERNATE >> 8)
         far(0xF0, f"{prefix}_alternate_exit")
 
-    # Mixed page: one bit per byte, primary first, supplement second, and the
-    # optional alternate page third.
+    # Mixed page: low and high bitplanes encode the two-bit route number.
     # The offset and the caller's Y live on the stack -- every spare byte of
     # bank $7E is either the renderer's or the game's battle line tables.
     asm.emit(0x29, ROUTE_OFFSET_MASK & 0xFF, ROUTE_OFFSET_MASK >> 8)
@@ -249,46 +247,32 @@ def _emit_source_route(
     asm.branch(0x80, f"{prefix}_shift")
     asm.label(f"{prefix}_tested")
     asm.emit(0x29, 0x01)                        # AND #$01
-    asm.branch(0xD0, f"{prefix}_mixed_thai")
-
-    if not use_fixed:
-        asm.emit(0xC2, 0x20)                    # REP #$20
-        asm.emit(0x7A, 0x68)                    # PLY : PLA
-        asm.brl(f"{prefix}_original_exit")
-    asm.emit(0xC2, 0x20)                        # REP #$20
+    asm.emit(0xC2, 0x20, 0x29, 0x01, 0x00, 0x48)  # Clear B : PHA low route bit
     asm.emit(0x8A)                              # TXA
     asm.emit(0x18, 0x69, PAGE_BITMAP_BYTES, 0x00)
-    asm.emit(0xAA)                              # TAX -- the fixed-width half
+    asm.emit(0xAA)                              # TAX -- high bitplane
     asm.emit(0xA5, pointer_dp, 0x29, 0x07, 0x00)
-    asm.emit(0xA8)                              # TAY -- the first probe counted Y down
-    asm.emit(0xE2, 0x20)                        # SEP #$20
+    asm.emit(0xA8)
+    asm.emit(0xE2, 0x20)
     asm.long_index(0xBF, tables)
-    asm.label(f"{prefix}_shift_fixed")
+    asm.label(f"{prefix}_shift_high")
     asm.emit(0xC0, 0x00, 0x00)
-    asm.branch(0xF0, f"{prefix}_tested_fixed")
-    asm.emit(0x4A)
-    asm.emit(0x88)
-    asm.branch(0x80, f"{prefix}_shift_fixed")
-    asm.label(f"{prefix}_tested_fixed")
+    asm.branch(0xF0, f"{prefix}_tested_high")
+    asm.emit(0x4A, 0x88)
+    asm.branch(0x80, f"{prefix}_shift_high")
+    asm.label(f"{prefix}_tested_high")
     asm.emit(0x29, 0x01)
-    asm.branch(0xD0, f"{prefix}_mixed_fixed")
-    if alternate is not None:
-        asm.emit(0xC2, 0x20)                    # REP #$20
-        asm.emit(0x8A)                          # TXA
-        asm.emit(0x18, 0x69, PAGE_BITMAP_BYTES, 0x00)
-        asm.emit(0xAA)                          # TAX -- alternate bitmap
-        asm.emit(0xA5, pointer_dp, 0x29, 0x07, 0x00)
-        asm.emit(0xA8)
-        asm.emit(0xE2, 0x20)
-        asm.long_index(0xBF, tables)
-        asm.label(f"{prefix}_shift_alternate")
-        asm.emit(0xC0, 0x00, 0x00)
-        asm.branch(0xF0, f"{prefix}_tested_alternate")
-        asm.emit(0x4A, 0x88)
-        asm.branch(0x80, f"{prefix}_shift_alternate")
-        asm.label(f"{prefix}_tested_alternate")
-        asm.emit(0x29, 0x01)
-        asm.branch(0xD0, f"{prefix}_mixed_alternate")
+    asm.emit(0xC2, 0x20, 0x29, 0x01, 0x00, 0x0A)  # Clear B : ASL high route bit
+    asm.emit(0x03, 0x01)                        # ORA $01,S -- combine low bit
+    asm.emit(0xAA, 0x68, 0x8A)                # TAX : PLA : TXA -- discard low bit
+    asm.emit(0xC9, ROUTE_THAI, 0x00)
+    asm.branch(0xF0, f"{prefix}_mixed_thai")
+    if use_fixed:
+        asm.emit(0xC9, ROUTE_FIXED, 0x00)
+        asm.branch(0xF0, f"{prefix}_mixed_fixed")
+        if alternate is not None:
+            asm.emit(0xC9, ROUTE_ALTERNATE, 0x00)
+            asm.branch(0xF0, f"{prefix}_mixed_alternate")
     asm.emit(0xC2, 0x20)                        # REP #$20
     asm.emit(0x7A, 0x68)                        # PLY : PLA
     asm.brl(f"{prefix}_original_exit")

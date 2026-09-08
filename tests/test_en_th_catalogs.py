@@ -109,9 +109,10 @@ def test_route_table_distinguishes_three_pages_on_one_source_page():
     )
     assert entry & ROUTE_MIXED
     bitmap = entry & ROUTE_OFFSET_MASK
-    assert table[bitmap] & 0b00000011 == 0b00000011
-    assert table[bitmap + PAGE_BITMAP_BYTES] & 0b00001100 == 0b00001100
-    assert table[bitmap + PAGE_BITMAP_BYTES * 2] & 0b00110000 == 0b00110000
+    for address in range(256):
+        low = (table[bitmap + address // 8] >> (address % 8)) & 1
+        high = (table[bitmap + PAGE_BITMAP_BYTES + address // 8] >> (address % 8)) & 1
+        assert low | (high << 1) == (address // 2 + 1 if address < 6 else 0)
 
     alternate_only = build_route_tables({}, {}, {bank: ((0x3400, 0x3500),)})
     descriptor = int.from_bytes(
@@ -237,15 +238,21 @@ def test_profile_catalog_routes_visible_ascii_through_shared_supplement():
     profile_ids = []
     for row in source:
         slots = tuple(int(value) for value in row.get("table_slots", ()))
-        if int(row["block"]) == 48 or (
+        if int(row["block"]) in (48, 50) or (
             int(row["block"]) == 49 and slots and max(slots) < 38
+        ) or (
+            int(row["block"]) == 51 and slots and max(slots) < 35
         ):
             profile_ids.append(str(row["id"]))
     encoder = ProfileCatalogEncoder(clean, [translated[key] for key in profile_ids])
 
-    assert len(profile_ids) == 240
-    assert 0xEC < len(encoder.codes) <= 0xEC * 2
-    assert all(token.startswith("cluster:") for token in encoder.codes)
+    assert len(profile_ids) == 504
+    assert sum(route != 3 for route, _ in encoder.codes.values()) <= 0xEC * 2
+    assert "char:," in encoder.codes
+    for key in profile_ids:
+        encoded, record_routes = encoder.record(translated[key])
+        assert len(encoded) == len(record_routes)
+        assert encoded[-1] == 0xFF
     payload, routes = encoder.record("ก 30 ซม.!?<ENDFF>")
     assert payload[-1] == 0xFF
     assert routes[-1] == 0
