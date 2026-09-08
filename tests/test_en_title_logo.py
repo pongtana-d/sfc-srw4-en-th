@@ -29,13 +29,13 @@ def test_en_logo_oam_has_all_fifteen_sprites_per_row():
     ]
 
 
-def test_version_preserves_logo_and_only_moves_two_blank_sprites():
+def test_version_preserves_logo_and_only_moves_five_blank_sprites():
     from srw4.en_title import install_en_title_logo, VERSION_SPRITES
     base = (ROOT / "rom/Dai-4-ji Super Robot Taisen (English combo).sfc").read_bytes()
     logo, _ = build_en_title_logo(ROOT / "data", base)
     image = bytearray(base)
     report = install_en_title_logo(image, ROOT / "data", base)
-    assert report["version"]["text"] == "v1.3"
+    assert report["version"]["text"] == "น้องจ๋าแปลที v1.3"
     version_tiles = {part for _, tile, _, _ in VERSION_SPRITES
                      for part in (tile, tile + 1, tile + 16, tile + 17)}
     for tile in range(256):

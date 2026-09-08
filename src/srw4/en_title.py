@@ -154,7 +154,7 @@ def install_en_title_logo(image: bytearray, data_root: Path, english_rom: bytes)
     if image[EN_TITLE_LOGO_PC:end] != english_rom[EN_TITLE_LOGO_PC:end]:
         raise ValueError("EN title-logo page was already modified by another build stage")
     image[EN_TITLE_LOGO_PC:end] = payload
-    report["version"] = install_en_title_version(image, english_rom)
+    report["version"] = install_en_title_version(image, english_rom, data_root)
     report["sha256"] = hashlib.sha256(image[EN_TITLE_LOGO_PC:end]).hexdigest()
     report["changed_bytes"] = sum(a != b for a, b in zip(
         english_rom[EN_TITLE_LOGO_PC:end], image[EN_TITLE_LOGO_PC:end]
@@ -162,35 +162,48 @@ def install_en_title_logo(image: bytearray, data_root: Path, english_rom: bytes)
     return report
 
 
-# Two unused sprites beyond the editable logo's right edge. EN metasprite
+# Five unused sprites beyond the visible logo pixels. EN metasprite
 # records are tile, flags, relative Y, relative X; origin is (128, 48).
-VERSION_SPRITES = ((0x7FF46, 0xC6, 0x00, 224), (0x7FF3A, 0xCC, 0x10, 240))
+VERSION_SPRITES = (
+    (0x7FF46, 0xC6, 0x00, 168), (0x7FF3A, 0xCC, 0x10, 184),
+    (0x7FF2E, 0xE8, 0x20, 200), (0x7FF26, 0xEC, 0x30, 216),
+    (0x7FF22, 0xEE, 0x30, 232),
+)
 VERSION_Y = 208
-VERSION_TEXT = "v1.3"
+VERSION_CREDIT = "น้องจ๋าแปลที"
+VERSION_TEXT = VERSION_CREDIT + " v1.3"
 VERSION_GLYPHS = (
     ("000", "101", "101", "101", "010"),
     ("010", "110", "010", "010", "111"),
     ("0", "0", "0", "0", "1"),
     ("110", "001", "010", "001", "110"),
 )
-VERSION_TEXT_OFFSET_X = 8
-VERSION_TEXT_OFFSET_Y = 4
+VERSION_TEXT_OFFSET_X = 2
+VERSION_TEXT_OFFSET_Y = 0
 
 
-def install_en_title_version(image: bytearray, english_rom: bytes) -> dict:
-    """Reuse blank logo OBJs for a white 3x5 version label, near the lower-right edge."""
+def install_en_title_version(image: bytearray, english_rom: bytes, data_root: Path) -> dict:
+    """Reuse blank logo OBJs for the Thai credit and version at the lower right."""
     tiles = bytearray(image[EN_TITLE_LOGO_PC:EN_TITLE_LOGO_PC + EN_TITLE_LOGO_SIZE])
     for pc, tile, relative_y, x in VERSION_SPRITES:
-        expected = bytes((tile, 0x10, relative_y, 0x68))
+        relative_x = 0x58 if tile == 0xEC else 0x68
+        expected = bytes((tile, 0x10, relative_y, relative_x))
         if english_rom[pc:pc + 4] != expected or image[pc:pc + 4] != expected:
             raise ValueError("EN version metasprite source mismatch")
         for part in (tile, tile + 1, tile + 0x10, tile + 0x11):
             if any(tiles[part * 32:(part + 1) * 32]):
                 raise ValueError("EN version sprite overlaps visible logo pixels")
-    pixels = set()
-    cursor = 0
+    from .proven.text.renderer import Renderer
+    renderer = Renderer(
+        json.loads((data_root / "font/thai.json").read_text(encoding="utf-8")),
+        json.loads((data_root / "font/encoding.json").read_text(encoding="utf-8")),
+    )
+    canvas, credit_width = renderer.render_text(VERSION_CREDIT)
+    pixels = {(x, y) for y in range(16) for x in range(credit_width)
+              if canvas[(x // 8) * 16 + y] & (0x80 >> (x % 8))}
+    cursor = credit_width + 3
     for glyph in VERSION_GLYPHS:
-        pixels.update((cursor + x, y) for y, row in enumerate(glyph)
+        pixels.update((cursor + x, y + 8) for y, row in enumerate(glyph)
                       for x, bit in enumerate(row) if bit == "1")
         cursor += len(glyph[0]) + 1
     # One-pixel dark outline keeps the label legible over the star field.
@@ -200,6 +213,8 @@ def install_en_title_version(image: bytearray, english_rom: bytes) -> dict:
         for x, y in points:
             local_x = x + VERSION_TEXT_OFFSET_X
             local_y = y + VERSION_TEXT_OFFSET_Y
+            if not (0 <= local_x < len(VERSION_SPRITES) * 16 and 0 <= local_y < 16):
+                raise ValueError("EN title credit exceeds its reserved sprite surface")
             tile = VERSION_SPRITES[local_x // 16][1]
             part = tile + (local_x % 16) // 8 + (local_y // 8) * 0x10
             _set_tile_pixel(tiles, part, local_x % 8, local_y % 8, color)
@@ -241,4 +256,4 @@ def install_en_title_version(image: bytearray, english_rom: bytes) -> dict:
     return {"text": VERSION_TEXT,
             "x": VERSION_SPRITES[0][3] + VERSION_TEXT_OFFSET_X,
             "y": VERSION_Y + VERSION_TEXT_OFFSET_Y,
-            "width": cursor - 1, "height": len(VERSION_GLYPHS[0])}
+            "width": cursor - 1, "height": 16}
