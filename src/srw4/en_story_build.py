@@ -230,6 +230,7 @@ def _dispatch_records(
     header: bytes,
     *,
     dispatch_start: int = 0,
+    table: bytes = b"",
 ) -> list[list[tuple[int, int]]]:
     """Return every pointer graph following one battle dispatch header.
 
@@ -239,19 +240,28 @@ def _dispatch_records(
     reachable field must participate in EN/JP alignment; otherwise nested
     battle quotes retain their old address after repacking.
     """
-    records: list[list[tuple[int, int]]] = []
+    # Multi-pilot reactions enter a bare FA selector directly from the
+    # pointer table, without FC 01 or the English name separator. Only
+    # inspect authoritative table roots: scanning for FA would also match
+    # pointer operands and encoded text.
+    commands: set[int] = set()
     cursor = 0
     while (at := data.find(header, cursor)) >= 0:
-        command_at = at + len(header)
-        fields = _selector_fields(
-            data,
-            command_at,
-            dispatch_start=dispatch_start,
-            seen=set(),
+        commands.add(at + len(header))
+        cursor = at + len(header) + 1
+    if len(table) % 2:
+        raise RomError("battle quote pointer table has odd length")
+    for at in range(0, len(table), 2):
+        target = int.from_bytes(table[at:at + 2], "little") - dispatch_start
+        if 0 <= target < len(data) and data[target] == 0xFA:
+            commands.add(target)
+    records: list[list[tuple[int, int]]] = []
+    for command_at in sorted(commands):
+        pointers = _selector_fields(
+            data, command_at, dispatch_start=dispatch_start, seen=set(),
         )
-        if fields:
-            records.append(fields)
-        cursor = command_at + 1
+        if pointers:
+            records.append(pointers)
     return records
 
 
@@ -475,11 +485,13 @@ def install_full_story(rom: Rom, clean: bytes, document: Mapping[str, object],
                 bytes(dispatch),
                 EN_QUOTE_HEADER,
                 dispatch_start=source_start + table_bytes,
+                table=source_table,
             )
             jp_records = _dispatch_records(
                 jp_dispatch,
                 b"\xFC\x01",
                 dispatch_start=jp_start,
+                table=jp_reference[jp_pc:jp_pc + table_bytes],
             )
             if len(en_records) > len(jp_records):
                 raise RomError(f"battle block {slot}: EN dispatch record count changed")

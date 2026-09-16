@@ -22,6 +22,10 @@ WRAM_BUFFER_END = WRAM_BUFFER_BASE + WRAM_BUFFER_BYTES
 
 
 def _control(tag: str) -> bytes:
+    if tag.startswith("<EN:") and tag.endswith(">"):
+        from .en_text import encode_en_direct
+        # Explicit original English font run; subsequent Thai text emits C1.
+        return b"\xC0" + encode_en_direct(tag[4:-1])
     if tag == "<ENDFF>":
         return b"\xFF"
     if tag == "<ENDF7>":

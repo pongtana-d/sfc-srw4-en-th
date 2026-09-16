@@ -26,8 +26,9 @@ Thai precompose + VWF, string pool แบบ variable-length และกรอ�
 - docs/09-translation-style.md — ศัพท์และนโยบายการแปล
 - docs/99-open-questions.md — evidence ที่ยังไม่ปิด
 
-เอกสารใน docs/archive/legacy เป็นหลักฐานเก่าที่เก็บไว้ย้อนตรวจได้
-ไม่ใช่ source of truth และไม่ควรนำข้อจำกัดเก่ามาเป็น target โดยไม่ตรวจซ้ำ
+เอกสาร archive, test suite, Lua probe และ builder ทดลองถูกนำออกจาก working tree แล้ว
+ย้อนดูไฟล์ที่เคย commit ได้จาก Git history ข้อความใน PLAN.md และ PROGRESS.md
+ที่กล่าวถึงเครื่องมือเหล่านี้เป็นบันทึกทางประวัติศาสตร์ ไม่ใช่คำสั่ง build ปัจจุบัน
 
 ## ไฟล์ข้อมูลสำคัญ
 
@@ -38,8 +39,7 @@ Thai precompose + VWF, string pool แบบ variable-length และกรอ�
 | data/font/ | glyph, cluster, encoding, icon และ override |
 | data/config/ | ROM map, hooks, allocation, windows และ surfaces |
 | src/srw4/ | parser, tokenizer, atlas, reference, repack และ runtime support |
-| tools/ | compiler, build, audit, emulator และ diagnostic tools |
-| tests/ | unit, fixture, golden และ integration tests |
+| tools/ | build, verification, translation maintenance และ asset editors |
 | assets/ | TTF และ resource ที่ใช้สร้าง asset |
 | rom/ | clean ROM; ห้ามแก้โดยตรง |
 | build/ | artifact ที่สร้างใหม่ได้; ไม่ใช่ source of truth |
@@ -54,3 +54,25 @@ Thai precompose + VWF, string pool แบบ variable-length และกรอ�
 
 ROM clean ต้อง read-only เสมอ และผลสำเร็จต้องพิสูจน์จาก genuine redraw,
 deterministic build และ report ที่ย้อนตรวจได้
+
+## สร้างแพตช์ EN→TH ปัจจุบัน
+
+ใช้ Python 3.10 ขึ้นไป และเตรียม ROM เอง (ไม่เก็บ ROM ใน Git):
+
+- EN Combo: ส่ง path ผ่าน `--input`
+- JP Rev 1 สำหรับอ้างอิงโครงสร้าง: `rom/Dai-4-ji Super Robot Taisen (Japan) (Rev 1).sfc`
+
+```sh
+python3 tools/build_en_th_full_dialogue.py --input rom/srw4-en-combo.sfc
+python3 tools/verify_en_th_full_dialogue.py --rom build/srw4-en-th.sfc
+```
+
+ผลลัพธ์คือ `build/srw4-en-th.sfc` และ `build/srw4-en-th.ips`
+ตัว build ตรวจ stock English objectives ก่อนเขียนไฟล์เสมอ
+บั๊กฟิก bare FA selectors และ English speaker runs อยู่ใน production source แล้ว
+
+`tools/repair_v13_battle_quotes.py` และ `tools/fix_goshogun_english_names.py`
+ยังเก็บไว้เพราะใช้สร้าง artifact v1.4 จาก ROM EN-based Thai v1.3 โดยตรง
+การ full rebuild และการซ่อม artifact มีการจัดวางไบต์ต่างกัน:
+อย่าอ้างว่า full rebuild ได้ SHA เดียวกับ v1.4 ที่เผยแพร่โดยไม่ได้ตรวจเทียบ
+แพ็กเกจ xdelta v1.4 เดิมอยู่ใน `build/` และไม่ได้เป็นไฟล์ tracked

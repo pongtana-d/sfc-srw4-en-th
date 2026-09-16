@@ -166,6 +166,10 @@ story_page_lead:
   sec
   sbc #$00C0
   inc a
+  cmp #$0001
+  bne page_selected
+  lda #$0005
+page_selected:
   sta.l ${ROUTER_PAGE_STATE:06X}
   lda [$CB]
   and #$00FF

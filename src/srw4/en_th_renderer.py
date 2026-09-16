@@ -200,6 +200,8 @@ stock:
   brl draw_done
 private:
   lda.l ${ROUTER_PAGE_STATE:06X}
+  cmp #$0005
+  beq stock
   cmp #$0002
   beq thai
   cmp #$0003
@@ -273,6 +275,8 @@ stock:
   jml $81921E
 private:
   lda.l ${ROUTER_PAGE_STATE:06X}
+  cmp #$0005
+  beq stock
   cmp #$0002
   beq thai
   cmp #$0003

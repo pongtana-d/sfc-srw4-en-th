@@ -391,3 +391,83 @@ P0–P6 ทำเสร็จแล้ว; blocker ปัจจุบันจ�
   in 11 groups, with no wording changed by this fix.
 - Production ROM SHA-256:
   `94d5e29b88fb0d465bcb8d5b71da34282d456d49f81fcb9d9b86f85d8ec771fe`.
+
+### 2026-09-16 — Bare FA multi-pilot battle selector repair
+
+- Reproduced wrong damage dialogue from the user-specified MesenCE slot 2:
+  `/Users/mono-tong/Library/Application Support/MesenCE/SaveStates/Dai-4-ji Super Robot Taisen (TH)_2.mss`.
+  The frozen replay copy was captured before this investigation. Tests use the EN-based Thai v1.3 ROM; JP Rev 1 is structural reference only.
+- Message 0x180A at F5:4841 starts directly with FA, without the FC 01 name prefix.
+  The old relocation scan omitted this root. Its fifth pointer F5:B11B entered
+  unrelated message 0x1D4D, reproducing the wrong portrait and Thai sentence.
+- `_dispatch_records` now also walks bare FA roots referenced by the authoritative
+  pointer table, deduplicates aliases, and retains address order for JP/EN alignment.
+  It does not scan arbitrary FA bytes inside operands or translated text.
+- Added `tools/repair_v13_battle_quotes.py`: deterministic repair against restored
+  v1.3 using unique exact compiled Thai payloads within each translated block.
+  All 30 targets in five affected blocks (20,21,23,24,25) are repaired; 64 bytes
+  differ including checksum. Existing v1.3 objective bytes are unchanged.
+- Four focused regression tests pass. IPS application reconstructs the exact ROM.
+  Six Mesen runs from the genuine slot 2, selecting each damage-dialogue target,
+  confirm the matching Shingo/Remy/Killy portrait and authored Thai text.
+- Base SHA-256: 61f17e0e1c415b35f9271e568ef91654ffc474ce684a5f40187dafd8c4229701
+- Fixed SHA-256: 322da6bca95f83a18643b361bad46949ac3c09ce5c13e72037f668edc0c724a7
+- The restored project has JP Rev 1 and built Thai v1.3, but no canonical English
+  combo baseline. Thus the delivered artifact is a verified v1.3 delta repair;
+  a complete production rebuild from the English baseline remains unverified.
+
+### 2026-09-16 — Natural battle-situation replay verification
+
+- Replayed the frozen user slot 2 in isolated Mesen against the fixed v1.3 ROM.
+- Modified only initial HP/combat stats and controller input in test copies.
+  Dialogue IDs, pointers, hit-result flags, and computed damage were not forced.
+- HP 4000 / hit 10 selected 180A; HP 2000 / hit 10 selected 170A;
+  HP 500 / hit 10 selected 140A; HP 5 / hit 5 selected 150A and destruction.
+- Evade succeeded with zero damage and selected 190A. Reducing armour/increasing
+  attacker stats produced a naturally recalculated 431-damage attack, selecting
+  170A at displayed HP 3559/4000. The starting confirmation caches damage, so
+  this heavier-damage evidence is from the following enemy attack.
+- Reviewed generated quote screenshots and logs. Surviving units proceeded to
+  subsequent combat; the destruction case proceeded to another unit's combat.
+- All five repaired quote groups were reached naturally in these scenarios.
+  This does not exercise all six random choices in every group or the full game.
+- Evidence: build/reports/dialogue-scenarios-20260916/report.json and PNG/log files.
+- No additional ROM changes and no user save-state changes were needed.
+
+## 2026-09-16 — GoShogun English speaker names
+
+Changed the 30 explicit GoShogun speaker prefixes to Shingo, Remy and Killy, preserving the existing FE portrait and Thai dialogue body. Added `<EN:...>` stream support and a dedicated page state 5, preserving legacy state-1 Thai recovery after line processing. The delta builder validates the pointer-repaired v1.3 SHA-256 and both old adapter byte sequences before changing them.
+
+Output: `build/srw4-en-th-v1.3-dialogue-fix-en-names.sfc`; IPS applies to the original Thai v1.3 ROM. Source JP Rev1 ROM is unchanged. Full clean rebuild remains unavailable because the original English combo baseline is absent.
+
+Validation: 2 English-name unit tests and 4 bare-selector tests pass. All 30 ROM payloads match source and retain identical Thai bodies; checksum and original objective bytes verified. Mesen replay from slot 2 naturally shows Remy, and six test-only selector variants show all three correct English names and portraits with intact Thai text. This does not claim replay coverage of all 30 lines or the entire game.
+
+User delivery preference: keep one canonical playable ROM at `build/srw4-en-th.sfc`; replace it for future fixes, without variant ROM filenames or extra patch deliverables. Outputs links to that same file. Prior generated ROM variants and IPS files removed; diagnostic reports retained separately.
+
+## 2026-09-16 — Barrier replay states
+
+Prepared native Mesen slots 3 (Beam Coating) and 4 (I-field) for `srw4-en-th.sfc`, at the confirmation menu before enemy Beam Vulcan fire against GoShogun. Only test-state equipment was changed; original saves and canonical ROM remain unchanged. Both ready states were reloaded and confirmed with A: damage 0, HP remains 3990, correct barrier label and Shingo quote `1A0A` shown. Evidence in `build/reports/barrier-tests/`.
+
+## 2026-09-16 — v1.4 xdelta release
+
+Packaged `build/srw4-en-th-v1.4-xdelta.zip` with four source-specific xdelta patches: EN Combo (primary), Japanese original, Japanese Rev 1, and Thai v1.3. All patches decode byte-for-byte to the existing canonical EN-TH ROM, SHA-256 `eed03e6acd555a7ad639b5a0ef6e31bb4439bbfc85cb822c5eaa570ae7a2a4fa`. No new ROM variant or in-game version-label change. Source ROMs unchanged. Verified all four xdelta round trips, ZIP integrity, SNES checksum, and stock English objectives against the now-available EN Combo baseline. Source/patch hashes are in the ZIP manifest and `build/reports/release-v1.4.json`.
+
+## 2026-09-16 — Remove tests and unused tooling
+
+Removed 153 tracked files and two untracked tests: archived documentation,
+78 Lua test/probe scripts, obsolete diagnostic and fixture builders, and legacy
+source modules unreachable from the retained build/maintenance tools.
+Kept production bug fixes, build verification, asset editors, translation
+maintenance tools and their imports. Kept both v1.3 repair scripts because they
+record the route used to produce the published v1.4 artifact.
+
+Full EN builds of isolated before/after snapshots produced byte-identical ROMs
+and IPS patches. Both builds passed the stock-English-objective guard; the
+retained verifier passed 10,439 table pointers and 9,382 compiled records.
+ROM SHA-256: `2de04ab69e36f4556416a374c983729fd4be6b1e77d192e65c27b4d9ecceeb4c`.
+IPS SHA-256: `07a0044ba9d57595ae0df15243e6728f7038dc1e6a7f4011da0d873da6803deb`.
+The pre-cleanup full build already differs from the published v1.4 delta-repaired
+ROM; this cleanup does not establish runtime equivalence between those builds.
+Existing release ROM/patches were not replaced. Snapshot verification supplied
+the existing JP Rev 1 ROM under the legacy reference filename expected by the
+builder; JP was used only as a structural reference for the EN build.
